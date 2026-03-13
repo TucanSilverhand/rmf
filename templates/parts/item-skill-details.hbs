@@ -1,0 +1,43 @@
+{{!-- 
+  RMF Skill Item Sheet Details Partial
+  Description and basic fields
+--}}
+
+<div class="tab details-section" data-tab="details" style="display: block;">
+  <section class="details-section">
+
+    <div class="form-group description-editor-group">
+      <label>{{localize "RMF.Description"}}</label>
+      <div class="editor-container description-editor">
+        <textarea name="system.description" 
+                  class="rmf-rich-editor" 
+                  style="height: 160px; resize: vertical;"
+                  placeholder="{{localize 'RMF.DescriptionPlaceholder'}}">{{system.description}}</textarea>
+      </div>
+    </div>
+
+    <div class="grid two-columns">
+      <div class="form-group">
+        <label for="skill_rank">{{localize "RMF.Skills.Ranks"}}</label>
+        <input id="skill_rank" type="number" name="system.rank" value="{{system.rank}}" min="0" step="1" inputmode="numeric" data-dtype="Number"/>
+      </div>
+      <div class="form-group">
+        <label for="skill_category">{{localize "RMF.Skills.Category"}}</label>
+        <input id="skill_category" type="text" name="system.category" value="{{system.category}}" placeholder="category" autocomplete="off"/>
+      </div>
+      <div class="form-group">
+        <label for="skill_group">{{localize "RMF.Skill.Group"}}</label>
+        <input id="skill_group" type="text" name="system.group" value="{{system.group}}" placeholder="group" autocomplete="off"/>
+      </div>
+      <div class="form-group">
+        <label for="skill_classification">{{localize "RMF.Skill.Classification"}}</label>
+        <input id="skill_classification" type="text" name="system.classification" value="{{system.classification}}" placeholder="movingManeuver" autocomplete="off"/>
+      </div>
+      <div class="form-group checkbox">
+        <label for="skill_commonly_used">{{localize "RMF.Skill.CommonlyUsed"}}</label>
+        <input id="skill_commonly_used" type="checkbox" name="system.commonlyUsed" {{#if system.commonlyUsed}}checked{{/if}} />
+      </div>
+    </div>
+
+  </section>
+</div>

@@ -1,0 +1,1443 @@
+/**
+ * RMF System Styles - RoleMaster Fantasy for FoundryVTT v13.341
+ * 
+ * Modern, modular stylesheet using CSS custom properties for consistency
+ * across all actor and item sheets. Follows ApplicationV2 best practices
+ * with responsive design and accessibility considerations.
+ * 
+ * @version 1.0.0
+ * @author TucanSilverhand
+ * @since FoundryVTT v13.341
+ */
+
+/* =============================================================================
+   CSS CUSTOM PROPERTIES (Variables)
+   ============================================================================= */
+
+:root {
+  /* Typography */
+  --rmf-font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans";
+  --rmf-font-family-heading: "Signika", var(--rmf-font-family);
+  --rmf-font-size-base: 12px;
+  --rmf-font-size-sm: 11px;
+  --rmf-font-size-lg: 14px;
+  --rmf-font-size-xl: 16px;
+  --rmf-font-size-2xl: 20px;
+  --rmf-font-size-3xl: 24px;
+  --rmf-font-size: var(--rmf-font-size-base);
+  --rmf-line-height-base: 1.5;
+  --rmf-line-height-tight: 1.25;
+
+  /* Colors - Primary Palette */
+  --rmf-color-primary: #4a3c28;
+  --rmf-color-primary-light: #6b5840;
+  --rmf-color-primary-dark: #2d251a;
+  --rmf-color-secondary: #8b7355;
+  --rmf-color-accent: #d4af37;
+  
+  /* Colors - Semantic */
+  --rmf-color-success: #228b22;
+  --rmf-color-warning: #ffa500;
+  --rmf-color-danger: #8b0000;
+  --rmf-color-info: #2563eb;
+  
+  /* Colors - Text */
+  --rmf-color-text: #111827;
+  --rmf-color-text-muted: #6b7280;
+  --rmf-color-text-subtle: #9ca3af;
+  --rmf-color-text-inverted: #ffffff;
+  --rmf-color-fg: var(--rmf-color-text);
+  --rmf-color-fg-muted: var(--rmf-color-text-muted);
+  
+  /* Colors - Background */
+  --rmf-color-bg: #ffffff;
+  --rmf-color-bg-alt: #f3f4f6;
+  --rmf-color-bg-hover: #e5e7eb;
+  --rmf-color-bg-active: #d1d5db;
+  
+  /* Colors - Border */
+  --rmf-color-border: #e5e7eb;
+  --rmf-color-border-dark: #d1d5db;
+  --rmf-color-border-light: #f3f4f6;
+  
+  /* Spacing Scale */
+  --rmf-space-0: 0;
+  --rmf-space-1: 2px;
+  --rmf-space-2: 4px;
+  --rmf-space-3: 8px;
+  --rmf-space-4: 12px;
+  --rmf-space-5: 16px;
+  --rmf-space-6: 20px;
+  --rmf-space-7: 24px;
+  --rmf-space-8: 32px;
+  
+  /* Border Radius */
+  --rmf-radius-none: 0;
+  --rmf-radius-sm: 4px;
+  --rmf-radius-base: 6px;
+  --rmf-radius-md: 8px;
+  --rmf-radius-lg: 12px;
+  --rmf-radius-full: 9999px;
+  --rmf-radius-1: var(--rmf-radius-sm);
+  
+  /* Shadows */
+  --rmf-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --rmf-shadow-base: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --rmf-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+  --rmf-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+  --rmf-shadow-inner: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+  
+  /* Component Dimensions */
+  --rmf-input-height: 26px;
+  --rmf-input-height-sm: 22px;
+  --rmf-input-height-lg: 32px;
+  --rmf-button-height: 28px;
+  --rmf-row-height-min: 28px;
+  --rmf-row-min-height: var(--rmf-row-height-min);
+  --rmf-avatar-size: 64px;
+  --rmf-avatar-size-sm: 48px;
+  --rmf-avatar-size-lg: 80px;
+  
+  /* Transitions */
+  --rmf-transition-fast: 150ms ease;
+  --rmf-transition-base: 200ms ease;
+  --rmf-transition-slow: 300ms ease;
+  
+  /* Z-Index Scale */
+  --rmf-z-base: 0;
+  --rmf-z-above: 10;
+  --rmf-z-dropdown: 100;
+  --rmf-z-sticky: 200;
+  --rmf-z-modal: 1000;
+  --rmf-z-popover: 1500;
+  --rmf-z-tooltip: 2000;
+
+  /* Dynamic layout variable used by sheet JS observers. */
+  --rmf-header-height: 140px;
+}
+
+/* -------------------------------------------------
+   Global scope for RMF sheets
+   ------------------------------------------------- */
+.rmf,
+.rmf-sheet,
+.rmf-item-sheet,
+.rmf-item-sheet-root,
+.race-sheet-root {
+  font-family: var(--rmf-font-family);
+  font-size: var(--rmf-font-size);
+  color: var(--rmf-color-fg);
+}
+
+/* Enforce minimum width for the RMF actor sheet window */
+.rmf.character-sheet { min-width: 700px; }
+
+/* -------------------------------------------------
+   RMF Unified Theme (fantasy parchment, high contrast)
+   - Shared across actor and item sheets for visual consistency
+   ------------------------------------------------- */
+.rmf-sheet,
+.rmf-item-sheet,
+.rmf-item-sheet-root,
+.race-sheet-root {
+  --rmf-font-family: "Book Antiqua", "Palatino Linotype", "Iowan Old Style", Garamond, Georgia, serif;
+  --rmf-font-family-heading: "Cinzel", "Book Antiqua", "Palatino Linotype", serif;
+  --rmf-font-size: 13px;
+
+  --rmf-color-primary: #4a3821;
+  --rmf-color-primary-dark: #2f2214;
+  --rmf-color-secondary: #806747;
+  --rmf-color-accent: #8a641d;
+
+  --rmf-color-fg: #2b2114;
+  --rmf-color-fg-muted: #5e4d34;
+  --rmf-color-text: #2b2114;
+  --rmf-color-text-muted: #6a5940;
+
+  --rmf-color-bg: #f7f1e4;
+  --rmf-color-bg-alt: #ebe1cc;
+  --rmf-color-bg-hover: #e3d5bb;
+  --rmf-color-bg-active: #d8c5a1;
+
+  --rmf-color-border: #ccb892;
+  --rmf-color-border-dark: #ab8f60;
+}
+
+.rmf-sheet .sheet-body,
+.rmf-item-sheet .sheet-body,
+.rmf-item-sheet-root .sheet-body,
+.race-sheet-root .sheet-body {
+  background:
+    radial-gradient(circle at 92% 6%, rgba(138, 100, 29, 0.12), transparent 42%),
+    linear-gradient(180deg, #f9f4e9 0%, #f2e8d6 100%);
+}
+
+.rmf-sheet h1,
+.rmf-sheet h2,
+.rmf-sheet h3,
+.rmf-item-sheet h1,
+.rmf-item-sheet h2,
+.rmf-item-sheet h3,
+.rmf-item-sheet-root h1,
+.rmf-item-sheet-root h2,
+.rmf-item-sheet-root h3,
+.race-sheet-root h1,
+.race-sheet-root h2,
+.race-sheet-root h3 {
+  font-family: var(--rmf-font-family-heading);
+  color: #3c2a16;
+  letter-spacing: 0.02em;
+}
+
+/* Headers (shared) */
+.rmf .sheet-header,
+.rmf-sheet .sheet-header,
+.rmf-item-sheet-root .sheet-header,
+.race-sheet-root .sheet-header {
+  background: var(--rmf-color-bg-alt);
+  border-bottom: 1px solid var(--rmf-color-border);
+  padding: var(--rmf-space-4);
+}
+.sheet-header .header-row {
+  display: grid;
+  grid-template-columns: 70px 4fr 1fr; /* avatar | name | level */
+  align-items: start;
+  column-gap: 0; /* remove spacing between elements in header row */
+}
+
+/* -------------------------------------------------
+   Race Item Sheet header (specific overrides)
+   - Avatar fixed 64px, name area takes remaining width
+   - Name row vertically centered, 40px height
+   ------------------------------------------------- */
+.race-sheet-root .sheet-header .header-row {
+  grid-template-columns: 64px 1fr; /* avatar | name */
+  align-items: center;             /* vertically center image and name */
+}
+.race-sheet-root .sheet-header .header-fields { width: 100%; }
+.race-sheet-root .sheet-header .item-name {
+  width: 100%;
+  height: 40px;        /* requested height */
+  display: flex;       /* allow vertical centering of the input */
+  align-items: center; /* center the input vertically */
+  margin: 0;           /* remove default h1 margins */
+}
+.race-sheet-root .sheet-header .item-name input {
+  width: 100%;
+  height: 40px;        /* match container height */
+  box-sizing: border-box;
+  font-size: 24px;
+}
+
+.category-sheet-root .sheet-header .header-row {
+  grid-template-columns: 64px 1fr;
+  align-items: center;
+}
+.category-sheet-root .sheet-header .header-fields { width: 100%; }
+.category-sheet-root .sheet-header .item-name {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+.category-sheet-root .sheet-header .item-name input {
+  width: 100%;
+  height: 40px;
+  box-sizing: border-box;
+  font-size: 24px;
+}
+
+.category-sheet-root .description-preview {
+  background: var(--rmf-color-bg-alt);
+  border: 1px solid var(--rmf-color-border);
+  border-radius: var(--rmf-radius-1);
+  padding: var(--rmf-space-3);
+  min-height: 210px;
+  max-height: 210px;
+  overflow-y: auto;
+  margin-bottom: var(--rmf-space-3);
+  color: var(--rmf-color-fg-muted);
+  font-size: var(--rmf-font-size);
+  line-height: 1.35;
+}
+
+/* -------------------------------------------------
+   Rich Text Editor (ProseMirror) UX
+   - Better contrast and compact toolbar height
+   ------------------------------------------------- */
+.rmf-sheet .editor .editor-menu,
+.rmf-item-sheet .editor .editor-menu,
+.rmf-item-sheet-root .editor .editor-menu,
+.race-sheet-root .editor .editor-menu,
+.rmf-sheet prose-mirror .editor-menu,
+.rmf-item-sheet prose-mirror .editor-menu,
+.rmf-item-sheet-root prose-mirror .editor-menu,
+.race-sheet-root prose-mirror .editor-menu,
+.form-group.ProseMirror .editor-menu {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-content: center !important;
+  list-style: none;
+  margin: 0 !important;
+  min-height: 30px !important;
+  height: 30px !important;
+  max-height: 30px !important;
+  padding: 2px 6px !important;
+  gap: 4px;
+  align-items: center !important;
+  overflow: hidden;
+  background: linear-gradient(180deg, #eadcc1 0%, #dcc8a4 100%);
+  border: 1px solid var(--rmf-color-border-dark);
+  border-radius: var(--rmf-radius-1);
+  color: #2b2114;
+}
+
+.rmf-sheet .editor .editor-menu > *,
+.rmf-item-sheet .editor .editor-menu > *,
+.rmf-item-sheet-root .editor .editor-menu > *,
+.race-sheet-root .editor .editor-menu > *,
+.form-group.ProseMirror .editor-menu > * {
+  margin: 0 !important;
+  min-height: 22px !important;
+  height: 22px !important;
+  max-height: 22px !important;
+  align-self: center !important;
+}
+
+.rmf-sheet .editor .editor-menu li,
+.rmf-item-sheet .editor .editor-menu li,
+.rmf-item-sheet-root .editor .editor-menu li,
+.race-sheet-root .editor .editor-menu li,
+.form-group.ProseMirror .editor-menu li,
+.form-group.ProseMirror .editor-menu .separator {
+  margin: 0 !important;
+  min-height: 22px !important;
+  height: 22px !important;
+  max-height: 22px !important;
+  line-height: 22px !important;
+}
+
+.rmf-sheet .editor .editor-menu button,
+.rmf-item-sheet .editor .editor-menu button,
+.rmf-item-sheet-root .editor .editor-menu button,
+.race-sheet-root .editor .editor-menu button,
+.rmf-sheet .editor .editor-menu .pm-dropdown,
+.rmf-item-sheet .editor .editor-menu .pm-dropdown,
+.rmf-item-sheet-root .editor .editor-menu .pm-dropdown,
+.race-sheet-root .editor .editor-menu .pm-dropdown,
+.form-group.ProseMirror .editor-menu button,
+.form-group.ProseMirror .editor-menu .pm-dropdown {
+  min-height: 22px !important;
+  height: 22px !important;
+  max-height: 22px !important;
+  padding: 0 6px !important;
+  font-size: 12px;
+  line-height: 1.1;
+  color: #2b2114;
+}
+
+.rmf-sheet .editor .editor-menu i,
+.rmf-item-sheet .editor .editor-menu i,
+.rmf-item-sheet-root .editor .editor-menu i,
+.race-sheet-root .editor .editor-menu i,
+.form-group.ProseMirror .editor-menu i {
+  color: #2b2114;
+}
+
+.rmf-sheet .editor .editor-content,
+.rmf-item-sheet .editor .editor-content,
+.rmf-item-sheet-root .editor .editor-content,
+.race-sheet-root .editor .editor-content,
+.form-group.ProseMirror .editor-content {
+  background: #f9f3e7;
+  border: 1px solid var(--rmf-color-border);
+  border-radius: var(--rmf-radius-1);
+}
+
+.rmf-sheet .editor .editor-content .ProseMirror,
+.rmf-item-sheet .editor .editor-content .ProseMirror,
+.rmf-item-sheet-root .editor .editor-content .ProseMirror,
+.race-sheet-root .editor .editor-content .ProseMirror,
+.form-group.ProseMirror .editor-content .ProseMirror {
+  color: #2b2114;
+  min-height: 120px;
+  padding: 8px 10px;
+}
+
+/* Read-only rendered prose blocks */
+.description-preview.ProseMirror,
+.description-preview.ProseMirror * {
+  color: #2b2114;
+}
+
+.category-sheet-root .description-preview p {
+  margin: 0 0 var(--rmf-space-2);
+}
+.category-sheet-root .description-preview p:last-child {
+  margin-bottom: 0;
+}
+
+.category-sheet-root .editor-container {
+  width: 100%;
+}
+.category-sheet-root .editor-container .rmf-rich-editor {
+  width: 100%;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+.category-sheet-root table {
+  width: 100%;
+  max-width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+.category-sheet-root .summary-table td input[type="text"],
+.category-sheet-root .summary-table td input[type="number"] {
+  width: 100%;
+  min-width: unset;
+  max-width: none;
+}
+
+/* Override generic table sizing: use full width on race sheet */
+.race-sheet-root table {
+  width: 100% !important;
+  max-width: 100% !important;
+  table-layout: fixed; /* ensure columns fit available width */
+}
+
+/* Race sheet: textareas should span full width */
+.race-sheet-root textarea {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Align background numeric cell content to the right */
+.race-sheet-root td.background-input {
+  text-align: right;
+  width: 55px;
+}
+
+/* Editor containers keep natural width unless constrained by layout */
+
+/* Actor header: character name block (actor-only) */
+.rmf-sheet .sheet-header .charname {
+  height: 66px;          /* requested height */
+  background: var(--rmf-color-bg);
+}
+.rmf-sheet .sheet-header .charname .char-name {
+  height: 40px;         /* match input height */
+  margin: 0;             /* avoid default h1 margins inflating height */
+  display: flex;
+  align-items: flex-start; /* align input to top */
+}
+
+/* Actor header: right column for level & experience */
+.rmf-sheet .sheet-header .charlevel {
+  height: 66px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: var(--rmf-space-2);
+  background: var(--rmf-color-bg);
+  align-items: flex-end; /* align inputs to the right edge */
+}
+.rmf-sheet .sheet-header .charlevel .level-line,
+.rmf-sheet .sheet-header .charlevel .xp-line {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.rmf-sheet .sheet-header .charlevel input[type="number"] {
+  height: var(--rmf-input-height); /* 26px */
+}
+
+/* Fixed size for level and experience inputs in header */
+.rmf-sheet .sheet-header .charlevel #system_level,
+.rmf-sheet .sheet-header .charlevel #system_experience {
+  height: 26px !important;
+  width: 50px;
+  flex: 0 0 auto;        /* avoid height being set by flex-basis in column layout */
+  align-self: auto;      /* inherit container alignment (right) */
+  line-height: 24px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  box-sizing: border-box;
+  text-align: right;     /* align numbers to the right */
+}
+
+/* Remove border specifically for level field in header */
+.rmf-sheet .sheet-header .charlevel #system_level {
+  border: none !important;
+  box-shadow: none !important;
+  outline: none;
+  background: var(--rmf-color-bg);
+  border-radius: 0;
+}
+
+/* Specific input styling for actor header name */
+.rmf-sheet .sheet-header .charname input#actor_name,
+.rmf-sheet .sheet-header .charname input#char_name {
+  height: 40px;          /* requested input height */
+  border: none;          /* no borders */
+  box-shadow: none;
+  outline: none;
+  width: 100%;
+  padding: 4px 8px;      /* comfortable padding without border */
+  background: var(--rmf-color-bg);      /* match container/input background */
+  border-radius: 0;      /* ensure square if desired */
+}
+
+/* Actor header: profession row placed under name */
+.rmf-sheet .sheet-header .char-profession {
+  display: flex;
+  align-items: center;
+  gap: var(--rmf-space-3);
+  margin-top: var(--rmf-space-2);
+  /* align left edge with name block (avatar is 70px wide + header gap) */
+  margin-left: calc(70px + var(--rmf-space-3));
+  width: calc(100% - (70px + var(--rmf-space-3)));
+}
+.rmf-sheet .sheet-header .char-profession label {
+  color: var(--rmf-color-fg-muted);
+}
+.rmf-sheet .sheet-header .char-profession input[type="text"] {
+  flex: 1 1 auto;
+  border: none;          /* no border as requested */
+  box-shadow: none;
+  outline: none;
+  background: var(--rmf-color-bg);
+  border-radius: 0;
+}
+
+/* Ensure profession and realm inputs share same style (by id) */
+.rmf-sheet .sheet-header #system_profession,
+.rmf-sheet .sheet-header #system_realm,
+.rmf-sheet .sheet-header #system_experience,
+.rmf-sheet .sheet-header #system_race {
+  border: none !important;
+  box-shadow: none !important;
+  outline: none;
+  background: var(--rmf-color-bg);
+  border-radius: 0;
+  width: 150px;              /* fixed width as requested */
+  flex: 0 0 150px;           /* prevent stretching in flex row */
+}
+
+/* Tabs (shared) */
+.sheet-tabs.tabs { border-bottom: 1px solid var(--rmf-color-border); }
+.sheet-tabs .item { padding: 6px 8px; color: var(--rmf-color-fg-muted); border-radius: var(--rmf-radius-1) var(--rmf-radius-1) 0 0; }
+.sheet-tabs .item.active { color: var(--rmf-color-fg); background: var(--rmf-color-bg); border: 1px solid var(--rmf-color-border); border-bottom-color: var(--rmf-color-bg); }
+
+/* Actor tabs: stronger contrast and medieval tone */
+.rmf-sheet .sheet-tabs.tabs,
+.rmf-item-sheet .sheet-tabs.tabs,
+.rmf-item-sheet-root .sheet-tabs.tabs,
+.race-sheet-root .sheet-tabs.tabs {
+  border-bottom-color: var(--rmf-color-border-dark);
+  background: linear-gradient(180deg, #efe4cf 0%, #e3d2b2 100%);
+}
+.rmf-sheet .sheet-tabs .item,
+.rmf-item-sheet .sheet-tabs .item,
+.rmf-item-sheet-root .sheet-tabs .item,
+.race-sheet-root .sheet-tabs .item {
+  color: #5d492e;
+  font-weight: 600;
+}
+.rmf-sheet .sheet-tabs .item:hover,
+.rmf-item-sheet .sheet-tabs .item:hover,
+.rmf-item-sheet-root .sheet-tabs .item:hover,
+.race-sheet-root .sheet-tabs .item:hover {
+  color: #2b2114;
+  background: rgba(247, 241, 228, 0.55);
+}
+.rmf-sheet .sheet-tabs .item.active,
+.rmf-item-sheet .sheet-tabs .item.active,
+.rmf-item-sheet-root .sheet-tabs .item.active,
+.race-sheet-root .sheet-tabs .item.active {
+  color: #23180d;
+  background: #f9f3e7;
+  border-color: var(--rmf-color-border-dark);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75);
+}
+
+/* -------------------------------------------------
+   Floating Vertical Tabs (actor + item vertical-nav sheets)
+   - Left rail, with outward floating effect
+   ------------------------------------------------- */
+.rmf-sheet .sheet-main-container,
+.rmf-item-sheet .sheet-main-container,
+.race-sheet-root .sheet-main-container {
+  position: relative;
+  z-index: 0;
+}
+
+.rmf-sheet .sheet-content,
+.rmf-item-sheet .sheet-content,
+.race-sheet-root .sheet-content {
+  position: relative;
+  z-index: 2;
+}
+
+.rmf-sheet nav.sheet-tabs.tabs.vertical-tabs[data-group="primary-tabs"],
+.rmf-item-sheet nav.sheet-tabs.tabs.vertical-tabs[data-group="primary-tabs"],
+.race-sheet-root nav.sheet-tabs.tabs.vertical-tabs[data-group="primary-tabs"] {
+  position: absolute;
+  top: calc(var(--rmf-header-height, 140px) - 130px);
+  left: 0;
+  transform: translateX(-90%);
+  z-index: 1;
+
+  width: 56px;
+  margin: 0;
+  padding: 8px 5px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+  border: 1px solid var(--rmf-color-border-dark);
+  border-right: none;
+  border-radius: 10px 0 0 10px;
+  background: linear-gradient(180deg, #e9d8b8 0%, #d7bf95 100%);
+  box-shadow: 0 8px 18px rgba(32, 21, 8, 0.28);
+}
+
+.rmf-sheet nav.sheet-tabs.tabs.vertical-tabs[data-group="primary-tabs"] .item,
+.rmf-item-sheet nav.sheet-tabs.tabs.vertical-tabs[data-group="primary-tabs"] .item,
+.race-sheet-root nav.sheet-tabs.tabs.vertical-tabs[data-group="primary-tabs"] .item {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  margin: 0;
+  padding: 0;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+  border: 1px solid #b59665;
+  background: #f5ead3;
+  color: #3a2a16;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.rmf-sheet nav.sheet-tabs.tabs.vertical-tabs[data-group="primary-tabs"] .item:hover,
+.rmf-item-sheet nav.sheet-tabs.tabs.vertical-tabs[data-group="primary-tabs"] .item:hover,
+.race-sheet-root nav.sheet-tabs.tabs.vertical-tabs[data-group="primary-tabs"] .item:hover {
+  background: #fff5e4;
+  border-color: #97713c;
+  color: #24170a;
+  text-decoration: none;
+}
+
+.rmf-sheet nav.sheet-tabs.tabs.vertical-tabs[data-group="primary-tabs"] .item.active,
+.rmf-item-sheet nav.sheet-tabs.tabs.vertical-tabs[data-group="primary-tabs"] .item.active,
+.race-sheet-root nav.sheet-tabs.tabs.vertical-tabs[data-group="primary-tabs"] .item.active {
+  background: #c8a874;
+  border-color: #8a662f;
+  color: #221508;
+  box-shadow: inset 0 0 0 1px rgba(255, 245, 225, 0.25);
+}
+
+.rmf-sheet nav.sheet-tabs.tabs.vertical-tabs[data-group="primary-tabs"] .tab-icon,
+.rmf-item-sheet nav.sheet-tabs.tabs.vertical-tabs[data-group="primary-tabs"] .tab-icon,
+.race-sheet-root nav.sheet-tabs.tabs.vertical-tabs[data-group="primary-tabs"] .tab-icon {
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* Body (shared) */
+.sheet-body { background: var(--rmf-color-bg); padding: var(--rmf-space-3); }
+
+/* Ensure window content can scroll vertically across the whole window (ApplicationV2 and legacy) */
+.window-app .window-content,
+.application .window-content {
+  overflow-y: auto !important;
+  overflow-x: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* -------------------------------------------------
+   Actor Window Transparency
+   - Only for RMF actor-sheet window (keeps title bar untouched)
+   ------------------------------------------------- */
+.window-app.rmf.character-sheet,
+.application.rmf.character-sheet {
+  background: transparent !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+
+.window-app.rmf.character-sheet .window-content,
+.application.rmf.character-sheet .window-content {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  overflow: visible !important;
+}
+
+/* Item sheets transparency (equipment, race, skill, category) */
+.window-app.rmf.sheet.item,
+.application.rmf.sheet.item {
+  background: transparent !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+
+.window-app.rmf.sheet.item .window-content,
+.application.rmf.sheet.item .window-content {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  overflow: visible !important;
+}
+
+/* Ensure ApplicationV2 form fills window and allows inner scroll */
+.window-app .window-content > form,
+.window-app .window-content > form.standard-form,
+.application .window-content > form,
+.application .window-content > form.standard-form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+/* Fallback: if root sheet element has no specific class, target first child */
+.window-app .window-content > form.standard-form > :first-child,
+.application .window-content > form.standard-form > :first-child {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* Ensure the sheet root (direct child of the form) fills height */
+.window-app .window-content > form.standard-form > .rmf-sheet,
+.window-app .window-content > form.standard-form > .rmf-item-sheet-root,
+.window-app .window-content > form.standard-form > .race-sheet-root,
+.application .window-content > form.standard-form > .rmf-sheet,
+.application .window-content > form.standard-form > .rmf-item-sheet-root,
+.application .window-content > form.standard-form > .race-sheet-root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* Root containers must stretch so inner body can scroll */
+.window-app .window-content > .rmf-sheet,
+.window-app .window-content > .rmf-item-sheet-root,
+.window-app .window-content > .race-sheet-root,
+.application .window-content > .rmf-sheet,
+.application .window-content > .rmf-item-sheet-root,
+.application .window-content > .race-sheet-root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* Flex layout so body has constrained height and can scroll */
+.rmf .sheet-main-container,
+.rmf-sheet .sheet-main-container,
+.rmf-item-sheet-root .sheet-main-container,
+.race-sheet-root .sheet-main-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.rmf .sheet-content,
+.rmf-sheet .sheet-content,
+.rmf-item-sheet-root .sheet-content,
+.race-sheet-root .sheet-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0; /* allow child to shrink and become scrollable */
+}
+
+.sheet-body { flex: 1 1 auto; min-height: 0; }
+
+/* Force scroll on sheet body with higher specificity to override Foundry core */
+.window-app .window-content .sheet-body,
+.application .window-content .sheet-body { overflow-y: auto !important; overflow-x: hidden; }
+
+/* Strong chain to ensure flex layout and scroll in RMF sheets */
+.window-app .window-content > form.standard-form > .rmf-sheet,
+.window-app .window-content > form.standard-form > .rmf-item-sheet-root,
+.window-app .window-content > form.standard-form > .race-sheet-root,
+.application .window-content > form.standard-form > .rmf-sheet,
+.application .window-content > form.standard-form > .rmf-item-sheet-root,
+.application .window-content > form.standard-form > .race-sheet-root {
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 0 !important;
+}
+.window-app .window-content > form.standard-form > .rmf-sheet .sheet-main-container,
+.window-app .window-content > form.standard-form > .rmf-item-sheet-root .sheet-main-container,
+.window-app .window-content > form.standard-form > .race-sheet-root .sheet-main-container,
+.application .window-content > form.standard-form > .rmf-sheet .sheet-main-container,
+.application .window-content > form.standard-form > .rmf-item-sheet-root .sheet-main-container,
+.application .window-content > form.standard-form > .race-sheet-root .sheet-main-container {
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 0 !important;
+}
+.window-app .window-content > form.standard-form > .rmf-sheet .sheet-content,
+.window-app .window-content > form.standard-form > .rmf-item-sheet-root .sheet-content,
+.window-app .window-content > form.standard-form > .race-sheet-root .sheet-content,
+.application .window-content > form.standard-form > .rmf-sheet .sheet-content,
+.application .window-content > form.standard-form > .rmf-item-sheet-root .sheet-content,
+.application .window-content > form.standard-form > .race-sheet-root .sheet-content {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  position: relative;
+}
+.window-app .window-content > form.standard-form > .rmf-sheet .sheet-body,
+.window-app .window-content > form.standard-form > .rmf-item-sheet-root .sheet-body,
+.window-app .window-content > form.standard-form > .race-sheet-root .sheet-body,
+.application .window-content > form.standard-form > .rmf-sheet .sheet-body,
+.application .window-content > form.standard-form > .rmf-item-sheet-root .sheet-body,
+.application .window-content > form.standard-form > .race-sheet-root .sheet-body {
+  /* Absolutely position the scroll area under the header */
+  position: absolute;
+  top: var(--rmf-header-height, 140px);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto !important;
+  overflow-x: hidden;
+}
+
+/* Optionally hide scroll on window content so only body scrolls */
+.window-app .window-content,
+.application .window-content {
+  overflow-x: hidden;
+}
+
+/* -------------------------------------------------
+   Inputs (global, UX-first)
+   ------------------------------------------------- */
+.rmf input[type="text"],
+.rmf input[type="number"],
+.rmf input[type="search"],
+.rmf select,
+.rmf textarea,
+.rmf-sheet input[type="text"],
+.rmf-sheet input[type="number"],
+.rmf-sheet input[type="search"],
+.rmf-sheet select,
+.rmf-sheet textarea,
+.rmf-item-sheet-root input[type="text"],
+.rmf-item-sheet-root input[type="number"],
+.rmf-item-sheet-root input[type="search"],
+.rmf-item-sheet-root select,
+.rmf-item-sheet-root textarea,
+.race-sheet-root input[type="text"],
+.race-sheet-root input[type="number"],
+.race-sheet-root input[type="search"],
+.race-sheet-root select,
+.race-sheet-root textarea {
+  height: var(--rmf-input-height);
+  padding: 2px 6px;
+  border: 1px solid var(--rmf-color-border);
+  border-radius: var(--rmf-radius-1);
+  background: #fff;
+  color: var(--rmf-color-fg);
+  box-shadow: none;
+  box-sizing: border-box;
+}
+
+/* Textareas scale naturally */
+textarea { min-height: 64px; height: auto; line-height: 1.35; padding: 6px 8px; }
+
+/* Checkbox size */
+input[type="checkbox"] { width: 14px; height: 14px; }
+
+/* Focus state */
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--rmf-color-accent);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+/* Readonly inputs: subtle gray background and muted text */
+.rmf input[readonly],
+.rmf textarea[readonly],
+.rmf-sheet input[readonly],
+.rmf-sheet textarea[readonly],
+.rmf-item-sheet-root input[readonly],
+.rmf-item-sheet-root textarea[readonly],
+.race-sheet-root input[readonly],
+.race-sheet-root textarea[readonly] {
+  background: var(--rmf-color-bg-alt);
+  color: var(--rmf-color-fg-muted);
+  cursor: default;
+}
+
+/* Readonly focus: keep neutral border without accent ring */
+.rmf input[readonly]:focus,
+.rmf textarea[readonly]:focus,
+.rmf-sheet input[readonly]:focus,
+.rmf-sheet textarea[readonly]:focus,
+.rmf-item-sheet-root input[readonly]:focus,
+.rmf-item-sheet-root textarea[readonly]:focus,
+.race-sheet-root input[readonly]:focus,
+.race-sheet-root textarea[readonly]:focus {
+  border-color: var(--rmf-color-border);
+  box-shadow: none;
+}
+
+/* Readonly placeholder: muted */
+.rmf input[readonly]::placeholder,
+.rmf textarea[readonly]::placeholder,
+.rmf-sheet input[readonly]::placeholder,
+.rmf-sheet textarea[readonly]::placeholder,
+.rmf-item-sheet-root input[readonly]::placeholder,
+.rmf-item-sheet-root textarea[readonly]::placeholder,
+.race-sheet-root input[readonly]::placeholder,
+.race-sheet-root textarea[readonly]::placeholder {
+  color: var(--rmf-color-fg-muted);
+}
+
+/* -------------------------------------------------
+   Tables (shared)
+   Applies to stats, derived, resistances, background, and any generic table
+   ------------------------------------------------- */
+/* Tables: minimal width (fit content) and centered within parent */
+table { width: max-content; max-width: 100%; margin: 0 auto; border-collapse: separate; border-spacing: 0; background: var(--rmf-color-bg); }
+table thead th { background: var(--rmf-color-bg-alt); color: var(--rmf-color-fg); font-weight: 600; padding: 6px 8px; border-bottom: 1px solid var(--rmf-color-border); text-align: center; }
+table thead th:first-child { text-align: left; }
+table tbody td { padding: 4px 8px; border-bottom: 1px solid #eef1f4; vertical-align: middle; text-align: center; }
+table tbody td:first-child { text-align: left; }
+table tr { height: var(--rmf-row-min-height); }
+
+/* Specific tables present in templates */
+.stats-table, .derived-stats-table, .resistances-table, .background-table, .basic-info-table, .basic-totals-table { border: 1px solid #eef1f4; border-radius: var(--rmf-radius-1); box-shadow: var(--rmf-shadow-sm); }
+/* Stronger specificity inside RMF sheets to ensure border visibility */
+.rmf-sheet table.stats-table,
+.rmf-sheet table.derived-stats-table,
+.rmf-sheet table.resistances-table,
+.rmf-sheet table.background-table,
+.rmf-sheet table.basic-info-table,
+.rmf-sheet table.basic-totals-table {
+  border: 1px solid #eef1f4 !important;
+}
+
+/* Numeric inputs inside table cells: exactly 44x26 */
+table td input[type="number"],
+table th input[type="number"] {
+  width: 44px;
+  min-width: 44px;
+  max-width: 44px;
+  height: 26px;           /* combined with box-sizing ensures exact visual height */
+  line-height: 22px;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 2px 4px;
+}
+
+/* Derived values look like text chips (non-editable spans used in templates) */
+.derived-value { display: inline-block; min-width: 44px; text-align: center; padding: 2px 6px; border: 1px solid var(--rmf-color-border); border-radius: var(--rmf-radius-1); background: var(--rmf-color-bg-alt); }
+
+.category-sheet-root .summary-wrapper { margin-top: var(--rmf-space-3); }
+.category-sheet-root .summary-table { text-align: left; }
+.category-sheet-root .summary-table th,
+.category-sheet-root .summary-table td {
+  text-align: left;
+}
+.category-sheet-root .basic-totals-table td {
+  text-align: center;
+}
+.category-sheet-root .basic-totals-table td:last-child {
+  text-align: left;
+}
+.category-sheet-root .basic-totals-table td.equals-column {
+  text-align: center;
+}
+.category-sheet-root .basic-totals-table th {
+  text-align: center;
+}
+.category-sheet-root .basic-totals-table th:last-child {
+  text-align: left;
+}
+.category-sheet-root .basic-totals-table .operator-column {
+  width: 1ch;
+  min-width: 1ch;
+  max-width: 1ch;
+  text-align: center;
+  padding: 0;
+}
+.category-sheet-root .summary-table td input[type="text"],
+.category-sheet-root .summary-table td input[type="number"] {
+  width: 100%;
+  min-width: unset;
+  max-width: none;
+  text-align: left;
+}
+.category-sheet-root .basic-totals-table td input[type="number"] {
+  width: 44px;
+  min-width: 44px;
+  max-width: 44px;
+  text-align: center;
+  margin: 0 auto;
+}
+.category-sheet-root .basic-totals-table td:last-child input[type="number"] {
+  text-align: left;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* -------------------------------------------------
+   Lists of items (actor equipment)
+   ------------------------------------------------- */
+.items-list { list-style: none; margin: 0; padding: 0; border: 1px solid var(--rmf-color-border); border-radius: var(--rmf-radius-1); }
+.items-list .item { display: grid; grid-template-columns: 28px 1fr auto auto auto; gap: var(--rmf-space-2); align-items: center; padding: 4px 6px; border-bottom: 1px solid #eef1f4; min-height: var(--rmf-row-min-height); }
+.items-list .item:last-child { border-bottom: none; }
+.items-list .item img { width: 24px; height: 24px; border-radius: 4px; border: 1px solid var(--rmf-color-border); }
+.items-list .item .item-controls a { padding: 2px 6px; border: 1px solid transparent; border-radius: var(--rmf-radius-1); }
+.items-list .item .item-controls a:hover { border-color: var(--rmf-color-border); }
+
+/* -------------------------------------------------
+   Links/buttons (scoped to RMF sheets only)
+   ------------------------------------------------- */
+.rmf-sheet a, .rmf-sheet button,
+.rmf-item-sheet a, .rmf-item-sheet button,
+.rmf-item-sheet-root a, .rmf-item-sheet-root button,
+.race-sheet-root a, .race-sheet-root button {
+  color: var(--rmf-color-accent); 
+  text-decoration: none; 
+}
+.rmf-sheet a:hover, .rmf-sheet button:hover,
+.rmf-item-sheet a:hover, .rmf-item-sheet button:hover,
+.rmf-item-sheet-root a:hover, .rmf-item-sheet-root button:hover,
+.race-sheet-root a:hover, .race-sheet-root button:hover { 
+  text-decoration: underline; 
+}
+
+/* Ensure list item names remain readable on light backgrounds */
+.rmf-sheet .items-list .item-name a {
+  color: #5a3f18;
+  font-weight: 600;
+}
+.rmf-sheet .items-list .item-name a:hover {
+  color: #2a1e0f;
+}
+
+/* Actor stats tables: improve contrast and row separation */
+.rmf-sheet .stats-table,
+.rmf-sheet .derived-stats-table,
+.rmf-sheet .resistances-table,
+.rmf-item-sheet .stats-table,
+.rmf-item-sheet .derived-stats-table,
+.rmf-item-sheet .resistances-table,
+.rmf-item-sheet-root .stats-table,
+.rmf-item-sheet-root .derived-stats-table,
+.rmf-item-sheet-root .resistances-table,
+.race-sheet-root .stats-table,
+.race-sheet-root .derived-stats-table,
+.race-sheet-root .resistances-table {
+  background: #fbf7ed;
+  border: 1px solid #bfa47a !important;
+}
+
+.rmf-sheet .stats-table thead th,
+.rmf-sheet .derived-stats-table thead th,
+.rmf-sheet .resistances-table thead th,
+.rmf-item-sheet .stats-table thead th,
+.rmf-item-sheet .derived-stats-table thead th,
+.rmf-item-sheet .resistances-table thead th,
+.rmf-item-sheet-root .stats-table thead th,
+.rmf-item-sheet-root .derived-stats-table thead th,
+.rmf-item-sheet-root .resistances-table thead th,
+.race-sheet-root .stats-table thead th,
+.race-sheet-root .derived-stats-table thead th,
+.race-sheet-root .resistances-table thead th {
+  background: linear-gradient(180deg, #d8c29a 0%, #c2a375 100%);
+  color: #2b2012;
+  border-bottom: 1px solid #9f8050;
+}
+
+.rmf-sheet .stats-table tbody td,
+.rmf-sheet .derived-stats-table tbody td,
+.rmf-sheet .resistances-table tbody td,
+.rmf-item-sheet .stats-table tbody td,
+.rmf-item-sheet .derived-stats-table tbody td,
+.rmf-item-sheet .resistances-table tbody td,
+.rmf-item-sheet-root .stats-table tbody td,
+.rmf-item-sheet-root .derived-stats-table tbody td,
+.rmf-item-sheet-root .resistances-table tbody td,
+.race-sheet-root .stats-table tbody td,
+.race-sheet-root .derived-stats-table tbody td,
+.race-sheet-root .resistances-table tbody td {
+  color: #2b2114;
+  border-bottom: 1px solid #ddceb2;
+}
+
+.rmf-sheet .stats-table tbody tr:nth-child(odd) td,
+.rmf-sheet .derived-stats-table tbody tr:nth-child(odd) td,
+.rmf-sheet .resistances-table tbody tr:nth-child(odd) td,
+.rmf-item-sheet .stats-table tbody tr:nth-child(odd) td,
+.rmf-item-sheet .derived-stats-table tbody tr:nth-child(odd) td,
+.rmf-item-sheet .resistances-table tbody tr:nth-child(odd) td,
+.rmf-item-sheet-root .stats-table tbody tr:nth-child(odd) td,
+.rmf-item-sheet-root .derived-stats-table tbody tr:nth-child(odd) td,
+.rmf-item-sheet-root .resistances-table tbody tr:nth-child(odd) td,
+.race-sheet-root .stats-table tbody tr:nth-child(odd) td,
+.race-sheet-root .derived-stats-table tbody tr:nth-child(odd) td,
+.race-sheet-root .resistances-table tbody tr:nth-child(odd) td {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.rmf-sheet .stats-table tbody tr:nth-child(even) td,
+.rmf-sheet .derived-stats-table tbody tr:nth-child(even) td,
+.rmf-sheet .resistances-table tbody tr:nth-child(even) td,
+.rmf-item-sheet .stats-table tbody tr:nth-child(even) td,
+.rmf-item-sheet .derived-stats-table tbody tr:nth-child(even) td,
+.rmf-item-sheet .resistances-table tbody tr:nth-child(even) td,
+.rmf-item-sheet-root .stats-table tbody tr:nth-child(even) td,
+.rmf-item-sheet-root .derived-stats-table tbody tr:nth-child(even) td,
+.rmf-item-sheet-root .resistances-table tbody tr:nth-child(even) td,
+.race-sheet-root .stats-table tbody tr:nth-child(even) td,
+.race-sheet-root .derived-stats-table tbody tr:nth-child(even) td,
+.race-sheet-root .resistances-table tbody tr:nth-child(even) td {
+  background: rgba(238, 226, 202, 0.55);
+}
+
+.rmf-sheet .stats-table input[type="number"],
+.rmf-sheet .derived-stats-table input[type="number"],
+.rmf-sheet .resistances-table input[type="number"],
+.rmf-item-sheet .stats-table input[type="number"],
+.rmf-item-sheet .derived-stats-table input[type="number"],
+.rmf-item-sheet .resistances-table input[type="number"],
+.rmf-item-sheet-root .stats-table input[type="number"],
+.rmf-item-sheet-root .derived-stats-table input[type="number"],
+.rmf-item-sheet-root .resistances-table input[type="number"],
+.race-sheet-root .stats-table input[type="number"],
+.race-sheet-root .derived-stats-table input[type="number"],
+.race-sheet-root .resistances-table input[type="number"] {
+  background: #fffdfa;
+  border-color: #bfa47a;
+  color: #1f170e;
+  font-weight: 600;
+}
+
+.rmf-sheet .stats-table input[readonly],
+.rmf-sheet .derived-stats-table input[readonly],
+.rmf-sheet .resistances-table input[readonly],
+.rmf-item-sheet .stats-table input[readonly],
+.rmf-item-sheet .derived-stats-table input[readonly],
+.rmf-item-sheet .resistances-table input[readonly],
+.rmf-item-sheet-root .stats-table input[readonly],
+.rmf-item-sheet-root .derived-stats-table input[readonly],
+.rmf-item-sheet-root .resistances-table input[readonly],
+.race-sheet-root .stats-table input[readonly],
+.race-sheet-root .derived-stats-table input[readonly],
+.race-sheet-root .resistances-table input[readonly] {
+  background: #ecdfc8;
+  border-color: #b79b6d;
+  color: #3f2e18;
+}
+
+.rmf-sheet .stats-table .stat-name,
+.rmf-sheet .resistances-table .rollable,
+.rmf-sheet .derived-stats-table .rollable {
+  color: #4a3518;
+  font-weight: 600;
+}
+
+.rmf-sheet .stats-table .stat-name:hover,
+.rmf-sheet .resistances-table .rollable:hover,
+.rmf-sheet .derived-stats-table .rollable:hover {
+  color: #7a591f;
+  text-decoration: none;
+}
+
+/* -------------------------------------------------
+   Responsive tweaks
+   ------------------------------------------------- */
+@media (max-width: 768px) {
+  :root { --rmf-font-size: 11px; }
+  .items-list .item { grid-template-columns: 24px 1fr auto auto; }
+}
+
+/* -------------------------------------------------
+   Chat cards (scoped)
+   ------------------------------------------------- */
+.rmf-chat-card.stat-roll {
+  border: 1px solid #9f7b45;
+  border-radius: 10px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 88% 8%, rgba(212, 175, 55, 0.18), transparent 40%),
+    linear-gradient(180deg, #f8f1e1 0%, #efe3c8 100%);
+  color: #2f2113;
+  box-shadow: 0 4px 12px rgba(40, 24, 8, 0.2);
+}
+
+.rmf-chat-card.stat-roll .card-content {
+  padding: 10px;
+  display: grid;
+  gap: 8px;
+}
+
+.rmf-chat-card.stat-roll .roll-overview {
+  display: grid;
+  gap: 4px;
+}
+
+.rmf-chat-card.stat-roll .overview-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  padding: 4px 6px;
+  border-radius: 6px;
+  background: rgba(255, 247, 231, 0.75);
+  border: 1px solid rgba(166, 130, 74, 0.35);
+}
+
+.rmf-chat-card.stat-roll .overview-row .label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #6e542f;
+}
+
+.rmf-chat-card.stat-roll .overview-row .value {
+  font-weight: 600;
+  color: #2f2113;
+}
+
+.rmf-chat-card.stat-roll .breakdown-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 8px;
+  padding: 0;
+}
+
+.rmf-chat-card.stat-roll .breakdown-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #6e542f;
+}
+
+.rmf-chat-card.stat-roll .breakdown-value {
+  color: #2f2113;
+}
+
+.rmf-chat-card.stat-roll .monospace {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 12px;
+}
+
+.rmf-chat-card.stat-roll .roll-result {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 8px;
+  border: 1px solid #8e6832;
+  border-radius: 7px;
+  background: linear-gradient(180deg, #d2af74 0%, #c79f61 100%);
+  color: #25170a;
+  list-style: none;
+  cursor: pointer;
+}
+
+.rmf-chat-card.stat-roll .roll-result strong {
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.rmf-chat-card.stat-roll .total-value {
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.rmf-chat-card.stat-roll .total-breakdown-up {
+  display: flex;
+  flex-direction: column-reverse; /* keeps summary at bottom and panel above */
+  gap: 8px;
+}
+
+.rmf-chat-card.stat-roll .total-breakdown-up > summary::-webkit-details-marker {
+  display: none;
+}
+
+.rmf-chat-card.stat-roll .up-panel {
+  display: none;
+  padding: 8px;
+  border: 1px solid rgba(131, 97, 52, 0.6);
+  border-radius: 7px;
+  background: rgba(245, 235, 212, 0.98);
+  box-shadow: 0 8px 18px rgba(36, 21, 6, 0.2);
+}
+
+.rmf-chat-card.stat-roll .total-breakdown-up[open] .up-panel {
+  display: block;
+}
+
+/* Native chat header styling for roll flavor text */
+.chat-message .message-header .message-flavor,
+.chat-message .message-header .flavor-text {
+  font-size: 1.18em;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+/* -------------------------------------------------
+   Actor stats responsive layout (flex-wrap)
+   - Large: left (stats) and right (derived+resist stacked)
+   - Small: stats on top, derived then resist below
+   ------------------------------------------------- */
+.rmf-sheet .stats-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--rmf-space-3);
+  align-items: flex-start;
+  container-type: inline-size; /* enable container queries based on sheet width */
+}
+.rmf-sheet .stats-left {
+  flex: 0 0 auto;        /* do not grow; size to content */
+  width: max-content;    /* match inner table width */
+  max-width: 100%;       /* never exceed container */
+  min-width: 0;          /* allow to shrink when wrapping */
+}
+.rmf-sheet .stats-right {
+  /* Default: sidebar to the right, size to content and stack vertically */
+  flex: 0 0 auto;
+  width: max-content;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap; /* wrap derived/resist between themselves */
+  align-items: flex-start;
+  gap: var(--rmf-space-3);
+}
+.rmf-sheet .stats-left .stats-table-container {
+  display: inline-block;     /* shrink to fit the table */
+  width: max-content;        /* match table intrinsic width */
+  max-width: 100%;           /* never exceed the column width */
+  overflow-x: auto;          /* scroll if the table is wider than column */
+}
+.rmf-sheet .stats-right .derived-stats-container,
+.rmf-sheet .stats-right .resistances-container {
+  /* Width equals their inner table; never larger */
+  flex: 0 0 auto;
+  display: inline-block;
+  width: max-content;
+  max-width: 100%;
+}
+
+/* When the whole stats section is narrow (so right pane wraps below),
+   place right-pane children side-by-side without forcing full width */
+@container (max-width: 500px) {
+  .rmf-sheet .stats-right {
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+}
+
+/* -------------------------------------------------
+   Skills Tab - Categories List
+   ------------------------------------------------- */
+.skills-section {
+  padding: var(--rmf-space-4);
+}
+
+.skills-section .section-title {
+  font-size: var(--rmf-font-size-xl);
+  font-weight: 600;
+  color: var(--rmf-color-text);
+  margin: 0 0 var(--rmf-space-4) 0;
+  padding-bottom: var(--rmf-space-3);
+  border-bottom: 2px solid var(--rmf-color-border);
+}
+
+.categories-container {
+  margin-bottom: var(--rmf-space-6);
+}
+
+.categories-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rmf-space-2);
+}
+
+.category-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--rmf-space-3) var(--rmf-space-4);
+  background: var(--rmf-color-bg);
+  border: 1px solid var(--rmf-color-border);
+  border-radius: var(--rmf-radius-sm);
+  transition: all var(--rmf-transition-fast);
+}
+
+.category-item:hover {
+  background: var(--rmf-color-bg-hover);
+  border-color: var(--rmf-color-border-dark);
+}
+
+.category-name {
+  flex: 1;
+  font-size: var(--rmf-font-size-base);
+  font-weight: 500;
+  color: var(--rmf-color-text);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color var(--rmf-transition-fast);
+}
+
+.category-name:hover {
+  color: var(--rmf-color-primary);
+}
+
+.category-total {
+  flex: 0 0 auto;
+  min-width: 40px;
+  text-align: right;
+  font-size: var(--rmf-font-size-base);
+  font-weight: 600;
+  color: var(--rmf-color-text-muted);
+}
+
+.empty-message {
+  text-align: center;
+  padding: var(--rmf-space-8);
+  color: var(--rmf-color-text-muted);
+}
+
+.empty-message p {
+  margin: 0 0 var(--rmf-space-3) 0;
+  font-size: var(--rmf-font-size-base);
+}
+
+.empty-message .hint {
+  font-size: var(--rmf-font-size-sm);
+  font-style: italic;
+  color: var(--rmf-color-text-subtle);
+}

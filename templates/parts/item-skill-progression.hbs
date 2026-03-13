@@ -1,0 +1,41 @@
+{{!-- 
+  RMF Skill Item Sheet Progression Partial
+  DP cost array and rank bonus progression type
+--}}
+
+<div class="tab progression-section" data-tab="progression" style="display: none;">
+  <section class="progression-section">
+
+    <div class="form-group">
+      <label>{{localize "RMF.Skill.RankBonusProgression"}}</label>
+      <select name="system.skillRankBonusProgression">
+        <option value="standard" {{#if (eq system.skillRankBonusProgression 'standard')}}selected{{/if}}>standard</option>
+        <option value="slow" {{#if (eq system.skillRankBonusProgression 'slow')}}selected{{/if}}>slow</option>
+        <option value="fast" {{#if (eq system.skillRankBonusProgression 'fast')}}selected{{/if}}>fast</option>
+      </select>
+    </div>
+
+    <div class="dp-cost-table-container">
+      <table class="dp-cost-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>DP</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each dpCostFixed as |cost idx|}}
+          <tr>
+            <td>{{add idx 1}}</td>
+            <td>
+              <input type="number" name="system.dpCost.{{idx}}" value="{{cost}}" min="0" step="1" inputmode="numeric" data-dtype="Number"/>
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+
+  </section>
+</div>
+

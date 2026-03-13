@@ -1,0 +1,38 @@
+{{!-- 
+  RMF Race Item Sheet Header Partial
+  Race name, image and basic details
+--}}
+
+<header class="sheet-header">
+  <div class="header-row">
+    <img class="profile-img" 
+         src="{{item.img}}" 
+         alt="{{item.name}}" 
+         data-edit="img"
+         data-action="pickImage"
+         title="{{item.name}}" 
+         height="64" 
+         width="64"/>
+    
+    <div class="header-fields">
+      <h1 class="item-name">
+        <label class="sr-only" for="race_name">{{localize "RMF.RaceName"}}:</label>
+        <input id="race_name" 
+               name="name" 
+               type="text" 
+               value="{{item.name}}" 
+               placeholder="{{localize 'RMF.RaceName'}}" 
+               autocomplete="off"/>
+      </h1>
+<!--
+      <div class="image-controls" style="margin-top: 0.25rem;">
+        <label class="sr-only" for="race_img">Image</label>
+        <input id="race_img" class="image-path" type="text" name="img" value="{{item.img}}" placeholder="Image path" autocomplete="off"/>
+        <button type="button" class="file-picker" data-action="pickImage" title="Pick Image">
+          <i class="fas fa-file-image"></i>
+        </button>
+      </div>
+\\-->
+    </div>
+  </div>
+</header>

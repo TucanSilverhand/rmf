@@ -1,0 +1,48 @@
+{{!-- RMF Item Sheet Template for FoundryVTT v13.341 --}}
+{{!-- NOTE: Do NOT wrap with <form>; ApplicationV2 provides the root form. The part must return a single root element. --}}
+<div class="{{cssClass}} rmf-item-sheet-root">
+    <header class="sheet-header">
+        <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}" width="64" height="64"/>
+        <div class="header-fields">
+            <h1 class="item-name">
+                <input name="name" type="text" value="{{item.name}}" placeholder="Nombre del Objeto"/>
+            </h1>
+            <div class="item-type">
+                <label>Tipo:</label>
+                <select name="type" disabled>
+                    <option value="equipment" {{#eq item.type "equipment"}}selected{{/eq}}>Equipamiento</option>
+                    <option value="race" {{#eq item.type "race"}}selected{{/eq}}>Raza</option>
+                </select>
+            </div>
+            <div class="basic-props">
+                <div class="resource">
+                    <label>Cantidad:</label>
+                    <input type="number" name="system.quantity" value="{{system.quantity}}" min="0"/>
+                </div>
+                <div class="resource">
+                    <label>Peso:</label>
+                    <input type="number" name="system.weight" value="{{system.weight}}" step="0.1" min="0"/>
+                </div>
+                <div class="resource">
+                    <label>Precio:</label>
+                    <input type="number" name="system.cost" value="{{system.cost}}" step="0.01" min="0"/>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    {{!-- Sheet Tab Navigation --}}
+    <nav class="sheet-tabs tabs" data-group="primary">
+        <a class="item" data-tab="description">Descripción</a>
+    </nav>
+
+    <section class="sheet-body">
+        {{!-- Description Tab --}}
+        <div class="tab description" data-group="primary" data-tab="description">
+            <div class="form-group">
+                <label>Descripción</label>
+                {{editor system.description target="system.description" button=true owner=owner editable=editable}}
+            </div>
+        </div>
+    </section>
+</div>

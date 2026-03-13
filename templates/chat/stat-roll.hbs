@@ -1,0 +1,32 @@
+{{!-- Chat template for stat rolls --}}
+<div class="rmf-chat-card stat-roll">
+  <div class="card-content">
+    <div class="roll-overview">
+      <div class="overview-row">
+        <span class="label">Dice</span>
+        <span class="value">{{baseRoll}}</span>
+      </div>
+    </div>
+
+    <details class="total-breakdown-up">
+      <summary class="roll-result">
+        <strong>Total Result</strong>
+        <span class="total-value">{{roll.total}}</span>
+      </summary>
+      <div class="up-panel">
+        <div class="breakdown-grid">
+          <span class="breakdown-label">Formula</span>
+          <span class="breakdown-value monospace">{{formula}}</span>
+          <span class="breakdown-label">Applied</span>
+          <span class="breakdown-value monospace">
+            {{#if hasBonus}}
+              {{baseRoll}} {{bonusOperator}} {{bonusAbs}}
+            {{else}}
+              {{baseRoll}}
+            {{/if}}
+          </span>
+        </div>
+      </div>
+    </details>
+  </div>
+</div>

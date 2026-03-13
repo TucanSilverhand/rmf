@@ -1,0 +1,39 @@
+{{!-- 
+  RMF Race Item Sheet Resistances Partial
+  Race resistance bonuses table
+--}}
+
+<div class="tab resistances-section" data-tab="resistances">
+  <section class="resistances-section">
+
+    <div class="resistances-table-container">
+      <table class="resistances-table">
+        <thead>
+          <tr>
+            <th>{{localize "RMF.ResistanceType"}}</th>
+            <th>{{localize "RMF.StatLabels.Bonus"}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each resistanceBonuses as |resistance key|}}
+          <tr>
+            <td class="resistance-label">{{resistance.label}}</td>
+            <td class="resistance-input">
+              <input type="number" 
+                     name="system.resistances.{{key}}" 
+                     value="{{resistance.value}}" 
+                     min="-99"
+                     max="99"
+                     step="1"
+                     inputmode="numeric"
+                     placeholder="0"
+                     data-dtype="Number"/>
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    
+  </section>
+</div>

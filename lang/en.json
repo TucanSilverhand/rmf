@@ -1,0 +1,310 @@
+{
+  "RMF": {
+    "SystemTitle": "RoleMaster Fantasy",
+    "SystemReady": "RMF System loaded successfully",
+    "Description": "Description",
+    "DescriptionPlaceholder": "Enter race description and lore...",
+    "RacialAbilitiesPlaceholder": "Enter racial abilities and special traits...",
+    "CharacterSheet": "RMF Character Sheet",
+    "ItemSheet": "RMF Item Sheet",
+    "RaceSheet": "RMF Race Sheet",
+    "SkillSheet": "RMF Skill Sheet",
+    "CategorySheet": "RMF Category Sheet",
+    "CharacterName": "Character Name",
+    "Level": "Level",
+    "Profession": "Profession",
+    "Race": "Race",
+    "Realm": "Realm",
+    "Experience": "Experience",
+    "Temp": "Temp",
+    "Potential": "Potential",
+    "Basic": "Basic",
+    "Special": "Special",
+    "Total": "Total",
+    "Stat": "Stat",
+    "Bonus": "Bonus",
+    "HitPoints": "Hit Points",
+    "PowerPoints": "Power Points",
+    "Resistance": "Resistance",
+    "Value": "Value",
+    "ClickToRoll": "Click to roll",
+    "ProfessionPlaceholder": "Without profession",
+    "RacePlaceholder": "Without race",
+    "RealmPlaceholder": "Without realm",
+    "RaceName": "Race Name",
+    "RacialAbilities": "Racial Abilities",
+    "BackgroundOptions": "Background Options",
+    "ResistanceType": "Resistance Type",
+    "NewItem": {
+      "equipment": "New Equipment",
+      "race": "New Race",
+      "skill": "New Skill"
+    },
+    "Tabs": {
+      "Basic": "Basic",
+      "Advanced": "Advanced",
+      "Background": "Background",
+      "Stats": "Statistics",
+      "Skills": "Skills",
+      "Equipment": "Equipment",
+      "ManagePlayer": "Manage Player",
+      "Details": "Details",
+      "Progression": "Progression",
+      "Purchases": "Purchases",
+      "Effects": "Effects",
+      "Resistances": "Resistances"
+    },
+    "Skill": {
+      "Group": "Group",
+      "Classification": "Classification",
+      "CommonlyUsed": "Commonly Used",
+      "RankBonusProgression": "Rank Bonus Progression",
+      "Level": "Level",
+      "Amount": "Amount",
+      "MaxRanksPerLevel": "Maximum ranks per level reached"
+    },
+    "Sections": {
+      "Background": "Character Background",
+      "BackgroundInfo": "Background Information",
+      "Stats": "Character Statistics",
+      "MainStats": "Main Attributes",
+      "DerivedStats": "Derived Attributes",
+      "Skills": "Skills & Abilities",
+      "Equipment": "Equipment & Inventory",
+      "Resistances": "Resistances"
+    },
+    "Stats": {
+      "chAgility": "Agility",
+      "chConstitution": "Constitution",
+      "chMemory": "Memory",
+      "chReasoning": "Reasoning",
+      "chSelfDiscipline": "Self Discipline",
+      "chEmpathy": "Empathy",
+      "chIntuition": "Intuition",
+      "chPresence": "Presence",
+      "chQuickness": "Quickness",
+      "chStrength": "Strength"
+    },
+    "StatLabels": {
+      "Attribute": "Attribute",
+      "Temp": "Temp",
+      "Pot": "Pot",
+      "Basic": "Basic",
+      "Race": "Race",
+      "Spec": "Spec",
+      "Total": "Total",
+      "Bonus": "Bonus",
+      "Action": "Action"
+    },
+    "Resistances": {
+      "essence": "Essence",
+      "channeling": "Channeling",
+      "mentalism": "Mentalism",
+      "poison": "Poison",
+      "disease": "Disease"
+    },
+    "Background": {
+      "Nationality": "Nationality",
+      "Home": "Home",
+      "Deity": "Deity",
+      "Patron": "Patron",
+      "Parents": "Parents",
+      "Spouse": "Spouse",
+      "Children": "Children",
+      "Other": "Other",
+      "Description": "Description",
+      "NationalityPlaceholder": "Enter nationality",
+      "HomePlaceholder": "Enter home location",
+      "DeityPlaceholder": "Enter deity or faith",
+      "PatronPlaceholder": "Enter patron or mentor",
+      "ParentsPlaceholder": "Enter parents information",
+      "SpousePlaceholder": "Enter spouse information",
+      "ChildrenPlaceholder": "Enter children information",
+      "OtherPlaceholder": "Enter other background information",
+      "DescriptionPlaceholder": "Character description"
+    },
+    "Skills": {
+      "Title": "Skills",
+      "CreateSkill": "Create Skill",
+      "Skill": "Skill",
+      "Category": "Category",
+      "Categories": "Categories",
+      "Attribute": "Attribute",
+      "Ranks": "Ranks",
+      "Bonus": "Bonus",
+      "Actions": "Actions",
+      "NoSkills": "No skills defined. Use the 'Create Skill' button to add skills.",
+      "NoCategories": "No skill categories assigned to this character.",
+      "NoCategoriesHint": "Drag & drop categories from the Items sidebar to assign them to this character.",
+      "RollSkill": "Roll {skill}",
+      "DeleteSkill": "Delete {skill}"
+    },
+    "Equipment": {
+      "General": "General Equipment",
+      "Equipment": "Equipment",
+      "NoEquipment": "No equipment. Use the + button to create objects.",
+      "CreateEquipment": "Create Equipment",
+      "Quantity": "Qty",
+      "Weight": "Weight"
+    },
+    "DerivedStats": {
+      "HitPoints": "Hit Points",
+      "PowerPoints": "Power Points",
+      "DefensiveBonus": "Defensive Bonus",
+      "ArmorPenalty": "Armor Penalty"
+    },
+    "Items": {
+      "Equipment": "Equipment",
+      "Races": "Races",
+      "Quantity": "Qty",
+      "Weight": "Weight",
+      "Cost": "Cost"
+    },
+    "Actions": {
+      "Roll": "Roll",
+      "Edit": "Edit",
+      "Delete": "Delete",
+      "Create": "Create",
+      "Apply": "Apply",
+      "Cast": "Cast",
+      "Attack": "Attack",
+      "with": "with",
+      "RollInitiative": "Roll Initiative",
+      "RollStat": "Roll Stat",
+      "RollDamage": "Roll Damage"
+    },
+    "Chat": {
+      "StatRoll": "Stat Roll",
+      "RaceApplied": "Race Applied",
+      "StatBonuses": "Stat Bonuses",
+      "Character": "Character",
+      "Effect": "Effect",
+      "Formula": "Formula",
+      "Result": "Result"
+    },
+    "CreateEquipment": "Create New Equipment",
+    "EditItem": "Edit Item",
+    "DeleteItem": "Delete Item",
+    "Messages": {
+      "DamageApplied": "{name} takes {damage} damage ({remaining} HP remaining)",
+      "NoActorSelected": "No actor selected",
+      "StatNotFound": "Stat {stat} not found",
+      "AlreadyHasRace": "You already have a race assigned",
+      "AlreadyHasCategory": "This category is already assigned"
+    },
+    "Dialogs": {
+      "DeleteItem": "Delete Item",
+      "DeleteItemConfirmShort": "Delete?",
+      "DeleteItemConfirm": "Are you sure you want to delete {name}?",
+      "EditDescription": "Edit Description: {name}"
+    },
+    "Settings": {
+      "DebugMode": {
+        "Name": "Debug Mode",
+        "Hint": "Enable debug logging for the RMF system"
+      },
+      "InitiativeFormula": {
+        "Name": "Initiative Formula",
+        "Hint": "Formula used for initiative rolls"
+      },
+      "AutoCalculateStats": {
+        "Name": "Auto-Calculate Derived Stats",
+        "Hint": "Automatically calculate derived statistics like HP and PP"
+      },
+      "DefaultRollMode": {
+        "Name": "Default Roll Mode",
+        "Hint": "Default visibility for dice rolls"
+      },
+      "RuleBooks": {
+        "Name": "Rule Books",
+        "Hint": "Books buyed and used here",
+        "Options": {
+          "None": "None",
+          "Basic": "Basic"
+        }
+      }
+    },
+    "RollMode": {
+      "Public": "Public Roll",
+      "GM": "Private GM Roll",
+      "Blind": "Blind Roll",
+      "Self": "Self Roll"
+    },
+    "Common": {
+      "Type": "Type",
+      "Empty": "—"
+    },
+    "Errors": {
+      "ImagePickerFailed": "Image picker failed"
+    },
+    "Notifications": {
+      "InsufficientPermissions": "You do not have permission to perform this action.",
+      "ActionFailed": "The action failed. Check the console for details."
+    },
+    "Category": {
+      "NamePlaceholder": "Category Name",
+      "DPCost": "DP Cost",
+      "DPCostSummary": "DP Cost (1/2/3)",
+      "BoughtByLevel": "Bought by Level",
+      "RankBonusProgression": "Rank Progression",
+      "Ranks": "Ranks",
+      "FreeRanks": "Free Ranks",
+      "TotalRankBonus": "Total Rank",
+      "TotalStatsBonus": "Total Stats",
+      "TotalBonus": "Total",
+      "Stat1": "Stat 1",
+      "Stat2": "Stat 2",
+      "Stat3": "Stat 3",
+      "StatBonus": "Stat",
+      "ProfessionBonus": "Profession",
+      "Spec1": "Spec 1",
+      "Spec2": "Spec 2",
+      "Spec1Bonus": "Spec 1",
+      "Spec2Bonus": "Spec 2",
+      "Source": "Source",
+      "Description": "Description",
+      "Group": "Group",
+      "NoActorAssigned": "Assign this category to an actor to edit purchases",
+      "Progressions": {
+        "Standard": "Standard",
+        "NotApplicable": "Not Applicable",
+        "Other": "Other"
+      },
+      "Groups": {
+        "None": "None",
+        "Armor": "Armor",
+        "Artistic": "Artistic",
+        "Athletic": "Athletic",
+        "Awareness": "Awareness",
+        "BodyDevelopment": "Body Development",
+        "CombatManeuvers": "Combat Maneuvers",
+        "Communications": "Communications",
+        "Craft": "Craft",
+        "DirectedSpells": "Directed Spells",
+        "Influence": "Influence",
+        "Lore": "Lore",
+        "MartialArts": "Martial Arts",
+        "Outdoor": "Outdoor",
+        "PowerAwareness": "Power Awareness",
+        "PowerPointDevelopment": "Power Point Development",
+        "Science": "Science",
+        "SelfControl": "Self Control",
+        "Subterfuge": "Subterfuge",
+        "Technical": "Technical",
+        "Urban": "Urban",
+        "Weapon": "Weapon"
+      }
+    }
+  },
+  "TYPES": {
+    "Actor": {
+      "character": "Character"
+    },
+    "Item": {
+      "equipment": "Equipment",
+      "race": "Race",
+      "skill": "Skill",
+      "category": "Category"
+    }
+  }
+}

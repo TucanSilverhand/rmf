@@ -1,0 +1,174 @@
+<div class="tab" data-group="primary-tabs" data-tab="basic" style="display:block;">
+  <div class="description-preview ProseMirror">
+    {{{enrichedDescription}}}
+  </div>
+
+  <div class="summary-wrapper">
+    <table class="summary-table basic-info-table">
+      <thead>
+        <tr>
+          <th scope="col">{{localize "RMF.Category.RankBonusProgression"}}</th>
+          <th scope="col">{{localize "RMF.Category.DPCostSummary"}}</th>
+          <th scope="col">{{localize "RMF.Category.StatBonus"}}</th>
+          <th scope="col">{{localize "RMF.Category.Ranks"}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <input type="text"
+              value="{{#if rankBonusProgressionLabel}}{{rankBonusProgressionLabel}}{{else}}{{system.categoryRankBonusProgression}}{{/if}}"
+              readonly />
+          </td>
+          <td>
+            <input type="text" value="{{dpCostSummary}}" readonly />
+          </td>
+          <td>
+            <input type="text" value="{{statShortSummary}}" readonly />
+          </td>
+          <td>
+            <input type="number" value="{{totalRanks}}" readonly data-dtype="Number" inputmode="numeric" />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="summary-wrapper">
+    <table class="summary-table basic-totals-table">
+      <thead>
+        <tr>
+          <th scope="col">{{localize "RMF.Category.TotalRankBonus"}}</th>
+          <th class="operator-column" aria-hidden="true"></th>
+          <th scope="col">{{localize "RMF.Category.TotalStatsBonus"}}</th>
+          <th class="operator-column" aria-hidden="true"></th>
+          <th scope="col">{{localize "RMF.Category.ProfessionBonus"}}</th>
+          <th class="operator-column" aria-hidden="true"></th>
+          <th scope="col">{{localize "RMF.Category.Spec1Bonus"}}</th>
+          <th class="operator-column" aria-hidden="true"></th>
+          <th scope="col">{{localize "RMF.Category.Spec2Bonus"}}</th>
+          <th class="operator-column equals-column" aria-hidden="true"></th>
+          <th scope="col">&nbsp;&nbsp;{{localize "RMF.Category.TotalBonus"}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td title="{{rankBonusSummary}}">
+            <input type="number" value="{{totalRankBonus}}" step="0.5" readonly data-dtype="Number"
+              inputmode="numeric" />
+          </td>
+          <td class="operator-column" aria-hidden="true">+</td>
+          <td title="{{statLabelSummary}}">
+            <input type="number" value="{{totalStatsBonus}}" step="0.5" readonly data-dtype="Number"
+              inputmode="numeric" />
+          </td>
+          <td class="operator-column" aria-hidden="true">+</td>
+          <td>
+            <input type="number" value="{{professionBonus}}" step="0.5" readonly data-dtype="Number"
+              inputmode="numeric" />
+          </td>
+          <td class="operator-column" aria-hidden="true">+</td>
+          <td>
+            <input type="number" value="{{spec1Bonus}}" step="0.5" readonly data-dtype="Number" inputmode="numeric" />
+          </td>
+          <td class="operator-column" aria-hidden="true">+</td>
+          <td>
+            <input type="number" value="{{spec2Bonus}}" step="0.5" readonly data-dtype="Number" inputmode="numeric" />
+          </td>
+          <td class="operator-column equals-column" aria-hidden="true">=</td>
+          <td title="{{totalRankBonus}} + {{totalStatsBonus}} + {{professionBonus}} + {{spec1Bonus}} + {{spec2Bonus}}">
+            &nbsp;&nbsp;<input type="number" value="{{totalBonus}}" step="0.5" readonly data-dtype="Number" inputmode="numeric" />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<div class="tab" data-group="primary-tabs" data-tab="advanced">
+
+  <fieldset class="form-group">
+    <legend>Details</legend>
+    <div class="flexrow">
+      <div class="resource">
+        <label>{{localize "RMF.Category.Group"}}</label>
+        <select name="system.group">
+          {{#each groupOptions}}
+          <option value="{{this.value}}" {{#if (eq ../system.group this.value)}}selected{{/if}}>{{this.label}}</option>
+          {{/each}}
+        </select>
+      </div>
+
+      <div class="resource">
+        <label>{{localize "RMF.Category.RankBonusProgression"}}</label>
+        <select name="system.categoryRankBonusProgression">
+          <option value="standard" {{#if (eq system.categoryRankBonusProgression "standard" )}}selected{{/if}}>
+            {{localize "RMF.Category.Progressions.Standard"}}</option>
+          <option value="notApplicable" {{#if (eq system.categoryRankBonusProgression "notApplicable"
+            )}}selected{{/if}}>{{localize "RMF.Category.Progressions.NotApplicable"}}</option>
+        </select>
+      </div>
+
+      <div class="resource">
+        <label>{{localize "RMF.Category.Source"}}</label>
+        <input type="text" name="system.fromBook" value="{{system.fromBook}}" />
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class="form-group">
+    <legend>{{localize "RMF.Category.StatBonus"}}</legend>
+    <div class="flexrow">
+      <div class="resource">
+        <label>{{localize "RMF.Category.Stat1"}}</label>
+        <select name="system.statBonus.stat1">
+          {{#each statOptions}}
+          <option value="{{this.value}}" {{#if (eq ../selectedStat1 this.value)}}selected{{/if}}>{{this.label}}</option>
+          {{/each}}
+        </select>
+      </div>
+      <div class="resource">
+        <label>{{localize "RMF.Category.Stat2"}}</label>
+        <select name="system.statBonus.stat2">
+          {{#each statOptions}}
+          <option value="{{this.value}}" {{#if (eq ../selectedStat2 this.value)}}selected{{/if}}>{{this.label}}</option>
+          {{/each}}
+        </select>
+      </div>
+      <div class="resource">
+        <label>{{localize "RMF.Category.Stat3"}}</label>
+        <select name="system.statBonus.stat3">
+          {{#each statOptions}}
+          <option value="{{this.value}}" {{#if (eq ../selectedStat3 this.value)}}selected{{/if}}>{{this.label}}</option>
+          {{/each}}
+        </select>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class="form-group">
+    <legend>{{localize "RMF.Category.BoughtByLevel"}}</legend>
+    {{#if parentLevel}}
+    <div class="bought-levels">
+      <div class="flexrow header">
+        <label>{{localize "RMF.Skill.Level"}}</label>
+        <label>{{localize "RMF.Skill.Amount"}}</label>
+      </div>
+      {{#each levelEntries}}
+      <div class="flexrow">
+        <input type="number" value="{{this.level}}" readonly />
+        <input type="number" name="system.boughtByLevel.{{this.level}}" value="{{this.amount}}" min="0" step="1" />
+      </div>
+      {{/each}}
+    </div>
+    {{else}}
+    <em>{{localize "RMF.Category.NoActorAssigned"}}</em>
+    {{/if}}
+  </fieldset>
+
+  <div class="form-group ProseMirror">
+    <label>{{localize "RMF.Category.Description"}}</label>
+    {{formInput @root.descriptionField enriched=enrichedDescription value=system.description name="system.description" toggled=true disabled=(not @root.editable)}}
+  </div>
+</div>

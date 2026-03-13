@@ -1,0 +1,99 @@
+{{!-- 
+  RMF Actor Sheet Background Tab 
+  Character background information
+--}}
+
+<div class="tab background-section" data-tab="background" style="display: none;">
+  <section class="background-section">        
+    <div class="form-group full-width">
+      <label for="bg_description">{{localize "RMF.Background.Description"}}</label>
+      <textarea id="bg_description" 
+                name="system.chBackground.chDescription" 
+                rows="4" 
+                placeholder="{{localize 'RMF.Background.DescriptionPlaceholder'}}" 
+                autocomplete="off">{{system.chBackground.chDescription}}</textarea>
+    </div>
+    
+    <div class="form-row">
+      <div class="form-group">
+        <label for="bg_nationality">{{localize "RMF.Background.Nationality"}}</label>
+        <input id="bg_nationality" 
+               type="text" 
+               name="system.chBackground.chNacionality" 
+               value="{{system.chBackground.chNacionality}}" 
+               placeholder="{{localize 'RMF.Background.NationalityPlaceholder'}}" 
+               autocomplete="off"/>
+      </div>
+      <div class="form-group">
+        <label for="bg_home">{{localize "RMF.Background.Home"}}</label>
+        <input id="bg_home" 
+               type="text" 
+               name="system.chBackground.chHome" 
+               value="{{system.chBackground.chHome}}" 
+               placeholder="{{localize 'RMF.Background.HomePlaceholder'}}" 
+               autocomplete="off"/>
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <div class="form-group">
+        <label for="bg_deity">{{localize "RMF.Background.Deity"}}</label>
+        <input id="bg_deity" 
+               type="text" 
+               name="system.chBackground.chDeity" 
+               value="{{system.chBackground.chDeity}}" 
+               placeholder="{{localize 'RMF.Background.DeityPlaceholder'}}" 
+               autocomplete="off"/>
+      </div>
+      <div class="form-group">
+        <label for="bg_patron">{{localize "RMF.Background.Patron"}}</label>
+        <input id="bg_patron" 
+               type="text" 
+               name="system.chBackground.chPatron" 
+               value="{{system.chBackground.chPatron}}" 
+               placeholder="{{localize 'RMF.Background.PatronPlaceholder'}}" 
+               autocomplete="off"/>
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <div class="form-group">
+        <label for="bg_parents">{{localize "RMF.Background.Parents"}}</label>
+        <input id="bg_parents" 
+               type="text" 
+               name="system.chBackground.chParents" 
+               value="{{system.chBackground.chParents}}" 
+               placeholder="{{localize 'RMF.Background.ParentsPlaceholder'}}" 
+               autocomplete="off"/>
+      </div>
+      <div class="form-group">
+        <label for="bg_spouse">{{localize "RMF.Background.Spouse"}}</label>
+        <input id="bg_spouse" 
+               type="text" 
+               name="system.chBackground.chSpouse" 
+               value="{{system.chBackground.chSpouse}}" 
+               placeholder="{{localize 'RMF.Background.SpousePlaceholder'}}" 
+               autocomplete="off"/>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="bg_children">{{localize "RMF.Background.Children"}}</label>
+      <input id="bg_children" 
+             type="text" 
+             name="system.chBackground.chChildren" 
+             value="{{system.chBackground.chChildren}}" 
+             placeholder="{{localize 'RMF.Background.ChildrenPlaceholder'}}" 
+             autocomplete="off"/>
+    </div>
+    
+    <div class="form-group full-width">
+      <label for="bg_other">{{localize "RMF.Background.Other"}}</label>
+      <textarea id="bg_other" 
+                name="system.chBackground.chOther" 
+                rows="3" 
+                placeholder="{{localize 'RMF.Background.OtherPlaceholder'}}" 
+                autocomplete="off">{{system.chBackground.chOther}}</textarea>
+    </div>
+  </section>
+</div>

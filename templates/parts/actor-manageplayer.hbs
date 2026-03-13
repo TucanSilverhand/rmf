@@ -1,0 +1,44 @@
+{{!-- 
+  RMF Actor Sheet - Manage Player Tab
+  Shows all embedded items on the actor, grouped by type.
+--}}
+
+<div class="tab manageplayer-section" data-tab="manageplayer" style="display: none;">
+  <section class="manageplayer">
+    <header class="section-header">
+      <h2>{{localize 'RMF.Tabs.ManagePlayer'}}</h2>
+    </header>
+
+    {{#if items}}
+      {{#each items}}
+        <div class="items-section">
+          <div class="items-header">
+            <h3>{{@key}}</h3>
+          </div>
+          <ol class="items-list">
+            {{#each this as |item|}}
+              <li class="item" data-item-id="{{item.id}}">
+                <div class="item-image">
+                  <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" alt="{{item.name}}"/>
+                </div>
+                <div class="item-name">
+                  <a class="item-edit" data-action="editItem" data-item-id="{{item.id}}">{{item.name}}</a>
+                  <small class="item-type">({{item.type}})</small>
+                </div>
+                <div class="item-controls">
+                  <a class="item-control item-delete" data-action="deleteItem" data-item-id="{{item.id}}" title="{{localize 'RMF.Actions.Delete'}}">
+                    <i class="fas fa-trash"></i>
+                  </a>
+                </div>
+              </li>
+            {{else}}
+              <li class="no-items"><p>{{localize 'RMF.Equipment.NoEquipment'}}</p></li>
+            {{/each}}
+          </ol>
+        </div>
+      {{/each}}
+    {{else}}
+      <p class="no-items">{{localize 'RMF.Equipment.NoEquipment'}}</p>
+    {{/if}}
+  </section>
+</div>

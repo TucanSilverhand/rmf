@@ -1,0 +1,26 @@
+{{!-- 
+  RMF Race Item Sheet Template - FoundryVTT v13 Compatible
+  ApplicationV2 with HandlebarsApplicationMixin
+  Fully internationalized template - Modular with partials
+  NOTE: Do NOT wrap with <form>; ApplicationV2 provides the root form.
+  The "form" part must render a single root element.
+--}}
+
+<div class="{{cssClass}} rmf-item-sheet race-sheet-root">
+  {{!-- Main Layout: Tabs + Content (Header + Body) --}}
+  <div class="sheet-main-container race-sheet">
+    {{> "parts/item-race-navigation"}}
+    <div class="sheet-content">
+      {{> "parts/item-race-header"}}
+      <section class="sheet-body">
+        <div class="sheet-body-inner">
+          {{> "parts/item-race-background"}}
+          {{> "parts/item-race-stats"}}
+          {{> "parts/item-race-resistances"}}
+        </div>
+      </section>
+    </div>
+  </div>
+
+  
+</div>

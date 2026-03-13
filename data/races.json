@@ -1,0 +1,47 @@
+[
+  {
+    "name": "Common Men",
+    "img": "icons/creatures/eyes/human-single-brown.webp",
+    "description": "Common Men are the standard humans in Rolemaster. Generally, they are more numerous and wide-spread than the other races, and they have a wide variety of cultures and physical types.",
+    "racialAbilities": "",
+    "stats": { "ag": 0, "co": 0, "me": 0, "re": 0, "sd": 2, "em": 0, "in": 0, "pr": 0, "qu": 0, "st": 2 },
+    "resistances": { "ess": 0, "chan": 0, "ment": 0, "pois": 0, "dis": 0 },
+    "backgroundOptions": 6
+  },
+  {
+    "name": "High Men",
+    "img": "icons/creatures/eyes/human-single-brown.webp",
+    "description": "High Men are humans that are larger, stronger, and live longer than Common Men. They are great warriors and builders of empires, for their initiative generally matches their physical stature.",
+    "racialAbilities": "",
+    "stats": { "ag": -2, "co": 4, "me": 0, "re": 0, "sd": 0, "em": 0, "in": 0, "pr": 4, "qu": -2, "st": 4 },
+    "resistances": { "ess": -5, "chan": -5, "ment": -5, "pois": 0, "dis": 0 },
+    "backgroundOptions": 4
+  },
+  {
+    "name": "Wood Elves",
+    "img": "icons/creatures/eyes/human-single-brown.webp",
+    "description": "Wood Elves are similar to humans in most ways. However, they are immortal and they are generally fairer, taller, and more slender than humans. They tend to in- habit the forests and wilds of the world.",
+    "racialAbilities": "",
+    "stats": { "ag": 4, "co": 0, "me": 2, "re": 0, "sd": -5, "em": 2, "in": 0, "pr": 2, "qu": 2, "st": 0 },
+    "resistances": { "ess": -5, "chan": -5, "ment": -5, "pois": 10, "dis": 100 },
+    "backgroundOptions": 4
+  },
+  {
+    "name": "Dwarves",
+    "img": "icons/creatures/eyes/human-single-brown.webp",
+    "description": "Dwarves are a non-human race that favor the highlands and deep caverns of the mountains. They are short and stocky, and they have a reputation for ruggedness, practicality, and unwavering loyalty.",
+    "racialAbilities": "",
+    "stats": { "ag": -2, "co": 6, "me": 0, "re": 0, "sd": 2, "em": -4, "in": 0, "pr": -4, "qu": -2, "st": 2 },
+    "resistances": { "ess": 40, "chan": 0, "ment": 40, "pois": 20, "dis": 15 },
+    "backgroundOptions": 5
+  },
+  {
+    "name": "Halflings",
+    "img": "icons/creatures/eyes/human-single-brown.webp",
+    "description": "Halflings are the smallest of the races, ranging between 2 and 4 feet in height. However, they are very quick and agile. They tend to live in farmlands among the lands of the more numerous humans.",
+    "racialAbilities": "",
+    "stats": { "ag": 6, "co": 6, "me": 0, "re": 0, "sd": -4, "em": -2, "in": 0, "pr": -6, "qu": 4, "st": -8 },
+    "resistances": { "ess": 50, "chan": 0, "ment": 40, "pois": 30, "dis": 15 },
+    "backgroundOptions": 5
+  }
+]

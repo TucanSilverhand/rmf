@@ -1,0 +1,34 @@
+{{!-- Chat template for race application --}}
+<div class="rmf-chat-card race-applied">
+  <header class="card-header">
+    <img src="{{actor.img}}" alt="{{actor.name}}" width="36" height="36"/>
+    <h3>{{localize "RMF.Chat.RaceApplied"}}</h3>
+  </header>
+  
+  <div class="card-content">
+    <div class="race-info">
+      <strong>{{localize "RMF.Chat.Character"}}:</strong> {{actor.name}}<br>
+      <strong>{{localize "RMF.Race"}}:</strong> {{race.name}}
+    </div>
+    
+    {{#if bonuses}}
+      <div class="stat-bonuses">
+        <h4>{{localize "RMF.Chat.StatBonuses"}}:</h4>
+        <ul>
+          {{#each bonuses as |bonus key|}}
+            {{#if bonus}}
+              <li>{{localize (concat "RMF.Stats." key)}}: {{rmfBonus bonus}}</li>
+            {{/if}}
+          {{/each}}
+        </ul>
+      </div>
+    {{/if}}
+    
+    {{#if race.system.description}}
+      <div class="race-description">
+        <h4>{{localize "RMF.Description"}}:</h4>
+        <p>{{race.system.description}}</p>
+      </div>
+    {{/if}}
+  </div>
+</div>

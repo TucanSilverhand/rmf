@@ -1,0 +1,215 @@
+{{!-- 
+  RMF Actor Sheet Stats Tab
+  Character statistics, derived stats and resistances
+--}}
+
+<div class="tab stats-section" data-tab="stats" style="display: block;">
+  <section class="stats-section">
+    
+    <div class="stats-flex">
+      <div class="stats-left">
+        {{!-- Main Stats Table --}}
+        <div class="stats-table-container">
+          <table class="stats-table">
+          <thead>
+          <tr>
+            <th>{{localize "RMF.StatLabels.Attribute"}}</th>
+            <th>{{localize "RMF.StatLabels.Temp"}}</th>
+            <th>&nbsp;{{localize "RMF.StatLabels.Pot"}}&nbsp;</th>
+            <th>{{localize "RMF.StatLabels.Basic"}}</th>
+            <th>{{localize "RMF.StatLabels.Race"}}</th>
+            <th>{{localize "RMF.StatLabels.Spec"}}</th>
+            <th>{{localize "RMF.StatLabels.Total"}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each system.chStats as |stat key|}}
+          <tr data-stat="{{key}}">
+            <td>
+              <a class="stat-name rollable" 
+                 data-action="rollStat" 
+                 data-stat="{{key}}" 
+                 title="{{localize 'RMF.ClickToRoll'}} {{localize (concat 'RMF.Stats.' key)}}" 
+                 aria-label="{{localize 'RMF.Actions.Roll'}} {{localize (concat 'RMF.Stats.' key)}}">
+                {{localize (concat "RMF.Stats." key)}}
+              </a>
+            </td>
+            <td>
+              <input id="stat_{{key}}_temp" 
+                     type="number" 
+                     name="system.chStats.{{key}}.temp" 
+                     value="{{stat.temp}}" 
+                     min="1" 
+                     max="120" 
+                     autocomplete="off" />
+            </td>
+            <td>
+              <input id="stat_{{key}}_pot" 
+                     type="number" 
+                     name="system.chStats.{{key}}.pot" 
+                     value="{{stat.pot}}" 
+                     min="1" 
+                     max="120" 
+                     autocomplete="off"/>
+            </td>
+            <td>
+              <input id="stat_{{key}}_basic" 
+                     type="number" 
+                     name="system.chStats.{{key}}.basic" 
+                     value="{{stat.basic}}" 
+                     readonly 
+                     autocomplete="off"/>
+            </td>
+            <td>
+              <input id="stat_{{key}}_race" 
+                     type="number" 
+                     name="system.chStats.{{key}}.race" 
+                     value="{{stat.race}}" 
+                     readonly 
+                     autocomplete="off"/>
+            </td>
+            <td>
+              <input id="stat_{{key}}_spec" 
+                     type="number" 
+                     name="system.chStats.{{key}}.spec" 
+                     value="{{stat.spec}}" 
+                     readonly 
+                     autocomplete="off"/>
+            </td>
+            <td>
+              <input id="stat_{{key}}_total" 
+                     type="number" 
+                     name="system.chStats.{{key}}.total" 
+                     value="{{stat.total}}" 
+                     readonly 
+                     autocomplete="off"/>
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="stats-right">
+        {{!-- Derived Stats Section --}}
+        <div class="derived-stats-container">
+          <div class="derived-stats-table-container">
+            <table class="derived-stats-table">
+            <tbody>
+              <tr>
+                <td class="derived-stats-label">{{localize "RMF.DerivedStats.HitPoints"}}</td>
+                <td class="derived-stats-value">
+                  <input id="derived_hitPoints_current"
+                         type="number"
+                         name="system.derivedStats.hitPoints.current"
+                         value="{{system.derivedStats.hitPoints.current}}"
+                         min="0"
+                         autocomplete="off" />
+                </td>
+              </tr>
+              <tr>
+                <td class="derived-stats-label">Total Hits</td>
+                <td class="derived-stats-value">
+                  <input id="derived_hitPoints_total"
+                         type="number"
+                         name="system.derivedStats.hitPoints.total"
+                         value="{{system.derivedStats.hitPoints.total}}"
+                         min="0"
+                         readonly
+                         autocomplete="off" />
+                </td>
+              </tr>
+              <tr>
+                <td class="derived-stats-label">{{localize "RMF.DerivedStats.PowerPoints"}}</td>
+                <td class="derived-stats-value">
+                  <input id="derived_powerPoints_current"
+                         type="number"
+                         name="system.derivedStats.powerPoints.current"
+                         value="{{system.derivedStats.powerPoints.current}}"
+                         min="0"
+                         autocomplete="off" />
+                </td>
+              </tr>
+              <tr>
+                <td class="derived-stats-label">Total Power</td>
+                <td class="derived-stats-value">
+                  <input id="derived_powerPoints_total"
+                         type="number"
+                         name="system.derivedStats.powerPoints.total"
+                         value="{{system.derivedStats.powerPoints.total}}"
+                         min="0"
+                         readonly
+                         autocomplete="off" />
+                </td>
+              </tr>
+              <tr>
+                <td class="derived-stats-label">
+                  <a class="rollable" 
+                     data-action="rollDefensive"
+                     title="{{localize 'RMF.ClickToRoll'}} {{localize 'RMF.DerivedStats.DefensiveBonus'}}"
+                     aria-label="{{localize 'RMF.Actions.Roll'}} {{localize 'RMF.DerivedStats.DefensiveBonus'}}">
+                    {{localize "RMF.DerivedStats.DefensiveBonus"}}
+                  </a>
+                </td>
+                <td class="derived-stats-value">
+                  <input id="derived_defensiveBonus"
+                         type="number"
+                         name="system.derivedStats.defensiveBonus"
+                         value="{{system.derivedStats.defensiveBonus}}"
+                         readonly
+                         autocomplete="off" />
+                </td>
+              </tr>
+              <tr>
+                <td class="derived-stats-label">{{localize "RMF.DerivedStats.ArmorPenalty"}}</td>
+                <td class="derived-stats-value">
+                  <input id="derived_armorPenalty"
+                         type="number"
+                         name="system.derivedStats.armorPenalty"
+                         value="{{system.derivedStats.armorPenalty}}"
+                         readonly
+                         autocomplete="off" />
+                </td>
+              </tr>
+            </tbody>
+            </table>
+          </div>
+        </div>
+
+        {{!-- Resistances Section --}}
+        <div class="resistances-container">
+          <div class="resistances-table-container">
+            <table class="resistances-table">
+            <tbody>
+              {{#each system.derivedStats.resistances as |resistance key|}}
+              <tr>
+                <td class="resistances-label">
+                  <a class="rollable"
+                     data-action="rollResistance"
+                     data-resistance="{{key}}"
+                     title="{{localize 'RMF.ClickToRoll'}} {{localize (concat 'RMF.Resistances.' key)}}"
+                     aria-label="{{localize 'RMF.Actions.Roll'}} {{localize (concat 'RMF.Resistances.' key)}}">
+                    {{localize (concat "RMF.Resistances." key)}}
+                  </a>
+                </td>
+                <td class="resistances-input">
+                  <input id="resistance_{{key}}" 
+                         type="number" 
+                         name="system.derivedStats.resistances.{{key}}" 
+                         value="{{resistance}}" 
+                         min="-50" 
+                         max="50" 
+                         readonly
+                         autocomplete="off" />
+                </td>
+              </tr>
+              {{/each}}
+            </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

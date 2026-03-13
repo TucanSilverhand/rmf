@@ -1,0 +1,25 @@
+{{!-- 
+  RMF Actor Sheet Template - FoundryVTT v13 Compatible
+  ApplicationV2 with HandlebarsApplicationMixin
+  Fully internationalized template - Modular with partials
+--}}
+
+<div class="{{cssClass}} rmf-sheet" data-root>
+  {{!-- Main Layout: Tabs + Content (Header + Body) --}}
+  <div class="sheet-main-container">
+    {{> "parts/actor-navigation"}}
+    <div class="sheet-content">
+      {{> "parts/actor-header"}}
+      <section class="sheet-body">
+        <div class="sheet-body-inner">
+          {{> "parts/actor-background"}}
+          {{> "parts/actor-stats"}}
+          {{> "parts/actor-skills"}}
+          {{> "parts/actor-equipment"}}
+          {{> "parts/actor-manageplayer"}}
+        </div>
+      </section>
+    </div>
+  </div>
+
+</div>

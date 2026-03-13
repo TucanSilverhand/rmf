@@ -1,0 +1,39 @@
+{{!--
+  RMF Actor Sheet Header Partial
+  Character name, image and basic details
+--}}
+<header class="sheet-header">
+  <div class="header-row">
+    <img class="profile-img" src="{{actor.img}}" alt="{{actor.name}}" data-edit="img" data-action="pickImage" title="{{actor.name}}" height="70" width="70"/>
+    <div class="charname">
+      <h1 class="char-name">
+        <label class="sr-only" for="actor_name">{{localize "RMF.CharacterName"}}:</label>
+        <input id="actor_name" name="name" type="text" value="{{actor.name}}" placeholder="{{localize 'RMF.CharacterName'}}" autocomplete="name"/>
+      </h1>
+      <input id="system_profession" type="text" name="system.chProfession" value="{{system.chProfession}}" placeholder="{{localize 'RMF.ProfessionPlaceholder'}}" autocomplete="off"/>
+      <input id="system_realm" type="text" name="system.chRealm" value="{{system.chRealm}}" placeholder="{{localize 'RMF.RealmPlaceholder'}}" autocomplete="off"/>
+      <input id="system_race" type="text" name="system.chRace" value="{{system.chRace}}" placeholder="{{localize 'RMF.RacePlaceholder'}}" autocomplete="off"/>
+    </div>
+    <div class="charlevel">
+      <div class="level-line">
+        <label>Level</label>
+        <input id="system_level"
+               type="number"
+               name="system.chLevel"
+               value="{{system.chLevel}}"
+               min="0"
+               max="99"
+               step="1"
+               inputmode="numeric"
+               maxlength="2"
+               oninput="this.value = this.value.replace(/[^0-9]/g,'').slice(0,2)"
+               autocomplete="off"/>
+      </div>
+      <div class="xp-line">
+        <label>Experience</label>
+        <input id="system_experience" type="number" name="system.chExperience" value="{{system.chExperience}}" min="0" autocomplete="off"/>
+      </div>
+    </div>
+  </div>
+
+</header>

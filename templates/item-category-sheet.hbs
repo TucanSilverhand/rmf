@@ -1,0 +1,18 @@
+{{!-- 
+  RMF Category Item Sheet Template - FoundryVTT v13.341
+  ApplicationV2 with HandlebarsApplicationMixin
+--}}
+
+<div class="{{cssClass}} rmf-item-sheet category-sheet-root">
+  <div class="sheet-main-container category-sheet">
+    {{> "parts/item-category-navigation"}}
+    <div class="sheet-content">
+      {{> "parts/item-category-header"}}
+      <section class="sheet-body">
+        <div class="sheet-body-inner" data-rich="true">
+          {{> "parts/item-category-details"}}
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

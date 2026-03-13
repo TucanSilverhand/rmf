@@ -1,0 +1,66 @@
+{{!-- 
+  RMF Actor Sheet Equipment Tab
+  Character equipment management (general items only)
+--}}
+
+<div class="tab equipment-section" data-tab="equipment" style="display: none;">
+  <section class="equipment-section">
+
+    {{!-- General Equipment --}}
+    <div class="items-section equipment">
+      <div class="items-header">
+        <h3>{{localize "RMF.Equipment.Equipment"}}</h3>
+        <a id="create_equipment_btn" 
+           class="item-create" 
+           data-action="createItem" 
+           data-type="equipment" 
+           title="{{localize 'RMF.Equipment.CreateEquipment'}}" 
+           aria-label="{{localize 'RMF.Equipment.CreateEquipment'}}">
+          <i class="fas fa-plus"></i>
+        </a>
+      </div>
+      <ol class="items-list">
+        {{#each items.equipment as |item|}}
+        <li class="item" data-item-id="{{item.id}}">
+          <div class="item-image">
+            <img src="{{item.img}}" 
+                 title="{{item.name}}" 
+                 width="24" 
+                 height="24" 
+                 alt="{{item.name}}"/>
+          </div>
+          <div class="item-name">
+            <a class="item-edit" 
+               data-action="editItem" 
+               data-item-id="{{item.id}}" 
+               aria-label="{{localize 'RMF.Actions.Edit'}} {{item.name}}">{{item.name}}</a>
+          </div>
+          <div class="item-quantity">
+            <input id="equipment_{{item.id}}_quantity" 
+                   type="number" 
+                   name="items.{{item.id}}.system.quantity" 
+                   value="{{item.system.quantity}}" 
+                   min="0" 
+                   autocomplete="off"/>
+          </div>
+          <div class="item-weight">{{item.system.weight}}</div>
+          <div class="item-controls">
+            <a class="item-control item-delete" 
+               data-action="deleteItem" 
+               data-item-id="{{item.id}}" 
+               title="{{localize 'RMF.Actions.Delete'}}" 
+               aria-label="{{localize 'RMF.Actions.Delete'}} {{item.name}}">
+              <i class="fas fa-trash"></i>
+            </a>
+          </div>
+        </li>
+        {{else}}
+        <li class="no-items">
+          <p>{{localize "RMF.Equipment.NoEquipment"}}</p>
+        </li>
+        {{/each}}
+      </ol>
+    </div>
+
+  </section>
+</div>

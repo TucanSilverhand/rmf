@@ -1,0 +1,30 @@
+{{!-- 
+  RMF Skill Item Sheet Header Partial
+  Skill name, image
+--}}
+
+<header class="sheet-header">
+  <div class="header-row">
+    <img class="profile-img" 
+         src="{{item.img}}" 
+         alt="{{item.name}}" 
+         data-edit="img"
+         data-action="pickImage"
+         title="{{item.name}}" 
+         height="64" 
+         width="64"/>
+    
+    <div class="header-fields">
+      <h1 class="item-name">
+        <label class="sr-only" for="skill_name">{{localize "RMF.Skills.Skill"}}:</label>
+        <input id="skill_name" 
+               name="name" 
+               type="text" 
+               value="{{item.name}}" 
+               placeholder="{{localize 'RMF.Skills.Skill'}}" 
+               autocomplete="off"/>
+      </h1>
+    </div>
+  </div>
+  </header>
+

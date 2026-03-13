@@ -1,0 +1,36 @@
+{{!-- 
+  RMF Actor Sheet Skills Tab
+  Character categories list with roll functionality
+--}}
+
+<div class="tab skills-section" data-tab="skills" style="display: none;">
+  <section class="skills-section">
+    
+    {{!-- Categories List --}}
+    <div class="categories-container">
+      <h3 class="section-title">{{localize "RMF.Skills.Categories"}}</h3>
+      
+      {{#if items.category}}
+        <div class="categories-list">
+          {{#each items.category as |category|}}
+            <div class="category-item" data-item-id="{{category.id}}" title="{{category.name}} -> Ranks: {{category.system.totalRankBonus}} + Stats: {{category.system.totalStatsBonus}} + Prof: {{category.system.profBonus}} + S1: {{category.system.spec1Bonus}} + S2: {{category.system.spec2Bonus}} --> Total: {{category.system.totalBonus}}">
+              <a class="category-name rollable" 
+                 data-action="rollCategory" 
+                 data-item-id="{{category.id}}"
+                 aria-label="{{localize 'RMF.Actions.Roll'}} {{category.name}}">
+                {{category.name}}
+              </a>
+              <span class="category-total">{{category.system.totalBonus}}</span>
+            </div>
+          {{/each}}
+        </div>
+      {{else}}
+        <div class="empty-message">
+          <p>{{localize "RMF.Skills.NoCategories"}}</p>
+          <p class="hint">{{localize "RMF.Skills.NoCategoriesHint"}}</p>
+        </div>
+      {{/if}}
+    </div>
+
+  </section>
+</div>
