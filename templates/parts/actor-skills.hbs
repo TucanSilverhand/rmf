@@ -1,26 +1,44 @@
-{{!-- 
+{{!--
   RMF Actor Sheet Skills Tab
-  Character categories list with roll functionality
+  Categories list with skills nested by category and roll functionality
 --}}
 
 <div class="tab skills-section" data-tab="skills" style="display: none;">
   <section class="skills-section">
-    
+
     {{!-- Categories List --}}
     <div class="categories-container">
       <h3 class="section-title">{{localize "RMF.Skills.Categories"}}</h3>
-      
-      {{#if items.category}}
+
+      {{#if categoriesWithSkills.length}}
         <div class="categories-list">
-          {{#each items.category as |category|}}
-            <div class="category-item" data-item-id="{{category.id}}" title="{{category.name}} -> Ranks: {{category.system.totalRankBonus}} + Stats: {{category.system.totalStatsBonus}} + Prof: {{category.system.profBonus}} + S1: {{category.system.spec1Bonus}} + S2: {{category.system.spec2Bonus}} --> Total: {{category.system.totalBonus}}">
-              <a class="category-name rollable" 
-                 data-action="rollCategory" 
-                 data-item-id="{{category.id}}"
-                 aria-label="{{localize 'RMF.Actions.Roll'}} {{category.name}}">
-                {{category.name}}
-              </a>
-              <span class="category-total">{{category.system.totalBonus}}</span>
+          {{#each categoriesWithSkills as |group|}}
+            <div class="category-block">
+              <div class="category-item" data-item-id="{{group.category.id}}" title="{{group.category.name}} -> Ranks: {{group.category.system.totalRankBonus}} + Stats: {{group.category.system.totalStatsBonus}} + Prof: {{group.category.system.profBonus}} + S1: {{group.category.system.spec1Bonus}} + S2: {{group.category.system.spec2Bonus}} --> Total: {{group.category.system.totalBonus}}">
+                <a class="category-name rollable"
+                   data-action="rollCategory"
+                   data-item-id="{{group.category.id}}"
+                   aria-label="{{localize 'RMF.Actions.Roll'}} {{group.category.name}}">
+                  {{group.category.name}}
+                </a>
+                <span class="category-total">{{group.category.system.totalBonus}}</span>
+              </div>
+
+              {{#if group.skills.length}}
+                <ul class="skills-list">
+                  {{#each group.skills as |skill|}}
+                    <li class="skill-item" data-item-id="{{skill.id}}" title="{{skill.name}} -> Ranks: {{skill.system.totalRankBonus}} + Category: {{skill.system.categoryBonus}} --> Total: {{skill.system.totalBonus}}">
+                      <a class="skill-name rollable"
+                         data-action="rollSkill"
+                         data-item-id="{{skill.id}}"
+                         aria-label="{{localize 'RMF.Actions.Roll'}} {{skill.name}}">
+                        {{skill.name}}
+                      </a>
+                      <span class="skill-rank" title="{{localize 'RMF.Skills.Ranks'}}">{{skill.system.rank}}</span>
+                    </li>
+                  {{/each}}
+                </ul>
+              {{/if}}
             </div>
           {{/each}}
         </div>
@@ -31,6 +49,26 @@
         </div>
       {{/if}}
     </div>
+
+    {{#if uncategorizedSkills.length}}
+      <div class="categories-container uncategorized">
+        <h3 class="section-title">{{localize "RMF.Skills.Uncategorized"}}</h3>
+        <ul class="skills-list">
+          {{#each uncategorizedSkills as |skill|}}
+            <li class="skill-item" data-item-id="{{skill.id}}" title="{{skill.name}} -> Ranks: {{skill.system.totalRankBonus}} + Category: {{skill.system.categoryBonus}} --> Total: {{skill.system.totalBonus}}">
+              <a class="skill-name rollable"
+                 data-action="rollSkill"
+                 data-item-id="{{skill.id}}"
+                 aria-label="{{localize 'RMF.Actions.Roll'}} {{skill.name}}">
+                {{skill.name}}
+              </a>
+              <span class="skill-rank" title="{{localize 'RMF.Skills.Ranks'}}">{{skill.system.rank}}</span>
+              <small class="skill-category-hint" title="{{skill.system.category}}">({{skill.system.category}})</small>
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+    {{/if}}
 
   </section>
 </div>

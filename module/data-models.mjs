@@ -1,14 +1,21 @@
 /**
  * RMF System Data Models
- * 
+ *
  * Custom Actor and Item document classes that extend FoundryVTT's base
  * classes with RoleMaster-specific functionality and automatic calculations.
- * 
+ *
  * @fileoverview Extended document classes for RMF system
  * @version 1.0.0
  * @author TucanSilverhand
  * @since FoundryVTT v13.341
  */
+
+import {
+  computeCategoryRankBonus,
+  computeSkillRankBonus,
+  normalizeCategoryProgression,
+  normalizeSkillProgression
+} from "./utils/rank-bonus.mjs";
 
 /**
  * Extended Actor class for RoleMaster Fantasy characters
@@ -53,6 +60,18 @@ export class RMFActor extends Actor {
     if (this.type === "character") {
       this._calculateStatBonuses();
       this._calculateSecondaryAttributes();
+
+      // Foundry prepares embedded items BEFORE the actor's prepareDerivedData,
+      // so when an item runs its derivation the actor's chStats[*].total is
+      // still zero. Re-run the category items first (they depend on actor
+      // stats) and then the skill items (they depend on the category
+      // totalBonus computed in the previous pass).
+      for (const item of this.items) {
+        if (item.type === "category") item.prepareDerivedData?.();
+      }
+      for (const item of this.items) {
+        if (item.type === "skill") item.prepareDerivedData?.();
+      }
     }
   }
 
@@ -576,6 +595,9 @@ export class RMFItem extends Item {
       case "category":
         this._prepareCategoryData();
         break;
+      case "skill":
+        this._prepareSkillData();
+        break;
     }
   }
 
@@ -665,15 +687,7 @@ export class RMFItem extends Item {
     const system = this.system || (this.system = {});
     if (!system.dpCost || typeof system.dpCost !== 'object') system.dpCost = { price1: 0, price2: 0, price3: 0 };
     if (!system.boughtByLevel || typeof system.boughtByLevel !== 'object') system.boughtByLevel = {};
-    const progressionRaw = typeof system.categoryRankBonusProgression === 'string' ? system.categoryRankBonusProgression.trim() : '';
-    const progressionNormalized = progressionRaw.toLowerCase();
-    if (!progressionNormalized || progressionNormalized === 'standard') {
-      system.categoryRankBonusProgression = 'standard';
-    } else if (['notapplicable', 'not-applicable', 'na', 'none', 'other'].includes(progressionNormalized)) {
-      system.categoryRankBonusProgression = 'notApplicable';
-    } else {
-      system.categoryRankBonusProgression = 'standard';
-    }
+    system.categoryRankBonusProgression = normalizeCategoryProgression(system.categoryRankBonusProgression);
     if (typeof system.ranks !== 'number') {
       system.ranks = typeof system.rank === 'number' ? system.rank : 0;
     }
@@ -732,19 +746,12 @@ export class RMFItem extends Item {
   }
 
   /**
-   * Compute rank bonus based on total ranks and progression type
+   * Compute the rank bonus for a category given its total ranks and progression.
+   * Delegates to the shared rank-bonus helper (single source of truth).
    * @private
    */
   _computeRankBonus(totalRanks, progression) {
-    const ranks = Math.max(0, Number(totalRanks ?? 0));
-    const mode = (progression || 'standard').toLowerCase();
-    if (mode === 'notapplicable' || mode === 'not-applicable' || mode === 'none' || mode === 'na' || mode === 'other') return 0;
-    if (ranks === 0) return -15;
-    const tier1 = Math.min(ranks, 10);
-    const tier2 = Math.min(Math.max(ranks - 10, 0), 10);
-    const tier3 = Math.min(Math.max(ranks - 20, 0), 10);
-    const halfSteps = (tier1 * 4) + (tier2 * 2) + (tier3 * 1);
-    return halfSteps / 2;
+    return computeCategoryRankBonus(totalRanks, progression);
   }
 
   /**
@@ -779,6 +786,56 @@ export class RMFItem extends Item {
     if (value.startsWith('ch')) return value;
     const map = CONFIG.RMF?.statShortToFull || {};
     return map[value] || value;
+  }
+
+  /**
+   * Prepare derived data for a skill item.
+   *
+   * Calculates totalRanks, rankBonus and totalBonus following the
+   * skill-progression tables in module/utils/rank-bonus.mjs. When the
+   * skill is embedded on an Actor and its system.category matches the
+   * name of an embedded category item, that category's totalBonus is
+   * added so the skill's totalBonus is the value that goes into rolls.
+   *
+   * `system.bonus` is exposed as an alias of `totalBonus` so the
+   * existing roll handler in module/actions.mjs (#rollSkill) keeps
+   * working unchanged.
+   *
+   * @private
+   * @memberof RMFItem
+   */
+  _prepareSkillData() {
+    const system = this.system || (this.system = {});
+
+    if (!system.boughtByLevel || typeof system.boughtByLevel !== "object") system.boughtByLevel = {};
+    if (!Array.isArray(system.dpCost)) system.dpCost = [];
+    if (typeof system.rank !== "number") system.rank = 0;
+    if (typeof system.category !== "string") system.category = "";
+    if (typeof system.classification !== "string") system.classification = "movingManeuver";
+
+    system.skillRankBonusProgression = normalizeSkillProgression(system.skillRankBonusProgression);
+
+    const totalBoughtRanks = this._computeTotalBoughtRanks(system.boughtByLevel);
+    // Skills don't have freeRanks today, but expose totalRanks for parity with categories.
+    const totalRanks = totalBoughtRanks;
+    const rankBonus = computeSkillRankBonus(totalRanks, system.skillRankBonusProgression);
+
+    let categoryBonus = 0;
+    const actor = this.parent;
+    if (actor?.documentName === "Actor" && system.category) {
+      const target = String(system.category).trim().toLowerCase();
+      const parentCategory = actor.items.find(i =>
+        i.type === "category" && String(i.name || "").trim().toLowerCase() === target
+      );
+      if (parentCategory) categoryBonus = Number(parentCategory.system?.totalBonus ?? 0) || 0;
+    }
+
+    system.totalRanks = totalRanks;
+    system.totalRankBonus = rankBonus;
+    system.categoryBonus = categoryBonus;
+    system.totalBonus = rankBonus + categoryBonus;
+    // Alias consumed by RMFActions.#rollSkill — keeps actions.mjs untouched.
+    system.bonus = system.totalBonus;
   }
 
   // Removed: race application helpers (applyToActor) as part of Option B cleanup

@@ -1439,7 +1439,7 @@
     "classification": "staticManeuver",
     "dpCost": [],
     "boughtByLevel": {},
-    "skillRankBonusProgression": "Combined",
+    "skillRankBonusProgression": "combined",
     "commonlyUsed": false
   },
   {
@@ -1452,7 +1452,7 @@
     "classification": "staticManeuver",
     "dpCost": [],
     "boughtByLevel": {},
-    "skillRankBonusProgression": "Combined",
+    "skillRankBonusProgression": "combined",
     "commonlyUsed": false
   },
   {
@@ -1465,7 +1465,7 @@
     "classification": "staticManeuver",
     "dpCost": [],
     "boughtByLevel": {},
-    "skillRankBonusProgression": "Combined",
+    "skillRankBonusProgression": "combined",
     "commonlyUsed": false
   },
   {

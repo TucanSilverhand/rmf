@@ -6,6 +6,12 @@
  */
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 import { buildEntityTag, coerceInputValue, initHeaderAutoHeight, wireTabs, setActiveTab as utilSetActiveTab, bindChangeListeners } from "./utils/sheet-helpers.mjs";
+import {
+  CATEGORY_PROGRESSIONS,
+  computeCategoryRankBonus,
+  formatCategoryRankBonusBreakdown,
+  normalizeCategoryProgression
+} from "./utils/rank-bonus.mjs";
 import { RMFActions } from "./actions.mjs";
 
 export class RMFCategorySheet extends HandlebarsApplicationMixin(foundry.applications.sheets.ItemSheetV2) {
@@ -82,6 +88,12 @@ export class RMFCategorySheet extends HandlebarsApplicationMixin(foundry.applica
       value: entry.value,
       label: game.i18n.has(entry.label) ? game.i18n.localize(entry.label) : entry.value
     }));
+
+    context.progressionOptions = CATEGORY_PROGRESSIONS.map((value) => ({
+      value,
+      label: this._localizeRankProgression(value)
+    }));
+    context.selectedProgression = normalizeCategoryProgression(context.system?.categoryRankBonusProgression);
 
     context.totalStatsBonus = this._computeSelectedStatSum(normalizedStat1, normalizedStat2, normalizedStat3);
     context.dpCostSummary = this._formatDPCost(context.system?.dpCost);
@@ -167,30 +179,11 @@ export class RMFCategorySheet extends HandlebarsApplicationMixin(foundry.applica
   }
 
   _computeRankBonus(totalRanks, progression) {
-    const ranks = Math.max(0, Number(totalRanks ?? 0));
-    const mode = (progression || 'standard').toLowerCase();
-    if (mode === 'notapplicable' || mode === 'not-applicable' || mode === 'none' || mode === 'na' || mode === 'other') return 0;
-    if (ranks === 0) return -15;
-    const tier1 = Math.min(ranks, 10);
-    const tier2 = Math.min(Math.max(ranks - 10, 0), 10);
-    const tier3 = Math.min(Math.max(ranks - 20, 0), 10);
-    const halfSteps = (tier1 * 4) + (tier2 * 2) + (tier3 * 1);
-    return halfSteps / 2;
+    return computeCategoryRankBonus(totalRanks, progression);
   }
 
   _formatRankBonusBreakdown(totalRanks, progression) {
-    const ranks = Math.max(0, Number(totalRanks ?? 0));
-    const mode = (progression || 'standard').toLowerCase();
-    if (mode === 'notapplicable' || mode === 'not-applicable' || mode === 'none' || mode === 'na' || mode === 'other') return '0';
-    if (ranks === 0) return '-15';
-    const parts = [];
-    const tier1 = Math.min(ranks, 10);
-    const tier2 = Math.min(Math.max(ranks - 10, 0), 10);
-    const tier3 = Math.min(Math.max(ranks - 20, 0), 10);
-    if (tier1 > 0) parts.push(`${tier1} * 2`);
-    if (tier2 > 0) parts.push(`${tier2} * 1`);
-    if (tier3 > 0) parts.push(`${tier3} * 0.5`);
-    return parts.join(' + ') || '0';
+    return formatCategoryRankBonusBreakdown(totalRanks, progression);
   }
 
   /**
@@ -224,14 +217,10 @@ export class RMFCategorySheet extends HandlebarsApplicationMixin(foundry.applica
   }
 
   _localizeRankProgression(value) {
-    if (!value || typeof value !== 'string') return '';
-    const normalized = value.toLowerCase();
-    let keySuffix = 'Standard';
-    if (['notapplicable', 'not-applicable', 'none', 'na', 'other'].includes(normalized)) {
-      keySuffix = 'NotApplicable';
-    }
+    const normalized = normalizeCategoryProgression(value);
+    const keySuffix = normalized === "nonstandard" ? "NonStandard" : "Standard";
     const key = `RMF.Category.Progressions.${keySuffix}`;
-    return game.i18n.has(key) ? game.i18n.localize(key) : value;
+    return game.i18n.has(key) ? game.i18n.localize(key) : normalized;
   }
 
   _prepareLevelEntries(boughtByLevel, maxLevel) {

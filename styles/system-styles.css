@@ -1425,6 +1425,67 @@ table th input[type="number"] {
   color: var(--rmf-color-text-muted);
 }
 
+.category-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rmf-space-1);
+}
+
+.skills-list {
+  list-style: none;
+  margin: 0 0 var(--rmf-space-2) var(--rmf-space-4);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--rmf-space-1);
+  border-left: 2px solid var(--rmf-color-border);
+  padding-left: var(--rmf-space-3);
+}
+
+.skill-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--rmf-space-1) var(--rmf-space-3);
+  background: var(--rmf-color-bg);
+  border: 1px solid var(--rmf-color-border);
+  border-radius: var(--rmf-radius-sm);
+  font-size: var(--rmf-font-size-sm);
+  transition: all var(--rmf-transition-fast);
+}
+
+.skill-item:hover {
+  background: var(--rmf-color-bg-hover);
+  border-color: var(--rmf-color-border-dark);
+}
+
+.skill-name {
+  flex: 1;
+  color: var(--rmf-color-text);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color var(--rmf-transition-fast);
+}
+
+.skill-name:hover {
+  color: var(--rmf-color-primary);
+}
+
+.skill-rank {
+  flex: 0 0 auto;
+  min-width: 28px;
+  text-align: right;
+  font-weight: 600;
+  color: var(--rmf-color-text-muted);
+}
+
+.skill-category-hint {
+  flex: 0 0 auto;
+  margin-left: var(--rmf-space-2);
+  font-style: italic;
+  color: var(--rmf-color-text-subtle);
+}
+
 .empty-message {
   text-align: center;
   padding: var(--rmf-space-8);

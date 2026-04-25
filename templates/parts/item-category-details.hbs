@@ -103,10 +103,9 @@
       <div class="resource">
         <label>{{localize "RMF.Category.RankBonusProgression"}}</label>
         <select name="system.categoryRankBonusProgression">
-          <option value="standard" {{#if (eq system.categoryRankBonusProgression "standard" )}}selected{{/if}}>
-            {{localize "RMF.Category.Progressions.Standard"}}</option>
-          <option value="notApplicable" {{#if (eq system.categoryRankBonusProgression "notApplicable"
-            )}}selected{{/if}}>{{localize "RMF.Category.Progressions.NotApplicable"}}</option>
+          {{#each progressionOptions as |option|}}
+            <option value="{{option.value}}" {{#if (eq ../selectedProgression option.value)}}selected{{/if}}>{{option.label}}</option>
+          {{/each}}
         </select>
       </div>
 

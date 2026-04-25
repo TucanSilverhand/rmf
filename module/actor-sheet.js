@@ -144,6 +144,29 @@ export class RMFActorSheet extends HandlebarsApplicationMixin(foundry.applicatio
       groupedItems.sort((a, b) => String(a.name || "").localeCompare(String(b.name || ""), game.i18n.lang));
     }
 
+    // Group skills under their parent category for the Skills tab.
+    // The relation is by category name (skill.system.category matches category.name),
+    // case-insensitive and trimmed to tolerate user input.
+    const categories = context.items.category || [];
+    const skills = context.items.skill || [];
+    const norm = (s) => String(s ?? "").trim().toLowerCase();
+    const categoryByName = new Map(categories.map(c => [norm(c.name), c]));
+    const skillsByCategoryId = new Map(categories.map(c => [c.id, []]));
+    const uncategorized = [];
+
+    for (const skill of skills) {
+      const cat = categoryByName.get(norm(skill.system?.category));
+      if (cat) skillsByCategoryId.get(cat.id).push(skill);
+      else uncategorized.push(skill);
+    }
+
+    const sortByName = (a, b) => String(a.name || "").localeCompare(String(b.name || ""), game.i18n.lang);
+    context.categoriesWithSkills = categories.map(category => ({
+      category,
+      skills: skillsByCategoryId.get(category.id).sort(sortByName)
+    }));
+    context.uncategorizedSkills = uncategorized.sort(sortByName);
+
     // Add derived stats
     context.derivedStats = this._calculateDerivedStats();
     

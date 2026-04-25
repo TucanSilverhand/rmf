@@ -61,7 +61,12 @@
       "RankBonusProgression": "Rank Bonus Progression",
       "Level": "Level",
       "Amount": "Amount",
-      "MaxRanksPerLevel": "Maximum ranks per level reached"
+      "MaxRanksPerLevel": "Maximum ranks per level reached",
+      "Progressions": {
+        "Standard": "Standard",
+        "Combined": "Combined",
+        "Limited": "Limited"
+      }
     },
     "Sections": {
       "Background": "Character Background",
@@ -133,6 +138,7 @@
       "Ranks": "Ranks",
       "Bonus": "Bonus",
       "Actions": "Actions",
+      "Uncategorized": "Uncategorized",
       "NoSkills": "No skills defined. Use the 'Create Skill' button to add skills.",
       "NoCategories": "No skill categories assigned to this character.",
       "NoCategoriesHint": "Drag & drop categories from the Items sidebar to assign them to this character.",
@@ -270,8 +276,7 @@
       "NoActorAssigned": "Assign this category to an actor to edit purchases",
       "Progressions": {
         "Standard": "Standard",
-        "NotApplicable": "Not Applicable",
-        "Other": "Other"
+        "NonStandard": "Non-Standard"
       },
       "Groups": {
         "None": "None",

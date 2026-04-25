@@ -3,6 +3,8 @@
  * FoundryVTT v13.341 compatible (no deprecated V1 APIs)
  */
 
+import { normalizeCategoryProgression, normalizeSkillProgression } from "./utils/rank-bonus.mjs";
+
 /**
  * Import multiple Race items from a JSON source.
  * - Accepts: array of race entries, JSON string, or URL to a JSON file.
@@ -309,7 +311,7 @@ export async function importCategories(source, options = {}) {
           dpCost: normalizeDPCost(sysSource.dpCost ?? entry.dpCost),
           boughtByLevel: normalizeBoughtByLevel(sysSource.boughtByLevel ?? entry.boughtByLevel),
           freeRanks: normalizeNumber(sysSource.freeRanks ?? entry.freeRanks, 0),
-          categoryRankBonusProgression: (sysSource.categoryRankBonusProgression ?? entry.categoryRankBonusProgression ?? "standard"),
+          categoryRankBonusProgression: normalizeCategoryProgression(sysSource.categoryRankBonusProgression ?? entry.categoryRankBonusProgression),
           ranks: normalizeNumber(sysSource.ranks ?? entry.ranks, 0),
           statBonus: {
             stat1: normalizeStatKey(sysSource.statBonus?.stat1 ?? sysSource.stat1 ?? entry.stat1),
@@ -491,7 +493,7 @@ export async function syncCategoriesToCompendium(source, options = {}) {
           dpCost: normalizeDPCost(sysSource.dpCost ?? entry.dpCost),
           boughtByLevel: normalizeBoughtByLevel(sysSource.boughtByLevel ?? entry.boughtByLevel),
           freeRanks: normalizeNumber(sysSource.freeRanks ?? entry.freeRanks, 0),
-          categoryRankBonusProgression: (sysSource.categoryRankBonusProgression ?? entry.categoryRankBonusProgression ?? "standard"),
+          categoryRankBonusProgression: normalizeCategoryProgression(sysSource.categoryRankBonusProgression ?? entry.categoryRankBonusProgression),
           ranks: normalizeNumber(sysSource.ranks ?? entry.ranks, 0),
           statBonus: {
             stat1: canonicalizeStatKey(sysSource.statBonus?.stat1 ?? sysSource.stat1 ?? entry.stat1),
@@ -678,11 +680,7 @@ function buildSkillSystemData(sysSource, template) {
     return [];
   };
 
-  const normalizeProgression = (value) => {
-    const raw = String(value ?? "standard").trim().toLowerCase();
-    if (["slow", "fast", "standard"].includes(raw)) return raw;
-    return "standard";
-  };
+  const normalizeProgression = (value) => normalizeSkillProgression(value);
 
   const normalizeBoolean = (value) => {
     if (typeof value === "boolean") return value;

@@ -9,6 +9,7 @@
  */
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 import { coerceInputValue, buildEntityTag, initHeaderAutoHeight, wireTabs, setActiveTab as utilSetActiveTab, bindChangeListeners } from "./utils/sheet-helpers.mjs";
+import { SKILL_PROGRESSIONS, normalizeSkillProgression } from "./utils/rank-bonus.mjs";
 import { RMFActions } from "./actions.mjs";
 
 export class RMFSkillSheet extends HandlebarsApplicationMixin(foundry.applications.sheets.ItemSheetV2) {
@@ -84,6 +85,15 @@ export class RMFSkillSheet extends HandlebarsApplicationMixin(foundry.applicatio
     // Prepare boughtByLevel entries for display as [level, amount]
     const bought = context.system.boughtByLevel || {};
     context.boughtEntries = Object.entries(bought).map(([level, amount]) => ({ level, amount }));
+
+    // Progression options driven by the rank-bonus helper (single source of truth).
+    const localizeProgression = (value) => {
+      const suffix = value.charAt(0).toUpperCase() + value.slice(1);
+      const key = `RMF.Skill.Progressions.${suffix}`;
+      return game.i18n.has(key) ? game.i18n.localize(key) : value;
+    };
+    context.progressionOptions = SKILL_PROGRESSIONS.map((value) => ({ value, label: localizeProgression(value) }));
+    context.selectedProgression = normalizeSkillProgression(context.system.skillRankBonusProgression);
 
     return context;
   }
