@@ -1471,7 +1471,8 @@ table th input[type="number"] {
   color: var(--rmf-color-primary);
 }
 
-.skill-rank {
+.skill-rank,
+.skill-total {
   flex: 0 0 auto;
   min-width: 28px;
   text-align: right;

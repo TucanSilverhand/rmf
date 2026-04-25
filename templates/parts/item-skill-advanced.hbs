@@ -1,0 +1,78 @@
+{{!--
+  RMF Skill Item Sheet Advanced Partial
+  Mirrors item-category-details.hbs (advanced tab), without the stat block.
+  - Category select (replaces Group)
+  - Source (fromBook)
+  - Bonuses: Profession / Spec 1 / Spec 2
+  - Bought-by-level table (only when assigned to an actor)
+  - Description editor
+--}}
+
+<div class="tab" data-group="primary-tabs" data-tab="advanced" style="display: none;">
+
+  <fieldset class="form-group">
+    <legend>{{localize "RMF.Tabs.Details"}}</legend>
+    <div class="flexrow">
+      <div class="resource">
+        <label>{{localize "RMF.Skills.Category"}}</label>
+        {{#if (eq categoryMode "select")}}
+          <select name="system.category">
+            {{#each categoryOptions as |option|}}
+              <option value="{{option.value}}" {{#if (eq ../selectedCategory option.value)}}selected{{/if}}>{{option.label}}</option>
+            {{/each}}
+          </select>
+        {{else}}
+          <input type="text" name="system.category" value="{{selectedCategory}}" autocomplete="off" />
+        {{/if}}
+      </div>
+
+      <div class="resource">
+        <label>{{localize "RMF.Category.Source"}}</label>
+        <input type="text" name="system.fromBook" value="{{system.fromBook}}" />
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class="form-group">
+    <legend>{{localize "RMF.Skill.Bonuses"}}</legend>
+    <div class="flexrow">
+      <div class="resource">
+        <label>{{localize "RMF.Category.ProfessionBonus"}}</label>
+        <input type="number" name="system.profBonus" value="{{system.profBonus}}" step="0.5" data-dtype="Number" inputmode="numeric" />
+      </div>
+      <div class="resource">
+        <label>{{localize "RMF.Category.Spec1Bonus"}}</label>
+        <input type="number" name="system.spec1Bonus" value="{{system.spec1Bonus}}" step="0.5" data-dtype="Number" inputmode="numeric" />
+      </div>
+      <div class="resource">
+        <label>{{localize "RMF.Category.Spec2Bonus"}}</label>
+        <input type="number" name="system.spec2Bonus" value="{{system.spec2Bonus}}" step="0.5" data-dtype="Number" inputmode="numeric" />
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class="form-group">
+    <legend>{{localize "RMF.Category.BoughtByLevel"}}</legend>
+    {{#if parentLevel}}
+    <div class="bought-levels">
+      <div class="flexrow header">
+        <label>{{localize "RMF.Skill.Level"}}</label>
+        <label>{{localize "RMF.Skill.Amount"}}</label>
+      </div>
+      {{#each levelEntries}}
+      <div class="flexrow">
+        <input type="number" value="{{this.level}}" readonly />
+        <input type="number" name="system.boughtByLevel.{{this.level}}" value="{{this.amount}}" min="0" step="1" data-dtype="Number" />
+      </div>
+      {{/each}}
+    </div>
+    {{else}}
+    <em>{{localize "RMF.Category.NoActorAssigned"}}</em>
+    {{/if}}
+  </fieldset>
+
+  <div class="form-group ProseMirror">
+    <label>{{localize "RMF.Description"}}</label>
+    {{formInput descriptionField enriched=enrichedDescription value=system.description name="system.description" toggled=true disabled=(not editable)}}
+  </div>
+</div>

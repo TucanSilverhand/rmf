@@ -62,6 +62,9 @@
       "Level": "Level",
       "Amount": "Amount",
       "MaxRanksPerLevel": "Maximum ranks per level reached",
+      "Bonuses": "Bonuses",
+      "TotalRankBonus": "Total Ranks",
+      "TotalCategoryBonus": "Total Category",
       "Progressions": {
         "Standard": "Standard",
         "Combined": "Combined",

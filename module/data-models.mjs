@@ -812,6 +812,10 @@ export class RMFItem extends Item {
     if (typeof system.rank !== "number") system.rank = 0;
     if (typeof system.category !== "string") system.category = "";
     if (typeof system.classification !== "string") system.classification = "movingManeuver";
+    if (typeof system.profBonus !== "number") system.profBonus = 0;
+    if (typeof system.spec1Bonus !== "number") system.spec1Bonus = 0;
+    if (typeof system.spec2Bonus !== "number") system.spec2Bonus = 0;
+    if (typeof system.fromBook !== "string") system.fromBook = "basic";
 
     system.skillRankBonusProgression = normalizeSkillProgression(system.skillRankBonusProgression);
 
@@ -833,7 +837,7 @@ export class RMFItem extends Item {
     system.totalRanks = totalRanks;
     system.totalRankBonus = rankBonus;
     system.categoryBonus = categoryBonus;
-    system.totalBonus = rankBonus + categoryBonus;
+    system.totalBonus = rankBonus + categoryBonus + (system.profBonus || 0) + (system.spec1Bonus || 0) + (system.spec2Bonus || 0);
     // Alias consumed by RMFActions.#rollSkill — keeps actions.mjs untouched.
     system.bonus = system.totalBonus;
   }

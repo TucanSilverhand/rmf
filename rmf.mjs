@@ -356,7 +356,7 @@ async function _preloadHandlebarsTemplates() {
     "systems/rmf/templates/parts/item-skill-navigation.hbs",
     "systems/rmf/templates/parts/item-skill-details.hbs",
     "systems/rmf/templates/parts/item-skill-progression.hbs",
-    "systems/rmf/templates/parts/item-skill-purchases.hbs",
+    "systems/rmf/templates/parts/item-skill-advanced.hbs",
     
     // Category sheet partials
     "systems/rmf/templates/parts/item-category-header.hbs",
@@ -405,7 +405,7 @@ async function _registerHandlebarsPartials() {
     'parts/item-skill-navigation': 'systems/rmf/templates/parts/item-skill-navigation.hbs',
     'parts/item-skill-details': 'systems/rmf/templates/parts/item-skill-details.hbs',
     'parts/item-skill-progression': 'systems/rmf/templates/parts/item-skill-progression.hbs',
-    'parts/item-skill-purchases': 'systems/rmf/templates/parts/item-skill-purchases.hbs',
+    'parts/item-skill-advanced': 'systems/rmf/templates/parts/item-skill-advanced.hbs',
     
     // Category sheet partials
     'parts/item-category-header': 'systems/rmf/templates/parts/item-category-header.hbs',

@@ -696,13 +696,17 @@ function buildSkillSystemData(sysSource, template) {
     {
       description: String(sysSource?.description ?? ""),
       rank: normalizeNumber(sysSource?.rank ?? sysSource?.ranks, 0),
-      category: String(sysSource?.category ?? "none"),
+      category: String(sysSource?.category ?? ""),
       group: String(sysSource?.group ?? "none"),
       classification: String(sysSource?.classification ?? "movingManeuver"),
       dpCost: normalizeDPCostArray(sysSource?.dpCost),
       boughtByLevel: normalizeBoughtByLevel(sysSource?.boughtByLevel),
       skillRankBonusProgression: normalizeProgression(sysSource?.skillRankBonusProgression),
-      commonlyUsed: normalizeBoolean(sysSource?.commonlyUsed)
+      commonlyUsed: normalizeBoolean(sysSource?.commonlyUsed),
+      profBonus: normalizeNumber(sysSource?.profBonus, 0),
+      spec1Bonus: normalizeNumber(sysSource?.spec1Bonus, 0),
+      spec2Bonus: normalizeNumber(sysSource?.spec2Bonus, 0),
+      fromBook: String(sysSource?.fromBook ?? "basic")
     },
     { inplace: false, insertKeys: true, insertValues: true, overwrite: true }
   );

@@ -1,7 +1,7 @@
-{{!-- 
+{{!--
   RMF Skill Item Sheet Template - FoundryVTT v13.341
   ApplicationV2 with HandlebarsApplicationMixin
-  Main container composed of partials (navigation, header, tabs)
+  Tabs: details (read-only summary) / progression / advanced (editable)
 --}}
 
 <div class="{{cssClass}} rmf-item-sheet skill-sheet-root">
@@ -13,10 +13,9 @@
         <div class="sheet-body-inner">
           {{> "parts/item-skill-details"}}
           {{> "parts/item-skill-progression"}}
-          {{> "parts/item-skill-purchases"}}
+          {{> "parts/item-skill-advanced"}}
         </div>
       </section>
     </div>
   </div>
 </div>
-

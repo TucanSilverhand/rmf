@@ -34,7 +34,7 @@
                          aria-label="{{localize 'RMF.Actions.Roll'}} {{skill.name}}">
                         {{skill.name}}
                       </a>
-                      <span class="skill-rank" title="{{localize 'RMF.Skills.Ranks'}}">{{skill.system.rank}}</span>
+                      <span class="skill-total" title="{{localize 'RMF.Category.TotalBonus'}}">{{skill.system.totalBonus}}</span>
                     </li>
                   {{/each}}
                 </ul>
@@ -62,8 +62,8 @@
                  aria-label="{{localize 'RMF.Actions.Roll'}} {{skill.name}}">
                 {{skill.name}}
               </a>
-              <span class="skill-rank" title="{{localize 'RMF.Skills.Ranks'}}">{{skill.system.rank}}</span>
               <small class="skill-category-hint" title="{{skill.system.category}}">({{skill.system.category}})</small>
+              <span class="skill-total" title="{{localize 'RMF.Category.TotalBonus'}}">{{skill.system.totalBonus}}</span>
             </li>
           {{/each}}
         </ul>

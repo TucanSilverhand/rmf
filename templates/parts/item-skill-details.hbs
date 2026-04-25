@@ -1,43 +1,88 @@
-{{!-- 
+{{!--
   RMF Skill Item Sheet Details Partial
-  Description and basic fields
+  Read-only summary mirroring item-category-details.hbs (basic tab),
+  adapted for skills: no stat block; the totals row is
+  Total Ranks | Total Category | Profession | Spec 1 | Spec 2 | Total.
 --}}
 
 <div class="tab details-section" data-tab="details" style="display: block;">
-  <section class="details-section">
+  <div class="description-preview ProseMirror">
+    {{{enrichedDescription}}}
+  </div>
 
-    <div class="form-group description-editor-group">
-      <label>{{localize "RMF.Description"}}</label>
-      <div class="editor-container description-editor">
-        <textarea name="system.description" 
-                  class="rmf-rich-editor" 
-                  style="height: 160px; resize: vertical;"
-                  placeholder="{{localize 'RMF.DescriptionPlaceholder'}}">{{system.description}}</textarea>
-      </div>
-    </div>
+  <div class="summary-wrapper">
+    <table class="summary-table basic-info-table">
+      <thead>
+        <tr>
+          <th scope="col">{{localize "RMF.Skill.RankBonusProgression"}}</th>
+          <th scope="col">{{localize "RMF.Category.DPCostSummary"}}</th>
+          <th scope="col">{{localize "RMF.Skills.Category"}}</th>
+          <th scope="col">{{localize "RMF.Category.Ranks"}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <input type="text" value="{{rankBonusProgressionLabel}}" readonly />
+          </td>
+          <td>
+            <input type="text" value="{{dpCostSummary}}" readonly />
+          </td>
+          <td>
+            <input type="text" value="{{selectedCategory}}" readonly />
+          </td>
+          <td>
+            <input type="number" value="{{totalRanks}}" readonly data-dtype="Number" inputmode="numeric" />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-    <div class="grid two-columns">
-      <div class="form-group">
-        <label for="skill_rank">{{localize "RMF.Skills.Ranks"}}</label>
-        <input id="skill_rank" type="number" name="system.rank" value="{{system.rank}}" min="0" step="1" inputmode="numeric" data-dtype="Number"/>
-      </div>
-      <div class="form-group">
-        <label for="skill_category">{{localize "RMF.Skills.Category"}}</label>
-        <input id="skill_category" type="text" name="system.category" value="{{system.category}}" placeholder="category" autocomplete="off"/>
-      </div>
-      <div class="form-group">
-        <label for="skill_group">{{localize "RMF.Skill.Group"}}</label>
-        <input id="skill_group" type="text" name="system.group" value="{{system.group}}" placeholder="group" autocomplete="off"/>
-      </div>
-      <div class="form-group">
-        <label for="skill_classification">{{localize "RMF.Skill.Classification"}}</label>
-        <input id="skill_classification" type="text" name="system.classification" value="{{system.classification}}" placeholder="movingManeuver" autocomplete="off"/>
-      </div>
-      <div class="form-group checkbox">
-        <label for="skill_commonly_used">{{localize "RMF.Skill.CommonlyUsed"}}</label>
-        <input id="skill_commonly_used" type="checkbox" name="system.commonlyUsed" {{#if system.commonlyUsed}}checked{{/if}} />
-      </div>
-    </div>
-
-  </section>
+  <div class="summary-wrapper">
+    <table class="summary-table basic-totals-table">
+      <thead>
+        <tr>
+          <th scope="col">{{localize "RMF.Skill.TotalRankBonus"}}</th>
+          <th class="operator-column" aria-hidden="true"></th>
+          <th scope="col">{{localize "RMF.Skill.TotalCategoryBonus"}}</th>
+          <th class="operator-column" aria-hidden="true"></th>
+          <th scope="col">{{localize "RMF.Category.ProfessionBonus"}}</th>
+          <th class="operator-column" aria-hidden="true"></th>
+          <th scope="col">{{localize "RMF.Category.Spec1Bonus"}}</th>
+          <th class="operator-column" aria-hidden="true"></th>
+          <th scope="col">{{localize "RMF.Category.Spec2Bonus"}}</th>
+          <th class="operator-column equals-column" aria-hidden="true"></th>
+          <th scope="col">&nbsp;&nbsp;{{localize "RMF.Category.TotalBonus"}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td title="{{rankBonusSummary}}">
+            <input type="number" value="{{totalRankBonus}}" step="0.5" readonly data-dtype="Number" inputmode="numeric" />
+          </td>
+          <td class="operator-column" aria-hidden="true">+</td>
+          <td>
+            <input type="number" value="{{categoryBonus}}" step="0.5" readonly data-dtype="Number" inputmode="numeric" />
+          </td>
+          <td class="operator-column" aria-hidden="true">+</td>
+          <td>
+            <input type="number" value="{{professionBonus}}" step="0.5" readonly data-dtype="Number" inputmode="numeric" />
+          </td>
+          <td class="operator-column" aria-hidden="true">+</td>
+          <td>
+            <input type="number" value="{{spec1Bonus}}" step="0.5" readonly data-dtype="Number" inputmode="numeric" />
+          </td>
+          <td class="operator-column" aria-hidden="true">+</td>
+          <td>
+            <input type="number" value="{{spec2Bonus}}" step="0.5" readonly data-dtype="Number" inputmode="numeric" />
+          </td>
+          <td class="operator-column equals-column" aria-hidden="true">=</td>
+          <td title="{{totalRankBonus}} + {{categoryBonus}} + {{professionBonus}} + {{spec1Bonus}} + {{spec2Bonus}}">
+            &nbsp;&nbsp;<input type="number" value="{{totalBonus}}" step="0.5" readonly data-dtype="Number" inputmode="numeric" />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

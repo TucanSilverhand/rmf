@@ -187,13 +187,17 @@
     "skill": {
       "description": "",
       "rank": 0,
-      "category": "none",
+      "category": "",
       "group": "none",
       "classification": "movingManeuver",
       "dpCost": [],
       "boughtByLevel": {},
       "skillRankBonusProgression": "standard",
-      "commonlyUsed": false
+      "commonlyUsed": false,
+      "profBonus": 0,
+      "spec1Bonus": 0,
+      "spec2Bonus": 0,
+      "fromBook": "basic"
     }
   }
 }
