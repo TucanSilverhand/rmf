@@ -21,6 +21,15 @@
                    aria-label="{{localize 'RMF.Actions.Roll'}} {{group.category.name}}">
                   {{group.category.name}}
                 </a>
+                {{#if group.showNoSkill}}
+                  <a class="category-no-skill rollable"
+                     data-action="rollCategoryNoSkill"
+                     data-item-id="{{group.category.id}}"
+                     title="{{group.category.name}} -> Ranks: {{group.category.system.totalRankBonus}} + Stats: {{group.category.system.totalStatsBonus}} + Prof: {{group.category.system.profBonus}} + S1: {{group.category.system.spec1Bonus}} + S2: {{group.category.system.spec2Bonus}} + No skill: -15 --> Total: {{group.noSkillTotal}}"
+                     aria-label="{{localize 'RMF.Actions.Roll'}} {{group.category.name}} ({{localize 'RMF.NoSkill'}})">
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                  </a>
+                {{/if}}
                 <span class="category-total">{{group.category.system.totalBonus}}</span>
               </div>
 

@@ -71,6 +71,12 @@ export class RMFActions {
       permission: "OWNER",
       description: "Roll category check"
     },
+    rollCategoryNoSkill: {
+      handler: this.#rollCategoryNoSkill,
+      requiresTarget: true,
+      permission: "OWNER",
+      description: "Roll category check applying the -15 untrained-skill penalty"
+    },
     
     // Image Selection Actions
     pickImage: {
@@ -423,6 +429,55 @@ export class RMFActions {
 
     if (CONFIG.RMF?.debug) {
       console.log(`RMF DEBUG | Category Roll: ${category.name} = ${roll.total}`);
+    }
+  }
+
+  /**
+   * Roll a category check assuming no trained skill (applies the
+   * canonical -15 penalty on top of the category total bonus).
+   * @private
+   * @static
+   * @async
+   * @param {Event} event - The click event
+   * @param {HTMLElement} target - The clicked element
+   * @this {RMFActorSheet} Sheet instance
+   */
+  static async #rollCategoryNoSkill(event, target) {
+    event.preventDefault();
+
+    const itemId = target.dataset.itemId;
+    if (!itemId) {
+      console.error("RMF | Category-no-skill roll requires item-id");
+      return;
+    }
+
+    const category = this.document.items.get(itemId);
+    if (!category) {
+      console.error(`RMF | Category not found: ${itemId}`);
+      return;
+    }
+
+    const NO_SKILL_PENALTY = -15;
+    const baseBonus = Number(category.system.totalBonus ?? 0) || 0;
+    const bonus = baseBonus + NO_SKILL_PENALTY;
+    const formula = `1d100${bonus >= 0 ? "+" : ""}${bonus}`;
+
+    const roll = await new Roll(formula).evaluate();
+    const noSkillLabel = game.i18n.has("RMF.NoSkill")
+      ? game.i18n.localize("RMF.NoSkill")
+      : "No skill";
+    const label = `${category.name} (${noSkillLabel})`;
+
+    await RMFActions.#postStyledRollMessage({
+      actor: this.document,
+      roll,
+      bonus,
+      flavor: `${label} Roll`,
+      label
+    });
+
+    if (CONFIG.RMF?.debug) {
+      console.log(`RMF DEBUG | Category-no-skill Roll: ${category.name} = ${roll.total}`);
     }
   }
 

@@ -50,6 +50,7 @@ export class RMFActorSheet extends HandlebarsApplicationMixin(foundry.applicatio
       rollDefensive: RMFActions.handlers.rollDefensive,
       rollResistance: RMFActions.handlers.rollResistance,
       rollCategory: RMFActions.handlers.rollCategory,
+      rollCategoryNoSkill: RMFActions.handlers.rollCategoryNoSkill,
       editItem: RMFActions.handlers.editItem,
       deleteItem: RMFActions.handlers.deleteItem,
       createItem: RMFActions.handlers.createItem,
@@ -161,10 +162,19 @@ export class RMFActorSheet extends HandlebarsApplicationMixin(foundry.applicatio
     }
 
     const sortByName = (a, b) => String(a.name || "").localeCompare(String(b.name || ""), game.i18n.lang);
-    context.categoriesWithSkills = categories.map(category => ({
-      category,
-      skills: skillsByCategoryId.get(category.id).sort(sortByName)
-    }));
+    const NO_SKILL_PENALTY = -15;
+    context.categoriesWithSkills = categories.map(category => {
+      const categoryTotal = Number(category.system?.totalBonus ?? 0) || 0;
+      const progression = String(category.system?.categoryRankBonusProgression ?? "").trim().toLowerCase();
+      return {
+        category,
+        noSkillTotal: categoryTotal + NO_SKILL_PENALTY,
+        // The -15 untrained penalty only makes sense for the standard progression.
+        // Non-standard categories don't expose the No-skill action.
+        showNoSkill: progression === "standard",
+        skills: skillsByCategoryId.get(category.id).sort(sortByName)
+      };
+    });
     context.uncategorizedSkills = uncategorized.sort(sortByName);
 
     // Add derived stats

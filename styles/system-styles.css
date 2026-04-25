@@ -1380,10 +1380,40 @@ table th input[type="number"] {
   margin-bottom: var(--rmf-space-6);
 }
 
+/* Two-column flow for category blocks. CSS multi-column balances bloques
+   de distinta altura mejor que grid (cada bloque conserva su altura natural
+   y las columnas se rellenan en cascada). */
 .categories-list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--rmf-space-2);
+  column-count: 2;
+  column-gap: var(--rmf-space-3);
+}
+
+.category-block {
+  break-inside: avoid;
+  margin-bottom: var(--rmf-space-2);
+}
+
+/* Same treatment for uncategorized skills, but keep the indentation styling
+   off because there's no parent category indicator. */
+.categories-container.uncategorized .skills-list {
+  column-count: 2;
+  column-gap: var(--rmf-space-3);
+  display: block;
+  margin-left: 0;
+  padding-left: 0;
+  border-left: 0;
+}
+.categories-container.uncategorized .skill-item {
+  break-inside: avoid;
+  margin-bottom: var(--rmf-space-1);
+}
+
+/* Collapse to a single column when the sheet body is too narrow. */
+@media (max-width: 640px) {
+  .categories-list,
+  .categories-container.uncategorized .skills-list {
+    column-count: 1;
+  }
 }
 
 .category-item {
@@ -1423,6 +1453,26 @@ table th input[type="number"] {
   font-size: var(--rmf-font-size-base);
   font-weight: 600;
   color: var(--rmf-color-text-muted);
+}
+
+.category-no-skill {
+  flex: 0 0 auto;
+  margin: 0 var(--rmf-space-3);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  color: #c0392b;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: var(--rmf-font-size-base);
+  transition: color var(--rmf-transition-fast), transform var(--rmf-transition-fast);
+}
+
+.category-no-skill:hover {
+  color: #e74c3c;
+  transform: scale(1.15);
 }
 
 .category-block {
