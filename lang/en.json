@@ -149,7 +149,9 @@
     },
     "DerivedStats": {
       "HitPoints": "Hit Points",
+      "HitPointsMax": "Total Hits",
       "PowerPoints": "Power Points",
+      "PowerPointsMax": "Total Power",
       "DefensiveBonus": "Defensive Bonus",
       "ArmorPenalty": "Armor Penalty"
     },
@@ -158,7 +160,8 @@
       "Races": "Races",
       "Quantity": "Qty",
       "Weight": "Weight",
-      "Cost": "Cost"
+      "Cost": "Cost",
+      "NamePlaceholder": "Item Name"
     },
     "Actions": {
       "Roll": "Roll",

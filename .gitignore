@@ -40,10 +40,11 @@ yarn.lock
 *.backup
 
 # Otros
-.github/
-Documentation
+/.claude
+/.github
+/Documentation
 /system-*
-tmp/
-*.carlos.txt
+/tmp/
+/*.carlos.txt
 rmf.code-workspace
 *.md

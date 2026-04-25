@@ -21,20 +21,36 @@
  */
 export class RMFActor extends Actor {
   /**
+   * Prepare base data for the actor
+   *
+   * Establishes default in-memory structures (e.g. missing chStats blocks
+   * after a model change) without persisting them. Persisting from
+   * prepare* hooks is unsafe — the actual update happens the next time
+   * the user edits the actor and triggers a normal write.
+   *
+   * @override
+   * @memberof RMFActor
+   */
+  prepareBaseData() {
+    super.prepareBaseData();
+    if (this.type === "character") {
+      this._ensureCharacterDefaults();
+    }
+  }
+
+  /**
    * Prepare derived data for the actor
-   * 
+   *
    * Calculates stat bonuses, secondary attributes, and other derived
    * values based on the character's primary statistics.
-   * 
+   *
    * @override
    * @memberof RMFActor
    */
   prepareDerivedData() {
     super.prepareDerivedData();
-    
-    // Process character-specific calculations
+
     if (this.type === "character") {
-      this._migrateActorData();
       this._calculateStatBonuses();
       this._calculateSecondaryAttributes();
     }
@@ -125,58 +141,67 @@ export class RMFActor extends Actor {
   }
 
   /**
-   * Migrate actor data to current format if needed
-   * 
-   * Ensures that existing actors have the complete stat structure
-   * required by the current version of the system. This handles
-   * backwards compatibility when the data model changes.
-   * 
+   * Ensure the in-memory character system structure is complete.
+   *
+   * Fills in any missing chStats / derivedStats blocks so calculations
+   * can run without guards. Also performs a one-shot legacy rename of
+   * derivedStats `current/total` (pre-v1.0 contract) to Foundry's
+   * standard `value/max` token-bar contract.
+   *
+   * Runs every prepareBaseData; it does not write to the source.
+   *
    * @private
    * @memberof RMFActor
    */
-  _migrateActorData() {
+  _ensureCharacterDefaults() {
     const system = this.system;
-    
-    // Initialize chStats if missing or invalid
-    if (!system.chStats || typeof system.chStats !== 'object') {
-      console.log(`RMF | Migrating actor data: ${this.name}`);
-      
-      // Basic stat structure according to template.json
-      system.chStats = {
-        chAgility: { temp: 35, pot: 35, basic: 0, race: 0, spec: 0, total: 0 },
-        chConstitution: { temp: 35, pot: 35, basic: 0, race: 0, spec: 0, total: 0 },
-        chMemory: { temp: 35, pot: 35, basic: 0, race: 0, spec: 0, total: 0 },
-        chReasoning: { temp: 35, pot: 35, basic: 0, race: 0, spec: 0, total: 0 },
-        chSelfDiscipline: { temp: 35, pot: 35, basic: 0, race: 0, spec: 0, total: 0 },
-        chEmpathy: { temp: 35, pot: 35, basic: 0, race: 0, spec: 0, total: 0 },
-        chIntuition: { temp: 35, pot: 35, basic: 0, race: 0, spec: 0, total: 0 },
-        chPresence: { temp: 35, pot: 35, basic: 0, race: 0, spec: 0, total: 0 },
-        chQuickness: { temp: 35, pot: 35, basic: 0, race: 0, spec: 0, total: 0 },
-        chStrength: { temp: 35, pot: 35, basic: 0, race: 0, spec: 0, total: 0 }
-      };
-      
-      // Update actor with new structure
-      this.updateSource({ system: { chStats: system.chStats } });
+    const defaultStat = () => ({ temp: 35, pot: 35, basic: 0, race: 0, spec: 0, total: 0 });
+
+    if (!system.chStats || typeof system.chStats !== "object") {
+      system.chStats = {};
     }
-    
-    // Verify each stat has complete structure
-    const requiredStats = ['chAgility', 'chConstitution', 'chMemory', 'chReasoning', 
-                          'chSelfDiscipline', 'chEmpathy', 'chIntuition', 'chPresence', 
-                          'chQuickness', 'chStrength'];
-    
+    const requiredStats = [
+      "chAgility", "chConstitution", "chMemory", "chReasoning",
+      "chSelfDiscipline", "chEmpathy", "chIntuition", "chPresence",
+      "chQuickness", "chStrength"
+    ];
     for (const statKey of requiredStats) {
-      if (!system.chStats[statKey] || typeof system.chStats[statKey] !== 'object') {
-        system.chStats[statKey] = { temp: 35, pot: 35, basic: 0, race: 0, spec: 0, total: 0 };
+      if (!system.chStats[statKey] || typeof system.chStats[statKey] !== "object") {
+        system.chStats[statKey] = defaultStat();
       }
     }
-    
-    // Initialize derived stats if missing
-    if (!system.derivedStats) {
-      system.derivedStats = {
-        hitPoints: { base: 50, constitution: 0, selfDiscipline: 0, total: 50, current: 50 },
-        powerPoints: { empathy: 0, intuition: 0, presence: 0, total: 0, current: 0 },
-        resistances: { essence: 0, channeling: 0, mentalism: 0, poison: 0, disease: 0 }
-      };
+
+    if (!system.derivedStats || typeof system.derivedStats !== "object") {
+      system.derivedStats = {};
+    }
+    const ds = system.derivedStats;
+
+    // Legacy current/total → value/max rename (in-memory only).
+    if (ds.hitPoints) {
+      if (ds.hitPoints.value === undefined && ds.hitPoints.current !== undefined) {
+        ds.hitPoints.value = ds.hitPoints.current;
+      }
+      if (ds.hitPoints.max === undefined && ds.hitPoints.total !== undefined) {
+        ds.hitPoints.max = ds.hitPoints.total;
+      }
+    }
+    if (ds.powerPoints) {
+      if (ds.powerPoints.value === undefined && ds.powerPoints.current !== undefined) {
+        ds.powerPoints.value = ds.powerPoints.current;
+      }
+      if (ds.powerPoints.max === undefined && ds.powerPoints.total !== undefined) {
+        ds.powerPoints.max = ds.powerPoints.total;
+      }
+    }
+
+    if (!ds.hitPoints) {
+      ds.hitPoints = { base: 50, constitution: 0, selfDiscipline: 0, max: 50, value: 50 };
+    }
+    if (!ds.powerPoints) {
+      ds.powerPoints = { empathy: 0, intuition: 0, presence: 0, max: 0, value: 0 };
+    }
+    if (!ds.resistances) {
+      ds.resistances = { essence: 0, channeling: 0, mentalism: 0, poison: 0, disease: 0 };
     }
   }
 
@@ -230,49 +255,39 @@ export class RMFActor extends Actor {
   _calculateSecondaryAttributes() {
     const stats = this.system.chStats;
     const system = this.system;
-    
-    // Verify stats exist before calculating
-    if (!stats) {
-      return; // Migration should have handled this
-    }
-    
-    // Initialize derived stats structure if missing
-    system.derivedStats = system.derivedStats || {
-      hitPoints: { base: 50, constitution: 0, selfDiscipline: 0, total: 50, current: 50 },
-      powerPoints: { empathy: 0, intuition: 0, presence: 0, total: 0, current: 0 },
-      resistances: { essence: 0, channeling: 0, mentalism: 0, poison: 0, disease: 0 }
-    };
 
-    const previousHPCurrent = Number(system.derivedStats?.hitPoints?.current);
-    const previousPPCurrent = Number(system.derivedStats?.powerPoints?.current);
-    
+    if (!stats) return;
+
+    // _ensureCharacterDefaults guarantees derivedStats exists.
+    const previousHPValue = Number(system.derivedStats.hitPoints?.value);
+    const previousPPValue = Number(system.derivedStats.powerPoints?.value);
+
     // Calculate hit points using RoleMaster formula
     if (stats.chConstitution && stats.chSelfDiscipline) {
       const coBonus = stats.chConstitution.total || 0;
       const sdBonus = stats.chSelfDiscipline.total || 0;
-      const totalHP = 50 + coBonus + Math.floor(sdBonus / 2);
-      const currentHP = Number.isFinite(previousHPCurrent)
-        ? Math.max(0, Math.min(previousHPCurrent, totalHP))
-        : totalHP;
+      const maxHP = 50 + coBonus + Math.floor(sdBonus / 2);
+      const valueHP = Number.isFinite(previousHPValue)
+        ? Math.max(0, Math.min(previousHPValue, maxHP))
+        : maxHP;
       system.derivedStats.hitPoints = {
         base: 50,
         constitution: coBonus,
         selfDiscipline: Math.floor(sdBonus / 2),
-        total: totalHP,
-        current: currentHP
+        max: maxHP,
+        value: valueHP
       };
     } else {
-      // Default values if stats are not available
       const defaultHP = 50;
-      const currentHP = Number.isFinite(previousHPCurrent)
-        ? Math.max(0, Math.min(previousHPCurrent, defaultHP))
+      const valueHP = Number.isFinite(previousHPValue)
+        ? Math.max(0, Math.min(previousHPValue, defaultHP))
         : defaultHP;
       system.derivedStats.hitPoints = {
         base: defaultHP,
         constitution: 0,
         selfDiscipline: 0,
-        total: defaultHP,
-        current: currentHP
+        max: defaultHP,
+        value: valueHP
       };
     }
 
@@ -281,26 +296,25 @@ export class RMFActor extends Actor {
       const emBonus = stats.chEmpathy.total || 0;
       const inBonus = stats.chIntuition.total || 0;
       const prBonus = stats.chPresence.total || 0;
-      const totalPP = emBonus + inBonus + prBonus;
-      const currentPP = Number.isFinite(previousPPCurrent)
-        ? Math.max(0, Math.min(previousPPCurrent, totalPP))
-        : totalPP;
-      
+      const maxPP = emBonus + inBonus + prBonus;
+      const valuePP = Number.isFinite(previousPPValue)
+        ? Math.max(0, Math.min(previousPPValue, maxPP))
+        : maxPP;
+
       system.derivedStats.powerPoints = {
         empathy: emBonus,
         intuition: inBonus,
         presence: prBonus,
-        total: totalPP,
-        current: currentPP
+        max: maxPP,
+        value: valuePP
       };
     } else {
-      // Default values if stats are not available
       system.derivedStats.powerPoints = {
         empathy: 0,
         intuition: 0,
         presence: 0,
-        total: 0,
-        current: 0
+        max: 0,
+        value: 0
       };
     }
 
@@ -425,14 +439,14 @@ export class RMFActor extends Actor {
       }
       
       data.stats = rollStats;
-      
+
       // Add derived attributes for roll formulas
       if (this.system.derivedStats) {
-        data.hp = this.system.derivedStats.hitPoints?.total || 0;
-        data.pp = this.system.derivedStats.powerPoints?.total || 0;
+        data.hp = this.system.derivedStats.hitPoints?.max || 0;
+        data.pp = this.system.derivedStats.powerPoints?.max || 0;
       }
     }
-    
+
     return data;
   }
 
@@ -472,9 +486,9 @@ export class RMFActor extends Actor {
     // Create chat message if requested
     if (options.chatMessage !== false) {
       const statName = game.i18n.localize(`RMF.Stats.${statKey}`) || statKey;
-      
-      ChatMessage.create({
-        speaker: ChatMessage.getSpeaker({ actor: this }),
+
+      ChatMessage.implementation.create({
+        speaker: ChatMessage.implementation.getSpeaker({ actor: this }),
         content: await foundry.applications.handlebars.renderTemplate("systems/rmf/templates/chat/stat-roll.hbs", {
           actor: this,
           statName: statName,
@@ -509,20 +523,20 @@ export class RMFActor extends Actor {
     const hp = this.system.derivedStats?.hitPoints;
     if (!hp) return;
 
-    const currentHP = Number(hp.current ?? hp.total ?? 0) || 0;
-    const newTotal = Math.max(0, currentHP - amount);
-    
+    const currentHP = Number(hp.value ?? hp.max ?? 0) || 0;
+    const newValue = Math.max(0, currentHP - amount);
+
     await this.update({
-      "system.derivedStats.hitPoints.current": newTotal
+      "system.derivedStats.hitPoints.value": newValue
     });
 
     if (options.chatMessage !== false) {
-      ChatMessage.create({
-        speaker: ChatMessage.getSpeaker({ actor: this }),
+      ChatMessage.implementation.create({
+        speaker: ChatMessage.implementation.getSpeaker({ actor: this }),
         content: game.i18n.format("RMF.Messages.DamageApplied", {
           name: this.name,
           damage: amount,
-          remaining: newTotal
+          remaining: newValue
         })
       });
     }

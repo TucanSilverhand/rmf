@@ -5,13 +5,13 @@
  * @extends {HandlebarsApplicationMixin(foundry.applications.sheets.ItemSheetV2)}
  */
 const { HandlebarsApplicationMixin } = foundry.applications.api;
-import { buildEntityTag, initHeaderAutoHeight, wireTabs, setActiveTab as utilSetActiveTab } from "./utils/sheet-helpers.mjs";
+import { buildEntityTag, coerceInputValue, initHeaderAutoHeight, wireTabs, setActiveTab as utilSetActiveTab, bindChangeListeners } from "./utils/sheet-helpers.mjs";
 import { RMFActions } from "./actions.mjs";
 
 export class RMFCategorySheet extends HandlebarsApplicationMixin(foundry.applications.sheets.ItemSheetV2) {
   static DEFAULT_OPTIONS = {
     ...super.DEFAULT_OPTIONS,
-    form: { submitOnChange: true, closeOnSubmit: false },
+    form: { submitOnChange: false, closeOnSubmit: false },
     classes: ["rmf", "sheet", "item", "category"],
     window: {
       icon: "fas fa-layer-group",
@@ -249,12 +249,14 @@ export class RMFCategorySheet extends HandlebarsApplicationMixin(foundry.applica
     super._onFirstRender?.(context, options);
     this._setupTabs(this.element);
     this._initHeaderAutoHeight(this.element);
+    this._bindChangeListeners(this.element);
   }
 
   _onRender(context, options) {
     super._onRender?.(context, options);
     this._setupTabs(this.element);
     if (!this._headerResizeObserver) this._initHeaderAutoHeight(this.element);
+    this._bindChangeListeners(this.element);
     const element = this.element?.querySelector ? this.element : null;
     if (!element) return;
 
@@ -262,6 +264,30 @@ export class RMFCategorySheet extends HandlebarsApplicationMixin(foundry.applica
     const existing = element.querySelector(".sheet-tabs .item.active")?.dataset?.tab;
     const active = this._activeTab || existing || fallbackTab;
     if (active) this._setActiveTab(active, element);
+  }
+
+  _bindChangeListeners(root) {
+    const element = root?.querySelector ? root : this.element;
+    if (!element) return;
+    bindChangeListeners(element, this._onFieldChange.bind(this));
+  }
+
+  async _onFieldChange(event) {
+    const target = event.target;
+    const name = target?.name || target?.getAttribute?.("name");
+    if (!name) return;
+    const { value } = coerceInputValue(target);
+    const tag = buildEntityTag(this.document);
+    if (CONFIG?.RMF?.debug) {
+      console.debug("RMF DEBUG | CategorySheet granular update", { item: tag, name, value });
+    }
+    console.log(`RMF | ${tag} Update ${name} => ${value}`);
+    try {
+      await this.document.update({ [name]: value });
+    } catch (err) {
+      console.error("RMF ERROR | Category update failed", { name, err });
+      ui.notifications?.error(err?.message || "Update failed");
+    }
   }
 
   // Action handler removed - now using centralized RMFActions

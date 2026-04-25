@@ -5,26 +5,26 @@
         <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}" width="64" height="64"/>
         <div class="header-fields">
             <h1 class="item-name">
-                <input name="name" type="text" value="{{item.name}}" placeholder="Nombre del Objeto"/>
+                <input name="name" type="text" value="{{item.name}}" placeholder="{{localize 'RMF.Items.NamePlaceholder'}}"/>
             </h1>
             <div class="item-type">
-                <label>Tipo:</label>
+                <label>{{localize "RMF.Common.Type"}}:</label>
                 <select name="type" disabled>
-                    <option value="equipment" {{#eq item.type "equipment"}}selected{{/eq}}>Equipamiento</option>
-                    <option value="race" {{#eq item.type "race"}}selected{{/eq}}>Raza</option>
+                    <option value="equipment" {{#if (eq item.type "equipment")}}selected{{/if}}>{{localize "TYPES.Item.equipment"}}</option>
+                    <option value="race" {{#if (eq item.type "race")}}selected{{/if}}>{{localize "TYPES.Item.race"}}</option>
                 </select>
             </div>
             <div class="basic-props">
                 <div class="resource">
-                    <label>Cantidad:</label>
+                    <label>{{localize "RMF.Items.Quantity"}}:</label>
                     <input type="number" name="system.quantity" value="{{system.quantity}}" min="0"/>
                 </div>
                 <div class="resource">
-                    <label>Peso:</label>
+                    <label>{{localize "RMF.Items.Weight"}}:</label>
                     <input type="number" name="system.weight" value="{{system.weight}}" step="0.1" min="0"/>
                 </div>
                 <div class="resource">
-                    <label>Precio:</label>
+                    <label>{{localize "RMF.Items.Cost"}}:</label>
                     <input type="number" name="system.cost" value="{{system.cost}}" step="0.01" min="0"/>
                 </div>
             </div>
@@ -33,15 +33,19 @@
 
     {{!-- Sheet Tab Navigation --}}
     <nav class="sheet-tabs tabs" data-group="primary">
-        <a class="item" data-tab="description">Descripción</a>
+        <a class="item" data-tab="description">{{localize "RMF.Description"}}</a>
     </nav>
 
     <section class="sheet-body">
         {{!-- Description Tab --}}
         <div class="tab description" data-group="primary" data-tab="description">
             <div class="form-group">
-                <label>Descripción</label>
-                {{editor system.description target="system.description" button=true owner=owner editable=editable}}
+                <label>{{localize "RMF.Description"}}</label>
+                {{#if isEditable}}
+                    <prose-mirror name="system.description" value="{{system.description}}" toggled="true"></prose-mirror>
+                {{else}}
+                    <div class="description-preview ProseMirror">{{{enrichedDescription}}}</div>
+                {{/if}}
             </div>
         </div>
     </section>

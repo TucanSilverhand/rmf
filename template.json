@@ -106,15 +106,15 @@
           "base": 50,
           "constitution": 0,
           "selfDiscipline": 0,
-          "total": 50,
-          "current": 50
+          "max": 50,
+          "value": 50
         },
         "powerPoints": {
           "empathy": 0,
           "intuition": 0,
           "presence": 0,
-          "total": 0,
-          "current": 0
+          "max": 0,
+          "value": 0
         },
         "resistances": {
           "essence": 0,

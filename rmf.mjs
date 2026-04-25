@@ -147,6 +147,30 @@ Hooks.once('init', async function() {
 Hooks.once("ready", _initializeReadyTimeConfigs);
 
 /**
+ * Dynamically import the debug module so its global side-effect
+ * (globalThis.RMF_D) only exists when debug mode is on.
+ * @returns {Promise<void>}
+ * @private
+ */
+async function _loadDebugModule() {
+  if (globalThis.RMF_D) return;
+  await import("./module/debug.mjs");
+  console.log("RMF | Debug module loaded (RMF_D available)");
+}
+
+/**
+ * Drop the debug global when the user disables debug mode.
+ * The ES module itself stays cached by the browser (modules cannot
+ * be unloaded), but the public API surface goes away.
+ * @private
+ */
+function _unloadDebugModule() {
+  if (!globalThis.RMF_D) return;
+  delete globalThis.RMF_D;
+  console.log("RMF | Debug module disabled");
+}
+
+/**
  * Register all system settings with FoundryVTT
  * 
  * Configures various system-wide settings including debug mode,
@@ -157,7 +181,9 @@ Hooks.once("ready", _initializeReadyTimeConfigs);
  * @function _registerSystemSettings
  */
 function _registerSystemSettings() {
-  // Debug mode toggle for development and troubleshooting
+  // Debug mode toggle for development and troubleshooting.
+  // When enabled, dynamically loads module/debug.mjs which exposes
+  // globalThis.RMF_D for in-console diagnostics.
   game.settings.register("rmf", "debugMode", {
     name: "RMF.Settings.DebugMode.Name",
     hint: "RMF.Settings.DebugMode.Hint",
@@ -165,19 +191,22 @@ function _registerSystemSettings() {
     config: true,
     type: Boolean,
     default: false,
-    onChange: value => {
+    onChange: async value => {
       CONFIG.RMF.debug = value;
+      if (value) await _loadDebugModule();
+      else _unloadDebugModule();
     }
   });
 
-  // Configurable initiative formula for combat
+  // Configurable initiative formula for combat. Uses @stats.<name>
+  // because RMFActor.getRollData exposes stats under data.stats.*.
   game.settings.register("rmf", "initiativeFormula", {
-    name: "RMF.Settings.InitiativeFormula.Name", 
+    name: "RMF.Settings.InitiativeFormula.Name",
     hint: "RMF.Settings.InitiativeFormula.Hint",
     scope: "world",
     config: true,
     type: String,
-    default: "1d100 + @quickness",
+    default: "1d100 + @stats.quickness",
     onChange: value => {
       CONFIG.Combat.initiative.formula = value;
     }
@@ -402,20 +431,23 @@ async function _registerHandlebarsPartials() {
 
 /**
  * Initialize configurations that require settings to be available
- * 
+ *
  * Performs final system configuration that depends on user settings
- * being loaded and available. This runs during the 'ready' hook.
- * 
+ * being loaded and available. This runs during the 'ready' hook and
+ * is async so we can lazy-load module/debug.mjs only when needed.
+ *
  * @private
+ * @async
  * @function _initializeReadyTimeConfigs
  */
-function _initializeReadyTimeConfigs() {
+async function _initializeReadyTimeConfigs() {
   // Apply initiative formula from user settings
   const initiativeFormula = game.settings.get("rmf", "initiativeFormula");
   CONFIG.Combat.initiative.formula = initiativeFormula;
 
-  // Apply debug mode setting
+  // Apply debug mode setting and lazy-load debug helpers when enabled
   CONFIG.RMF.debug = game.settings.get("rmf", "debugMode");
+  if (CONFIG.RMF.debug) await _loadDebugModule();
 }
 
 /**

@@ -41,23 +41,21 @@ export class RMFHooks {
    * @static
    */
   static initialize() {
-    // Lifecycle hooks
-    Hooks.once("init", this.#onInit.bind(this));
+    // The init/ready callbacks are owned by rmf.mjs because RMFHooks.initialize()
+    // itself runs inside the init hook; any further Hooks.once("init", ...) added
+    // here would never fire. Only register hooks that dispatch later.
     Hooks.once("ready", this.#onReady.bind(this));
-    
+
     // Document lifecycle hooks
     Hooks.on("createActor", this.#onCreateActor.bind(this));
     Hooks.on("preUpdateActor", this.#onPreUpdateActor.bind(this));
     Hooks.on("updateActor", this.#onUpdateActor.bind(this));
     Hooks.on("updateToken", this.#onUpdateToken.bind(this));
-    
+
     // UI hooks
     Hooks.on("renderSettingsConfig", this.#onRenderSettingsConfig.bind(this));
-    // Support both chat render hooks for compatibility across Foundry chat render paths.
+    // v13 replaces renderChatMessage with renderChatMessageHTML.
     Hooks.on("renderChatMessageHTML", this.#onRenderChatMessage.bind(this));
-    Hooks.on("renderChatMessage", this.#onRenderChatMessage.bind(this));
-    
-    // Additional hooks can be added here as needed
   }
 
   // =====================
@@ -65,39 +63,18 @@ export class RMFHooks {
   // =====================
 
   /**
-   * System initialization hook
-   * 
-   * Performs core system setup including document registration,
-   * sheet registration, settings, and template preloading.
-   * 
-   * @private
-   * @static
-   * @async
-   */
-  static async #onInit() {
-    console.log("RMF | Initializing RoleMaster Fantasy System v13.341");
-    
-    // System configuration is handled in rmf.mjs
-    // This hook is reserved for any additional init-time operations
-    
-    if (CONFIG.RMF?.debug) {
-      console.log("RMF DEBUG | Init hook completed");
-    }
-  }
-
-  /**
    * System ready hook
-   * 
+   *
    * Executes after all systems and modules are loaded. Sets up
    * global API endpoints and performs post-initialization tasks.
-   * 
+   *
    * @private
    * @static
    * @async
    */
   static async #onReady() {
     console.log("RMF | System ready");
-    
+
     // Expose import functions to global game object
     game.rmf = game.rmf || {};
     game.rmf.importRaces = importRaces;
@@ -106,11 +83,11 @@ export class RMFHooks {
     game.rmf.syncCategoriesToCompendium = syncCategoriesToCompendium;
     game.rmf.syncRacesToCompendium = syncRacesToCompendium;
     game.rmf.syncSkillsToCompendium = syncSkillsToCompendium;
-    
+
     // Log system information
     console.log(`RMF | Version: ${game.system.version}`);
     console.log(`RMF | FoundryVTT: ${game.version}`);
-    
+
     if (CONFIG.RMF?.debug) {
       console.log("RMF DEBUG | Ready hook completed");
       console.log("RMF DEBUG | Global API exposed:", Object.keys(game.rmf));
