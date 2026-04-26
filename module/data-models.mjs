@@ -91,6 +91,43 @@ export class RMFActor extends Actor {
       for (const item of this.items) {
         if (item.type === "skill") item.prepareDerivedData?.();
       }
+      // Skills are now up-to-date — override HP/PP max from the relevant skills.
+      this._applySkillBasedDerivedStats();
+    }
+  }
+
+  /**
+   * Override derivedStats.hitPoints.max and derivedStats.powerPoints.max
+   * with the totalBonus of the "Body Development" and "Power Point Development"
+   * skills respectively. Falls back to 0 when the skill is missing.
+   * `value` is reclamped to [0, max] so it never exceeds the new max.
+   *
+   * @private
+   * @memberof RMFActor
+   */
+  _applySkillBasedDerivedStats() {
+    const ds = this.system?.derivedStats;
+    if (!ds) return;
+
+    const findSkill = (name) => this.items.find(i => i.type === "skill" && i.name === name);
+    const skillTotal = (skill) => Number(skill?.system?.totalBonus ?? 0) || 0;
+
+    if (ds.hitPoints) {
+      const max = skillTotal(findSkill("Body Development"));
+      const prev = Number(ds.hitPoints.value);
+      ds.hitPoints.max = max;
+      ds.hitPoints.value = Number.isFinite(prev)
+        ? Math.max(0, Math.min(prev, max))
+        : Math.max(0, max);
+    }
+
+    if (ds.powerPoints) {
+      const max = skillTotal(findSkill("Power Point Development"));
+      const prev = Number(ds.powerPoints.value);
+      ds.powerPoints.max = max;
+      ds.powerPoints.value = Number.isFinite(prev)
+        ? Math.max(0, Math.min(prev, max))
+        : Math.max(0, max);
     }
   }
 
@@ -617,6 +654,9 @@ export class RMFItem extends Item {
       case "skill":
         this._prepareSkillData();
         break;
+      case "realm":
+        this._prepareRealmData();
+        break;
     }
   }
 
@@ -756,6 +796,24 @@ export class RMFItem extends Item {
     const rawGroup = typeof system.group === 'string' ? system.group.trim() : '';
     system.group = allowedGroups.has(rawGroup) ? rawGroup : 'none';
 
+    // The "Power Point Development" category inherits its stat slots from the
+    // realm item assigned to the parent actor. Empty slots in the realm map
+    // through verbatim so they don't contribute to the stats sum.
+    if (this.name === "Power Point Development") {
+      const actor = this.parent;
+      const realmItem = actor?.documentName === "Actor"
+        ? actor.items.find(i => i.type === "realm")
+        : null;
+      const rb = realmItem?.system?.statBonus;
+      if (rb && typeof rb === "object") {
+        system.statBonus = {
+          stat1: typeof rb.stat1 === "string" ? rb.stat1 : "",
+          stat2: typeof rb.stat2 === "string" ? rb.stat2 : "",
+          stat3: typeof rb.stat3 === "string" ? rb.stat3 : ""
+        };
+      }
+    }
+
     // Calculate totalBonus for display in actor sheets
     const totalBoughtRanks = this._computeTotalBoughtRanks(system.boughtByLevel);
     const totalRanks = totalBoughtRanks + (system.freeRanks || 0);
@@ -887,12 +945,50 @@ export class RMFItem extends Item {
   }
 
   /**
+   * Prepare derived data for a realm item.
+   *
+   * Realms map a character's magical realm to one of three
+   * Power Point progression tracks. Storage is the user-facing
+   * label ("Essence" | "Channeling" | "Mentalism") and an exposed
+   * derived field `powerPointsField` resolves to the matching
+   * field name on race items (`ppEssence` | `ppChanneling` | `ppMentalism`).
+   *
+   * @private
+   * @memberof RMFItem
+   */
+  _prepareRealmData() {
+    const system = this.system || (this.system = {});
+    if (typeof system.description !== "string") system.description = "";
+    if (typeof system.fromBook !== "string") system.fromBook = "basic";
+
+    const allowed = ["Essence", "Channeling", "Mentalism"];
+    const raw = typeof system.powerPointsType === "string" ? system.powerPointsType.trim() : "";
+    const match = allowed.find(v => v.toLowerCase() === raw.toLowerCase());
+    system.powerPointsType = match ?? "Essence";
+
+    // Convenience derived: the race-item progression field this realm consumes.
+    system.powerPointsField = `pp${system.powerPointsType}`;
+
+    // Stat bonus: three slots referencing actor chStats keys (full form chXxx).
+    if (!system.statBonus || typeof system.statBonus !== "object") {
+      system.statBonus = { stat1: "chPresence", stat2: "chEmpathy", stat3: "chIntuition" };
+    }
+    for (const slot of ["stat1", "stat2", "stat3"]) {
+      const value = system.statBonus[slot];
+      system.statBonus[slot] = typeof value === "string" ? value : "";
+    }
+  }
+
+  /**
    * Resolve the override progression table for skills with the "special"
-   * progression. Currently the only special-cased mapping is:
-   *   skill name === "Body Development" → race.bodyDevelopmentTable
-   * Any other skill (or absent race) yields null, which makes the rank-bonus
-   * helpers fall back to the default zero-table for "special".
-   * Power-point development skills will be added later (per realm).
+   * progression. Special-cased mappings:
+   *   - skill name === "Body Development" → race.bodyDevelopmentTable
+   *   - skill name === "Power Point Development" →
+   *       race[`${realm.powerPointsField}Table`]
+   *       (realm.powerPointsField is "ppEssence"|"ppChanneling"|"ppMentalism",
+   *        derived in _prepareRealmData from realm.powerPointsType)
+   * Any other skill (or absent race / absent realm) yields null, which makes
+   * the rank-bonus helpers fall back to the default zero-table for "special".
    *
    * @private
    * @param {string} progression
@@ -902,9 +998,21 @@ export class RMFItem extends Item {
     if (progression !== "special") return null;
     const actor = this.parent;
     if (actor?.documentName !== "Actor") return null;
-    if (this.name !== "Body Development") return null;
     const raceItem = actor.items.find(i => i.type === "race");
-    return raceItem?.system?.bodyDevelopmentTable ?? null;
+    if (!raceItem) return null;
+
+    if (this.name === "Body Development") {
+      return raceItem.system?.bodyDevelopmentTable ?? null;
+    }
+
+    if (this.name === "Power Point Development") {
+      const realmItem = actor.items.find(i => i.type === "realm");
+      const field = realmItem?.system?.powerPointsField;
+      if (typeof field !== "string" || !field) return null;
+      return raceItem.system?.[`${field}Table`] ?? null;
+    }
+
+    return null;
   }
 
   // Removed: race application helpers (applyToActor) as part of Option B cleanup

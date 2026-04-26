@@ -248,6 +248,28 @@
   font-size: 24px;
 }
 
+.realm-sheet-root .sheet-header .header-row {
+  grid-template-columns: 64px 1fr;
+  align-items: center;
+}
+.realm-sheet-root .sheet-header .header-fields { width: 100%; }
+.realm-sheet-root .sheet-header .item-name {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+.realm-sheet-root .sheet-header .item-name input {
+  width: 100%;
+  height: 40px;
+  box-sizing: border-box;
+  font-size: 24px;
+}
+
+.realm-sheet-root .realm-body { padding: var(--rmf-space-3); }
+.realm-sheet-root .realm-body .form-group + .form-group { margin-top: var(--rmf-space-3); }
+
 .category-sheet-root .description-preview {
   background: var(--rmf-color-bg-alt);
   border: 1px solid var(--rmf-color-border);

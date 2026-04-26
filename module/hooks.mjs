@@ -19,7 +19,8 @@ import {
   importSkills,
   syncCategoriesToCompendium,
   syncRacesToCompendium,
-  syncSkillsToCompendium
+  syncSkillsToCompendium,
+  syncRealmsToCompendium
 } from "./importers.mjs";
 
 /**
@@ -51,6 +52,8 @@ export class RMFHooks {
     Hooks.on("preUpdateActor", this.#onPreUpdateActor.bind(this));
     Hooks.on("updateActor", this.#onUpdateActor.bind(this));
     Hooks.on("updateToken", this.#onUpdateToken.bind(this));
+    Hooks.on("createItem", this.#onCreateItem.bind(this));
+    Hooks.on("updateItem", this.#onUpdateItem.bind(this));
 
     // UI hooks
     Hooks.on("renderSettingsConfig", this.#onRenderSettingsConfig.bind(this));
@@ -83,6 +86,7 @@ export class RMFHooks {
     game.rmf.syncCategoriesToCompendium = syncCategoriesToCompendium;
     game.rmf.syncRacesToCompendium = syncRacesToCompendium;
     game.rmf.syncSkillsToCompendium = syncSkillsToCompendium;
+    game.rmf.syncRealmsToCompendium = syncRealmsToCompendium;
 
     // Log system information
     console.log(`RMF | Version: ${game.system.version}`);
@@ -224,15 +228,89 @@ export class RMFHooks {
   static async #onUpdateToken(token, updates, options, userId) {
     // Only process if actor data was updated
     if (!updates.actorData) return;
-    
+
     const actor = token.actor;
     if (!actor || actor.type !== "character") return;
-    
+
     // Trigger derived data recalculation
     actor.prepareDerivedData();
-    
+
     if (CONFIG.RMF?.debug) {
       console.log(`RMF DEBUG | Token actor data updated: ${actor.name}`);
+    }
+  }
+
+  /**
+   * Item creation hook — sync PP Dev category statBonus when a realm is added.
+   *
+   * @private
+   * @static
+   * @async
+   */
+  static async #onCreateItem(item, options, userId) {
+    if (game.userId !== userId) return;
+    const actor = item.parent;
+    if (!actor || actor.documentName !== "Actor") return;
+
+    // Realm added → sync PP Dev (if it exists)
+    if (item.type === "realm") {
+      await this.#syncPowerPointDevelopmentStatBonus(actor, item);
+      return;
+    }
+
+    // PP Dev category added → sync from existing realm (if any)
+    if (item.type === "category" && item.name === "Power Point Development") {
+      const realmItem = actor.items.find(i => i.type === "realm");
+      if (realmItem) await this.#syncPowerPointDevelopmentStatBonus(actor, realmItem);
+    }
+  }
+
+  /**
+   * Item update hook — sync PP Dev category statBonus when a realm changes.
+   *
+   * @private
+   * @static
+   * @async
+   */
+  static async #onUpdateItem(item, changes, options, userId) {
+    if (game.userId !== userId) return;
+    if (item.type !== "realm") return;
+    const actor = item.parent;
+    if (!actor || actor.documentName !== "Actor") return;
+    // Only resync when the realm's statBonus actually changed
+    if (!foundry.utils.hasProperty(changes, "system.statBonus")) return;
+    await this.#syncPowerPointDevelopmentStatBonus(actor, item);
+  }
+
+  /**
+   * Persist the realm's statBonus into the actor's "Power Point Development"
+   * category, if present. Skips the write when values already match to avoid
+   * spurious update loops.
+   *
+   * @private
+   * @static
+   * @async
+   * @param {Actor} actor
+   * @param {Item} realmItem
+   */
+  static async #syncPowerPointDevelopmentStatBonus(actor, realmItem) {
+    const ppDev = actor.items.find(i => i.type === "category" && i.name === "Power Point Development");
+    if (!ppDev) return;
+
+    const rb = realmItem.system?.statBonus ?? {};
+    const next = {
+      stat1: typeof rb.stat1 === "string" ? rb.stat1 : "",
+      stat2: typeof rb.stat2 === "string" ? rb.stat2 : "",
+      stat3: typeof rb.stat3 === "string" ? rb.stat3 : ""
+    };
+
+    const cur = ppDev.system?.statBonus ?? {};
+    if (cur.stat1 === next.stat1 && cur.stat2 === next.stat2 && cur.stat3 === next.stat3) return;
+
+    await ppDev.update({ "system.statBonus": next });
+
+    if (CONFIG.RMF?.debug) {
+      console.log(`RMF DEBUG | Synced PP Dev statBonus from realm '${realmItem.name}' on ${actor.name}`, next);
     }
   }
 

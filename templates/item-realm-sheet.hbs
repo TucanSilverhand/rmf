@@ -1,0 +1,18 @@
+{{!--
+  RMF Realm Item Sheet Template - FoundryVTT v13.341
+  ApplicationV2 with HandlebarsApplicationMixin
+  Single-pane sheet (no tabs): description + powerPointsType.
+--}}
+
+<div class="{{cssClass}} rmf-item-sheet realm-sheet-root">
+  <div class="sheet-main-container realm-sheet">
+    <div class="sheet-content">
+      {{> "parts/item-realm-header"}}
+      <section class="sheet-body">
+        <div class="sheet-body-inner">
+          {{> "parts/item-realm-body"}}
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

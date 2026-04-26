@@ -1,0 +1,29 @@
+{{!--
+  RMF Realm Item Sheet Header Partial
+  Realm name and image.
+--}}
+
+<header class="sheet-header">
+  <div class="header-row">
+    <img class="profile-img"
+         src="{{item.img}}"
+         alt="{{item.name}}"
+         data-edit="img"
+         data-action="pickImage"
+         title="{{item.name}}"
+         height="64"
+         width="64"/>
+
+    <div class="header-fields">
+      <h1 class="item-name">
+        <label class="sr-only" for="realm_name">{{localize "RMF.Realm.NamePlaceholder"}}:</label>
+        <input id="realm_name"
+               name="name"
+               type="text"
+               value="{{item.name}}"
+               placeholder="{{localize 'RMF.Realm.NamePlaceholder'}}"
+               autocomplete="off"/>
+      </h1>
+    </div>
+  </div>
+</header>

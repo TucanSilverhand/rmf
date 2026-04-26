@@ -609,13 +609,13 @@
       "price3": 9
     },
     "group": "None",
-    "categoryRankBonusProgression": "standard",
+    "categoryRankBonusProgression": "nonstandard",
     "freeRanks": 0,
     "ranks": 0,
     "statBonus": {
-      "stat1": "chEmpathy",
-      "stat2": "chEmpathy",
-      "stat3": "chEmpathy"
+      "stat1": "",
+      "stat2": "",
+      "stat3": ""
     },
     "profBonus": 0,
     "spec1Bonus": 0,

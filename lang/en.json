@@ -10,6 +10,7 @@
     "RaceSheet": "RMF Race Sheet",
     "SkillSheet": "RMF Skill Sheet",
     "CategorySheet": "RMF Category Sheet",
+    "RealmSheet": "RMF Realm Sheet",
     "CharacterName": "Character Name",
     "Level": "Level",
     "Profession": "Profession",
@@ -214,6 +215,7 @@
       "NoActorSelected": "No actor selected",
       "StatNotFound": "Stat {stat} not found",
       "AlreadyHasRace": "You already have a race assigned",
+      "AlreadyHasRealm": "You already have a realm assigned",
       "AlreadyHasCategory": "This category is already assigned"
     },
     "Dialogs": {
@@ -320,6 +322,15 @@
         "Urban": "Urban",
         "Weapon": "Weapon"
       }
+    },
+    "Realm": {
+      "NamePlaceholder": "Realm Name",
+      "PowerPointsType": "Power Points Type",
+      "PowerPointsTypes": {
+        "Essence": "Essence",
+        "Channeling": "Channeling",
+        "Mentalism": "Mentalism"
+      }
     }
   },
   "TYPES": {
@@ -330,7 +341,8 @@
       "equipment": "Equipment",
       "race": "Race",
       "skill": "Skill",
-      "category": "Category"
+      "category": "Category",
+      "realm": "Realm"
     }
   }
 }

@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Essence",
+    "img": "icons/magic/holy/yin-yang-balance-symbol.webp",
+    "description": "Realm of Essence — channels the raw arcane fabric of the world. Power Points scale with the race's ppEssence progression.",
+    "powerPointsType": "Essence",
+    "statBonus": {
+      "stat1": "chEmpathy",
+      "stat2": "",
+      "stat3": ""
+    },
+    "fromBook": "basic"
+  },
+  {
+    "name": "Channeling",
+    "img": "icons/magic/holy/yin-yang-balance-symbol.webp",
+    "description": "Realm of Channeling — invokes divine or natural forces granted by a higher power. Power Points scale with the race's ppChanneling progression.",
+    "powerPointsType": "Channeling",
+    "statBonus": {
+      "stat1": "chIntuition",
+      "stat2": "",
+      "stat3": ""
+    },
+    "fromBook": "basic"
+  },
+  {
+    "name": "Mentalism",
+    "img": "icons/magic/holy/yin-yang-balance-symbol.webp",
+    "description": "Realm of Mentalism — focuses the mind to shape reality through inner discipline. Power Points scale with the race's ppMentalism progression.",
+    "powerPointsType": "Mentalism",
+    "statBonus": {
+      "stat1": "chPresence",
+      "stat2": "",
+      "stat3": ""
+    },
+    "fromBook": "basic"
+  }
+]

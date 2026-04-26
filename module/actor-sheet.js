@@ -404,6 +404,21 @@ export class RMFActorSheet extends HandlebarsApplicationMixin(foundry.applicatio
       return created;
     }
 
+    // Enforce single realm per actor
+    if (item.type === 'realm') {
+      const hasRealm = this.document.items.some(i => i.type === 'realm');
+      if (hasRealm) {
+        ui.notifications?.warn(game.i18n.localize('RMF.Messages.AlreadyHasRealm') || 'You already have a realm assigned');
+        return false;
+      }
+      // Create realm and sync chRealm field with the realm name
+      delete itemData._id;
+      const created = await this.document.createEmbeddedDocuments('Item', [itemData]);
+      const realmName = itemData.name || created?.[0]?.name || '';
+      await this.document.update({ 'system.chRealm': realmName });
+      return created;
+    }
+
     // Prevent duplicate categories by name
     if (item.type === 'category') {
       const hasCategory = this.document.items.some(i => i.type === 'category' && i.name === item.name);

@@ -836,6 +836,153 @@ async function getCategoryTemplate() {
 }
 
 /**
+ * Obtain the default template for Item type "realm".
+ * @returns {Promise<object>}
+ */
+async function getRealmTemplate() {
+  const fromDocTypes = foundry.utils.getProperty(game.system, "documentTypes.Item.realm.template");
+  if (fromDocTypes && typeof fromDocTypes === "object") return fromDocTypes;
+
+  try {
+    const resp = await fetch("systems/rmf/template.json");
+    if (resp.ok) {
+      const data = await resp.json();
+      return (data?.Item?.realm) ?? {};
+    }
+  } catch (e) {
+    console.warn("RMF | Failed to load realm template fallback", e);
+  }
+  return {};
+}
+
+/**
+ * Synchronize realm items into a compendium pack (upsert by type+name).
+ * Reads realms from source and creates/updates Item documents in the pack.
+ *
+ * @param {string|Array|Object} source - URL, JSON string, or parsed array/object
+ * @param {Object} [options]
+ * @param {string} [options.pack="world.basic-core"] - Pack collection id
+ * @param {string} [options.folderName="Realms"] - Required folder name in pack
+ * @param {boolean} [options.createMissing=true] - Create docs not found in pack
+ * @param {boolean} [options.updateExisting=true] - Update docs found in pack
+ * @returns {Promise<{created: number, updated: number, skipped: number, errors: any[]}>}
+ */
+export async function syncRealmsToCompendium(source, options = {}) {
+  const packCollection = options.pack ?? "world.basic-core";
+  const folderName = options.folderName ?? "Realms";
+  const createMissing = options.createMissing ?? true;
+  const updateExisting = options.updateExisting ?? true;
+
+  const result = { created: 0, updated: 0, skipped: 0, errors: [] };
+
+  try {
+    const pack = game.packs.get(packCollection);
+    if (!pack) throw new Error(`Compendium pack not found: ${packCollection}`);
+    if (pack.documentName !== "Item") throw new Error(`Pack ${packCollection} is not an Item compendium`);
+
+    const realmsInput = await resolveSource(source);
+    const realms = Array.isArray(realmsInput) ? realmsInput : (realmsInput?.realms ?? [realmsInput]).filter(Boolean);
+    if (!realms?.length) return result;
+
+    const template = await getRealmTemplate();
+    await pack.getIndex({ fields: ["name", "type", "folder"] });
+    const existingByKey = new Map(
+      pack.index.map(entry => [`${entry.type}::${String(entry.name).toLowerCase()}`, entry])
+    );
+
+    const folderIds = getPackFolderIdsByName(pack, folderName);
+    const allowedTypes = ["Essence", "Channeling", "Mentalism"];
+    const normalizePowerPointsType = (value) => {
+      const raw = typeof value === "string" ? value.trim() : "";
+      const match = allowedTypes.find(v => v.toLowerCase() === raw.toLowerCase());
+      return match ?? "Essence";
+    };
+    const statShortToFull = {
+      ag: "chAgility", co: "chConstitution", me: "chMemory", re: "chReasoning",
+      sd: "chSelfDiscipline", em: "chEmpathy", in: "chIntuition", pr: "chPresence",
+      qu: "chQuickness", st: "chStrength"
+    };
+    const normalizeStatKey = (value) => {
+      if (typeof value !== "string") return "";
+      const trimmed = value.trim();
+      if (!trimmed) return "";
+      if (trimmed.startsWith("ch")) return trimmed;
+      return statShortToFull[trimmed.toLowerCase()] ?? trimmed;
+    };
+    const normalizeStatBonus = (raw, defaults) => {
+      const src = raw && typeof raw === "object" ? raw : {};
+      return {
+        stat1: normalizeStatKey(src.stat1) || defaults.stat1,
+        stat2: normalizeStatKey(src.stat2) || defaults.stat2,
+        stat3: normalizeStatKey(src.stat3) || defaults.stat3
+      };
+    };
+
+    const createPayload = [];
+    const updatePayload = [];
+
+    for (let i = 0; i < realms.length; i++) {
+      const realm = realms[i];
+      const name = realm.name ?? `Realm ${i + 1}`;
+      const key = `realm::${String(name).toLowerCase()}`;
+      const existing = existingByKey.get(key);
+      const sysSource = realm.system ?? realm;
+
+      const tmplStatBonus = template?.statBonus ?? { stat1: "chPresence", stat2: "chEmpathy", stat3: "chIntuition" };
+
+      const system = foundry.utils.mergeObject(
+        foundry.utils.duplicate(template),
+        {
+          description: String(sysSource.description ?? ""),
+          powerPointsType: normalizePowerPointsType(sysSource.powerPointsType),
+          statBonus: normalizeStatBonus(sysSource.statBonus, tmplStatBonus),
+          fromBook: String(sysSource.fromBook ?? realm.fromBook ?? "basic")
+        },
+        { inplace: false, insertKeys: true, insertValues: true, overwrite: true }
+      );
+
+      const imgCandidates = [
+        realm.img, realm.image, realm.icon, realm.imgPath, realm.imagePath, realm.thumbnail,
+        sysSource.img, sysSource.image
+      ];
+      const img = (imgCandidates.find(v => typeof v === "string" && v.length) || "icons/svg/mystery-man.svg");
+
+      const base = { name, type: "realm", img, system };
+
+      if (existing) {
+        if (!updateExisting) {
+          result.skipped += 1;
+          continue;
+        }
+        updatePayload.push({ _id: existing._id, ...base });
+      } else {
+        if (!createMissing) {
+          result.skipped += 1;
+          continue;
+        }
+        const folderId = folderIds[0] ?? null;
+        createPayload.push({ ...base, folder: folderId });
+      }
+    }
+
+    if (createPayload.length) {
+      const created = await Item.createDocuments(createPayload, { pack: packCollection });
+      result.created = created.length;
+    }
+    if (updatePayload.length) {
+      const updated = await Item.updateDocuments(updatePayload, { pack: packCollection, diff: false });
+      result.updated = updated.length;
+    }
+
+    return result;
+  } catch (err) {
+    console.error("RMF | syncRealmsToCompendium error", err);
+    result.errors.push(err);
+    return result;
+  }
+}
+
+/**
  * Obtain the default template for Item type "skill".
  * @returns {Promise<object>}
  */

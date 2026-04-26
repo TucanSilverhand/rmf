@@ -21,6 +21,7 @@ import { RMFItemSheet } from "./module/item-sheet.js";
 import { RMFRaceSheet } from "./module/race-sheet.js";
 import { RMFSkillSheet } from "./module/skill-sheet.js";
 import { RMFCategorySheet } from "./module/category-sheet.js";
+import { RMFRealmSheet } from "./module/realm-sheet.js";
 import { RMFActor, RMFItem } from "./module/data-models.mjs";
 import { RMFHooks } from "./module/hooks.mjs";
 
@@ -80,10 +81,16 @@ Hooks.once('init', async function() {
     label: "RMF.SkillSheet"
   });
   
-  foundry.applications.apps.DocumentSheetConfig.registerSheet(Item, "rmf-category", RMFCategorySheet, { 
+  foundry.applications.apps.DocumentSheetConfig.registerSheet(Item, "rmf-category", RMFCategorySheet, {
     types: ["category"],
     makeDefault: true,
     label: "RMF.CategorySheet"
+  });
+
+  foundry.applications.apps.DocumentSheetConfig.registerSheet(Item, "rmf-realm", RMFRealmSheet, {
+    types: ["realm"],
+    makeDefault: true,
+    label: "RMF.RealmSheet"
   });
   
   
@@ -128,7 +135,7 @@ Hooks.once('init', async function() {
       st: 'chStrength'
     },
 
-    itemTypes: ["equipment", "race", "skill", "category"],
+    itemTypes: ["equipment", "race", "skill", "category", "realm"],
     actorTypes: ["character"]
   };
   
@@ -342,8 +349,9 @@ async function _preloadHandlebarsTemplates() {
     "systems/rmf/templates/item-race-sheet.hbs",
     "systems/rmf/templates/item-skill-sheet.hbs",
     "systems/rmf/templates/item-category-sheet.hbs",
-    
-    
+    "systems/rmf/templates/item-realm-sheet.hbs",
+
+
     // Race sheet partials
     "systems/rmf/templates/parts/item-race-header.hbs",
     "systems/rmf/templates/parts/item-race-navigation.hbs",
@@ -362,7 +370,11 @@ async function _preloadHandlebarsTemplates() {
     "systems/rmf/templates/parts/item-category-header.hbs",
     "systems/rmf/templates/parts/item-category-navigation.hbs",
     "systems/rmf/templates/parts/item-category-details.hbs",
-    
+
+    // Realm sheet partials
+    "systems/rmf/templates/parts/item-realm-header.hbs",
+    "systems/rmf/templates/parts/item-realm-body.hbs",
+
     // Chat templates
     "systems/rmf/templates/chat/stat-roll.hbs"
   ];
@@ -410,7 +422,11 @@ async function _registerHandlebarsPartials() {
     // Category sheet partials
     'parts/item-category-header': 'systems/rmf/templates/parts/item-category-header.hbs',
     'parts/item-category-navigation': 'systems/rmf/templates/parts/item-category-navigation.hbs',
-    'parts/item-category-details': 'systems/rmf/templates/parts/item-category-details.hbs'
+    'parts/item-category-details': 'systems/rmf/templates/parts/item-category-details.hbs',
+
+    // Realm sheet partials
+    'parts/item-realm-header': 'systems/rmf/templates/parts/item-realm-header.hbs',
+    'parts/item-realm-body': 'systems/rmf/templates/parts/item-realm-body.hbs'
   };
 
   for (const [name, path] of Object.entries(partials)) {
