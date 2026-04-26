@@ -1326,6 +1326,23 @@
     "commonlyUsed": false
   },
   {
+    "name": "Culture Lore",
+    "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
+    "description": "This skill provides information about the beliefs, rituals, or other information about a specific race. Note that skill for each race must be developed separately.  Each character begins with ranks in Race Lore for his own race.",
+    "rank": 0,
+    "category": "Lore · General",
+    "group": "Lore",
+    "classification": "staticManeuver",
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
+    "boughtByLevel": {},
+    "skillRankBonusProgression": "standard",
+    "commonlyUsed": false
+  },
+  {
     "name": "Region Lore",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides knowledge about the beliefs, rituals, or other information about a specific region. Note that skill for each region must be developed separately.  All characters begin with ranks in Region Lore for their own region.",
@@ -2742,6 +2759,40 @@
     "description": "One skill per missile weapon designed to project a missile (bows, crossbows, slings).",
     "rank": 0,
     "category": "Weapon · Missile",
+    "group": "Weapon",
+    "classification": "offensiveBonus",
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
+    "boughtByLevel": {},
+    "skillRankBonusProgression": "standard",
+    "commonlyUsed": false
+  },
+  {
+    "name": "Weapon Skill (Pole Arms)",
+    "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
+    "description": "One skill per missile weapon designed to project a missile (bows, crossbows, slings).",
+    "rank": 0,
+    "category": "Weapon · Pole Arms",
+    "group": "Weapon",
+    "classification": "offensiveBonus",
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
+    "boughtByLevel": {},
+    "skillRankBonusProgression": "standard",
+    "commonlyUsed": false
+  },
+  {
+    "name": "Weapon Skill (Thrown)",
+    "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
+    "description": "One skill per missile weapon designed to project a missile (bows, crossbows, slings).",
+    "rank": 0,
+    "category": "Weapon · Thrown",
     "group": "Weapon",
     "classification": "offensiveBonus",
     "dpCost": {
