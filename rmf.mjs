@@ -478,4 +478,4 @@ async function _initializeReadyTimeConfigs() {
  * @exports RMFItemSheet - ApplicationV2 Item sheet
  * @exports RMFRaceSheet - Specialized Race item sheet
  */
-export { RMFActor, RMFItem, RMFActorSheet, RMFItemSheet, RMFRaceSheet, RMFSkillSheet };
+export { RMFActor, RMFItem, RMFActorSheet, RMFItemSheet, RMFRaceSheet, RMFSkillSheet, RMFCategorySheet, RMFRealmSheet };

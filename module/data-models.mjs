@@ -1014,15 +1014,4 @@ export class RMFItem extends Item {
 
     return null;
   }
-
-  // Removed: race application helpers (applyToActor) as part of Option B cleanup
-
-  
-
-  /**
-   * Get item context menu options
-   * @returns {Array} Context menu options
-   */
-  getContextMenuOptions() { return []; }
-  // Removed: context menu and bulk-apply helpers for races
 }
