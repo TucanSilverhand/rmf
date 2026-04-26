@@ -70,7 +70,8 @@
       "Progressions": {
         "Standard": "Standard",
         "Combined": "Combined",
-        "Limited": "Limited"
+        "Limited": "Limited",
+        "Special": "Special"
       }
     },
     "Sections": {
@@ -268,6 +269,9 @@
       "NamePlaceholder": "Category Name",
       "DPCost": "DP Cost",
       "DPCostSummary": "DP Cost (1/2/3)",
+      "DPCostFirst": "1st Rank",
+      "DPCostSecond": "2nd Rank",
+      "DPCostThird": "3rd Rank",
       "BoughtByLevel": "Bought by Level",
       "RankBonusProgression": "Rank Progression",
       "Ranks": "Ranks",

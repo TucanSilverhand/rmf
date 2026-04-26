@@ -149,7 +149,8 @@ export async function syncRacesToCompendium(source, options = {}) {
           bodyDevelopment: normalizeRaceProgressionString(sysSource.bodyDevelopment),
           ppChanneling: normalizeRaceProgressionString(sysSource.ppChanneling),
           ppEssence: normalizeRaceProgressionString(sysSource.ppEssence),
-          ppMentalism: normalizeRaceProgressionString(sysSource.ppMentalism)
+          ppMentalism: normalizeRaceProgressionString(sysSource.ppMentalism),
+          fromBook: String(sysSource.fromBook ?? race.fromBook ?? "basic")
         },
         { inplace: false, insertKeys: true, insertValues: true, overwrite: true }
       );
@@ -676,16 +677,20 @@ function buildSkillSystemData(sysSource, template) {
     }, {});
   };
 
-  const normalizeDPCostArray = (value) => {
-    if (Array.isArray(value)) return value.map(v => normalizeNumber(v, 0));
-    if (value && typeof value === "object") {
-      return Object.keys(value)
-        .map(k => Number(k))
-        .filter(k => Number.isFinite(k))
-        .sort((a, b) => a - b)
-        .map(k => normalizeNumber(value[k], 0));
+  const normalizeSkillDPCost = (value) => {
+    const out = { price1: 0, price2: 0, price3: 0 };
+    if (Array.isArray(value)) {
+      out.price1 = normalizeNumber(value[0], 0);
+      out.price2 = normalizeNumber(value[1], 0);
+      out.price3 = normalizeNumber(value[2], 0);
+      return out;
     }
-    return [];
+    if (value && typeof value === "object") {
+      out.price1 = normalizeNumber(value.price1 ?? value[0] ?? value[1], 0);
+      out.price2 = normalizeNumber(value.price2 ?? value[1] ?? value[2], 0);
+      out.price3 = normalizeNumber(value.price3 ?? value[2] ?? value[3], 0);
+    }
+    return out;
   };
 
   const normalizeProgression = (value) => normalizeSkillProgression(value);
@@ -707,7 +712,7 @@ function buildSkillSystemData(sysSource, template) {
       category: String(sysSource?.category ?? ""),
       group: String(sysSource?.group ?? "none"),
       classification: String(sysSource?.classification ?? "movingManeuver"),
-      dpCost: normalizeDPCostArray(sysSource?.dpCost),
+      dpCost: normalizeSkillDPCost(sysSource?.dpCost),
       boughtByLevel: normalizeBoughtByLevel(sysSource?.boughtByLevel),
       skillRankBonusProgression: normalizeProgression(sysSource?.skillRankBonusProgression),
       commonlyUsed: normalizeBoolean(sysSource?.commonlyUsed),

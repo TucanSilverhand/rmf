@@ -27,8 +27,35 @@
       </div>
 
       <div class="resource">
+        <label>{{localize "RMF.Skill.RankBonusProgression"}}</label>
+        <select name="system.skillRankBonusProgression">
+          {{#each progressionOptions as |option|}}
+            <option value="{{option.value}}" {{#if (eq ../selectedProgression option.value)}}selected{{/if}}>{{option.label}}</option>
+          {{/each}}
+        </select>
+      </div>
+
+      <div class="resource">
         <label>{{localize "RMF.Category.Source"}}</label>
         <input type="text" name="system.fromBook" value="{{system.fromBook}}" />
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class="form-group">
+    <legend>{{localize "RMF.Category.DPCost"}}</legend>
+    <div class="flexrow">
+      <div class="resource">
+        <label>{{localize "RMF.Category.DPCostFirst"}}</label>
+        <input type="number" name="system.dpCost.price1" value="{{system.dpCost.price1}}" min="0" step="1" data-dtype="Number" inputmode="numeric" />
+      </div>
+      <div class="resource">
+        <label>{{localize "RMF.Category.DPCostSecond"}}</label>
+        <input type="number" name="system.dpCost.price2" value="{{system.dpCost.price2}}" min="0" step="1" data-dtype="Number" inputmode="numeric" />
+      </div>
+      <div class="resource">
+        <label>{{localize "RMF.Category.DPCostThird"}}</label>
+        <input type="number" name="system.dpCost.price3" value="{{system.dpCost.price3}}" min="0" step="1" data-dtype="Number" inputmode="numeric" />
       </div>
     </div>
   </fieldset>

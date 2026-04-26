@@ -36,15 +36,25 @@
             <tr>
               <td class="background-label">{{localize "RMF.BackgroundOptions"}}</td>
               <td class="background-input">
-      <input type="number" 
-        name="system.backgroundOptions" 
-        value="{{system.backgroundOptions}}" 
+      <input type="number"
+        name="system.backgroundOptions"
+        value="{{system.backgroundOptions}}"
         min="0"
         max="999"
         step="1"
         inputmode="numeric"
         placeholder="0"
         data-dtype="Number"/>
+              </td>
+            </tr>
+            <tr>
+              <td class="background-label">{{localize "RMF.Category.Source"}}</td>
+              <td class="background-input">
+                <input type="text"
+                  name="system.fromBook"
+                  value="{{system.fromBook}}"
+                  placeholder="basic"
+                  autocomplete="off" />
               </td>
             </tr>
           </tbody>

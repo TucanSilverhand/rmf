@@ -273,7 +273,7 @@
       "price3": 9
     },
     "group": "None",
-    "categoryRankBonusProgression": "standard",
+    "categoryRankBonusProgression": "nonstandard",
     "freeRanks": 0,
     "ranks": 0,
     "statBonus": {

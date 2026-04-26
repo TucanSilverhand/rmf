@@ -417,7 +417,13 @@
 /* Align background numeric cell content to the right */
 .race-sheet-root td.background-input {
   text-align: right;
+}
+.race-sheet-root td.background-input input[type="number"] {
   width: 55px;
+}
+.race-sheet-root td.background-input input[type="text"] {
+  width: 100%;
+  text-align: left;
 }
 
 /* Editor containers keep natural width unless constrained by layout */
@@ -724,10 +730,8 @@
 /* Ensure the sheet root (direct child of the form) fills height */
 .window-app .window-content > form.standard-form > .rmf-sheet,
 .window-app .window-content > form.standard-form > .rmf-item-sheet-root,
-.window-app .window-content > form.standard-form > .race-sheet-root,
 .application .window-content > form.standard-form > .rmf-sheet,
-.application .window-content > form.standard-form > .rmf-item-sheet-root,
-.application .window-content > form.standard-form > .race-sheet-root {
+.application .window-content > form.standard-form > .rmf-item-sheet-root {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -737,10 +741,8 @@
 /* Root containers must stretch so inner body can scroll */
 .window-app .window-content > .rmf-sheet,
 .window-app .window-content > .rmf-item-sheet-root,
-.window-app .window-content > .race-sheet-root,
 .application .window-content > .rmf-sheet,
-.application .window-content > .rmf-item-sheet-root,
-.application .window-content > .race-sheet-root {
+.application .window-content > .rmf-item-sheet-root {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -750,8 +752,7 @@
 /* Flex layout so body has constrained height and can scroll */
 .rmf .sheet-main-container,
 .rmf-sheet .sheet-main-container,
-.rmf-item-sheet-root .sheet-main-container,
-.race-sheet-root .sheet-main-container {
+.rmf-item-sheet-root .sheet-main-container {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -759,8 +760,7 @@
 
 .rmf .sheet-content,
 .rmf-sheet .sheet-content,
-.rmf-item-sheet-root .sheet-content,
-.race-sheet-root .sheet-content {
+.rmf-item-sheet-root .sheet-content {
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
@@ -776,10 +776,8 @@
 /* Strong chain to ensure flex layout and scroll in RMF sheets */
 .window-app .window-content > form.standard-form > .rmf-sheet,
 .window-app .window-content > form.standard-form > .rmf-item-sheet-root,
-.window-app .window-content > form.standard-form > .race-sheet-root,
 .application .window-content > form.standard-form > .rmf-sheet,
-.application .window-content > form.standard-form > .rmf-item-sheet-root,
-.application .window-content > form.standard-form > .race-sheet-root {
+.application .window-content > form.standard-form > .rmf-item-sheet-root {
   height: 100% !important;
   display: flex !important;
   flex-direction: column !important;
@@ -787,10 +785,8 @@
 }
 .window-app .window-content > form.standard-form > .rmf-sheet .sheet-main-container,
 .window-app .window-content > form.standard-form > .rmf-item-sheet-root .sheet-main-container,
-.window-app .window-content > form.standard-form > .race-sheet-root .sheet-main-container,
 .application .window-content > form.standard-form > .rmf-sheet .sheet-main-container,
-.application .window-content > form.standard-form > .rmf-item-sheet-root .sheet-main-container,
-.application .window-content > form.standard-form > .race-sheet-root .sheet-main-container {
+.application .window-content > form.standard-form > .rmf-item-sheet-root .sheet-main-container {
   height: 100% !important;
   display: flex !important;
   flex-direction: column !important;
@@ -798,10 +794,8 @@
 }
 .window-app .window-content > form.standard-form > .rmf-sheet .sheet-content,
 .window-app .window-content > form.standard-form > .rmf-item-sheet-root .sheet-content,
-.window-app .window-content > form.standard-form > .race-sheet-root .sheet-content,
 .application .window-content > form.standard-form > .rmf-sheet .sheet-content,
-.application .window-content > form.standard-form > .rmf-item-sheet-root .sheet-content,
-.application .window-content > form.standard-form > .race-sheet-root .sheet-content {
+.application .window-content > form.standard-form > .rmf-item-sheet-root .sheet-content {
   flex: 1 1 auto !important;
   min-height: 0 !important;
   display: flex !important;
@@ -810,10 +804,8 @@
 }
 .window-app .window-content > form.standard-form > .rmf-sheet .sheet-body,
 .window-app .window-content > form.standard-form > .rmf-item-sheet-root .sheet-body,
-.window-app .window-content > form.standard-form > .race-sheet-root .sheet-body,
 .application .window-content > form.standard-form > .rmf-sheet .sheet-body,
-.application .window-content > form.standard-form > .rmf-item-sheet-root .sheet-body,
-.application .window-content > form.standard-form > .race-sheet-root .sheet-body {
+.application .window-content > form.standard-form > .rmf-item-sheet-root .sheet-body {
   /* Absolutely position the scroll area under the header */
   position: absolute;
   top: var(--rmf-header-height, 140px);

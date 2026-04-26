@@ -7,7 +7,11 @@
     "category": "Armor · Heavy",
     "group": "Armor",
     "classification": "movingManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -20,7 +24,11 @@
     "category": "Armor · Light",
     "group": "Armor",
     "classification": "movingManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -33,7 +41,11 @@
     "category": "Armor · Light",
     "group": "Armor",
     "classification": "movingManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -46,7 +58,11 @@
     "category": "Armor · Medium",
     "group": "Armor",
     "classification": "movingManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -59,7 +75,11 @@
     "category": "Artistic · Active",
     "group": "Artistic",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -72,7 +92,11 @@
     "category": "Artistic · Active",
     "group": "Artistic",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -85,7 +109,11 @@
     "category": "Artistic · Active",
     "group": "Artistic",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -98,7 +126,11 @@
     "category": "Artistic · Active",
     "group": "Artistic",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -111,7 +143,11 @@
     "category": "Artistic · Active",
     "group": "Artistic",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -124,7 +160,11 @@
     "category": "Artistic · Active",
     "group": "Artistic",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -137,7 +177,11 @@
     "category": "Artistic · Active",
     "group": "Artistic",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -150,7 +194,11 @@
     "category": "Artistic · Active",
     "group": "Artistic",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -163,7 +211,11 @@
     "category": "Artistic · Active",
     "group": "Artistic",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -176,7 +228,11 @@
     "category": "Artistic · Passive",
     "group": "Artistic",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -189,7 +245,11 @@
     "category": "Artistic · Passive",
     "group": "Artistic",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -202,7 +262,11 @@
     "category": "Artistic · Passive",
     "group": "Artistic",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -215,7 +279,11 @@
     "category": "Artistic · Passive",
     "group": "Artistic",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -228,7 +296,11 @@
     "category": "Athletic · Brawn",
     "group": "Athletic",
     "classification": "movingManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -241,7 +313,11 @@
     "category": "Athletic · Brawn",
     "group": "Athletic",
     "classification": "movingManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -254,7 +330,11 @@
     "category": "Athletic · Brawn",
     "group": "Athletic",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -267,7 +347,11 @@
     "category": "Athletic · Endurance",
     "group": "Athletic",
     "classification": "movingManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -280,7 +364,11 @@
     "category": "Athletic · Endurance",
     "group": "Athletic",
     "classification": "movingManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -293,7 +381,11 @@
     "category": "Athletic · Endurance",
     "group": "Athletic",
     "classification": "movingManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -306,7 +398,11 @@
     "category": "Athletic · Endurance",
     "group": "Athletic",
     "classification": "movingManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -319,7 +415,11 @@
     "category": "Athletic · Endurance",
     "group": "Athletic",
     "classification": "movingManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -332,7 +432,11 @@
     "category": "Athletic · Endurance",
     "group": "Athletic",
     "classification": "movingManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -345,7 +449,11 @@
     "category": "Athletic · Gymnastics",
     "group": "Athletic",
     "classification": "movingManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -358,7 +466,11 @@
     "category": "Athletic · Gymnastics",
     "group": "Athletic",
     "classification": "movingManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -371,7 +483,11 @@
     "category": "Athletic · Gymnastics",
     "group": "Athletic",
     "classification": "movingManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -384,7 +500,11 @@
     "category": "Athletic · Gymnastics",
     "group": "Athletic",
     "classification": "movingManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -397,7 +517,11 @@
     "category": "Athletic · Gymnastics",
     "group": "Athletic",
     "classification": "movingManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -410,7 +534,11 @@
     "category": "Athletic · Gymnastics",
     "group": "Athletic",
     "classification": "movingManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -423,7 +551,11 @@
     "category": "Athletic · Gymnastics",
     "group": "Athletic",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -436,7 +568,11 @@
     "category": "Athletic · Gymnastics",
     "group": "Athletic",
     "classification": "movingManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -449,7 +585,11 @@
     "category": "Awareness · Perceptions",
     "group": "Awareness",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -462,7 +602,11 @@
     "category": "Awareness · Perceptions",
     "group": "Awareness",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -475,7 +619,11 @@
     "category": "Awareness · Searching",
     "group": "Awareness",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -488,7 +636,11 @@
     "category": "Awareness · Searching",
     "group": "Awareness",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -501,7 +653,11 @@
     "category": "Awareness · Searching",
     "group": "Awareness",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -514,7 +670,11 @@
     "category": "Awareness · Searching",
     "group": "Awareness",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -527,7 +687,11 @@
     "category": "Awareness · Searching",
     "group": "Awareness",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -540,7 +704,11 @@
     "category": "Awareness · Searching",
     "group": "Awareness",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -553,7 +721,11 @@
     "category": "Awareness · Searching",
     "group": "Awareness",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -566,7 +738,11 @@
     "category": "Awareness · Searching",
     "group": "Awareness",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -579,7 +755,11 @@
     "category": "Awareness · Senses",
     "group": "Awareness",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -592,7 +772,11 @@
     "category": "Awareness · Senses",
     "group": "Awareness",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -605,7 +789,11 @@
     "category": "Awareness · Senses",
     "group": "Awareness",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -618,7 +806,11 @@
     "category": "Awareness · Senses",
     "group": "Awareness",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -631,9 +823,13 @@
     "category": "Body Development",
     "group": "None",
     "classification": "specialPurpose",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
-    "skillRankBonusProgression": "standard",
+    "skillRankBonusProgression": "special",
     "commonlyUsed": false
   },
   {
@@ -644,7 +840,11 @@
     "category": "Combat Maneuvers",
     "group": "None",
     "classification": "specialPurpose",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -657,7 +857,11 @@
     "category": "Combat Maneuvers",
     "group": "None",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -670,7 +874,11 @@
     "category": "Combat Maneuvers",
     "group": "None",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -683,7 +891,11 @@
     "category": "Combat Maneuvers",
     "group": "None",
     "classification": "offensiveBonus",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -696,7 +908,11 @@
     "category": "Communications",
     "group": "None",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -709,7 +925,11 @@
     "category": "Communications",
     "group": "None",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -722,7 +942,11 @@
     "category": "Communications",
     "group": "None",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -735,7 +959,11 @@
     "category": "Communications",
     "group": "None",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -748,7 +976,11 @@
     "category": "Crafts",
     "group": "Craft",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -761,7 +993,11 @@
     "category": "Crafts",
     "group": "Craft",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -774,7 +1010,11 @@
     "category": "Crafts",
     "group": "Craft",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -787,7 +1027,11 @@
     "category": "Crafts",
     "group": "Craft",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -800,7 +1044,11 @@
     "category": "Crafts",
     "group": "Craft",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -813,7 +1061,11 @@
     "category": "Crafts",
     "group": "Craft",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -826,7 +1078,11 @@
     "category": "Directed Spells",
     "group": "None",
     "classification": "offensiveBonus",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -839,7 +1095,11 @@
     "category": "Influence",
     "group": "None",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -852,7 +1112,11 @@
     "category": "Influence",
     "group": "None",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -865,7 +1129,11 @@
     "category": "Influence",
     "group": "None",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -878,7 +1146,11 @@
     "category": "Influence",
     "group": "None",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -891,7 +1163,11 @@
     "category": "Influence",
     "group": "None",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -904,7 +1180,11 @@
     "category": "Influence",
     "group": "None",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -917,7 +1197,11 @@
     "category": "Influence",
     "group": "None",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -930,7 +1214,11 @@
     "category": "Influence",
     "group": "None",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -943,7 +1231,11 @@
     "category": "Lore · General",
     "group": "Lore",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -956,7 +1248,11 @@
     "category": "Lore · General",
     "group": "Lore",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -969,7 +1265,11 @@
     "category": "Lore · General",
     "group": "Lore",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -982,7 +1282,11 @@
     "category": "Lore · General",
     "group": "Lore",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -995,7 +1299,11 @@
     "category": "Lore · General",
     "group": "Lore",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1008,7 +1316,11 @@
     "category": "Lore · General",
     "group": "Lore",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1021,7 +1333,11 @@
     "category": "Lore · General",
     "group": "Lore",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1034,7 +1350,11 @@
     "category": "Lore · General",
     "group": "Lore",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1047,7 +1367,11 @@
     "category": "Lore · Magical",
     "group": "Lore",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1060,7 +1384,11 @@
     "category": "Lore · Magical",
     "group": "Lore",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1073,7 +1401,11 @@
     "category": "Lore · Magical",
     "group": "Lore",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1086,7 +1418,11 @@
     "category": "Lore · Obscure",
     "group": "Lore",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1099,7 +1435,11 @@
     "category": "Lore · Obscure",
     "group": "Lore",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1112,7 +1452,11 @@
     "category": "Lore · Obscure",
     "group": "Lore",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1125,7 +1469,11 @@
     "category": "Lore · Obscure",
     "group": "Lore",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1138,7 +1486,11 @@
     "category": "Lore · Technical",
     "group": "Lore",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1151,7 +1503,11 @@
     "category": "Lore · Technical",
     "group": "Lore",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1164,7 +1520,11 @@
     "category": "Lore · Technical",
     "group": "Lore",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1177,7 +1537,11 @@
     "category": "Lore · Technical",
     "group": "Lore",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1190,7 +1554,11 @@
     "category": "Lore · Technical",
     "group": "Lore",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1203,7 +1571,11 @@
     "category": "Lore · Technical",
     "group": "Lore",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1216,7 +1588,11 @@
     "category": "Martial Arts · Striking",
     "group": "Martial Arts",
     "classification": "offensiveBonus",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1229,7 +1605,11 @@
     "category": "Martial Arts · Striking",
     "group": "Martial Arts",
     "classification": "offensiveBonus",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1242,7 +1622,11 @@
     "category": "Outdoor · Animal",
     "group": "Outdoor",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1255,7 +1639,11 @@
     "category": "Outdoor · Animal",
     "group": "Outdoor",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1268,7 +1656,11 @@
     "category": "Outdoor · Animal",
     "group": "Outdoor",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1281,7 +1673,11 @@
     "category": "Outdoor · Animal",
     "group": "Outdoor",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1294,7 +1690,11 @@
     "category": "Outdoor · Environmental",
     "group": "Outdoor",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1307,7 +1707,11 @@
     "category": "Outdoor · Environmental",
     "group": "Outdoor",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1320,7 +1724,11 @@
     "category": "Outdoor · Environmental",
     "group": "Outdoor",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1333,7 +1741,11 @@
     "category": "Outdoor · Environmental",
     "group": "Outdoor",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1346,7 +1758,11 @@
     "category": "Outdoor · Environmental",
     "group": "Outdoor",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1359,7 +1775,11 @@
     "category": "Outdoor · Environmental",
     "group": "Outdoor",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1372,7 +1792,11 @@
     "category": "Power Awareness",
     "group": "Power",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1385,7 +1809,11 @@
     "category": "Power Awareness",
     "group": "Power",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1398,7 +1826,11 @@
     "category": "Power Point Development",
     "group": "None",
     "classification": "specialPurpose",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1411,7 +1843,11 @@
     "category": "Science · Basic",
     "group": "Science",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1424,7 +1860,11 @@
     "category": "Science · Basic",
     "group": "Science",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1437,7 +1877,11 @@
     "category": "Science · Specialized",
     "group": "Science",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "combined",
     "commonlyUsed": false
@@ -1450,7 +1894,11 @@
     "category": "Science · Specialized",
     "group": "Science",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "combined",
     "commonlyUsed": false
@@ -1463,7 +1911,11 @@
     "category": "Science · Specialized",
     "group": "Science",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "combined",
     "commonlyUsed": false
@@ -1476,7 +1928,11 @@
     "category": "Self Control",
     "group": "None",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1489,7 +1945,11 @@
     "category": "Self Control",
     "group": "None",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1502,7 +1962,11 @@
     "category": "Self Control",
     "group": "None",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1515,7 +1979,11 @@
     "category": "Spells · Own Base List",
     "group": "Spells",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1528,7 +1996,11 @@
     "category": "Spells · Own Realm Closed List",
     "group": "Spells",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1541,7 +2013,11 @@
     "category": "Spells · Own Realm Open List",
     "group": "Spells",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1554,7 +2030,11 @@
     "category": "Subterfuge · Attack",
     "group": "Subterfuge",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1567,7 +2047,11 @@
     "category": "Subterfuge · Attack",
     "group": "Subterfuge",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1580,7 +2064,11 @@
     "category": "Subterfuge · Mechanics",
     "group": "Subterfuge",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1593,7 +2081,11 @@
     "category": "Subterfuge · Mechanics",
     "group": "Subterfuge",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1606,7 +2098,11 @@
     "category": "Subterfuge · Mechanics",
     "group": "Subterfuge",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1619,7 +2115,11 @@
     "category": "Subterfuge · Mechanics",
     "group": "Subterfuge",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1632,7 +2132,11 @@
     "category": "Subterfuge · Mechanics",
     "group": "Subterfuge",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1645,7 +2149,11 @@
     "category": "Subterfuge · Mechanics",
     "group": "Subterfuge",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1658,7 +2166,11 @@
     "category": "Subterfuge · Stealth",
     "group": "Subterfuge",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1671,7 +2183,11 @@
     "category": "Subterfuge · Stealth",
     "group": "Subterfuge",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1684,7 +2200,11 @@
     "category": "Subterfuge · Stealth",
     "group": "Subterfuge",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1697,7 +2217,11 @@
     "category": "Subterfuge · Stealth",
     "group": "Subterfuge",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1710,7 +2234,11 @@
     "category": "Technical · General",
     "group": "Technical/Trade",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1723,7 +2251,11 @@
     "category": "Technical · General",
     "group": "Technical/Trade",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1736,7 +2268,11 @@
     "category": "Technical · General",
     "group": "Technical/Trade",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1749,7 +2285,11 @@
     "category": "Technical · General",
     "group": "Technical/Trade",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1762,7 +2302,11 @@
     "category": "Technical · General",
     "group": "Technical/Trade",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1775,7 +2319,11 @@
     "category": "Technical · General",
     "group": "Technical/Trade",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1788,7 +2336,11 @@
     "category": "Technical · General",
     "group": "Technical/Trade",
     "classification": "movingManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1801,7 +2353,11 @@
     "category": "Technical · General",
     "group": "Technical/Trade",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1814,7 +2370,11 @@
     "category": "Technical · General",
     "group": "Technical/Trade",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1827,7 +2387,11 @@
     "category": "Technical · Professional",
     "group": "Technical/Trade",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1840,7 +2404,11 @@
     "category": "Technical · Professional",
     "group": "Technical/Trade",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1853,7 +2421,11 @@
     "category": "Technical · Professional",
     "group": "Technical/Trade",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1866,7 +2438,11 @@
     "category": "Technical · Professional",
     "group": "Technical/Trade",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1879,7 +2455,11 @@
     "category": "Technical · Professional",
     "group": "Technical/Trade",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1892,7 +2472,11 @@
     "category": "Technical · Vocational",
     "group": "Technical/Trade",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1905,7 +2489,11 @@
     "category": "Technical · Vocational",
     "group": "Technical/Trade",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1918,7 +2506,11 @@
     "category": "Technical · Vocational",
     "group": "Technical/Trade",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1931,7 +2523,11 @@
     "category": "Technical · Vocational",
     "group": "Technical/Trade",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1944,7 +2540,11 @@
     "category": "Technical · Vocational",
     "group": "Technical/Trade",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1957,7 +2557,11 @@
     "category": "Technical · Vocational",
     "group": "Technical/Trade",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1970,7 +2574,11 @@
     "category": "Technical · Vocational",
     "group": "Technical/Trade",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1983,7 +2591,11 @@
     "category": "Technical · Vocational",
     "group": "Technical/Trade",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1996,7 +2608,11 @@
     "category": "Technical · Vocational",
     "group": "Technical/Trade",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2009,7 +2625,11 @@
     "category": "Urban",
     "group": "None",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2022,7 +2642,11 @@
     "category": "Urban",
     "group": "None",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2035,7 +2659,11 @@
     "category": "Urban",
     "group": "None",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2048,7 +2676,11 @@
     "category": "Urban",
     "group": "None",
     "classification": "staticManeuver",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2061,7 +2693,11 @@
     "category": "Weapon · 1H Concussion",
     "group": "Weapon",
     "classification": "offensiveBonus",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2074,7 +2710,11 @@
     "category": "Weapon · 1H Edged",
     "group": "Weapon",
     "classification": "offensiveBonus",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2087,7 +2727,11 @@
     "category": "Weapon · 2Handed",
     "group": "Weapon",
     "classification": "offensiveBonus",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2100,7 +2744,11 @@
     "category": "Weapon · Missile",
     "group": "Weapon",
     "classification": "offensiveBonus",
-    "dpCost": [],
+    "dpCost": {
+      "price1": 0,
+      "price2": 0,
+      "price3": 0
+    },
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false

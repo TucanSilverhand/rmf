@@ -31,7 +31,10 @@ const RANK_BONUS_TABLES = Object.freeze({
   skill: Object.freeze({
     standard: Object.freeze({ zero: -15, tier1: 3, tier2: 2, tier3: 1,   tier4: 0.5 }),
     combined: Object.freeze({ zero: -30, tier1: 5, tier2: 3, tier3: 1.5, tier4: 0.5 }),
-    limited:  Object.freeze({ zero: 0,   tier1: 1, tier2: 1, tier3: 0.5, tier4: 0 })
+    limited:  Object.freeze({ zero: 0,   tier1: 1, tier2: 1, tier3: 0.5, tier4: 0 }),
+    // Default fallback for "special" — callers may pass an override table
+    // (e.g. race progressions) to computeSkillRankBonus / formatSkillRankBonusBreakdown.
+    special:  Object.freeze({ zero: 0,   tier1: 0, tier2: 0, tier3: 0,   tier4: 0 })
   })
 });
 
@@ -57,7 +60,7 @@ export function normalizeCategoryProgression(value) {
  * Legacy 'slow' maps to 'limited'; legacy 'fast' maps to 'combined'.
  * Unknown strings fall back to 'standard'.
  * @param {*} value
- * @returns {'standard'|'combined'|'limited'}
+ * @returns {'standard'|'combined'|'limited'|'special'}
  */
 export function normalizeSkillProgression(value) {
   const lowered = String(value ?? "").trim().toLowerCase();
@@ -65,6 +68,17 @@ export function normalizeSkillProgression(value) {
   if (lowered === "slow") return "limited";
   if (lowered === "fast") return "combined";
   return "standard";
+}
+
+/**
+ * Validate that a candidate object is a usable rank-bonus table.
+ * Accepts numeric (or coercible) values for zero/tier1..tier4.
+ * @param {*} table
+ * @returns {boolean}
+ */
+function _isValidTable(table) {
+  if (!table || typeof table !== "object") return false;
+  return ["zero", "tier1", "tier2", "tier3", "tier4"].every(k => Number.isFinite(Number(table[k])));
 }
 
 function _tierCounts(totalRanks) {
@@ -102,9 +116,10 @@ export function computeCategoryRankBonus(totalRanks, progression) {
   return _computeFromTable(totalRanks, RANK_BONUS_TABLES.category[key]);
 }
 
-export function computeSkillRankBonus(totalRanks, progression) {
+export function computeSkillRankBonus(totalRanks, progression, overrideTable) {
   const key = normalizeSkillProgression(progression);
-  return _computeFromTable(totalRanks, RANK_BONUS_TABLES.skill[key]);
+  const table = _isValidTable(overrideTable) ? overrideTable : RANK_BONUS_TABLES.skill[key];
+  return _computeFromTable(totalRanks, table);
 }
 
 export function formatCategoryRankBonusBreakdown(totalRanks, progression) {
@@ -112,9 +127,10 @@ export function formatCategoryRankBonusBreakdown(totalRanks, progression) {
   return _formatBreakdown(totalRanks, RANK_BONUS_TABLES.category[key]);
 }
 
-export function formatSkillRankBonusBreakdown(totalRanks, progression) {
+export function formatSkillRankBonusBreakdown(totalRanks, progression, overrideTable) {
   const key = normalizeSkillProgression(progression);
-  return _formatBreakdown(totalRanks, RANK_BONUS_TABLES.skill[key]);
+  const table = _isValidTable(overrideTable) ? overrideTable : RANK_BONUS_TABLES.skill[key];
+  return _formatBreakdown(totalRanks, table);
 }
 
 export { RANK_BONUS_TABLES, TIER_RANGES };

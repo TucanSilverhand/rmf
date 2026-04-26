@@ -163,7 +163,8 @@
       "bodyDevelopment": "",
       "ppChanneling": "",
       "ppEssence": "",
-      "ppMentalism": ""
+      "ppMentalism": "",
+      "fromBook": "basic"
     },
     "category": {
       "dpCost": {
@@ -194,7 +195,11 @@
       "category": "",
       "group": "none",
       "classification": "movingManeuver",
-      "dpCost": [],
+      "dpCost": {
+        "price1": 0,
+        "price2": 0,
+        "price3": 0
+      },
       "boughtByLevel": {},
       "skillRankBonusProgression": "standard",
       "commonlyUsed": false,

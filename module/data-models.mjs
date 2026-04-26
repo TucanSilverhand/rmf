@@ -670,6 +670,8 @@ export class RMFItem extends Item {
       system[`${field}Table`] = parseRaceProgression(system[field]);
     }
 
+    if (typeof system.fromBook !== "string") system.fromBook = "basic";
+
     // Calculate metadata for UI display
     system.hasStatBonuses = Object.values(system.stats).some(val => val !== 0);
     system.hasResistances = Object.values(system.resistances).some(val => val !== 0);
@@ -836,7 +838,20 @@ export class RMFItem extends Item {
     const system = this.system || (this.system = {});
 
     if (!system.boughtByLevel || typeof system.boughtByLevel !== "object") system.boughtByLevel = {};
-    if (!Array.isArray(system.dpCost)) system.dpCost = [];
+    {
+      const raw = system.dpCost;
+      const next = { price1: 0, price2: 0, price3: 0 };
+      if (Array.isArray(raw)) {
+        next.price1 = Number(raw[0]) || 0;
+        next.price2 = Number(raw[1]) || 0;
+        next.price3 = Number(raw[2]) || 0;
+      } else if (raw && typeof raw === "object") {
+        next.price1 = Number(raw.price1 ?? raw[0] ?? raw[1]) || 0;
+        next.price2 = Number(raw.price2 ?? raw[1] ?? raw[2]) || 0;
+        next.price3 = Number(raw.price3 ?? raw[2] ?? raw[3]) || 0;
+      }
+      system.dpCost = next;
+    }
     if (typeof system.rank !== "number") system.rank = 0;
     if (typeof system.category !== "string") system.category = "";
     if (typeof system.classification !== "string") system.classification = "movingManeuver";
@@ -850,7 +865,8 @@ export class RMFItem extends Item {
     const totalBoughtRanks = this._computeTotalBoughtRanks(system.boughtByLevel);
     // Skills don't have freeRanks today, but expose totalRanks for parity with categories.
     const totalRanks = totalBoughtRanks;
-    const rankBonus = computeSkillRankBonus(totalRanks, system.skillRankBonusProgression);
+    const specialOverride = this._resolveSpecialSkillTable(system.skillRankBonusProgression);
+    const rankBonus = computeSkillRankBonus(totalRanks, system.skillRankBonusProgression, specialOverride);
 
     let categoryBonus = 0;
     const actor = this.parent;
@@ -868,6 +884,27 @@ export class RMFItem extends Item {
     system.totalBonus = rankBonus + categoryBonus + (system.profBonus || 0) + (system.spec1Bonus || 0) + (system.spec2Bonus || 0);
     // Alias consumed by RMFActions.#rollSkill — keeps actions.mjs untouched.
     system.bonus = system.totalBonus;
+  }
+
+  /**
+   * Resolve the override progression table for skills with the "special"
+   * progression. Currently the only special-cased mapping is:
+   *   skill name === "Body Development" → race.bodyDevelopmentTable
+   * Any other skill (or absent race) yields null, which makes the rank-bonus
+   * helpers fall back to the default zero-table for "special".
+   * Power-point development skills will be added later (per realm).
+   *
+   * @private
+   * @param {string} progression
+   * @returns {object|null}
+   */
+  _resolveSpecialSkillTable(progression) {
+    if (progression !== "special") return null;
+    const actor = this.parent;
+    if (actor?.documentName !== "Actor") return null;
+    if (this.name !== "Body Development") return null;
+    const raceItem = actor.items.find(i => i.type === "race");
+    return raceItem?.system?.bodyDevelopmentTable ?? null;
   }
 
   // Removed: race application helpers (applyToActor) as part of Option B cleanup

@@ -40,8 +40,8 @@ export class RMFRaceSheet extends HandlebarsApplicationMixin(
 
     // Position and size
     position: {
-      width: 285,
-      height: 508,
+      width: 640,
+      height: "auto",
     },
 
     // Declarative actions

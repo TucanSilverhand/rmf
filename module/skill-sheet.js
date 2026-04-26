@@ -58,7 +58,6 @@ export class RMFSkillSheet extends HandlebarsApplicationMixin(foundry.applicatio
     primary: {
       tabs: [
         { id: "details", icon: "fas fa-info-circle", label: "RMF.Tabs.Details" },
-        { id: "progression", icon: "fas fa-chart-line", label: "RMF.Tabs.Progression" },
         { id: "advanced", icon: "fas fa-cog", label: "RMF.Tabs.Advanced" }
       ]
     }
@@ -96,10 +95,6 @@ export class RMFSkillSheet extends HandlebarsApplicationMixin(foundry.applicatio
       context.enrichedDescription = "";
     }
 
-    // Normalize DP cost array for the progression DP table (first 6 entries by default).
-    const dp = Array.isArray(system.dpCost) ? system.dpCost.slice() : [];
-    while (dp.length < 6) dp.push(0);
-    context.dpCostFixed = dp.slice(0, 6);
     context.dpCostSummary = this._formatDPCost(system.dpCost);
 
     // Progression options driven by the rank-bonus helper (single source of truth).
@@ -115,7 +110,8 @@ export class RMFSkillSheet extends HandlebarsApplicationMixin(foundry.applicatio
     // Totals (use values pre-computed by RMFItem._prepareSkillData when available;
     // fall back to recomputing in case prepareDerivedData hasn't run yet).
     const totalRanks = Number(system.totalRanks ?? this._computeTotalBoughtRanks(system.boughtByLevel)) || 0;
-    const totalRankBonus = Number(system.totalRankBonus ?? computeSkillRankBonus(totalRanks, context.selectedProgression)) || 0;
+    const specialOverride = doc._resolveSpecialSkillTable?.(context.selectedProgression) ?? null;
+    const totalRankBonus = Number(system.totalRankBonus ?? computeSkillRankBonus(totalRanks, context.selectedProgression, specialOverride)) || 0;
     const categoryBonus = Number(system.categoryBonus ?? 0) || 0;
     const profBonus = Number(system.profBonus ?? 0) || 0;
     const spec1Bonus = Number(system.spec1Bonus ?? 0) || 0;
@@ -127,7 +123,7 @@ export class RMFSkillSheet extends HandlebarsApplicationMixin(foundry.applicatio
     context.spec1Bonus = spec1Bonus;
     context.spec2Bonus = spec2Bonus;
     context.totalBonus = Number(system.totalBonus ?? (totalRankBonus + categoryBonus + profBonus + spec1Bonus + spec2Bonus)) || 0;
-    context.rankBonusSummary = formatSkillRankBonusBreakdown(totalRanks, context.selectedProgression);
+    context.rankBonusSummary = formatSkillRankBonusBreakdown(totalRanks, context.selectedProgression, specialOverride);
 
     // Category select: when embedded on an actor, expose its categories so the user picks
     // from a deterministic list. Otherwise let them type the name freely.
@@ -157,9 +153,11 @@ export class RMFSkillSheet extends HandlebarsApplicationMixin(foundry.applicatio
   }
 
   _formatDPCost(cost) {
-    const arr = Array.isArray(cost) ? cost.slice(0, 3) : [];
-    while (arr.length < 3) arr.push(0);
-    return arr.map(v => Number(v) || 0).join("/");
+    const prices = cost && typeof cost === "object" ? cost : {};
+    const p1 = Number(prices.price1 ?? prices[0] ?? 0) || 0;
+    const p2 = Number(prices.price2 ?? prices[1] ?? 0) || 0;
+    const p3 = Number(prices.price3 ?? prices[2] ?? 0) || 0;
+    return `${p1}/${p2}/${p3}`;
   }
 
   _computeTotalBoughtRanks(boughtByLevel) {
