@@ -51,6 +51,7 @@
       "ManagePlayer": "Manage Player",
       "Details": "Details",
       "Progression": "Progression",
+      "Progressions": "Progressions",
       "Purchases": "Purchases",
       "Effects": "Effects",
       "Resistances": "Resistances"
@@ -111,6 +112,15 @@
       "mentalism": "Mentalism",
       "poison": "Poison",
       "disease": "Disease"
+    },
+    "Race": {
+      "BodyDevelopment": "Body Development",
+      "PPChanneling": "PP Channeling",
+      "PPEssence": "PP Essence",
+      "PPMentalism": "PP Mentalism",
+      "Progression": "Progression",
+      "ProgressionString": "Value (zero/T1/T2/T3/T4)",
+      "ProgressionHint": "Format: zero/tier1/tier2/tier3/tier4 (e.g., 0/6/4/2/1)."
     },
     "Background": {
       "Nationality": "Nationality",

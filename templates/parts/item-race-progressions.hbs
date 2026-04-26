@@ -1,0 +1,49 @@
+{{!--
+  RMF Race Item Sheet Progressions Partial
+  Body Development and Power Point progressions per race.
+  Format: "zero/tier1/tier2/tier3/tier4" (e.g., 0/6/4/2/1).
+--}}
+
+<div class="tab progressions-section" data-tab="progressions">
+  <section class="progressions-section">
+
+    <p class="hint">{{localize "RMF.Race.ProgressionHint"}}</p>
+
+    <div class="progressions-table-container">
+      <table class="progressions-table">
+        <thead>
+          <tr>
+            <th>{{localize "RMF.Race.Progression"}}</th>
+            <th>{{localize "RMF.Race.ProgressionString"}}</th>
+            <th class="tier-col">0</th>
+            <th class="tier-col">T1</th>
+            <th class="tier-col">T2</th>
+            <th class="tier-col">T3</th>
+            <th class="tier-col">T4</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each progressionBonuses as |entry|}}
+          <tr>
+            <td class="progression-label">{{entry.label}}</td>
+            <td class="progression-input">
+              <input type="text"
+                     name="system.{{entry.key}}"
+                     value="{{entry.value}}"
+                     placeholder="0/0/0/0/0"
+                     pattern="^\s*-?\d+(?:\s*/\s*-?\d+){0,4}\s*$"
+                     autocomplete="off" />
+            </td>
+            <td class="tier-cell">{{entry.table.zero}}</td>
+            <td class="tier-cell">{{entry.table.tier1}}</td>
+            <td class="tier-cell">{{entry.table.tier2}}</td>
+            <td class="tier-cell">{{entry.table.tier3}}</td>
+            <td class="tier-cell">{{entry.table.tier4}}</td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+
+  </section>
+</div>

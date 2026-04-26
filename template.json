@@ -159,7 +159,11 @@
         "pois": 0,
         "dis": 0
       },
-      "backgroundOptions": 0
+      "backgroundOptions": 0,
+      "bodyDevelopment": "",
+      "ppChanneling": "",
+      "ppEssence": "",
+      "ppMentalism": ""
     },
     "category": {
       "dpCost": {

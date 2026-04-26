@@ -350,6 +350,7 @@ async function _preloadHandlebarsTemplates() {
     "systems/rmf/templates/parts/item-race-background.hbs",
     "systems/rmf/templates/parts/item-race-stats.hbs",
     "systems/rmf/templates/parts/item-race-resistances.hbs",
+    "systems/rmf/templates/parts/item-race-progressions.hbs",
     
     // Skill sheet partials
     "systems/rmf/templates/parts/item-skill-header.hbs",
@@ -399,6 +400,7 @@ async function _registerHandlebarsPartials() {
     'parts/item-race-background': 'systems/rmf/templates/parts/item-race-background.hbs',
     'parts/item-race-stats': 'systems/rmf/templates/parts/item-race-stats.hbs',
     'parts/item-race-resistances': 'systems/rmf/templates/parts/item-race-resistances.hbs',
+    'parts/item-race-progressions': 'systems/rmf/templates/parts/item-race-progressions.hbs',
     
     // Skill sheet partials
     'parts/item-skill-header': 'systems/rmf/templates/parts/item-skill-header.hbs',

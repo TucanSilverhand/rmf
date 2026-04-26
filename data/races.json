@@ -6,7 +6,12 @@
     "racialAbilities": "",
     "stats": { "ag": 0, "co": 0, "me": 0, "re": 0, "sd": 2, "em": 0, "in": 0, "pr": 0, "qu": 0, "st": 2 },
     "resistances": { "ess": 0, "chan": 0, "ment": 0, "pois": 0, "dis": 0 },
-    "backgroundOptions": 6
+    "backgroundOptions": 6,
+    "bodyDevelopment": "0/6/4/2/1",
+    "ppChanneling": "0/6/5/4/3",
+    "ppEssence": "0/6/5/4/3",
+    "ppMentalism": "0/7/6/5/4",
+    "fromBook": "basic"
   },
   {
     "name": "High Men",
@@ -15,7 +20,12 @@
     "racialAbilities": "",
     "stats": { "ag": -2, "co": 4, "me": 0, "re": 0, "sd": 0, "em": 0, "in": 0, "pr": 4, "qu": -2, "st": 4 },
     "resistances": { "ess": -5, "chan": -5, "ment": -5, "pois": 0, "dis": 0 },
-    "backgroundOptions": 4
+    "backgroundOptions": 4,
+    "bodyDevelopment": "0/6/4/2/1",
+    "ppChanneling": "0/7/5/3/1",
+    "ppEssence": "0/6/5/4/3",
+    "ppMentalism": "0/7/6/5/4",
+    "fromBook": "basic"
   },
   {
     "name": "Wood Elves",
@@ -24,7 +34,12 @@
     "racialAbilities": "",
     "stats": { "ag": 4, "co": 0, "me": 2, "re": 0, "sd": -5, "em": 2, "in": 0, "pr": 2, "qu": 2, "st": 0 },
     "resistances": { "ess": -5, "chan": -5, "ment": -5, "pois": 10, "dis": 100 },
-    "backgroundOptions": 4
+    "backgroundOptions": 4,
+    "bodyDevelopment": "0/6/3/1/1",
+    "ppChanneling": "0/6/5/4/3",
+    "ppEssence": "0/7/6/4/4",
+    "ppMentalism": "0/6/5/4/3",
+    "fromBook": "basic"
   },
   {
     "name": "Dwarves",
@@ -33,7 +48,12 @@
     "racialAbilities": "",
     "stats": { "ag": -2, "co": 6, "me": 0, "re": 0, "sd": 2, "em": -4, "in": 0, "pr": -4, "qu": -2, "st": 2 },
     "resistances": { "ess": 40, "chan": 0, "ment": 40, "pois": 20, "dis": 15 },
-    "backgroundOptions": 5
+    "backgroundOptions": 5,
+    "bodyDevelopment": "0/7/4/2/1",
+    "ppChanneling": "0/6/5/4/3",
+    "ppEssence": "0/3/2/1/1",
+    "ppMentalism": "0/3/2/1/1",
+    "fromBook": "basic"
   },
   {
     "name": "Halflings",
@@ -42,6 +62,11 @@
     "racialAbilities": "",
     "stats": { "ag": 6, "co": 6, "me": 0, "re": 0, "sd": -4, "em": -2, "in": 0, "pr": -6, "qu": 4, "st": -8 },
     "resistances": { "ess": 50, "chan": 0, "ment": 40, "pois": 30, "dis": 15 },
-    "backgroundOptions": 5
+    "backgroundOptions": 5,
+    "bodyDevelopment": "0/6/2/2/1",
+    "ppChanneling": "0/6/5/4/3",
+    "ppEssence": "0/2/1/1/1",
+    "ppMentalism": "0/2/1/1/1",
+    "fromBook": "basic"
   }
 ]

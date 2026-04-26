@@ -78,6 +78,11 @@ export class RMFRaceSheet extends HandlebarsApplicationMixin(
           icon: "fas fa-shield-alt",
           label: "RMF.Tabs.Resistances",
         },
+        {
+          id: "progressions",
+          icon: "fas fa-chart-line",
+          label: "RMF.Tabs.Progressions",
+        },
       ],
     },
   };
@@ -138,8 +143,34 @@ export class RMFRaceSheet extends HandlebarsApplicationMixin(
     // Prepare stat bonuses for display
     context.statBonuses = this._prepareStatBonuses();
     context.resistanceBonuses = this._prepareResistanceBonuses();
+    context.progressionBonuses = this._prepareProgressionBonuses();
 
     return context;
+  }
+
+  /**
+   * Build display data for the four race progression strings
+   * (Body Development + PP for the three magical realms).
+   * Each entry exposes the raw string the user edits, the parsed table
+   * computed by _prepareRaceData, and a localized label.
+   *
+   * @returns {Array<{key:string,label:string,value:string,table:object}>}
+   * @private
+   */
+  _prepareProgressionBonuses() {
+    const sys = this.document.system ?? {};
+    const fields = [
+      { key: "bodyDevelopment", labelKey: "RMF.Race.BodyDevelopment" },
+      { key: "ppChanneling",    labelKey: "RMF.Race.PPChanneling" },
+      { key: "ppEssence",       labelKey: "RMF.Race.PPEssence" },
+      { key: "ppMentalism",     labelKey: "RMF.Race.PPMentalism" }
+    ];
+    return fields.map(({ key, labelKey }) => ({
+      key,
+      label: game.i18n.has(labelKey) ? game.i18n.localize(labelKey) : key,
+      value: sys[key] ?? "",
+      table: sys[`${key}Table`] ?? { zero: 0, tier1: 0, tier2: 0, tier3: 0, tier4: 0 }
+    }));
   }
 
   /**

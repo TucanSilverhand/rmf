@@ -62,7 +62,11 @@ export async function importRaces(source, options = {}) {
           racialAbilities: sysSource.racialAbilities ?? "",
           stats: normalizeRaceStats(sysSource.stats),
           resistances: normalizeRaceResistances(sysSource.resistances),
-          backgroundOptions: sysSource.backgroundOptions ?? 0
+          backgroundOptions: sysSource.backgroundOptions ?? 0,
+          bodyDevelopment: normalizeRaceProgressionString(sysSource.bodyDevelopment),
+          ppChanneling: normalizeRaceProgressionString(sysSource.ppChanneling),
+          ppEssence: normalizeRaceProgressionString(sysSource.ppEssence),
+          ppMentalism: normalizeRaceProgressionString(sysSource.ppMentalism)
         },
         { inplace: false, insertKeys: true, insertValues: true, overwrite: true }
       );
@@ -141,7 +145,11 @@ export async function syncRacesToCompendium(source, options = {}) {
           racialAbilities: sysSource.racialAbilities ?? "",
           stats: normalizeRaceStats(sysSource.stats),
           resistances: normalizeRaceResistances(sysSource.resistances),
-          backgroundOptions: Number(sysSource.backgroundOptions ?? 0) || 0
+          backgroundOptions: Number(sysSource.backgroundOptions ?? 0) || 0,
+          bodyDevelopment: normalizeRaceProgressionString(sysSource.bodyDevelopment),
+          ppChanneling: normalizeRaceProgressionString(sysSource.ppChanneling),
+          ppEssence: normalizeRaceProgressionString(sysSource.ppEssence),
+          ppMentalism: normalizeRaceProgressionString(sysSource.ppMentalism)
         },
         { inplace: false, insertKeys: true, insertValues: true, overwrite: true }
       );
@@ -738,6 +746,25 @@ function normalizeRaceStats(stats) {
   }
 
   return out;
+}
+
+/**
+ * Normalize a race progression string ("zero/tier1/tier2/tier3/tier4").
+ * Strips whitespace and validates that every part is a finite number.
+ * Returns "" when the input is empty/invalid so the data model treats it as absent.
+ * @param {*} value
+ * @returns {string}
+ */
+function normalizeRaceProgressionString(value) {
+  if (typeof value !== "string") return "";
+  const trimmed = value.trim();
+  if (!trimmed) return "";
+  const parts = trimmed.split("/").map(s => {
+    const n = Number(String(s).trim());
+    return Number.isFinite(n) ? n : null;
+  });
+  if (parts.some(p => p === null)) return "";
+  return parts.join("/");
 }
 
 function normalizeRaceResistances(resistances) {

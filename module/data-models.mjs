@@ -18,6 +18,25 @@ import {
 } from "./utils/rank-bonus.mjs";
 
 /**
+ * Parse a race progression string of the form "zero/tier1/tier2/tier3/tier4"
+ * (e.g. "0/6/4/2/1") into a structured object. Missing positions default to 0.
+ * Empty / non-string inputs return a zeroed table so callers don't need guards.
+ *
+ * @param {string} value
+ * @returns {{zero:number, tier1:number, tier2:number, tier3:number, tier4:number}}
+ */
+function parseRaceProgression(value) {
+  const empty = { zero: 0, tier1: 0, tier2: 0, tier3: 0, tier4: 0 };
+  if (typeof value !== "string" || !value.trim()) return empty;
+  const parts = value.split("/").map(s => {
+    const n = Number(String(s).trim());
+    return Number.isFinite(n) ? n : 0;
+  });
+  while (parts.length < 5) parts.push(0);
+  return { zero: parts[0], tier1: parts[1], tier2: parts[2], tier3: parts[3], tier4: parts[4] };
+}
+
+/**
  * Extended Actor class for RoleMaster Fantasy characters
  * 
  * Handles automatic calculation of RoleMaster statistics, derived attributes,
@@ -621,7 +640,7 @@ export class RMFItem extends Item {
    */
   _prepareRaceData() {
     const system = this.system;
-    
+
     // Ensure complete stat structure with default values
     if (!system.stats) {
       system.stats = {
@@ -629,17 +648,26 @@ export class RMFItem extends Item {
         em: 0, in: 0, pr: 0, qu: 0, st: 0
       };
     }
-    
+
     // Ensure complete resistance structure with default values
     if (!system.resistances) {
       system.resistances = {
         ess: 0, chan: 0, ment: 0, pois: 0, dis: 0
       };
     }
-    
+
     // Ensure background options field exists
     if (system.backgroundOptions === undefined) {
       system.backgroundOptions = 0;
+    }
+
+    // Race progression strings: format "zero/tier1/tier2/tier3/tier4".
+    // Storage stays as the user-facing string; a parsed table object is exposed
+    // as a derived field for programmatic consumption.
+    const PROGRESSION_FIELDS = ["bodyDevelopment", "ppChanneling", "ppEssence", "ppMentalism"];
+    for (const field of PROGRESSION_FIELDS) {
+      if (typeof system[field] !== "string") system[field] = "";
+      system[`${field}Table`] = parseRaceProgression(system[field]);
     }
 
     // Calculate metadata for UI display

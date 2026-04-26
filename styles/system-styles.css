@@ -928,7 +928,32 @@ table tbody td:first-child { text-align: left; }
 table tr { height: var(--rmf-row-min-height); }
 
 /* Specific tables present in templates */
-.stats-table, .derived-stats-table, .resistances-table, .background-table, .basic-info-table, .basic-totals-table { border: 1px solid #eef1f4; border-radius: var(--rmf-radius-1); box-shadow: var(--rmf-shadow-sm); }
+.stats-table, .derived-stats-table, .resistances-table, .background-table, .basic-info-table, .basic-totals-table, .progressions-table { border: 1px solid #eef1f4; border-radius: var(--rmf-radius-1); box-shadow: var(--rmf-shadow-sm); }
+
+.progressions-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.progressions-table th,
+.progressions-table td {
+  padding: var(--rmf-space-2);
+  text-align: left;
+}
+.progressions-table .tier-col,
+.progressions-table .tier-cell {
+  width: 36px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  color: var(--rmf-color-text-muted);
+}
+.progressions-table .progression-label {
+  font-weight: 600;
+  white-space: nowrap;
+}
+.progressions-table .progression-input input {
+  width: 100%;
+  font-family: var(--rmf-font-mono, monospace);
+}
 /* Stronger specificity inside RMF sheets to ensure border visibility */
 .rmf-sheet table.stats-table,
 .rmf-sheet table.derived-stats-table,
