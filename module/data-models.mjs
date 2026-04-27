@@ -82,13 +82,9 @@ export class RMFActor extends Actor {
 
       // Foundry prepares embedded items BEFORE the actor's prepareDerivedData,
       // so when an item runs its derivation the actor's chStats[*].total is
-      // still zero. Re-run race first (categories/skills look up its racial
-      // ranks lookup maps), then the category items (they depend on actor
-      // stats) and finally the skill items (they depend on the category
+      // still zero. Re-run the category items first (they depend on actor
+      // stats) and then the skill items (they depend on the category
       // totalBonus computed in the previous pass).
-      for (const item of this.items) {
-        if (item.type === "race") item.prepareDerivedData?.();
-      }
       for (const item of this.items) {
         if (item.type === "category") item.prepareDerivedData?.();
       }
@@ -851,39 +847,17 @@ export class RMFItem extends Item {
       }
     }
 
-    // Racial ranks: when this category is embedded on an actor that has a race
-    // item, look up the matching entry in race.system.racialRanks.categories and
-    // count it towards totalRanks (in addition to bought + freeRanks).
-    system.racialRanks = this._resolveRacialRanksForCategory();
-
-    // Calculate totalBonus for display in actor sheets
+    // Calculate totalBonus for display in actor sheets.
+    // Racial ranks are written into boughtByLevel.0 when the race is dropped on
+    // the actor, so they're already counted in totalBoughtRanks below.
     const totalBoughtRanks = this._computeTotalBoughtRanks(system.boughtByLevel);
-    const totalRanks = totalBoughtRanks + (system.freeRanks || 0) + (system.racialRanks || 0);
+    const totalRanks = totalBoughtRanks + (system.freeRanks || 0);
     const totalRankBonus = this._computeRankBonus(totalRanks, system.categoryRankBonusProgression);
     const totalStatsBonus = this._computeSelectedStatSum(system.statBonus?.stat1, system.statBonus?.stat2, system.statBonus?.stat3);
     system.totalRanks = totalRanks;
     system.totalRankBonus = totalRankBonus;
     system.totalStatsBonus = totalStatsBonus;
     system.totalBonus = totalRankBonus + totalStatsBonus + (system.profBonus || 0) + (system.spec1Bonus || 0) + (system.spec2Bonus || 0);
-  }
-
-  /**
-   * Resolve the number of free racial ranks granted to this category by the
-   * actor's assigned race. Returns 0 when not on an actor or no race is
-   * assigned. Lookup is case-insensitive on the category name.
-   * @private
-   * @returns {number}
-   */
-  _resolveRacialRanksForCategory() {
-    const actor = this.parent;
-    if (actor?.documentName !== "Actor") return 0;
-    const raceItem = actor.items.find(i => i.type === "race");
-    if (!raceItem) return 0;
-    const list = raceItem.system?.racialRanks?.categories;
-    if (!Array.isArray(list)) return 0;
-    const target = String(this.name || "").trim().toLowerCase();
-    const found = list.find(e => String(e?.name || "").trim().toLowerCase() === target);
-    return Number(found?.ranks) || 0;
   }
 
   /**
@@ -982,14 +956,11 @@ export class RMFItem extends Item {
 
     system.skillRankBonusProgression = normalizeSkillProgression(system.skillRankBonusProgression);
 
-    // Racial ranks: when this skill is embedded on an actor that has a race
-    // item, look up the matching entry in race.system.racialRanks.skills and
-    // count it towards totalRanks (in addition to bought ranks).
-    system.racialRanks = this._resolveRacialRanksForSkill();
-
     const totalBoughtRanks = this._computeTotalBoughtRanks(system.boughtByLevel);
-    // Skills don't have freeRanks today, but expose totalRanks for parity with categories.
-    const totalRanks = totalBoughtRanks + (system.racialRanks || 0);
+    // Skills don't have freeRanks today, but expose totalRanks for parity with
+    // categories. Racial ranks are stored in boughtByLevel.0, so they're already
+    // counted in totalBoughtRanks.
+    const totalRanks = totalBoughtRanks;
     const specialOverride = this._resolveSpecialSkillTable(system.skillRankBonusProgression);
     const rankBonus = computeSkillRankBonus(totalRanks, system.skillRankBonusProgression, specialOverride);
 
@@ -1044,25 +1015,6 @@ export class RMFItem extends Item {
       const value = system.statBonus[slot];
       system.statBonus[slot] = typeof value === "string" ? value : "";
     }
-  }
-
-  /**
-   * Resolve the number of free racial ranks granted to this skill by the
-   * actor's assigned race. Returns 0 when not on an actor or no race is
-   * assigned. Lookup is case-insensitive on the skill name.
-   * @private
-   * @returns {number}
-   */
-  _resolveRacialRanksForSkill() {
-    const actor = this.parent;
-    if (actor?.documentName !== "Actor") return 0;
-    const raceItem = actor.items.find(i => i.type === "race");
-    if (!raceItem) return 0;
-    const list = raceItem.system?.racialRanks?.skills;
-    if (!Array.isArray(list)) return 0;
-    const target = String(this.name || "").trim().toLowerCase();
-    const found = list.find(e => String(e?.name || "").trim().toLowerCase() === target);
-    return Number(found?.ranks) || 0;
   }
 
   /**

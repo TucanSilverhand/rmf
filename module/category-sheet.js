@@ -100,11 +100,9 @@ export class RMFCategorySheet extends HandlebarsApplicationMixin(foundry.applica
 
     const totalBoughtRanks = this._computeTotalBoughtRanks(context.system?.boughtByLevel);
     const freeRanks = Number(context.system?.freeRanks ?? 0);
-    const racialRanks = Number(context.system?.racialRanks ?? 0);
     context.totalBoughtRanks = totalBoughtRanks;
     context.freeRanks = freeRanks;
-    context.racialRanks = racialRanks;
-    context.totalRanks = totalBoughtRanks + freeRanks + racialRanks;
+    context.totalRanks = totalBoughtRanks + freeRanks;
     const progression = context.system?.categoryRankBonusProgression || 'standard';
     context.totalRankBonus = this._computeRankBonus(context.totalRanks, progression);
 

@@ -401,6 +401,14 @@ export class RMFActorSheet extends HandlebarsApplicationMixin(foundry.applicatio
         updateData[`system.chStats.${longKey}.race`] = val;
       }
       await this.document.update(updateData);
+
+      // Apply racial ranks: write boughtByLevel.0 on each matching category /
+      // skill, auto-creating missing skill items from world or compendium.
+      try {
+        await this._applyRacialRanksFromRace(itemData?.system?.racialRanks);
+      } catch (err) {
+        console.error('RMF | Failed applying racial ranks on race drop', err);
+      }
       return created;
     }
 
@@ -438,6 +446,164 @@ export class RMFActorSheet extends HandlebarsApplicationMixin(foundry.applicatio
     // Create a new embedded instance
     delete itemData._id;
     return this.document.createEmbeddedDocuments('Item', [itemData]);
+  }
+
+  /**
+   * Apply the racial-ranks block from a race item onto the actor's
+   * embedded category and skill items. For each entry:
+   *  - Find the matching item by name (case-insensitive).
+   *  - Skills missing from the actor are auto-created (sourced from world
+   *    items first, then the world.basic-core compendium, falling back to a
+   *    minimal stub).
+   *  - Set `system.boughtByLevel.0` on the matched/created item to the racial
+   *    rank value, replacing any pre-existing value at level 0.
+   * Categories are not auto-created; the user is expected to assign them.
+   *
+   * @param {{categories?: Array<{name: string, ranks: number}>, skills?: Array<{name: string, ranks: number}>}} racialRanks
+   * @returns {Promise<void>}
+   * @private
+   */
+  async _applyRacialRanksFromRace(racialRanks) {
+    if (!racialRanks || typeof racialRanks !== 'object') return;
+
+    const categories = Array.isArray(racialRanks.categories) ? racialRanks.categories : [];
+    const skills = Array.isArray(racialRanks.skills) ? racialRanks.skills : [];
+
+    const findOwnItem = (type, name) => {
+      const target = String(name || '').trim().toLowerCase();
+      if (!target) return null;
+      return this.document.items.find(
+        i => i.type === type && String(i.name || '').trim().toLowerCase() === target
+      ) ?? null;
+    };
+
+    const categoryUpdates = [];
+    for (const entry of categories) {
+      const name = entry?.name;
+      const ranks = Number(entry?.ranks) || 0;
+      if (!name) continue;
+      const cat = findOwnItem('category', name);
+      if (!cat) continue;
+      categoryUpdates.push({
+        _id: cat.id,
+        'system.boughtByLevel.0': ranks
+      });
+    }
+    if (categoryUpdates.length) {
+      await this.document.updateEmbeddedDocuments('Item', categoryUpdates);
+    }
+
+    if (!skills.length) return;
+
+    // Resolve the source document for any skill that doesn't yet exist on
+    // the actor. We query world Items first, then the basic-core compendium.
+    const missing = skills.filter(e => e?.name && !findOwnItem('skill', e.name));
+    const skillCreatePayload = [];
+    for (const entry of missing) {
+      const name = entry.name;
+      const ranks = Number(entry.ranks) || 0;
+      const sourceData = await this._resolveSkillSourceData(name);
+      const itemData = sourceData ?? this._buildStubSkillData(name);
+      // Ensure level 0 reflects the racial rank value at creation time.
+      itemData.system = itemData.system || {};
+      itemData.system.boughtByLevel = { ...(itemData.system.boughtByLevel || {}), 0: ranks };
+      skillCreatePayload.push(itemData);
+    }
+    if (skillCreatePayload.length) {
+      await this.document.createEmbeddedDocuments('Item', skillCreatePayload);
+    }
+
+    // Now update level-0 on existing skills (those that were already on the
+    // actor or just created). We re-query because newly-created docs need
+    // their fresh ids.
+    const skillUpdates = [];
+    for (const entry of skills) {
+      const name = entry?.name;
+      const ranks = Number(entry?.ranks) || 0;
+      if (!name) continue;
+      const skill = findOwnItem('skill', name);
+      if (!skill) continue;
+      // Skip newly-created docs whose level 0 was already seeded above.
+      const current = Number(skill.system?.boughtByLevel?.[0] ?? 0);
+      if (current === ranks) continue;
+      skillUpdates.push({
+        _id: skill.id,
+        'system.boughtByLevel.0': ranks
+      });
+    }
+    if (skillUpdates.length) {
+      await this.document.updateEmbeddedDocuments('Item', skillUpdates);
+    }
+  }
+
+  /**
+   * Locate a skill source document by name. Returns the toObject()-style data
+   * (without _id) ready to be embedded. Search order:
+   *   1. World items (game.items)
+   *   2. Compendium pack "world.basic-core"
+   * Returns null when not found anywhere.
+   *
+   * @param {string} name
+   * @returns {Promise<object|null>}
+   * @private
+   */
+  async _resolveSkillSourceData(name) {
+    const target = String(name || '').trim().toLowerCase();
+    if (!target) return null;
+
+    // 1) World items
+    const worldHit = game.items.find(
+      i => i.type === 'skill' && String(i.name || '').trim().toLowerCase() === target
+    );
+    if (worldHit) {
+      const data = worldHit.toObject();
+      delete data._id;
+      delete data.folder;
+      return data;
+    }
+
+    // 2) Compendium "world.basic-core"
+    const pack = game.packs?.get('world.basic-core');
+    if (pack && pack.documentName === 'Item') {
+      try {
+        await pack.getIndex({ fields: ['name', 'type'] });
+        const entry = pack.index.find(
+          e => e.type === 'skill' && String(e.name || '').trim().toLowerCase() === target
+        );
+        if (entry) {
+          const doc = await pack.getDocument(entry._id);
+          if (doc) {
+            const data = doc.toObject();
+            delete data._id;
+            delete data.folder;
+            return data;
+          }
+        }
+      } catch (err) {
+        console.warn('RMF | Compendium lookup for skill failed', name, err);
+      }
+    }
+
+    return null;
+  }
+
+  /**
+   * Build a minimal skill payload using the system template defaults when no
+   * world / compendium source is available.
+   *
+   * @param {string} name
+   * @returns {object}
+   * @private
+   */
+  _buildStubSkillData(name) {
+    const tpl = foundry.utils.getProperty(game.system, 'documentTypes.Item.skill.template');
+    const system = tpl ? foundry.utils.duplicate(tpl) : {};
+    return {
+      name: String(name),
+      type: 'skill',
+      img: 'icons/svg/book.svg',
+      system
+    };
   }
 
   /**

@@ -54,6 +54,7 @@ export class RMFHooks {
     Hooks.on("updateToken", this.#onUpdateToken.bind(this));
     Hooks.on("createItem", this.#onCreateItem.bind(this));
     Hooks.on("updateItem", this.#onUpdateItem.bind(this));
+    Hooks.on("deleteItem", this.#onDeleteItem.bind(this));
 
     // UI hooks
     Hooks.on("renderSettingsConfig", this.#onRenderSettingsConfig.bind(this));
@@ -280,6 +281,40 @@ export class RMFHooks {
     // Only resync when the realm's statBonus actually changed
     if (!foundry.utils.hasProperty(changes, "system.statBonus")) return;
     await this.#syncPowerPointDevelopmentStatBonus(actor, item);
+  }
+
+  /**
+   * Item deletion hook — when a race item is removed from an actor, reset
+   * `system.boughtByLevel.0` to 0 on every embedded category and skill so
+   * the racial level-0 contribution disappears with the race.
+   *
+   * @private
+   * @static
+   * @async
+   * @param {Item} item
+   * @param {Object} options
+   * @param {string} userId
+   */
+  static async #onDeleteItem(item, options, userId) {
+    if (game.userId !== userId) return;
+    if (item.type !== "race") return;
+    const actor = item.parent;
+    if (!actor || actor.documentName !== "Actor") return;
+
+    const updates = [];
+    for (const i of actor.items) {
+      if (i.type !== "category" && i.type !== "skill") continue;
+      const current = Number(i.system?.boughtByLevel?.["0"] ?? 0);
+      if (current === 0) continue;
+      updates.push({ _id: i.id, "system.boughtByLevel.0": 0 });
+    }
+    if (updates.length) {
+      await actor.updateEmbeddedDocuments("Item", updates);
+    }
+
+    if (CONFIG.RMF?.debug) {
+      console.log(`RMF DEBUG | Race removed from ${actor.name}: reset Level 0 on ${updates.length} item(s)`);
+    }
   }
 
   /**
