@@ -1,0 +1,214 @@
+{{!--
+  RMF Race Item Sheet Advanced Partial
+  Editable view: background, stats, resistances, progressions, racial ranks.
+--}}
+
+<div class="tab advanced-section" data-group="primary-tabs" data-tab="advanced">
+
+  {{!-- Description --}}
+  <fieldset class="form-group">
+    <legend>{{localize "RMF.Description"}}</legend>
+    <div class="editor-container description-editor">
+      <textarea name="system.description"
+                class="rmf-rich-editor"
+                style="height: 180px; resize: vertical;"
+                placeholder="{{localize 'RMF.DescriptionPlaceholder'}}">{{system.description}}</textarea>
+    </div>
+  </fieldset>
+
+  {{!-- Racial abilities --}}
+  <fieldset class="form-group">
+    <legend>{{localize "RMF.RacialAbilities"}}</legend>
+    <div class="editor-container abilities-editor">
+      <textarea name="system.racialAbilities"
+                class="rmf-rich-editor"
+                style="height: 100px; resize: vertical;"
+                placeholder="{{localize 'RMF.RacialAbilitiesPlaceholder'}}">{{system.racialAbilities}}</textarea>
+    </div>
+  </fieldset>
+
+  {{!-- Background numeric fields --}}
+  <fieldset class="form-group">
+    <legend>{{localize "RMF.Tabs.Background"}}</legend>
+    <div class="flexrow">
+      <div class="resource">
+        <label>{{localize "RMF.BackgroundOptions"}}</label>
+        <input type="number"
+               name="system.backgroundOptions"
+               value="{{system.backgroundOptions}}"
+               min="0"
+               max="999"
+               step="1"
+               inputmode="numeric"
+               placeholder="0"
+               data-dtype="Number"/>
+      </div>
+      <div class="resource">
+        <label>{{localize "RMF.Race.HobbyRanks"}}</label>
+        <input type="number"
+               name="system.hobbyRanks"
+               value="{{system.hobbyRanks}}"
+               min="0"
+               max="999"
+               step="1"
+               inputmode="numeric"
+               placeholder="0"
+               data-dtype="Number"/>
+      </div>
+      <div class="resource">
+        <label>{{localize "RMF.Category.Source"}}</label>
+        <input type="text"
+               name="system.fromBook"
+               value="{{system.fromBook}}"
+               placeholder="basic"
+               autocomplete="off" />
+      </div>
+    </div>
+  </fieldset>
+
+  {{!-- Stats (2-column grid) --}}
+  <fieldset class="form-group">
+    <legend>{{localize "RMF.Sections.MainStats"}}</legend>
+    <div class="race-stats-grid">
+      {{#each statBonuses as |stat key|}}
+      <div class="race-stats-row">
+        <span class="stat-label">{{stat.label}}</span>
+        <input type="number"
+               name="system.stats.{{key}}"
+               value="{{stat.value}}"
+               min="-99"
+               max="99"
+               step="1"
+               inputmode="numeric"
+               placeholder="0"
+               data-dtype="Number"/>
+      </div>
+      {{/each}}
+    </div>
+  </fieldset>
+
+  {{!-- Resistances --}}
+  <fieldset class="form-group">
+    <legend>{{localize "RMF.Sections.Resistances"}}</legend>
+    <div class="resistances-table-container">
+      <table class="resistances-table">
+        <thead>
+          <tr>
+            <th>{{localize "RMF.ResistanceType"}}</th>
+            <th>{{localize "RMF.StatLabels.Bonus"}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each resistanceBonuses as |resistance key|}}
+          <tr>
+            <td class="resistance-label">{{resistance.label}}</td>
+            <td class="resistance-input">
+              <input type="number"
+                     name="system.resistances.{{key}}"
+                     value="{{resistance.value}}"
+                     min="-99"
+                     max="999"
+                     step="1"
+                     inputmode="numeric"
+                     placeholder="0"
+                     data-dtype="Number"/>
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </fieldset>
+
+  {{!-- Progressions --}}
+  <fieldset class="form-group">
+    <legend>{{localize "RMF.Tabs.Progressions"}}</legend>
+    <p class="hint">{{localize "RMF.Race.ProgressionHint"}}</p>
+    <div class="progressions-table-container">
+      <table class="progressions-table">
+        <thead>
+          <tr>
+            <th>{{localize "RMF.Race.Progression"}}</th>
+            <th>{{localize "RMF.Race.ProgressionString"}}</th>
+            <th class="tier-col">0</th>
+            <th class="tier-col">T1</th>
+            <th class="tier-col">T2</th>
+            <th class="tier-col">T3</th>
+            <th class="tier-col">T4</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each progressionBonuses as |entry|}}
+          <tr>
+            <td class="progression-label">{{entry.label}}</td>
+            <td class="progression-input">
+              <input type="text"
+                     name="system.{{entry.key}}"
+                     value="{{entry.value}}"
+                     placeholder="0/0/0/0/0"
+                     pattern="^\s*-?\d+(?:\s*/\s*-?\d+){0,4}\s*$"
+                     autocomplete="off" />
+            </td>
+            <td class="tier-cell">{{entry.table.zero}}</td>
+            <td class="tier-cell">{{entry.table.tier1}}</td>
+            <td class="tier-cell">{{entry.table.tier2}}</td>
+            <td class="tier-cell">{{entry.table.tier3}}</td>
+            <td class="tier-cell">{{entry.table.tier4}}</td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </fieldset>
+
+  {{!-- Racial ranks: categories (2-column grid) --}}
+  <fieldset class="form-group">
+    <legend>{{localize "RMF.Race.RacialRanks.Categories"}}</legend>
+    <div class="racial-ranks-grid">
+      {{#each racialRankCategoryRows as |row|}}
+      <div class="racial-rank-row">
+        <input type="text"
+               name="system.racialRanks.categories.{{row.index}}.name"
+               value="{{row.name}}"
+               placeholder="{{localize 'RMF.Skills.Category'}}"
+               autocomplete="off" />
+        <input type="number"
+               name="system.racialRanks.categories.{{row.index}}.ranks"
+               value="{{row.ranks}}"
+               min="-99"
+               max="999"
+               step="1"
+               inputmode="numeric"
+               placeholder="0"
+               data-dtype="Number" />
+      </div>
+      {{/each}}
+    </div>
+  </fieldset>
+
+  {{!-- Racial ranks: skills (2-column grid) --}}
+  <fieldset class="form-group">
+    <legend>{{localize "RMF.Race.RacialRanks.Skills"}}</legend>
+    <div class="racial-ranks-grid">
+      {{#each racialRankSkillRows as |row|}}
+      <div class="racial-rank-row">
+        <input type="text"
+               name="system.racialRanks.skills.{{row.index}}.name"
+               value="{{row.name}}"
+               placeholder="{{localize 'RMF.Skills.Title'}}"
+               autocomplete="off" />
+        <input type="number"
+               name="system.racialRanks.skills.{{row.index}}.ranks"
+               value="{{row.ranks}}"
+               min="-99"
+               max="999"
+               step="1"
+               inputmode="numeric"
+               placeholder="0"
+               data-dtype="Number" />
+      </div>
+      {{/each}}
+    </div>
+  </fieldset>
+
+</div>

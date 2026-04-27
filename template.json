@@ -164,6 +164,11 @@
       "ppChanneling": "",
       "ppEssence": "",
       "ppMentalism": "",
+      "hobbyRanks": 0,
+      "racialRanks": {
+        "categories": [],
+        "skills": []
+      },
       "fromBook": "basic"
     },
     "category": {

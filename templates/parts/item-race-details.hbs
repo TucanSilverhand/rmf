@@ -1,0 +1,150 @@
+{{!--
+  RMF Race Item Sheet Details Partial
+  Read-only summary view of all race data.
+--}}
+
+<div class="tab details-section" data-group="primary-tabs" data-tab="details" style="display: block;">
+
+  {{!-- Description (enriched, read-only) --}}
+  <div class="description-preview ProseMirror">
+    {{{enrichedDescription}}}
+  </div>
+
+  {{!-- Racial abilities (enriched, read-only) --}}
+  {{#if enrichedRacialAbilities}}
+  <div class="abilities-preview ProseMirror">
+    <h3>{{localize "RMF.RacialAbilities"}}</h3>
+    {{{enrichedRacialAbilities}}}
+  </div>
+  {{/if}}
+
+  {{!-- Background summary --}}
+  <div class="summary-wrapper">
+    <table class="summary-table basic-info-table">
+      <thead>
+        <tr>
+          <th scope="col">{{localize "RMF.BackgroundOptions"}}</th>
+          <th scope="col">{{localize "RMF.Race.HobbyRanks"}}</th>
+          <th scope="col">{{localize "RMF.Category.Source"}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input type="number" value="{{system.backgroundOptions}}" readonly data-dtype="Number" inputmode="numeric" /></td>
+          <td><input type="number" value="{{system.hobbyRanks}}" readonly data-dtype="Number" inputmode="numeric" /></td>
+          <td><input type="text" value="{{system.fromBook}}" readonly /></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  {{!-- Stats summary --}}
+  <div class="summary-wrapper">
+    <h3>{{localize "RMF.Sections.MainStats"}}</h3>
+    <table class="summary-table stats-table">
+      <thead>
+        <tr>
+          {{#each statBonuses as |stat key|}}
+            <th scope="col">{{stat.label}}</th>
+          {{/each}}
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          {{#each statBonuses as |stat key|}}
+            <td><input type="number" value="{{stat.value}}" readonly data-dtype="Number" inputmode="numeric" /></td>
+          {{/each}}
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  {{!-- Resistances summary --}}
+  <div class="summary-wrapper">
+    <h3>{{localize "RMF.Sections.Resistances"}}</h3>
+    <table class="summary-table resistances-table">
+      <thead>
+        <tr>
+          {{#each resistanceBonuses as |res key|}}
+            <th scope="col">{{res.label}}</th>
+          {{/each}}
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          {{#each resistanceBonuses as |res key|}}
+            <td><input type="number" value="{{res.value}}" readonly data-dtype="Number" inputmode="numeric" /></td>
+          {{/each}}
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  {{!-- Progressions summary --}}
+  <div class="summary-wrapper">
+    <h3>{{localize "RMF.Tabs.Progressions"}}</h3>
+    <table class="summary-table progressions-table">
+      <thead>
+        <tr>
+          <th>{{localize "RMF.Race.Progression"}}</th>
+          <th class="tier-col">0</th>
+          <th class="tier-col">T1</th>
+          <th class="tier-col">T2</th>
+          <th class="tier-col">T3</th>
+          <th class="tier-col">T4</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each progressionBonuses as |entry|}}
+        <tr>
+          <td class="progression-label">{{entry.label}}</td>
+          <td class="tier-cell">{{entry.table.zero}}</td>
+          <td class="tier-cell">{{entry.table.tier1}}</td>
+          <td class="tier-cell">{{entry.table.tier2}}</td>
+          <td class="tier-cell">{{entry.table.tier3}}</td>
+          <td class="tier-cell">{{entry.table.tier4}}</td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+
+  {{!-- Racial ranks: categories (2-column grid) --}}
+  <div class="summary-wrapper">
+    <h3>{{localize "RMF.Race.RacialRanks.Categories"}}
+      <small class="hint">({{localize "RMF.Race.RacialRanks.Total"}}: {{system.totalRacialCategoryRanks}})</small>
+    </h3>
+    {{#if system.racialRanks.categories.length}}
+    <div class="racial-ranks-grid">
+      {{#each system.racialRanks.categories as |entry|}}
+      <div class="racial-rank-row">
+        <input type="text" value="{{entry.name}}" readonly />
+        <input type="number" value="{{entry.ranks}}" readonly data-dtype="Number" inputmode="numeric" />
+      </div>
+      {{/each}}
+    </div>
+    {{else}}
+    <em>{{localize "RMF.Race.RacialRanks.None"}}</em>
+    {{/if}}
+  </div>
+
+  {{!-- Racial ranks: skills (2-column grid) --}}
+  <div class="summary-wrapper">
+    <h3>{{localize "RMF.Race.RacialRanks.Skills"}}
+      <small class="hint">({{localize "RMF.Race.RacialRanks.Total"}}: {{system.totalRacialSkillRanks}})</small>
+    </h3>
+    {{#if system.racialRanks.skills.length}}
+    <div class="racial-ranks-grid">
+      {{#each system.racialRanks.skills as |entry|}}
+      <div class="racial-rank-row">
+        <input type="text" value="{{entry.name}}" readonly />
+        <input type="number" value="{{entry.ranks}}" readonly data-dtype="Number" inputmode="numeric" />
+      </div>
+      {{/each}}
+    </div>
+    {{else}}
+    <em>{{localize "RMF.Race.RacialRanks.None"}}</em>
+    {{/if}}
+  </div>
+
+</div>

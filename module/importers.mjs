@@ -66,7 +66,9 @@ export async function importRaces(source, options = {}) {
           bodyDevelopment: normalizeRaceProgressionString(sysSource.bodyDevelopment),
           ppChanneling: normalizeRaceProgressionString(sysSource.ppChanneling),
           ppEssence: normalizeRaceProgressionString(sysSource.ppEssence),
-          ppMentalism: normalizeRaceProgressionString(sysSource.ppMentalism)
+          ppMentalism: normalizeRaceProgressionString(sysSource.ppMentalism),
+          hobbyRanks: normalizeRaceHobbyRanks(sysSource.hobbyRanks),
+          racialRanks: normalizeRacialRanks(sysSource.racialRanks)
         },
         { inplace: false, insertKeys: true, insertValues: true, overwrite: true }
       );
@@ -150,6 +152,8 @@ export async function syncRacesToCompendium(source, options = {}) {
           ppChanneling: normalizeRaceProgressionString(sysSource.ppChanneling),
           ppEssence: normalizeRaceProgressionString(sysSource.ppEssence),
           ppMentalism: normalizeRaceProgressionString(sysSource.ppMentalism),
+          hobbyRanks: normalizeRaceHobbyRanks(sysSource.hobbyRanks),
+          racialRanks: normalizeRacialRanks(sysSource.racialRanks),
           fromBook: String(sysSource.fromBook ?? race.fromBook ?? "basic")
         },
         { inplace: false, insertKeys: true, insertValues: true, overwrite: true }
@@ -770,6 +774,47 @@ function normalizeRaceProgressionString(value) {
   });
   if (parts.some(p => p === null)) return "";
   return parts.join("/");
+}
+
+/**
+ * Normalize the race "hobbyRanks" value into a non-negative integer.
+ * Empty / non-numeric input collapses to 0.
+ * @param {*} value
+ * @returns {number}
+ */
+function normalizeRaceHobbyRanks(value) {
+  const num = Number(value);
+  if (!Number.isFinite(num)) return 0;
+  return Math.max(0, Math.trunc(num));
+}
+
+/**
+ * Normalize the race "racialRanks" structure to the canonical shape:
+ *   { categories: [{name, ranks}], skills: [{name, ranks}] }
+ * Drops entries without a usable name and coerces "ranks" to a finite number.
+ * @param {*} value
+ * @returns {{categories: Array<{name: string, ranks: number}>, skills: Array<{name: string, ranks: number}>}}
+ */
+function normalizeRacialRanks(value) {
+  const out = { categories: [], skills: [] };
+  if (!value || typeof value !== "object") return out;
+
+  const normalizeList = (list) => {
+    if (!Array.isArray(list)) return [];
+    return list
+      .filter(entry => entry && typeof entry === "object")
+      .map(entry => {
+        const name = typeof entry.name === "string" ? entry.name.trim() : "";
+        if (!name) return null;
+        const ranks = Number(entry.ranks);
+        return { name, ranks: Number.isFinite(ranks) ? ranks : 0 };
+      })
+      .filter(Boolean);
+  };
+
+  out.categories = normalizeList(value.categories);
+  out.skills = normalizeList(value.skills);
+  return out;
 }
 
 function normalizeRaceResistances(resistances) {

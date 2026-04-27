@@ -12,6 +12,7 @@
     "ppEssence": "0/6/5/4/3",
     "ppMentalism": "0/7/6/5/4",
     "fromBook": "basic",
+    "hobbyRanks": 12,
     "racialRanks": {
       "categories": [
         { "name": "Armor · Light", "ranks": 1 },
@@ -73,6 +74,7 @@
     "ppEssence": "0/6/5/4/3",
     "ppMentalism": "0/7/6/5/4",
     "fromBook": "basic",
+    "hobbyRanks": 12,
     "racialRanks": {
       "categories": [
         { "name": "Armor · Light", "ranks": 1 },
@@ -135,6 +137,7 @@
     "ppEssence": "0/7/6/4/4",
     "ppMentalism": "0/6/5/4/3",
     "fromBook": "basic",
+    "hobbyRanks": 12,
     "racialRanks": {
       "categories": [
         { "name": "Armor · Light", "ranks": 0 },
@@ -197,6 +200,7 @@
     "ppEssence": "0/3/2/1/1",
     "ppMentalism": "0/3/2/1/1",
     "fromBook": "basic",
+    "hobbyRanks": 12,
     "racialRanks": {
       "categories": [
         { "name": "Armor · Light", "ranks": 1 },
@@ -259,6 +263,7 @@
     "ppEssence": "0/2/1/1/1",
     "ppMentalism": "0/2/1/1/1",
     "fromBook": "basic",
+    "hobbyRanks": 12,
     "racialRanks": {
       "categories": [
         { "name": "Armor · Light", "ranks": 0 },

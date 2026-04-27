@@ -36,12 +36,14 @@ export class RMFRaceSheet extends HandlebarsApplicationMixin(
       positioned: true,
       minimizable: true,
       contentClasses: ["rmf-race-sheet"],
+      minWidth: 560,
+      minHeight: 600,
     },
 
     // Position and size
     position: {
       width: 640,
-      height: "auto",
+      height: 760,
     },
 
     // Declarative actions
@@ -63,26 +65,8 @@ export class RMFRaceSheet extends HandlebarsApplicationMixin(
   static TABS = {
     primary: {
       tabs: [
-        {
-          id: "background",
-          icon: "fas fa-scroll",
-          label: "RMF.Tabs.Background",
-        },
-        {
-          id: "stats",
-          icon: "fas fa-chart-bar",
-          label: "RMF.Tabs.Stats",
-        },
-        {
-          id: "resistances",
-          icon: "fas fa-shield-alt",
-          label: "RMF.Tabs.Resistances",
-        },
-        {
-          id: "progressions",
-          icon: "fas fa-chart-line",
-          label: "RMF.Tabs.Progressions",
-        },
+        { id: "details",  icon: "fas fa-info-circle", label: "RMF.Tabs.Details" },
+        { id: "advanced", icon: "fas fa-cog",         label: "RMF.Tabs.Advanced" }
       ],
     },
   };
@@ -144,8 +128,30 @@ export class RMFRaceSheet extends HandlebarsApplicationMixin(
     context.statBonuses = this._prepareStatBonuses();
     context.resistanceBonuses = this._prepareResistanceBonuses();
     context.progressionBonuses = this._prepareProgressionBonuses();
+    // Indexed rows for editable racial ranks (categories + skills)
+    context.racialRankCategoryRows = this._prepareRacialRankRows("categories");
+    context.racialRankSkillRows = this._prepareRacialRankRows("skills");
 
     return context;
+  }
+
+  /**
+   * Build indexed row data for the editable racial-ranks tables.
+   * Each row carries the array index used to build the dot-notation form
+   * field name (e.g. system.racialRanks.categories.0.name).
+   *
+   * @param {"categories"|"skills"} kind
+   * @returns {Array<{index: number, name: string, ranks: number}>}
+   * @private
+   */
+  _prepareRacialRankRows(kind) {
+    const list = this.document.system?.racialRanks?.[kind];
+    if (!Array.isArray(list)) return [];
+    return list.map((entry, index) => ({
+      index,
+      name: typeof entry?.name === "string" ? entry.name : "",
+      ranks: Number(entry?.ranks) || 0
+    }));
   }
 
   /**
@@ -267,7 +273,7 @@ export class RMFRaceSheet extends HandlebarsApplicationMixin(
     this._initHeaderAutoHeight(this.element);
     this._setupFormSubmitLogging(this.element);
     // Apply previously active tab or default on first render
-    this._setActiveTab(this._activeTab || "background", this.element);
+    this._setActiveTab(this._activeTab || "details", this.element);
   }
 
   /**
@@ -292,7 +298,7 @@ export class RMFRaceSheet extends HandlebarsApplicationMixin(
     this._setupFormSubmitLogging(this.element);
     this._setupChangeAutosubmit(this.element);
     // Restore active tab after rerender
-    this._setActiveTab(this._activeTab || "background", this.element);
+    this._setActiveTab(this._activeTab || "details", this.element);
   }
 
   /**
@@ -382,7 +388,22 @@ export class RMFRaceSheet extends HandlebarsApplicationMixin(
           });
         }
         console.log(`RMF | ${tag} Update ${name} => ${value}`);
-        await this.document.update({ [name]: value });
+
+        // Foundry stores arrays atomically; replace the whole list when
+        // editing a racial-ranks row so we don't accidentally convert it
+        // into an object keyed by numeric strings.
+        const racialMatch = name.match(/^system\.racialRanks\.(categories|skills)\.(\d+)\.(name|ranks)$/);
+        if (racialMatch) {
+          const [, kind, indexStr, field] = racialMatch;
+          const index = Number(indexStr);
+          const current = foundry.utils.duplicate(this.document.system?.racialRanks?.[kind] ?? []);
+          if (!Array.isArray(current[index])) current[index] = current[index] ?? { name: "", ranks: 0 };
+          current[index] = { ...current[index] };
+          current[index][field] = field === "ranks" ? Number(value) || 0 : String(value ?? "");
+          await this.document.update({ [`system.racialRanks.${kind}`]: current });
+        } else {
+          await this.document.update({ [name]: value });
+        }
       } catch (err) {
         console.error("RMF ERROR | RaceSheet update failed", { name, err });
         ui.notifications?.error(err?.message || "Update failed");

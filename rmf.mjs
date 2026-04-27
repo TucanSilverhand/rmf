@@ -355,10 +355,8 @@ async function _preloadHandlebarsTemplates() {
     // Race sheet partials
     "systems/rmf/templates/parts/item-race-header.hbs",
     "systems/rmf/templates/parts/item-race-navigation.hbs",
-    "systems/rmf/templates/parts/item-race-background.hbs",
-    "systems/rmf/templates/parts/item-race-stats.hbs",
-    "systems/rmf/templates/parts/item-race-resistances.hbs",
-    "systems/rmf/templates/parts/item-race-progressions.hbs",
+    "systems/rmf/templates/parts/item-race-details.hbs",
+    "systems/rmf/templates/parts/item-race-advanced.hbs",
     
     // Skill sheet partials
     "systems/rmf/templates/parts/item-skill-header.hbs",
@@ -408,10 +406,8 @@ async function _registerHandlebarsPartials() {
     // Race sheet partials
     'parts/item-race-header': 'systems/rmf/templates/parts/item-race-header.hbs',
     'parts/item-race-navigation': 'systems/rmf/templates/parts/item-race-navigation.hbs',
-    'parts/item-race-background': 'systems/rmf/templates/parts/item-race-background.hbs',
-    'parts/item-race-stats': 'systems/rmf/templates/parts/item-race-stats.hbs',
-    'parts/item-race-resistances': 'systems/rmf/templates/parts/item-race-resistances.hbs',
-    'parts/item-race-progressions': 'systems/rmf/templates/parts/item-race-progressions.hbs',
+    'parts/item-race-details': 'systems/rmf/templates/parts/item-race-details.hbs',
+    'parts/item-race-advanced': 'systems/rmf/templates/parts/item-race-advanced.hbs',
     
     // Skill sheet partials
     'parts/item-skill-header': 'systems/rmf/templates/parts/item-skill-header.hbs',

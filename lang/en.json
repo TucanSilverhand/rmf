@@ -122,7 +122,14 @@
       "PPMentalism": "PP Mentalism",
       "Progression": "Progression",
       "ProgressionString": "Value (zero/T1/T2/T3/T4)",
-      "ProgressionHint": "Format: zero/tier1/tier2/tier3/tier4 (e.g., 0/6/4/2/1)."
+      "ProgressionHint": "Format: zero/tier1/tier2/tier3/tier4 (e.g., 0/6/4/2/1).",
+      "HobbyRanks": "Hobby Ranks",
+      "RacialRanks": {
+        "Categories": "Racial Ranks (Categories)",
+        "Skills": "Racial Ranks (Skills)",
+        "Total": "Total",
+        "None": "No racial ranks defined."
+      }
     },
     "Background": {
       "Nationality": "Nationality",
