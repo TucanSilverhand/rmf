@@ -147,6 +147,7 @@ export class RMFSkillSheet extends HandlebarsApplicationMixin(foundry.applicatio
     // Bought-by-level entries up to the parent actor's level (parity with category sheet).
     const parentLevel = Number(actor?.system?.chLevel ?? 0);
     context.parentLevel = parentLevel;
+    context.hasActorParent = actor?.documentName === "Actor";
     context.levelEntries = this._prepareLevelEntries(system.boughtByLevel, parentLevel);
 
     return context;
@@ -168,8 +169,8 @@ export class RMFSkillSheet extends HandlebarsApplicationMixin(foundry.applicatio
   _prepareLevelEntries(boughtByLevel, maxLevel) {
     const entries = [];
     const source = boughtByLevel && typeof boughtByLevel === "object" ? boughtByLevel : {};
-    const limit = Number.isFinite(maxLevel) && maxLevel > 0 ? Math.floor(maxLevel) : 0;
-    for (let level = 1; level <= limit; level += 1) {
+    const limit = Number.isFinite(maxLevel) && maxLevel >= 0 ? Math.floor(maxLevel) : 0;
+    for (let level = 0; level <= limit; level += 1) {
       const key = String(level);
       entries.push({ level: key, amount: Number(source[key] ?? 0) });
     }

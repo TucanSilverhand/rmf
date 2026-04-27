@@ -667,12 +667,13 @@ export class RMFActions {
     event.preventDefault();
     
     const currentRank = Number(this.document.system.rank || 0);
-    const level = parseInt(target.dataset.level) || 1;
-    
+    const parsedLevel = parseInt(target.dataset.level);
+    const level = Number.isFinite(parsedLevel) ? parsedLevel : 1;
+
     // Get current bought for this level
     const bought = this.document.system.boughtByLevel || {};
     const currentBought = Number(bought[level] || 0);
-    
+
     // Maximum 3 ranks per level
     if (currentBought >= 3) {
       ui.notifications.warn(game.i18n.localize("RMF.Skill.MaxRanksPerLevel"));
@@ -704,8 +705,9 @@ export class RMFActions {
     
     const currentRank = Number(this.document.system.rank || 0);
     if (currentRank <= 0) return;
-    
-    const level = parseInt(target.dataset.level) || 1;
+
+    const parsedLevel = parseInt(target.dataset.level);
+    const level = Number.isFinite(parsedLevel) ? parsedLevel : 1;
     const bought = this.document.system.boughtByLevel || {};
     const currentBought = Number(bought[level] || 0);
     

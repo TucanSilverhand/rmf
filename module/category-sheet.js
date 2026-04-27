@@ -120,6 +120,7 @@ export class RMFCategorySheet extends HandlebarsApplicationMixin(foundry.applica
 
     const parentLevel = Number(doc?.parent?.system?.chLevel ?? 0);
     context.parentLevel = parentLevel;
+    context.hasActorParent = doc?.parent?.documentName === "Actor";
     context.levelEntries = this._prepareLevelEntries(context.system?.boughtByLevel, parentLevel);
 
     return context;
@@ -228,8 +229,8 @@ export class RMFCategorySheet extends HandlebarsApplicationMixin(foundry.applica
   _prepareLevelEntries(boughtByLevel, maxLevel) {
     const entries = [];
     const source = boughtByLevel && typeof boughtByLevel === 'object' ? boughtByLevel : {};
-    const limit = Number.isFinite(maxLevel) && maxLevel > 0 ? Math.floor(maxLevel) : 0;
-    for (let level = 1; level <= limit; level += 1) {
+    const limit = Number.isFinite(maxLevel) && maxLevel >= 0 ? Math.floor(maxLevel) : 0;
+    for (let level = 0; level <= limit; level += 1) {
       const key = String(level);
       entries.push({ level: key, amount: Number(source[key] ?? 0) });
     }
