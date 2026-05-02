@@ -11,6 +11,8 @@
     "SkillSheet": "RMF Skill Sheet",
     "CategorySheet": "RMF Category Sheet",
     "RealmSheet": "RMF Realm Sheet",
+    "ProfessionSheet": "RMF Profession Sheet",
+    "ProfessionName": "Profession Name",
     "CharacterName": "Character Name",
     "Level": "Level",
     "Profession": "Profession",
@@ -40,7 +42,8 @@
     "NewItem": {
       "equipment": "New Equipment",
       "race": "New Race",
-      "skill": "New Skill"
+      "skill": "New Skill",
+      "profession": "New Profession"
     },
     "Tabs": {
       "Basic": "Basic",
@@ -346,6 +349,24 @@
         "Channeling": "Channeling",
         "Mentalism": "Mentalism"
       }
+    },
+    "Profession": {
+      "NamePlaceholder": "Profession Name",
+      "PrimeStats": "Prime Stats",
+      "PrimeStatsHint": "Stats that define this profession's specialization.",
+      "ProfessionalBonuses": "Professional Bonuses",
+      "BonusName": "Bonus",
+      "BonusValue": "Value",
+      "EverymanSkills": "Everyman Skills",
+      "OccupationalSkills": "Occupational Skills",
+      "RestrictedSkills": "Restricted Skills",
+      "CategoryPrice": "Category Prices (DP)",
+      "SpellPrice": "Spell Prices (DP)",
+      "SpellGroup": "Spell Group",
+      "TrainingPackages": "Training Packages",
+      "PackageName": "Package",
+      "PackageCost": "DP Cost",
+      "None": "None defined."
     }
   },
   "TYPES": {
@@ -357,7 +378,8 @@
       "race": "Race",
       "skill": "Skill",
       "category": "Category",
-      "realm": "Realm"
+      "realm": "Realm",
+      "profession": "Profession"
     }
   }
 }

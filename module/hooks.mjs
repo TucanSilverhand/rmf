@@ -17,10 +17,12 @@ import {
   importRaces,
   importCategories,
   importSkills,
+  importProfessions,
   syncCategoriesToCompendium,
   syncRacesToCompendium,
   syncSkillsToCompendium,
-  syncRealmsToCompendium
+  syncRealmsToCompendium,
+  syncProfessionsToCompendium
 } from "./importers.mjs";
 
 /**
@@ -84,10 +86,12 @@ export class RMFHooks {
     game.rmf.importRaces = importRaces;
     game.rmf.importCategories = importCategories;
     game.rmf.importSkills = importSkills;
+    game.rmf.importProfessions = importProfessions;
     game.rmf.syncCategoriesToCompendium = syncCategoriesToCompendium;
     game.rmf.syncRacesToCompendium = syncRacesToCompendium;
     game.rmf.syncSkillsToCompendium = syncSkillsToCompendium;
     game.rmf.syncRealmsToCompendium = syncRealmsToCompendium;
+    game.rmf.syncProfessionsToCompendium = syncProfessionsToCompendium;
 
     // Log system information
     console.log(`RMF | Version: ${game.system.version}`);

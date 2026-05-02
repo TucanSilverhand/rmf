@@ -1,0 +1,21 @@
+{{!--
+  RMF Profession Item Sheet Template - FoundryVTT v13 Compatible
+  ApplicationV2 with HandlebarsApplicationMixin
+  Two-tab layout: read-only "details" + editable "advanced".
+  NOTE: Do NOT wrap with <form>; ApplicationV2 provides the root form.
+--}}
+
+<div class="{{cssClass}} rmf-item-sheet profession-sheet-root">
+  <div class="sheet-main-container profession-sheet">
+    {{> "parts/item-profession-navigation"}}
+    <div class="sheet-content">
+      {{> "parts/item-profession-header"}}
+      <section class="sheet-body">
+        <div class="sheet-body-inner" data-rich="true">
+          {{> "parts/item-profession-details"}}
+          {{> "parts/item-profession-advanced"}}
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

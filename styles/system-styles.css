@@ -1716,3 +1716,56 @@ table th input[type="number"] {
   font-style: italic;
   color: var(--rmf-color-text-subtle);
 }
+
+/* -------------------------------------------------
+   Profession sheet: flex layout + body scroll
+   Mirrors the chain used by race / category / skill / realm so both
+   the "details" (read-only) and "advanced" (editable) tabs scroll
+   vertically inside the sheet body without growing the window.
+   ------------------------------------------------- */
+.window-app .window-content > form.standard-form > .profession-sheet-root,
+.window-app .window-content > .profession-sheet-root,
+.application .window-content > form.standard-form > .profession-sheet-root,
+.application .window-content > .profession-sheet-root {
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 0 !important;
+}
+
+.profession-sheet-root .sheet-main-container,
+.window-app .window-content > form.standard-form > .profession-sheet-root .sheet-main-container,
+.application .window-content > form.standard-form > .profession-sheet-root .sheet-main-container {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+  min-height: 0 !important;
+}
+
+.profession-sheet-root .sheet-content,
+.window-app .window-content > form.standard-form > .profession-sheet-root .sheet-content,
+.application .window-content > form.standard-form > .profession-sheet-root .sheet-content {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  position: relative;
+}
+
+.window-app .window-content > form.standard-form > .profession-sheet-root .sheet-body,
+.application .window-content > form.standard-form > .profession-sheet-root .sheet-body {
+  position: absolute;
+  top: var(--rmf-header-height, 140px);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto !important;
+  overflow-x: hidden;
+}
+
+/* Each tab panel inside the body should not impose its own height; the
+   body is the scroller. Keep them stacked and let content flow. */
+.profession-sheet-root .sheet-body .tab {
+  min-height: 0;
+  overflow: visible;
+}

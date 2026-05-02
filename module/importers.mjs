@@ -1108,3 +1108,319 @@ async function getSkillTemplate() {
   }
   return {};
 }
+
+/**
+ * Obtain the default template for Item type "profession".
+ * @returns {Promise<object>}
+ */
+async function getProfessionTemplate() {
+  const fromDocTypes = foundry.utils.getProperty(game.system, "documentTypes.Item.profession.template");
+  if (fromDocTypes && typeof fromDocTypes === "object") return fromDocTypes;
+
+  try {
+    const resp = await fetch("systems/rmf/template.json");
+    if (resp.ok) {
+      const data = await resp.json();
+      return (data?.Item?.profession) ?? {};
+    }
+  } catch (e) {
+    console.warn("RMF | Failed to load profession template fallback", e);
+  }
+  return {};
+}
+
+/**
+ * Build the profession `system` payload from a raw entry, normalizing every
+ * sub-structure (primeStats, professionalBonuses, skill lists, dpCost tables,
+ * trainingPackages). Tolerant of legacy keys (e.g. uppercase "Bonus", typo
+ * "trainningPackages").
+ * @param {object} sysSource
+ * @param {object} template
+ * @returns {object}
+ */
+function buildProfessionSystemData(sysSource, template) {
+  const src = sysSource && typeof sysSource === "object" ? sysSource : {};
+  return foundry.utils.mergeObject(
+    foundry.utils.duplicate(template),
+    {
+      description: typeof src.description === "string" ? src.description : "",
+      primeStats: normalizeProfessionPrimeStats(src.primeStats),
+      professionalBonuses: normalizeProfessionalBonuses(src.professionalBonuses),
+      everymanSkills: normalizeProfessionSkillList(src.everymanSkills),
+      occupationalSkills: normalizeProfessionSkillList(src.occupationalSkills),
+      restrictedSkills: normalizeProfessionSkillList(src.restrictedSkills),
+      categoryPrice: normalizeDpCostList(src.categoryPrice),
+      spellPrice: normalizeDpCostList(src.spellPrice),
+      // Tolerate the historical typo "trainningPackages" as a fallback.
+      trainingPackages: normalizeTrainingPackages(src.trainingPackages ?? src.trainningPackages),
+      fromBook: typeof src.fromBook === "string" && src.fromBook.length ? src.fromBook : "basic"
+    },
+    { inplace: false, insertKeys: true, insertValues: true, overwrite: true }
+  );
+}
+
+/**
+ * Normalize an array of stat names (full chXxx keys, short keys, or English
+ * names like "Constitution") into canonical full keys. De-duplicates.
+ * @param {*} value
+ * @returns {string[]}
+ */
+function normalizeProfessionPrimeStats(value) {
+  if (!Array.isArray(value)) return [];
+  const seen = new Set();
+  const out = [];
+  for (const entry of value) {
+    if (typeof entry !== "string") continue;
+    const canonical = canonicalizeStatKey(entry);
+    if (!canonical) continue;
+    if (seen.has(canonical)) continue;
+    seen.add(canonical);
+    out.push(canonical);
+  }
+  return out;
+}
+
+/**
+ * Normalize professional bonuses to `[{name: string, bonus: number}]`.
+ * Accepts legacy uppercase "Bonus" and string values like "+10". Drops
+ * entries with empty names.
+ * @param {*} value
+ * @returns {Array<{name: string, bonus: number}>}
+ */
+function normalizeProfessionalBonuses(value) {
+  if (!Array.isArray(value)) return [];
+  const out = [];
+  for (const entry of value) {
+    if (!entry || typeof entry !== "object") continue;
+    const rawName = typeof entry.name === "string" ? entry.name.trim() : "";
+    if (!rawName) continue;
+    const rawBonus = entry.bonus ?? entry.Bonus;
+    let bonus = 0;
+    if (typeof rawBonus === "number") {
+      bonus = Number.isFinite(rawBonus) ? rawBonus : 0;
+    } else if (typeof rawBonus === "string") {
+      const parsed = parseInt(rawBonus.trim(), 10);
+      bonus = Number.isFinite(parsed) ? parsed : 0;
+    }
+    out.push({ name: rawName, bonus });
+  }
+  return out;
+}
+
+/**
+ * Normalize a profession skill list to `[{name: string}]`. Accepts plain
+ * strings or `{name}` objects. Trims, drops empty, de-duplicates case-insensitively.
+ * @param {*} value
+ * @returns {Array<{name: string}>}
+ */
+function normalizeProfessionSkillList(value) {
+  if (!Array.isArray(value)) return [];
+  const seen = new Set();
+  const out = [];
+  for (const entry of value) {
+    const raw = entry && typeof entry === "object" ? entry.name : entry;
+    const name = typeof raw === "string" ? raw.trim() : "";
+    if (!name) continue;
+    const key = name.toLowerCase();
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push({ name });
+  }
+  return out;
+}
+
+/**
+ * Normalize a list of `{name, dpCost: {price1, price2, price3}}` entries
+ * (used for both categoryPrice and spellPrice).
+ * @param {*} value
+ * @returns {Array<{name: string, dpCost: {price1: number, price2: number, price3: number}}>}
+ */
+function normalizeDpCostList(value) {
+  if (!Array.isArray(value)) return [];
+  const num = (v) => {
+    const n = Number(v);
+    return Number.isFinite(n) ? n : 0;
+  };
+  const out = [];
+  for (const entry of value) {
+    if (!entry || typeof entry !== "object") continue;
+    const name = typeof entry.name === "string" ? entry.name.trim() : "";
+    if (!name) continue;
+    const dpRaw = entry.dpCost && typeof entry.dpCost === "object" ? entry.dpCost : {};
+    out.push({
+      name,
+      dpCost: {
+        price1: num(dpRaw.price1 ?? dpRaw[0] ?? dpRaw[1]),
+        price2: num(dpRaw.price2 ?? dpRaw[1] ?? dpRaw[2]),
+        price3: num(dpRaw.price3 ?? dpRaw[2] ?? dpRaw[3])
+      }
+    });
+  }
+  return out;
+}
+
+/**
+ * Normalize training packages to `[{name: string, dpCost: number}]`.
+ * @param {*} value
+ * @returns {Array<{name: string, dpCost: number}>}
+ */
+function normalizeTrainingPackages(value) {
+  if (!Array.isArray(value)) return [];
+  const out = [];
+  for (const entry of value) {
+    if (!entry || typeof entry !== "object") continue;
+    const name = typeof entry.name === "string" ? entry.name.trim() : "";
+    if (!name) continue;
+    const cost = Number(entry.dpCost);
+    out.push({ name, dpCost: Number.isFinite(cost) ? cost : 0 });
+  }
+  return out;
+}
+
+/**
+ * Import multiple Profession items from a JSON source.
+ *
+ * @param {string|Array|Object} source - URL, JSON string, or parsed array/object
+ * @param {Object} [options]
+ * @param {string} [options.folderName="Professions"] - Target folder name
+ * @param {boolean} [options.dedupeByName=false] - Skip creation if an item with same name exists
+ * @returns {Promise<{created: Item[], skipped: string[], errors: any[]}>}
+ */
+export async function importProfessions(source, options = {}) {
+  const folderName = options.folderName ?? "Professions";
+  const dedupeByName = options.dedupeByName ?? false;
+
+  const result = { created: [], skipped: [], errors: [] };
+
+  try {
+    const input = await resolveSource(source);
+    const professions = Array.isArray(input)
+      ? input
+      : (input?.professions ?? [input]).filter(Boolean);
+    if (!professions?.length) return result;
+
+    let folder = game.folders.find(f => f.type === "Item" && f.name === folderName) || null;
+    if (!folder) {
+      try {
+        folder = await Folder.create({ name: folderName, type: "Item" });
+      } catch (e) {
+        console.warn("RMF | Failed creating folder for professions", e);
+      }
+    }
+
+    const template = await getProfessionTemplate();
+
+    const existingByName = dedupeByName
+      ? game.items.reduce((acc, it) => { if (it.type === "profession") acc[it.name] = true; return acc; }, {})
+      : {};
+
+    const docs = [];
+    for (let i = 0; i < professions.length; i++) {
+      const entry = professions[i];
+      const name = entry.name ?? `Profession ${i + 1}`;
+      if (dedupeByName && existingByName[name]) {
+        result.skipped.push(name);
+        continue;
+      }
+
+      const sysSource = entry.system ?? entry;
+      const system = buildProfessionSystemData(sysSource, template);
+      const img = pickImageFromEntry(entry, sysSource, "icons/svg/mystery-man.svg");
+
+      docs.push({ name, type: "profession", img, system, folder: folder?.id ?? null });
+    }
+
+    if (!docs.length) return result;
+    const created = await Item.createDocuments(docs);
+    result.created = created;
+    return result;
+  } catch (err) {
+    console.error("RMF | importProfessions error", err);
+    result.errors.push(err);
+    return result;
+  }
+}
+
+/**
+ * Synchronize profession items into a compendium pack (upsert by type+name).
+ *
+ * @param {string|Array|Object} source - URL, JSON string, or parsed array/object
+ * @param {Object} [options]
+ * @param {string} [options.pack="world.basic-core"] - Pack collection id
+ * @param {string} [options.folderName="Professions"] - Required folder name in pack
+ * @param {boolean} [options.createMissing=true]
+ * @param {boolean} [options.updateExisting=true]
+ * @returns {Promise<{created: number, updated: number, skipped: number, errors: any[]}>}
+ */
+export async function syncProfessionsToCompendium(source, options = {}) {
+  const packCollection = options.pack ?? "world.basic-core";
+  const folderName = options.folderName ?? "Professions";
+  const createMissing = options.createMissing ?? true;
+  const updateExisting = options.updateExisting ?? true;
+
+  const result = { created: 0, updated: 0, skipped: 0, errors: [] };
+
+  try {
+    const pack = game.packs.get(packCollection);
+    if (!pack) throw new Error(`Compendium pack not found: ${packCollection}`);
+    if (pack.documentName !== "Item") throw new Error(`Pack ${packCollection} is not an Item compendium`);
+
+    const input = await resolveSource(source);
+    const professions = Array.isArray(input)
+      ? input
+      : (input?.professions ?? [input]).filter(Boolean);
+    if (!professions?.length) return result;
+
+    const template = await getProfessionTemplate();
+    await pack.getIndex({ fields: ["name", "type", "folder"] });
+    const existingByKey = new Map(
+      pack.index.map(entry => [`${entry.type}::${String(entry.name).toLowerCase()}`, entry])
+    );
+
+    const folderIds = getPackFolderIdsByName(pack, folderName);
+    const createPayload = [];
+    const updatePayload = [];
+
+    for (let i = 0; i < professions.length; i++) {
+      const entry = professions[i];
+      const name = entry.name ?? `Profession ${i + 1}`;
+      const key = `profession::${String(name).toLowerCase()}`;
+      const existing = existingByKey.get(key);
+      const sysSource = entry.system ?? entry;
+
+      const system = buildProfessionSystemData(sysSource, template);
+      const img = pickImageFromEntry(entry, sysSource, "icons/svg/mystery-man.svg");
+      const base = { name, type: "profession", img, system };
+
+      if (existing) {
+        if (!updateExisting) {
+          result.skipped += 1;
+          continue;
+        }
+        updatePayload.push({ _id: existing._id, ...base });
+      } else {
+        if (!createMissing) {
+          result.skipped += 1;
+          continue;
+        }
+        const folderId = folderIds[0] ?? null;
+        createPayload.push({ ...base, folder: folderId });
+      }
+    }
+
+    if (createPayload.length) {
+      const created = await Item.createDocuments(createPayload, { pack: packCollection });
+      result.created = created.length;
+    }
+    if (updatePayload.length) {
+      const updated = await Item.updateDocuments(updatePayload, { pack: packCollection, diff: false });
+      result.updated = updated.length;
+    }
+
+    return result;
+  } catch (err) {
+    console.error("RMF | syncProfessionsToCompendium error", err);
+    result.errors.push(err);
+    return result;
+  }
+}

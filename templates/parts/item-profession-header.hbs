@@ -1,0 +1,29 @@
+{{!--
+  RMF Profession Item Sheet Header Partial
+  Profession name, image and basic details
+--}}
+
+<header class="sheet-header">
+  <div class="header-row">
+    <img class="profile-img"
+         src="{{item.img}}"
+         alt="{{item.name}}"
+         data-edit="img"
+         data-action="pickImage"
+         title="{{item.name}}"
+         height="64"
+         width="64"/>
+
+    <div class="header-fields">
+      <h1 class="item-name">
+        <label class="sr-only" for="profession_name">{{localize "RMF.ProfessionName"}}:</label>
+        <input id="profession_name"
+               name="name"
+               type="text"
+               value="{{item.name}}"
+               placeholder="{{localize 'RMF.ProfessionName'}}"
+               autocomplete="off"/>
+      </h1>
+    </div>
+  </div>
+</header>

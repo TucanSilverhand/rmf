@@ -22,6 +22,7 @@ import { RMFRaceSheet } from "./module/race-sheet.js";
 import { RMFSkillSheet } from "./module/skill-sheet.js";
 import { RMFCategorySheet } from "./module/category-sheet.js";
 import { RMFRealmSheet } from "./module/realm-sheet.js";
+import { RMFProfessionSheet } from "./module/profession-sheet.js";
 import { RMFActor, RMFItem } from "./module/data-models.mjs";
 import { RMFHooks } from "./module/hooks.mjs";
 
@@ -92,6 +93,12 @@ Hooks.once('init', async function() {
     makeDefault: true,
     label: "RMF.RealmSheet"
   });
+
+  foundry.applications.apps.DocumentSheetConfig.registerSheet(Item, "rmf-profession", RMFProfessionSheet, {
+    types: ["profession"],
+    makeDefault: true,
+    label: "RMF.ProfessionSheet"
+  });
   
   
   
@@ -135,7 +142,7 @@ Hooks.once('init', async function() {
       st: 'chStrength'
     },
 
-    itemTypes: ["equipment", "race", "skill", "category", "realm"],
+    itemTypes: ["equipment", "race", "skill", "category", "realm", "profession"],
     actorTypes: ["character"]
   };
   
@@ -350,6 +357,7 @@ async function _preloadHandlebarsTemplates() {
     "systems/rmf/templates/item-skill-sheet.hbs",
     "systems/rmf/templates/item-category-sheet.hbs",
     "systems/rmf/templates/item-realm-sheet.hbs",
+    "systems/rmf/templates/item-profession-sheet.hbs",
 
 
     // Race sheet partials
@@ -372,6 +380,12 @@ async function _preloadHandlebarsTemplates() {
     // Realm sheet partials
     "systems/rmf/templates/parts/item-realm-header.hbs",
     "systems/rmf/templates/parts/item-realm-body.hbs",
+
+    // Profession sheet partials
+    "systems/rmf/templates/parts/item-profession-header.hbs",
+    "systems/rmf/templates/parts/item-profession-navigation.hbs",
+    "systems/rmf/templates/parts/item-profession-details.hbs",
+    "systems/rmf/templates/parts/item-profession-advanced.hbs",
 
     // Chat templates
     "systems/rmf/templates/chat/stat-roll.hbs"
@@ -422,7 +436,13 @@ async function _registerHandlebarsPartials() {
 
     // Realm sheet partials
     'parts/item-realm-header': 'systems/rmf/templates/parts/item-realm-header.hbs',
-    'parts/item-realm-body': 'systems/rmf/templates/parts/item-realm-body.hbs'
+    'parts/item-realm-body': 'systems/rmf/templates/parts/item-realm-body.hbs',
+
+    // Profession sheet partials
+    'parts/item-profession-header': 'systems/rmf/templates/parts/item-profession-header.hbs',
+    'parts/item-profession-navigation': 'systems/rmf/templates/parts/item-profession-navigation.hbs',
+    'parts/item-profession-details': 'systems/rmf/templates/parts/item-profession-details.hbs',
+    'parts/item-profession-advanced': 'systems/rmf/templates/parts/item-profession-advanced.hbs'
   };
 
   for (const [name, path] of Object.entries(partials)) {
@@ -474,4 +494,4 @@ async function _initializeReadyTimeConfigs() {
  * @exports RMFItemSheet - ApplicationV2 Item sheet
  * @exports RMFRaceSheet - Specialized Race item sheet
  */
-export { RMFActor, RMFItem, RMFActorSheet, RMFItemSheet, RMFRaceSheet, RMFSkillSheet, RMFCategorySheet, RMFRealmSheet };
+export { RMFActor, RMFItem, RMFActorSheet, RMFItemSheet, RMFRaceSheet, RMFSkillSheet, RMFCategorySheet, RMFRealmSheet, RMFProfessionSheet };

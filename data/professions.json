@@ -1,0 +1,3764 @@
+[
+  {
+    "name": "Fighter",
+    "description": "",
+    "primeStats": [],
+    "professionalBonuses": [],
+    "everymanSkills": [],
+    "occupationalSkills": [],
+    "restrictedSkills": [],
+    "categoryPrice": [
+      {
+        "name": "Armor · Heavy",
+        "dpCost": {
+          "price1": 2,
+          "price2": 2,
+          "price3": 2
+        }
+      },
+      {
+        "name": "Armor · Light",
+        "dpCost": {
+          "price1": 1,
+          "price2": 1,
+          "price3": 1
+        }
+      },
+      {
+        "name": "Armor · Medium",
+        "dpCost": {
+          "price1": 2,
+          "price2": 2,
+          "price3": 2
+        }
+      },
+      {
+        "name": "Artistic · Active",
+        "dpCost": {
+          "price1": 2,
+          "price2": 5,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Artistic · Passive",
+        "dpCost": {
+          "price1": 2,
+          "price2": 5,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Athletic · Brawn",
+        "dpCost": {
+          "price1": 2,
+          "price2": 5,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Athletic · Endurance",
+        "dpCost": {
+          "price1": 2,
+          "price2": 6,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Athletic · Gymnastics",
+        "dpCost": {
+          "price1": 2,
+          "price2": 5,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Awareness · Perceptions",
+        "dpCost": {
+          "price1": 2,
+          "price2": 9,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Awareness · Searching",
+        "dpCost": {
+          "price1": 2,
+          "price2": 5,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Awareness · Senses",
+        "dpCost": {
+          "price1": 2,
+          "price2": 6,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Body Development",
+        "dpCost": {
+          "price1": 2,
+          "price2": 5,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Combat Maneuvers",
+        "dpCost": {
+          "price1": 3,
+          "price2": 9,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Communications",
+        "dpCost": {
+          "price1": 3,
+          "price2": 3,
+          "price3": 3
+        }
+      },
+      {
+        "name": "Crafts",
+        "dpCost": {
+          "price1": 4,
+          "price2": 10,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Directed Spells",
+        "dpCost": {
+          "price1": 20,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Influence",
+        "dpCost": {
+          "price1": 2,
+          "price2": 7,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Lore · General",
+        "dpCost": {
+          "price1": 1,
+          "price2": 3,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Lore · Magical",
+        "dpCost": {
+          "price1": 6,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Lore · Obscure",
+        "dpCost": {
+          "price1": 3,
+          "price2": 7,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Lore · Technical",
+        "dpCost": {
+          "price1": 2,
+          "price2": 6,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Martial Arts · Striking",
+        "dpCost": {
+          "price1": 3,
+          "price2": 5,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Outdoor · Animal",
+        "dpCost": {
+          "price1": 1,
+          "price2": 4,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Outdoor · Environmental",
+        "dpCost": {
+          "price1": 2,
+          "price2": 5,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Power Awareness",
+        "dpCost": {
+          "price1": 8,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Power Point Development",
+        "dpCost": {
+          "price1": 20,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Science · Basic",
+        "dpCost": {
+          "price1": 3,
+          "price2": 6,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Science · Specialized",
+        "dpCost": {
+          "price1": 12,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Self Control",
+        "dpCost": {
+          "price1": 2,
+          "price2": 6,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Subterfuge · Attack",
+        "dpCost": {
+          "price1": 6,
+          "price2": 10,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Subterfuge · Mechanics",
+        "dpCost": {
+          "price1": 3,
+          "price2": 8,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Subterfuge · Stealth",
+        "dpCost": {
+          "price1": 2,
+          "price2": 5,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Technical · General",
+        "dpCost": {
+          "price1": 3,
+          "price2": 7,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Technical · Professional",
+        "dpCost": {
+          "price1": 8,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Technical · Vocational",
+        "dpCost": {
+          "price1": 5,
+          "price2": 12,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Urban",
+        "dpCost": {
+          "price1": 2,
+          "price2": 4,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · 1H Concussion",
+        "dpCost": {
+          "price1": 1,
+          "price2": 5,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · 1H Edged",
+        "dpCost": {
+          "price1": 2,
+          "price2": 5,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · 2Handed",
+        "dpCost": {
+          "price1": 2,
+          "price2": 7,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · Missile",
+        "dpCost": {
+          "price1": 2,
+          "price2": 7,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · Missile Artillery",
+        "dpCost": {
+          "price1": 2,
+          "price2": 7,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · Pole Arms",
+        "dpCost": {
+          "price1": 5,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · Thrown",
+        "dpCost": {
+          "price1": 5,
+          "price2": 0,
+          "price3": 0
+        }
+      }
+    ],
+    "spellPrice": [],
+    "trainingPackages": [
+      {
+        "name": "Adventurer",
+        "dpCost": 29
+      },
+      {
+        "name": "Amateur Mage",
+        "dpCost": 43
+      },
+      {
+        "name": "Animal Friend",
+        "dpCost": 26
+      },
+      {
+        "name": "Burglar",
+        "dpCost": 21
+      },
+      {
+        "name": "City Guard",
+        "dpCost": 15
+      },
+      {
+        "name": "Doctor",
+        "dpCost": 23
+      },
+      {
+        "name": "Herbalist",
+        "dpCost": 23
+      },
+      {
+        "name": "Hunter",
+        "dpCost": 29
+      },
+      {
+        "name": "Knight",
+        "dpCost": 25
+      },
+      {
+        "name": "Loremaster",
+        "dpCost": 29
+      },
+      {
+        "name": "Merchant",
+        "dpCost": 25
+      },
+      {
+        "name": "Performer",
+        "dpCost": 28
+      },
+      {
+        "name": "Scout",
+        "dpCost": 21
+      },
+      {
+        "name": "Soldier",
+        "dpCost": 15
+      },
+      {
+        "name": "Traveller",
+        "dpCost": 13
+      }
+    ]
+  },
+  {
+    "name": "Thief",
+    "description": "",
+    "primeStats": [],
+    "professionalBonuses": [],
+    "everymanSkills": [],
+    "occupationalSkills": [],
+    "restrictedSkills": [],
+    "categoryPrice": [
+      {
+        "name": "Armor · Heavy",
+        "dpCost": {
+          "price1": 4,
+          "price2": 4,
+          "price3": 4
+        }
+      },
+      {
+        "name": "Armor · Light",
+        "dpCost": {
+          "price1": 2,
+          "price2": 2,
+          "price3": 2
+        }
+      },
+      {
+        "name": "Armor · Medium",
+        "dpCost": {
+          "price1": 3,
+          "price2": 3,
+          "price3": 3
+        }
+      },
+      {
+        "name": "Artistic · Active",
+        "dpCost": {
+          "price1": 2,
+          "price2": 4,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Artistic · Passive",
+        "dpCost": {
+          "price1": 2,
+          "price2": 5,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Athletic · Brawn",
+        "dpCost": {
+          "price1": 3,
+          "price2": 6,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Athletic · Endurance",
+        "dpCost": {
+          "price1": 2,
+          "price2": 7,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Athletic · Gymnastics",
+        "dpCost": {
+          "price1": 1,
+          "price2": 3,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Awareness · Perceptions",
+        "dpCost": {
+          "price1": 2,
+          "price2": 5,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Awareness · Searching",
+        "dpCost": {
+          "price1": 1,
+          "price2": 3,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Awareness · Senses",
+        "dpCost": {
+          "price1": 2,
+          "price2": 5,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Body Development",
+        "dpCost": {
+          "price1": 5,
+          "price2": 12,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Combat Maneuvers",
+        "dpCost": {
+          "price1": 4,
+          "price2": 12,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Communications",
+        "dpCost": {
+          "price1": 3,
+          "price2": 3,
+          "price3": 3
+        }
+      },
+      {
+        "name": "Crafts",
+        "dpCost": {
+          "price1": 4,
+          "price2": 10,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Directed Spells",
+        "dpCost": {
+          "price1": 20,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Influence",
+        "dpCost": {
+          "price1": 2,
+          "price2": 5,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Lore · General",
+        "dpCost": {
+          "price1": 1,
+          "price2": 3,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Lore · Magical",
+        "dpCost": {
+          "price1": 5,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Lore · Obscure",
+        "dpCost": {
+          "price1": 3,
+          "price2": 7,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Lore · Technical",
+        "dpCost": {
+          "price1": 2,
+          "price2": 4,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Martial Arts · Striking",
+        "dpCost": {
+          "price1": 3,
+          "price2": 7,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Outdoor · Animal",
+        "dpCost": {
+          "price1": 2,
+          "price2": 5,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Outdoor · Environmental",
+        "dpCost": {
+          "price1": 2,
+          "price2": 6,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Power Awareness",
+        "dpCost": {
+          "price1": 6,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Power Point Development",
+        "dpCost": {
+          "price1": 15,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Science · Basic",
+        "dpCost": {
+          "price1": 3,
+          "price2": 6,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Science · Specialized",
+        "dpCost": {
+          "price1": 12,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Self Control",
+        "dpCost": {
+          "price1": 2,
+          "price2": 6,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Subterfuge · Attack",
+        "dpCost": {
+          "price1": 2,
+          "price2": 6,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Subterfuge · Mechanics",
+        "dpCost": {
+          "price1": 1,
+          "price2": 3,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Subterfuge · Stealth",
+        "dpCost": {
+          "price1": 1,
+          "price2": 3,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Technical · General",
+        "dpCost": {
+          "price1": 3,
+          "price2": 7,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Technical · Professional",
+        "dpCost": {
+          "price1": 8,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Technical · Vocational",
+        "dpCost": {
+          "price1": 5,
+          "price2": 12,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Urban",
+        "dpCost": {
+          "price1": 1,
+          "price2": 2,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · 1H Concussion",
+        "dpCost": {
+          "price1": 2,
+          "price2": 7,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · 1H Edged",
+        "dpCost": {
+          "price1": 3,
+          "price2": 8,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · 2Handed",
+        "dpCost": {
+          "price1": 4,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · Missile",
+        "dpCost": {
+          "price1": 4,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · Missile Artillery",
+        "dpCost": {
+          "price1": 4,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · Pole Arms",
+        "dpCost": {
+          "price1": 6,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · Thrown",
+        "dpCost": {
+          "price1": 6,
+          "price2": 0,
+          "price3": 0
+        }
+      }
+    ],
+    "spellPrice": [],
+    "trainingPackages": [
+      {
+        "name": "Adventurer",
+        "dpCost": 29
+      },
+      {
+        "name": "Amateur Mage",
+        "dpCost": 37
+      },
+      {
+        "name": "Animal Friend",
+        "dpCost": 26
+      },
+      {
+        "name": "Burglar",
+        "dpCost": 16
+      },
+      {
+        "name": "City Guard",
+        "dpCost": 17
+      },
+      {
+        "name": "Doctor",
+        "dpCost": 23
+      },
+      {
+        "name": "Herbalist",
+        "dpCost": 23
+      },
+      {
+        "name": "Hunter",
+        "dpCost": 27
+      },
+      {
+        "name": "Knight",
+        "dpCost": 29
+      },
+      {
+        "name": "Loremaster",
+        "dpCost": 28
+      },
+      {
+        "name": "Merchant",
+        "dpCost": 25
+      },
+      {
+        "name": "Performer",
+        "dpCost": 28
+      },
+      {
+        "name": "Scout",
+        "dpCost": 20
+      },
+      {
+        "name": "Soldier",
+        "dpCost": 22
+      },
+      {
+        "name": "Traveller",
+        "dpCost": 12
+      }
+    ]
+  },
+  {
+    "name": "Rogue",
+    "description": "",
+    "primeStats": [],
+    "professionalBonuses": [],
+    "everymanSkills": [],
+    "occupationalSkills": [],
+    "restrictedSkills": [],
+    "categoryPrice": [
+      {
+        "name": "Armor · Heavy",
+        "dpCost": {
+          "price1": 3,
+          "price2": 3,
+          "price3": 3
+        }
+      },
+      {
+        "name": "Armor · Light",
+        "dpCost": {
+          "price1": 1,
+          "price2": 1,
+          "price3": 1
+        }
+      },
+      {
+        "name": "Armor · Medium",
+        "dpCost": {
+          "price1": 2,
+          "price2": 2,
+          "price3": 2
+        }
+      },
+      {
+        "name": "Artistic · Active",
+        "dpCost": {
+          "price1": 2,
+          "price2": 4,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Artistic · Passive",
+        "dpCost": {
+          "price1": 2,
+          "price2": 5,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Athletic · Brawn",
+        "dpCost": {
+          "price1": 2,
+          "price2": 6,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Athletic · Endurance",
+        "dpCost": {
+          "price1": 2,
+          "price2": 5,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Athletic · Gymnastics",
+        "dpCost": {
+          "price1": 1,
+          "price2": 5,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Awareness · Perceptions",
+        "dpCost": {
+          "price1": 2,
+          "price2": 6,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Awareness · Searching",
+        "dpCost": {
+          "price1": 1,
+          "price2": 5,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Awareness · Senses",
+        "dpCost": {
+          "price1": 2,
+          "price2": 6,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Body Development",
+        "dpCost": {
+          "price1": 3,
+          "price2": 9,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Combat Maneuvers",
+        "dpCost": {
+          "price1": 4,
+          "price2": 10,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Communications",
+        "dpCost": {
+          "price1": 3,
+          "price2": 3,
+          "price3": 3
+        }
+      },
+      {
+        "name": "Crafts",
+        "dpCost": {
+          "price1": 4,
+          "price2": 10,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Directed Spells",
+        "dpCost": {
+          "price1": 20,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Influence",
+        "dpCost": {
+          "price1": 2,
+          "price2": 5,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Lore · General",
+        "dpCost": {
+          "price1": 1,
+          "price2": 3,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Lore · Magical",
+        "dpCost": {
+          "price1": 4,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Lore · Obscure",
+        "dpCost": {
+          "price1": 3,
+          "price2": 7,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Lore · Technical",
+        "dpCost": {
+          "price1": 2,
+          "price2": 5,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Martial Arts · Striking",
+        "dpCost": {
+          "price1": 3,
+          "price2": 7,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Outdoor · Animal",
+        "dpCost": {
+          "price1": 1,
+          "price2": 5,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Outdoor · Environmental",
+        "dpCost": {
+          "price1": 2,
+          "price2": 4,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Power Awareness",
+        "dpCost": {
+          "price1": 7,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Power Point Development",
+        "dpCost": {
+          "price1": 12,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Science · Basic",
+        "dpCost": {
+          "price1": 3,
+          "price2": 6,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Science · Specialized",
+        "dpCost": {
+          "price1": 12,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Self Control",
+        "dpCost": {
+          "price1": 2,
+          "price2": 6,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Subterfuge · Attack",
+        "dpCost": {
+          "price1": 4,
+          "price2": 8,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Subterfuge · Mechanics",
+        "dpCost": {
+          "price1": 2,
+          "price2": 5,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Subterfuge · Stealth",
+        "dpCost": {
+          "price1": 1,
+          "price2": 3,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Technical · General",
+        "dpCost": {
+          "price1": 3,
+          "price2": 7,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Technical · Professional",
+        "dpCost": {
+          "price1": 8,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Technical · Vocational",
+        "dpCost": {
+          "price1": 5,
+          "price2": 12,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Urban",
+        "dpCost": {
+          "price1": 1,
+          "price2": 3,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · 1H Concussion",
+        "dpCost": {
+          "price1": 2,
+          "price2": 5,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · 1H Edged",
+        "dpCost": {
+          "price1": 3,
+          "price2": 8,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · 2Handed",
+        "dpCost": {
+          "price1": 3,
+          "price2": 9,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · Missile",
+        "dpCost": {
+          "price1": 3,
+          "price2": 9,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · Missile Artillery",
+        "dpCost": {
+          "price1": 3,
+          "price2": 9,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · Pole Arms",
+        "dpCost": {
+          "price1": 6,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · Thrown",
+        "dpCost": {
+          "price1": 6,
+          "price2": 0,
+          "price3": 0
+        }
+      }
+    ],
+    "spellPrice": [],
+    "trainingPackages": [
+      {
+        "name": "Adventurer",
+        "dpCost": 29
+      },
+      {
+        "name": "Amateur Mage",
+        "dpCost": 36
+      },
+      {
+        "name": "Animal Friend",
+        "dpCost": 24
+      },
+      {
+        "name": "Burglar",
+        "dpCost": 19
+      },
+      {
+        "name": "City Guard",
+        "dpCost": 16
+      },
+      {
+        "name": "Doctor",
+        "dpCost": 23
+      },
+      {
+        "name": "Herbalist",
+        "dpCost": 23
+      },
+      {
+        "name": "Hunter",
+        "dpCost": 27
+      },
+      {
+        "name": "Knight",
+        "dpCost": 28
+      },
+      {
+        "name": "Loremaster",
+        "dpCost": 26
+      },
+      {
+        "name": "Merchant",
+        "dpCost": 25
+      },
+      {
+        "name": "Performer",
+        "dpCost": 28
+      },
+      {
+        "name": "Scout",
+        "dpCost": 19
+      },
+      {
+        "name": "Soldier",
+        "dpCost": 19
+      },
+      {
+        "name": "Traveller",
+        "dpCost": 10
+      }
+    ]
+  },
+  {
+    "name": "Magician",
+    "description": "",
+    "primeStats": [],
+    "professionalBonuses": [],
+    "everymanSkills": [],
+    "occupationalSkills": [],
+    "restrictedSkills": [],
+    "categoryPrice": [
+      {
+        "name": "Armor · Heavy",
+        "dpCost": {
+          "price1": 11,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Armor · Light",
+        "dpCost": {
+          "price1": 9,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Armor · Medium",
+        "dpCost": {
+          "price1": 10,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Artistic · Active",
+        "dpCost": {
+          "price1": 2,
+          "price2": 5,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Artistic · Passive",
+        "dpCost": {
+          "price1": 2,
+          "price2": 5,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Athletic · Brawn",
+        "dpCost": {
+          "price1": 6,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Athletic · Endurance",
+        "dpCost": {
+          "price1": 3,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Athletic · Gymnastics",
+        "dpCost": {
+          "price1": 3,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Awareness · Perceptions",
+        "dpCost": {
+          "price1": 6,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Awareness · Searching",
+        "dpCost": {
+          "price1": 3,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Awareness · Senses",
+        "dpCost": {
+          "price1": 3,
+          "price2": 7,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Body Development",
+        "dpCost": {
+          "price1": 15,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Combat Maneuvers",
+        "dpCost": {
+          "price1": 18,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Communications",
+        "dpCost": {
+          "price1": 2,
+          "price2": 2,
+          "price3": 2
+        }
+      },
+      {
+        "name": "Crafts",
+        "dpCost": {
+          "price1": 4,
+          "price2": 10,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Directed Spells",
+        "dpCost": {
+          "price1": 2,
+          "price2": 5,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Influence",
+        "dpCost": {
+          "price1": 2,
+          "price2": 6,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Lore · General",
+        "dpCost": {
+          "price1": 1,
+          "price2": 3,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Lore · Magical",
+        "dpCost": {
+          "price1": 1,
+          "price2": 4,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Lore · Obscure",
+        "dpCost": {
+          "price1": 3,
+          "price2": 7,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Lore · Technical",
+        "dpCost": {
+          "price1": 2,
+          "price2": 6,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Martial Arts · Striking",
+        "dpCost": {
+          "price1": 9,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Outdoor · Animal",
+        "dpCost": {
+          "price1": 3,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Outdoor · Environmental",
+        "dpCost": {
+          "price1": 3,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Power Awareness",
+        "dpCost": {
+          "price1": 1,
+          "price2": 4,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Power Point Development",
+        "dpCost": {
+          "price1": 4,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Science · Basic",
+        "dpCost": {
+          "price1": 1,
+          "price2": 4,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Science · Specialized",
+        "dpCost": {
+          "price1": 6,
+          "price2": 14,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Self Control",
+        "dpCost": {
+          "price1": 6,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Subterfuge · Attack",
+        "dpCost": {
+          "price1": 15,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Subterfuge · Mechanics",
+        "dpCost": {
+          "price1": 7,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Subterfuge · Stealth",
+        "dpCost": {
+          "price1": 5,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Technical · General",
+        "dpCost": {
+          "price1": 3,
+          "price2": 7,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Technical · Professional",
+        "dpCost": {
+          "price1": 8,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Technical · Vocational",
+        "dpCost": {
+          "price1": 5,
+          "price2": 12,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Urban",
+        "dpCost": {
+          "price1": 3,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · 1H Concussion",
+        "dpCost": {
+          "price1": 9,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · 1H Edged",
+        "dpCost": {
+          "price1": 20,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · 2Handed",
+        "dpCost": {
+          "price1": 20,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · Missile",
+        "dpCost": {
+          "price1": 20,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · Missile Artillery",
+        "dpCost": {
+          "price1": 20,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · Pole Arms",
+        "dpCost": {
+          "price1": 20,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · Thrown",
+        "dpCost": {
+          "price1": 20,
+          "price2": 0,
+          "price3": 0
+        }
+      }
+    ],
+    "spellPrice": [],
+    "trainingPackages": [
+      {
+        "name": "Adventurer",
+        "dpCost": 34
+      },
+      {
+        "name": "Amateur Mage",
+        "dpCost": 24
+      },
+      {
+        "name": "Animal Friend",
+        "dpCost": 33
+      },
+      {
+        "name": "Burglar",
+        "dpCost": 31
+      },
+      {
+        "name": "City Guard",
+        "dpCost": 31
+      },
+      {
+        "name": "Doctor",
+        "dpCost": 23
+      },
+      {
+        "name": "Herbalist",
+        "dpCost": 26
+      },
+      {
+        "name": "Hunter",
+        "dpCost": 36
+      },
+      {
+        "name": "Knight",
+        "dpCost": 46
+      },
+      {
+        "name": "Loremaster",
+        "dpCost": 19
+      },
+      {
+        "name": "Merchant",
+        "dpCost": 20
+      },
+      {
+        "name": "Performer",
+        "dpCost": 26
+      },
+      {
+        "name": "Scout",
+        "dpCost": 31
+      },
+      {
+        "name": "Soldier",
+        "dpCost": 37
+      },
+      {
+        "name": "Traveller",
+        "dpCost": 20
+      }
+    ]
+  },
+  {
+    "name": "Cleric",
+    "description": "",
+    "primeStats": [],
+    "professionalBonuses": [],
+    "everymanSkills": [],
+    "occupationalSkills": [],
+    "restrictedSkills": [],
+    "categoryPrice": [
+      {
+        "name": "Armor · Heavy",
+        "dpCost": {
+          "price1": 11,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Armor · Light",
+        "dpCost": {
+          "price1": 2,
+          "price2": 2,
+          "price3": 2
+        }
+      },
+      {
+        "name": "Armor · Medium",
+        "dpCost": {
+          "price1": 10,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Artistic · Active",
+        "dpCost": {
+          "price1": 2,
+          "price2": 5,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Artistic · Passive",
+        "dpCost": {
+          "price1": 2,
+          "price2": 5,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Athletic · Brawn",
+        "dpCost": {
+          "price1": 5,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Athletic · Endurance",
+        "dpCost": {
+          "price1": 3,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Athletic · Gymnastics",
+        "dpCost": {
+          "price1": 3,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Awareness · Perceptions",
+        "dpCost": {
+          "price1": 6,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Awareness · Searching",
+        "dpCost": {
+          "price1": 2,
+          "price2": 6,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Awareness · Senses",
+        "dpCost": {
+          "price1": 3,
+          "price2": 7,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Body Development",
+        "dpCost": {
+          "price1": 10,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Combat Maneuvers",
+        "dpCost": {
+          "price1": 10,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Communications",
+        "dpCost": {
+          "price1": 2,
+          "price2": 2,
+          "price3": 2
+        }
+      },
+      {
+        "name": "Crafts",
+        "dpCost": {
+          "price1": 4,
+          "price2": 10,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Directed Spells",
+        "dpCost": {
+          "price1": 3,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Influence",
+        "dpCost": {
+          "price1": 2,
+          "price2": 4,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Lore · General",
+        "dpCost": {
+          "price1": 1,
+          "price2": 3,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Lore · Magical",
+        "dpCost": {
+          "price1": 2,
+          "price2": 4,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Lore · Obscure",
+        "dpCost": {
+          "price1": 3,
+          "price2": 7,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Lore · Technical",
+        "dpCost": {
+          "price1": 2,
+          "price2": 6,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Martial Arts · Striking",
+        "dpCost": {
+          "price1": 6,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Outdoor · Animal",
+        "dpCost": {
+          "price1": 3,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Outdoor · Environmental",
+        "dpCost": {
+          "price1": 2,
+          "price2": 7,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Power Awareness",
+        "dpCost": {
+          "price1": 2,
+          "price2": 5,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Power Point Development",
+        "dpCost": {
+          "price1": 4,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Science · Basic",
+        "dpCost": {
+          "price1": 1,
+          "price2": 4,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Science · Specialized",
+        "dpCost": {
+          "price1": 6,
+          "price2": 14,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Self Control",
+        "dpCost": {
+          "price1": 5,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Subterfuge · Attack",
+        "dpCost": {
+          "price1": 15,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Subterfuge · Mechanics",
+        "dpCost": {
+          "price1": 7,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Subterfuge · Stealth",
+        "dpCost": {
+          "price1": 5,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Technical · General",
+        "dpCost": {
+          "price1": 3,
+          "price2": 7,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Technical · Professional",
+        "dpCost": {
+          "price1": 8,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Technical · Vocational",
+        "dpCost": {
+          "price1": 5,
+          "price2": 12,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Urban",
+        "dpCost": {
+          "price1": 3,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · 1H Concussion",
+        "dpCost": {
+          "price1": 6,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · 1H Edged",
+        "dpCost": {
+          "price1": 7,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · 2Handed",
+        "dpCost": {
+          "price1": 9,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · Missile",
+        "dpCost": {
+          "price1": 9,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · Missile Artillery",
+        "dpCost": {
+          "price1": 9,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · Pole Arms",
+        "dpCost": {
+          "price1": 20,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · Thrown",
+        "dpCost": {
+          "price1": 20,
+          "price2": 0,
+          "price3": 0
+        }
+      }
+    ],
+    "spellPrice": [],
+    "trainingPackages": [
+      {
+        "name": "Adventurer",
+        "dpCost": 32
+      },
+      {
+        "name": "Amateur Mage",
+        "dpCost": 26
+      },
+      {
+        "name": "Animal Friend",
+        "dpCost": 31
+      },
+      {
+        "name": "Burglar",
+        "dpCost": 30
+      },
+      {
+        "name": "City Guard",
+        "dpCost": 28
+      },
+      {
+        "name": "Doctor",
+        "dpCost": 23
+      },
+      {
+        "name": "Herbalist",
+        "dpCost": 23
+      },
+      {
+        "name": "Hunter",
+        "dpCost": 32
+      },
+      {
+        "name": "Knight",
+        "dpCost": 40
+      },
+      {
+        "name": "Loremaster",
+        "dpCost": 20
+      },
+      {
+        "name": "Merchant",
+        "dpCost": 20
+      },
+      {
+        "name": "Performer",
+        "dpCost": 26
+      },
+      {
+        "name": "Scout",
+        "dpCost": 28
+      },
+      {
+        "name": "Soldier",
+        "dpCost": 29
+      },
+      {
+        "name": "Traveller",
+        "dpCost": 18
+      }
+    ]
+  },
+  {
+    "name": "Mentalist",
+    "description": "",
+    "primeStats": [],
+    "professionalBonuses": [],
+    "everymanSkills": [],
+    "occupationalSkills": [],
+    "restrictedSkills": [],
+    "categoryPrice": [
+      {
+        "name": "Armor · Heavy",
+        "dpCost": {
+          "price1": 7,
+          "price2": 7,
+          "price3": 7
+        }
+      },
+      {
+        "name": "Armor · Light",
+        "dpCost": {
+          "price1": 4,
+          "price2": 4,
+          "price3": 4
+        }
+      },
+      {
+        "name": "Armor · Medium",
+        "dpCost": {
+          "price1": 6,
+          "price2": 6,
+          "price3": 6
+        }
+      },
+      {
+        "name": "Artistic · Active",
+        "dpCost": {
+          "price1": 2,
+          "price2": 5,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Artistic · Passive",
+        "dpCost": {
+          "price1": 2,
+          "price2": 5,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Athletic · Brawn",
+        "dpCost": {
+          "price1": 5,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Athletic · Endurance",
+        "dpCost": {
+          "price1": 3,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Athletic · Gymnastics",
+        "dpCost": {
+          "price1": 3,
+          "price2": 9,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Awareness · Perceptions",
+        "dpCost": {
+          "price1": 5,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Awareness · Searching",
+        "dpCost": {
+          "price1": 3,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Awareness · Senses",
+        "dpCost": {
+          "price1": 3,
+          "price2": 7,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Body Development",
+        "dpCost": {
+          "price1": 12,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Combat Maneuvers",
+        "dpCost": {
+          "price1": 14,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Communications",
+        "dpCost": {
+          "price1": 2,
+          "price2": 2,
+          "price3": 2
+        }
+      },
+      {
+        "name": "Crafts",
+        "dpCost": {
+          "price1": 4,
+          "price2": 10,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Directed Spells",
+        "dpCost": {
+          "price1": 2,
+          "price2": 6,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Influence",
+        "dpCost": {
+          "price1": 2,
+          "price2": 6,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Lore · General",
+        "dpCost": {
+          "price1": 1,
+          "price2": 3,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Lore · Magical",
+        "dpCost": {
+          "price1": 2,
+          "price2": 4,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Lore · Obscure",
+        "dpCost": {
+          "price1": 3,
+          "price2": 7,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Lore · Technical",
+        "dpCost": {
+          "price1": 2,
+          "price2": 6,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Martial Arts · Striking",
+        "dpCost": {
+          "price1": 3,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Outdoor · Animal",
+        "dpCost": {
+          "price1": 3,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Outdoor · Environmental",
+        "dpCost": {
+          "price1": 3,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Power Awareness",
+        "dpCost": {
+          "price1": 2,
+          "price2": 5,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Power Point Development",
+        "dpCost": {
+          "price1": 4,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Science · Basic",
+        "dpCost": {
+          "price1": 1,
+          "price2": 4,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Science · Specialized",
+        "dpCost": {
+          "price1": 6,
+          "price2": 14,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Self Control",
+        "dpCost": {
+          "price1": 3,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Subterfuge · Attack",
+        "dpCost": {
+          "price1": 15,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Subterfuge · Mechanics",
+        "dpCost": {
+          "price1": 7,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Subterfuge · Stealth",
+        "dpCost": {
+          "price1": 5,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Technical · General",
+        "dpCost": {
+          "price1": 3,
+          "price2": 7,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Technical · Professional",
+        "dpCost": {
+          "price1": 8,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Technical · Vocational",
+        "dpCost": {
+          "price1": 5,
+          "price2": 12,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Urban",
+        "dpCost": {
+          "price1": 3,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · 1H Concussion",
+        "dpCost": {
+          "price1": 6,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · 1H Edged",
+        "dpCost": {
+          "price1": 8,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · 2Handed",
+        "dpCost": {
+          "price1": 15,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · Missile",
+        "dpCost": {
+          "price1": 20,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · Missile Artillery",
+        "dpCost": {
+          "price1": 20,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · Pole Arms",
+        "dpCost": {
+          "price1": 20,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · Thrown",
+        "dpCost": {
+          "price1": 20,
+          "price2": 0,
+          "price3": 0
+        }
+      }
+    ],
+    "spellPrice": [],
+    "trainingPackages": [
+      {
+        "name": "Adventurer",
+        "dpCost": 31
+      },
+      {
+        "name": "Amateur Mage",
+        "dpCost": 26
+      },
+      {
+        "name": "Animal Friend",
+        "dpCost": 33
+      },
+      {
+        "name": "Burglar",
+        "dpCost": 29
+      },
+      {
+        "name": "City Guard",
+        "dpCost": 29
+      },
+      {
+        "name": "Doctor",
+        "dpCost": 23
+      },
+      {
+        "name": "Herbalist",
+        "dpCost": 23
+      },
+      {
+        "name": "Hunter",
+        "dpCost": 35
+      },
+      {
+        "name": "Knight",
+        "dpCost": 40
+      },
+      {
+        "name": "Loremaster",
+        "dpCost": 20
+      },
+      {
+        "name": "Merchant",
+        "dpCost": 20
+      },
+      {
+        "name": "Performer",
+        "dpCost": 26
+      },
+      {
+        "name": "Scout",
+        "dpCost": 30
+      },
+      {
+        "name": "Soldier",
+        "dpCost": 31
+      },
+      {
+        "name": "Traveller",
+        "dpCost": 20
+      }
+    ]
+  },
+  {
+    "name": "Ranger",
+    "description": "",
+    "primeStats": [],
+    "professionalBonuses": [],
+    "everymanSkills": [],
+    "occupationalSkills": [],
+    "restrictedSkills": [],
+    "categoryPrice": [
+      {
+        "name": "Armor · Heavy",
+        "dpCost": {
+          "price1": 5,
+          "price2": 5,
+          "price3": 5
+        }
+      },
+      {
+        "name": "Armor · Light",
+        "dpCost": {
+          "price1": 2,
+          "price2": 2,
+          "price3": 2
+        }
+      },
+      {
+        "name": "Armor · Medium",
+        "dpCost": {
+          "price1": 4,
+          "price2": 4,
+          "price3": 4
+        }
+      },
+      {
+        "name": "Artistic · Active",
+        "dpCost": {
+          "price1": 2,
+          "price2": 5,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Artistic · Passive",
+        "dpCost": {
+          "price1": 2,
+          "price2": 5,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Athletic · Brawn",
+        "dpCost": {
+          "price1": 3,
+          "price2": 7,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Athletic · Endurance",
+        "dpCost": {
+          "price1": 1,
+          "price2": 5,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Athletic · Gymnastics",
+        "dpCost": {
+          "price1": 3,
+          "price2": 6,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Awareness · Perceptions",
+        "dpCost": {
+          "price1": 3,
+          "price2": 12,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Awareness · Searching",
+        "dpCost": {
+          "price1": 1,
+          "price2": 4,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Awareness · Senses",
+        "dpCost": {
+          "price1": 2,
+          "price2": 5,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Body Development",
+        "dpCost": {
+          "price1": 4,
+          "price2": 12,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Combat Maneuvers",
+        "dpCost": {
+          "price1": 5,
+          "price2": 12,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Communications",
+        "dpCost": {
+          "price1": 3,
+          "price2": 3,
+          "price3": 3
+        }
+      },
+      {
+        "name": "Crafts",
+        "dpCost": {
+          "price1": 4,
+          "price2": 10,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Directed Spells",
+        "dpCost": {
+          "price1": 15,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Influence",
+        "dpCost": {
+          "price1": 2,
+          "price2": 6,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Lore · General",
+        "dpCost": {
+          "price1": 1,
+          "price2": 3,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Lore · Magical",
+        "dpCost": {
+          "price1": 3,
+          "price2": 6,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Lore · Obscure",
+        "dpCost": {
+          "price1": 3,
+          "price2": 7,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Lore · Technical",
+        "dpCost": {
+          "price1": 2,
+          "price2": 6,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Martial Arts · Striking",
+        "dpCost": {
+          "price1": 4,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Outdoor · Animal",
+        "dpCost": {
+          "price1": 1,
+          "price2": 5,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Outdoor · Environmental",
+        "dpCost": {
+          "price1": 1,
+          "price2": 3,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Power Awareness",
+        "dpCost": {
+          "price1": 5,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Power Point Development",
+        "dpCost": {
+          "price1": 8,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Science · Basic",
+        "dpCost": {
+          "price1": 2,
+          "price2": 5,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Science · Specialized",
+        "dpCost": {
+          "price1": 8,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Self Control",
+        "dpCost": {
+          "price1": 2,
+          "price2": 7,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Subterfuge · Attack",
+        "dpCost": {
+          "price1": 6,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Subterfuge · Mechanics",
+        "dpCost": {
+          "price1": 4,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Subterfuge · Stealth",
+        "dpCost": {
+          "price1": 1,
+          "price2": 5,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Technical · General",
+        "dpCost": {
+          "price1": 3,
+          "price2": 7,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Technical · Professional",
+        "dpCost": {
+          "price1": 8,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Technical · Vocational",
+        "dpCost": {
+          "price1": 5,
+          "price2": 12,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Urban",
+        "dpCost": {
+          "price1": 3,
+          "price2": 6,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · 1H Concussion",
+        "dpCost": {
+          "price1": 3,
+          "price2": 7,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · 1H Edged",
+        "dpCost": {
+          "price1": 4,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · 2Handed",
+        "dpCost": {
+          "price1": 6,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · Missile",
+        "dpCost": {
+          "price1": 6,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · Missile Artillery",
+        "dpCost": {
+          "price1": 6,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · Pole Arms",
+        "dpCost": {
+          "price1": 9,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · Thrown",
+        "dpCost": {
+          "price1": 9,
+          "price2": 0,
+          "price3": 0
+        }
+      }
+    ],
+    "spellPrice": [],
+    "trainingPackages": [
+      {
+        "name": "Adventurer",
+        "dpCost": 29
+      },
+      {
+        "name": "Amateur Mage",
+        "dpCost": 31
+      },
+      {
+        "name": "Animal Friend",
+        "dpCost": 22
+      },
+      {
+        "name": "Burglar",
+        "dpCost": 26
+      },
+      {
+        "name": "City Guard",
+        "dpCost": 20
+      },
+      {
+        "name": "Doctor",
+        "dpCost": 23
+      },
+      {
+        "name": "Herbalist",
+        "dpCost": 20
+      },
+      {
+        "name": "Hunter",
+        "dpCost": 25
+      },
+      {
+        "name": "Knight",
+        "dpCost": 31
+      },
+      {
+        "name": "Loremaster",
+        "dpCost": 24
+      },
+      {
+        "name": "Merchant",
+        "dpCost": 24
+      },
+      {
+        "name": "Performer",
+        "dpCost": 28
+      },
+      {
+        "name": "Scout",
+        "dpCost": 16
+      },
+      {
+        "name": "Soldier",
+        "dpCost": 23
+      },
+      {
+        "name": "Traveller",
+        "dpCost": 10
+      }
+    ]
+  },
+  {
+    "name": "Dabbler",
+    "description": "",
+    "primeStats": [],
+    "professionalBonuses": [],
+    "everymanSkills": [],
+    "occupationalSkills": [],
+    "restrictedSkills": [],
+    "categoryPrice": [
+      {
+        "name": "Armor · Heavy",
+        "dpCost": {
+          "price1": 11,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Armor · Light",
+        "dpCost": {
+          "price1": 5,
+          "price2": 5,
+          "price3": 5
+        }
+      },
+      {
+        "name": "Armor · Medium",
+        "dpCost": {
+          "price1": 10,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Artistic · Active",
+        "dpCost": {
+          "price1": 2,
+          "price2": 4,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Artistic · Passive",
+        "dpCost": {
+          "price1": 2,
+          "price2": 5,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Athletic · Brawn",
+        "dpCost": {
+          "price1": 3,
+          "price2": 9,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Athletic · Endurance",
+        "dpCost": {
+          "price1": 2,
+          "price2": 7,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Athletic · Gymnastics",
+        "dpCost": {
+          "price1": 2,
+          "price2": 4,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Awareness · Perceptions",
+        "dpCost": {
+          "price1": 4,
+          "price2": 12,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Awareness · Searching",
+        "dpCost": {
+          "price1": 2,
+          "price2": 6,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Awareness · Senses",
+        "dpCost": {
+          "price1": 3,
+          "price2": 7,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Body Development",
+        "dpCost": {
+          "price1": 6,
+          "price2": 14,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Combat Maneuvers",
+        "dpCost": {
+          "price1": 6,
+          "price2": 14,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Communications",
+        "dpCost": {
+          "price1": 2,
+          "price2": 2,
+          "price3": 2
+        }
+      },
+      {
+        "name": "Crafts",
+        "dpCost": {
+          "price1": 4,
+          "price2": 10,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Directed Spells",
+        "dpCost": {
+          "price1": 5,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Influence",
+        "dpCost": {
+          "price1": 2,
+          "price2": 4,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Lore · General",
+        "dpCost": {
+          "price1": 1,
+          "price2": 3,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Lore · Magical",
+        "dpCost": {
+          "price1": 2,
+          "price2": 6,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Lore · Obscure",
+        "dpCost": {
+          "price1": 3,
+          "price2": 7,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Lore · Technical",
+        "dpCost": {
+          "price1": 2,
+          "price2": 5,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Martial Arts · Striking",
+        "dpCost": {
+          "price1": 4,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Outdoor · Animal",
+        "dpCost": {
+          "price1": 2,
+          "price2": 6,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Outdoor · Environmental",
+        "dpCost": {
+          "price1": 2,
+          "price2": 6,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Power Awareness",
+        "dpCost": {
+          "price1": 2,
+          "price2": 7,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Power Point Development",
+        "dpCost": {
+          "price1": 8,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Science · Basic",
+        "dpCost": {
+          "price1": 2,
+          "price2": 5,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Science · Specialized",
+        "dpCost": {
+          "price1": 8,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Self Control",
+        "dpCost": {
+          "price1": 2,
+          "price2": 7,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Subterfuge · Attack",
+        "dpCost": {
+          "price1": 6,
+          "price2": 12,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Subterfuge · Mechanics",
+        "dpCost": {
+          "price1": 2,
+          "price2": 6,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Subterfuge · Stealth",
+        "dpCost": {
+          "price1": 1,
+          "price2": 5,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Technical · General",
+        "dpCost": {
+          "price1": 3,
+          "price2": 7,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Technical · Professional",
+        "dpCost": {
+          "price1": 8,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Technical · Vocational",
+        "dpCost": {
+          "price1": 5,
+          "price2": 12,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Urban",
+        "dpCost": {
+          "price1": 1,
+          "price2": 5,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · 1H Concussion",
+        "dpCost": {
+          "price1": 3,
+          "price2": 9,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · 1H Edged",
+        "dpCost": {
+          "price1": 6,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · 2Handed",
+        "dpCost": {
+          "price1": 7,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · Missile",
+        "dpCost": {
+          "price1": 8,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · Missile Artillery",
+        "dpCost": {
+          "price1": 10,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · Pole Arms",
+        "dpCost": {
+          "price1": 15,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · Thrown",
+        "dpCost": {
+          "price1": 15,
+          "price2": 0,
+          "price3": 0
+        }
+      }
+    ],
+    "spellPrice": [],
+    "trainingPackages": [
+      {
+        "name": "Adventurer",
+        "dpCost": 29
+      },
+      {
+        "name": "Amateur Mage",
+        "dpCost": 29
+      },
+      {
+        "name": "Animal Friend",
+        "dpCost": 28
+      },
+      {
+        "name": "Burglar",
+        "dpCost": 22
+      },
+      {
+        "name": "City Guard",
+        "dpCost": 20
+      },
+      {
+        "name": "Doctor",
+        "dpCost": 23
+      },
+      {
+        "name": "Herbalist",
+        "dpCost": 23
+      },
+      {
+        "name": "Hunter",
+        "dpCost": 29
+      },
+      {
+        "name": "Knight",
+        "dpCost": 36
+      },
+      {
+        "name": "Loremaster",
+        "dpCost": 20
+      },
+      {
+        "name": "Merchant",
+        "dpCost": 20
+      },
+      {
+        "name": "Performer",
+        "dpCost": 28
+      },
+      {
+        "name": "Scout",
+        "dpCost": 25
+      },
+      {
+        "name": "Soldier",
+        "dpCost": 28
+      },
+      {
+        "name": "Traveller",
+        "dpCost": 14
+      }
+    ]
+  },
+  {
+    "name": "Bard",
+    "description": "",
+    "primeStats": [],
+    "professionalBonuses": [],
+    "everymanSkills": [],
+    "occupationalSkills": [],
+    "restrictedSkills": [],
+    "categoryPrice": [
+      {
+        "name": "Armor · Heavy",
+        "dpCost": {
+          "price1": 5,
+          "price2": 5,
+          "price3": 5
+        }
+      },
+      {
+        "name": "Armor · Light",
+        "dpCost": {
+          "price1": 2,
+          "price2": 2,
+          "price3": 2
+        }
+      },
+      {
+        "name": "Armor · Medium",
+        "dpCost": {
+          "price1": 3,
+          "price2": 3,
+          "price3": 3
+        }
+      },
+      {
+        "name": "Artistic · Active",
+        "dpCost": {
+          "price1": 1,
+          "price2": 2,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Artistic · Passive",
+        "dpCost": {
+          "price1": 1,
+          "price2": 3,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Athletic · Brawn",
+        "dpCost": {
+          "price1": 4,
+          "price2": 9,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Athletic · Endurance",
+        "dpCost": {
+          "price1": 2,
+          "price2": 7,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Athletic · Gymnastics",
+        "dpCost": {
+          "price1": 2,
+          "price2": 6,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Awareness · Perceptions",
+        "dpCost": {
+          "price1": 4,
+          "price2": 12,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Awareness · Searching",
+        "dpCost": {
+          "price1": 2,
+          "price2": 6,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Awareness · Senses",
+        "dpCost": {
+          "price1": 3,
+          "price2": 7,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Body Development",
+        "dpCost": {
+          "price1": 6,
+          "price2": 14,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Combat Maneuvers",
+        "dpCost": {
+          "price1": 6,
+          "price2": 14,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Communications",
+        "dpCost": {
+          "price1": 1,
+          "price2": 1,
+          "price3": 1
+        }
+      },
+      {
+        "name": "Crafts",
+        "dpCost": {
+          "price1": 4,
+          "price2": 10,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Directed Spells",
+        "dpCost": {
+          "price1": 10,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Influence",
+        "dpCost": {
+          "price1": 1,
+          "price2": 4,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Lore · General",
+        "dpCost": {
+          "price1": 1,
+          "price2": 2,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Lore · Magical",
+        "dpCost": {
+          "price1": 1,
+          "price2": 4,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Lore · Obscure",
+        "dpCost": {
+          "price1": 2,
+          "price2": 4,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Lore · Technical",
+        "dpCost": {
+          "price1": 2,
+          "price2": 4,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Martial Arts · Striking",
+        "dpCost": {
+          "price1": 3,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Outdoor · Animal",
+        "dpCost": {
+          "price1": 2,
+          "price2": 7,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Outdoor · Environmental",
+        "dpCost": {
+          "price1": 2,
+          "price2": 6,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Power Awareness",
+        "dpCost": {
+          "price1": 3,
+          "price2": 6,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Power Point Development",
+        "dpCost": {
+          "price1": 8,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Science · Basic",
+        "dpCost": {
+          "price1": 2,
+          "price2": 5,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Science · Specialized",
+        "dpCost": {
+          "price1": 8,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Self Control",
+        "dpCost": {
+          "price1": 2,
+          "price2": 7,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Subterfuge · Attack",
+        "dpCost": {
+          "price1": 12,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Subterfuge · Mechanics",
+        "dpCost": {
+          "price1": 4,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Subterfuge · Stealth",
+        "dpCost": {
+          "price1": 2,
+          "price2": 7,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Technical · General",
+        "dpCost": {
+          "price1": 3,
+          "price2": 7,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Technical · Professional",
+        "dpCost": {
+          "price1": 8,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Technical · Vocational",
+        "dpCost": {
+          "price1": 5,
+          "price2": 12,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Urban",
+        "dpCost": {
+          "price1": 2,
+          "price2": 4,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · 1H Concussion",
+        "dpCost": {
+          "price1": 3,
+          "price2": 9,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · 1H Edged",
+        "dpCost": {
+          "price1": 6,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · 2Handed",
+        "dpCost": {
+          "price1": 7,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · Missile",
+        "dpCost": {
+          "price1": 7,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · Missile Artillery",
+        "dpCost": {
+          "price1": 7,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · Pole Arms",
+        "dpCost": {
+          "price1": 15,
+          "price2": 0,
+          "price3": 0
+        }
+      },
+      {
+        "name": "Weapon · Thrown",
+        "dpCost": {
+          "price1": 15,
+          "price2": 0,
+          "price3": 0
+        }
+      }
+    ],
+    "spellPrice": [],
+    "trainingPackages": [
+      {
+        "name": "Adventurer",
+        "dpCost": 29
+      },
+      {
+        "name": "Amateur Mage",
+        "dpCost": 29
+      },
+      {
+        "name": "Animal Friend",
+        "dpCost": 28
+      },
+      {
+        "name": "Burglar",
+        "dpCost": 25
+      },
+      {
+        "name": "City Guard",
+        "dpCost": 21
+      },
+      {
+        "name": "Doctor",
+        "dpCost": 23
+      },
+      {
+        "name": "Herbalist",
+        "dpCost": 23
+      },
+      {
+        "name": "Hunter",
+        "dpCost": 30
+      },
+      {
+        "name": "Knight",
+        "dpCost": 32
+      },
+      {
+        "name": "Loremaster",
+        "dpCost": 18
+      },
+      {
+        "name": "Merchant",
+        "dpCost": 21
+      },
+      {
+        "name": "Performer",
+        "dpCost": 16
+      },
+      {
+        "name": "Scout",
+        "dpCost": 25
+      },
+      {
+        "name": "Soldier",
+        "dpCost": 25
+      },
+      {
+        "name": "Traveller",
+        "dpCost": 14
+      }
+    ]
+  }
+]
