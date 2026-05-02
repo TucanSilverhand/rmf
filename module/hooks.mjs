@@ -284,9 +284,12 @@ export class RMFHooks {
   }
 
   /**
-   * Item deletion hook — when a race item is removed from an actor, reset
-   * `system.boughtByLevel.0` to 0 on every embedded category and skill so
-   * the racial level-0 contribution disappears with the race.
+   * Item deletion hook — when a race item is removed from an actor:
+   *  - reset `system.boughtByLevel.0` to 0 on every embedded category and skill
+   *    so the racial level-0 contribution disappears with the race;
+   *  - reset `system.specialStatus` to "none" on every embedded skill so the
+   *    everyman/restricted tag disappears with the race.
+   * Both changes are bundled into a single update per affected item.
    *
    * @private
    * @static
@@ -304,16 +307,31 @@ export class RMFHooks {
     const updates = [];
     for (const i of actor.items) {
       if (i.type !== "category" && i.type !== "skill") continue;
-      const current = Number(i.system?.boughtByLevel?.["0"] ?? 0);
-      if (current === 0) continue;
-      updates.push({ _id: i.id, "system.boughtByLevel.0": 0 });
+      const update = { _id: i.id };
+      let changed = false;
+
+      const currentLevel0 = Number(i.system?.boughtByLevel?.["0"] ?? 0);
+      if (currentLevel0 !== 0) {
+        update["system.boughtByLevel.0"] = 0;
+        changed = true;
+      }
+
+      if (i.type === "skill") {
+        const currentStatus = String(i.system?.specialStatus ?? "none");
+        if (currentStatus !== "none") {
+          update["system.specialStatus"] = "none";
+          changed = true;
+        }
+      }
+
+      if (changed) updates.push(update);
     }
     if (updates.length) {
       await actor.updateEmbeddedDocuments("Item", updates);
     }
 
     if (CONFIG.RMF?.debug) {
-      console.log(`RMF DEBUG | Race removed from ${actor.name}: reset Level 0 on ${updates.length} item(s)`);
+      console.log(`RMF DEBUG | Race removed from ${actor.name}: reset ${updates.length} item(s)`);
     }
   }
 

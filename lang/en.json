@@ -129,7 +129,15 @@
         "Skills": "Racial Ranks (Skills)",
         "Total": "Total",
         "None": "No racial ranks defined."
-      }
+      },
+      "SpecialSkills": {
+        "Everyman": "Everyman Skills",
+        "Restricted": "Restricted Skills",
+        "None": "No special skills defined."
+      },
+      "StandardHobbySkills": "Standard Hobby Skills",
+      "StandardHobbySkillsPlaceholder": "Comma-separated list of standard hobby skills",
+      "StandardHobbySkillsNone": "No standard hobby skills defined."
     },
     "Background": {
       "Nationality": "Nationality",

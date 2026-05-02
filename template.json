@@ -169,6 +169,11 @@
         "categories": [],
         "skills": []
       },
+      "specialSkills": {
+        "everyman": [],
+        "restricted": []
+      },
+      "standardHobbySkills": "",
       "fromBook": "basic"
     },
     "category": {
@@ -211,6 +216,7 @@
       "profBonus": 0,
       "spec1Bonus": 0,
       "spec2Bonus": 0,
+      "specialStatus": "none",
       "fromBook": "basic"
     },
 

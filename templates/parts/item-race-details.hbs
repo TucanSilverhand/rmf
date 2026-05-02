@@ -147,4 +147,46 @@
     {{/if}}
   </div>
 
+  {{!-- Special skills: everyman --}}
+  <div class="summary-wrapper">
+    <h3>{{localize "RMF.Race.SpecialSkills.Everyman"}}</h3>
+    {{#if system.specialSkills.everyman.length}}
+    <div class="racial-ranks-grid">
+      {{#each system.specialSkills.everyman as |entry|}}
+      <div class="racial-rank-row">
+        <input type="text" value="{{entry.name}}" readonly />
+      </div>
+      {{/each}}
+    </div>
+    {{else}}
+    <em>{{localize "RMF.Race.SpecialSkills.None"}}</em>
+    {{/if}}
+  </div>
+
+  {{!-- Special skills: restricted --}}
+  <div class="summary-wrapper">
+    <h3>{{localize "RMF.Race.SpecialSkills.Restricted"}}</h3>
+    {{#if system.specialSkills.restricted.length}}
+    <div class="racial-ranks-grid">
+      {{#each system.specialSkills.restricted as |entry|}}
+      <div class="racial-rank-row">
+        <input type="text" value="{{entry.name}}" readonly />
+      </div>
+      {{/each}}
+    </div>
+    {{else}}
+    <em>{{localize "RMF.Race.SpecialSkills.None"}}</em>
+    {{/if}}
+  </div>
+
+  {{!-- Standard hobby skills (free-form text) --}}
+  <div class="summary-wrapper">
+    <h3>{{localize "RMF.Race.StandardHobbySkills"}}</h3>
+    {{#if system.standardHobbySkills}}
+    <p class="standard-hobby-skills">{{system.standardHobbySkills}}</p>
+    {{else}}
+    <em>{{localize "RMF.Race.StandardHobbySkillsNone"}}</em>
+    {{/if}}
+  </div>
+
 </div>

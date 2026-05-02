@@ -211,4 +211,46 @@
     </div>
   </fieldset>
 
+  {{!-- Special skills: everyman --}}
+  <fieldset class="form-group">
+    <legend>{{localize "RMF.Race.SpecialSkills.Everyman"}}</legend>
+    <div class="racial-ranks-grid">
+      {{#each specialSkillEverymanRows as |row|}}
+      <div class="racial-rank-row">
+        <input type="text"
+               name="system.specialSkills.everyman.{{row.index}}.name"
+               value="{{row.name}}"
+               placeholder="{{localize 'RMF.Skills.Title'}}"
+               autocomplete="off" />
+      </div>
+      {{/each}}
+    </div>
+  </fieldset>
+
+  {{!-- Special skills: restricted --}}
+  <fieldset class="form-group">
+    <legend>{{localize "RMF.Race.SpecialSkills.Restricted"}}</legend>
+    <div class="racial-ranks-grid">
+      {{#each specialSkillRestrictedRows as |row|}}
+      <div class="racial-rank-row">
+        <input type="text"
+               name="system.specialSkills.restricted.{{row.index}}.name"
+               value="{{row.name}}"
+               placeholder="{{localize 'RMF.Skills.Title'}}"
+               autocomplete="off" />
+      </div>
+      {{/each}}
+    </div>
+  </fieldset>
+
+  {{!-- Standard hobby skills (free-form descriptive text) --}}
+  <fieldset class="form-group">
+    <legend>{{localize "RMF.Race.StandardHobbySkills"}}</legend>
+    <div class="editor-container">
+      <textarea name="system.standardHobbySkills"
+                style="height: 120px; resize: vertical;"
+                placeholder="{{localize 'RMF.Race.StandardHobbySkillsPlaceholder'}}">{{standardHobbySkills}}</textarea>
+    </div>
+  </fieldset>
+
 </div>

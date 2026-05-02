@@ -131,8 +131,30 @@ export class RMFRaceSheet extends HandlebarsApplicationMixin(
     // Indexed rows for editable racial ranks (categories + skills)
     context.racialRankCategoryRows = this._prepareRacialRankRows("categories");
     context.racialRankSkillRows = this._prepareRacialRankRows("skills");
+    // Indexed rows for editable special skills lists (everyman + restricted)
+    context.specialSkillEverymanRows = this._prepareSpecialSkillRows("everyman");
+    context.specialSkillRestrictedRows = this._prepareSpecialSkillRows("restricted");
+    context.standardHobbySkills = typeof sys.standardHobbySkills === "string" ? sys.standardHobbySkills : "";
 
     return context;
+  }
+
+  /**
+   * Build indexed row data for the editable special-skills tables.
+   * Each row carries the array index used to build the dot-notation form
+   * field name (e.g. system.specialSkills.everyman.0.name).
+   *
+   * @param {"everyman"|"restricted"} kind
+   * @returns {Array<{index: number, name: string}>}
+   * @private
+   */
+  _prepareSpecialSkillRows(kind) {
+    const list = this.document.system?.specialSkills?.[kind];
+    if (!Array.isArray(list)) return [];
+    return list.map((entry, index) => ({
+      index,
+      name: typeof entry?.name === "string" ? entry.name : ""
+    }));
   }
 
   /**
@@ -393,6 +415,7 @@ export class RMFRaceSheet extends HandlebarsApplicationMixin(
         // editing a racial-ranks row so we don't accidentally convert it
         // into an object keyed by numeric strings.
         const racialMatch = name.match(/^system\.racialRanks\.(categories|skills)\.(\d+)\.(name|ranks)$/);
+        const specialMatch = name.match(/^system\.specialSkills\.(everyman|restricted)\.(\d+)\.(name)$/);
         if (racialMatch) {
           const [, kind, indexStr, field] = racialMatch;
           const index = Number(indexStr);
@@ -401,6 +424,14 @@ export class RMFRaceSheet extends HandlebarsApplicationMixin(
           current[index] = { ...current[index] };
           current[index][field] = field === "ranks" ? Number(value) || 0 : String(value ?? "");
           await this.document.update({ [`system.racialRanks.${kind}`]: current });
+        } else if (specialMatch) {
+          const [, kind, indexStr, field] = specialMatch;
+          const index = Number(indexStr);
+          const current = foundry.utils.duplicate(this.document.system?.specialSkills?.[kind] ?? []);
+          if (!current[index] || typeof current[index] !== "object") current[index] = { name: "" };
+          current[index] = { ...current[index] };
+          current[index][field] = String(value ?? "");
+          await this.document.update({ [`system.specialSkills.${kind}`]: current });
         } else {
           await this.document.update({ [name]: value });
         }

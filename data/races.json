@@ -2,7 +2,7 @@
   {
     "name": "Common Men",
     "img": "icons/creatures/eyes/human-single-brown.webp",
-    "description": "Common Men are the standard humans in Rolemaster. Generally, they are more numerous and wide-spread than the other races, and they have a wide variety of cultures and physical types.",
+    "description": "This is a generalized label for rural folk of the northern and southern empires. This category represents men born and raised on farms, on grazing lands, and in small hamlets.",
     "racialAbilities": "",
     "stats": { "ag": 0, "co": 0, "me": 0, "re": 0, "sd": 2, "em": 0, "in": 0, "pr": 0, "qu": 0, "st": 2 },
     "resistances": { "ess": 0, "chan": 0, "ment": 0, "pois": 0, "dis": 0 },
@@ -59,12 +59,21 @@
         { "name": "Weapon Skill (Pole Arms)", "ranks": 1 },
         { "name": "Weapon Skill (Thrown)", "ranks": 1 }
       ]
-    }
+    },
+    "specialSkills": {
+      "everyman": [
+        { "name": "" }
+      ],
+      "restricted": [
+        { "name": "" }
+      ]
+    },
+    "standardHobbySkills": "Armor • Light skills, Acrobatics, Ani- mal Handling, Caving, Climbing, Cooking, Dancing, Foraging, Hiding, Leather-crafts, Observation, Rope Mastery, Scaling, Stalking, Star-gazing, Swimming, Tracking, any Weapon skills (other than Missile Artillery skills), Weather Watching, Wood-crafts"
   },
   {
     "name": "High Men",
     "img": "icons/creatures/eyes/human-single-brown.webp",
-    "description": "High Men are humans that are larger, stronger, and live longer than Common Men. They are great warriors and builders of empires, for their initiative generally matches their physical stature.",
+    "description": "High Men are great warriors and builders of empires, for their ambition matches their physical stature. They are said to have traces of Elven blood and maybe even a little blood of the Gods.",
     "racialAbilities": "",
     "stats": { "ag": -2, "co": 4, "me": 0, "re": 0, "sd": 0, "em": 0, "in": 0, "pr": 4, "qu": -2, "st": 4 },
     "resistances": { "ess": -5, "chan": -5, "ment": -5, "pois": 0, "dis": 0 },
@@ -122,13 +131,22 @@
         { "name": "Weapon Skill (Pole Arms)", "ranks": 1 },
         { "name": "Weapon Skill (Thrown)", "ranks": 0 }
       ]
-    }
+    },
+    "specialSkills": {
+      "everyman": [
+        { "name": "" }
+      ],
+      "restricted": [
+        { "name": "" }
+      ]
+    },
+    "standardHobbySkills": "Animal Handling, any Armor skills, Boat Pilot, Body Development, Diplomacy, Race Lore (Elven), Embroidery [Crafts], First Aid, Fletching [Crafts], Hiding, History, Jumping, Languages, Leadership, Meditation, Metal-crafts, Military Organization [Tech./Trade • General], Observation, Play Instrument, Poetic Improvisation, Pole Vaulting [Athletic • Gymnastics], Public Speaking, Read Runes, Riding, Rope Mastery, Sewing [Crafts], Singing, Skiing [Athletic • Gymnastics], Sprinting, Stalking, Star-gazing, Stone-crafts, Swimming, Tactics, Tracking, any Weapon skills (other than Missile Artillery skills), Weather Watching"
   },
   {
     "name": "Wood Elves",
     "img": "icons/creatures/eyes/human-single-brown.webp",
-    "description": "Wood Elves are similar to humans in most ways. However, they are immortal and they are generally fairer, taller, and more slender than humans. They tend to in- habit the forests and wilds of the world.",
-    "racialAbilities": "",
+    "description": "Wood Elves are more numerous and “rustic” than their brethren, the High Elves and the Grey Elves. They live in the safety of the woods, forests, and mountains.",
+    "racialAbilities": "Cold Resistance, Disease Resistance, Inmortality, Special Rest, Night Shight",
     "stats": { "ag": 4, "co": 0, "me": 2, "re": 0, "sd": -5, "em": 2, "in": 0, "pr": 2, "qu": 2, "st": 0 },
     "resistances": { "ess": -5, "chan": -5, "ment": -5, "pois": 10, "dis": 100 },
     "backgroundOptions": 4,
@@ -185,13 +203,25 @@
         { "name": "Weapon Skill (Pole Arms)", "ranks": 0 },
         { "name": "Weapon Skill (Thrown)", "ranks": 0 }
       ]
-    }
+    },
+    "specialSkills": {
+      "everyman": [
+        { "name": "Music" },
+        { "name": "Play Instrument" },
+        { "name": "Trickery" },
+        { "name": "Wood-crafts" }
+      ],
+      "restricted": [
+        { "name": "" }
+      ]
+    },
+    "standardHobbySkills": "Armor • Light skills, Acrobatics, Acting, Ambush, Animal Handling, Attunement, Boat Pilot, Climbing, Cooking, Directed Spells, Fauna Lore, First Aid, Fletching [Crafts], Flora Lore, Foraging, Hiding, Languages, Leather-crafts, Meditation, Observation, Play Instruments, Rappelling, Rope Mastery, Signaling, Singing, Skiing [Athletic • Gymnastics], Spell Lists, Spinning [Crafts], Stalking, Star-gazing, Swimming, Tracking, any Weapon skills (other than Missile Artillery skills), Weather Watching, Weaving [Crafts], Wood-crafts"
   },
   {
     "name": "Dwarves",
     "img": "icons/creatures/eyes/human-single-brown.webp",
-    "description": "Dwarves are a non-human race that favor the highlands and deep caverns of the mountains. They are short and stocky, and they have a reputation for ruggedness, practicality, and unwavering loyalty.",
-    "racialAbilities": "",
+    "description": "Although Dwarves are spread across the world, they are close to one another and have spawned a universal reputation for ruggedness, practicality, and unwavering loyalty. Most groups favor the rocky highlands and deep caverns of the mountains. They are superior craftsmen and they love to mine the earth for precious gems and metals to forge into weapons of strength and artifacts of beauty and power.",
+    "racialAbilities": "Dwarves see well in extreme darkness. In the dimmest light, they can see 50' perfectly, and fairly well up to 100'. They can see 10' in total darkness (non- magical).",
     "stats": { "ag": -2, "co": 6, "me": 0, "re": 0, "sd": 2, "em": -4, "in": 0, "pr": -4, "qu": -2, "st": 2 },
     "resistances": { "ess": 40, "chan": 0, "ment": 40, "pois": 20, "dis": 15 },
     "backgroundOptions": 5,
@@ -248,12 +278,26 @@
         { "name": "Weapon Skill (Pole Arms)", "ranks": 0 },
         { "name": "Weapon Skill (Thrown)", "ranks": 1 }
       ]
-    }
+    },
+    "specialSkills": {
+      "everyman": [
+        { "name": "Caving" },
+        { "name": "Leather-crafts" },
+        { "name": "Metal-crafts" },
+        { "name": "Mining" },
+        { "name": "Stone-crafts" },
+        { "name": "Survival" }
+      ],
+      "restricted": [
+        { "name": "Swimming" }
+      ]
+    },
+    "standardHobbySkills": "Appraisal, any Armor skills, Attunement, Body Development, Caving, Climbing, Con- tortions, Disarming Traps, First Aid, Leather-crafts, Metal- crafts, Picking Locks, Public Speaking, Region Lore (any cavernous region), Riding (wolves and bears), Tactics, Trap- building [Sub. • Stealth], any Weapon skills (other than Missile Artillery skills)"
   },
   {
     "name": "Halflings",
     "img": "icons/creatures/eyes/human-single-brown.webp",
-    "description": "Halflings are the smallest of the races, ranging between 2 and 4 feet in height. However, they are very quick and agile. They tend to live in farmlands among the lands of the more numerous humans.",
+    "description": "Halflings have an unclear origin, although they arose about the same time as Men. Indeed, they are said to be related to Men. They are the smallest of the races, Halflings range between 2 and 4 feet in height, and tend to be fat or pudgy. They are sometimes called “The Hairfoots” because of their large hairy feet.",
     "racialAbilities": "",
     "stats": { "ag": 6, "co": 6, "me": 0, "re": 0, "sd": -4, "em": -2, "in": 0, "pr": -6, "qu": 4, "st": -8 },
     "resistances": { "ess": 50, "chan": 0, "ment": 40, "pois": 30, "dis": 15 },
@@ -311,6 +355,16 @@
         { "name": "Weapon Skill (Pole Arms)", "ranks": 0 },
         { "name": "Weapon Skill (Thrown)", "ranks": 2 }
       ]
-    }
+    },
+    "specialSkills": {
+      "everyman": [
+        { "name": "Caving" },
+        { "name": "Horticulture" }
+      ],
+      "restricted": [
+        { "name": "" }
+      ]
+    },
+    "standardHobbySkills": "Acrobatics, Animal Handling, An- thropology (Genealogy), Appraisal, Athletic Games (gym- nastics, horse shoes), Boat Pilot, Caving (Halfling-holes), Climbing, Cooking, Dancing, Disarming Traps, Fletching, Flora Lore, Hiding, Horticulture [Crafts], Juggling, Leather- crafts, Metal-crafts, any Missile weapon skills, Observa- tion, Picking Locks, Play Instruments, Public Speaking, Region Lore (local region), Rope Mastery, Scaling, Sewing [Crafts], Stalking, Star-gazing, Tale Telling, Tracking, Weather Watching, Wood-crafts"
   }
 ]

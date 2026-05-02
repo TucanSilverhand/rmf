@@ -68,7 +68,9 @@ export async function importRaces(source, options = {}) {
           ppEssence: normalizeRaceProgressionString(sysSource.ppEssence),
           ppMentalism: normalizeRaceProgressionString(sysSource.ppMentalism),
           hobbyRanks: normalizeRaceHobbyRanks(sysSource.hobbyRanks),
-          racialRanks: normalizeRacialRanks(sysSource.racialRanks)
+          racialRanks: normalizeRacialRanks(sysSource.racialRanks),
+          specialSkills: normalizeSpecialSkills(sysSource.specialSkills),
+          standardHobbySkills: normalizeStandardHobbySkills(sysSource.standardHobbySkills)
         },
         { inplace: false, insertKeys: true, insertValues: true, overwrite: true }
       );
@@ -154,6 +156,8 @@ export async function syncRacesToCompendium(source, options = {}) {
           ppMentalism: normalizeRaceProgressionString(sysSource.ppMentalism),
           hobbyRanks: normalizeRaceHobbyRanks(sysSource.hobbyRanks),
           racialRanks: normalizeRacialRanks(sysSource.racialRanks),
+          specialSkills: normalizeSpecialSkills(sysSource.specialSkills),
+          standardHobbySkills: normalizeStandardHobbySkills(sysSource.standardHobbySkills),
           fromBook: String(sysSource.fromBook ?? race.fromBook ?? "basic")
         },
         { inplace: false, insertKeys: true, insertValues: true, overwrite: true }
@@ -723,10 +727,24 @@ function buildSkillSystemData(sysSource, template) {
       profBonus: normalizeNumber(sysSource?.profBonus, 0),
       spec1Bonus: normalizeNumber(sysSource?.spec1Bonus, 0),
       spec2Bonus: normalizeNumber(sysSource?.spec2Bonus, 0),
+      specialStatus: normalizeSkillSpecialStatus(sysSource?.specialStatus),
       fromBook: String(sysSource?.fromBook ?? "basic")
     },
     { inplace: false, insertKeys: true, insertValues: true, overwrite: true }
   );
+}
+
+/**
+ * Normalize a skill "specialStatus" value. Allowed: "none" | "everyman" | "restricted".
+ * Anything else (or missing) collapses to "none".
+ * @param {*} value
+ * @returns {"none"|"everyman"|"restricted"}
+ */
+function normalizeSkillSpecialStatus(value) {
+  const allowed = new Set(["none", "everyman", "restricted"]);
+  if (typeof value !== "string") return "none";
+  const lower = value.trim().toLowerCase();
+  return allowed.has(lower) ? lower : "none";
 }
 
 function normalizeRaceStats(stats) {
@@ -815,6 +833,50 @@ function normalizeRacialRanks(value) {
   out.categories = normalizeList(value.categories);
   out.skills = normalizeList(value.skills);
   return out;
+}
+
+/**
+ * Normalize the race "specialSkills" structure to:
+ *   { everyman: [{name}], restricted: [{name}] }
+ * Drops blank/whitespace-only names and de-duplicates case-insensitively
+ * within each list.
+ * @param {*} value
+ * @returns {{everyman: Array<{name: string}>, restricted: Array<{name: string}>}}
+ */
+function normalizeSpecialSkills(value) {
+  const out = { everyman: [], restricted: [] };
+  if (!value || typeof value !== "object") return out;
+
+  const normalizeList = (list) => {
+    if (!Array.isArray(list)) return [];
+    const seen = new Set();
+    const acc = [];
+    for (const entry of list) {
+      const raw = entry && typeof entry === "object" ? entry.name : entry;
+      const name = typeof raw === "string" ? raw.trim() : "";
+      if (!name) continue;
+      const key = name.toLowerCase();
+      if (seen.has(key)) continue;
+      seen.add(key);
+      acc.push({ name });
+    }
+    return acc;
+  };
+
+  out.everyman = normalizeList(value.everyman);
+  out.restricted = normalizeList(value.restricted);
+  return out;
+}
+
+/**
+ * Normalize the race "standardHobbySkills" descriptive string. Coerces to a
+ * trimmed string; non-strings collapse to "".
+ * @param {*} value
+ * @returns {string}
+ */
+function normalizeStandardHobbySkills(value) {
+  if (typeof value !== "string") return "";
+  return value.trim();
 }
 
 function normalizeRaceResistances(resistances) {

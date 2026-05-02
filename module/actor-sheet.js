@@ -409,6 +409,14 @@ export class RMFActorSheet extends HandlebarsApplicationMixin(foundry.applicatio
       } catch (err) {
         console.error('RMF | Failed applying racial ranks on race drop', err);
       }
+
+      // Apply special skills: tag matching skills as "everyman" / "restricted",
+      // auto-creating missing skills the same way racial ranks does.
+      try {
+        await this._applySpecialSkillsFromRace(itemData?.system?.specialSkills);
+      } catch (err) {
+        console.error('RMF | Failed applying special skills on race drop', err);
+      }
       return created;
     }
 
@@ -530,6 +538,81 @@ export class RMFActorSheet extends HandlebarsApplicationMixin(foundry.applicatio
         _id: skill.id,
         'system.boughtByLevel.0': ranks
       });
+    }
+    if (skillUpdates.length) {
+      await this.document.updateEmbeddedDocuments('Item', skillUpdates);
+    }
+  }
+
+  /**
+   * Apply the special-skills block from a race item onto the actor's embedded
+   * skill items. For each entry in `everyman` and `restricted`:
+   *  - Find the matching skill by name (case-insensitive).
+   *  - Auto-create missing skills (sourced from world items first, then the
+   *    world.basic-core compendium, falling back to a minimal stub) so the
+   *    flag has a target to live on.
+   *  - Set `system.specialStatus` to "everyman" or "restricted".
+   * If a skill name appears in both lists, "restricted" wins (last write).
+   *
+   * @param {{everyman?: Array<{name: string}>, restricted?: Array<{name: string}>}} specialSkills
+   * @returns {Promise<void>}
+   * @private
+   */
+  async _applySpecialSkillsFromRace(specialSkills) {
+    if (!specialSkills || typeof specialSkills !== 'object') return;
+
+    const everyman = Array.isArray(specialSkills.everyman) ? specialSkills.everyman : [];
+    const restricted = Array.isArray(specialSkills.restricted) ? specialSkills.restricted : [];
+    if (!everyman.length && !restricted.length) return;
+
+    const findOwnSkill = (name) => {
+      const target = String(name || '').trim().toLowerCase();
+      if (!target) return null;
+      return this.document.items.find(
+        i => i.type === 'skill' && String(i.name || '').trim().toLowerCase() === target
+      ) ?? null;
+    };
+
+    // Build a name → status map ("everyman" first, then "restricted" overrides
+    // since restricted is the stronger constraint).
+    const statusByName = new Map();
+    for (const entry of everyman) {
+      const name = typeof entry?.name === 'string' ? entry.name.trim() : '';
+      if (!name) continue;
+      statusByName.set(name.toLowerCase(), { name, status: 'everyman' });
+    }
+    for (const entry of restricted) {
+      const name = typeof entry?.name === 'string' ? entry.name.trim() : '';
+      if (!name) continue;
+      statusByName.set(name.toLowerCase(), { name, status: 'restricted' });
+    }
+    if (!statusByName.size) return;
+
+    // Auto-create missing skills so the flag has a place to land.
+    const missing = [];
+    for (const { name } of statusByName.values()) {
+      if (!findOwnSkill(name)) missing.push(name);
+    }
+    const skillCreatePayload = [];
+    for (const name of missing) {
+      const sourceData = await this._resolveSkillSourceData(name);
+      const itemData = sourceData ?? this._buildStubSkillData(name);
+      itemData.system = itemData.system || {};
+      itemData.system.specialStatus = statusByName.get(name.toLowerCase()).status;
+      skillCreatePayload.push(itemData);
+    }
+    if (skillCreatePayload.length) {
+      await this.document.createEmbeddedDocuments('Item', skillCreatePayload);
+    }
+
+    // Update specialStatus on every matched skill (existing or just created).
+    const skillUpdates = [];
+    for (const { name, status } of statusByName.values()) {
+      const skill = findOwnSkill(name);
+      if (!skill) continue;
+      const current = String(skill.system?.specialStatus ?? 'none');
+      if (current === status) continue;
+      skillUpdates.push({ _id: skill.id, 'system.specialStatus': status });
     }
     if (skillUpdates.length) {
       await this.document.updateEmbeddedDocuments('Item', skillUpdates);
