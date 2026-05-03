@@ -68,7 +68,7 @@
         { "name": "" }
       ]
     },
-    "standardHobbySkills": "Armor • Light skills, Acrobatics, Ani- mal Handling, Caving, Climbing, Cooking, Dancing, Foraging, Hiding, Leather-crafts, Observation, Rope Mastery, Scaling, Stalking, Star-gazing, Swimming, Tracking, any Weapon skills (other than Missile Artillery skills), Weather Watching, Wood-crafts"
+    "standardHobbySkills": "Armor • Light skills, Acrobatics, Animal Handling, Caving, Climbing, Cooking, Dancing, Foraging, Hiding, Leather-crafts, Observation, Rope Mastery, Scaling, Stalking, Star-gazing, Swimming, Tracking, any Weapon skills (other than Missile Artillery skills), Weather Watching, Wood-crafts"
   },
   {
     "name": "High Men",
@@ -221,7 +221,7 @@
     "name": "Dwarves",
     "img": "icons/creatures/eyes/human-single-brown.webp",
     "description": "Although Dwarves are spread across the world, they are close to one another and have spawned a universal reputation for ruggedness, practicality, and unwavering loyalty. Most groups favor the rocky highlands and deep caverns of the mountains. They are superior craftsmen and they love to mine the earth for precious gems and metals to forge into weapons of strength and artifacts of beauty and power.",
-    "racialAbilities": "Dwarves see well in extreme darkness. In the dimmest light, they can see 50' perfectly, and fairly well up to 100'. They can see 10' in total darkness (non- magical).",
+    "racialAbilities": "Dwarves see well in extreme darkness. In the dimmest light, they can see 50' perfectly, and fairly well up to 100'. They can see 10' in total darkness (non-magical).",
     "stats": { "ag": -2, "co": 6, "me": 0, "re": 0, "sd": 2, "em": -4, "in": 0, "pr": -4, "qu": -2, "st": 2 },
     "resistances": { "ess": 40, "chan": 0, "ment": 40, "pois": 20, "dis": 15 },
     "backgroundOptions": 5,
@@ -292,7 +292,7 @@
         { "name": "Swimming" }
       ]
     },
-    "standardHobbySkills": "Appraisal, any Armor skills, Attunement, Body Development, Caving, Climbing, Con- tortions, Disarming Traps, First Aid, Leather-crafts, Metal- crafts, Picking Locks, Public Speaking, Region Lore (any cavernous region), Riding (wolves and bears), Tactics, Trap- building [Sub. • Stealth], any Weapon skills (other than Missile Artillery skills)"
+    "standardHobbySkills": "Appraisal, any Armor skills, Attunement, Body Development, Caving, Climbing, Contortions, Disarming Traps, First Aid, Leather-crafts, Metal-crafts, Picking Locks, Public Speaking, Region Lore (any cavernous region), Riding (wolves and bears), Tactics, Trap-building [Sub. • Stealth], any Weapon skills (other than Missile Artillery skills)"
   },
   {
     "name": "Halflings",
@@ -365,6 +365,6 @@
         { "name": "" }
       ]
     },
-    "standardHobbySkills": "Acrobatics, Animal Handling, An- thropology (Genealogy), Appraisal, Athletic Games (gym- nastics, horse shoes), Boat Pilot, Caving (Halfling-holes), Climbing, Cooking, Dancing, Disarming Traps, Fletching, Flora Lore, Hiding, Horticulture [Crafts], Juggling, Leather- crafts, Metal-crafts, any Missile weapon skills, Observa- tion, Picking Locks, Play Instruments, Public Speaking, Region Lore (local region), Rope Mastery, Scaling, Sewing [Crafts], Stalking, Star-gazing, Tale Telling, Tracking, Weather Watching, Wood-crafts"
+    "standardHobbySkills": "Acrobatics, Animal Handling, Anthropology (Genealogy), Appraisal, Athletic Games (gymnastics, horse shoes), Boat Pilot, Caving (Halfling-holes), Climbing, Cooking, Dancing, Disarming Traps, Fletching, Flora Lore, Hiding, Horticulture [Crafts], Juggling, Leather-crafts, Metal-crafts, any Missile weapon skills, Observation, Picking Locks, Play Instruments, Public Speaking, Region Lore (local region), Rope Mastery, Scaling, Sewing [Crafts], Stalking, Star-gazing, Tale Telling, Tracking, Weather Watching, Wood-crafts"
   }
 ]

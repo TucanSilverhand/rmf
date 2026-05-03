@@ -70,7 +70,7 @@
   {
     "name": "Acting",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus for simulating actions or reactions of others, as often used in drama performances, devising new identi- ties, etc. This skill may be used to impersonate others, or hide one’s own reactions from others. It may be used anytime a charac- ter wishes to behave or appear in a manner other than that normal and natural to him under any given circumstances.",
+    "description": "This skill provides a bonus for simulating actions or reactions of others, as often used in drama performances, devising new identities, etc. This skill may be used to impersonate others, or hide one’s own reactions from others. It may be used anytime a character wishes to behave or appear in a manner other than that normal and natural to him under any given circumstances.",
     "rank": 0,
     "category": "Artistic · Active",
     "group": "Artistic",
@@ -87,7 +87,7 @@
   {
     "name": "Dancing",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus for performing dances. It may also apply to any circumstances in which complex and/or precise foot- work is necessary (e.g., negotiating a pattern on the floor, perform- ing certain rituals, etc.).",
+    "description": "This skill provides a bonus for performing dances. It may also apply to any circumstances in which complex and/or precise footwork is necessary (e.g., negotiating a pattern on the floor, performing certain rituals, etc.).",
     "rank": 0,
     "category": "Artistic · Active",
     "group": "Artistic",
@@ -104,7 +104,7 @@
   {
     "name": "Mimery",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus for conveying concepts or informa- tion without verbal communication or a codified sign language. This skill is useful when trying to span a language barrier,  enter- tain others, etc. Also used when trying to imitate a particular ac- tion (i.e., a movement not requiring a maneuver).",
+    "description": "This skill provides a bonus for conveying concepts or information without verbal communication or a codified sign language. This skill is useful when trying to span a language barrier,  entertain others, etc. Also used when trying to imitate a particular action (i.e., a movement not requiring a maneuver).",
     "rank": 0,
     "category": "Artistic · Active",
     "group": "Artistic",
@@ -121,7 +121,7 @@
   {
     "name": "Mimicry",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus for imitating sounds. This skill is useful when trying to imitate individuals, animals or even non- animate sounds (e.g., wind, stairs creaking, etc.).",
+    "description": "This skill provides a bonus for imitating sounds. This skill is useful when trying to imitate individuals, animals or even non-animate sounds (e.g., wind, stairs creaking, etc.).",
     "rank": 0,
     "category": "Artistic · Active",
     "group": "Artistic",
@@ -223,7 +223,7 @@
   {
     "name": "Music",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus to writing, recognizing or perform- ing in concert a piece of music. This skill may be used to deter- mine the ability of the individual to play in concert with others, or to direct others in doing so. A successful maneuver roll by a con- ductor will give those he is conducting a bonus of +20 to their own use of this skill.",
+    "description": "This skill provides a bonus to writing, recognizing or performing in concert a piece of music. This skill may be used to determine the ability of the individual to play in concert with others, or to direct others in doing so. A successful maneuver roll by a conductor will give those he is conducting a bonus of +20 to their own use of this skill.",
     "rank": 0,
     "category": "Artistic · Passive",
     "group": "Artistic",
@@ -240,7 +240,7 @@
   {
     "name": "Painting",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus for creating graphic images. This may be on a flat medium such as sketching or painting with pig- ments, or painting on an object of some kind. Any activity that involves the creation of an image or deliberate design may benefit from this skill.",
+    "description": "This skill provides a bonus for creating graphic images. This may be on a flat medium such as sketching or painting with pigments, or painting on an object of some kind. Any activity that involves the creation of an image or deliberate design may benefit from this skill.",
     "rank": 0,
     "category": "Artistic · Passive",
     "group": "Artistic",
@@ -308,7 +308,7 @@
   {
     "name": "Jumping",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus for jumping, either from a running or a standing start.\nThe base jump (running horizontal) for the average man of 5'10 is equal to 50 + (2 x St bonus in inches). For every 2 inches above or below this average height, add or subtract one from the base jump. The difficulties listed below assume that the character is running at a dash at the time of takeoff. For every speed cat- egory (fast sprint/sprint/run/etc.) below the dash rate, raise the difficulty of the running jump by one (e.g., hard becomes very hard, etc.).\nThe base jump (standing horizontal) for the average man of 5'10 is equal to the base jump (running horizontal) divided by two.\nThe base jump (running vertical) for the average man of 5'10 is equal to (12 + St bonus) in inches. For every 3 inches above or below this average height, add or subtract one inch from the base jump. The optimal speed for a vertical jump with a running start is a run.\nThe base jump (standing vertical) for the average man of 5'10 is equal to the base jump (running vertical) divided by 3.",
+    "description": "This skill provides a bonus for jumping, either from a running or a standing start.\nThe base jump (running horizontal) for the average man of 5'10 is equal to 50 + (2 x St bonus in inches). For every 2 inches above or below this average height, add or subtract one from the base jump. The difficulties listed below assume that the character is running at a dash at the time of takeoff. For every speed category (fast sprint/sprint/run/etc.) below the dash rate, raise the difficulty of the running jump by one (e.g., hard becomes very hard, etc.).\nThe base jump (standing horizontal) for the average man of 5'10 is equal to the base jump (running horizontal) divided by two.\nThe base jump (running vertical) for the average man of 5'10 is equal to (12 + St bonus) in inches. For every 3 inches above or below this average height, add or subtract one inch from the base jump. The optimal speed for a vertical jump with a running start is a run.\nThe base jump (standing vertical) for the average man of 5'10 is equal to the base jump (running vertical) divided by 3.",
     "rank": 0,
     "category": "Athletic · Brawn",
     "group": "Athletic",
@@ -325,7 +325,7 @@
   {
     "name": "Weight-lifting",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "Normally, a character can lift up to half his own weight using his hands. This skill provides a bonus to attempts to lift heavier weights or objects. While it is possible to lift these weights without the use of this skill, the techniques conferred by this skill allow greater weights to be lifted, and the likelihood of injury to be lessened. Note that this skill requires a great deal of practice and exercise to develop properly, and will increase the musculature of the individual. The use of this skill requires a round of prepara- tion, during which only 10% activity may be performed and the individual’s DB is reduced to zero.",
+    "description": "Normally, a character can lift up to half his own weight using his hands. This skill provides a bonus to attempts to lift heavier weights or objects. While it is possible to lift these weights without the use of this skill, the techniques conferred by this skill allow greater weights to be lifted, and the likelihood of injury to be lessened. Note that this skill requires a great deal of practice and exercise to develop properly, and will increase the musculature of the individual. The use of this skill requires a round of preparation, during which only 10% activity may be performed and the individual’s DB is reduced to zero.",
     "rank": 0,
     "category": "Athletic · Brawn",
     "group": "Athletic",
@@ -359,7 +359,7 @@
   {
     "name": "Distance Running",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus for maintaining one’s speed over long distances at slow to moderate paces, including pacing one’s resources (exhaustion point expenditure) and running in a safe and non-injurious manner. This skill is used when making move- ment maneuvers based on pace—see Section 18.17 (p. 56).",
+    "description": "This skill provides a bonus for maintaining one’s speed over long distances at slow to moderate paces, including pacing one’s resources (exhaustion point expenditure) and running in a safe and non-injurious manner. This skill is used when making movement maneuvers based on pace—see Section 18.17 (p. 56).",
     "rank": 0,
     "category": "Athletic · Endurance",
     "group": "Athletic",
@@ -410,7 +410,7 @@
   {
     "name": "Sprinting",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus for maximizing one’s speed over short distances, including marshaling and pacing one’s resources (exhaustion point expenditure) and running in a safe and non- injurious manner. This skill is used when making movement ma- neuvers based on pace—see Sections 16.0 (p. 51) & 18.17 (p. 56).",
+    "description": "This skill provides a bonus for maximizing one’s speed over short distances, including marshaling and pacing one’s resources (exhaustion point expenditure) and running in a safe and non-injurious manner. This skill is used when making movement maneuvers based on pace—see Sections 16.0 (p. 51) & 18.17 (p. 56).",
     "rank": 0,
     "category": "Athletic · Endurance",
     "group": "Athletic",
@@ -478,7 +478,7 @@
   {
     "name": "Climbing",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus for climbing maneuvers over rela- tively short distances through the use of hand holds, etc. This could range from the ability to climb sheer faces (absurd) to climb- ing a ladder (easy). The normal climbing rate for walls with ad- equate hand holds is 10'/round as a “Medium” moving maneuver. Poorer handholds or greater speed will increase the difficulty of the maneuver. Note that extended climbs may require the use of the Athletic Endurance: Scaling Skill.",
+    "description": "This skill provides a bonus for climbing maneuvers over relatively short distances through the use of hand holds, etc. This could range from the ability to climb sheer faces (absurd) to climbing a ladder (easy). The normal climbing rate for walls with adequate hand holds is 10'/round as a “Medium” moving maneuver. Poorer handholds or greater speed will increase the difficulty of the maneuver. Note that extended climbs may require the use of the Athletic Endurance: Scaling Skill.",
     "rank": 0,
     "category": "Athletic · Gymnastics",
     "group": "Athletic",
@@ -529,7 +529,7 @@
   {
     "name": "Flying/Gliding",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus for flying or gliding through the use of natural or artificial wings (e.g., feathered wings, parachute, hang- glider, balloonist, etc.). Flying/gliding has a natural -75 for all types of maneuvers performed while trying to fly/glide if this skill is not learned or developed. Does not include powered aircraft.",
+    "description": "This skill provides a bonus for flying or gliding through the use of natural or artificial wings (e.g., feathered wings, parachute, hang-glider, balloonist, etc.). Flying/gliding has a natural -75 for all types of maneuvers performed while trying to fly/glide if this skill is not learned or developed. Does not include powered aircraft.",
     "rank": 0,
     "category": "Athletic · Gymnastics",
     "group": "Athletic",
@@ -546,7 +546,7 @@
   {
     "name": "Juggling",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus for tossing objects up and manipu- lating them in such a manner as to keep them up in the air.",
+    "description": "This skill provides a bonus for tossing objects up and manipulating them in such a manner as to keep them up in the air.",
     "rank": 0,
     "category": "Athletic · Gymnastics",
     "group": "Athletic",
@@ -563,7 +563,7 @@
   {
     "name": "Tumbling",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus for horizontal dives, rolling, vaulting maneuvers, or swinging on stationary objects. Also used to de- crease the damage one takes from a fall. A character could fall safely up to 2'/skill rank if a successful maneuver roll is made.",
+    "description": "This skill provides a bonus for horizontal dives, rolling, vaulting maneuvers, or swinging on stationary objects. Also used to decrease the damage one takes from a fall. A character could fall safely up to 2'/skill rank if a successful maneuver roll is made.",
     "rank": 0,
     "category": "Athletic · Gymnastics",
     "group": "Athletic",
@@ -597,7 +597,7 @@
   {
     "name": "Sense Ambush",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus to detect animate traps, ambushes or assassinations in progress. Note that this is a passive skill, and should not be used when the player has indicated that he is actively searching for signs of ambush or assassins. Range is 10' per skill rank.\nThe existence of this as an acquirable skill indicates one’s abil- ity to train one’s level of sensitivity to such things, but more active observation should be handled by the skills of Observation and/or Situational Awareness.",
+    "description": "This skill provides a bonus to detect animate traps, ambushes or assassinations in progress. Note that this is a passive skill, and should not be used when the player has indicated that he is actively searching for signs of ambush or assassins. Range is 10' per skill rank.\nThe existence of this as an acquirable skill indicates one’s ability to train one’s level of sensitivity to such things, but more active observation should be handled by the skills of Observation and/or Situational Awareness.",
     "rank": 0,
     "category": "Awareness · Perceptions",
     "group": "Awareness",
@@ -631,7 +631,7 @@
   {
     "name": "Lie Perception",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus for perceiving lies told by an indi- vidual under proximate observation (within 10' and within visual/ hearing range) by the user of this skill.",
+    "description": "This skill provides a bonus for perceiving lies told by an individual under proximate observation (within 10' and within visual/ hearing range) by the user of this skill.",
     "rank": 0,
     "category": "Awareness · Searching",
     "group": "Awareness",
@@ -665,7 +665,7 @@
   {
     "name": "Observation",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus for noticing details about the envi- ronment for assimilation and analysis. This is normally only usable in an active fashion, and requires concentration. Note that this skill is different from Alertness, which represents a general and unconscious level of receptivity and awareness of events and de- tails within one's immediate environment. This skill reflects the active observation, noting and appraisal of such details. For ex- ample, if a character were about to make camp in an unsafe loca- tion, the GM might make an Alertness static maneuver for that character to determine whether or not he notices the danger. If the character indicated that he wished to examine the location for suitability, the character would instead make an Observation static maneuver.",
+    "description": "This skill provides a bonus for noticing details about the environment for assimilation and analysis. This is normally only usable in an active fashion, and requires concentration. Note that this skill is different from Alertness, which represents a general and unconscious level of receptivity and awareness of events and details within one's immediate environment. This skill reflects the active observation, noting and appraisal of such details. For example, if a character were about to make camp in an unsafe location, the GM might make an Alertness static maneuver for that character to determine whether or not he notices the danger. If the character indicated that he wished to examine the location for suitability, the character would instead make an Observation static maneuver.",
     "rank": 0,
     "category": "Awareness · Searching",
     "group": "Awareness",
@@ -682,7 +682,7 @@
   {
     "name": "Poison Perception",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus for perceiving the presence of poison in/on an item or object. Note that some poisons might be virtually undetectable (e.g., a colorless, tasteless, odorless powder that dis- solves completely in water will be very difficult if not impossible to detect).",
+    "description": "This skill provides a bonus for perceiving the presence of poison in/on an item or object. Note that some poisons might be virtually undetectable (e.g., a colorless, tasteless, odorless powder that dissolves completely in water will be very difficult if not impossible to detect).",
     "rank": 0,
     "category": "Awareness · Searching",
     "group": "Awareness",
@@ -733,7 +733,7 @@
   {
     "name": "Tracking",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus for tracking maneuvers and following a trail left by someone or some- thing such as foot prints, broken branches, crushed grass, hanging pieces of cloth, etc. The skill Read- ing Tracks gives the tracker the information about the tracks.",
+    "description": "This skill provides a bonus for tracking maneuvers and following a trail left by someone or something such as foot prints, broken branches, crushed grass, hanging pieces of cloth, etc. The skill Reading Tracks gives the tracker the information about the tracks.",
     "rank": 0,
     "category": "Awareness · Searching",
     "group": "Awareness",
@@ -750,7 +750,7 @@
   {
     "name": "Direction Sense",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus for determining which way is north or any specific direction, without the aid of navigational instru- ments. Skill is useful determining direction while underground, during the darkest night without stars, moon, or other night lights.",
+    "description": "This skill provides a bonus for determining which way is north or any specific direction, without the aid of navigational instruments. Skill is useful determining direction while underground, during the darkest night without stars, moon, or other night lights.",
     "rank": 0,
     "category": "Awareness · Senses",
     "group": "Awareness",
@@ -784,7 +784,7 @@
   {
     "name": "Situational Awareness",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus to the individual’s ability to notice and assimilate information from the environment in a specific type of situation. This is a combination of active and passive skills specifically trained for maximum effectiveness within a given situ- ation. For example, Scouting Awareness is used by the point man in a squad of soldiers to be alert to possible enemy approaches, traps, Sleep Awareness might aid in sleeping lightly to prevent being taken unawares, etc. Urban Awareness might aid in staying alert for muggers, vehicles, etc. Skill with Situational Awareness must be developed for each situation, as determined by the GM.",
+    "description": "This skill provides a bonus to the individual’s ability to notice and assimilate information from the environment in a specific type of situation. This is a combination of active and passive skills specifically trained for maximum effectiveness within a given situation. For example, Scouting Awareness is used by the point man in a squad of soldiers to be alert to possible enemy approaches, traps, Sleep Awareness might aid in sleeping lightly to prevent being taken unawares, etc. Urban Awareness might aid in staying alert for muggers, vehicles, etc. Skill with Situational Awareness must be developed for each situation, as determined by the GM.",
     "rank": 0,
     "category": "Awareness · Senses",
     "group": "Awareness",
@@ -801,7 +801,7 @@
   {
     "name": "Time Sense",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus for determining the time of day or how much time has passed over a specific period. This is a combi- nation of the ability to estimate internally the passage of time, as well as using external references such as the sun, stars, etc. When no external referents are available (e.g., underground, in a jail cell, etc.), it is significantly more difficult to estimate the passage of time. Also, after sleep or unconsciousness one typically requires the use of external referents to 'reset' one's internal clock; the lack of same will hinder the use of this skill.\nThis skill may be used to attempt to wake oneself from sleep at a predetermined time.",
+    "description": "This skill provides a bonus for determining the time of day or how much time has passed over a specific period. This is a combination of the ability to estimate internally the passage of time, as well as using external references such as the sun, stars, etc. When no external referents are available (e.g., underground, in a jail cell, etc.), it is significantly more difficult to estimate the passage of time. Also, after sleep or unconsciousness one typically requires the use of external referents to 'reset' one's internal clock; the lack of same will hinder the use of this skill.\nThis skill may be used to attempt to wake oneself from sleep at a predetermined time.",
     "rank": 0,
     "category": "Awareness · Senses",
     "group": "Awareness",
@@ -818,7 +818,7 @@
   {
     "name": "Body Development",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill enhances the character’s ability to resist damage, and withstand pain and shock. A character’s Body Development skill bonus determines how many hits (concussion hits) a character can take without passing out. Note that this is not merely strength training—training in this skill provides a greater tolerance for pain, physical toughness and discipline in the face of wounds and bleed- ing. An individual might remain a very slight and frail-looking individual but still hold a large number of ranks of body development.\nA character takes hits as damage from attacks—hits reflect pain, shock, and bleeding. When the hits that a character has taken are greater than or equal to his maximum hits, he passes out. When the hits that a character has taken are greater than or equal to his maximum hits plus his Constitution, he dies.",
+    "description": "This skill enhances the character’s ability to resist damage, and withstand pain and shock. A character’s Body Development skill bonus determines how many hits (concussion hits) a character can take without passing out. Note that this is not merely strength training—training in this skill provides a greater tolerance for pain, physical toughness and discipline in the face of wounds and bleeding. An individual might remain a very slight and frail-looking individual but still hold a large number of ranks of body development.\nA character takes hits as damage from attacks—hits reflect pain, shock, and bleeding. When the hits that a character has taken are greater than or equal to his maximum hits, he passes out. When the hits that a character has taken are greater than or equal to his maximum hits plus his Constitution, he dies.",
     "rank": 0,
     "category": "Body Development",
     "group": "None",
@@ -886,7 +886,7 @@
   {
     "name": "Two-weapon Combat",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill allows a combatant to fight with two weapons simul- taneously. He is allowed to make 2 weapon attacks for each melee attack action, and may engage two opponents providing neither opponent is receiving any positional combat modifiers for their OB (e.g., If either opponent is receiving +15 for Flank Attack or +20 for Rear Attack the individual cannot attack both opponents in the same round).\nTw o Weapon Combat skill must be developed for each indi- vidual two-weapon combination (e.g., shortsword/handaxe, rapier/dagger, etc.). A character's skill rank with a two-weapon combination may not exceed his skill rank of either of the individual weap- ons (e.g., if a Fighter has 5 skill ranks with a dagger and 9 skill ranks with a short sword, he may only have 5 skill ranks with his short sword/dagger two weapon combination). The OB for each weapon attack is equal to the skill bonus for the Two-weapon Combat skill for the combination of those two weapons.\nAgainst 1 Opponent: There is no negative at- tack modification against one opponent.\nAgainst 2 Opponents: There is -20 modifica- tion to both attacks.\nParrying: The user must reduce both weapon OBs by the same amount (i.e., the amount of his parry). Against one opponent, the user increases his DB by the amount of his parry. Against two opponents, the amount of his parry must be split between the two oppo- nents as the user sees fit.\nUsing the off-hand: Each weapon combina- tion is considered to have been developed for each specific weapon in a specific hand. For example, a Rogue trained in a rapier/ dagger combination might have decided to use the rapier left-handed and the dagger in his right. Switching either weapon to the other hand incurs the normal -20 penalty for use with the off-hand.",
+    "description": "This skill allows a combatant to fight with two weapons simultaneously. He is allowed to make 2 weapon attacks for each melee attack action, and may engage two opponents providing neither opponent is receiving any positional combat modifiers for their OB (e.g., If either opponent is receiving +15 for Flank Attack or +20 for Rear Attack the individual cannot attack both opponents in the same round).\nTw o Weapon Combat skill must be developed for each individual two-weapon combination (e.g., shortsword/handaxe, rapier/dagger, etc.). A character's skill rank with a two-weapon combination may not exceed his skill rank of either of the individual weapons (e.g., if a Fighter has 5 skill ranks with a dagger and 9 skill ranks with a short sword, he may only have 5 skill ranks with his short sword/dagger two weapon combination). The OB for each weapon attack is equal to the skill bonus for the Two-weapon Combat skill for the combination of those two weapons.\nAgainst 1 Opponent: There is no negative attack modification against one opponent.\nAgainst 2 Opponents: There is -20 modification to both attacks.\nParrying: The user must reduce both weapon OBs by the same amount (i.e., the amount of his parry). Against one opponent, the user increases his DB by the amount of his parry. Against two opponents, the amount of his parry must be split between the two opponents as the user sees fit.\nUsing the off-hand: Each weapon combination is considered to have been developed for each specific weapon in a specific hand. For example, a Rogue trained in a rapier/ dagger combination might have decided to use the rapier left-handed and the dagger in his right. Switching either weapon to the other hand incurs the normal -20 penalty for use with the off-hand.",
     "rank": 0,
     "category": "Combat Maneuvers",
     "group": "None",
@@ -903,7 +903,7 @@
   {
     "name": "Language (Spoken)",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "Rolemaster is created for a world with a variety of cultures and languages. There is no such thing as a common tongue or an alignment tongue (though a GM can add them for his world sys- tem), although certain professions have developed their own lan- guages for use in research. Each language must be developed individually, with the written and spoken versions of a language each counting separately. Skills in one language normally have little effect on others; however, “brother languages,” those deriving from an immediate common ancestor, may be an exception.\nOne’s skill rank indicates the level of comprehension of a spoken or written language. See the Language Rank Table T-4.7.\nOne’s skill bonus with a written form of a language serves as a skill bonus to writing attempts using that language. The spoken skill bonus for a language is used to improve communication with someone. A successful static maneuver means that the spoken lan- guage rank of the person with whom you are communicating is temporarily increased for the purposes of this conversation, to a maximum of the rank developed by the individual performing the static maneuver.",
+    "description": "Rolemaster is created for a world with a variety of cultures and languages. There is no such thing as a common tongue or an alignment tongue (though a GM can add them for his world system), although certain professions have developed their own languages for use in research. Each language must be developed individually, with the written and spoken versions of a language each counting separately. Skills in one language normally have little effect on others; however, “brother languages,” those deriving from an immediate common ancestor, may be an exception.\nOne’s skill rank indicates the level of comprehension of a spoken or written language. See the Language Rank Table T-4.7.\nOne’s skill bonus with a written form of a language serves as a skill bonus to writing attempts using that language. The spoken skill bonus for a language is used to improve communication with someone. A successful static maneuver means that the spoken language rank of the person with whom you are communicating is temporarily increased for the purposes of this conversation, to a maximum of the rank developed by the individual performing the static maneuver.",
     "rank": 0,
     "category": "Communications",
     "group": "None",
@@ -920,7 +920,7 @@
   {
     "name": "Language (Written)",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "Rolemaster is created for a world with a variety of cultures and languages. There is no such thing as a common tongue or an alignment tongue (though a GM can add them for his world sys- tem), although certain professions have developed their own lan- guages for use in research. Each language must be developed individually, with the written and spoken versions of a language each counting separately. Skills in one language normally have little effect on others; however, “brother languages,” those deriving from an immediate common ancestor, may be an exception.\nOne’s skill rank indicates the level of comprehension of a spoken or written language. See the Language Rank Table T-4.7.\nOne’s skill bonus with a written form of a language serves as a skill bonus to writing attempts using that language. The spoken skill bonus for a language is used to improve communication with someone. A successful static maneuver means that the spoken lan- guage rank of the person with whom you are communicating is temporarily increased for the purposes of this conversation, to a maximum of the rank developed by the individual performing the static maneuver.",
+    "description": "Rolemaster is created for a world with a variety of cultures and languages. There is no such thing as a common tongue or an alignment tongue (though a GM can add them for his world system), although certain professions have developed their own languages for use in research. Each language must be developed individually, with the written and spoken versions of a language each counting separately. Skills in one language normally have little effect on others; however, “brother languages,” those deriving from an immediate common ancestor, may be an exception.\nOne’s skill rank indicates the level of comprehension of a spoken or written language. See the Language Rank Table T-4.7.\nOne’s skill bonus with a written form of a language serves as a skill bonus to writing attempts using that language. The spoken skill bonus for a language is used to improve communication with someone. A successful static maneuver means that the spoken language rank of the person with whom you are communicating is temporarily increased for the purposes of this conversation, to a maximum of the rank developed by the individual performing the static maneuver.",
     "rank": 0,
     "category": "Communications",
     "group": "None",
@@ -937,7 +937,7 @@
   {
     "name": "Lip Reading",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus for reading lips and sign language. Lip reading is only possible with languages that the lip reader knows and then only to the known spoken skill rank. Special crea- tures (e.g., the Chicken People) might cause a penalty to be added to the character’s bonus due to distinct lack of lips. Line of sight must be maintained with the subject’s mouth. Skill is halved for reading the lips of creatures not of the same general type. Types: Human, Reptile, Avian, Non-Human Mammalian, etc.",
+    "description": "This skill provides a bonus for reading lips and sign language. Lip reading is only possible with languages that the lip reader knows and then only to the known spoken skill rank. Special creatures (e.g., the Chicken People) might cause a penalty to be added to the character’s bonus due to distinct lack of lips. Line of sight must be maintained with the subject’s mouth. Skill is halved for reading the lips of creatures not of the same general type. Types: Human, Reptile, Avian, Non-Human Mammalian, etc.",
     "rank": 0,
     "category": "Communications",
     "group": "None",
@@ -954,7 +954,7 @@
   {
     "name": "Signaling",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus when using any form of signal com- munications. This skill is a specialized form of language and lan- guage guidelines apply.",
+    "description": "This skill provides a bonus when using any form of signal communications. This skill is a specialized form of language and language guidelines apply.",
     "rank": 0,
     "category": "Communications",
     "group": "None",
@@ -1022,7 +1022,7 @@
   {
     "name": "Rope Mastery",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus for knot recognition, knot-tying, braid- ing, rope splicing, making a maneuver while suspended from a rope (or analogous flexible line), or when throwing a line.",
+    "description": "This skill provides a bonus for knot recognition, knot-tying, braiding, rope splicing, making a maneuver while suspended from a rope (or analogous flexible line), or when throwing a line.",
     "rank": 0,
     "category": "Crafts",
     "group": "Craft",
@@ -1073,7 +1073,7 @@
   {
     "name": "direct spell attack (choose one type)",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "The skills in this category provide bonuses to directed spell attacks. Such attacks use the Bolt Spell Attack Table A-10.9.9 (p. 228). See Appendix A-10.7 (p. 219) for guidelines on handling Directed Spell attacks.\nThe five types of directed spells are Fire Bolts, Ice Bolts, Lightning Bolts, Shock Bolts, and Water Bolts—skill must be developed separately for each different type. A character wishing to develop skill with such a spell must be able to cast it without the need of a spell casting static maneu- ver at least once a day, either intrinsically or from an item or runes.",
+    "description": "The skills in this category provide bonuses to directed spell attacks. Such attacks use the Bolt Spell Attack Table A-10.9.9 (p. 228). See Appendix A-10.7 (p. 219) for guidelines on handling Directed Spell attacks.\nThe five types of directed spells are Fire Bolts, Ice Bolts, Lightning Bolts, Shock Bolts, and Water Bolts—skill must be developed separately for each different type. A character wishing to develop skill with such a spell must be able to cast it without the need of a spell casting static maneuver at least once a day, either intrinsically or from an item or runes.",
     "rank": 0,
     "category": "Directed Spells",
     "group": "None",
@@ -1107,7 +1107,7 @@
   {
     "name": "Diplomacy",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus for operating successfully in a com- plex, bureaucratic foreign environment, such as a foreign royal court or any other large foreign government structure. Tact, nego- tiation, and deceit are all facets of diplomacy. It is used for the conducting of relations between nations. It is important to note that this skill provides a bonus for using the proper protocol in an unfamiliar situation and impressing a person in authority. This applies to situations ranging from an audience with the High King to an involuntary meeting with the Prince of Thieves.",
+    "description": "This skill provides a bonus for operating successfully in a complex, bureaucratic foreign environment, such as a foreign royal court or any other large foreign government structure. Tact, negotiation, and deceit are all facets of diplomacy. It is used for the conducting of relations between nations. It is important to note that this skill provides a bonus for using the proper protocol in an unfamiliar situation and impressing a person in authority. This applies to situations ranging from an audience with the High King to an involuntary meeting with the Prince of Thieves.",
     "rank": 0,
     "category": "Influence",
     "group": "None",
@@ -1175,7 +1175,7 @@
   {
     "name": "Public Speaking",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus for impressing, entertaining, or ma- nipulating groups of people directly. Note that this is different from the Tale Telling skill, which is used on small groups, using stories and fables for entertainment and instruction. Public Speak- ing is for larger groups, is often more extemporaneous, and is used to manipulate the emotions or views of a crowd.",
+    "description": "This skill provides a bonus for impressing, entertaining, or manipulating groups of people directly. Note that this is different from the Tale Telling skill, which is used on small groups, using stories and fables for entertainment and instruction. Public Speaking is for larger groups, is often more extemporaneous, and is used to manipulate the emotions or views of a crowd.",
     "rank": 0,
     "category": "Influence",
     "group": "None",
@@ -1226,7 +1226,7 @@
   {
     "name": "Fauna Lore",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus for recognizing and identifying the major animal forms within a specific area, region and climate. May be developed either in-depth for a specific area or as general educa- tion in fauna/zoological trends. Several different regions/climates may be developed simultaneously, provided that research materials are available. Note: This skill may be used for learning about specific species as well, providing great detail on the characteristics and habits of a particular type of animal.",
+    "description": "This skill provides a bonus for recognizing and identifying the major animal forms within a specific area, region and climate. May be developed either in-depth for a specific area or as general education in fauna/zoological trends. Several different regions/climates may be developed simultaneously, provided that research materials are available. Note: This skill may be used for learning about specific species as well, providing great detail on the characteristics and habits of a particular type of animal.",
     "rank": 0,
     "category": "Lore · General",
     "group": "Lore",
@@ -1243,7 +1243,7 @@
   {
     "name": "Flora Lore",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus for recognizing and identifying the major plant forms within a specific area, region and climate. May be developed either in-depth for a specific area or as general educa- tion in flora/botanical trends. Several different regions/climates may be developed simultaneously, provided that research materials are available. This is a general knowledge skill—a GM may want halve this skill’s bonus when used for herbs (see Herb Lore on the next page). Note: This skill may be used for learning about specific species as well, providing great detail on the characteristics and habitats of a particular type of plant.",
+    "description": "This skill provides a bonus for recognizing and identifying the major plant forms within a specific area, region and climate. May be developed either in-depth for a specific area or as general education in flora/botanical trends. Several different regions/climates may be developed simultaneously, provided that research materials are available. This is a general knowledge skill—a GM may want halve this skill’s bonus when used for herbs (see Herb Lore on the next page). Note: This skill may be used for learning about specific species as well, providing great detail on the characteristics and habitats of a particular type of plant.",
     "rank": 0,
     "category": "Lore · General",
     "group": "Lore",
@@ -1277,7 +1277,7 @@
   {
     "name": "History",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides knowledge about the past. One may develop this skill in general World History (subject to the available learning materials—i.e., if knowledge about the other side of the world is not available, it may not be learned) although the information will be far less specific, focusing instead on the broad strokes of history. If this skill is developed in the history of a particular region or sub- ject, the information will be far more specific. In essence, the smaller the focus of the skill, the greater the level of detail and accuracy. Developing skill in the history of the Kingdom of Harran, for instance, might provide information about the rulers and the great events in the Kingdom's past; skill in the history of the Guild of Architects in the city of Jeppod would likely include all of the names of the Guild’s officers, the bylaws memorized by heart, etc. This skill encompasses military history as well.",
+    "description": "This skill provides knowledge about the past. One may develop this skill in general World History (subject to the available learning materials—i.e., if knowledge about the other side of the world is not available, it may not be learned) although the information will be far less specific, focusing instead on the broad strokes of history. If this skill is developed in the history of a particular region or subject, the information will be far more specific. In essence, the smaller the focus of the skill, the greater the level of detail and accuracy. Developing skill in the history of the Kingdom of Harran, for instance, might provide information about the rulers and the great events in the Kingdom's past; skill in the history of the Guild of Architects in the city of Jeppod would likely include all of the names of the Guild’s officers, the bylaws memorized by heart, etc. This skill encompasses military history as well.",
     "rank": 0,
     "category": "Lore · General",
     "group": "Lore",
@@ -1294,7 +1294,7 @@
   {
     "name": "Philosophy",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus for recognizing and identifying ma- jor aspects of philosophic doctrines. Each philosophy doctrine may be concentrated in and learned separately for in-depth knowledge and understanding.",
+    "description": "This skill provides a bonus for recognizing and identifying major aspects of philosophic doctrines. Each philosophy doctrine may be concentrated in and learned separately for in-depth knowledge and understanding.",
     "rank": 0,
     "category": "Lore · General",
     "group": "Lore",
@@ -1362,7 +1362,7 @@
   {
     "name": "Religion",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus for recognizing and identifying ma- jor aspects of religious doctrines. Each religion may be concentrated in and learned separately for in-depth knowledge and understanding.",
+    "description": "This skill provides a bonus for recognizing and identifying major aspects of religious doctrines. Each religion may be concentrated in and learned separately for in-depth knowledge and understanding.",
     "rank": 0,
     "category": "Lore · General",
     "group": "Lore",
@@ -1396,7 +1396,7 @@
   {
     "name": "Spell Lore",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus to recognize and understand spells. When a character realizes that he has been targeted by a spell, this skill enables him to recognize the spell being used against him. When attempting to recognize an unfamiliar written spell, the char- acter must be able to read the language used.",
+    "description": "This skill provides a bonus to recognize and understand spells. When a character realizes that he has been targeted by a spell, this skill enables him to recognize the spell being used against him. When attempting to recognize an unfamiliar written spell, the character must be able to read the language used.",
     "rank": 0,
     "category": "Lore · Magical",
     "group": "Lore",
@@ -1481,7 +1481,7 @@
   {
     "name": "Xeno-Lores",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill should be used by the GM to insert Lores dealing with unusual or rare races not listed here. This skill may also be used to simulate esoteric Lores developed by those races.\nExample: The Shimmiebops of Dimension X have their own Phi- losophy which is radically different from our own. The GM rules that learning Shimmiebop Philosophy  falls under Xeno-lore.",
+    "description": "This skill should be used by the GM to insert Lores dealing with unusual or rare races not listed here. This skill may also be used to simulate esoteric Lores developed by those races.\nExample: The Shimmiebops of Dimension X have their own Philosophy which is radically different from our own. The GM rules that learning Shimmiebop Philosophy  falls under Xeno-lore.",
     "rank": 0,
     "category": "Lore · Obscure",
     "group": "Lore",
@@ -1515,7 +1515,7 @@
   {
     "name": "Lock Lore",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus for recognizing and identifying ma- jor forms of locks and similar devices.",
+    "description": "This skill provides a bonus for recognizing and identifying major forms of locks and similar devices.",
     "rank": 0,
     "category": "Lore · Technical",
     "group": "Lore",
@@ -1532,7 +1532,7 @@
   {
     "name": "Metal Lore",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus for recognizing and identifying met- als, alloys, metallic crystal structures, etc. Also will give informa- tion on famous, magical, historic, legendary, or cursed types of metals. Skill must be developed separately for each culture or re- gion as applicable to the GM’s world scheme.",
+    "description": "This skill provides a bonus for recognizing and identifying metals, alloys, metallic crystal structures, etc. Also will give information on famous, magical, historic, legendary, or cursed types of metals. Skill must be developed separately for each culture or region as applicable to the GM’s world scheme.",
     "rank": 0,
     "category": "Lore · Technical",
     "group": "Lore",
@@ -1549,7 +1549,7 @@
   {
     "name": "Poison Lore",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus for recognizing and identifying poi- sons, as well as knowledge of proper application and usage techniques. (These may require a Using/Re- moving Poison maneuver roll to actually carry through.)",
+    "description": "This skill provides a bonus for recognizing and identifying poisons, as well as knowledge of proper application and usage techniques. (These may require a Using/Removing Poison maneuver roll to actually carry through.)",
     "rank": 0,
     "category": "Lore · Technical",
     "group": "Lore",
@@ -1566,7 +1566,7 @@
   {
     "name": "Stone Lore",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus for recog- nizing and identifying stones. Also will give information on famous, magical, power- ful, historic, legendary or cursed types of stone. Skill lore is developed separately for each culture or region as applicable to GM’s world scheme.",
+    "description": "This skill provides a bonus for recognizing and identifying stones. Also will give information on famous, magical, powerful, historic, legendary or cursed types of stone. Skill lore is developed separately for each culture or region as applicable to GM’s world scheme.",
     "rank": 0,
     "category": "Lore · Technical",
     "group": "Lore",
@@ -1583,7 +1583,7 @@
   {
     "name": "Trading Lore",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides knowledge of trade- related affairs. Trade routes, customs laws, exchange rates, traditions and rituals, etc. are all encompassed by this skill.",
+    "description": "This skill provides knowledge of trade-related affairs. Trade routes, customs laws, exchange rates, traditions and rituals, etc. are all encompassed by this skill.",
     "rank": 0,
     "category": "Lore · Technical",
     "group": "Lore",
@@ -1634,7 +1634,7 @@
   {
     "name": "Animal Handling",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus for the care and feeding of animals including bedding, hobbling, etc. This skill must be developed sepa- rately for each different type of animal. This skill is normally used in the handling of one animal at a time.",
+    "description": "This skill provides a bonus for the care and feeding of animals including bedding, hobbling, etc. This skill must be developed separately for each different type of animal. This skill is normally used in the handling of one animal at a time.",
     "rank": 0,
     "category": "Outdoor · Animal",
     "group": "Outdoor",
@@ -1651,7 +1651,7 @@
   {
     "name": "Animal Training",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus for training a particular type of animal, such as birds of prey, dogs, bears, big cats, etc. Skill nor- mally results in the taming of the animal.  This skill must be developed separately for each different type of animal.",
+    "description": "This skill provides a bonus for training a particular type of animal, such as birds of prey, dogs, bears, big cats, etc. Skill normally results in the taming of the animal.  This skill must be developed separately for each different type of animal.",
     "rank": 0,
     "category": "Outdoor · Animal",
     "group": "Outdoor",
@@ -1668,7 +1668,7 @@
   {
     "name": "Driving",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "As in Riding, skill ranks in driving must be developed separately for different types of vehicles. Vehicles are defined as animals pull- ing such objects as wagons, carts, sleighs, etc. One skill rank allows basic understanding of the controls; subsequent ranks reflect in- creased ability and some quickness in maneuvers.",
+    "description": "As in Riding, skill ranks in driving must be developed separately for different types of vehicles. Vehicles are defined as animals pulling such objects as wagons, carts, sleighs, etc. One skill rank allows basic understanding of the controls; subsequent ranks reflect increased ability and some quickness in maneuvers.",
     "rank": 0,
     "category": "Outdoor · Animal",
     "group": "Outdoor",
@@ -1685,7 +1685,7 @@
   {
     "name": "Riding",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "A single skill rank is necessary to keep from constantly falling off the animal being ridden. Higher skill ranks enhance the chance of controlling of the animal, or gaining control of an unfamiliar animal (of the type you have skill with). This skill must be devel- oped separately for each different type of animal.",
+    "description": "A single skill rank is necessary to keep from constantly falling off the animal being ridden. Higher skill ranks enhance the chance of controlling of the animal, or gaining control of an unfamiliar animal (of the type you have skill with). This skill must be developed separately for each different type of animal.",
     "rank": 0,
     "category": "Outdoor · Animal",
     "group": "Outdoor",
@@ -1719,7 +1719,7 @@
   {
     "name": "Foraging",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus for finding any local source of po- table water or edible plants and animals. Includes basic food acqui- sition such as gathering or fishing.",
+    "description": "This skill provides a bonus for finding any local source of potable water or edible plants and animals. Includes basic food acquisition such as gathering or fishing.",
     "rank": 0,
     "category": "Outdoor · Environmental",
     "group": "Outdoor",
@@ -1770,7 +1770,7 @@
   {
     "name": "Survival",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus for living in a specific dangerous or hostile environment. Note that this skill encompasses only those methods needed to stay alive against the actively dangerous ele- ments of an environment (e.g., blistering heat, cold, pressure, un- usual animals typical of the environment, etc.). It does not include food gathering, although it does include the knowledge necessary to find water. Skill must be developed in each type of environment (e.g., desert, jungle, arctic, water, etc.). The GM may rule that unusually hostile environments may also be covered by this skill (e.g., vacuum, underwater, elemental planes of fire, etc.).",
+    "description": "This skill provides a bonus for living in a specific dangerous or hostile environment. Note that this skill encompasses only those methods needed to stay alive against the actively dangerous elements of an environment (e.g., blistering heat, cold, pressure, unusual animals typical of the environment, etc.). It does not include food gathering, although it does include the knowledge necessary to find water. Skill must be developed in each type of environment (e.g., desert, jungle, arctic, water, etc.). The GM may rule that unusually hostile environments may also be covered by this skill (e.g., vacuum, underwater, elemental planes of fire, etc.).",
     "rank": 0,
     "category": "Outdoor · Environmental",
     "group": "Outdoor",
@@ -1804,7 +1804,7 @@
   {
     "name": "Attunement",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill enables a character to use the spell abilities of a staff, wand, or any item with spell casting abilities. In order to cast spells from an item, the wielder of the item must have made an Attune- ment static maneuver.\nIf an item has several spells or groups of spells that are widely separated in power or type, the GM may require separate attunement (staves & wands) static maneuvers for each spell or group of spells.\n“Teaching” someone else an item is not permitted because using an item is a personal experience between the individual and the item. Although you may tell someone what the item does and thus remove any penalty for not knowing the spell(s) in the item, you cannot aid them. Certain spells on items do not normally require Attunement rolls, subject to GM stipulation. ",
+    "description": "This skill enables a character to use the spell abilities of a staff, wand, or any item with spell casting abilities. In order to cast spells from an item, the wielder of the item must have made an Attunement static maneuver.\nIf an item has several spells or groups of spells that are widely separated in power or type, the GM may require separate attunement (staves & wands) static maneuvers for each spell or group of spells.\n“Teaching” someone else an item is not permitted because using an item is a personal experience between the individual and the item. Although you may tell someone what the item does and thus remove any penalty for not knowing the spell(s) in the item, you cannot aid them. Certain spells on items do not normally require Attunement rolls, subject to GM stipulation. ",
     "rank": 0,
     "category": "Power Awareness",
     "group": "Power",
@@ -1855,7 +1855,7 @@
   {
     "name": "Basic Math",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus for everyday math. This includes simple counting up through proficiency at basic mathematical manipulations. Generally, the major mathematical functions (mul- tiplication, division, addition, subtraction, etc.) may be acquired through the use of this skill. At much higher levels, skill in geom- etry and even algebra is possible. Calculus, trigonometry, tensor math, etc. all require the acquisition of Advanced Math (see be- low).",
+    "description": "This skill provides a bonus for everyday math. This includes simple counting up through proficiency at basic mathematical manipulations. Generally, the major mathematical functions (multiplication, division, addition, subtraction, etc.) may be acquired through the use of this skill. At much higher levels, skill in geometry and even algebra is possible. Calculus, trigonometry, tensor math, etc. all require the acquisition of Advanced Math (see below).",
     "rank": 0,
     "category": "Science · Basic",
     "group": "Science",
@@ -1872,7 +1872,7 @@
   {
     "name": "Research",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus for using multiple sources of refer- ence to assimilate the knowledge and information necessary to solve a problem, support a creative effort, or otherwise answer questions important to the individual. It includes the skills neces- sary to organize and effect a search through reference material, and collate the results. If appropriate materials are available, a successful maneuver roll using such materials will give  up to a +40 modification to a related Lore maneuver roll.",
+    "description": "This skill provides a bonus for using multiple sources of reference to assimilate the knowledge and information necessary to solve a problem, support a creative effort, or otherwise answer questions important to the individual. It includes the skills necessary to organize and effect a search through reference material, and collate the results. If appropriate materials are available, a successful maneuver roll using such materials will give  up to a +40 modification to a related Lore maneuver roll.",
     "rank": 0,
     "category": "Science · Basic",
     "group": "Science",
@@ -1889,7 +1889,7 @@
   {
     "name": "Advanced Math",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus for using multiple sources of refer- ence to assimilate the knowledge and information necessary to solve a problem, support a creative effort, or otherwise answer questions important to the individual. It includes the skills neces- sary to organize and effect a search through reference material, and collate the results. If appropriate materials are available, a successful maneuver roll using such materials will give  up to a +40 modification to a related Lore maneuver roll.",
+    "description": "This skill provides a bonus for using multiple sources of reference to assimilate the knowledge and information necessary to solve a problem, support a creative effort, or otherwise answer questions important to the individual. It includes the skills necessary to organize and effect a search through reference material, and collate the results. If appropriate materials are available, a successful maneuver roll using such materials will give  up to a +40 modification to a related Lore maneuver roll.",
     "rank": 0,
     "category": "Science · Specialized",
     "group": "Science",
@@ -1906,7 +1906,7 @@
   {
     "name": "Anthropology",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides knowledge of linguistic trends, customs, hab- its and cultural trends of any known races and cultures. Skill may be developed in-depth of a specific race or culture from your home world. Several different races or cultures may be developed simul- taneously, assuming research materials are available.",
+    "description": "This skill provides knowledge of linguistic trends, customs, habits and cultural trends of any known races and cultures. Skill may be developed in-depth of a specific race or culture from your home world. Several different races or cultures may be developed simultaneously, assuming research materials are available.",
     "rank": 0,
     "category": "Science · Specialized",
     "group": "Science",
@@ -1940,7 +1940,7 @@
   {
     "name": "Frenzy",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus to attempt to go into a state of single- minded, unpredictable rage which results in an additional +30 to melee OB, the ability to take twice normal concussion damage and the ability to deliver double melee concussion hit damage. While in frenzy, you have no DB other than the armor bonus, get no shield bonus, and cannot parry. The static maneuver (i.e., preparation) for frenzy takes one round. Once in a frenzied/berserk state, the berserker may make a static maneuver each round in order to resume one’s normal state. Once frenzied, the berserker will con- tinue to fight until there is no one left standing except himself, at which time he receives a +30 modification to static maneuvers to end the frenzy. While frenzied,  the berserker may attempt  a Situational Awareness (Combat) static maneuver with a -30 modi- fication to distinguish friend from foe.",
+    "description": "This skill provides a bonus to attempt to go into a state of single-minded, unpredictable rage which results in an additional +30 to melee OB, the ability to take twice normal concussion damage and the ability to deliver double melee concussion hit damage. While in frenzy, you have no DB other than the armor bonus, get no shield bonus, and cannot parry. The static maneuver (i.e., preparation) for frenzy takes one round. Once in a frenzied/berserk state, the berserker may make a static maneuver each round in order to resume one’s normal state. Once frenzied, the berserker will continue to fight until there is no one left standing except himself, at which time he receives a +30 modification to static maneuvers to end the frenzy. While frenzied,  the berserker may attempt  a Situational Awareness (Combat) static maneuver with a -30 modification to distinguish friend from foe.",
     "rank": 0,
     "category": "Self Control",
     "group": "None",
@@ -1957,7 +1957,7 @@
   {
     "name": "Meditation",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus for an individual entering, leaving and exploiting a mental trance.  Physical prodding allows one to make a static maneuver to leave the trance, as does a painful strike (modify by +25).\nA GM may allow a successful meditation maneuver to give the meditator a bonus for a maneuver related to the meditation. Such related maneuvers can include: solving a difficult problem, making a spell casting static maneuver, making an attunement static ma- neuver, etc. We suggest the following bonuses based upon the de- gree of success of the meditation static maneuver: +5 bonus for “partial success,” +10 for “near success,” +15 for “success,” and +25 for “absolute success.” The meditator must spend at least one minute (6 rounds) in meditation to get the bonus.",
+    "description": "This skill provides a bonus for an individual entering, leaving and exploiting a mental trance.  Physical prodding allows one to make a static maneuver to leave the trance, as does a painful strike (modify by +25).\nA GM may allow a successful meditation maneuver to give the meditator a bonus for a maneuver related to the meditation. Such related maneuvers can include: solving a difficult problem, making a spell casting static maneuver, making an attunement static maneuver, etc. We suggest the following bonuses based upon the degree of success of the meditation static maneuver: +5 bonus for “partial success,” +10 for “near success,” +15 for “success,” and +25 for “absolute success.” The meditator must spend at least one minute (6 rounds) in meditation to get the bonus.",
     "rank": 0,
     "category": "Self Control",
     "group": "None",
@@ -2042,7 +2042,7 @@
   {
     "name": "Ambush",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill is the ability to make a very precise melee attack. To use his Ambush skill a character must approach his foe undetected and be able to strike before the foe can react. An attack is then made normally, and an Ambush static maneuver is made (0% ac- tivity) and modified by target’s alertness and other factors (e.g., position, lighting, etc.).\nIf the Ambush static maneuver is successful, the character may modify his result on the resulting critical strike roll. This modifica- tion consists of being allowed to adjust the critical strike roll by any number up to the Ambush skill rank (not bonus) of the at- tacker. This adjustment may be either up or down. Note that to use this bonus, the attacker must first get a normal critical strike result on an attack table. If he does, however, this ability greatly increases the chance of a killing or incapacitating blow and tre- mendously increases the chance of a result that takes effect in- stantly.\nSince position is relatively unpredictable in a general melee situ- ation, Ambush skill rank is halved if an ambushed foe is in a melee situation. (Note: You must still approach the foe undetected and strike before he can react.)\nIf a “Large” or “Super-large” creature is ambushed, the Ambush skill rank is added (never subtracted) to the critical roll. If the resulting modified roll is above 95, a second roll is made and added to the modified critical as in a normal open-ended roll.",
+    "description": "This skill is the ability to make a very precise melee attack. To use his Ambush skill a character must approach his foe undetected and be able to strike before the foe can react. An attack is then made normally, and an Ambush static maneuver is made (0% activity) and modified by target’s alertness and other factors (e.g., position, lighting, etc.).\nIf the Ambush static maneuver is successful, the character may modify his result on the resulting critical strike roll. This modification consists of being allowed to adjust the critical strike roll by any number up to the Ambush skill rank (not bonus) of the attacker. This adjustment may be either up or down. Note that to use this bonus, the attacker must first get a normal critical strike result on an attack table. If he does, however, this ability greatly increases the chance of a killing or incapacitating blow and tremendously increases the chance of a result that takes effect instantly.\nSince position is relatively unpredictable in a general melee situation, Ambush skill rank is halved if an ambushed foe is in a melee situation. (Note: You must still approach the foe undetected and strike before he can react.)\nIf a “Large” or “Super-large” creature is ambushed, the Ambush skill rank is added (never subtracted) to the critical roll. If the resulting modified roll is above 95, a second roll is made and added to the modified critical as in a normal open-ended roll.",
     "rank": 0,
     "category": "Subterfuge · Attack",
     "group": "Subterfuge",
@@ -2263,7 +2263,7 @@
   {
     "name": "First Aid",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus for applications of emergency aid or treatment (limited to type of creature), such as attempts to halt or slow bleeding or damaging deterioration. It is suggested that, pro- vided with the proper tools or bandages, a character using first aid could stop up to 5 hits/round of “bleeding” damage without re- sorting to a tourniquet. Used normally in the field without the benefits of a proper medical facility or elaborate equipment. See Section 24.1 (p. 75) for more details.",
+    "description": "This skill provides a bonus for applications of emergency aid or treatment (limited to type of creature), such as attempts to halt or slow bleeding or damaging deterioration. It is suggested that, provided with the proper tools or bandages, a character using first aid could stop up to 5 hits/round of “bleeding” damage without resorting to a tourniquet. Used normally in the field without the benefits of a proper medical facility or elaborate equipment. See Section 24.1 (p. 75) for more details.",
     "rank": 0,
     "category": "Technical · General",
     "group": "Technical/Trade",
@@ -2280,7 +2280,7 @@
   {
     "name": "Gambling",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus when playing any game with a sig- nificant element of luck. Also includes cheating as a form of im- proving one’s luck at any game.",
+    "description": "This skill provides a bonus when playing any game with a significant element of luck. Also includes cheating as a form of improving one’s luck at any game.",
     "rank": 0,
     "category": "Technical · General",
     "group": "Technical/Trade",
@@ -2399,7 +2399,7 @@
   {
     "name": "Diagnostics",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus for determining the medical condi- tion of a patient. Skill must be learned for a particular race or type of creature. One must pick the skill in either general diagnosis, or diagnosis of a specific race. General diagnostics skill of 6 ranks or higher allows certification of simple medical practice on all races (use of field equipment and healing drugs). Diagnostics skill for a specific race of 12 ranks or higher is required for surgical certifica- tion (and reasonable competence).",
+    "description": "This skill provides a bonus for determining the medical condition of a patient. Skill must be learned for a particular race or type of creature. One must pick the skill in either general diagnosis, or diagnosis of a specific race. General diagnostics skill of 6 ranks or higher allows certification of simple medical practice on all races (use of field equipment and healing drugs). Diagnostics skill for a specific race of 12 ranks or higher is required for surgical certification (and reasonable competence).",
     "rank": 0,
     "category": "Technical · Professional",
     "group": "Technical/Trade",
@@ -2416,7 +2416,7 @@
   {
     "name": "Engineering",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus for knowing major facts about engi- neering of the appropriate technical level known to the culture. Also provides a bonus for attempts to utilize that knowledge in new projects. A GM may require different types of Engineering to be treated as separate skills.",
+    "description": "This skill provides a bonus for knowing major facts about engineering of the appropriate technical level known to the culture. Also provides a bonus for attempts to utilize that knowledge in new projects. A GM may require different types of Engineering to be treated as separate skills.",
     "rank": 0,
     "category": "Technical · Professional",
     "group": "Technical/Trade",
@@ -2450,7 +2450,7 @@
   {
     "name": "Mining",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus for assessing the possibilities of min- ing in an area, and supervising the creation and running of the mine. The following is a partial listing of specialized mining pro- cesses:\n• Dredging: Scraping material off the bottom of a river, ocean, etc.\n• Open Pit: Removal of top layers to extract materials.\n• Quarry: Removal of materials in block form.\n• Tunneling: Making underground passages to extract materials.",
+    "description": "This skill provides a bonus for assessing the possibilities of mining in an area, and supervising the creation and running of the mine. The following is a partial listing of specialized mining processes:\n• Dredging: Scraping material off the bottom of a river, ocean, etc.\n• Open Pit: Removal of top layers to extract materials.\n• Quarry: Removal of materials in block form.\n• Tunneling: Making underground passages to extract materials.",
     "rank": 0,
     "category": "Technical · Professional",
     "group": "Technical/Trade",
@@ -2467,7 +2467,7 @@
   {
     "name": "Second Aid",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This skill provides a bonus for performing minor surgery, in- cluding sewing closed wounds, removing diseased or mangled limbs, bone setting and any other minor surgery operation.",
+    "description": "This skill provides a bonus for performing minor surgery, including sewing closed wounds, removing diseased or mangled limbs, bone setting and any other minor surgery operation.",
     "rank": 0,
     "category": "Technical · Professional",
     "group": "Technical/Trade",
@@ -2620,7 +2620,7 @@
   {
     "name": "Tactics",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "hese skills provide bonuses for perceiving and planning appro- priate and effective strategy in tactical military situations. Skill with each tactical situation must be developed separately.\nThe following is a partial listing of types of tactics:\n• Battle Field: Cavalry and infantry tactics.\n• Naval: Ship and boat tactics.\n• Sabotage: Underground/behind enemy lines tactics.\n• Siege: Reduction of fortified position tactics.\n• Small Unit: Conflict between small groups.",
+    "description": "hese skills provide bonuses for perceiving and planning appropriate and effective strategy in tactical military situations. Skill with each tactical situation must be developed separately.\nThe following is a partial listing of types of tactics:\n• Battle Field: Cavalry and infantry tactics.\n• Naval: Ship and boat tactics.\n• Sabotage: Underground/behind enemy lines tactics.\n• Siege: Reduction of fortified position tactics.\n• Small Unit: Conflict between small groups.",
     "rank": 0,
     "category": "Technical · Vocational",
     "group": "Technical/Trade",
@@ -2688,7 +2688,7 @@
   {
     "name": "Streetwise",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "Awareness of events and protocol in the street society and un- derworld and the ability to interact with the individuals who run and live in the common or underworld society. Note that this skill does not necessarily enable a character to find such individuals.",
+    "description": "Awareness of events and protocol in the street society and underworld and the ability to interact with the individuals who run and live in the common or underworld society. Note that this skill does not necessarily enable a character to find such individuals.",
     "rank": 0,
     "category": "Urban",
     "group": "None",

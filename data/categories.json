@@ -530,7 +530,7 @@
   {
     "name": "Outdoor · Animal",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "This category encompasses the use of skills involving the raising, handling, training, and care of animals. Additional skills in this category include: animal mas- tery, animal healing, and herding.",
+    "description": "This category encompasses the use of skills involving the raising, handling, training, and care of animals. Additional skills in this category include: animal mastery, animal healing, and herding.",
     "dpCost": {
       "price1": 7,
       "price2": 8,
