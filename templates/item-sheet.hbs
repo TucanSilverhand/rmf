@@ -10,8 +10,8 @@
             <div class="item-type">
                 <label>{{localize "RMF.Common.Type"}}:</label>
                 <select name="type" disabled>
-                    <option value="equipment" {{#if (eq item.type "equipment")}}selected{{/if}}>{{localize "TYPES.Item.equipment"}}</option>
-                    <option value="race" {{#if (eq item.type "race")}}selected{{/if}}>{{localize "TYPES.Item.race"}}</option>
+                    <option value="equipment" {{#if (rmfEq item.type "equipment")}}selected{{/if}}>{{localize "TYPES.Item.equipment"}}</option>
+                    <option value="race" {{#if (rmfEq item.type "race")}}selected{{/if}}>{{localize "TYPES.Item.race"}}</option>
                 </select>
             </div>
             <div class="basic-props">

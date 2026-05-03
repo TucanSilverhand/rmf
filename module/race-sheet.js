@@ -10,7 +10,13 @@
  * @extends {HandlebarsApplicationMixin(foundry.applications.sheets.ItemSheetV2)}
  */
 const { HandlebarsApplicationMixin } = foundry.applications.api;
-import { coerceInputValue, buildEntityTag } from "./utils/sheet-helpers.mjs";
+import {
+  coerceInputValue,
+  buildEntityTag,
+  wireTabs,
+  setActiveTab as utilSetActiveTab,
+  initHeaderAutoHeight
+} from "./utils/sheet-helpers.mjs";
 import { RMFActions } from "./actions.mjs";
 
 export class RMFRaceSheet extends HandlebarsApplicationMixin(
@@ -202,52 +208,15 @@ export class RMFRaceSheet extends HandlebarsApplicationMixin(
   }
 
   /**
-   * Initialize dynamic header height variable for CSS layout
-   * Sets --rmf-header-height on the sheet root so CSS can position
-   * the scrollable body reliably under the header.
+   * Wrapper around the shared `initHeaderAutoHeight` helper.
+   * Item sheets use the default breakpoint table.
    * @param {HTMLElement} root
    * @private
    */
   _initHeaderAutoHeight(root) {
     const element = root?.querySelector ? root : this.element;
     if (!element) return;
-    const header = element.querySelector(".sheet-header");
-    if (!header) return;
-
-    const update = () => {
-      const h = Math.ceil(header.scrollHeight);
-      const win = element.closest(".app");
-      const rect = win?.getBoundingClientRect();
-      const w = rect?.width || 0;
-      let dynamicMin;
-      if (w <= 750) dynamicMin = 140;
-      else if (w <= 850) dynamicMin = 130;
-      else if (w <= 950) dynamicMin = 120;
-      else dynamicMin = 110;
-      const finalH = Math.max(dynamicMin, h);
-      element.style.setProperty("--rmf-header-height", finalH + "px");
-    };
-
-    try {
-      this._headerResizeObserver?.disconnect();
-    } catch (e) {}
-    try {
-      this._headerMutationObserver?.disconnect();
-    } catch (e) {}
-
-    this._headerResizeObserver = new ResizeObserver(() => update());
-    this._headerResizeObserver.observe(header);
-
-    this._headerMutationObserver = new MutationObserver(() => update());
-    this._headerMutationObserver.observe(header, {
-      subtree: true,
-      childList: true,
-      characterData: true,
-      attributes: true,
-    });
-
-    update();
-    requestAnimationFrame(update);
+    initHeaderAutoHeight(element);
   }
 
   /**
@@ -286,7 +255,8 @@ export class RMFRaceSheet extends HandlebarsApplicationMixin(
   _onRender(context, options) {
     super._onRender?.(context, options);
     this._setupTabs(this.element);
-    if (!this._headerResizeObserver) this._initHeaderAutoHeight(this.element);
+    // The helper detects an existing observer on the element and re-binds safely.
+    this._initHeaderAutoHeight(this.element);
     this._initializeRichTextEditors(this.element);
     this._setupFormSubmitLogging(this.element);
     this._setupChangeAutosubmit(this.element);
@@ -509,40 +479,10 @@ export class RMFRaceSheet extends HandlebarsApplicationMixin(
    * @private
    */
   _setupTabs(html) {
-    // Ensure we have a valid HTML element
     const element = html?.querySelector ? html : this.element;
-    if (!element || !element.querySelector) {
-      return;
-    }
-
-    // Use native event listeners for better ApplicationV2 compatibility
-    // Search for both .item and .nav-item for maximum compatibility
-    const tabButtons = element.querySelectorAll(
-      ".sheet-tabs .item, .sheet-tabs .nav-item"
-    );
-
-    tabButtons.forEach((button) => {
-      // Remove existing listeners first
-      const existingHandler = button._rmfTabHandler;
-      if (existingHandler) {
-        button.removeEventListener("click", existingHandler);
-      }
-
-      // Add new listener
-      const tabClickHandler = (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        const tab = event.currentTarget.dataset.tab;
-        if (tab) {
-          this._setActiveTab(tab, element);
-        }
-      };
-
-      button._rmfTabHandler = tabClickHandler;
-      button.addEventListener("click", tabClickHandler);
-    });
-
-    // Do not force a default tab here; preserve current state.
+    if (!element?.querySelectorAll) return;
+    wireTabs(element, (tab, el) => this._setActiveTab(tab, el));
+    // No default-tab activation here; _onFirstRender / _onRender pick it.
   }
 
   /**
@@ -556,38 +496,10 @@ export class RMFRaceSheet extends HandlebarsApplicationMixin(
    * @private
    */
   _setActiveTab(tab, html) {
-    // Save active tab for future rerenders
-    this._activeTab = tab;
-    // Ensure we have a valid HTML element
     const element = html?.querySelector ? html : this.element;
-    if (!element || !element.querySelector) {
-      return;
-    }
-
-    // Update tab buttons - search for both .item and .nav-item
-    const tabButtons = element.querySelectorAll(
-      ".sheet-tabs .item, .sheet-tabs .nav-item"
-    );
-    tabButtons.forEach((button) => {
-      button.classList.remove("active");
-      if (button.dataset.tab === tab) {
-        button.classList.add("active");
-      }
-    });
-
-    // Update tab content - hide all first
-    const tabContents = element.querySelectorAll(".sheet-body .tab");
-    tabContents.forEach((content) => {
-      content.classList.remove("active");
-      content.style.display = "none";
-    });
-
-    // Show the selected tab
-    const target = element.querySelector(`.sheet-body .tab[data-tab="${tab}"]`);
-    if (target) {
-      target.classList.add("active");
-      target.style.display = "block";
-    }
+    if (!element?.querySelectorAll) return;
+    this._activeTab = tab;
+    utilSetActiveTab(tab, element);
   }
 
   /**
@@ -603,20 +515,7 @@ export class RMFRaceSheet extends HandlebarsApplicationMixin(
     const bonuses = this.document.system.stats || {};
     const prepared = {};
 
-    const statMapping = {
-      ag: "chAgility",
-      co: "chConstitution",
-      me: "chMemory",
-      re: "chReasoning",
-      sd: "chSelfDiscipline",
-      em: "chEmpathy",
-      in: "chIntuition",
-      pr: "chPresence",
-      qu: "chQuickness",
-      st: "chStrength",
-    };
-
-    for (let [shortKey, fullKey] of Object.entries(statMapping)) {
+    for (let [shortKey, fullKey] of Object.entries(CONFIG.RMF.statShortToFull)) {
       prepared[shortKey] = {
         label: game.i18n.localize(`RMF.Stats.${fullKey}`) || fullKey,
         value: bonuses[shortKey] || 0,

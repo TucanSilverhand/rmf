@@ -15,10 +15,10 @@
     <div class="flexrow">
       <div class="resource">
         <label>{{localize "RMF.Skills.Category"}}</label>
-        {{#if (eq categoryMode "select")}}
+        {{#if (rmfEq categoryMode "select")}}
           <select name="system.category">
             {{#each categoryOptions as |option|}}
-              <option value="{{option.value}}" {{#if (eq ../selectedCategory option.value)}}selected{{/if}}>{{option.label}}</option>
+              <option value="{{option.value}}" {{#if (rmfEq ../selectedCategory option.value)}}selected{{/if}}>{{option.label}}</option>
             {{/each}}
           </select>
         {{else}}
@@ -30,7 +30,7 @@
         <label>{{localize "RMF.Skill.RankBonusProgression"}}</label>
         <select name="system.skillRankBonusProgression">
           {{#each progressionOptions as |option|}}
-            <option value="{{option.value}}" {{#if (eq ../selectedProgression option.value)}}selected{{/if}}>{{option.label}}</option>
+            <option value="{{option.value}}" {{#if (rmfEq ../selectedProgression option.value)}}selected{{/if}}>{{option.label}}</option>
           {{/each}}
         </select>
       </div>

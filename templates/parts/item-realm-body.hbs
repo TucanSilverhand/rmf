@@ -12,7 +12,7 @@
         <label class="sr-only">{{localize "RMF.Realm.PowerPointsType"}}</label>
         <select name="system.powerPointsType">
           {{#each powerPointsTypeOptions as |option|}}
-            <option value="{{option.value}}" {{#if (eq ../selectedPowerPointsType option.value)}}selected{{/if}}>{{option.label}}</option>
+            <option value="{{option.value}}" {{#if (rmfEq ../selectedPowerPointsType option.value)}}selected{{/if}}>{{option.label}}</option>
           {{/each}}
         </select>
       </div>
@@ -26,7 +26,7 @@
         <label>{{localize "RMF.Category.Stat1"}}</label>
         <select name="system.statBonus.stat1">
           {{#each statOptions}}
-          <option value="{{this.value}}" {{#if (eq ../selectedStat1 this.value)}}selected{{/if}}>{{this.label}}</option>
+          <option value="{{this.value}}" {{#if (rmfEq ../selectedStat1 this.value)}}selected{{/if}}>{{this.label}}</option>
           {{/each}}
         </select>
       </div>
@@ -34,7 +34,7 @@
         <label>{{localize "RMF.Category.Stat2"}}</label>
         <select name="system.statBonus.stat2">
           {{#each statOptions}}
-          <option value="{{this.value}}" {{#if (eq ../selectedStat2 this.value)}}selected{{/if}}>{{this.label}}</option>
+          <option value="{{this.value}}" {{#if (rmfEq ../selectedStat2 this.value)}}selected{{/if}}>{{this.label}}</option>
           {{/each}}
         </select>
       </div>
@@ -42,7 +42,7 @@
         <label>{{localize "RMF.Category.Stat3"}}</label>
         <select name="system.statBonus.stat3">
           {{#each statOptions}}
-          <option value="{{this.value}}" {{#if (eq ../selectedStat3 this.value)}}selected{{/if}}>{{this.label}}</option>
+          <option value="{{this.value}}" {{#if (rmfEq ../selectedStat3 this.value)}}selected{{/if}}>{{this.label}}</option>
           {{/each}}
         </select>
       </div>

@@ -34,7 +34,7 @@
       <div class="prime-stat-row">
         <select name="system.primeStats.{{row.index}}">
           {{#each ../statOptions as |opt|}}
-            <option value="{{opt.value}}" {{#if (eq opt.value ../row.name)}}selected{{/if}}>{{opt.label}}</option>
+            <option value="{{opt.value}}" {{#if (rmfEq opt.value ../row.name)}}selected{{/if}}>{{opt.label}}</option>
           {{/each}}
         </select>
       </div>

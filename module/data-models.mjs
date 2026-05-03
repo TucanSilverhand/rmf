@@ -17,6 +17,7 @@ import {
   normalizeSkillProgression,
   normalizeSkillClassification
 } from "./utils/rank-bonus.mjs";
+import { RMF_CONSTANTS } from "./utils/constants.mjs";
 
 /**
  * Parse a race progression string of the form "zero/tier1/tier2/tier3/tier4"
@@ -77,24 +78,27 @@ export class RMFActor extends Actor {
   prepareDerivedData() {
     super.prepareDerivedData();
 
-    if (this.type === "character") {
-      this._calculateStatBonuses();
-      this._calculateSecondaryAttributes();
+    if (this.type !== "character") return;
 
-      // Foundry prepares embedded items BEFORE the actor's prepareDerivedData,
-      // so when an item runs its derivation the actor's chStats[*].total is
-      // still zero. Re-run the category items first (they depend on actor
-      // stats) and then the skill items (they depend on the category
-      // totalBonus computed in the previous pass).
-      for (const item of this.items) {
-        if (item.type === "category") item.prepareDerivedData?.();
-      }
-      for (const item of this.items) {
-        if (item.type === "skill") item.prepareDerivedData?.();
-      }
-      // Skills are now up-to-date — override HP/PP max from the relevant skills.
-      this._applySkillBasedDerivedStats();
-    }
+    this._calculateStatBonuses();
+    this._calculateSecondaryAttributes();
+
+    // Foundry prepares embedded items BEFORE the actor's prepareDerivedData,
+    // so when an item runs its derivation the actor's chStats[*].total is
+    // still zero. Re-run the category items first (they depend on actor
+    // stats) and then the skill items (they depend on the category
+    // totalBonus computed in the previous pass).
+    //
+    // `actor.itemTypes.<type>` is the framework-cached, pre-bucketed view
+    // of `this.items`, so we avoid an extra linear scan per type.
+    const itemTypes = this.itemTypes ?? {};
+    const categories = itemTypes.category ?? [];
+    const skills = itemTypes.skill ?? [];
+    for (const item of categories) item.prepareDerivedData?.();
+    for (const item of skills) item.prepareDerivedData?.();
+
+    // Skills are now up-to-date — override HP/PP max from the relevant skills.
+    this._applySkillBasedDerivedStats();
   }
 
   /**
@@ -110,11 +114,14 @@ export class RMFActor extends Actor {
     const ds = this.system?.derivedStats;
     if (!ds) return;
 
-    const findSkill = (name) => this.items.find(i => i.type === "skill" && i.name === name);
-    const skillTotal = (skill) => Number(skill?.system?.totalBonus ?? 0) || 0;
+    // Build a single name→skill map so each lookup is O(1) instead of
+    // a linear scan across this.items.
+    const skills = this.itemTypes?.skill ?? [];
+    const skillByName = new Map(skills.map(s => [s.name, s]));
+    const skillTotal = (name) => Number(skillByName.get(name)?.system?.totalBonus ?? 0) || 0;
 
     if (ds.hitPoints) {
-      const max = skillTotal(findSkill("Body Development"));
+      const max = skillTotal("Body Development");
       const prev = Number(ds.hitPoints.value);
       ds.hitPoints.max = max;
       ds.hitPoints.value = Number.isFinite(prev)
@@ -123,7 +130,7 @@ export class RMFActor extends Actor {
     }
 
     if (ds.powerPoints) {
-      const max = skillTotal(findSkill("Power Point Development"));
+      const max = skillTotal("Power Point Development");
       const prev = Number(ds.powerPoints.value);
       ds.powerPoints.max = max;
       ds.powerPoints.value = Number.isFinite(prev)
@@ -207,7 +214,11 @@ export class RMFActor extends Actor {
    */
   _ensureCharacterDefaults() {
     const system = this.system;
-    const defaultStat = () => ({ temp: 35, pot: 35, basic: 0, race: 0, spec: 0, total: 0 });
+    const defaultStat = () => ({
+      temp: RMF_CONSTANTS.DEFAULT_STAT,
+      pot: RMF_CONSTANTS.DEFAULT_STAT,
+      basic: 0, race: 0, spec: 0, total: 0
+    });
 
     if (!system.chStats || typeof system.chStats !== "object") {
       system.chStats = {};
@@ -247,7 +258,8 @@ export class RMFActor extends Actor {
     }
 
     if (!ds.hitPoints) {
-      ds.hitPoints = { base: 50, constitution: 0, selfDiscipline: 0, max: 50, value: 50 };
+      const base = RMF_CONSTANTS.HP_BASE;
+      ds.hitPoints = { base, constitution: 0, selfDiscipline: 0, max: base, value: base };
     }
     if (!ds.powerPoints) {
       ds.powerPoints = { empathy: 0, intuition: 0, presence: 0, max: 0, value: 0 };
@@ -315,30 +327,30 @@ export class RMFActor extends Actor {
     const previousPPValue = Number(system.derivedStats.powerPoints?.value);
 
     // Calculate hit points using RoleMaster formula
+    const HP_BASE = RMF_CONSTANTS.HP_BASE;
     if (stats.chConstitution && stats.chSelfDiscipline) {
       const coBonus = stats.chConstitution.total || 0;
       const sdBonus = stats.chSelfDiscipline.total || 0;
-      const maxHP = 50 + coBonus + Math.floor(sdBonus / 2);
+      const maxHP = HP_BASE + coBonus + Math.floor(sdBonus / 2);
       const valueHP = Number.isFinite(previousHPValue)
         ? Math.max(0, Math.min(previousHPValue, maxHP))
         : maxHP;
       system.derivedStats.hitPoints = {
-        base: 50,
+        base: HP_BASE,
         constitution: coBonus,
         selfDiscipline: Math.floor(sdBonus / 2),
         max: maxHP,
         value: valueHP
       };
     } else {
-      const defaultHP = 50;
       const valueHP = Number.isFinite(previousHPValue)
-        ? Math.max(0, Math.min(previousHPValue, defaultHP))
-        : defaultHP;
+        ? Math.max(0, Math.min(previousHPValue, HP_BASE))
+        : HP_BASE;
       system.derivedStats.hitPoints = {
-        base: defaultHP,
+        base: HP_BASE,
         constitution: 0,
         selfDiscipline: 0,
-        max: defaultHP,
+        max: HP_BASE,
         value: valueHP
       };
     }
@@ -373,17 +385,17 @@ export class RMFActor extends Actor {
     // Calculate basic resistances
     if (stats.chSelfDiscipline && stats.chIntuition) {
       const coBonus = stats.chConstitution.total || 0;
-      const sdBonus = stats.chSelfDiscipline.total || 0;
       const inBonus = stats.chIntuition.total || 0;
       const esBonus = stats.chEmpathy.total || 0;
       const prBonus = stats.chPresence.total || 0;
-      
+      const RM = RMF_CONSTANTS.RESISTANCE_MULTIPLIER;
+
       system.derivedStats.resistances = {
-        essence: Math.floor(esBonus * 3),
-        channeling: Math.floor(inBonus * 3),
-        mentalism: Math.floor(prBonus * 3),
-        poison: Math.floor(coBonus * 3),
-        disease: Math.floor(coBonus * 3),
+        essence: Math.floor(esBonus * RM),
+        channeling: Math.floor(inBonus * RM),
+        mentalism: Math.floor(prBonus * RM),
+        poison: Math.floor(coBonus * RM),
+        disease: Math.floor(coBonus * RM)
       };
     } else {
       // Default values if stats are not available
@@ -397,15 +409,16 @@ export class RMFActor extends Actor {
     }
 
     // Armor Penalty and Defensive Bonus
-    // For now, armor penalty is 0; Defensive Bonus = (Quickness total * 3) - Armor Penalty
+    // For now, armor penalty is 0; Defensive Bonus = Quickness × multiplier − Armor Penalty
     const quBonus = stats.chQuickness?.total || 0;
     const armorPenalty = 0;
     system.derivedStats.armorPenalty = armorPenalty;
-    system.derivedStats.defensiveBonus = (quBonus * 3) - armorPenalty;
+    system.derivedStats.defensiveBonus = (quBonus * RMF_CONSTANTS.DEFENSIVE_MULTIPLIER) - armorPenalty;
 
-    // Apply race item resistance modifiers (if a race is assigned)
+    // Apply race item resistance modifiers (if a race is assigned).
+    // `itemTypes.race` is pre-bucketed by Foundry; we just take the first.
     try {
-      const raceItem = this.items.find(i => i.type === 'race');
+      const raceItem = this.itemTypes?.race?.[0];
       const r = raceItem?.system?.resistances || {};
       const addEss = Number(r.ess ?? 0) || 0;
       const addChan = Number(r.chan ?? 0) || 0;

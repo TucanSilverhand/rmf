@@ -933,14 +933,15 @@
   box-sizing: border-box;
 }
 
-/* Textareas scale naturally */
-textarea { min-height: 64px; height: auto; line-height: 1.35; padding: 6px 8px; }
+/* Textareas scale naturally — scoped under .rmf so we never style
+   sheets from other systems or modules. */
+.rmf textarea { min-height: 64px; height: auto; line-height: 1.35; padding: 6px 8px; }
 
-/* Checkbox size */
-input[type="checkbox"] { width: 14px; height: 14px; }
+/* Checkbox size (scoped). */
+.rmf input[type="checkbox"] { width: 14px; height: 14px; }
 
-/* Focus state */
-input:focus, select:focus, textarea:focus {
+/* Focus state (scoped). */
+.rmf input:focus, .rmf select:focus, .rmf textarea:focus {
   outline: none;
   border-color: var(--rmf-color-accent);
   box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
@@ -989,13 +990,14 @@ input:focus, select:focus, textarea:focus {
    Tables (shared)
    Applies to stats, derived, resistances, background, and any generic table
    ------------------------------------------------- */
-/* Tables: minimal width (fit content) and centered within parent */
-table { width: max-content; max-width: 100%; margin: 0 auto; border-collapse: separate; border-spacing: 0; background: var(--rmf-color-bg); }
-table thead th { background: var(--rmf-color-bg-alt); color: var(--rmf-color-fg); font-weight: 600; padding: 6px 8px; border-bottom: 1px solid var(--rmf-color-border); text-align: center; }
-table thead th:first-child { text-align: left; }
-table tbody td { padding: 4px 8px; border-bottom: 1px solid #eef1f4; vertical-align: middle; text-align: center; }
-table tbody td:first-child { text-align: left; }
-table tr { height: var(--rmf-row-min-height); }
+/* Tables: minimal width (fit content) and centered within parent.
+   Scoped under .rmf to avoid bleeding into other systems' sheets. */
+.rmf table { width: max-content; max-width: 100%; margin: 0 auto; border-collapse: separate; border-spacing: 0; background: var(--rmf-color-bg); }
+.rmf table thead th { background: var(--rmf-color-bg-alt); color: var(--rmf-color-fg); font-weight: 600; padding: 6px 8px; border-bottom: 1px solid var(--rmf-color-border); text-align: center; }
+.rmf table thead th:first-child { text-align: left; }
+.rmf table tbody td { padding: 4px 8px; border-bottom: 1px solid #eef1f4; vertical-align: middle; text-align: center; }
+.rmf table tbody td:first-child { text-align: left; }
+.rmf table tr { height: var(--rmf-row-min-height); }
 
 /* Specific tables present in templates */
 .stats-table, .derived-stats-table, .resistances-table, .background-table, .basic-info-table, .basic-totals-table, .progressions-table { border: 1px solid #eef1f4; border-radius: var(--rmf-radius-1); box-shadow: var(--rmf-shadow-sm); }
@@ -1034,9 +1036,9 @@ table tr { height: var(--rmf-row-min-height); }
   border: 1px solid #eef1f4 !important;
 }
 
-/* Numeric inputs inside table cells: exactly 44x26 */
-table td input[type="number"],
-table th input[type="number"] {
+/* Numeric inputs inside table cells: exactly 44x26 (scoped). */
+.rmf table td input[type="number"],
+.rmf table th input[type="number"] {
   width: 44px;
   min-width: 44px;
   max-width: 44px;

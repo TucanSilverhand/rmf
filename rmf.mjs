@@ -26,6 +26,7 @@ import { RMFProfessionSheet } from "./module/profession-sheet.js";
 import { RMFActor, RMFItem } from "./module/data-models.mjs";
 import { RMFHooks } from "./module/hooks.mjs";
 import { SKILL_CLASSIFICATIONS } from "./module/utils/rank-bonus.mjs";
+import { STAT_SHORT_TO_FULL, RMF_CONSTANTS } from "./module/utils/constants.mjs";
 
 /**
  * Global system namespace for RMF system configuration and utilities
@@ -116,19 +117,11 @@ Hooks.once('init', async function() {
       dis: "RMF.Resistances.disease"
     },
     
-    // Stat key mappings for reuse across sheets (short <-> full)
-    statShortToFull: {
-      ag: 'chAgility',
-      co: 'chConstitution',
-      me: 'chMemory',
-      re: 'chReasoning',
-      sd: 'chSelfDiscipline',
-      em: 'chEmpathy',
-      in: 'chIntuition',
-      pr: 'chPresence',
-      qu: 'chQuickness',
-      st: 'chStrength'
-    },
+    // Stat key mappings for reuse across sheets (short <-> full).
+    // Source of truth lives in module/utils/constants.mjs; we expose it on
+    // CONFIG.RMF so that handlebars helpers and other runtime callers do
+    // not need to import the module directly.
+    statShortToFull: STAT_SHORT_TO_FULL,
 
     itemTypes: ["equipment", "race", "skill", "category", "realm", "profession"],
     actorTypes: ["character"],
@@ -136,14 +129,19 @@ Hooks.once('init', async function() {
     // Canonical skill classifications. Same set used by data-models and importers
     // for normalization. The UI can iterate this list to render <select> options
     // labelled by `RMF.Skills.Classifications.<value>`.
-    skillClassifications: SKILL_CLASSIFICATIONS
+    skillClassifications: SKILL_CLASSIFICATIONS,
+
+    // Gameplay constants (HP_BASE, NO_SKILL_PENALTY, ...). Source of truth
+    // lives in module/utils/constants.mjs.
+    constants: RMF_CONSTANTS
   };
   
-  // Initialize Handlebars integration
+  // Initialize Handlebars integration. `loadTemplates` with the object-form
+  // both pre-loads each template and registers it as a partial under the alias
+  // (so {{> parts/actor-header}} works without an explicit registerPartial call).
   _registerHandlebarsHelpers();
   await _preloadHandlebarsTemplates();
-  await _registerHandlebarsPartials();
-  
+
   // Initialize centralized hooks system
   RMFHooks.initialize();
   
@@ -282,11 +280,11 @@ function _registerHandlebarsHelpers() {
     return (parseInt(value) || 0) < 0;
   });
 
-  // Simple equality helper
-  Handlebars.registerHelper('eq', function(a, b) { return a === b; });
+  // Equality helper (rmf-prefixed to avoid clashes with module-registered `eq`).
+  Handlebars.registerHelper('rmfEq', function(a, b) { return a === b; });
 
-  // Simple add helper for indices
-  Handlebars.registerHelper('add', function(a, b) { return (Number(a) || 0) + (Number(b) || 0); });
+  // Numeric add helper for index arithmetic in {{#each}} bodies.
+  Handlebars.registerHelper('rmfAdd', function(a, b) { return (Number(a) || 0) + (Number(b) || 0); });
 
   // Format currency values with proper localization
   Handlebars.registerHelper('rmfCurrency', function(value) {
@@ -303,155 +301,75 @@ function _registerHandlebarsHelpers() {
   Handlebars.registerHelper('rmfCanEdit', function(document) {
     return document.isOwner;
   });
-
-  // Format and validate roll formulas for display
-  Handlebars.registerHelper('rmfFormatFormula', function(formula, data) {
-    try {
-      const roll = new Roll(formula, data);
-      return roll.formula;
-    } catch {
-      return formula;
-    }
-  });
 }
 
 // Helper functions for rule books settings UI (used during init)
 // Note: Hook logic has been moved to RMFHooks - see module/hooks.mjs
 
 /**
- * Preload all Handlebars templates used by the system
- * 
- * Pre-loads all template files to improve performance and prevent
- * loading delays during gameplay. Includes main templates, partials,
- * and chat message templates.
- * 
+ * Preload all Handlebars templates and register partials in one pass.
+ *
+ * Uses the object-form of `loadTemplates`, which both fetches each template
+ * and registers it as a Handlebars partial under the alias key. That makes
+ * `{{> parts/actor-header}}` work without an explicit `registerPartial` step.
+ *
  * @private
  * @async
- * @function _preloadHandlebarsTemplates
- * @returns {Promise} Promise that resolves when all templates are loaded
+ * @returns {Promise<Function[]>} Resolves once every template is compiled.
  */
 async function _preloadHandlebarsTemplates() {
-  const templatePaths = [
-    // Actor sheet templates
-    "systems/rmf/templates/actor-sheet.hbs",
-    
-    // Actor sheet partials
-    "systems/rmf/templates/parts/actor-header.hbs",
-    "systems/rmf/templates/parts/actor-navigation.hbs",
-    "systems/rmf/templates/parts/actor-background.hbs",
-    "systems/rmf/templates/parts/actor-stats.hbs",
-    "systems/rmf/templates/parts/actor-skills.hbs",
-    "systems/rmf/templates/parts/actor-equipment.hbs",
-    "systems/rmf/templates/parts/actor-manageplayer.hbs",
-    
-    // Item sheet templates
-    "systems/rmf/templates/item-sheet.hbs",
-    "systems/rmf/templates/item-race-sheet.hbs",
-    "systems/rmf/templates/item-skill-sheet.hbs",
-    "systems/rmf/templates/item-category-sheet.hbs",
-    "systems/rmf/templates/item-realm-sheet.hbs",
-    "systems/rmf/templates/item-profession-sheet.hbs",
+  const partials = {
+    // Top-level sheet templates
+    "rmf/actor-sheet": "systems/rmf/templates/actor-sheet.hbs",
+    "rmf/item-sheet": "systems/rmf/templates/item-sheet.hbs",
+    "rmf/item-race-sheet": "systems/rmf/templates/item-race-sheet.hbs",
+    "rmf/item-skill-sheet": "systems/rmf/templates/item-skill-sheet.hbs",
+    "rmf/item-category-sheet": "systems/rmf/templates/item-category-sheet.hbs",
+    "rmf/item-realm-sheet": "systems/rmf/templates/item-realm-sheet.hbs",
+    "rmf/item-profession-sheet": "systems/rmf/templates/item-profession-sheet.hbs",
 
+    // Actor sheet partials
+    "parts/actor-header": "systems/rmf/templates/parts/actor-header.hbs",
+    "parts/actor-navigation": "systems/rmf/templates/parts/actor-navigation.hbs",
+    "parts/actor-background": "systems/rmf/templates/parts/actor-background.hbs",
+    "parts/actor-stats": "systems/rmf/templates/parts/actor-stats.hbs",
+    "parts/actor-skills": "systems/rmf/templates/parts/actor-skills.hbs",
+    "parts/actor-equipment": "systems/rmf/templates/parts/actor-equipment.hbs",
+    "parts/actor-manageplayer": "systems/rmf/templates/parts/actor-manageplayer.hbs",
 
     // Race sheet partials
-    "systems/rmf/templates/parts/item-race-header.hbs",
-    "systems/rmf/templates/parts/item-race-navigation.hbs",
-    "systems/rmf/templates/parts/item-race-details.hbs",
-    "systems/rmf/templates/parts/item-race-advanced.hbs",
-    
+    "parts/item-race-header": "systems/rmf/templates/parts/item-race-header.hbs",
+    "parts/item-race-navigation": "systems/rmf/templates/parts/item-race-navigation.hbs",
+    "parts/item-race-details": "systems/rmf/templates/parts/item-race-details.hbs",
+    "parts/item-race-advanced": "systems/rmf/templates/parts/item-race-advanced.hbs",
+
     // Skill sheet partials
-    "systems/rmf/templates/parts/item-skill-header.hbs",
-    "systems/rmf/templates/parts/item-skill-navigation.hbs",
-    "systems/rmf/templates/parts/item-skill-details.hbs",
-    "systems/rmf/templates/parts/item-skill-advanced.hbs",
-    
+    "parts/item-skill-header": "systems/rmf/templates/parts/item-skill-header.hbs",
+    "parts/item-skill-navigation": "systems/rmf/templates/parts/item-skill-navigation.hbs",
+    "parts/item-skill-details": "systems/rmf/templates/parts/item-skill-details.hbs",
+    "parts/item-skill-advanced": "systems/rmf/templates/parts/item-skill-advanced.hbs",
+
     // Category sheet partials
-    "systems/rmf/templates/parts/item-category-header.hbs",
-    "systems/rmf/templates/parts/item-category-navigation.hbs",
-    "systems/rmf/templates/parts/item-category-details.hbs",
+    "parts/item-category-header": "systems/rmf/templates/parts/item-category-header.hbs",
+    "parts/item-category-navigation": "systems/rmf/templates/parts/item-category-navigation.hbs",
+    "parts/item-category-details": "systems/rmf/templates/parts/item-category-details.hbs",
 
     // Realm sheet partials
-    "systems/rmf/templates/parts/item-realm-header.hbs",
-    "systems/rmf/templates/parts/item-realm-body.hbs",
+    "parts/item-realm-header": "systems/rmf/templates/parts/item-realm-header.hbs",
+    "parts/item-realm-body": "systems/rmf/templates/parts/item-realm-body.hbs",
 
     // Profession sheet partials
-    "systems/rmf/templates/parts/item-profession-header.hbs",
-    "systems/rmf/templates/parts/item-profession-navigation.hbs",
-    "systems/rmf/templates/parts/item-profession-details.hbs",
-    "systems/rmf/templates/parts/item-profession-advanced.hbs",
+    "parts/item-profession-header": "systems/rmf/templates/parts/item-profession-header.hbs",
+    "parts/item-profession-navigation": "systems/rmf/templates/parts/item-profession-navigation.hbs",
+    "parts/item-profession-details": "systems/rmf/templates/parts/item-profession-details.hbs",
+    "parts/item-profession-advanced": "systems/rmf/templates/parts/item-profession-advanced.hbs",
 
     // Chat templates
-    "systems/rmf/templates/chat/stat-roll.hbs"
-  ];
-
-  return foundry.applications.handlebars.loadTemplates(templatePaths);
-}
-
-/**
- * Register Handlebars partials for template composition
- * 
- * Explicitly registers partial templates that can be included
- * in other templates using {{> partialName}} syntax. This provides
- * better modularization and reusability of template components.
- * 
- * @private
- * @async
- * @function _registerHandlebarsPartials
- * @returns {Promise} Promise that resolves when all partials are registered
- */
-async function _registerHandlebarsPartials() {
-  const partials = {
-    // Actor sheet partials
-    'parts/actor-header': 'systems/rmf/templates/parts/actor-header.hbs',
-    'parts/actor-navigation': 'systems/rmf/templates/parts/actor-navigation.hbs', 
-    'parts/actor-background': 'systems/rmf/templates/parts/actor-background.hbs',
-    'parts/actor-stats': 'systems/rmf/templates/parts/actor-stats.hbs',
-    'parts/actor-skills': 'systems/rmf/templates/parts/actor-skills.hbs',
-    'parts/actor-equipment': 'systems/rmf/templates/parts/actor-equipment.hbs',
-    'parts/actor-manageplayer': 'systems/rmf/templates/parts/actor-manageplayer.hbs',
-    
-    // Race sheet partials
-    'parts/item-race-header': 'systems/rmf/templates/parts/item-race-header.hbs',
-    'parts/item-race-navigation': 'systems/rmf/templates/parts/item-race-navigation.hbs',
-    'parts/item-race-details': 'systems/rmf/templates/parts/item-race-details.hbs',
-    'parts/item-race-advanced': 'systems/rmf/templates/parts/item-race-advanced.hbs',
-    
-    // Skill sheet partials
-    'parts/item-skill-header': 'systems/rmf/templates/parts/item-skill-header.hbs',
-    'parts/item-skill-navigation': 'systems/rmf/templates/parts/item-skill-navigation.hbs',
-    'parts/item-skill-details': 'systems/rmf/templates/parts/item-skill-details.hbs',
-    'parts/item-skill-advanced': 'systems/rmf/templates/parts/item-skill-advanced.hbs',
-    
-    // Category sheet partials
-    'parts/item-category-header': 'systems/rmf/templates/parts/item-category-header.hbs',
-    'parts/item-category-navigation': 'systems/rmf/templates/parts/item-category-navigation.hbs',
-    'parts/item-category-details': 'systems/rmf/templates/parts/item-category-details.hbs',
-
-    // Realm sheet partials
-    'parts/item-realm-header': 'systems/rmf/templates/parts/item-realm-header.hbs',
-    'parts/item-realm-body': 'systems/rmf/templates/parts/item-realm-body.hbs',
-
-    // Profession sheet partials
-    'parts/item-profession-header': 'systems/rmf/templates/parts/item-profession-header.hbs',
-    'parts/item-profession-navigation': 'systems/rmf/templates/parts/item-profession-navigation.hbs',
-    'parts/item-profession-details': 'systems/rmf/templates/parts/item-profession-details.hbs',
-    'parts/item-profession-advanced': 'systems/rmf/templates/parts/item-profession-advanced.hbs'
+    "rmf/chat/stat-roll": "systems/rmf/templates/chat/stat-roll.hbs",
+    "rmf/chat/race-applied": "systems/rmf/templates/chat/race-applied.hbs"
   };
 
-  for (const [name, path] of Object.entries(partials)) {
-    try {
-      const response = await fetch(path);
-      if (response.ok) {
-        const templateContent = await response.text();
-        Handlebars.registerPartial(name, templateContent);
-        console.log(`RMF | Registered partial: ${name}`);
-      } else {
-        console.error(`RMF | Failed to load partial: ${path}`);
-      }
-    } catch (error) {
-      console.error(`RMF | Error registering partial ${name}:`, error);
-    }
-  }
+  return foundry.applications.handlebars.loadTemplates(partials);
 }
 
 /**

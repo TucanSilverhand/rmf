@@ -8,6 +8,7 @@ import {
   normalizeSkillProgression,
   normalizeSkillClassification
 } from "./utils/rank-bonus.mjs";
+import { STAT_SHORT_TO_FULL } from "./utils/constants.mjs";
 
 /**
  * Throw a permission error unless the current user is GM.
@@ -966,14 +967,13 @@ function canonicalizeStatKey(key) {
   const trimmed = key.trim();
   if (!trimmed) return "";
 
-  const shortToFull = CONFIG?.RMF?.statShortToFull ?? {};
   const lower = trimmed.toLowerCase();
 
-  for (const [shortKey, fullKey] of Object.entries(shortToFull)) {
+  for (const [shortKey, fullKey] of Object.entries(STAT_SHORT_TO_FULL)) {
     if (shortKey.toLowerCase() === lower) return fullKey;
   }
 
-  const canonicalFull = Object.values(shortToFull).find(fullKey => fullKey.toLowerCase() === lower);
+  const canonicalFull = Object.values(STAT_SHORT_TO_FULL).find(fullKey => fullKey.toLowerCase() === lower);
   if (canonicalFull) return canonicalFull;
 
   if (trimmed.startsWith("ch")) return trimmed;
@@ -1064,17 +1064,12 @@ export async function syncRealmsToCompendium(source, options = {}) {
       const match = allowedTypes.find(v => v.toLowerCase() === raw.toLowerCase());
       return match ?? "Essence";
     };
-    const statShortToFull = {
-      ag: "chAgility", co: "chConstitution", me: "chMemory", re: "chReasoning",
-      sd: "chSelfDiscipline", em: "chEmpathy", in: "chIntuition", pr: "chPresence",
-      qu: "chQuickness", st: "chStrength"
-    };
     const normalizeStatKey = (value) => {
       if (typeof value !== "string") return "";
       const trimmed = value.trim();
       if (!trimmed) return "";
       if (trimmed.startsWith("ch")) return trimmed;
-      return statShortToFull[trimmed.toLowerCase()] ?? trimmed;
+      return STAT_SHORT_TO_FULL[trimmed.toLowerCase()] ?? trimmed;
     };
     const normalizeStatBonus = (raw, defaults) => {
       const src = raw && typeof raw === "object" ? raw : {};

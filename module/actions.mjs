@@ -14,6 +14,8 @@
  * @see Documentation/api/02_Application_System.md
  */
 
+import { RMF_CONSTANTS } from "./utils/constants.mjs";
+
 /**
  * Centralized action management system for RMF
  * 
@@ -469,10 +471,9 @@ export class RMFActions {
       return;
     }
 
-    const NO_SKILL_PENALTY = -15;
     const rawBase = Number(category.system.totalBonus);
     const baseBonus = Number.isFinite(rawBase) ? Math.trunc(rawBase) : 0;
-    const { formula, bonus } = RMFActions.#buildD100Formula(baseBonus + NO_SKILL_PENALTY);
+    const { formula, bonus } = RMFActions.#buildD100Formula(baseBonus + RMF_CONSTANTS.NO_SKILL_PENALTY);
 
     const roll = await new Roll(formula).evaluate();
     const noSkillLabel = game.i18n.has("RMF.NoSkill")

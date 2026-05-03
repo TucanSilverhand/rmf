@@ -10,8 +10,16 @@
  * @extends {HandlebarsApplicationMixin(foundry.applications.sheets.ActorSheetV2)}
  */
 const { HandlebarsApplicationMixin } = foundry.applications.api;
-import { coerceInputValue, buildEntityTag } from "./utils/sheet-helpers.mjs";
+import {
+  coerceInputValue,
+  buildEntityTag,
+  wireTabs,
+  setActiveTab as utilSetActiveTab,
+  initHeaderAutoHeight,
+  ACTOR_HEADER_BREAKPOINTS
+} from "./utils/sheet-helpers.mjs";
 import { RMFActions } from "./actions.mjs";
+import { RMF_CONSTANTS } from "./utils/constants.mjs";
 
 export class RMFActorSheet extends HandlebarsApplicationMixin(foundry.applications.sheets.ActorSheetV2) {
 
@@ -162,13 +170,12 @@ export class RMFActorSheet extends HandlebarsApplicationMixin(foundry.applicatio
     }
 
     const sortByName = (a, b) => String(a.name || "").localeCompare(String(b.name || ""), game.i18n.lang);
-    const NO_SKILL_PENALTY = -15;
     context.categoriesWithSkills = categories.map(category => {
       const categoryTotal = Number(category.system?.totalBonus ?? 0) || 0;
       const progression = String(category.system?.categoryRankBonusProgression ?? "").trim().toLowerCase();
       return {
         category,
-        noSkillTotal: categoryTotal + NO_SKILL_PENALTY,
+        noSkillTotal: categoryTotal + RMF_CONSTANTS.NO_SKILL_PENALTY,
         // The -15 untrained penalty only makes sense for the standard progression.
         // Non-standard categories don't expose the No-skill action.
         showNoSkill: progression === "standard",
@@ -254,8 +261,9 @@ export class RMFActorSheet extends HandlebarsApplicationMixin(foundry.applicatio
     this._setupStatListeners(this.element);
     this._setupGenericChangeListeners(this.element);
     this._setupNumericSanitizers(this.element);
-  // Asegurar actualización (por si cambios internos modifican altura)
-  if (!this._headerResizeObserver) this._initHeaderAutoHeight(this.element);
+  // Re-bind header observers each render — the helper detects an existing
+  // ResizeObserver on the element and disconnects before re-binding.
+  this._initHeaderAutoHeight(this.element);
   // Restore scroll and active tab after re-render
   try {
     if (this._pendingScrollTop != null) {
@@ -268,49 +276,22 @@ export class RMFActorSheet extends HandlebarsApplicationMixin(foundry.applicatio
   }
 
   /**
-   * Initialize tab navigation system
-   * 
-   * Binds click handlers to tab buttons and manages tab content visibility
-   * for the character sheet's multi-tab interface.
-   * 
+   * Initialize tab navigation. Delegates click-binding to the shared
+   * `wireTabs` helper; the only sheet-specific concern here is picking
+   * the initial tab to activate (preserve last selection across re-renders,
+   * fall back to whatever DOM marks as active, then to "stats").
+   *
    * @param {HTMLElement} html - The sheet's HTML element
    * @private
    */
   _setupTabs(html) {
-    // Ensure we have a valid HTML element
     const element = html?.querySelector ? html : this.element;
-    if (!element || !element.querySelector) {
-      return;
-    }
+    if (!element?.querySelectorAll) return;
 
-    // Use native event listeners for better ApplicationV2 compatibility
-    const tabButtons = element.querySelectorAll('.sheet-tabs .item');
-    
-    tabButtons.forEach(button => {
-      // Remove existing listeners first
-      const existingHandler = button._rmfTabHandler;
-      if (existingHandler) {
-        button.removeEventListener('click', existingHandler);
-      }
-      
-      // Add new listener
-      const tabClickHandler = (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        const tab = event.currentTarget.dataset.tab;
-        if (tab) {
-          this._setActiveTab(tab, element);
-        }
-      };
-      
-      button._rmfTabHandler = tabClickHandler;
-      button.addEventListener('click', tabClickHandler);
-    });
+    wireTabs(element, (tab, el) => this._setActiveTab(tab, el));
 
-    // Preserve previously active tab if available; fallback to existing active or 'stats'
     const currentActive = this._activeTab || element.querySelector('.sheet-tabs .item.active')?.dataset?.tab;
-    const initialTab = currentActive || 'stats';
-    this._setActiveTab(initialTab, element);
+    this._setActiveTab(currentActive || 'stats', element);
   }
 
   /**
@@ -369,20 +350,8 @@ export class RMFActorSheet extends HandlebarsApplicationMixin(foundry.applicatio
       const created = await this.document.createEmbeddedDocuments('Item', [itemData]);
       const raceName = itemData.name || created?.[0]?.name || '';
       const stats = (itemData.system && itemData.system.stats) ? itemData.system.stats : {};
-      const map = {
-        ag: 'chAgility',
-        co: 'chConstitution',
-        me: 'chMemory',
-        re: 'chReasoning',
-        sd: 'chSelfDiscipline',
-        em: 'chEmpathy',
-        in: 'chIntuition',
-        pr: 'chPresence',
-        qu: 'chQuickness',
-        st: 'chStrength'
-      };
       const updateData = { 'system.chRace': raceName };
-      for (const [shortKey, longKey] of Object.entries(map)) {
+      for (const [shortKey, longKey] of Object.entries(CONFIG.RMF.statShortToFull)) {
         const val = Number(stats?.[shortKey] ?? 0) || 0;
         updateData[`system.chStats.${longKey}.race`] = val;
       }
@@ -685,38 +654,20 @@ export class RMFActorSheet extends HandlebarsApplicationMixin(foundry.applicatio
    * @param {HTMLElement} html - The sheet's HTML element
    * @private
    */
+  /**
+   * Activate a tab and remember it for future re-renders. The DOM
+   * mutation lives in the shared helper; the only sheet-specific
+   * behavior is persisting `this._activeTab`.
+   *
+   * @param {string} tab
+   * @param {HTMLElement} html
+   * @private
+   */
   _setActiveTab(tab, html) {
-    // Ensure we have a valid HTML element
     const element = html?.querySelector ? html : this.element;
-    if (!element || !element.querySelector) {
-      return;
-    }
-
-    // Persist active tab for future re-renders
+    if (!element?.querySelectorAll) return;
     this._activeTab = tab;
-
-    // Update tab buttons
-    const tabButtons = element.querySelectorAll('.sheet-tabs .item');
-    tabButtons.forEach(button => {
-      button.classList.remove('active');
-      if (button.dataset.tab === tab) {
-        button.classList.add('active');
-      }
-    });
-
-    // Update tab content - hide all first
-    const tabContents = element.querySelectorAll('.sheet-body .tab');
-    tabContents.forEach(content => {
-      content.classList.remove('active');
-      content.style.display = 'none';
-    });
-    
-    // Show the selected tab
-    const target = element.querySelector(`.sheet-body .tab[data-tab="${tab}"]`);
-    if (target) {
-      target.classList.add('active');
-      target.style.display = 'block';
-    }
+    utilSetActiveTab(tab, element);
   }
 
   /**
@@ -946,56 +897,23 @@ export class RMFActorSheet extends HandlebarsApplicationMixin(foundry.applicatio
    * @param {HTMLElement} root - Root element to initialize
    * @private
    */
+  /**
+   * Wrapper around the shared `initHeaderAutoHeight` helper. Uses
+   * actor-specific breakpoints (taller minimums because the actor header
+   * carries name + portrait + level/xp), measures against the sheet
+   * element width, and binds a window-resize listener for manual resize.
+   *
+   * @param {HTMLElement} root
+   * @private
+   */
   _initHeaderAutoHeight(root) {
     const element = root?.querySelector ? root : this.element;
     if (!element) return;
-    const header = element.querySelector('.sheet-header');
-    if (!header) return;
-
-    const update = () => {
-      const h = Math.ceil(header.scrollHeight);
-      // Ancho actual del sheet
-      const sheetRect = element.getBoundingClientRect();
-      const w = sheetRect.width;
-      // Umbrales adaptativos: más estrecho => baseline mayor
-      // >1100px: 170px, 950–1100:190, 850–950:205, 750–850:225, <750:250
-      let dynamicMin;
-      if (w <= 750) dynamicMin = 250;
-      else if (w <= 850) dynamicMin = 250;
-      else if (w <= 950) dynamicMin = 205;
-      else if (w <= 1100) dynamicMin = 190;
-      else dynamicMin = 170;
-      // Altura final: nunca menos que dynamicMin y al menos el contenido real
-      const finalH = Math.max(dynamicMin, h);
-      element.style.setProperty('--rmf-header-height', finalH + 'px');
-    };
-
-    // Desconectar previo si existe
-    try { this._headerResizeObserver?.disconnect(); } catch(e) {}
-    try { this._headerMutationObserver?.disconnect(); } catch(e) {}
-
-    // Observador de cambios de tamaño (incluye reflow por wrapping e imágenes)
-    this._headerResizeObserver = new ResizeObserver(() => update());
-    this._headerResizeObserver.observe(header);
-
-    // Mutations (por si cambian nodos, inputs, nombre largo, etc.)
-    this._headerMutationObserver = new MutationObserver(() => update());
-    this._headerMutationObserver.observe(header, { subtree: true, childList: true, characterData: true, attributes: true });
-
-    // Listener de resize de la ventana de la sheet (cambio manual de usuario)
-    const win = element.closest('.app');
-    if (win) {
-      const resizeHandler = () => update();
-      // Guardar para poder limpiar si es necesario
-      this._headerWindowResizeHandler = resizeHandler;
-      window.addEventListener('resize', resizeHandler, { passive: true });
-    }
-
-    // Ajuste inicial inmediato
-    update();
-
-    // Ajuste adicional tras siguiente frame por si hay fuentes async
-    requestAnimationFrame(update);
+    initHeaderAutoHeight(element, {
+      breakpoints: ACTOR_HEADER_BREAKPOINTS,
+      widthSource: 'sheet',
+      bindWindowResize: true
+    });
   }
 
   /**
@@ -1031,20 +949,29 @@ export class RMFActorSheet extends HandlebarsApplicationMixin(foundry.applicatio
    * @override
    */
   close(options) {
-    try { this._headerResizeObserver?.disconnect(); } catch(e) {}
-    try { this._headerMutationObserver?.disconnect(); } catch(e) {}
-    if (this._headerWindowResizeHandler) {
-      window.removeEventListener('resize', this._headerWindowResizeHandler);
-      this._headerWindowResizeHandler = null;
+    // Tear down anything attached by initHeaderAutoHeight (the helper
+    // stashes observers and the window listener on the DOM root, so we
+    // clean them up here too).
+    const el = this.element;
+    try { el?._rmfHeaderResizeObserver?.disconnect?.(); } catch (_) {}
+    try { el?._rmfHeaderMutationObserver?.disconnect?.(); } catch (_) {}
+    if (el?._rmfHeaderWindowResizeHandler) {
+      window.removeEventListener('resize', el._rmfHeaderWindowResizeHandler);
+      el._rmfHeaderWindowResizeHandler = null;
     }
-    // Limpia listener delegado de cambios genéricos
+    if (el) {
+      el._rmfHeaderResizeObserver = null;
+      el._rmfHeaderMutationObserver = null;
+    }
+
+    // Clean up the delegated generic-change listener.
     try {
-      if (this.element?._rmfGenericChangeBound) {
-        this.element.removeEventListener('change', this.element._rmfGenericChangeBound, true);
-        this.element._rmfGenericChangeBound = null;
+      if (el?._rmfGenericChangeBound) {
+        el.removeEventListener('change', el._rmfGenericChangeBound, true);
+        el._rmfGenericChangeBound = null;
       }
-    } catch (e) {}
-    this._headerResizeObserver = null;
+    } catch (_) {}
+
     return super.close(options);
   }
 }
