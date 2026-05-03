@@ -1,0 +1,360 @@
+{
+  "RMF": {
+    "Description": "Descripción",
+    "DescriptionPlaceholder": "Introduce la descripción y trasfondo de la raza...",
+    "RacialAbilitiesPlaceholder": "Introduce las habilidades raciales y rasgos especiales...",
+    "CharacterSheet": "Hoja de Personaje RMF",
+    "ItemSheet": "Hoja de Objeto RMF",
+    "RaceSheet": "Hoja de Raza RMF",
+    "SkillSheet": "Hoja de Habilidad RMF",
+    "CategorySheet": "Hoja de Categoría RMF",
+    "RealmSheet": "Hoja de Reino RMF",
+    "ProfessionSheet": "Hoja de Profesión RMF",
+    "ProfessionName": "Nombre de Profesión",
+    "CharacterName": "Nombre del Personaje",
+    "Level": "Nivel",
+    "Profession": "Profesión",
+    "Realm": "Reino",
+    "Experience": "Experiencia",
+    "ClickToRoll": "Pulsa para tirar",
+    "NoSkill": "Sin habilidad",
+    "ProfessionPlaceholder": "Sin profesión",
+    "RacePlaceholder": "Sin raza",
+    "RealmPlaceholder": "Sin reino",
+    "RaceName": "Nombre de Raza",
+    "RacialAbilities": "Habilidades Raciales",
+    "BackgroundOptions": "Opciones de Trasfondo",
+    "ResistanceType": "Tipo de Resistencia",
+    "NewItem": {
+      "equipment": "Nuevo Equipo",
+      "race": "Nueva Raza",
+      "skill": "Nueva Habilidad",
+      "profession": "Nueva Profesión"
+    },
+    "Tabs": {
+      "Basic": "Básico",
+      "Advanced": "Avanzado",
+      "Background": "Trasfondo",
+      "Stats": "Estadísticas",
+      "Skills": "Habilidades",
+      "Equipment": "Equipo",
+      "ManagePlayer": "Gestionar Jugador",
+      "Details": "Detalles",
+      "Progression": "Progresión",
+      "Progressions": "Progresiones",
+      "Purchases": "Compras",
+      "Effects": "Efectos",
+      "Resistances": "Resistencias"
+    },
+    "Skill": {
+      "RankBonusProgression": "Progresión de Bonus por Rango",
+      "Level": "Nivel",
+      "Amount": "Cantidad",
+      "MaxRanksPerLevel": "Máximo de rangos por nivel alcanzado",
+      "Bonuses": "Bonificadores",
+      "TotalRankBonus": "Total Rangos",
+      "TotalCategoryBonus": "Total Categoría",
+      "Progressions": {
+        "Standard": "Estándar",
+        "Combined": "Combinada",
+        "Limited": "Limitada",
+        "Special": "Especial"
+      }
+    },
+    "Sections": {
+      "MainStats": "Atributos Principales",
+      "DerivedStats": "Atributos Derivados",
+      "Resistances": "Resistencias"
+    },
+    "Stats": {
+      "chAgility": "Agilidad",
+      "chConstitution": "Constitución",
+      "chMemory": "Memoria",
+      "chReasoning": "Razón",
+      "chSelfDiscipline": "Autodisciplina",
+      "chEmpathy": "Empatía",
+      "chIntuition": "Intuición",
+      "chPresence": "Presencia",
+      "chQuickness": "Rapidez",
+      "chStrength": "Fuerza"
+    },
+    "StatLabels": {
+      "Attribute": "Atributo",
+      "Temp": "Temp",
+      "Pot": "Pot",
+      "Basic": "Base",
+      "Race": "Raza",
+      "Spec": "Esp",
+      "Total": "Total",
+      "Bonus": "Bonus"
+    },
+    "Resistances": {
+      "essence": "Esencia",
+      "channeling": "Canalización",
+      "mentalism": "Mentalismo",
+      "poison": "Veneno",
+      "disease": "Enfermedad"
+    },
+    "Race": {
+      "BodyDevelopment": "Desarrollo Corporal",
+      "PPChanneling": "PP Canalización",
+      "PPEssence": "PP Esencia",
+      "PPMentalism": "PP Mentalismo",
+      "Progression": "Progresión",
+      "ProgressionString": "Valor (cero/T1/T2/T3/T4)",
+      "ProgressionHint": "Formato: cero/tier1/tier2/tier3/tier4 (p. ej., 0/6/4/2/1).",
+      "HobbyRanks": "Rangos de Afición",
+      "RacialRanks": {
+        "Categories": "Rangos Raciales (Categorías)",
+        "Skills": "Rangos Raciales (Habilidades)",
+        "Total": "Total",
+        "None": "No hay rangos raciales definidos."
+      },
+      "SpecialSkills": {
+        "Everyman": "Habilidades Comunes",
+        "Restricted": "Habilidades Restringidas",
+        "None": "No hay habilidades especiales definidas."
+      },
+      "StandardHobbySkills": "Aficiones Estándar",
+      "StandardHobbySkillsPlaceholder": "Lista separada por comas de aficiones estándar",
+      "StandardHobbySkillsNone": "No hay aficiones estándar definidas."
+    },
+    "Background": {
+      "Nationality": "Nacionalidad",
+      "Home": "Hogar",
+      "Deity": "Deidad",
+      "Patron": "Patrón",
+      "Parents": "Padres",
+      "Spouse": "Cónyuge",
+      "Children": "Hijos",
+      "Other": "Otros",
+      "Description": "Descripción",
+      "NationalityPlaceholder": "Introduce la nacionalidad",
+      "HomePlaceholder": "Introduce el hogar",
+      "DeityPlaceholder": "Introduce la deidad o fe",
+      "PatronPlaceholder": "Introduce el patrón o mentor",
+      "ParentsPlaceholder": "Información sobre los padres",
+      "SpousePlaceholder": "Información sobre el cónyuge",
+      "ChildrenPlaceholder": "Información sobre los hijos",
+      "OtherPlaceholder": "Otra información de trasfondo",
+      "DescriptionPlaceholder": "Descripción del personaje"
+    },
+    "Skills": {
+      "Title": "Habilidades",
+      "Skill": "Habilidad",
+      "Category": "Categoría",
+      "Categories": "Categorías",
+      "Uncategorized": "Sin categoría",
+      "NoCategories": "No hay categorías de habilidad asignadas a este personaje.",
+      "NoCategoriesHint": "Arrastra y suelta categorías desde la barra lateral para asignarlas al personaje.",
+      "Classifications": {
+        "movingManeuver": "Maniobra en Movimiento",
+        "staticManeuver": "Maniobra Estática",
+        "offensiveBonus": "Bonus Ofensivo",
+        "specialPurpose": "Propósito Especial"
+      }
+    },
+    "Equipment": {
+      "NoEquipment": "Sin equipo. Pulsa el + para crear objetos.",
+      "CreateEquipment": "Crear Equipo"
+    },
+    "DerivedStats": {
+      "HitPoints": "Puntos de Vida",
+      "HitPointsMax": "PV Totales",
+      "PowerPoints": "Puntos de Poder",
+      "PowerPointsMax": "PP Totales",
+      "DefensiveBonus": "Bonus Defensivo",
+      "ArmorPenalty": "Penalización por Armadura"
+    },
+    "Items": {
+      "Quantity": "Cant",
+      "Weight": "Peso",
+      "Cost": "Coste",
+      "NamePlaceholder": "Nombre del Objeto"
+    },
+    "Actions": {
+      "Roll": "Tirar",
+      "Edit": "Editar",
+      "Delete": "Eliminar",
+      "Create": "Crear",
+      "Apply": "Aplicar",
+      "Cast": "Lanzar",
+      "Attack": "Atacar",
+      "with": "con",
+      "RollInitiative": "Tirar Iniciativa",
+      "RollStat": "Tirar Característica",
+      "RollDamage": "Tirar Daño"
+    },
+    "Chat": {
+      "StatRoll": "Tirada de Característica",
+      "RaceApplied": "Raza Aplicada",
+      "StatBonuses": "Bonus de Características",
+      "Character": "Personaje",
+      "Race": "Raza",
+      "Dice": "Dado",
+      "TotalResult": "Resultado Total",
+      "Formula": "Fórmula",
+      "Applied": "Aplicado"
+    },
+    "Messages": {
+      "DamageApplied": "{name} recibe {damage} de daño ({remaining} PV restantes)",
+      "NoActorSelected": "No hay personaje seleccionado",
+      "StatNotFound": "Característica {stat} no encontrada",
+      "AlreadyHasRace": "Este personaje ya tiene una raza asignada",
+      "AlreadyHasRealm": "Este personaje ya tiene un reino asignado",
+      "AlreadyHasCategory": "Esta categoría ya está asignada"
+    },
+    "Dialogs": {
+      "DeleteItem": "Eliminar Objeto",
+      "DeleteItemConfirmShort": "¿Eliminar?",
+      "DeleteItemConfirm": "¿Seguro que quieres eliminar {name}?",
+      "EditDescription": "Editar Descripción: {name}"
+    },
+    "Settings": {
+      "DebugMode": {
+        "Name": "Modo Depuración",
+        "Hint": "Activa el log de depuración del sistema RMF"
+      },
+      "InitiativeFormula": {
+        "Name": "Fórmula de Iniciativa",
+        "Hint": "Fórmula que se usa para las tiradas de iniciativa"
+      },
+      "AutoCalculateStats": {
+        "Name": "Calcular Estadísticas Derivadas",
+        "Hint": "Calcula automáticamente PV, PP y resistencias"
+      },
+      "DefaultRollMode": {
+        "Name": "Modo de Tirada por Defecto",
+        "Hint": "Visibilidad por defecto de las tiradas de dados"
+      },
+      "RuleBooks": {
+        "Name": "Libros de Reglas",
+        "Hint": "Libros adquiridos y disponibles aquí",
+        "Options": {
+          "None": "Ninguno",
+          "Basic": "Básico"
+        }
+      },
+      "MigrationVersion": {
+        "Name": "Última Versión de Migración Aplicada",
+        "Hint": "Interno — gestionado por el sistema de migraciones. No editar a mano."
+      },
+      "MigrationInProgress": {
+        "Name": "Migración en Curso",
+        "Hint": "Flag interno activo mientras se ejecuta una migración."
+      }
+    },
+    "RollMode": {
+      "Public": "Tirada Pública",
+      "GM": "Tirada Privada (GM)",
+      "Blind": "Tirada a Ciegas",
+      "Self": "Solo para mí"
+    },
+    "Common": {
+      "Empty": "—"
+    },
+    "Errors": {
+      "ImagePickerFailed": "El selector de imagen falló"
+    },
+    "Notifications": {
+      "InsufficientPermissions": "No tienes permiso para realizar esta acción.",
+      "ActionFailed": "La acción falló. Revisa la consola para más detalles."
+    },
+    "Category": {
+      "NamePlaceholder": "Nombre de Categoría",
+      "DPCost": "Coste de DP",
+      "DPCostSummary": "Coste DP (1/2/3)",
+      "DPCostFirst": "1er Rango",
+      "DPCostSecond": "2º Rango",
+      "DPCostThird": "3er Rango",
+      "BoughtByLevel": "Comprados por Nivel",
+      "RankBonusProgression": "Progresión de Rango",
+      "Ranks": "Rangos",
+      "FreeRanks": "Rangos Gratuitos",
+      "TotalRankBonus": "Total por Rango",
+      "TotalStatsBonus": "Total Estadísticas",
+      "TotalBonus": "Total",
+      "Stat1": "Característica 1",
+      "Stat2": "Característica 2",
+      "Stat3": "Característica 3",
+      "StatBonus": "Característica",
+      "ProfessionBonus": "Profesión",
+      "Spec1": "Esp 1",
+      "Spec2": "Esp 2",
+      "Spec1Bonus": "Esp 1",
+      "Spec2Bonus": "Esp 2",
+      "Source": "Fuente",
+      "Description": "Descripción",
+      "Group": "Grupo",
+      "NoActorAssigned": "Asigna esta categoría a un personaje para editar las compras",
+      "Progressions": {
+        "Standard": "Estándar",
+        "NonStandard": "No Estándar"
+      },
+      "Groups": {
+        "None": "Ninguno",
+        "Armor": "Armadura",
+        "Artistic": "Artístico",
+        "Athletic": "Atlético",
+        "Awareness": "Percepción",
+        "BodyDevelopment": "Desarrollo Corporal",
+        "CombatManeuvers": "Maniobras de Combate",
+        "Communications": "Comunicación",
+        "Craft": "Oficios",
+        "DirectedSpells": "Hechizos Dirigidos",
+        "Influence": "Influencia",
+        "Lore": "Saberes",
+        "MartialArts": "Artes Marciales",
+        "Outdoor": "Exterior",
+        "PowerAwareness": "Percepción del Poder",
+        "PowerPointDevelopment": "Desarrollo de Puntos de Poder",
+        "Science": "Ciencia",
+        "SelfControl": "Autocontrol",
+        "Subterfuge": "Subterfugio",
+        "Technical": "Técnico",
+        "Urban": "Urbano",
+        "Weapon": "Armas"
+      }
+    },
+    "Realm": {
+      "NamePlaceholder": "Nombre del Reino",
+      "PowerPointsType": "Tipo de Puntos de Poder",
+      "PowerPointsTypes": {
+        "Essence": "Esencia",
+        "Channeling": "Canalización",
+        "Mentalism": "Mentalismo"
+      }
+    },
+    "Profession": {
+      "NamePlaceholder": "Nombre de Profesión",
+      "PrimeStats": "Características Primarias",
+      "PrimeStatsHint": "Características que definen la especialización de esta profesión.",
+      "ProfessionalBonuses": "Bonus Profesionales",
+      "BonusName": "Bonus",
+      "BonusValue": "Valor",
+      "EverymanSkills": "Habilidades Comunes",
+      "OccupationalSkills": "Habilidades Ocupacionales",
+      "RestrictedSkills": "Habilidades Restringidas",
+      "CategoryPrice": "Precios de Categoría (DP)",
+      "SpellPrice": "Precios de Hechizos (DP)",
+      "SpellGroup": "Grupo de Hechizos",
+      "TrainingPackages": "Paquetes de Entrenamiento",
+      "PackageName": "Paquete",
+      "PackageCost": "Coste DP",
+      "None": "Ninguno definido."
+    }
+  },
+  "TYPES": {
+    "Actor": {
+      "character": "Personaje"
+    },
+    "Item": {
+      "equipment": "Equipo",
+      "race": "Raza",
+      "skill": "Habilidad",
+      "category": "Categoría",
+      "realm": "Reino",
+      "profession": "Profesión"
+    }
+  }
+}

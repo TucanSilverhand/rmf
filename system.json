@@ -25,6 +25,12 @@
       "name": "English",
       "path": "lang/en.json",
       "flags": {}
+    },
+    {
+      "lang": "es",
+      "name": "Español",
+      "path": "lang/es.json",
+      "flags": {}
     }
   ],
   "grid": {

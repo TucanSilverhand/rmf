@@ -1,7 +1,5 @@
 {
   "RMF": {
-    "SystemTitle": "RoleMaster Fantasy",
-    "SystemReady": "RMF System loaded successfully",
     "Description": "Description",
     "DescriptionPlaceholder": "Enter race description and lore...",
     "RacialAbilitiesPlaceholder": "Enter racial abilities and special traits...",
@@ -18,17 +16,6 @@
     "Profession": "Profession",
     "Realm": "Realm",
     "Experience": "Experience",
-    "Temp": "Temp",
-    "Potential": "Potential",
-    "Basic": "Basic",
-    "Special": "Special",
-    "Total": "Total",
-    "Stat": "Stat",
-    "Bonus": "Bonus",
-    "HitPoints": "Hit Points",
-    "PowerPoints": "Power Points",
-    "Resistance": "Resistance",
-    "Value": "Value",
     "ClickToRoll": "Click to roll",
     "NoSkill": "No skill",
     "ProfessionPlaceholder": "Without profession",
@@ -60,9 +47,6 @@
       "Resistances": "Resistances"
     },
     "Skill": {
-      "Group": "Group",
-      "Classification": "Classification",
-      "CommonlyUsed": "Commonly Used",
       "RankBonusProgression": "Rank Bonus Progression",
       "Level": "Level",
       "Amount": "Amount",
@@ -78,13 +62,8 @@
       }
     },
     "Sections": {
-      "Background": "Character Background",
-      "BackgroundInfo": "Background Information",
-      "Stats": "Character Statistics",
       "MainStats": "Main Attributes",
       "DerivedStats": "Derived Attributes",
-      "Skills": "Skills & Abilities",
-      "Equipment": "Equipment & Inventory",
       "Resistances": "Resistances"
     },
     "Stats": {
@@ -107,8 +86,7 @@
       "Race": "Race",
       "Spec": "Spec",
       "Total": "Total",
-      "Bonus": "Bonus",
-      "Action": "Action"
+      "Bonus": "Bonus"
     },
     "Resistances": {
       "essence": "Essence",
@@ -163,20 +141,12 @@
     },
     "Skills": {
       "Title": "Skills",
-      "CreateSkill": "Create Skill",
       "Skill": "Skill",
       "Category": "Category",
       "Categories": "Categories",
-      "Attribute": "Attribute",
-      "Ranks": "Ranks",
-      "Bonus": "Bonus",
-      "Actions": "Actions",
       "Uncategorized": "Uncategorized",
-      "NoSkills": "No skills defined. Use the 'Create Skill' button to add skills.",
       "NoCategories": "No skill categories assigned to this character.",
       "NoCategoriesHint": "Drag & drop categories from the Items sidebar to assign them to this character.",
-      "RollSkill": "Roll {skill}",
-      "DeleteSkill": "Delete {skill}",
       "Classifications": {
         "movingManeuver": "Moving Maneuver",
         "staticManeuver": "Static Maneuver",
@@ -185,12 +155,8 @@
       }
     },
     "Equipment": {
-      "General": "General Equipment",
-      "Equipment": "Equipment",
       "NoEquipment": "No equipment. Use the + button to create objects.",
-      "CreateEquipment": "Create Equipment",
-      "Quantity": "Qty",
-      "Weight": "Weight"
+      "CreateEquipment": "Create Equipment"
     },
     "DerivedStats": {
       "HitPoints": "Hit Points",
@@ -201,8 +167,6 @@
       "ArmorPenalty": "Armor Penalty"
     },
     "Items": {
-      "Equipment": "Equipment",
-      "Races": "Races",
       "Quantity": "Qty",
       "Weight": "Weight",
       "Cost": "Cost",
@@ -227,13 +191,11 @@
       "StatBonuses": "Stat Bonuses",
       "Character": "Character",
       "Race": "Race",
-      "Effect": "Effect",
+      "Dice": "Dice",
+      "TotalResult": "Total Result",
       "Formula": "Formula",
-      "Result": "Result"
+      "Applied": "Applied"
     },
-    "CreateEquipment": "Create New Equipment",
-    "EditItem": "Edit Item",
-    "DeleteItem": "Delete Item",
     "Messages": {
       "DamageApplied": "{name} takes {damage} damage ({remaining} HP remaining)",
       "NoActorSelected": "No actor selected",
@@ -272,6 +234,14 @@
           "None": "None",
           "Basic": "Basic"
         }
+      },
+      "MigrationVersion": {
+        "Name": "Last Applied Migration Version",
+        "Hint": "Internal — managed by the migration runner. Do not edit by hand."
+      },
+      "MigrationInProgress": {
+        "Name": "Migration In Progress",
+        "Hint": "Internal flag set while a migration is running."
       }
     },
     "RollMode": {
@@ -281,7 +251,6 @@
       "Self": "Self Roll"
     },
     "Common": {
-      "Type": "Type",
       "Empty": "—"
     },
     "Errors": {

@@ -27,6 +27,7 @@ import { RMFActor, RMFItem } from "./module/data-models.mjs";
 import { RMFHooks } from "./module/hooks.mjs";
 import { SKILL_CLASSIFICATIONS } from "./module/utils/rank-bonus.mjs";
 import { STAT_SHORT_TO_FULL, RMF_CONSTANTS } from "./module/utils/constants.mjs";
+import { registerMigrationSettings, runWorldMigration } from "./module/migration.mjs";
 
 /**
  * Global system namespace for RMF system configuration and utilities
@@ -252,6 +253,9 @@ function _registerSystemSettings() {
     type: Array,
     default: ["none"]
   });
+
+  // Migration framework settings (hidden from the config UI).
+  registerMigrationSettings();
 }
 
 /**
@@ -391,6 +395,15 @@ async function _initializeReadyTimeConfigs() {
   // Apply debug mode setting and lazy-load debug helpers when enabled
   CONFIG.RMF.debug = game.settings.get("rmf", "debugMode");
   if (CONFIG.RMF.debug) await _loadDebugModule();
+
+  // Run world migrations (no-op when versions match). Only the GM client
+  // executes; players abort silently. Errors are logged but do not block
+  // initialization — the runner notifies the user via UI.
+  try {
+    await runWorldMigration();
+  } catch (err) {
+    console.error("RMF | World migration aborted:", err);
+  }
 }
 
 /**

@@ -24,6 +24,7 @@ import {
   syncRealmsToCompendium,
   syncProfessionsToCompendium
 } from "./importers.mjs";
+import { runWorldMigration } from "./migration.mjs";
 
 /**
  * Centralized hook management for the RMF system
@@ -91,6 +92,10 @@ export class RMFHooks {
     game.rmf.syncSkillsToCompendium = syncSkillsToCompendium;
     game.rmf.syncRealmsToCompendium = syncRealmsToCompendium;
     game.rmf.syncProfessionsToCompendium = syncProfessionsToCompendium;
+
+    // Migration framework — `runWorldMigration({ force: true })` re-runs
+    // every step (debug only). The init flow already calls it once.
+    game.rmf.runWorldMigration = runWorldMigration;
 
     // Log system information
     console.log(`RMF | Version: ${game.system.version}`);
