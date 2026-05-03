@@ -3,7 +3,59 @@
  * FoundryVTT v13.341 compatible (no deprecated V1 APIs)
  */
 
-import { normalizeCategoryProgression, normalizeSkillProgression } from "./utils/rank-bonus.mjs";
+import {
+  normalizeCategoryProgression,
+  normalizeSkillProgression,
+  normalizeSkillClassification
+} from "./utils/rank-bonus.mjs";
+
+/**
+ * Throw a permission error unless the current user is GM.
+ * Importers/sync functions write to the world compendium and to world-level
+ * folders, so they must never run from a player macro or on a player client.
+ *
+ * @param {string} operation - human-readable name used in the error message
+ * @throws {Error} when invoked by a non-GM user
+ * @private
+ */
+function _assertGM(operation) {
+  if (!game.user?.isGM) {
+    const msg = `RMF | "${operation}" requires GM privileges.`;
+    ui.notifications?.error(msg);
+    throw new Error(msg);
+  }
+}
+
+/**
+ * Validate that a URL/path used as data source is safe to fetch.
+ * Accepts only:
+ *   - relative paths under systems/, worlds/, modules/ (Foundry-served)
+ *   - absolute https:// URLs
+ * Rejects: http://, file://, data:, javascript:, ftp://, anything else.
+ *
+ * @param {string} url - the trimmed source string
+ * @throws {Error} when the URL falls outside the allowlist
+ * @private
+ */
+function _assertSafeSourceUrl(url) {
+  if (typeof url !== "string" || !url.length) {
+    throw new Error("RMF | importer source URL is empty.");
+  }
+
+  // Strip a single leading "/" so "/systems/foo" and "systems/foo" both validate.
+  const path = url.startsWith("/") ? url.slice(1) : url;
+
+  // Allow Foundry-served relative paths.
+  if (/^(systems|worlds|modules)\//.test(path)) return;
+
+  // Allow absolute https only.
+  if (/^https:\/\//i.test(url)) return;
+
+  throw new Error(
+    `RMF | Refusing to fetch importer source "${url}". ` +
+    `Only paths under systems/, worlds/, modules/, or absolute https:// URLs are allowed.`
+  );
+}
 
 /**
  * Import multiple Race items from a JSON source.
@@ -18,6 +70,7 @@ import { normalizeCategoryProgression, normalizeSkillProgression } from "./utils
  * @returns {Promise<{created: Item[], skipped: string[], errors: any[]}>}
  */
 export async function importRaces(source, options = {}) {
+  _assertGM("importRaces");
   const folderName = options.folderName ?? "Races";
   const dedupeByName = options.dedupeByName ?? false;
 
@@ -109,6 +162,7 @@ export async function importRaces(source, options = {}) {
  * @returns {Promise<{created: number, updated: number, skipped: number, errors: any[]}>}
  */
 export async function syncRacesToCompendium(source, options = {}) {
+  _assertGM("syncRacesToCompendium");
   const packCollection = options.pack ?? "world.basic-core";
   const folderName = options.folderName ?? "Races";
   const createMissing = options.createMissing ?? true;
@@ -218,7 +272,8 @@ async function resolveSource(source) {
   if (s.startsWith("[") || s.startsWith("{")) {
     try { return JSON.parse(s); } catch { /* fallthrough */ }
   }
-  // Treat as URL
+  // Treat as URL — validate against allowlist before fetching.
+  _assertSafeSourceUrl(s);
   const resp = await fetch(s);
   if (!resp.ok) throw new Error(`Failed to fetch ${s}: ${resp.status}`);
   return await resp.json();
@@ -258,6 +313,7 @@ async function getRaceTemplate() {
  * @returns {Promise<{created: Item[], skipped: string[], errors: any[]}>}
  */
 export async function importCategories(source, options = {}) {
+  _assertGM("importCategories");
   const folderName = options.folderName ?? "Categories";
   const dedupeByName = options.dedupeByName ?? false;
 
@@ -375,6 +431,7 @@ export async function importCategories(source, options = {}) {
  * @returns {Promise<{created: Item[], skipped: string[], errors: any[]}>}
  */
 export async function importSkills(source, options = {}) {
+  _assertGM("importSkills");
   const folderName = options.folderName ?? "Skills";
   const dedupeByName = options.dedupeByName ?? false;
 
@@ -442,6 +499,7 @@ export async function importSkills(source, options = {}) {
  * @returns {Promise<{created: number, updated: number, skipped: number, errors: any[]}>}
  */
 export async function syncCategoriesToCompendium(source, options = {}) {
+  _assertGM("syncCategoriesToCompendium");
   const packCollection = options.pack ?? "world.basic-core";
   const folderName = options.folderName ?? "Categories";
   const createMissing = options.createMissing ?? true;
@@ -580,6 +638,7 @@ export async function syncCategoriesToCompendium(source, options = {}) {
  * @returns {Promise<{created: number, updated: number, skipped: number, errors: any[]}>}
  */
 export async function syncSkillsToCompendium(source, options = {}) {
+  _assertGM("syncSkillsToCompendium");
   const packCollection = options.pack ?? "world.basic-core";
   const folderName = options.folderName ?? "Skills";
   const createMissing = options.createMissing ?? true;
@@ -719,7 +778,7 @@ function buildSkillSystemData(sysSource, template) {
       rank: normalizeNumber(sysSource?.rank ?? sysSource?.ranks, 0),
       category: String(sysSource?.category ?? ""),
       group: String(sysSource?.group ?? "none"),
-      classification: String(sysSource?.classification ?? "movingManeuver"),
+      classification: normalizeSkillClassification(sysSource?.classification),
       dpCost: normalizeSkillDPCost(sysSource?.dpCost),
       boughtByLevel: normalizeBoughtByLevel(sysSource?.boughtByLevel),
       skillRankBonusProgression: normalizeProgression(sysSource?.skillRankBonusProgression),
@@ -975,6 +1034,7 @@ async function getRealmTemplate() {
  * @returns {Promise<{created: number, updated: number, skipped: number, errors: any[]}>}
  */
 export async function syncRealmsToCompendium(source, options = {}) {
+  _assertGM("syncRealmsToCompendium");
   const packCollection = options.pack ?? "world.basic-core";
   const folderName = options.folderName ?? "Realms";
   const createMissing = options.createMissing ?? true;
@@ -1287,6 +1347,7 @@ function normalizeTrainingPackages(value) {
  * @returns {Promise<{created: Item[], skipped: string[], errors: any[]}>}
  */
 export async function importProfessions(source, options = {}) {
+  _assertGM("importProfessions");
   const folderName = options.folderName ?? "Professions";
   const dedupeByName = options.dedupeByName ?? false;
 
@@ -1353,6 +1414,7 @@ export async function importProfessions(source, options = {}) {
  * @returns {Promise<{created: number, updated: number, skipped: number, errors: any[]}>}
  */
 export async function syncProfessionsToCompendium(source, options = {}) {
+  _assertGM("syncProfessionsToCompendium");
   const packCollection = options.pack ?? "world.basic-core";
   const folderName = options.folderName ?? "Professions";
   const createMissing = options.createMissing ?? true;

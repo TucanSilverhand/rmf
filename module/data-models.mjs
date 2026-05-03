@@ -14,7 +14,8 @@ import {
   computeCategoryRankBonus,
   computeSkillRankBonus,
   normalizeCategoryProgression,
-  normalizeSkillProgression
+  normalizeSkillProgression,
+  normalizeSkillClassification
 } from "./utils/rank-bonus.mjs";
 
 /**
@@ -156,60 +157,36 @@ export class RMFActor extends Actor {
       // Recalculate bonuses for each changed stat
       for (const statKey in changed.system.chStats) {
         const statChange = changed.system.chStats[statKey];
-        
+
         // When temp value changes, recalculate basic, total and bonus
         if (statChange && 'temp' in statChange) {
           const currentStat = this.system.chStats[statKey] || {};
-          const newTemp = statChange.temp;
-          
-          // console.log(`RMF | Recalculating ${statKey} with temp=${newTemp}`);
-          
+          const newTemp = Number(statChange.temp);
+
+          // Reject non-finite inputs (empty string, "abc", NaN) — fall back
+          // to the previous persisted value so we never write NaN to the DB.
+          if (!Number.isFinite(newTemp)) {
+            statChange.temp = Number(currentStat.temp) || 0;
+            continue;
+          }
+
           // Calculate new basic bonus using RoleMaster table
           const newBasic = this._calculateBonus(newTemp);
-          
-          // Preserve current race and spec modifiers
-          const race = statChange.race !== undefined ? statChange.race : (currentStat.race || 0);
-          const spec = statChange.spec !== undefined ? statChange.spec : (currentStat.spec || 0);
-          
+
+          // Preserve current race and spec modifiers (coerce to finite numbers)
+          const rawRace = statChange.race !== undefined ? statChange.race : currentStat.race;
+          const rawSpec = statChange.spec !== undefined ? statChange.spec : currentStat.spec;
+          const race = Number.isFinite(Number(rawRace)) ? Number(rawRace) : 0;
+          const spec = Number.isFinite(Number(rawSpec)) ? Number(rawSpec) : 0;
+
           // Calculate new total
           const newTotal = newBasic + race + spec;
-          
-          console.log(`RMF | ${statKey}: basic=${newBasic}, race=${race}, spec=${spec}, total=${newTotal}`);
-          
-          // Apply calculated changes to the update object
-          if (!changed.system.chStats[statKey]) {
-            changed.system.chStats[statKey] = {};
-          }
-          
-          changed.system.chStats[statKey].basic = newBasic;
-          changed.system.chStats[statKey].total = newTotal;
-          changed.system.chStats[statKey].bonus = newTotal;
-        }
-      }
-    }
-  }
 
-  /**
-   * Handle post-update processing to refresh UI elements
-   * 
-   * Triggers re-rendering of any open character sheets when
-   * statistics are updated to ensure UI consistency.
-   * 
-   * @override
-   * @async
-   * @memberof RMFActor
-   * @param {Object} changed - The changes that were applied
-   * @param {Object} options - Update options
-   * @param {string} userId - ID of the user who made the changes
-   */
-  async _onUpdate(changed, options, userId) {
-    super._onUpdate(changed, options, userId);
-    
-    // Force re-render of open sheets when stats change
-    if (changed.system?.chStats) {
-      for (let sheet of Object.values(this.apps)) {
-        if (sheet.rendered) {
-          sheet.render(false);
+          // Apply calculated changes to the update object
+          statChange.temp = newTemp;
+          statChange.basic = newBasic;
+          statChange.total = newTotal;
+          statChange.bonus = newTotal;
         }
       }
     }
@@ -440,7 +417,9 @@ export class RMFActor extends Actor {
       system.derivedStats.resistances.mentalism += addMent;
       system.derivedStats.resistances.poison += addPois;
       system.derivedStats.resistances.disease += addDis;
-    } catch (_) {}
+    } catch (err) {
+      console.warn(`RMF | Failed to apply race resistance modifiers for "${this.name}":`, err);
+    }
   }
 
   /**
@@ -948,7 +927,7 @@ export class RMFItem extends Item {
     }
     if (typeof system.rank !== "number") system.rank = 0;
     if (typeof system.category !== "string") system.category = "";
-    if (typeof system.classification !== "string") system.classification = "movingManeuver";
+    system.classification = normalizeSkillClassification(system.classification);
     if (typeof system.profBonus !== "number") system.profBonus = 0;
     if (typeof system.spec1Bonus !== "number") system.spec1Bonus = 0;
     if (typeof system.spec2Bonus !== "number") system.spec2Bonus = 0;

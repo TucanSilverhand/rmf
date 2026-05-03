@@ -251,35 +251,6 @@ export class RMFRaceSheet extends HandlebarsApplicationMixin(
   }
 
   /**
-   * @override
-   */
-  async _updateObject(event, formData) {
-    // Debug: verify _updateObject is being triggered and what keys are submitted
-    try {
-      if (CONFIG?.RMF?.debug) {
-        const keys = Object.keys(formData || {});
-        const meaningful = Object.fromEntries(
-          Object.entries(formData || {}).filter(
-            ([k]) => k === "name" || k.startsWith("system.")
-          )
-        );
-        console.debug("RMF DEBUG | RMFRaceSheet._updateObject called", {
-          keys,
-          eventType: event?.type,
-          meaningful,
-        });
-      }
-    } catch {}
-
-    // Delegate to the base implementation which updates the Item document
-    const result = await super._updateObject(event, formData);
-
-    // Removed autosave notification to match actor-sheet behavior
-
-    return result;
-  }
-
-  /**
    * Initialize race sheet on first render
    *
    * Sets up tab navigation for the race sheet's multi-section interface

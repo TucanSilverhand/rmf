@@ -176,7 +176,13 @@
       "NoCategories": "No skill categories assigned to this character.",
       "NoCategoriesHint": "Drag & drop categories from the Items sidebar to assign them to this character.",
       "RollSkill": "Roll {skill}",
-      "DeleteSkill": "Delete {skill}"
+      "DeleteSkill": "Delete {skill}",
+      "Classifications": {
+        "movingManeuver": "Moving Maneuver",
+        "staticManeuver": "Static Maneuver",
+        "offensiveBonus": "Offensive Bonus",
+        "specialPurpose": "Special Purpose"
+      }
     },
     "Equipment": {
       "General": "General Equipment",

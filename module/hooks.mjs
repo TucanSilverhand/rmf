@@ -53,7 +53,6 @@ export class RMFHooks {
     Hooks.on("createActor", this.#onCreateActor.bind(this));
     Hooks.on("preUpdateActor", this.#onPreUpdateActor.bind(this));
     Hooks.on("updateActor", this.#onUpdateActor.bind(this));
-    Hooks.on("updateToken", this.#onUpdateToken.bind(this));
     Hooks.on("createItem", this.#onCreateItem.bind(this));
     Hooks.on("updateItem", this.#onUpdateItem.bind(this));
     Hooks.on("deleteItem", this.#onDeleteItem.bind(this));
@@ -214,34 +213,6 @@ export class RMFHooks {
     
     if (CONFIG.RMF?.debug && Object.keys(changes).length > 0) {
       console.log(`RMF DEBUG | Updated actor: ${actor.name}`, changes);
-    }
-  }
-
-  /**
-   * Token update hook
-   * 
-   * Ensures derived statistics are recalculated when token actor data changes.
-   * 
-   * @private
-   * @static
-   * @async
-   * @param {Token} token - The token being updated
-   * @param {Object} updates - The update data
-   * @param {Object} options - Update options
-   * @param {string} userId - ID of the user making the update
-   */
-  static async #onUpdateToken(token, updates, options, userId) {
-    // Only process if actor data was updated
-    if (!updates.actorData) return;
-
-    const actor = token.actor;
-    if (!actor || actor.type !== "character") return;
-
-    // Trigger derived data recalculation
-    actor.prepareDerivedData();
-
-    if (CONFIG.RMF?.debug) {
-      console.log(`RMF DEBUG | Token actor data updated: ${actor.name}`);
     }
   }
 

@@ -202,6 +202,23 @@ export class RMFActions {
    * @param {string} params.flavor
    * @param {string} [params.label]
    */
+  /**
+   * Build a "1d100±N" formula from a possibly-corrupted bonus value.
+   * Coerces to a finite integer, falling back to 0 when the input is
+   * undefined / NaN / non-numeric. Prevents Roll-parsing exceptions
+   * caused by partially-initialized stat blocks.
+   *
+   * @private
+   * @static
+   * @param {*} rawBonus
+   * @returns {{ formula: string, bonus: number }}
+   */
+  static #buildD100Formula(rawBonus) {
+    const n = Number(rawBonus);
+    const bonus = Number.isFinite(n) ? Math.trunc(n) : 0;
+    return { formula: `1d100${bonus >= 0 ? '+' : ''}${bonus}`, bonus };
+  }
+
   static async #postStyledRollMessage({ actor, roll, bonus = 0, flavor, label = "" }) {
     const baseRoll = Number(roll.dice?.[0]?.total ?? roll.total ?? 0);
     const bonusValue = Number(bonus) || 0;
@@ -252,10 +269,9 @@ export class RMFActions {
       return;
     }
 
-    // Construct roll formula
-    const bonus = stat.total || 0;
-    const formula = `1d100${bonus >= 0 ? '+' : ''}${bonus}`;
-    
+    // Build d100 formula with NaN-safe bonus coercion.
+    const { formula, bonus } = RMFActions.#buildD100Formula(stat.total);
+
     // Execute roll
     const roll = await new Roll(formula).evaluate();
     
@@ -299,13 +315,12 @@ export class RMFActions {
       return;
     }
 
-    // Get skill bonus (from category + stats + special)
-    const skillBonus = skill.system.bonus || 0;
-    const formula = `1d100${skillBonus >= 0 ? '+' : ''}${skillBonus}`;
-    
+    // Get skill bonus (from category + stats + special) with NaN-safe coercion.
+    const { formula, bonus: skillBonus } = RMFActions.#buildD100Formula(skill.system.bonus);
+
     // Execute roll
     const roll = await new Roll(formula).evaluate();
-    
+
     await RMFActions.#postStyledRollMessage({
       actor: this.document,
       roll,
@@ -333,10 +348,9 @@ export class RMFActions {
     
     const actor = this.document;
     
-    // Use defensive bonus value directly from derived stats
-    const bonus = actor.system.derivedStats?.defensiveBonus || 0;
-    const formula = `1d100${bonus >= 0 ? '+' : ''}${bonus}`;
-    
+    // Use defensive bonus value directly from derived stats (NaN-safe).
+    const { formula, bonus } = RMFActions.#buildD100Formula(actor.system.derivedStats?.defensiveBonus);
+
     const roll = await new Roll(formula).evaluate();
     
     await RMFActions.#postStyledRollMessage({
@@ -367,10 +381,9 @@ export class RMFActions {
     const resistType = target.dataset.resistance;
     const actor = this.document;
     
-    // Get resistance bonus from derived stats
-    const resistance = actor.system.derivedStats?.resistances?.[resistType] || 0;
-    const formula = `1d100${resistance >= 0 ? '+' : ''}${resistance}`;
-    
+    // Get resistance bonus from derived stats (NaN-safe).
+    const { formula, bonus: resistance } = RMFActions.#buildD100Formula(actor.system.derivedStats?.resistances?.[resistType]);
+
     const roll = await new Roll(formula).evaluate();
     
     const resistLabel = game.i18n.localize(`RMF.Resistances.${resistType}`) || resistType;
@@ -412,10 +425,9 @@ export class RMFActions {
       return;
     }
 
-    // Get category total bonus
-    const bonus = category.system.totalBonus || 0;
-    const formula = `1d100${bonus >= 0 ? '+' : ''}${bonus}`;
-    
+    // Get category total bonus (NaN-safe).
+    const { formula, bonus } = RMFActions.#buildD100Formula(category.system.totalBonus);
+
     // Execute roll
     const roll = await new Roll(formula).evaluate();
     
@@ -458,9 +470,9 @@ export class RMFActions {
     }
 
     const NO_SKILL_PENALTY = -15;
-    const baseBonus = Number(category.system.totalBonus ?? 0) || 0;
-    const bonus = baseBonus + NO_SKILL_PENALTY;
-    const formula = `1d100${bonus >= 0 ? "+" : ""}${bonus}`;
+    const rawBase = Number(category.system.totalBonus);
+    const baseBonus = Number.isFinite(rawBase) ? Math.trunc(rawBase) : 0;
+    const { formula, bonus } = RMFActions.#buildD100Formula(baseBonus + NO_SKILL_PENALTY);
 
     const roll = await new Roll(formula).evaluate();
     const noSkillLabel = game.i18n.has("RMF.NoSkill")

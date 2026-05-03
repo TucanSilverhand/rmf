@@ -253,6 +253,7 @@ export class RMFActorSheet extends HandlebarsApplicationMixin(foundry.applicatio
     this._setupTabs(this.element);
     this._setupStatListeners(this.element);
     this._setupGenericChangeListeners(this.element);
+    this._setupNumericSanitizers(this.element);
   // Asegurar actualización (por si cambios internos modifican altura)
   if (!this._headerResizeObserver) this._initHeaderAutoHeight(this.element);
   // Restore scroll and active tab after re-render
@@ -310,21 +311,6 @@ export class RMFActorSheet extends HandlebarsApplicationMixin(foundry.applicatio
     const currentActive = this._activeTab || element.querySelector('.sheet-tabs .item.active')?.dataset?.tab;
     const initialTab = currentActive || 'stats';
     this._setActiveTab(initialTab, element);
-  }
-
-  /**
-   * Activate event listeners as fallback for ApplicationV2
-   * 
-   * Provides backup tab setup in case the ApplicationV2 framework
-   * doesn't properly initialize tab navigation.
-   * 
-   * @param {HTMLElement} html - The sheet's HTML element
-   * @protected
-   */
-  _activateListeners(html) {
-    super._activateListeners?.(html);
-    // Fallback - also setup tabs here in case _onRender doesn't work
-    this._setupTabs(html);
   }
 
   /**
@@ -734,11 +720,38 @@ export class RMFActorSheet extends HandlebarsApplicationMixin(foundry.applicatio
   }
 
   /**
+   * Bind numeric input sanitizers declared via `data-sanitize` attributes.
+   * Replaces inline `oninput=` handlers (incompatible with strict CSP).
+   *
+   * Supported modes:
+   *   - "positiveInt2": digits only, max length 2, range 0-99.
+   *
+   * @param {HTMLElement} html - The sheet's HTML element
+   * @private
+   */
+  _setupNumericSanitizers(html) {
+    const element = html?.querySelector ? html : this.element;
+    if (!element?.querySelectorAll) return;
+
+    const inputs = element.querySelectorAll('input[data-sanitize]');
+    inputs.forEach(input => {
+      if (input._rmfSanitizerBound) return;
+      input._rmfSanitizerBound = true;
+      const mode = input.dataset.sanitize;
+      input.addEventListener('input', () => {
+        if (mode === 'positiveInt2') {
+          input.value = input.value.replace(/[^0-9]/g, '').slice(0, 2);
+        }
+      });
+    });
+  }
+
+  /**
    * Initialize stat input field listeners
-   * 
+   *
    * Binds change handlers to temporary and potential stat input fields
    * to trigger derived stat recalculation on value changes.
-   * 
+   *
    * @param {HTMLElement} html - The sheet's HTML element
    * @private
    */

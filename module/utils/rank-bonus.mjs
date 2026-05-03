@@ -42,6 +42,33 @@ export const CATEGORY_PROGRESSIONS = Object.freeze(Object.keys(RANK_BONUS_TABLES
 export const SKILL_PROGRESSIONS = Object.freeze(Object.keys(RANK_BONUS_TABLES.skill));
 
 /**
+ * Canonical set of skill resolution classifications used by Rolemaster.
+ * Each value matches the i18n key `RMF.Skills.Classifications.<value>`.
+ * Importers and data models normalize against this list to reject typos
+ * and to keep schema migrations local to one place.
+ */
+export const SKILL_CLASSIFICATIONS = Object.freeze([
+  "movingManeuver",
+  "staticManeuver",
+  "offensiveBonus",
+  "specialPurpose"
+]);
+
+/**
+ * Normalize a skill classification string to a valid canonical value.
+ * Unknown / empty inputs fall back to "movingManeuver".
+ * @param {*} value
+ * @returns {'movingManeuver'|'staticManeuver'|'offensiveBonus'|'specialPurpose'}
+ */
+export function normalizeSkillClassification(value) {
+  const lowered = String(value ?? "").trim();
+  if (SKILL_CLASSIFICATIONS.includes(lowered)) return lowered;
+  // Permitir variantes case-insensitive
+  const ci = SKILL_CLASSIFICATIONS.find(c => c.toLowerCase() === lowered.toLowerCase());
+  return ci ?? "movingManeuver";
+}
+
+/**
  * Normalize a category progression to a valid key.
  * Legacy values (notApplicable, na, none, other) collapse to 'nonstandard'.
  * Unknown strings fall back to 'standard'.

@@ -25,6 +25,7 @@ import { RMFRealmSheet } from "./module/realm-sheet.js";
 import { RMFProfessionSheet } from "./module/profession-sheet.js";
 import { RMFActor, RMFItem } from "./module/data-models.mjs";
 import { RMFHooks } from "./module/hooks.mjs";
+import { SKILL_CLASSIFICATIONS } from "./module/utils/rank-bonus.mjs";
 
 /**
  * Global system namespace for RMF system configuration and utilities
@@ -99,21 +100,6 @@ Hooks.once('init', async function() {
     makeDefault: true,
     label: "RMF.ProfessionSheet"
   });
-  
-  
-  
-  
-  // Configure actor sheet classes for compatibility
-  CONFIG.Actor.sheetClasses = CONFIG.Actor.sheetClasses || {};
-  CONFIG.Actor.sheetClasses.character = CONFIG.Actor.sheetClasses.character || {};
-  CONFIG.Actor.sheetClasses.character["rmf"] = {
-    id: "rmf",
-    label: "RMF.CharacterSheet",
-    cls: RMFActorSheet,
-    types: ["character"],
-    makeDefault: true
-  };
-
   // Initialize RMF system configuration namespace.
   // The version is read from system.json at runtime (game.system.version),
   // so we never duplicate the source of truth.
@@ -145,7 +131,12 @@ Hooks.once('init', async function() {
     },
 
     itemTypes: ["equipment", "race", "skill", "category", "realm", "profession"],
-    actorTypes: ["character"]
+    actorTypes: ["character"],
+
+    // Canonical skill classifications. Same set used by data-models and importers
+    // for normalization. The UI can iterate this list to render <select> options
+    // labelled by `RMF.Skills.Classifications.<value>`.
+    skillClassifications: SKILL_CLASSIFICATIONS
   };
   
   // Initialize Handlebars integration
