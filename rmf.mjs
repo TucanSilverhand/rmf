@@ -114,9 +114,11 @@ Hooks.once('init', async function() {
     makeDefault: true
   };
 
-  // Initialize RMF system configuration namespace
+  // Initialize RMF system configuration namespace.
+  // The version is read from system.json at runtime (game.system.version),
+  // so we never duplicate the source of truth.
   CONFIG.RMF = {
-    version: "1.0.0",
+    get version() { return game.system?.version ?? null; },
     debug: false, // Will be configured in ready hook based on settings
     
     // RoleMaster-specific configuration mappings

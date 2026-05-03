@@ -41,10 +41,18 @@ yarn.lock
 
 # Otros
 /.claude
-/.github
 /Documentation
 /system-*
 /tmp/
 /*.carlos.txt
 rmf.code-workspace
-*.md
+
+# Notas/datos WIP en /data/ (no distribuir en futuros commits)
+/data/*_test.json
+/data/*_test.md
+/data/professions.md
+/data/arma_test.md
+
+/.github/copilot-instructions.md
+/CLAUDE.md
+/AGENTS.md

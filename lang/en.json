@@ -16,7 +16,6 @@
     "CharacterName": "Character Name",
     "Level": "Level",
     "Profession": "Profession",
-    "Race": "Race",
     "Realm": "Realm",
     "Experience": "Experience",
     "Temp": "Temp",
@@ -221,6 +220,7 @@
       "RaceApplied": "Race Applied",
       "StatBonuses": "Stat Bonuses",
       "Character": "Character",
+      "Race": "Race",
       "Effect": "Effect",
       "Formula": "Formula",
       "Result": "Result"

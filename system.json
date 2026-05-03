@@ -1,8 +1,8 @@
 {
-  "id": "rmf", 
+  "id": "rmf",
   "title": "RMF - RoleMaster de Fantasía",
   "description": "Sistema no-oficial de RoleMaster de Fantasía para FoundryVTT v13.341. Implementa las mecánicas básicas del sistema de juego RoleMaster con ApplicationV2 y las mejores prácticas de FoundryVTT.",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "compatibility": {
     "minimum": "13.330",
     "verified": "13.341",
@@ -34,16 +34,15 @@
   "initiative": "1d100 + @stats.quickness",
   "primaryTokenAttribute": "system.derivedStats.hitPoints",
   "secondaryTokenAttribute": "system.derivedStats.powerPoints",
-  "url": "https://github.com/tucansilverhand/rmf-foundryvtt",
-  "manifest": "https://github.com/tucansilverhand/rmf-foundryvtt/releases/latest/download/system.json",
-  "download": "https://github.com/tucansilverhand/rmf-foundryvtt/archive/main.zip",
+  "url": "https://github.com/TucanSilverhand/rmf",
+  "manifest": "https://github.com/TucanSilverhand/rmf/releases/latest/download/system.json",
+  "download": "https://github.com/TucanSilverhand/rmf/releases/latest/download/rmf.zip",
   "license": "LICENSE.txt",
   "readme": "README.md",
-  "bugs": "https://github.com/tucansilverhand/rmf-foundryvtt/issues",
-  "changelog": "https://github.com/tucansilverhand/rmf-foundryvtt/blob/main/CHANGELOG.md",
+  "bugs": "https://github.com/TucanSilverhand/rmf/issues",
+  "changelog": "https://github.com/TucanSilverhand/rmf/blob/production/CHANGELOG.md",
   "flags": {
     "rmf": {
-      "version": "1.0.0",
       "applicationV2": true,
       "supportsFoundryV13": true
     }
