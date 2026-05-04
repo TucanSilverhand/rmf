@@ -392,6 +392,10 @@ async function _preloadHandlebarsTemplates() {
     "parts/item-profession-navigation": "systems/rmf/templates/parts/item-profession-navigation.hbs",
     "parts/item-profession-details": "systems/rmf/templates/parts/item-profession-details.hbs",
     "parts/item-profession-advanced": "systems/rmf/templates/parts/item-profession-advanced.hbs",
+    // Reusable table partials shared by the profession details + advanced tabs
+    "parts/profession-bonus-table": "systems/rmf/templates/parts/profession-bonus-table.hbs",
+    "parts/profession-training-table": "systems/rmf/templates/parts/profession-training-table.hbs",
+    "parts/profession-dpcost-table": "systems/rmf/templates/parts/profession-dpcost-table.hbs",
 
     // Chat templates
     "rmf/chat/stat-roll": "systems/rmf/templates/chat/stat-roll.hbs",

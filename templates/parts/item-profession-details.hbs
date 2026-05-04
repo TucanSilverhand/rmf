@@ -42,43 +42,13 @@
     {{/if}}
   </div>
 
-  {{!-- Professional bonuses — two-column layout --}}
+  {{!-- Professional bonuses — two-column read-only --}}
   <div class="summary-wrapper">
     <h3>{{localize "RMF.Profession.ProfessionalBonuses"}}</h3>
     {{#if system.professionalBonuses.length}}
     <div class="two-col-tables">
-      <table class="summary-table">
-        <thead>
-          <tr>
-            <th>{{localize "RMF.Profession.BonusName"}}</th>
-            <th>{{localize "RMF.Profession.BonusValue"}}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {{#each professionalBonusesLeft as |row|}}
-          <tr>
-            <td><input type="text"   value="{{row.name}}"  readonly /></td>
-            <td><input type="number" value="{{row.bonus}}" readonly data-dtype="Number" inputmode="numeric" /></td>
-          </tr>
-          {{/each}}
-        </tbody>
-      </table>
-      <table class="summary-table">
-        <thead>
-          <tr>
-            <th>{{localize "RMF.Profession.BonusName"}}</th>
-            <th>{{localize "RMF.Profession.BonusValue"}}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {{#each professionalBonusesRight as |row|}}
-          <tr>
-            <td><input type="text"   value="{{row.name}}"  readonly /></td>
-            <td><input type="number" value="{{row.bonus}}" readonly data-dtype="Number" inputmode="numeric" /></td>
-          </tr>
-          {{/each}}
-        </tbody>
-      </table>
+      {{> "parts/profession-bonus-table" rows=professionalBonusesLeft  readonly=true}}
+      {{> "parts/profession-bonus-table" rows=professionalBonusesRight readonly=true}}
     </div>
     {{else}}
     <em>{{localize "RMF.Profession.None"}}</em>
@@ -127,137 +97,39 @@
     {{/if}}
   </div>
 
-  {{!-- Category prices (DP cost) — two-column layout for compactness --}}
+  {{!-- Category prices (DP cost) — two-column read-only --}}
   <div class="summary-wrapper">
     <h3>{{localize "RMF.Profession.CategoryPrice"}}</h3>
     {{#if system.categoryPrice.length}}
     <div class="two-col-tables">
-      <table class="summary-table dp-cost-table">
-        <thead>
-          <tr>
-            <th>{{localize "RMF.Skills.Category"}}</th>
-            <th>P1</th><th>P2</th><th>P3</th>
-          </tr>
-        </thead>
-        <tbody>
-          {{#each categoryPriceLeft as |row|}}
-          <tr>
-            <td><input type="text" value="{{row.name}}" readonly /></td>
-            <td><input type="number" value="{{row.price1}}" readonly data-dtype="Number" inputmode="numeric" /></td>
-            <td><input type="number" value="{{row.price2}}" readonly data-dtype="Number" inputmode="numeric" /></td>
-            <td><input type="number" value="{{row.price3}}" readonly data-dtype="Number" inputmode="numeric" /></td>
-          </tr>
-          {{/each}}
-        </tbody>
-      </table>
-      <table class="summary-table dp-cost-table">
-        <thead>
-          <tr>
-            <th>{{localize "RMF.Skills.Category"}}</th>
-            <th>P1</th><th>P2</th><th>P3</th>
-          </tr>
-        </thead>
-        <tbody>
-          {{#each categoryPriceRight as |row|}}
-          <tr>
-            <td><input type="text" value="{{row.name}}" readonly /></td>
-            <td><input type="number" value="{{row.price1}}" readonly data-dtype="Number" inputmode="numeric" /></td>
-            <td><input type="number" value="{{row.price2}}" readonly data-dtype="Number" inputmode="numeric" /></td>
-            <td><input type="number" value="{{row.price3}}" readonly data-dtype="Number" inputmode="numeric" /></td>
-          </tr>
-          {{/each}}
-        </tbody>
-      </table>
+      {{> "parts/profession-dpcost-table" rows=categoryPriceLeft  readonly=true nameHeader="RMF.Skills.Category"}}
+      {{> "parts/profession-dpcost-table" rows=categoryPriceRight readonly=true nameHeader="RMF.Skills.Category"}}
     </div>
     {{else}}
     <em>{{localize "RMF.Profession.None"}}</em>
     {{/if}}
   </div>
 
-  {{!-- Spell prices — two-column layout --}}
+  {{!-- Spell prices — two-column read-only --}}
   <div class="summary-wrapper">
     <h3>{{localize "RMF.Profession.SpellPrice"}}</h3>
     {{#if system.spellPrice.length}}
     <div class="two-col-tables">
-      <table class="summary-table dp-cost-table">
-        <thead>
-          <tr>
-            <th>{{localize "RMF.Profession.SpellGroup"}}</th>
-            <th>P1</th><th>P2</th><th>P3</th>
-          </tr>
-        </thead>
-        <tbody>
-          {{#each spellPriceLeft as |row|}}
-          <tr>
-            <td><input type="text"   value="{{row.name}}"   readonly /></td>
-            <td><input type="number" value="{{row.price1}}" readonly data-dtype="Number" inputmode="numeric" /></td>
-            <td><input type="number" value="{{row.price2}}" readonly data-dtype="Number" inputmode="numeric" /></td>
-            <td><input type="number" value="{{row.price3}}" readonly data-dtype="Number" inputmode="numeric" /></td>
-          </tr>
-          {{/each}}
-        </tbody>
-      </table>
-      <table class="summary-table dp-cost-table">
-        <thead>
-          <tr>
-            <th>{{localize "RMF.Profession.SpellGroup"}}</th>
-            <th>P1</th><th>P2</th><th>P3</th>
-          </tr>
-        </thead>
-        <tbody>
-          {{#each spellPriceRight as |row|}}
-          <tr>
-            <td><input type="text"   value="{{row.name}}"   readonly /></td>
-            <td><input type="number" value="{{row.price1}}" readonly data-dtype="Number" inputmode="numeric" /></td>
-            <td><input type="number" value="{{row.price2}}" readonly data-dtype="Number" inputmode="numeric" /></td>
-            <td><input type="number" value="{{row.price3}}" readonly data-dtype="Number" inputmode="numeric" /></td>
-          </tr>
-          {{/each}}
-        </tbody>
-      </table>
+      {{> "parts/profession-dpcost-table" rows=spellPriceLeft  readonly=true nameHeader="RMF.Profession.SpellGroup"}}
+      {{> "parts/profession-dpcost-table" rows=spellPriceRight readonly=true nameHeader="RMF.Profession.SpellGroup"}}
     </div>
     {{else}}
     <em>{{localize "RMF.Profession.None"}}</em>
     {{/if}}
   </div>
 
-  {{!-- Training packages — two-column layout --}}
+  {{!-- Training packages — two-column read-only --}}
   <div class="summary-wrapper">
     <h3>{{localize "RMF.Profession.TrainingPackages"}}</h3>
     {{#if system.trainingPackages.length}}
     <div class="two-col-tables">
-      <table class="summary-table">
-        <thead>
-          <tr>
-            <th>{{localize "RMF.Profession.PackageName"}}</th>
-            <th>{{localize "RMF.Profession.PackageCost"}}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {{#each trainingPackagesLeft as |row|}}
-          <tr>
-            <td><input type="text" value="{{row.name}}" readonly /></td>
-            <td><input type="number" value="{{row.dpCost}}" readonly data-dtype="Number" inputmode="numeric" /></td>
-          </tr>
-          {{/each}}
-        </tbody>
-      </table>
-      <table class="summary-table">
-        <thead>
-          <tr>
-            <th>{{localize "RMF.Profession.PackageName"}}</th>
-            <th>{{localize "RMF.Profession.PackageCost"}}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {{#each trainingPackagesRight as |row|}}
-          <tr>
-            <td><input type="text" value="{{row.name}}" readonly /></td>
-            <td><input type="number" value="{{row.dpCost}}" readonly data-dtype="Number" inputmode="numeric" /></td>
-          </tr>
-          {{/each}}
-        </tbody>
-      </table>
+      {{> "parts/profession-training-table" rows=trainingPackagesLeft  readonly=true}}
+      {{> "parts/profession-training-table" rows=trainingPackagesRight readonly=true}}
     </div>
     {{else}}
     <em>{{localize "RMF.Profession.None"}}</em>

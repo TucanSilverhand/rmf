@@ -1,0 +1,43 @@
+{{!--
+  Reusable table partial for `{name, bonus}` rows (professionalBonuses).
+
+  Invoke with:
+    {{> "parts/profession-bonus-table" rows=… readonly=true}}
+    {{> "parts/profession-bonus-table" rows=… arrayPath="professionalBonuses"}}
+
+  Hash parameters:
+    rows       (Array<{index, name, bonus}>)  — the data
+    arrayPath  (String, optional)              — array path for input
+                                                 names (only used when
+                                                 readonly is falsy)
+    readonly   (Boolean, optional)             — render disabled inputs
+--}}
+<table class="profession-table">
+  <thead>
+    <tr>
+      <th>{{localize "RMF.Profession.BonusName"}}</th>
+      <th>{{localize "RMF.Profession.BonusValue"}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each rows as |row|}}
+    <tr>
+      {{#if ../readonly}}
+      <td><input type="text"   value="{{row.name}}"  readonly /></td>
+      <td><input type="number" value="{{row.bonus}}" readonly data-dtype="Number" inputmode="numeric" /></td>
+      {{else}}
+      <td><input type="text"
+                 name="system.{{../arrayPath}}.{{row.index}}.name"
+                 value="{{row.name}}"
+                 placeholder="{{localize 'RMF.Profession.BonusName'}}"
+                 autocomplete="off" /></td>
+      <td><input type="number"
+                 name="system.{{../arrayPath}}.{{row.index}}.bonus"
+                 value="{{row.bonus}}"
+                 min="-999" max="999" step="1" inputmode="numeric"
+                 placeholder="0" data-dtype="Number" /></td>
+      {{/if}}
+    </tr>
+    {{/each}}
+  </tbody>
+</table>

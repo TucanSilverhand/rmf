@@ -15,6 +15,23 @@ export function buildEntityTag(doc) {
 }
 
 /**
+ * Split an array in two roughly-equal halves, biased so the left half
+ * gets the extra element when the count is odd. Used by sheet
+ * `_prepareContext` methods that render long lists as two side-by-side
+ * tables (categoryPrice, trainingPackages, professionalBonuses,
+ * spellPrice, …).
+ *
+ * @template T
+ * @param {T[]|null|undefined} rows
+ * @returns {{ left: T[], right: T[] }}
+ */
+export function splitInHalf(rows) {
+  const arr = Array.isArray(rows) ? rows : [];
+  const cut = Math.ceil(arr.length / 2);
+  return { left: arr.slice(0, cut), right: arr.slice(cut) };
+}
+
+/**
  * Read the value of a form control with the right type.
  *
  * Most numeric coercion now happens automatically because the schema

@@ -53,9 +53,25 @@ export class RMFActor extends Actor {
   }
 
   /**
-   * Expose stat totals on `data.stats.<short>` and `data.stats.<chXxx>`
-   * so user-defined initiative formulas like `1d100 + @stats.quickness`
-   * resolve correctly.
+   * Expose data consumable by user-written Roll formulas / macros.
+   *
+   * Exposes:
+   *   data.stats.<chXxx>     ─ stat total (full canonical key)
+   *   data.stats.<short>     ─ stat total (lowercase short, e.g. "qu")
+   *   data.hp                ─ derivedStats.hitPoints.max
+   *   data.pp                ─ derivedStats.powerPoints.max
+   *   data.db                ─ derivedStats.defensiveBonus
+   *   data.armorPenalty      ─ derivedStats.armorPenalty
+   *   data.res.<key>         ─ resistance total (essence/channeling/
+   *                            mentalism/poison/disease)
+   *   data.resistances.<key> ─ same as data.res, full alias
+   *   data.level             ─ chLevel
+   *
+   * Examples for user formulas:
+   *   1d100 + @stats.quickness
+   *   1d100 + @db
+   *   1d100 + @res.poison
+   *   @level
    *
    * @override
    */
@@ -63,6 +79,8 @@ export class RMFActor extends Actor {
     const data = super.getRollData();
     if (this.type !== "character") return data;
 
+    // Stat totals — both `chXxx` and `<short>` variants so users can
+    // pick whichever they prefer in their roll formulas.
     const stats = this.system?.chStats ?? {};
     const rollStats = {};
     for (const [key, stat] of Object.entries(stats)) {
@@ -73,11 +91,29 @@ export class RMFActor extends Actor {
     }
     data.stats = rollStats;
 
-    const ds = this.system?.derivedStats;
-    if (ds) {
-      data.hp = ds.hitPoints?.max || 0;
-      data.pp = ds.powerPoints?.max || 0;
-    }
+    // Derived attributes
+    const ds = this.system?.derivedStats ?? {};
+    data.hp           = ds.hitPoints?.max   || 0;
+    data.pp           = ds.powerPoints?.max || 0;
+    data.db           = ds.defensiveBonus   || 0;
+    data.armorPenalty = ds.armorPenalty     || 0;
+
+    // Resistances — exposed under both `data.res.*` (short) and
+    // `data.resistances.*` (full) for ergonomic alias.
+    const res = ds.resistances ?? {};
+    const resistances = {
+      essence:    res.essence    || 0,
+      channeling: res.channeling || 0,
+      mentalism:  res.mentalism  || 0,
+      poison:     res.poison     || 0,
+      disease:    res.disease    || 0
+    };
+    data.res = resistances;
+    data.resistances = resistances;
+
+    // Convenience scalars
+    data.level = Number(this.system?.chLevel) || 0;
+
     return data;
   }
 

@@ -1,0 +1,36 @@
+{{!--
+  Reusable table partial for `{name, dpCost}` rows (trainingPackages).
+
+  Invoke with:
+    {{> "parts/profession-training-table" rows=… readonly=true}}
+    {{> "parts/profession-training-table" rows=… arrayPath="trainingPackages"}}
+--}}
+<table class="profession-table">
+  <thead>
+    <tr>
+      <th>{{localize "RMF.Profession.PackageName"}}</th>
+      <th>{{localize "RMF.Profession.PackageCost"}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each rows as |row|}}
+    <tr>
+      {{#if ../readonly}}
+      <td><input type="text"   value="{{row.name}}"   readonly /></td>
+      <td><input type="number" value="{{row.dpCost}}" readonly data-dtype="Number" inputmode="numeric" /></td>
+      {{else}}
+      <td><input type="text"
+                 name="system.{{../arrayPath}}.{{row.index}}.name"
+                 value="{{row.name}}"
+                 placeholder="{{localize 'RMF.Profession.PackageName'}}"
+                 autocomplete="off" /></td>
+      <td><input type="number"
+                 name="system.{{../arrayPath}}.{{row.index}}.dpCost"
+                 value="{{row.dpCost}}"
+                 min="-99" max="9999" step="1" inputmode="numeric"
+                 data-dtype="Number" /></td>
+      {{/if}}
+    </tr>
+    {{/each}}
+  </tbody>
+</table>

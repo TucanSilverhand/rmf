@@ -22,7 +22,8 @@ import {
   initHeaderAutoHeight,
   wireTabs,
   setActiveTab as utilSetActiveTab,
-  bindChangeListeners
+  bindChangeListeners,
+  splitInHalf
 } from "./utils/sheet-helpers.mjs";
 import { normalizeAnyStatKey } from "./utils/constants.mjs";
 import { RMFActions } from "./actions.mjs";
@@ -112,25 +113,21 @@ export class RMFProfessionSheet extends HandlebarsApplicationMixin(
     context.spellPriceRows = this._prepareDpCostRows(sys.spellPrice);
     context.trainingPackageRows = this._prepareTrainingPackageRows();
 
-    // Split helper: long lists render as two side-by-side tables in
-    // both the details (read-only) and advanced (editable) tabs to
-    // make better use of horizontal space.
-    const half = (arr) => {
-      const cut = Math.ceil(arr.length / 2);
-      return { left: arr.slice(0, cut), right: arr.slice(cut) };
-    };
-    const catSplit = half(context.categoryPriceRows);
-    const tpSplit  = half(context.trainingPackageRows);
-    const pbSplit  = half(context.professionalBonusRows);
-    const spSplit  = half(context.spellPriceRows);
-    context.categoryPriceLeft           = catSplit.left;
-    context.categoryPriceRight          = catSplit.right;
-    context.trainingPackagesLeft        = tpSplit.left;
-    context.trainingPackagesRight       = tpSplit.right;
-    context.professionalBonusesLeft     = pbSplit.left;
-    context.professionalBonusesRight    = pbSplit.right;
-    context.spellPriceLeft              = spSplit.left;
-    context.spellPriceRight             = spSplit.right;
+    // Long lists render as two side-by-side tables in both tabs to
+    // make better use of horizontal space; splitInHalf lives in
+    // utils/sheet-helpers.mjs so other sheets can reuse it.
+    const catSplit = splitInHalf(context.categoryPriceRows);
+    const tpSplit  = splitInHalf(context.trainingPackageRows);
+    const pbSplit  = splitInHalf(context.professionalBonusRows);
+    const spSplit  = splitInHalf(context.spellPriceRows);
+    context.categoryPriceLeft         = catSplit.left;
+    context.categoryPriceRight        = catSplit.right;
+    context.trainingPackagesLeft      = tpSplit.left;
+    context.trainingPackagesRight     = tpSplit.right;
+    context.professionalBonusesLeft   = pbSplit.left;
+    context.professionalBonusesRight  = pbSplit.right;
+    context.spellPriceLeft            = spSplit.left;
+    context.spellPriceRight           = spSplit.right;
 
     // Stat options for primeStats select inputs (canonical full chXxx keys).
     context.statOptions = this._prepareStatOptions();

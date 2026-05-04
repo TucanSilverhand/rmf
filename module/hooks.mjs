@@ -134,45 +134,44 @@ export class RMFHooks {
     // Allow explicit opt-out from programmatic actor creation flows
     if (options?.rmfSkipAutoCategories) return;
 
-    const sourceItems = await this.#collectBasicCoreCategorySources();
-    if (!sourceItems.length) return;
+    const categorySources = await this.#collectBasicCoreCategorySources();
+    const skillSources    = await this.#collectBasicCoreCriticalSkills();
 
-    // Get existing category names to avoid duplicates
-    const existingCategoryNames = new Set(
-      actor.items
-        .filter(item => item.type === "category")
-        .map(item => item.name)
-    );
+    if (!categorySources.length && !skillSources.length) return;
 
-    // Prepare payload for creation
-    const payload = sourceItems
-      .filter(item => !existingCategoryNames.has(item.name))
-      .map(item => {
-        const data = foundry.utils.duplicate(item.toObject());
-        delete data._id;
-        delete data.folder;
-        data.flags = foundry.utils.mergeObject(data.flags ?? {}, {
-          rmf: {
-            sourceRuleBook: item.system?.fromBook ?? "basic",
-            sourceCompendium: item.pack ?? "world.basic-core"
-          }
-        });
-        return data;
+    // Existing items by (type, name) so we don't duplicate.
+    const existing = new Set(actor.items.map(i => `${i.type}::${i.name}`));
+
+    const cloneFor = (item) => {
+      const data = foundry.utils.duplicate(item.toObject());
+      delete data._id;
+      delete data.folder;
+      data.flags = foundry.utils.mergeObject(data.flags ?? {}, {
+        rmf: {
+          sourceRuleBook:   item.system?.fromBook ?? "basic",
+          sourceCompendium: item.pack ?? "world.basic-core"
+        }
       });
+      return data;
+    };
 
+    const payload = [
+      ...categorySources.filter(it => !existing.has(`category::${it.name}`)).map(cloneFor),
+      ...skillSources   .filter(it => !existing.has(`skill::${it.name}`))   .map(cloneFor)
+    ];
     if (!payload.length) return;
 
-    // Create embedded category items
     try {
       await actor.createEmbeddedDocuments("Item", payload);
-      
       if (CONFIG.RMF?.debug) {
+        const cats = payload.filter(p => p.type === "category").length;
+        const skls = payload.filter(p => p.type === "skill").length;
         console.debug(
-          `RMF DEBUG | Added ${payload.length} category items to ${actor.name} from basic-core/Categories`
+          `RMF DEBUG | ${actor.name}: attached ${cats} categories + ${skls} critical skills (Body/Power Point Development) from basic-core.`
         );
       }
     } catch (error) {
-      console.error("RMF | Failed to attach compendium categories:", error);
+      console.error("RMF | Failed to attach compendium baseline items:", error);
     }
   }
 
@@ -569,5 +568,38 @@ export class RMFHooks {
       console.warn(`RMF | No category documents found in folder "Categories" for pack ${collection}`);
     }
     return filtered;
+  }
+
+  /**
+   * Collect the two skill items every character needs to derive HP and PP:
+   *   - "Body Development"        → HP max
+   *   - "Power Point Development" → PP max
+   *
+   * Both skills carry the `special` progression — their actual rank-bonus
+   * table is resolved at runtime against the actor's race (and realm,
+   * for PP-Dev). See SkillData.#resolveSpecialSkillTable.
+   *
+   * @private
+   * @static
+   * @async
+   * @returns {Promise<Array<Item>>}
+   */
+  static async #collectBasicCoreCriticalSkills() {
+    const preferredCollection = "world.basic-core";
+    const candidatePacks = [
+      preferredCollection,
+      `${game.system.id}.basic-core`,
+      ...game.packs
+        .map(pack => pack.collection)
+        .filter(collection => collection.endsWith(".basic-core"))
+    ];
+    const collection = [...new Set(candidatePacks)].find(c => game.packs.has(c));
+    if (!collection) return [];
+    const pack = game.packs.get(collection);
+    if (!pack) return [];
+
+    const CRITICAL_NAMES = new Set(["Body Development", "Power Point Development"]);
+    const allDocs = await pack.getDocuments();
+    return allDocs.filter(doc => doc.type === "skill" && CRITICAL_NAMES.has(doc.name));
   }
 }

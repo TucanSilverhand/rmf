@@ -1773,84 +1773,57 @@
 }
 
 /* =============================================================================
-   Two-column table layout for long lists (profession sheet: categoryPrice
-   and trainingPackages). Falls back to a single column on narrower sheets
-   so the inputs don't get cramped.
+   Two-column grid (single source of truth)
+   ─────────────────────────────────────────
+   Used by:
+     - .two-col-tables       wrapper for split-in-half data tables
+                             (categoryPrice, trainingPackages,
+                             professionalBonuses, spellPrice)
+     - .prime-stats-grid     prime-stat selects (profession sheet)
+     - .profession-skill-grid skill lists (everyman/occupational/restricted)
+   The grid-template + the responsive fallback are shared. Only the
+   `gap` differs per use-case (tables breathe more, inputs more compact).
    ============================================================================= */
-.rmf .two-col-tables {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-  align-items: start;
-}
-
-.rmf .two-col-tables > table {
-  width: 100%;
-  margin: 0;          /* override the centred max-content default */
-}
-
-/* Drop to a single column when the sheet is narrow enough that two
-   tables side-by-side would compress inputs to unreadable widths. */
-@media (max-width: 720px) {
-  .rmf .two-col-tables {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* =============================================================================
-   Prime Stats grid (profession sheet, advanced tab) — 2 columns so the
-   typically-pair primeStats list doesn't read as a tall stack.
-   ============================================================================= */
-.rmf .prime-stats-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 8px;
-}
-.rmf .prime-stats-grid .prime-stat-row {
-  min-width: 0;       /* let the <select> shrink with the column */
-}
-.rmf .prime-stats-grid .prime-stat-row select {
-  width: 100%;
-}
-
-@media (max-width: 720px) {
-  .rmf .prime-stats-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Read-only display of a prime stat in the details tab — same grid as
-   the advanced tab so the two views feel symmetric. */
-.rmf .prime-stats-grid .prime-stat-readonly {
-  padding: 4px 8px;
-  border: 1px solid var(--rmf-color-border);
-  border-radius: var(--rmf-radius-sm, 4px);
-  background: var(--rmf-color-bg-alt);
-  color: var(--rmf-color-fg-muted);
-  min-height: var(--rmf-input-height, 26px);
-  display: flex;
-  align-items: center;
-}
-
-/* =============================================================================
-   Skill lists in the profession sheet (everyman / occupational / restricted)
-   render as a 2-column flowing grid both in the editable advanced tab and
-   the read-only details tab. Falls back to a single column on narrow sheets.
-   ============================================================================= */
+.rmf .two-col-tables,
+.rmf .prime-stats-grid,
 .rmf .profession-skill-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 6px;
+  align-items: start;
 }
+
+.rmf .two-col-tables        { gap: 12px; }
+.rmf .prime-stats-grid      { gap:  8px; }
+.rmf .profession-skill-grid { gap:  6px; }
+
+@media (max-width: 720px) {
+  .rmf .two-col-tables,
+  .rmf .prime-stats-grid,
+  .rmf .profession-skill-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tables inside the wrapper override the centred max-content default. */
+.rmf .two-col-tables > table {
+  width: 100%;
+  margin: 0;
+}
+
+/* Each grid cell can shrink with the column (avoids select/input
+   overflowing when the sheet is narrow). */
+.rmf .prime-stats-grid .prime-stat-row,
 .rmf .profession-skill-grid .profession-skill-row {
   min-width: 0;
 }
+.rmf .prime-stats-grid .prime-stat-row select,
 .rmf .profession-skill-grid .profession-skill-row input {
   width: 100%;
 }
 
-/* Read-only display inside the details tab — visually consistent with
-   the editable inputs in advanced (same height/border/padding). */
+/* Read-only cell in the details tab — visually consistent with the
+   editable <select>/<input> in advanced (same height/border/padding). */
+.rmf .prime-stats-grid .prime-stat-readonly,
 .rmf .profession-skill-grid .profession-skill-readonly {
   padding: 4px 8px;
   border: 1px solid var(--rmf-color-border);
@@ -1860,10 +1833,4 @@
   min-height: var(--rmf-input-height, 26px);
   display: flex;
   align-items: center;
-}
-
-@media (max-width: 720px) {
-  .rmf .profession-skill-grid {
-    grid-template-columns: 1fr;
-  }
 }
