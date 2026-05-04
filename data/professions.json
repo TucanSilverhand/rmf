@@ -1,10 +1,15 @@
 [
   {
     "name": "Fighter",
-    "description": "",
-    "primeStats": [],
-    "professionalBonuses": [],
-    "everymanSkills": [],
+    "description": "Fighters are non spell users who will find it relatively easy to develop a variety of different weapons and to wear heavier types of armor. They are less skilled in maneuvering and manipulating mechanical devices such as locks and traps (though they are still superior to most spell users in these areas). They have the greatest difficulty learning anything connected with spells. Some literary examples of a Fighter might include Conan the Barbarian, Little John, and Gimli the Dwarf.",
+    "primeStats": ["Constitution", "Strength"],
+    "professionalBonuses": [
+      { "name": "Armor Group",             "bonus": 10 },
+      { "name": "Body Development",        "bonus": 10  },
+      { "name": "Combat Maneuvers",        "bonus": 10  },
+      { "name": "Weapon Group",            "bonus": 20 }
+    ],
+    "everymanSkills": ["Situational Awareness: Combat", "Leadership", "Frenzy", "any one non-Restricted Combat Maneuver", "Boxing", "Tackling"],
     "occupationalSkills": [],
     "restrictedSkills": [],
     "categoryPrice": [
@@ -419,11 +424,18 @@
   },
   {
     "name": "Thief",
-    "description": "",
-    "primeStats": [],
-    "professionalBonuses": [],
-    "everymanSkills": [],
-    "occupationalSkills": [],
+    "description": "Thieves are non spell users who are specialists at maneu- vering and manipulating. They have the easiest time learn- ing mechanical skills (such as picking locks and disarming traps) and are fairly good at picking up weapon skills. Thieves are also unusually adept at subterfuge skills (Stalking, Hid- ing, etc.). They rarely wear heavy armor, although armor does not especially hinder the exercising of their professional abilities (other than limiting their superb maneuvering abili- ties). Some literary examples of Thieves might include Will Scarlet and Bilbo Baggins.",
+    "primeStats": ["Agility", "Quickness"],
+    "professionalBonuses": [
+      { "name": "Athletic · Gymnastic",   "bonus": 5 },
+      { "name": "Awareness Group",        "bonus": 10  },
+      { "name": "Body Development",       "bonus": 5  },
+      { "name": "Self Control ",          "bonus": 5  },
+      { "name": "Subterfuge Group",       "bonus": 15  },
+      { "name": "Weapon Group",           "bonus": 10  }
+    ],
+    "everymanSkills": ["choice of one Situational Awareness", "Duping", "Operating Equipment"],
+    "occupationalSkills": ["Lock Lore"],
     "restrictedSkills": [],
     "categoryPrice": [
       {
@@ -837,10 +849,18 @@
   },
   {
     "name": "Rogue",
-    "description": "",
-    "primeStats": [],
-    "professionalBonuses": [],
-    "everymanSkills": [],
+    "description": "Rogues are non spell users with some expertise in thiefly abilities and a more specialized knowledge of arms than that possessed by Fighters. Normally, a Rogue will be almost as good as a Fighter with one weapon of his choice. The cost, in development points, of developing his thiefly skills will generally not allow him to be as good in these areas as a Thief, but his flexibility is unmatched by either profession. Some literary examples of Rogues might include Robin Hood, Fahfard and the Grey Mouser.",
+    "primeStats": ["Agility", "Strength"],
+    "professionalBonuses": [
+      { "name": "Armor Group",            "bonus": 5 },
+      { "name": "Athletic · Gymnastic",   "bonus": 5  },
+      { "name": "Awareness Group",        "bonus": 5  },
+      { "name": "Body Development",       "bonus": 5  },
+      { "name": "Combat Maneuvers",       "bonus": 5  },
+      { "name": "Subterfuge Group",       "bonus": 10  },
+      { "name": "Weapon Group",           "bonus": 15  }
+    ],
+    "everymanSkills": ["Duping", "Lock Lore", "choice of one Situational Awareness", "one of either Boxing or Tackling."],
     "occupationalSkills": [],
     "restrictedSkills": [],
     "categoryPrice": [
@@ -1255,10 +1275,16 @@
   },
   {
     "name": "Magician",
-    "description": "",
-    "primeStats": [],
-    "professionalBonuses": [],
-    "everymanSkills": [],
+    "description": "Magicians are pure spell users of Essence who have con- centrated on elemental spells. Their base spells deal with the elements of earth, water, air, heat, cold, and light.",
+    "primeStats": ["Empathy", "Reasoning"],
+    "professionalBonuses": [
+      { "name": "Directed Spells",          "bonus": 10 },
+      { "name": "Lore · Magical",           "bonus": 10  },
+      { "name": "Power Awareness",          "bonus": 20  },
+      { "name": "Power Point Development",  "bonus": 5  },
+      { "name": "Spell Group",              "bonus": 5  }
+    ],
+    "everymanSkills": ["Time Sense", "Meditation"],
     "occupationalSkills": [],
     "restrictedSkills": [],
     "categoryPrice": [
@@ -1673,11 +1699,20 @@
   },
   {
     "name": "Cleric",
-    "description": "",
-    "primeStats": [],
-    "professionalBonuses": [],
-    "everymanSkills": [],
-    "occupationalSkills": [],
+    "description": "Clerics are pure spell users of Channeling who have con- centrated in spells that require direct power from their dei- ties. These spell users are the most powerful of the spell users of Channeling, but they are also the most restricted because they should follow the tenants of their deity.",
+    "primeStats": ["Intuition", "Memory"],
+    "professionalBonuses": [
+      { "name": "Awareness Group",          "bonus": 5 },
+      { "name": "Influence",                "bonus": 5  },
+      { "name": "Lore · Magical",           "bonus": 5  },
+      { "name": "Outdoor Group",            "bonus": 5  },
+      { "name": "Power Awareness",          "bonus": 15  },
+      { "name": "Power Point Development",  "bonus": 5  },
+      { "name": "Spell Group",              "bonus": 5  },
+      { "name": "Weapon Group",             "bonus": 5  }
+    ],
+    "everymanSkills": ["Time Sense", "Meditation"],
+    "occupationalSkills": ["Religion", "Divination [Power Awareness]"],
     "restrictedSkills": [],
     "categoryPrice": [
       {
@@ -2091,10 +2126,19 @@
   },
   {
     "name": "Mentalist",
-    "description": "",
-    "primeStats": [],
-    "professionalBonuses": [],
-    "everymanSkills": [],
+    "description": "Mentalists are pure spell users of Mentalism who have concentrated on spells that deal with the interaction of minds. Their base spells deal with the detection of mental Presence, mental communication, mind control, mind attack, mind merging, and sense control.",
+    "primeStats": ["Presence", "SelfDiscipline"],
+    "professionalBonuses": [
+      { "name": "Awareness Group",          "bonus": 5 },
+      { "name": "Body Development",          "bonus": 5  },
+      { "name": "Influence",                "bonus": 10  },
+      { "name": "Lore · Magical",           "bonus": 5  },
+      { "name": "Power Awareness",          "bonus": 10  },
+      { "name": "Power Point Development",  "bonus": 5  },
+      { "name": "Self Control",             "bonus": 5  },
+      { "name": "Spell Group",              "bonus": 5  }
+    ],
+    "everymanSkills": ["Lie Perception", "Time Sense", "Seduction"],
     "occupationalSkills": [],
     "restrictedSkills": [],
     "categoryPrice": [
@@ -2509,9 +2553,16 @@
   },
   {
     "name": "Ranger",
-    "description": "",
-    "primeStats": [],
-    "professionalBonuses": [],
+    "description": "Rangers are semi spell users who combine the realm of Channeling with the realm of Arms. Their base spells deal with operating in the outdoors and manipulating the weather.",
+    "primeStats": ["Constitution", "Intuition"],
+    "professionalBonuses": [
+      { "name": "Athletic Group",         "bonus": 5 },
+      { "name": "Awareness Group ",       "bonus": 10  },
+      { "name": "Body Development",       "bonus": 5  },
+      { "name": "Outdoor Group",          "bonus": 20  },
+      { "name": "Subterfuge · Stealth",   "bonus": 5  },
+      { "name": "Weapon Group",           "bonus": 5  }
+    ],
     "everymanSkills": [],
     "occupationalSkills": [],
     "restrictedSkills": [],
@@ -2927,11 +2978,20 @@
   },
   {
     "name": "Dabbler",
-    "description": "",
-    "primeStats": [],
-    "professionalBonuses": [],
-    "everymanSkills": [],
-    "occupationalSkills": [],
+    "description": "Dabblers are semi spell users who combine the realm of Essence with the realm of Arms. Their base spells deal with stealth, detection, perception, movement and manipulating locks and traps.",
+    "primeStats": ["Agility", "Empathy"],
+    "professionalBonuses": [
+      { "name": "Awareness Group",    "bonus": 10 },
+      { "name": "Body Development",   "bonus": 5  },
+      { "name": "Influence",          "bonus": 5  },
+      { "name": "Lore · Magical",     "bonus": 5  },
+      { "name": "Power Awareness",    "bonus": 10  },
+      { "name": "Subterfuge Group",   "bonus": 5  },
+      { "name": "Urban",              "bonus": 5  },
+      { "name": "Weapon Group",       "bonus": 5  }
+    ],
+    "everymanSkills": ["Sense Ambush", "Time Sense", "Detect Traps", "Locate Hidden"],
+    "occupationalSkills": ["Lock Lore"],
     "restrictedSkills": [],
     "categoryPrice": [
       {
@@ -3345,10 +3405,20 @@
   },
   {
     "name": "Bard",
-    "description": "",
-    "primeStats": [],
-    "professionalBonuses": [],
-    "everymanSkills": [],
+    "description": "Bards are semi spell users who combine the realm of Mentalism with the realm of Arms. Their base spells deal with sound, lore, entertaining, and item use.",
+    "primeStats": ["Memory", "Presence"],
+    "professionalBonuses": [
+      { "name": "Artistic · Active",  "bonus": 5 },
+      { "name": "Awareness Group ",   "bonus": 5  },
+      { "name": "Body Development",   "bonus": 5  },
+      { "name": "Communications",     "bonus": 5  },
+      { "name": "Influence",          "bonus": 5  },
+      { "name": "Lore Group",         "bonus": 10  },
+      { "name": "Power Awareness",    "bonus": 5  },
+      { "name": "Self Control",       "bonus": 5  },
+      { "name": "Weapon Group",       "bonus": 5  }
+    ],
+    "everymanSkills": ["Time Sense"],
     "occupationalSkills": [],
     "restrictedSkills": [],
     "categoryPrice": [
