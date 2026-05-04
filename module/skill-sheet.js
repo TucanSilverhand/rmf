@@ -13,8 +13,6 @@ const { HandlebarsApplicationMixin } = foundry.applications.api;
 import { coerceInputValue, buildEntityTag, initHeaderAutoHeight, wireTabs, setActiveTab as utilSetActiveTab, bindChangeListeners } from "./utils/sheet-helpers.mjs";
 import {
   SKILL_PROGRESSIONS,
-  computeSkillRankBonus,
-  formatSkillRankBonusBreakdown,
   normalizeSkillProgression
 } from "./utils/rank-bonus.mjs";
 import { RMFActions } from "./actions.mjs";
@@ -107,23 +105,17 @@ export class RMFSkillSheet extends HandlebarsApplicationMixin(foundry.applicatio
     context.selectedProgression = normalizeSkillProgression(system.skillRankBonusProgression);
     context.rankBonusProgressionLabel = localizeProgression(context.selectedProgression);
 
-    // Totals (use values pre-computed by RMFItem._prepareSkillData when available;
-    // fall back to recomputing in case prepareDerivedData hasn't run yet).
-    const totalRanks = Number(system.totalRanks ?? this._computeTotalBoughtRanks(system.boughtByLevel)) || 0;
-    const specialOverride = doc._resolveSpecialSkillTable?.(context.selectedProgression) ?? null;
-    const totalRankBonus = Number(system.totalRankBonus ?? computeSkillRankBonus(totalRanks, context.selectedProgression, specialOverride)) || 0;
-    const categoryBonus = Number(system.categoryBonus ?? 0) || 0;
-    const profBonus = Number(system.profBonus ?? 0) || 0;
-    const spec1Bonus = Number(system.spec1Bonus ?? 0) || 0;
-    const spec2Bonus = Number(system.spec2Bonus ?? 0) || 0;
-    context.totalRanks = totalRanks;
-    context.totalRankBonus = totalRankBonus;
-    context.categoryBonus = categoryBonus;
-    context.professionBonus = profBonus;
-    context.spec1Bonus = spec1Bonus;
-    context.spec2Bonus = spec2Bonus;
-    context.totalBonus = Number(system.totalBonus ?? (totalRankBonus + categoryBonus + profBonus + spec1Bonus + spec2Bonus)) || 0;
-    context.rankBonusSummary = formatSkillRankBonusBreakdown(totalRanks, context.selectedProgression, specialOverride);
+    // Totals are pre-computed by SkillData.prepareDerivedData and live
+    // on `system.*`. The sheet only re-exposes them under shorter aliases
+    // for templates.
+    context.totalRanks       = Number(system.totalRanks       ?? 0);
+    context.totalRankBonus   = Number(system.totalRankBonus   ?? 0);
+    context.categoryBonus    = Number(system.categoryBonus    ?? 0);
+    context.professionBonus  = Number(system.profBonus        ?? 0);
+    context.spec1Bonus       = Number(system.spec1Bonus       ?? 0);
+    context.spec2Bonus       = Number(system.spec2Bonus       ?? 0);
+    context.totalBonus       = Number(system.totalBonus       ?? 0);
+    context.rankBonusSummary = String(system.rankBonusSummary ?? "0");
 
     // Category select: when embedded on an actor, expose its categories so the user picks
     // from a deterministic list. Otherwise let them type the name freely.
@@ -159,11 +151,6 @@ export class RMFSkillSheet extends HandlebarsApplicationMixin(foundry.applicatio
     const p2 = Number(prices.price2 ?? prices[1] ?? 0) || 0;
     const p3 = Number(prices.price3 ?? prices[2] ?? 0) || 0;
     return `${p1}/${p2}/${p3}`;
-  }
-
-  _computeTotalBoughtRanks(boughtByLevel) {
-    if (!boughtByLevel || typeof boughtByLevel !== "object") return 0;
-    return Object.values(boughtByLevel).reduce((sum, value) => sum + Number(value ?? 0), 0);
   }
 
   _prepareLevelEntries(boughtByLevel, maxLevel) {
@@ -225,7 +212,7 @@ export class RMFSkillSheet extends HandlebarsApplicationMixin(foundry.applicatio
     const target = event.target;
     const name = target?.name || target?.getAttribute?.("name");
     if (!name) return;
-    const { value } = coerceInputValue(target);
+    const value = coerceInputValue(target);
     const tag = buildEntityTag(this.document);
     if (CONFIG?.RMF?.debug) {
       console.debug("RMF DEBUG | SkillSheet granular update", { item: tag, name, value });

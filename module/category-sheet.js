@@ -8,10 +8,10 @@ const { HandlebarsApplicationMixin } = foundry.applications.api;
 import { buildEntityTag, coerceInputValue, initHeaderAutoHeight, wireTabs, setActiveTab as utilSetActiveTab, bindChangeListeners } from "./utils/sheet-helpers.mjs";
 import {
   CATEGORY_PROGRESSIONS,
-  computeCategoryRankBonus,
   formatCategoryRankBonusBreakdown,
   normalizeCategoryProgression
 } from "./utils/rank-bonus.mjs";
+import { CATEGORY_GROUP_OPTIONS } from "./data-models/category.mjs";
 import { RMFActions } from "./actions.mjs";
 
 export class RMFCategorySheet extends HandlebarsApplicationMixin(foundry.applications.sheets.ItemSheetV2) {
@@ -84,7 +84,7 @@ export class RMFCategorySheet extends HandlebarsApplicationMixin(foundry.applica
     context.statLabels = this._prepareStatLabels(normalizedStat1, normalizedStat2, normalizedStat3);
     context.statLabelSummary = this._formatStatLabelSummary(context.statLabels);
     context.statShortSummary = this._formatStatShortSummary(normalizedStat1, normalizedStat2, normalizedStat3);
-    context.groupOptions = CATEGORY_GROUPS.map((entry) => ({
+    context.groupOptions = CATEGORY_GROUP_OPTIONS.map((entry) => ({
       value: entry.value,
       label: game.i18n.has(entry.label) ? game.i18n.localize(entry.label) : entry.value
     }));
@@ -95,24 +95,21 @@ export class RMFCategorySheet extends HandlebarsApplicationMixin(foundry.applica
     }));
     context.selectedProgression = normalizeCategoryProgression(context.system?.categoryRankBonusProgression);
 
-    context.totalStatsBonus = this._computeSelectedStatSum(normalizedStat1, normalizedStat2, normalizedStat3);
+    // All numeric totals are pre-computed by CategoryData.prepareDerivedData;
+    // the sheet just exposes them under shorter aliases for templates.
     context.dpCostSummary = this._formatDPCost(context.system?.dpCost);
-
-    const totalBoughtRanks = this._computeTotalBoughtRanks(context.system?.boughtByLevel);
-    const freeRanks = Number(context.system?.freeRanks ?? 0);
-    context.totalBoughtRanks = totalBoughtRanks;
-    context.freeRanks = freeRanks;
-    context.totalRanks = totalBoughtRanks + freeRanks;
+    context.totalStatsBonus = Number(context.system?.totalStatsBonus ?? 0);
+    context.totalBoughtRanks = this._computeTotalBoughtRanks(context.system?.boughtByLevel);
+    context.freeRanks = Number(context.system?.freeRanks ?? 0);
+    context.totalRanks = Number(context.system?.totalRanks ?? (context.totalBoughtRanks + context.freeRanks));
     const progression = context.system?.categoryRankBonusProgression || 'standard';
-    context.totalRankBonus = this._computeRankBonus(context.totalRanks, progression);
+    context.totalRankBonus = Number(context.system?.totalRankBonus ?? 0);
 
     context.professionBonus = Number(context.system?.profBonus ?? 0);
     context.spec1Bonus = Number(context.system?.spec1Bonus ?? 0);
     context.spec2Bonus = Number(context.system?.spec2Bonus ?? 0);
-    
-    // Use pre-calculated totalBonus from prepareDerivedData (data-models.mjs)
-    // Falls back to manual calculation if not available for any reason
-    context.totalBonus = context.system?.totalBonus ?? (context.totalRankBonus + context.totalStatsBonus + context.professionBonus + context.spec1Bonus + context.spec2Bonus);
+
+    context.totalBonus = Number(context.system?.totalBonus ?? 0);
     context.rankBonusProgressionLabel = this._localizeRankProgression(progression);
     context.rankBonusSummary = this._formatRankBonusBreakdown(context.totalRanks, progression);
 
@@ -179,29 +176,8 @@ export class RMFCategorySheet extends HandlebarsApplicationMixin(foundry.applica
     return shortList.join("/");
   }
 
-  _computeRankBonus(totalRanks, progression) {
-    return computeCategoryRankBonus(totalRanks, progression);
-  }
-
   _formatRankBonusBreakdown(totalRanks, progression) {
     return formatCategoryRankBonusBreakdown(totalRanks, progression);
-  }
-
-  /**
-   * Compute the sum of the selected stats' totals from the parent actor, if any.
-   * Falls back to 0 when the item is not embedded in an Actor.
-   * @param {string} s1 - normalized stat key (e.g., chAgility)
-   * @param {string} s2 - normalized stat key (e.g., chConstitution)
-   * @param {string} s3 - normalized stat key (e.g., chSelfDiscipline)
-   * @returns {number}
-   * @private
-   */
-  _computeSelectedStatSum(s1, s2, s3) {
-    const parent = this.document.parent;
-    if (!parent || parent.documentName !== 'Actor') return 0;
-    const ch = parent.system?.chStats ?? {};
-    const keys = [s1, s2, s3].filter(Boolean);
-    return keys.reduce((acc, k) => acc + (Number(ch[k]?.total || 0)), 0);
   }
 
   _formatDPCost(cost) {
@@ -266,7 +242,7 @@ export class RMFCategorySheet extends HandlebarsApplicationMixin(foundry.applica
     const target = event.target;
     const name = target?.name || target?.getAttribute?.("name");
     if (!name) return;
-    const { value } = coerceInputValue(target);
+    const value = coerceInputValue(target);
     const tag = buildEntityTag(this.document);
     if (CONFIG?.RMF?.debug) {
       console.debug("RMF DEBUG | CategorySheet granular update", { item: tag, name, value });
@@ -303,27 +279,3 @@ export class RMFCategorySheet extends HandlebarsApplicationMixin(foundry.applica
   }
 
 }
-const CATEGORY_GROUPS = Object.freeze([
-  { value: "none", label: "RMF.Category.Groups.None" },
-  { value: "Armor", label: "RMF.Category.Groups.Armor" },
-  { value: "Artistic", label: "RMF.Category.Groups.Artistic" },
-  { value: "Athletic", label: "RMF.Category.Groups.Athletic" },
-  { value: "Awareness", label: "RMF.Category.Groups.Awareness" },
-  { value: "Body Development", label: "RMF.Category.Groups.BodyDevelopment" },
-  { value: "Combat Maneuvers", label: "RMF.Category.Groups.CombatManeuvers" },
-  { value: "Communications", label: "RMF.Category.Groups.Communications" },
-  { value: "Craft", label: "RMF.Category.Groups.Craft" },
-  { value: "Directed Spells", label: "RMF.Category.Groups.DirectedSpells" },
-  { value: "Influence", label: "RMF.Category.Groups.Influence" },
-  { value: "Lore", label: "RMF.Category.Groups.Lore" },
-  { value: "Martial Arts", label: "RMF.Category.Groups.MartialArts" },
-  { value: "Outdoor", label: "RMF.Category.Groups.Outdoor" },
-  { value: "Power Awareness", label: "RMF.Category.Groups.PowerAwareness" },
-  { value: "Power Point Development", label: "RMF.Category.Groups.PowerPointDevelopment" },
-  { value: "Science", label: "RMF.Category.Groups.Science" },
-  { value: "Self Control", label: "RMF.Category.Groups.SelfControl" },
-  { value: "Subterfuge", label: "RMF.Category.Groups.Subterfuge" },
-  { value: "Technical", label: "RMF.Category.Groups.Technical" },
-  { value: "Urban", label: "RMF.Category.Groups.Urban" },
-  { value: "Weapon", label: "RMF.Category.Groups.Weapon" }
-]);

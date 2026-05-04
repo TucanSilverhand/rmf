@@ -129,7 +129,7 @@ export class RMFItemSheet extends HandlebarsApplicationMixin(foundry.application
     const name = target?.name || target?.getAttribute?.('name');
     if (!name) return;
 
-  const { value } = coerceInputValue(target);
+  const value = coerceInputValue(target);
     const type = (target.getAttribute?.('type') || '').toLowerCase();
     const isNumeric = type === 'number' || target.dataset?.dtype === 'Number' || name.startsWith('system.stats.') || name.startsWith('system.resistances.');
     const tag = buildEntityTag(this.document);

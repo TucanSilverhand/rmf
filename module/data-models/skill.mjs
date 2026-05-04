@@ -8,6 +8,7 @@
 
 import {
   computeSkillRankBonus,
+  formatSkillRankBonusBreakdown,
   normalizeSkillProgression,
   normalizeSkillClassification,
   SKILL_CLASSIFICATIONS
@@ -100,6 +101,10 @@ export class SkillData extends foundry.abstract.TypeDataModel {
     this.categoryBonus = categoryBonus;
     this.totalBonus = rankBonus + categoryBonus
       + (this.profBonus || 0) + (this.spec1Bonus || 0) + (this.spec2Bonus || 0);
+    // Human-readable breakdown of the rank bonus (e.g. "10*3 + 5*2 = 40")
+    // used by the skill sheet header. Persisted on the model so the
+    // sheet doesn't need to know about overrideTable resolution.
+    this.rankBonusSummary = formatSkillRankBonusBreakdown(totalRanks, progression, overrideTable);
     // Alias used by RMFActions.#rollSkill — keeps actions.mjs untouched.
     this.bonus = this.totalBonus;
     // Normalize classification onto `this` so template lookups land

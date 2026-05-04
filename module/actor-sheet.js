@@ -759,10 +759,10 @@ export class RMFActorSheet extends HandlebarsApplicationMixin(foundry.applicatio
           if (active) this._activeTab = active;
           if (body) this._pendingScrollTop = body.scrollTop;
         } catch {}
-        const { value, isNumeric, type } = coerceInputValue(target);
+        const value = coerceInputValue(target);
         const tag = buildEntityTag(this.document);
         if (CONFIG?.RMF?.debug) {
-          console.debug('RMF DEBUG | ActorSheet granular update', { actor: tag, name, value, isNumeric, type });
+          console.debug('RMF DEBUG | ActorSheet granular update', { actor: tag, name, value });
         }
 
         // Redirigir updates de items embebidos: items.<id>.<path>
@@ -815,13 +815,11 @@ export class RMFActorSheet extends HandlebarsApplicationMixin(foundry.applicatio
       if (active) this._activeTab = active;
       if (body) this._pendingScrollTop = body.scrollTop;
     } catch {}
-    const { value, isNumeric, type } = coerceInputValue(input);
+    const value = coerceInputValue(input);
 
-  // Build tag standardized
-  const tag = buildEntityTag(this.document);
-    // Debug log similar to race-sheet
+    const tag = buildEntityTag(this.document);
     if (CONFIG?.RMF?.debug) {
-      console.debug('RMF DEBUG | ActorSheet granular update', { actor: tag, name, value, isNumeric, type });
+      console.debug('RMF DEBUG | ActorSheet granular update', { actor: tag, name, value });
     }
     // Visible log identical style to item/race
     console.log(`RMF | ${tag} Update ${name} => ${value}`);

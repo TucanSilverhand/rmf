@@ -117,7 +117,7 @@ export class RMFRealmSheet extends HandlebarsApplicationMixin(foundry.applicatio
     const target = event.target;
     const name = target?.name || target?.getAttribute?.("name");
     if (!name) return;
-    const { value } = coerceInputValue(target);
+    const value = coerceInputValue(target);
     const tag = buildEntityTag(this.document);
     if (CONFIG?.RMF?.debug) {
       console.debug("RMF DEBUG | RealmSheet granular update", { item: tag, name, value });

@@ -15,29 +15,30 @@ export function buildEntityTag(doc) {
 }
 
 /**
- * Coerce input value according to element type and data-dtype
- * - checkbox => boolean
- * - number or data-dtype="Number" => Number (defaults 0 if NaN or empty)
- * - otherwise => string
+ * Read the value of a form control with the right type.
+ *
+ * Most numeric coercion now happens automatically because the schema
+ * (`NumberField` with `min`/`max`/`integer`) validates and coerces on
+ * `document.update()`. We still pre-coerce empty / non-finite numeric
+ * inputs to `0` so the schema never sees `""` (which Foundry would
+ * round to `NaN` and reject when `nullable: false`). And we read
+ * `el.checked` for checkboxes, where `el.value` is always `"on"`.
+ *
  * @param {HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement} el
- * @returns {{ value: any, isNumeric: boolean, type: string }}
+ * @returns {boolean|number|string}
  */
 export function coerceInputValue(el) {
   const type = (el.getAttribute?.('type') || '').toLowerCase();
+  if (type === 'checkbox') return !!el.checked;
+
   const dtype = el.dataset?.dtype || '';
-
-  if (type === 'checkbox') {
-    return { value: !!el.checked, isNumeric: false, type };
-  }
-
   if (type === 'number' || dtype === 'Number') {
-    const raw = (el.value ?? '').toString().trim();
-    if (raw === '') return { value: 0, isNumeric: true, type };
+    const raw = String(el.value ?? '').trim();
+    if (raw === '') return 0;
     const n = Number(raw);
-    return { value: Number.isFinite(n) ? n : 0, isNumeric: true, type };
+    return Number.isFinite(n) ? n : 0;
   }
-
-  return { value: el.value ?? '', isNumeric: false, type };
+  return el.value ?? '';
 }
 
 /**

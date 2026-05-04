@@ -15,34 +15,38 @@ import { totalBoughtRanks, sumActorStatTotals } from "./_shared.mjs";
 const fields = foundry.data.fields;
 
 /**
- * Allowed values for `system.group`. Keeping them in one place lets
- * us validate at the schema level instead of re-listing the set in
- * every sheet helper.
+ * Allowed values for `system.group`, paired with their i18n label
+ * keys. Single source of truth: the schema validates against the
+ * `value`s, the sheet renders the `label`s. Adding a group here
+ * exposes it everywhere automatically.
  */
-export const CATEGORY_GROUPS = Object.freeze([
-  "none",
-  "Armor",
-  "Artistic",
-  "Athletic",
-  "Awareness",
-  "Body Development",
-  "Combat Maneuvers",
-  "Communications",
-  "Craft",
-  "Directed Spells",
-  "Influence",
-  "Lore",
-  "Martial Arts",
-  "Outdoor",
-  "Power Awareness",
-  "Power Point Development",
-  "Science",
-  "Self Control",
-  "Subterfuge",
-  "Technical",
-  "Urban",
-  "Weapon"
+export const CATEGORY_GROUP_OPTIONS = Object.freeze([
+  { value: "none",                    label: "RMF.Category.Groups.None" },
+  { value: "Armor",                   label: "RMF.Category.Groups.Armor" },
+  { value: "Artistic",                label: "RMF.Category.Groups.Artistic" },
+  { value: "Athletic",                label: "RMF.Category.Groups.Athletic" },
+  { value: "Awareness",               label: "RMF.Category.Groups.Awareness" },
+  { value: "Body Development",        label: "RMF.Category.Groups.BodyDevelopment" },
+  { value: "Combat Maneuvers",        label: "RMF.Category.Groups.CombatManeuvers" },
+  { value: "Communications",          label: "RMF.Category.Groups.Communications" },
+  { value: "Craft",                   label: "RMF.Category.Groups.Craft" },
+  { value: "Directed Spells",         label: "RMF.Category.Groups.DirectedSpells" },
+  { value: "Influence",               label: "RMF.Category.Groups.Influence" },
+  { value: "Lore",                    label: "RMF.Category.Groups.Lore" },
+  { value: "Martial Arts",            label: "RMF.Category.Groups.MartialArts" },
+  { value: "Outdoor",                 label: "RMF.Category.Groups.Outdoor" },
+  { value: "Power Awareness",         label: "RMF.Category.Groups.PowerAwareness" },
+  { value: "Power Point Development", label: "RMF.Category.Groups.PowerPointDevelopment" },
+  { value: "Science",                 label: "RMF.Category.Groups.Science" },
+  { value: "Self Control",            label: "RMF.Category.Groups.SelfControl" },
+  { value: "Subterfuge",              label: "RMF.Category.Groups.Subterfuge" },
+  { value: "Technical",               label: "RMF.Category.Groups.Technical" },
+  { value: "Urban",                   label: "RMF.Category.Groups.Urban" },
+  { value: "Weapon",                  label: "RMF.Category.Groups.Weapon" }
 ]);
+
+/** Plain values, derived for `choices` validation in the schema. */
+export const CATEGORY_GROUPS = Object.freeze(CATEGORY_GROUP_OPTIONS.map(g => g.value));
 
 const CATEGORY_PROGRESSIONS = ["standard", "nonstandard"];
 

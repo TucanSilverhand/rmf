@@ -251,7 +251,7 @@ export class RMFProfessionSheet extends HandlebarsApplicationMixin(
     if (!name) return;
 
     try {
-      const { value } = coerceInputValue(target);
+      const value = coerceInputValue(target);
       const tag = buildEntityTag(this.document);
       if (CONFIG?.RMF?.debug) {
         console.debug("RMF DEBUG | ProfessionSheet update", { item: tag, name, value });

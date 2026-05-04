@@ -186,7 +186,7 @@ export class RMFRaceSheet extends HandlebarsApplicationMixin(
    * Build display data for the four race progression strings
    * (Body Development + PP for the three magical realms).
    * Each entry exposes the raw string the user edits, the parsed table
-   * computed by _prepareRaceData, and a localized label.
+   * computed by RaceData.prepareDerivedData, and a localized label.
    *
    * @returns {Array<{key:string,label:string,value:string,table:object}>}
    * @private
@@ -339,7 +339,7 @@ export class RMFRaceSheet extends HandlebarsApplicationMixin(
         name === "system.backgroundOptions";
 
       try {
-        const { value } = coerceInputValue(target);
+        const value = coerceInputValue(target);
         const tag = buildEntityTag(this.document);
         if (CONFIG?.RMF?.debug) {
           console.debug("RMF DEBUG | RaceSheet granular update", {
