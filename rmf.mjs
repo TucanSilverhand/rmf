@@ -28,6 +28,15 @@ import { RMFHooks } from "./module/hooks.mjs";
 import { SKILL_CLASSIFICATIONS } from "./module/utils/rank-bonus.mjs";
 import { STAT_SHORT_TO_FULL, RMF_CONSTANTS } from "./module/utils/constants.mjs";
 import { registerMigrationSettings, runWorldMigration } from "./module/migration.mjs";
+import {
+  CharacterData,
+  EquipmentData,
+  RaceData,
+  SkillData,
+  CategoryData,
+  RealmData,
+  ProfessionData
+} from "./module/data-models/index.mjs";
 
 /**
  * Global system namespace for RMF system configuration and utilities
@@ -54,7 +63,23 @@ Hooks.once('init', async function() {
   // Register custom document classes with FoundryVTT
   CONFIG.Actor.documentClass = RMFActor;
   CONFIG.Item.documentClass = RMFItem;
-  
+
+  // Register per-type DataModels. From v13, CONFIG.<Doc>.dataModels is
+  // the idiomatic replacement for `template.json`. Each entry's schema
+  // mirrors the legacy template entry so existing worlds load without
+  // any data migration.
+  CONFIG.Actor.dataModels = {
+    character: CharacterData
+  };
+  CONFIG.Item.dataModels = {
+    equipment:  EquipmentData,
+    race:       RaceData,
+    skill:      SkillData,
+    category:   CategoryData,
+    realm:      RealmData,
+    profession: ProfessionData
+  };
+
   // Register system settings before other initialization
   _registerSystemSettings();
 

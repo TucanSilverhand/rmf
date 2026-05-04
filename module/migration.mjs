@@ -40,13 +40,33 @@ const SETTING_IN_PROGRESS = "migrationInProgress";
  *   - `scenes`: Array of scenes (for token-actor deltas)
  *   - `log(msg, payload?)`: convenience logger that prefixes RMF | MIGRATION
  *
- * NOTE: at the time of writing, the v0.1.0 schema is the baseline; no
- * migrations are needed yet. The framework is in place so future schema
- * changes can ship with their migration in the same PR.
- *
  * @type {Array<{ to: string, description: string, run: (ctx: object) => Promise<void> }>}
  */
-export const MIGRATIONS = [];
+export const MIGRATIONS = [
+  {
+    to: "0.2.0",
+    description: "DataModel introduction: re-emit each actor/item once so the schema-validated shape is persisted.",
+    async run({ actors, items, log }) {
+      // The 0.2.0 schema mirrors the legacy template.json shape, so no
+      // field rename or restructure is needed. Walking through every
+      // actor/item with a no-op update forces Foundry to round-trip the
+      // data through the registered TypeDataModel: missing fields get
+      // filled with their `initial`, out-of-range numbers get clamped,
+      // and unknown legacy keys (e.g. former cached calculations on
+      // disk) are silently dropped.
+      let actorsUpdated = 0, itemsUpdated = 0;
+      for (const actor of actors) {
+        try { await actor.update({}, { diff: false }); actorsUpdated++; }
+        catch (err) { log(`Skipping actor ${actor.name}: ${err.message}`); }
+      }
+      for (const item of items) {
+        try { await item.update({}, { diff: false }); itemsUpdated++; }
+        catch (err) { log(`Skipping item ${item.name}: ${err.message}`); }
+      }
+      log(`Re-emitted ${actorsUpdated} actor(s) and ${itemsUpdated} world item(s) through the new schema.`);
+    }
+  }
+];
 
 /**
  * Register the world settings used by the migration runner. Called from
