@@ -1818,3 +1818,52 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Read-only display of a prime stat in the details tab — same grid as
+   the advanced tab so the two views feel symmetric. */
+.rmf .prime-stats-grid .prime-stat-readonly {
+  padding: 4px 8px;
+  border: 1px solid var(--rmf-color-border);
+  border-radius: var(--rmf-radius-sm, 4px);
+  background: var(--rmf-color-bg-alt);
+  color: var(--rmf-color-fg-muted);
+  min-height: var(--rmf-input-height, 26px);
+  display: flex;
+  align-items: center;
+}
+
+/* =============================================================================
+   Skill lists in the profession sheet (everyman / occupational / restricted)
+   render as a 2-column flowing grid both in the editable advanced tab and
+   the read-only details tab. Falls back to a single column on narrow sheets.
+   ============================================================================= */
+.rmf .profession-skill-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+}
+.rmf .profession-skill-grid .profession-skill-row {
+  min-width: 0;
+}
+.rmf .profession-skill-grid .profession-skill-row input {
+  width: 100%;
+}
+
+/* Read-only display inside the details tab — visually consistent with
+   the editable inputs in advanced (same height/border/padding). */
+.rmf .profession-skill-grid .profession-skill-readonly {
+  padding: 4px 8px;
+  border: 1px solid var(--rmf-color-border);
+  border-radius: var(--rmf-radius-sm, 4px);
+  background: var(--rmf-color-bg-alt);
+  color: var(--rmf-color-fg-muted);
+  min-height: var(--rmf-input-height, 26px);
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 720px) {
+  .rmf .profession-skill-grid {
+    grid-template-columns: 1fr;
+  }
+}

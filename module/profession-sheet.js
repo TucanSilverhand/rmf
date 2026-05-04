@@ -121,10 +121,16 @@ export class RMFProfessionSheet extends HandlebarsApplicationMixin(
     };
     const catSplit = half(context.categoryPriceRows);
     const tpSplit  = half(context.trainingPackageRows);
-    context.categoryPriceLeft       = catSplit.left;
-    context.categoryPriceRight      = catSplit.right;
-    context.trainingPackagesLeft    = tpSplit.left;
-    context.trainingPackagesRight   = tpSplit.right;
+    const pbSplit  = half(context.professionalBonusRows);
+    const spSplit  = half(context.spellPriceRows);
+    context.categoryPriceLeft           = catSplit.left;
+    context.categoryPriceRight          = catSplit.right;
+    context.trainingPackagesLeft        = tpSplit.left;
+    context.trainingPackagesRight       = tpSplit.right;
+    context.professionalBonusesLeft     = pbSplit.left;
+    context.professionalBonusesRight    = pbSplit.right;
+    context.spellPriceLeft              = spSplit.left;
+    context.spellPriceRight             = spSplit.right;
 
     // Stat options for primeStats select inputs (canonical full chXxx keys).
     context.statOptions = this._prepareStatOptions();
@@ -164,6 +170,11 @@ export class RMFProfessionSheet extends HandlebarsApplicationMixin(
    */
   _preparePrimeStatRows(list) {
     if (!Array.isArray(list)) return [];
+    // Pre-build the option list once and stamp `selected` per row, so
+    // the template doesn't need a nested `{{#each ../statOptions}}`
+    // with `../row.name` (whose double-up path resolution is a common
+    // source of silent rendering bugs in Handlebars).
+    const baseOptions = this._prepareStatOptions();
     return list.map((entry, index) => {
       // Tolerant resolution: items imported before the chXxx
       // canonicalization (e.g. "Constitution", "Self Discipline",
@@ -176,7 +187,8 @@ export class RMFProfessionSheet extends HandlebarsApplicationMixin(
       const label = labelKey && game.i18n.has(labelKey)
         ? game.i18n.localize(labelKey)
         : (raw || value);
-      return { index, value, name: value, label };
+      const options = baseOptions.map(o => ({ ...o, selected: o.value === value }));
+      return { index, value, name: value, label, options };
     });
   }
 

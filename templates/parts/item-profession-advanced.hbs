@@ -26,15 +26,17 @@
            autocomplete="off" />
   </fieldset>
 
-  {{!-- Prime stats: select inputs (canonical chXxx values) --}}
+  {{!-- Prime stats: select inputs (canonical chXxx values).
+       Each row carries its own `options` array with `selected` pre-stamped
+       by the sheet, so the template avoids a fragile `../row.name` path. --}}
   <fieldset class="form-group">
     <legend>{{localize "RMF.Profession.PrimeStats"}}</legend>
     <div class="prime-stats-grid">
       {{#each primeStatRows as |row|}}
       <div class="prime-stat-row">
         <select name="system.primeStats.{{row.index}}">
-          {{#each ../statOptions as |opt|}}
-            <option value="{{opt.value}}" {{#if (rmfEq opt.value ../row.name)}}selected{{/if}}>{{opt.label}}</option>
+          {{#each row.options as |opt|}}
+            <option value="{{opt.value}}" {{#if opt.selected}}selected{{/if}}>{{opt.label}}</option>
           {{/each}}
         </select>
       </div>
@@ -43,41 +45,43 @@
     <p class="hint">{{localize "RMF.Profession.PrimeStatsHint"}}</p>
   </fieldset>
 
-  {{!-- Professional bonuses --}}
+  {{!-- Professional bonuses — two-column layout for compactness --}}
   <fieldset class="form-group">
     <legend>{{localize "RMF.Profession.ProfessionalBonuses"}}</legend>
-    <table class="profession-table">
-      <thead>
-        <tr>
-          <th>{{localize "RMF.Profession.BonusName"}}</th>
-          <th>{{localize "RMF.Profession.BonusValue"}}</th>
-        </tr>
-      </thead>
-      <tbody>
-        {{#each professionalBonusRows as |row|}}
-        <tr>
-          <td>
-            <input type="text"
-                   name="system.professionalBonuses.{{row.index}}.name"
-                   value="{{row.name}}"
-                   placeholder="{{localize 'RMF.Profession.BonusName'}}"
-                   autocomplete="off" />
-          </td>
-          <td>
-            <input type="number"
-                   name="system.professionalBonuses.{{row.index}}.bonus"
-                   value="{{row.bonus}}"
-                   min="-999"
-                   max="999"
-                   step="1"
-                   inputmode="numeric"
-                   placeholder="0"
-                   data-dtype="Number" />
-          </td>
-        </tr>
-        {{/each}}
-      </tbody>
-    </table>
+    <div class="two-col-tables">
+      <table class="profession-table">
+        <thead>
+          <tr>
+            <th>{{localize "RMF.Profession.BonusName"}}</th>
+            <th>{{localize "RMF.Profession.BonusValue"}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each professionalBonusesLeft as |row|}}
+          <tr>
+            <td><input type="text"   name="system.professionalBonuses.{{row.index}}.name"  value="{{row.name}}"  placeholder="{{localize 'RMF.Profession.BonusName'}}" autocomplete="off" /></td>
+            <td><input type="number" name="system.professionalBonuses.{{row.index}}.bonus" value="{{row.bonus}}" min="-999" max="999" step="1" inputmode="numeric" placeholder="0" data-dtype="Number" /></td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+      <table class="profession-table">
+        <thead>
+          <tr>
+            <th>{{localize "RMF.Profession.BonusName"}}</th>
+            <th>{{localize "RMF.Profession.BonusValue"}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each professionalBonusesRight as |row|}}
+          <tr>
+            <td><input type="text"   name="system.professionalBonuses.{{row.index}}.name"  value="{{row.name}}"  placeholder="{{localize 'RMF.Profession.BonusName'}}" autocomplete="off" /></td>
+            <td><input type="number" name="system.professionalBonuses.{{row.index}}.bonus" value="{{row.bonus}}" min="-999" max="999" step="1" inputmode="numeric" placeholder="0" data-dtype="Number" /></td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
   </fieldset>
 
   {{!-- Everyman skills --}}
@@ -183,50 +187,47 @@
     </div>
   </fieldset>
 
-  {{!-- Spell prices --}}
+  {{!-- Spell prices — two-column layout for compactness --}}
   <fieldset class="form-group">
     <legend>{{localize "RMF.Profession.SpellPrice"}}</legend>
-    <table class="profession-table dp-cost-table">
-      <thead>
-        <tr>
-          <th>{{localize "RMF.Profession.SpellGroup"}}</th>
-          <th>P1</th>
-          <th>P2</th>
-          <th>P3</th>
-        </tr>
-      </thead>
-      <tbody>
-        {{#each spellPriceRows as |row|}}
-        <tr>
-          <td>
-            <input type="text"
-                   name="system.spellPrice.{{row.index}}.name"
-                   value="{{row.name}}"
-                   placeholder="{{localize 'RMF.Profession.SpellGroup'}}"
-                   autocomplete="off" />
-          </td>
-          <td>
-            <input type="number"
-                   name="system.spellPrice.{{row.index}}.dpCost.price1"
-                   value="{{row.price1}}"
-                   min="-99" max="999" step="1" inputmode="numeric" data-dtype="Number" />
-          </td>
-          <td>
-            <input type="number"
-                   name="system.spellPrice.{{row.index}}.dpCost.price2"
-                   value="{{row.price2}}"
-                   min="-99" max="999" step="1" inputmode="numeric" data-dtype="Number" />
-          </td>
-          <td>
-            <input type="number"
-                   name="system.spellPrice.{{row.index}}.dpCost.price3"
-                   value="{{row.price3}}"
-                   min="-99" max="999" step="1" inputmode="numeric" data-dtype="Number" />
-          </td>
-        </tr>
-        {{/each}}
-      </tbody>
-    </table>
+    <div class="two-col-tables">
+      <table class="profession-table dp-cost-table">
+        <thead>
+          <tr>
+            <th>{{localize "RMF.Profession.SpellGroup"}}</th>
+            <th>P1</th><th>P2</th><th>P3</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each spellPriceLeft as |row|}}
+          <tr>
+            <td><input type="text"   name="system.spellPrice.{{row.index}}.name"            value="{{row.name}}"   placeholder="{{localize 'RMF.Profession.SpellGroup'}}" autocomplete="off" /></td>
+            <td><input type="number" name="system.spellPrice.{{row.index}}.dpCost.price1"    value="{{row.price1}}" min="-99" max="999" step="1" inputmode="numeric" data-dtype="Number" /></td>
+            <td><input type="number" name="system.spellPrice.{{row.index}}.dpCost.price2"    value="{{row.price2}}" min="-99" max="999" step="1" inputmode="numeric" data-dtype="Number" /></td>
+            <td><input type="number" name="system.spellPrice.{{row.index}}.dpCost.price3"    value="{{row.price3}}" min="-99" max="999" step="1" inputmode="numeric" data-dtype="Number" /></td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+      <table class="profession-table dp-cost-table">
+        <thead>
+          <tr>
+            <th>{{localize "RMF.Profession.SpellGroup"}}</th>
+            <th>P1</th><th>P2</th><th>P3</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each spellPriceRight as |row|}}
+          <tr>
+            <td><input type="text"   name="system.spellPrice.{{row.index}}.name"            value="{{row.name}}"   placeholder="{{localize 'RMF.Profession.SpellGroup'}}" autocomplete="off" /></td>
+            <td><input type="number" name="system.spellPrice.{{row.index}}.dpCost.price1"    value="{{row.price1}}" min="-99" max="999" step="1" inputmode="numeric" data-dtype="Number" /></td>
+            <td><input type="number" name="system.spellPrice.{{row.index}}.dpCost.price2"    value="{{row.price2}}" min="-99" max="999" step="1" inputmode="numeric" data-dtype="Number" /></td>
+            <td><input type="number" name="system.spellPrice.{{row.index}}.dpCost.price3"    value="{{row.price3}}" min="-99" max="999" step="1" inputmode="numeric" data-dtype="Number" /></td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
   </fieldset>
 
   {{!-- Training packages — two-column layout for compactness --}}
