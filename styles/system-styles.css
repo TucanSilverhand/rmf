@@ -1771,3 +1771,28 @@
   min-height: 0;
   overflow: visible;
 }
+
+/* =============================================================================
+   Two-column table layout for long lists (profession sheet: categoryPrice
+   and trainingPackages). Falls back to a single column on narrower sheets
+   so the inputs don't get cramped.
+   ============================================================================= */
+.rmf .two-col-tables {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  align-items: start;
+}
+
+.rmf .two-col-tables > table {
+  width: 100%;
+  margin: 0;          /* override the centred max-content default */
+}
+
+/* Drop to a single column when the sheet is narrow enough that two
+   tables side-by-side would compress inputs to unreadable widths. */
+@media (max-width: 720px) {
+  .rmf .two-col-tables {
+    grid-template-columns: 1fr;
+  }
+}

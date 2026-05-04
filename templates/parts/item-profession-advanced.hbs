@@ -128,50 +128,59 @@
     </div>
   </fieldset>
 
-  {{!-- Category prices --}}
+  {{!-- Category prices — two-column layout for compactness --}}
   <fieldset class="form-group">
     <legend>{{localize "RMF.Profession.CategoryPrice"}}</legend>
-    <table class="profession-table dp-cost-table">
-      <thead>
-        <tr>
-          <th>{{localize "RMF.Skills.Category"}}</th>
-          <th>P1</th>
-          <th>P2</th>
-          <th>P3</th>
-        </tr>
-      </thead>
-      <tbody>
-        {{#each categoryPriceRows as |row|}}
-        <tr>
-          <td>
-            <input type="text"
-                   name="system.categoryPrice.{{row.index}}.name"
-                   value="{{row.name}}"
-                   placeholder="{{localize 'RMF.Skills.Category'}}"
-                   autocomplete="off" />
-          </td>
-          <td>
-            <input type="number"
-                   name="system.categoryPrice.{{row.index}}.dpCost.price1"
-                   value="{{row.price1}}"
-                   min="-99" max="999" step="1" inputmode="numeric" data-dtype="Number" />
-          </td>
-          <td>
-            <input type="number"
-                   name="system.categoryPrice.{{row.index}}.dpCost.price2"
-                   value="{{row.price2}}"
-                   min="-99" max="999" step="1" inputmode="numeric" data-dtype="Number" />
-          </td>
-          <td>
-            <input type="number"
-                   name="system.categoryPrice.{{row.index}}.dpCost.price3"
-                   value="{{row.price3}}"
-                   min="-99" max="999" step="1" inputmode="numeric" data-dtype="Number" />
-          </td>
-        </tr>
-        {{/each}}
-      </tbody>
-    </table>
+    <div class="two-col-tables">
+      <table class="profession-table dp-cost-table">
+        <thead>
+          <tr>
+            <th>{{localize "RMF.Skills.Category"}}</th>
+            <th>P1</th><th>P2</th><th>P3</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each categoryPriceLeft as |row|}}
+          <tr>
+            <td>
+              <input type="text"
+                     name="system.categoryPrice.{{row.index}}.name"
+                     value="{{row.name}}"
+                     placeholder="{{localize 'RMF.Skills.Category'}}"
+                     autocomplete="off" />
+            </td>
+            <td><input type="number" name="system.categoryPrice.{{row.index}}.dpCost.price1" value="{{row.price1}}" min="-99" max="999" step="1" inputmode="numeric" data-dtype="Number" /></td>
+            <td><input type="number" name="system.categoryPrice.{{row.index}}.dpCost.price2" value="{{row.price2}}" min="-99" max="999" step="1" inputmode="numeric" data-dtype="Number" /></td>
+            <td><input type="number" name="system.categoryPrice.{{row.index}}.dpCost.price3" value="{{row.price3}}" min="-99" max="999" step="1" inputmode="numeric" data-dtype="Number" /></td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+      <table class="profession-table dp-cost-table">
+        <thead>
+          <tr>
+            <th>{{localize "RMF.Skills.Category"}}</th>
+            <th>P1</th><th>P2</th><th>P3</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each categoryPriceRight as |row|}}
+          <tr>
+            <td>
+              <input type="text"
+                     name="system.categoryPrice.{{row.index}}.name"
+                     value="{{row.name}}"
+                     placeholder="{{localize 'RMF.Skills.Category'}}"
+                     autocomplete="off" />
+            </td>
+            <td><input type="number" name="system.categoryPrice.{{row.index}}.dpCost.price1" value="{{row.price1}}" min="-99" max="999" step="1" inputmode="numeric" data-dtype="Number" /></td>
+            <td><input type="number" name="system.categoryPrice.{{row.index}}.dpCost.price2" value="{{row.price2}}" min="-99" max="999" step="1" inputmode="numeric" data-dtype="Number" /></td>
+            <td><input type="number" name="system.categoryPrice.{{row.index}}.dpCost.price3" value="{{row.price3}}" min="-99" max="999" step="1" inputmode="numeric" data-dtype="Number" /></td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
   </fieldset>
 
   {{!-- Spell prices --}}
@@ -220,36 +229,65 @@
     </table>
   </fieldset>
 
-  {{!-- Training packages --}}
+  {{!-- Training packages — two-column layout for compactness --}}
   <fieldset class="form-group">
     <legend>{{localize "RMF.Profession.TrainingPackages"}}</legend>
-    <table class="profession-table">
-      <thead>
-        <tr>
-          <th>{{localize "RMF.Profession.PackageName"}}</th>
-          <th>{{localize "RMF.Profession.PackageCost"}}</th>
-        </tr>
-      </thead>
-      <tbody>
-        {{#each trainingPackageRows as |row|}}
-        <tr>
-          <td>
-            <input type="text"
-                   name="system.trainingPackages.{{row.index}}.name"
-                   value="{{row.name}}"
-                   placeholder="{{localize 'RMF.Profession.PackageName'}}"
-                   autocomplete="off" />
-          </td>
-          <td>
-            <input type="number"
-                   name="system.trainingPackages.{{row.index}}.dpCost"
-                   value="{{row.dpCost}}"
-                   min="-99" max="9999" step="1" inputmode="numeric" data-dtype="Number" />
-          </td>
-        </tr>
-        {{/each}}
-      </tbody>
-    </table>
+    <div class="two-col-tables">
+      <table class="profession-table">
+        <thead>
+          <tr>
+            <th>{{localize "RMF.Profession.PackageName"}}</th>
+            <th>{{localize "RMF.Profession.PackageCost"}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each trainingPackagesLeft as |row|}}
+          <tr>
+            <td>
+              <input type="text"
+                     name="system.trainingPackages.{{row.index}}.name"
+                     value="{{row.name}}"
+                     placeholder="{{localize 'RMF.Profession.PackageName'}}"
+                     autocomplete="off" />
+            </td>
+            <td>
+              <input type="number"
+                     name="system.trainingPackages.{{row.index}}.dpCost"
+                     value="{{row.dpCost}}"
+                     min="-99" max="9999" step="1" inputmode="numeric" data-dtype="Number" />
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+      <table class="profession-table">
+        <thead>
+          <tr>
+            <th>{{localize "RMF.Profession.PackageName"}}</th>
+            <th>{{localize "RMF.Profession.PackageCost"}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each trainingPackagesRight as |row|}}
+          <tr>
+            <td>
+              <input type="text"
+                     name="system.trainingPackages.{{row.index}}.name"
+                     value="{{row.name}}"
+                     placeholder="{{localize 'RMF.Profession.PackageName'}}"
+                     autocomplete="off" />
+            </td>
+            <td>
+              <input type="number"
+                     name="system.trainingPackages.{{row.index}}.dpCost"
+                     value="{{row.dpCost}}"
+                     min="-99" max="9999" step="1" inputmode="numeric" data-dtype="Number" />
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
   </fieldset>
 
 </div>

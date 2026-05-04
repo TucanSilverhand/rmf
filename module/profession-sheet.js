@@ -96,7 +96,13 @@ export class RMFProfessionSheet extends HandlebarsApplicationMixin(
 
     // Indexed rows for every editable list, so dot-notation field names
     // can be built from row.index in the template.
-    context.primeStatRows = this._prepareNameRows(sys.primeStats, { kind: "string" });
+    //
+    // primeStats persist as canonical chXxx keys; the row carries both
+    // the raw `value` (for the <select> in advanced) and a localized
+    // `label` resolved against `RMF.Stats.<chXxx>` so the read-only
+    // details tab shows "Constitution" / "Constitución" depending on
+    // the active language.
+    context.primeStatRows = this._preparePrimeStatRows(sys.primeStats);
     context.professionalBonusRows = this._prepareProfessionalBonusRows();
     context.everymanSkillRows = this._prepareNameRows(sys.everymanSkills, { kind: "object" });
     context.occupationalSkillRows = this._prepareNameRows(sys.occupationalSkills, { kind: "object" });
@@ -104,6 +110,20 @@ export class RMFProfessionSheet extends HandlebarsApplicationMixin(
     context.categoryPriceRows = this._prepareDpCostRows(sys.categoryPrice);
     context.spellPriceRows = this._prepareDpCostRows(sys.spellPrice);
     context.trainingPackageRows = this._prepareTrainingPackageRows();
+
+    // Split helper: long lists render as two side-by-side tables in
+    // both the details (read-only) and advanced (editable) tabs to
+    // make better use of horizontal space.
+    const half = (arr) => {
+      const cut = Math.ceil(arr.length / 2);
+      return { left: arr.slice(0, cut), right: arr.slice(cut) };
+    };
+    const catSplit = half(context.categoryPriceRows);
+    const tpSplit  = half(context.trainingPackageRows);
+    context.categoryPriceLeft       = catSplit.left;
+    context.categoryPriceRight      = catSplit.right;
+    context.trainingPackagesLeft    = tpSplit.left;
+    context.trainingPackagesRight   = tpSplit.right;
 
     // Stat options for primeStats select inputs (canonical full chXxx keys).
     context.statOptions = this._prepareStatOptions();
@@ -125,6 +145,31 @@ export class RMFProfessionSheet extends HandlebarsApplicationMixin(
     return list.map((entry, index) => {
       const raw = kind === "object" ? entry?.name : entry;
       return { index, name: typeof raw === "string" ? raw : "" };
+    });
+  }
+
+  /**
+   * Prepare indexed rows for primeStats. Each entry is the canonical
+   * stat key (chXxx); the row carries:
+   *   - `index` for dot-notation form names
+   *   - `value` (raw chXxx, used by the <select> in advanced)
+   *   - `label` localized via `RMF.Stats.<chXxx>` for the details view
+   *   - `name` (alias of `value`, kept for advanced.hbs which iterates
+   *     `primeStatRows` and reads `row.name` for the select's selected check)
+   *
+   * @param {*} list
+   * @returns {Array<{index:number, value:string, name:string, label:string}>}
+   * @private
+   */
+  _preparePrimeStatRows(list) {
+    if (!Array.isArray(list)) return [];
+    return list.map((entry, index) => {
+      const value = typeof entry === "string" ? entry : "";
+      const labelKey = value ? `RMF.Stats.${value}` : "";
+      const label = labelKey && game.i18n.has(labelKey)
+        ? game.i18n.localize(labelKey)
+        : value;
+      return { index, value, name: value, label };
     });
   }
 

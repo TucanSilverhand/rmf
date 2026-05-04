@@ -26,13 +26,14 @@
     </table>
   </div>
 
-  {{!-- Prime stats --}}
+  {{!-- Prime stats: persistidos como chXxx; mostramos el label localizado
+       que el sheet pre-resolvió contra RMF.Stats.<chXxx>. --}}
   <div class="summary-wrapper">
     <h3>{{localize "RMF.Profession.PrimeStats"}}</h3>
-    {{#if system.primeStats.length}}
+    {{#if primeStatRows.length}}
     <ul class="prime-stats-list">
-      {{#each system.primeStats as |stat|}}
-        <li>{{stat}}</li>
+      {{#each primeStatRows as |row|}}
+        <li>{{row.label}}</li>
       {{/each}}
     </ul>
     {{else}}
@@ -105,30 +106,48 @@
     {{/if}}
   </div>
 
-  {{!-- Category prices (DP cost table) --}}
+  {{!-- Category prices (DP cost) — two-column layout for compactness --}}
   <div class="summary-wrapper">
     <h3>{{localize "RMF.Profession.CategoryPrice"}}</h3>
     {{#if system.categoryPrice.length}}
-    <table class="summary-table dp-cost-table">
-      <thead>
-        <tr>
-          <th>{{localize "RMF.Skills.Category"}}</th>
-          <th>P1</th>
-          <th>P2</th>
-          <th>P3</th>
-        </tr>
-      </thead>
-      <tbody>
-        {{#each system.categoryPrice as |entry|}}
-        <tr>
-          <td><input type="text" value="{{entry.name}}" readonly /></td>
-          <td><input type="number" value="{{entry.dpCost.price1}}" readonly data-dtype="Number" inputmode="numeric" /></td>
-          <td><input type="number" value="{{entry.dpCost.price2}}" readonly data-dtype="Number" inputmode="numeric" /></td>
-          <td><input type="number" value="{{entry.dpCost.price3}}" readonly data-dtype="Number" inputmode="numeric" /></td>
-        </tr>
-        {{/each}}
-      </tbody>
-    </table>
+    <div class="two-col-tables">
+      <table class="summary-table dp-cost-table">
+        <thead>
+          <tr>
+            <th>{{localize "RMF.Skills.Category"}}</th>
+            <th>P1</th><th>P2</th><th>P3</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each categoryPriceLeft as |row|}}
+          <tr>
+            <td><input type="text" value="{{row.name}}" readonly /></td>
+            <td><input type="number" value="{{row.price1}}" readonly data-dtype="Number" inputmode="numeric" /></td>
+            <td><input type="number" value="{{row.price2}}" readonly data-dtype="Number" inputmode="numeric" /></td>
+            <td><input type="number" value="{{row.price3}}" readonly data-dtype="Number" inputmode="numeric" /></td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+      <table class="summary-table dp-cost-table">
+        <thead>
+          <tr>
+            <th>{{localize "RMF.Skills.Category"}}</th>
+            <th>P1</th><th>P2</th><th>P3</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each categoryPriceRight as |row|}}
+          <tr>
+            <td><input type="text" value="{{row.name}}" readonly /></td>
+            <td><input type="number" value="{{row.price1}}" readonly data-dtype="Number" inputmode="numeric" /></td>
+            <td><input type="number" value="{{row.price2}}" readonly data-dtype="Number" inputmode="numeric" /></td>
+            <td><input type="number" value="{{row.price3}}" readonly data-dtype="Number" inputmode="numeric" /></td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
     {{else}}
     <em>{{localize "RMF.Profession.None"}}</em>
     {{/if}}
@@ -163,26 +182,44 @@
     {{/if}}
   </div>
 
-  {{!-- Training packages --}}
+  {{!-- Training packages — two-column layout --}}
   <div class="summary-wrapper">
     <h3>{{localize "RMF.Profession.TrainingPackages"}}</h3>
     {{#if system.trainingPackages.length}}
-    <table class="summary-table">
-      <thead>
-        <tr>
-          <th>{{localize "RMF.Profession.PackageName"}}</th>
-          <th>{{localize "RMF.Profession.PackageCost"}}</th>
-        </tr>
-      </thead>
-      <tbody>
-        {{#each system.trainingPackages as |entry|}}
-        <tr>
-          <td><input type="text" value="{{entry.name}}" readonly /></td>
-          <td><input type="number" value="{{entry.dpCost}}" readonly data-dtype="Number" inputmode="numeric" /></td>
-        </tr>
-        {{/each}}
-      </tbody>
-    </table>
+    <div class="two-col-tables">
+      <table class="summary-table">
+        <thead>
+          <tr>
+            <th>{{localize "RMF.Profession.PackageName"}}</th>
+            <th>{{localize "RMF.Profession.PackageCost"}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each trainingPackagesLeft as |row|}}
+          <tr>
+            <td><input type="text" value="{{row.name}}" readonly /></td>
+            <td><input type="number" value="{{row.dpCost}}" readonly data-dtype="Number" inputmode="numeric" /></td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+      <table class="summary-table">
+        <thead>
+          <tr>
+            <th>{{localize "RMF.Profession.PackageName"}}</th>
+            <th>{{localize "RMF.Profession.PackageCost"}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each trainingPackagesRight as |row|}}
+          <tr>
+            <td><input type="text" value="{{row.name}}" readonly /></td>
+            <td><input type="number" value="{{row.dpCost}}" readonly data-dtype="Number" inputmode="numeric" /></td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
     {{else}}
     <em>{{localize "RMF.Profession.None"}}</em>
     {{/if}}
