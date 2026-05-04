@@ -31,6 +31,21 @@ Pega esta URL en *Configuration > Game Systems > Install System*:
 https://github.com/TucanSilverhand/rmf/releases/latest/download/system.json
 ```
 
+## Publicar una nueva versión
+
+El sistema usa GitHub Actions para empaquetar y publicar releases automáticamente:
+
+1. Actualiza `system.json:version` y añade una entrada en `CHANGELOG.md`.
+2. Commit y push de los cambios.
+3. Crea el tag y empújalo:
+   ```sh
+   git tag v0.2.0
+   git push --tags
+   ```
+4. La acción de release ([`.github/workflows/release.yml`](.github/workflows/release.yml)) verifica que el tag coincide con `system.json:version`, empaqueta `rmf.zip`, crea el GitHub Release y adjunta `system.json` + `rmf.zip` como assets. Tras ~2 minutos, las URLs de instalación de arriba quedan resolviendo.
+
+Cada PR y push a `production` corre el workflow de validación ([`.github/workflows/validate.yml`](.github/workflows/validate.yml)): JSON, sintaxis JS/MJS, *schema-shape* contra `data/*.json`, y referencias de partials Handlebars.
+
 ## Inicialización del compendio
 
 Tras instalar el sistema, crea un compendio mundial llamado **`world.basic-core`** (tipo *Item*) y abre la consola del navegador (F12). Ejecuta los snippets de [`zzEstrategia.carlos.txt`](zzEstrategia.carlos.txt) o, abreviadamente:

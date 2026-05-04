@@ -1,0 +1,80 @@
+name: Release
+
+# Triggered by `git push` of any tag matching v*  (e.g. v0.2.0).
+# The job:
+#   1. Validates that system.json:version matches the tag (no drift).
+#   2. Builds rmf.zip with everything that should ship to users.
+#   3. Creates / updates the GitHub Release and uploads system.json
+#      and rmf.zip as assets, so the URLs declared in system.json
+#      (releases/latest/download/...) start resolving.
+#
+# Foundry's "Install System" UI fetches `manifest` (system.json) and
+# then `download` (rmf.zip). Both must be reachable as Release assets.
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write   # required to create the GitHub Release
+
+jobs:
+  release:
+    name: Build & publish ${{ github.ref_name }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify tag matches system.json:version
+        run: |
+          set -euo pipefail
+          TAG="${GITHUB_REF_NAME#v}"
+          VERSION="$(jq -r '.version' system.json)"
+          if [ "$TAG" != "$VERSION" ]; then
+            echo "::error::Tag '${GITHUB_REF_NAME}' (parsed as '$TAG') does not match system.json:version ('$VERSION')."
+            echo "Update system.json before tagging, or rename the tag."
+            exit 1
+          fi
+          echo "OK — releasing v$VERSION"
+
+      - name: Build rmf.zip
+        run: |
+          set -euo pipefail
+          mkdir -p _build
+          # Explicit list keeps surprises out of the package.
+          # Anything not listed here does NOT ship to users.
+          zip -r _build/rmf.zip \
+            rmf.mjs \
+            system.json \
+            template.json \
+            module/ \
+            templates/ \
+            styles/ \
+            lang/ \
+            data/categories.json \
+            data/races.json \
+            data/skills.json \
+            data/realms.json \
+            data/professions.json \
+            README.md \
+            LICENSE.txt \
+            CHANGELOG.md
+          echo "Package contents:"
+          unzip -l _build/rmf.zip
+
+      - name: Create GitHub Release with assets
+        uses: softprops/action-gh-release@v2
+        with:
+          # Two assets, both consumed by Foundry's installer:
+          #   - system.json → manifest URL
+          #   - rmf.zip     → download URL
+          files: |
+            system.json
+            _build/rmf.zip
+          fail_on_unmatched_files: true
+          # Foundry users browse releases on GitHub — keep the body
+          # generated from the corresponding CHANGELOG section.
+          generate_release_notes: true
+          # Tag name is taken from the pushed tag automatically.

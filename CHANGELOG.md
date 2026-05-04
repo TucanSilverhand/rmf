@@ -6,6 +6,32 @@ El formato sigue [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) y l
 
 ## [Unreleased]
 
+### Added
+- **CI / Release pipeline** en `.github/workflows/`:
+  - `release.yml`: disparado por `git push` de un tag `v*`. Verifica
+    que `system.json:version` coincide con el tag, empaqueta `rmf.zip`
+    con todo lo distribuible, crea el GitHub Release y adjunta
+    `system.json` + `rmf.zip` como assets. Las URLs declaradas en
+    `system.json:manifest` y `:download` empiezan a funcionar
+    inmediatamente tras un release.
+  - `validate.yml`: PR + push a `production`. Corre 4 capas:
+    JSON validity, `node --check` en JS/MJS, schema-shape contra
+    `data/*.json`, partials Handlebars referenciados vs. declarados.
+- **`tools/validate-data.mjs`**: schema-shape sanity check ejecutable
+  offline (sin Foundry). Valida 228 entradas en los 5 JSON canónicos.
+- **`tools/check-partials.mjs`**: port estático de `check-partials.js`
+  (que requería Foundry corriendo). Detecta referencias a partials
+  Handlebars (`{{> parts/X}}`) que no estén cargados por
+  `_preloadHandlebarsTemplates`. 33 partials declarados, 24
+  referencias verificadas.
+
+### Process notes
+- Para publicar una nueva versión:
+  1. Bump `system.json:version` y entrada en `CHANGELOG.md`.
+  2. Commit & push.
+  3. `git tag v<version> && git push --tags`.
+  4. La GitHub Action publica el Release con assets en ~2 min.
+
 ## [0.2.0] - Migración a DataModel v13
 
 ### Added

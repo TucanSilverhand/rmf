@@ -1,0 +1,62 @@
+name: Validate
+
+# Runs on every PR and on every push to the main release branch.
+# The pipeline catches the same classes of regression that the manual
+# pre-commit check covers locally:
+#
+#   1. JSON syntax  (every *.json under the repo)
+#   2. JS / MJS syntax (`node --check`)
+#   3. Schema-shape sanity of data/*.json against the canonical types
+#      declared by the DataModels (tools/validate-data.mjs)
+#   4. Handlebars partial referenceability — every `{{> parts/X}}`
+#      hit by a template is loaded by rmf.mjs (tools/check-partials.mjs)
+#
+# Failing any step blocks the merge.
+
+on:
+  pull_request:
+  push:
+    branches: [production, main]
+
+jobs:
+  validate:
+    name: JSON / JS / Schema / Partials
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: JSON validity
+        run: |
+          set -euo pipefail
+          fail=0
+          while IFS= read -r f; do
+            python3 -c "import json,sys; json.load(open('$f'))" \
+              || { echo "::error file=$f::Invalid JSON"; fail=1; }
+          done < <(find . -name '*.json' \
+                     -not -path './.git/*' \
+                     -not -path './node_modules/*' \
+                     -not -path './_build/*' \
+                     -not -path './tmp/*')
+          exit $fail
+
+      - name: JS / MJS syntax
+        run: |
+          set -euo pipefail
+          fail=0
+          while IFS= read -r f; do
+            node --check "$f" \
+              || { echo "::error file=$f::Syntax error"; fail=1; }
+          done < <(find rmf.mjs module \( -name '*.mjs' -o -name '*.js' \))
+          exit $fail
+
+      - name: Data shape vs schema
+        run: node tools/validate-data.mjs
+
+      - name: Handlebars partial references
+        run: node tools/check-partials.mjs
