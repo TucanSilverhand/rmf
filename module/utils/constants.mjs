@@ -43,6 +43,39 @@ export const STAT_FULL_TO_SHORT = Object.freeze(
 export const STAT_KEYS_FULL = Object.freeze(Object.values(STAT_SHORT_TO_FULL));
 
 /**
+ * Resolve any stat-name variant to its canonical `chXxx` form.
+ *
+ * Accepts:
+ *   - canonical:        `chConstitution`
+ *   - case-insensitive: `chconstitution`
+ *   - short keys:       `co`, `CO`
+ *   - user-friendly:    `Constitution`, `constitution`, `CONSTITUTION`
+ *   - whitespaced:      `"Self Discipline"` → `chSelfDiscipline`
+ *   - run-on:           `"SelfDiscipline"` → `chSelfDiscipline`
+ *
+ * Returns `""` for unknown / empty input. The function is idempotent —
+ * already-canonical values pass through unchanged. Sheets call this
+ * defensively so legacy data (imported before the chXxx normalization
+ * landed) still renders the right `<option>` selected in dropdowns.
+ *
+ * @param {*} value
+ * @returns {string} canonical stat key or empty string
+ */
+export function normalizeAnyStatKey(value) {
+  if (typeof value !== "string") return "";
+  const trimmed = value.trim();
+  if (!trimmed) return "";
+  if (STAT_KEYS_FULL.includes(trimmed)) return trimmed;
+  const key = trimmed.replace(/\s+/g, "").toLowerCase();
+  if (key in STAT_SHORT_TO_FULL) return STAT_SHORT_TO_FULL[key];
+  for (const full of STAT_KEYS_FULL) {
+    if (full.toLowerCase() === key) return full;          // chconstitution
+    if (full.slice(2).toLowerCase() === key) return full; // constitution
+  }
+  return "";
+}
+
+/**
  * Gameplay constants. Each block is grouped so it is obvious where the
  * number is consumed; do not split or duplicate them in callers.
  */

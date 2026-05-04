@@ -24,6 +24,7 @@ import {
   setActiveTab as utilSetActiveTab,
   bindChangeListeners
 } from "./utils/sheet-helpers.mjs";
+import { normalizeAnyStatKey } from "./utils/constants.mjs";
 import { RMFActions } from "./actions.mjs";
 
 export class RMFProfessionSheet extends HandlebarsApplicationMixin(
@@ -164,11 +165,17 @@ export class RMFProfessionSheet extends HandlebarsApplicationMixin(
   _preparePrimeStatRows(list) {
     if (!Array.isArray(list)) return [];
     return list.map((entry, index) => {
-      const value = typeof entry === "string" ? entry : "";
+      // Tolerant resolution: items imported before the chXxx
+      // canonicalization (e.g. "Constitution", "Self Discipline",
+      // legacy short "co") still render the correct <select>
+      // option highlighted. The persisted value only changes the
+      // next time the user submits the sheet.
+      const raw = typeof entry === "string" ? entry : "";
+      const value = normalizeAnyStatKey(raw);
       const labelKey = value ? `RMF.Stats.${value}` : "";
       const label = labelKey && game.i18n.has(labelKey)
         ? game.i18n.localize(labelKey)
-        : value;
+        : (raw || value);
       return { index, value, name: value, label };
     });
   }

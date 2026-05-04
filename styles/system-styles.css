@@ -1796,3 +1796,25 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* =============================================================================
+   Prime Stats grid (profession sheet, advanced tab) — 2 columns so the
+   typically-pair primeStats list doesn't read as a tall stack.
+   ============================================================================= */
+.rmf .prime-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+.rmf .prime-stats-grid .prime-stat-row {
+  min-width: 0;       /* let the <select> shrink with the column */
+}
+.rmf .prime-stats-grid .prime-stat-row select {
+  width: 100%;
+}
+
+@media (max-width: 720px) {
+  .rmf .prime-stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
