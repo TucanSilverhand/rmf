@@ -23,6 +23,7 @@ import { RMFSkillSheet } from "./module/skill-sheet.js";
 import { RMFCategorySheet } from "./module/category-sheet.js";
 import { RMFRealmSheet } from "./module/realm-sheet.js";
 import { RMFProfessionSheet } from "./module/profession-sheet.js";
+import { RMFTrainingPackageSheet } from "./module/training-package-sheet.js";
 import { RMFActor, RMFItem } from "./module/data-models.mjs";
 import { RMFHooks } from "./module/hooks.mjs";
 import { SKILL_CLASSIFICATIONS } from "./module/utils/rank-bonus.mjs";
@@ -35,7 +36,8 @@ import {
   SkillData,
   CategoryData,
   RealmData,
-  ProfessionData
+  ProfessionData,
+  TrainingPackageData
 } from "./module/data-models/index.mjs";
 
 /**
@@ -72,12 +74,13 @@ Hooks.once('init', async function() {
     character: CharacterData
   };
   CONFIG.Item.dataModels = {
-    equipment:  EquipmentData,
-    race:       RaceData,
-    skill:      SkillData,
-    category:   CategoryData,
-    realm:      RealmData,
-    profession: ProfessionData
+    equipment:        EquipmentData,
+    race:             RaceData,
+    skill:            SkillData,
+    category:         CategoryData,
+    realm:            RealmData,
+    profession:       ProfessionData,
+    trainingPackage:  TrainingPackageData
   };
 
   // Register system settings before other initialization
@@ -127,6 +130,12 @@ Hooks.once('init', async function() {
     makeDefault: true,
     label: "RMF.ProfessionSheet"
   });
+
+  foundry.applications.apps.DocumentSheetConfig.registerSheet(Item, "rmf-trainingPackage", RMFTrainingPackageSheet, {
+    types: ["trainingPackage"],
+    makeDefault: true,
+    label: "RMF.TrainingPackageSheet"
+  });
   // Initialize RMF system configuration namespace.
   // The version is read from system.json at runtime (game.system.version),
   // so we never duplicate the source of truth.
@@ -149,7 +158,7 @@ Hooks.once('init', async function() {
     // not need to import the module directly.
     statShortToFull: STAT_SHORT_TO_FULL,
 
-    itemTypes: ["equipment", "race", "skill", "category", "realm", "profession"],
+    itemTypes: ["equipment", "race", "skill", "category", "realm", "profession", "trainingPackage"],
     actorTypes: ["character"],
 
     // Canonical skill classifications. Same set used by data-models and importers
@@ -356,6 +365,7 @@ async function _preloadHandlebarsTemplates() {
     "rmf/item-category-sheet": "systems/rmf/templates/item-category-sheet.hbs",
     "rmf/item-realm-sheet": "systems/rmf/templates/item-realm-sheet.hbs",
     "rmf/item-profession-sheet": "systems/rmf/templates/item-profession-sheet.hbs",
+    "rmf/item-training-package-sheet": "systems/rmf/templates/item-training-package-sheet.hbs",
 
     // Actor sheet partials
     "parts/actor-header": "systems/rmf/templates/parts/actor-header.hbs",
@@ -447,4 +457,4 @@ async function _initializeReadyTimeConfigs() {
  * @exports RMFItemSheet - ApplicationV2 Item sheet
  * @exports RMFRaceSheet - Specialized Race item sheet
  */
-export { RMFActor, RMFItem, RMFActorSheet, RMFItemSheet, RMFRaceSheet, RMFSkillSheet, RMFCategorySheet, RMFRealmSheet, RMFProfessionSheet };
+export { RMFActor, RMFItem, RMFActorSheet, RMFItemSheet, RMFRaceSheet, RMFSkillSheet, RMFCategorySheet, RMFRealmSheet, RMFProfessionSheet, RMFTrainingPackageSheet };

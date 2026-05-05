@@ -5,7 +5,7 @@
     "htmlFields": ["chBackground.chDescription"]
   },
   "Item": {
-    "types": ["equipment", "race", "skill", "category", "realm", "profession"],
+    "types": ["equipment", "race", "skill", "category", "realm", "profession", "trainingPackage"],
     "htmlFields": ["description", "racialAbilities"]
   }
 }

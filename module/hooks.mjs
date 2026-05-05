@@ -18,13 +18,16 @@ import {
   importCategories,
   importSkills,
   importProfessions,
+  importTrainingPackages,
   syncCategoriesToCompendium,
   syncRacesToCompendium,
   syncSkillsToCompendium,
   syncRealmsToCompendium,
-  syncProfessionsToCompendium
+  syncProfessionsToCompendium,
+  syncTrainingPackagesToCompendium
 } from "./importers.mjs";
 import { runWorldMigration } from "./migration.mjs";
+import { applyTrainingPackageToActor } from "./training-package-apply.mjs";
 
 /**
  * Centralized hook management for the RMF system
@@ -87,11 +90,13 @@ export class RMFHooks {
     game.rmf.importCategories = importCategories;
     game.rmf.importSkills = importSkills;
     game.rmf.importProfessions = importProfessions;
+    game.rmf.importTrainingPackages = importTrainingPackages;
     game.rmf.syncCategoriesToCompendium = syncCategoriesToCompendium;
     game.rmf.syncRacesToCompendium = syncRacesToCompendium;
     game.rmf.syncSkillsToCompendium = syncSkillsToCompendium;
     game.rmf.syncRealmsToCompendium = syncRealmsToCompendium;
     game.rmf.syncProfessionsToCompendium = syncProfessionsToCompendium;
+    game.rmf.syncTrainingPackagesToCompendium = syncTrainingPackagesToCompendium;
 
     // Migration framework — `runWorldMigration({ force: true })` re-runs
     // every step (debug only). The init flow already calls it once.
@@ -242,6 +247,18 @@ export class RMFHooks {
     if (item.type === "category" && item.name === "Power Point Development") {
       const realmItem = actor.items.find(i => i.type === "realm");
       if (realmItem) await this.#syncPowerPointDevelopmentStatBonus(actor, realmItem);
+      return;
+    }
+
+    // Training Package dropped on the actor → confirm + apply ranks +
+    // post chat summary + remove the (consumed) item.
+    if (item.type === "trainingPackage") {
+      try {
+        await applyTrainingPackageToActor(item);
+      } catch (err) {
+        console.error("RMF | Failed to apply training package:", err);
+        ui.notifications?.error(game.i18n.localize("RMF.TrainingPackage.ApplyError"));
+      }
     }
   }
 

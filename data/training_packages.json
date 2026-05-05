@@ -1,0 +1,817 @@
+[
+  {
+    "name": "Adventurer",
+    "type": "L",
+    "description": "This is the character who seeks his fame and fortune by exploration and taking risks with his own life. The adventurer is at home in most types of inhabited places as well as many kinds of wilderness locales.",
+    "timeToAcquire": "24 months",
+    "startingMoney": "normal plus d10 (open-ended)",
+    "statGains": "choice of two different stats",
+    "special": [
+      { "name": "Weapon (+10 non-magic)",                            "dpCost": 30 },
+      { "name": "Armor (+10 non-magic)",                             "dpCost": 30 },
+      { "name": "Other Equipment (+5 non-magic)",                    "dpCost": 30 },
+      { "name": "Spell Adder (+1) or Daily I Item (1st level spell)", "dpCost": 30 },
+      { "name": "Choice of weapon or armor (+5 non-magic)",          "dpCost": 100 }
+    ],
+    "categoryRanks": [
+      {
+        "category": "Body Development",
+        "ranks": 0,
+        "skills": [
+          { "name": "Body Development", "ranks": 1 }
+        ]
+      },
+      {
+        "category": "Weapon/Attack (choice)",
+        "isChoice": true,
+        "ranks": 1,
+        "skills": [
+          { "name": "Weapon/Attack (choice)", "isChoice": true, "ranks": 1 }
+        ]
+      },
+      {
+        "category": "Athletic · Gymnastics",
+        "ranks": 2,
+        "skills": [
+          { "name": "Climbing", "ranks": 1 }
+        ]
+      },
+      {
+        "category": "Athletic · Endurance",
+        "ranks": 2,
+        "skills": [
+          { "name": "Swimming", "ranks": 1 }
+        ]
+      },
+      {
+        "category": "Awareness · Perceptions",
+        "ranks": 0,
+        "skills": [
+          { "name": "Alertness", "ranks": 2 }
+        ]
+      },
+      {
+        "category": "Awareness · Searching",
+        "ranks": 2,
+        "skills": [
+          { "name": "Observation", "ranks": 1 }
+        ]
+      },
+      {
+        "category": "Power Awareness",
+        "ranks": 1,
+        "skills": [
+          { "name": "Attunement", "ranks": 1 }
+        ]
+      },
+      {
+        "category": "Technical · General",
+        "ranks": 1,
+        "skills": [
+          { "name": "First Aid", "ranks": 1 }
+        ]
+      }
+    ]
+  },
+
+  {
+    "name": "Amateur Mage",
+    "type": "L",
+    "description": "The Amateur Mage studies magic in his off-time. He is intrigued by the powers of magic and wants to know more.",
+    "timeToAcquire": "53 months",
+    "startingMoney": "normal",
+    "statGains": "one realm stat, Memory",
+    "special": [
+      { "name": "Spell adder (+2)",                                "dpCost": 50 },
+      { "name": "Daily II item (casting a 3rd level spell)",        "dpCost": 50 },
+      { "name": "Daily I item (casting a 5th level spell)",         "dpCost": 40 },
+      { "name": "Spell multiplier (x2)",                            "dpCost": 10 },
+      { "name": "Spell adder (+1)",                                 "dpCost": 100 }
+    ],
+    "categoryRanks": [
+      {
+        "category": "Spells · Own Realm Open List",
+        "ranks": 0,
+        "skills": [
+          { "name": "choice of up to three skills (3 total)", "isChoice": true, "ranks": 3 }
+        ]
+      },
+      {
+        "category": "Lore · Magical",
+        "ranks": 2,
+        "skills": [
+          { "name": "choice of one skill", "isChoice": true, "ranks": 2 }
+        ]
+      },
+      {
+        "category": "Lore · Technical",
+        "ranks": 1,
+        "skills": [
+          { "name": "choice of one skill", "isChoice": true, "ranks": 1 }
+        ]
+      },
+      {
+        "category": "Power Awareness",
+        "ranks": 2,
+        "skills": [
+          { "name": "Attunement",   "ranks": 1 },
+          { "name": "Read Runes",   "ranks": 1 }
+        ]
+      }
+    ]
+  },
+
+  {
+    "name": "Animal Friend",
+    "type": "L",
+    "description": "Generally a loner, except for his animal friends, this type of character spends a great deal of time in the wilderness.",
+    "timeToAcquire": "102 months",
+    "startingMoney": "normal",
+    "statGains": "Empathy",
+    "special": [
+      { "name": "Wolf friend",              "dpCost": 20  },
+      { "name": "Wild cat friend",          "dpCost": 30  },
+      { "name": "Raccoon friend",           "dpCost": 40  },
+      { "name": "Ferret friend",            "dpCost": 40  },
+      { "name": "Owl friend",               "dpCost": 40  },
+      { "name": "Pigeon friend",            "dpCost": 50  },
+      { "name": "Snake friend",             "dpCost": 30  },
+      { "name": "Normal dog friend (mutt)", "dpCost": 100 }
+    ],
+    "categoryRanks": [
+      {
+        "category": "Outdoor · Environmental",
+        "ranks": 2,
+        "skills": [
+          { "name": "choice of up to two skills (2 total)",  "isChoice": true, "ranks": 2 }
+        ]
+      },
+      {
+        "category": "Outdoor · Animal",
+        "ranks": 4,
+        "skills": [
+          { "name": "choice of up to three skills (4 total)", "isChoice": true, "ranks": 4 }
+        ]
+      },
+      {
+        "category": "Lore · General",
+        "ranks": 4,
+        "skills": [
+          { "name": "Fauna Lore",  "ranks": 2 },
+          { "name": "Flora Lore",  "ranks": 1 },
+          { "name": "Region Lore", "ranks": 1 }
+        ]
+      },
+      {
+        "category": "Awareness · Searching",
+        "ranks": 2,
+        "skills": [
+          { "name": "Reading Tracks", "ranks": 1 },
+          { "name": "Tracking",       "ranks": 1 }
+        ]
+      },
+      {
+        "category": "Subterfuge · Stealth",
+        "ranks": 2,
+        "skills": [
+          { "name": "Stalking", "ranks": 1 },
+          { "name": "Hiding",   "ranks": 1 }
+        ]
+      }
+    ]
+  },
+
+  {
+    "name": "Burglar",
+    "type": "V",
+    "description": "A burglar makes his living stealing goods from peoples homes or businesses. They ply their trade around heavily populated areas and then move on to another area.",
+    "timeToAcquire": "33 months",
+    "startingMoney": "normal plus d10 (open-ended)",
+    "statGains": "none",
+    "special": [
+      { "name": "Stolen jewelry (worth 10d10 sp)",              "dpCost": 50  },
+      { "name": "Stolen gems (worth 10d10 sp)",                 "dpCost": 50  },
+      { "name": "Stolen piece of art (worth 10d10 sp)",         "dpCost": 50  },
+      { "name": "Lockpick kit (+10 non-magic)",                 "dpCost": 30  },
+      { "name": "Disarm trap kit (+10 non-magic)",              "dpCost": 30  },
+      { "name": "Reliable fencing contacts",                    "dpCost": 20  },
+      { "name": "Lockpicks and disarm trap kit (+5 non-magic)", "dpCost": 100 }
+    ],
+    "categoryRanks": [
+      {
+        "category": "Subterfuge · Mechanics",
+        "ranks": 2,
+        "skills": [
+          { "name": "choice of up to two skills (2 total)", "isChoice": true, "ranks": 2 }
+        ]
+      },
+      {
+        "category": "Athletic · Gymnastics",
+        "ranks": 2,
+        "skills": [
+          { "name": "Climbing",            "ranks": 1 },
+          { "name": "choice of one skill", "isChoice": true, "ranks": 1 }
+        ]
+      },
+      {
+        "category": "Weapon/Attack (choice)",
+        "isChoice": true,
+        "ranks": 1,
+        "skills": [
+          { "name": "Weapon/Attack (choice)", "isChoice": true, "ranks": 1 }
+        ]
+      },
+      {
+        "category": "Lore · General",
+        "ranks": 2,
+        "skills": [
+          { "name": "Culture Lore", "ranks": 1 },
+          { "name": "Heraldry",     "ranks": 1 }
+        ]
+      },
+      {
+        "category": "Lore · Technical",
+        "ranks": 2,
+        "skills": [
+          { "name": "Lock Lore", "ranks": 2 }
+        ]
+      }
+    ]
+  },
+
+  {
+    "name": "City Guard",
+    "type": "V",
+    "description": "Almost every urban area has some sort of paid police force. These characters are in charge of making sure that the city remains free of bedlam in the streets. If a promotion is gained (in the Special section), the character has been promoted in the ranks (promotions equate to higher ranks).",
+    "timeToAcquire": "25 months",
+    "startingMoney": "normal plus d10",
+    "statGains": "none",
+    "special": [
+      { "name": "Useful city contacts",       "dpCost": 20  },
+      { "name": "Useful underworld contacts", "dpCost": 20  },
+      { "name": "Promotion",                  "dpCost": 50  },
+      { "name": "Promotion",                  "dpCost": 40  },
+      { "name": "Promotion",                  "dpCost": 30  },
+      { "name": "Weapon (+10 non-magic)",     "dpCost": 10  },
+      { "name": "Weapon (+5 non-magic)",      "dpCost": 100 }
+    ],
+    "categoryRanks": [
+      {
+        "category": "Weapon (GM assigned)",
+        "isChoice": true,
+        "ranks": 2,
+        "skills": [
+          { "name": "choice of 1 skill", "isChoice": true, "ranks": 2 }
+        ]
+      },
+      {
+        "category": "Body Development",
+        "ranks": 0,
+        "skills": [
+          { "name": "Body Development", "ranks": 1 }
+        ]
+      },
+      {
+        "category": "Urban",
+        "ranks": 1,
+        "skills": [
+          { "name": "Streetwise", "ranks": 1 }
+        ]
+      },
+      {
+        "category": "Awareness · Searching",
+        "ranks": 1,
+        "skills": [
+          { "name": "Observation", "ranks": 1 }
+        ]
+      },
+      {
+        "category": "Lore · General",
+        "ranks": 1,
+        "skills": [
+          { "name": "Heraldry", "ranks": 1 }
+        ]
+      },
+      {
+        "category": "Technical · General",
+        "ranks": 1,
+        "skills": [
+          { "name": "First Aid", "ranks": 1 }
+        ]
+      }
+    ]
+  },
+
+  {
+    "name": "Doctor",
+    "type": "V",
+    "description": "A doctor is a person dedicated to tending to the sick. This should include all types of persons who are caring for the sick, not just those that actually perform the healing (e.g., the nurses, attendants, etc.). Most people who tend to the sick are doing so on a voluntary basis.",
+    "timeToAcquire": "18 months",
+    "startingMoney": "normal",
+    "statGains": "none",
+    "special": [
+      { "name": "2d10 Concussion Repair herbs",         "dpCost": 50  },
+      { "name": "d10 Poison antidotes",                 "dpCost": 30  },
+      { "name": "d10 Burn/Exposure herbs",              "dpCost": 30  },
+      { "name": "d10 Circulatory Repair herbs",         "dpCost": 30  },
+      { "name": "d10 General Purpose herbs",            "dpCost": 30  },
+      { "name": "Superior medical kit (+15 non-magical)", "dpCost": 30 },
+      { "name": "Medical kit (+5 non-magical)",         "dpCost": 100 }
+    ],
+    "categoryRanks": [
+      {
+        "category": "Technical · Professional",
+        "ranks": 0,
+        "skills": [
+          { "name": "Diagnostics", "ranks": 3 },
+          { "name": "Second Aid",  "ranks": 3 }
+        ]
+      },
+      {
+        "category": "Technical · General",
+        "ranks": 0,
+        "skills": [
+          { "name": "First Aid",            "ranks": 1 },
+          { "name": "Using Prepared Herbs", "ranks": 1 }
+        ]
+      }
+    ]
+  },
+
+  {
+    "name": "Herbalist",
+    "type": "V",
+    "description": "An herbalist is a person who specializes in growing, preparing, and cultivating herbs. Very often, herbalists are found near urban areas (where demand for herbs is higher), though they also like the secluded nature of a more rural environment.",
+    "timeToAcquire": "33 months",
+    "startingMoney": "normal plus d10 (open-ended)",
+    "statGains": "none",
+    "special": [
+      { "name": "3 Poison antidotes",            "dpCost": 50  },
+      { "name": "4 Bone Repair herbs",           "dpCost": 50  },
+      { "name": "10 Burn/Exposure herbs",        "dpCost": 50  },
+      { "name": "2 Circulatory Repair herbs",    "dpCost": 50  },
+      { "name": "10 Concussion Repair herbs",    "dpCost": 50  },
+      { "name": "d10 General Purpose herbs",     "dpCost": 50  },
+      { "name": "1 Life Preservation herbs",     "dpCost": 50  },
+      { "name": "5 Muscle/Cartilage Repair herbs", "dpCost": 50 },
+      { "name": "3 Nerve Repair herbs",          "dpCost": 50  },
+      { "name": "4 Organ Repair herbs",          "dpCost": 50  },
+      { "name": "d10 Intoxicant herbs",          "dpCost": 30  },
+      { "name": "d10 Poison herbs",              "dpCost": 30  },
+      { "name": "d10 Concussion Repair herbs",   "dpCost": 100 }
+    ],
+    "categoryRanks": [
+      {
+        "category": "Crafts",
+        "ranks": 0,
+        "skills": [
+          { "name": "Horticulture", "ranks": 2 }
+        ]
+      },
+      {
+        "category": "Lore · General",
+        "ranks": 2,
+        "skills": [
+          { "name": "Flora Lore", "ranks": 2 }
+        ]
+      },
+      {
+        "category": "Outdoor · Environmental",
+        "ranks": 4,
+        "skills": [
+          { "name": "Foraging",            "ranks": 3 },
+          { "name": "choice of one skill", "isChoice": true, "ranks": 1 }
+        ]
+      },
+      {
+        "category": "Technical · General",
+        "ranks": 0,
+        "skills": [
+          { "name": "Using Prepared Herbs", "ranks": 2 }
+        ]
+      }
+    ]
+  },
+
+  {
+    "name": "Hunter",
+    "type": "L",
+    "description": "The Hunter is at home in the wilds. He ventures into the civilized areas only to buy supplies and sell his pelts.",
+    "timeToAcquire": "18 months",
+    "startingMoney": "normal plus d10 (open-ended)",
+    "statGains": "Constitution",
+    "special": [
+      { "name": "d10 Animal Pelts (d10 sps each)",   "dpCost": 50  },
+      { "name": "d10 Animal Pelts (d10 sps each)",   "dpCost": 50  },
+      { "name": "d10 Animal Pelts (d10 sps each)",   "dpCost": 50  },
+      { "name": "Good set of traps (+15 non-magic)", "dpCost": 30  },
+      { "name": "Reliable buyer for animal pelts",   "dpCost": 30  },
+      { "name": "Traps (+10 non-magic)",             "dpCost": 100 }
+    ],
+    "categoryRanks": [
+      {
+        "category": "Missile Weapon (choice)",
+        "isChoice": true,
+        "ranks": 1,
+        "skills": [
+          { "name": "choice of one skill", "isChoice": true, "ranks": 1 }
+        ]
+      },
+      {
+        "category": "Outdoor · Environmental",
+        "ranks": 4,
+        "skills": [
+          { "name": "Hunting",                              "ranks": 2 },
+          { "name": "choice of two skills (2 total)",       "isChoice": true, "ranks": 2 }
+        ]
+      },
+      {
+        "category": "Lore · General",
+        "ranks": 3,
+        "skills": [
+          { "name": "Fauna Lore", "ranks": 2 },
+          { "name": "Flora Lore", "ranks": 1 }
+        ]
+      },
+      {
+        "category": "Crafts",
+        "ranks": 0,
+        "skills": [
+          { "name": "Skinning", "ranks": 1 }
+        ]
+      },
+      {
+        "category": "Awareness · Searching",
+        "ranks": 4,
+        "skills": [
+          { "name": "Reading Tracks", "ranks": 2 },
+          { "name": "Tracking",       "ranks": 2 }
+        ]
+      },
+      {
+        "category": "Subterfuge · Stealth",
+        "ranks": 2,
+        "skills": [
+          { "name": "Hiding",   "ranks": 1 },
+          { "name": "Stalking", "ranks": 1 }
+        ]
+      }
+    ]
+  },
+
+  {
+    "name": "Knight",
+    "type": "L",
+    "description": "A knight is a warrior dedicated to a cause or a lord (as opposed to a Paladin, who is dedicated to a greater power). A knight is known for his heavy armor and ability with weapons.",
+    "timeToAcquire": "69 months",
+    "startingMoney": "normal",
+    "statGains": "Strength, Self Discipline",
+    "special": [
+      { "name": "Warhorse (+10 to Riding, Mounted Combat)", "dpCost": 30  },
+      { "name": "Warhorse (+5 Riding, Mounted Combat)",     "dpCost": 30  },
+      { "name": "Warhorse",                                 "dpCost": 30  },
+      { "name": "Weapon (+10 non-magic)",                   "dpCost": 40  },
+      { "name": "Armor (+10 non-magic)",                    "dpCost": 40  },
+      { "name": "Shield (+10 non-magic)",                   "dpCost": 50  },
+      { "name": "Weapon (+5 non-magic)",                    "dpCost": 30  },
+      { "name": "Armor (+5 non-magic)",                     "dpCost": 30  },
+      { "name": "Shield (+5 non-magic)",                    "dpCost": 40  },
+      { "name": "Riding horse (+5 Riding)",                 "dpCost": 100 }
+    ],
+    "categoryRanks": [
+      {
+        "category": "Melee Weapon (choice)",
+        "isChoice": true,
+        "ranks": 2,
+        "skills": [
+          { "name": "choice of one skill", "isChoice": true, "ranks": 2 }
+        ]
+      },
+      {
+        "category": "Armor · Heavy",
+        "ranks": 2,
+        "skills": [
+          { "name": "Plate", "ranks": 2 }
+        ]
+      },
+      {
+        "category": "Combat Maneuvers",
+        "ranks": 0,
+        "skills": [
+          { "name": "Mounted Combat",      "ranks": 2 },
+          { "name": "choice of one skill", "isChoice": true, "ranks": 1 }
+        ]
+      },
+      {
+        "category": "Lore · General",
+        "ranks": 2,
+        "skills": [
+          { "name": "Heraldry", "ranks": 2 }
+        ]
+      },
+      {
+        "category": "Outdoor · Animal",
+        "ranks": 1,
+        "skills": [
+          { "name": "Riding", "ranks": 2 }
+        ]
+      }
+    ]
+  },
+
+  {
+    "name": "Loremaster",
+    "type": "V",
+    "description": "The perpetual scholar. The Loremaster studies, constantly striving to know all there is to know. Some Loremasters specialize in areas of knowledge; while others are diverse, knowing little bits about lots of things.",
+    "timeToAcquire": "40 months",
+    "startingMoney": "normal",
+    "statGains": "none",
+    "special": [
+      { "name": "Book (+20 to a specific lore skill)",   "dpCost": 50  },
+      { "name": "Book (+15 to a specific lore skill)",   "dpCost": 40  },
+      { "name": "Book (+10 to a lore category)",         "dpCost": 30  },
+      { "name": "1-5 books (+5 to specific lore skills)", "dpCost": 10 },
+      { "name": "Book (+5 to a lore category)",          "dpCost": 100 }
+    ],
+    "categoryRanks": [
+      {
+        "category": "Lore · General",
+        "ranks": 6,
+        "skills": [
+          { "name": "choice of up to three skills (6 total)", "isChoice": true, "ranks": 6 }
+        ]
+      },
+      {
+        "category": "Lore · Technical",
+        "ranks": 1,
+        "skills": [
+          { "name": "choice of one skill", "isChoice": true, "ranks": 1 }
+        ]
+      },
+      {
+        "category": "Lore · Obscure",
+        "ranks": 1,
+        "skills": [
+          { "name": "choice of one skill", "isChoice": true, "ranks": 1 }
+        ]
+      },
+      {
+        "category": "Lore · Magical",
+        "ranks": 3,
+        "skills": [
+          { "name": "choice of up to two skills (3 total)", "isChoice": true, "ranks": 3 }
+        ]
+      }
+    ]
+  },
+
+  {
+    "name": "Merchant",
+    "type": "V",
+    "description": "From the miserly old cloth-maker to the industrious, travelling silk merchant, everyone eventually deals with a seller of goods.",
+    "timeToAcquire": "23 months",
+    "startingMoney": "normal plus d10 (open-ended)",
+    "statGains": "none",
+    "special": [
+      { "name": "Close friends with a merchant", "dpCost": 40  },
+      { "name": "Close friends with a merchant", "dpCost": 40  },
+      { "name": "Close friends with a merchant", "dpCost": 40  },
+      { "name": "Merchant's scale and weights",  "dpCost": 30  },
+      { "name": "Trade goods (10d10 sp)",        "dpCost": 30  },
+      { "name": "Trade goods (10d10 sp)",        "dpCost": 30  },
+      { "name": "Trade goods (d10 sp)",          "dpCost": 100 }
+    ],
+    "categoryRanks": [
+      {
+        "category": "Communications",
+        "ranks": 3,
+        "skills": [
+          { "name": "choice of up to three languages (3 total)", "isChoice": true, "ranks": 3 }
+        ]
+      },
+      {
+        "category": "Science · Basic",
+        "ranks": 1,
+        "skills": [
+          { "name": "Basic Math", "ranks": 1 }
+        ]
+      },
+      {
+        "category": "Technical · Vocational",
+        "ranks": 0,
+        "skills": [
+          { "name": "Appraisal",           "ranks": 2 },
+          { "name": "choice of one skill", "isChoice": true, "ranks": 1 }
+        ]
+      }
+    ]
+  },
+
+  {
+    "name": "Performer",
+    "type": "V",
+    "description": "A performer is a character who makes it his business to entertain crowds, large or small. He will often be found in taverns or perhaps in organized theaters. He is a restless soul, however, and will seldom stay in one place for very long.",
+    "timeToAcquire": "40 months",
+    "startingMoney": "normal plus d10 (open-ended)",
+    "statGains": "none",
+    "special": [
+      { "name": "Disguise kit (+15 non-magic)",          "dpCost": 50  },
+      { "name": "Performance props (+10 non-magic)",     "dpCost": 50  },
+      { "name": "Close friends with a tavern owner",     "dpCost": 40  },
+      { "name": "Close friends with a tavern owner",     "dpCost": 40  },
+      { "name": "Close friends with a famous performer", "dpCost": 20  },
+      { "name": "Make-up kit (+5 non-magic)",            "dpCost": 100 }
+    ],
+    "categoryRanks": [
+      {
+        "category": "Artistic · Active",
+        "ranks": 3,
+        "skills": [
+          { "name": "choice of one skill", "isChoice": true, "ranks": 3 }
+        ]
+      },
+      {
+        "category": "Athletic · Gymnastics",
+        "ranks": 1,
+        "skills": [
+          { "name": "choice of one skill", "isChoice": true, "ranks": 1 }
+        ]
+      },
+      {
+        "category": "Communications",
+        "ranks": 5,
+        "skills": [
+          { "name": "choice of up to five languages (5 total)", "isChoice": true, "ranks": 5 }
+        ]
+      },
+      {
+        "category": "Influence",
+        "ranks": 2,
+        "skills": [
+          { "name": "choice of up to two skills (2 total)", "isChoice": true, "ranks": 2 }
+        ]
+      }
+    ]
+  },
+
+  {
+    "name": "Scout",
+    "type": "V",
+    "description": "Scouts can find employment in a variety of settings. Their general duties include travelling in front of a group for the purposes of finding hazards and/or dangers for the rest of the group to avoid.",
+    "timeToAcquire": "33 months",
+    "startingMoney": "normal plus d10 (open-ended)",
+    "statGains": "none",
+    "special": [
+      { "name": "1 detailed map of a region",        "dpCost": 40  },
+      { "name": "d10 sketchy maps of several regions", "dpCost": 40 },
+      { "name": "Good riding beast (+10 Riding)",    "dpCost": 30  },
+      { "name": "Missile weapon (+5 non-magic)",     "dpCost": 20  },
+      { "name": "Riding beast (GM's discretion)",    "dpCost": 100 }
+    ],
+    "categoryRanks": [
+      {
+        "category": "Outdoor · Environmental",
+        "ranks": 3,
+        "skills": [
+          { "name": "choice of up to three skills (3 total)", "isChoice": true, "ranks": 3 }
+        ]
+      },
+      {
+        "category": "Outdoor · Animal",
+        "ranks": 2,
+        "skills": [
+          { "name": "choice of up to two skills (2 total)", "isChoice": true, "ranks": 2 }
+        ]
+      },
+      {
+        "category": "Awareness · Searching",
+        "ranks": 4,
+        "skills": [
+          { "name": "Observation",    "ranks": 2 },
+          { "name": "Reading Tracks", "ranks": 1 },
+          { "name": "Tracking",       "ranks": 1 }
+        ]
+      },
+      {
+        "category": "Weapon (choice)",
+        "isChoice": true,
+        "ranks": 1,
+        "skills": [
+          { "name": "choice of one skill", "isChoice": true, "ranks": 1 }
+        ]
+      }
+    ]
+  },
+
+  {
+    "name": "Soldier",
+    "type": "V",
+    "description": "In almost every culture there is a professional warrior; whose job is to protect the peoples of that culture. If a promotion is gained (in the Special section), the character has been promoted in the ranks (more promotions equate to higher ranks).",
+    "timeToAcquire": "26 months",
+    "startingMoney": "normal + d10 (open-ended)",
+    "statGains": "none",
+    "special": [
+      { "name": "Melee Weapon (+10 non-magic)",   "dpCost": 30  },
+      { "name": "Missile Weapon (+10 non-magic)", "dpCost": 30  },
+      { "name": "Shield (+10 non-magic)",         "dpCost": 40  },
+      { "name": "Helm (+10 non-magic)",           "dpCost": 50  },
+      { "name": "Armor (+10 non-magic)",          "dpCost": 40  },
+      { "name": "Friends with a ranking officer", "dpCost": 20  },
+      { "name": "Promotion",                      "dpCost": 20  },
+      { "name": "Promotion",                      "dpCost": 20  },
+      { "name": "Promotion",                      "dpCost": 20  },
+      { "name": "Promotion",                      "dpCost": 20  },
+      { "name": "Promotion",                      "dpCost": 20  },
+      { "name": "Melee Weapon (+5 non-magic)",    "dpCost": 100 }
+    ],
+    "categoryRanks": [
+      {
+        "category": "Weapon (choice)",
+        "isChoice": true,
+        "ranks": 2,
+        "skills": [
+          { "name": "choice of one skill", "isChoice": true, "ranks": 2 }
+        ]
+      },
+      {
+        "category": "Armor · Light",
+        "ranks": 2,
+        "skills": [
+          { "name": "choice of one skill", "isChoice": true, "ranks": 2 }
+        ]
+      },
+      {
+        "category": "Lore · General",
+        "ranks": 1,
+        "skills": [
+          { "name": "Heraldry", "ranks": 1 }
+        ]
+      },
+      {
+        "category": "Body Development",
+        "ranks": 0,
+        "skills": [
+          { "name": "Body Development", "ranks": 2 }
+        ]
+      },
+      {
+        "category": "Technical · Vocational",
+        "ranks": 0,
+        "skills": [
+          { "name": "Tactics", "ranks": 1 }
+        ]
+      }
+    ]
+  },
+
+  {
+    "name": "Traveller",
+    "type": "V",
+    "description": "The traveller is simply that, a traveller. He is somewhat knowledgeable about his local region and knows the basics of the outdoors.",
+    "timeToAcquire": "18 months",
+    "startingMoney": "normal",
+    "statGains": "none",
+    "special": [
+      { "name": "Weather-resistant clothing",     "dpCost": 80  },
+      { "name": "Riding beast (GM's discretion)", "dpCost": 30  },
+      { "name": "Simple map of the local region", "dpCost": 100 }
+    ],
+    "categoryRanks": [
+      {
+        "category": "Athletic · Gymnastics",
+        "ranks": 1,
+        "skills": [
+          { "name": "Climbing", "ranks": 1 }
+        ]
+      },
+      {
+        "category": "Athletic · Endurance",
+        "ranks": 1,
+        "skills": [
+          { "name": "Swimming", "ranks": 1 }
+        ]
+      },
+      {
+        "category": "Awareness · Searching",
+        "ranks": 1,
+        "skills": [
+          { "name": "Observation", "ranks": 1 }
+        ]
+      },
+      {
+        "category": "Outdoor · Environmental",
+        "ranks": 1,
+        "skills": [
+          { "name": "choice of one skill", "isChoice": true, "ranks": 1 }
+        ]
+      },
+      {
+        "category": "Outdoor · Animal",
+        "ranks": 1,
+        "skills": [
+          { "name": "Riding", "ranks": 1 }
+        ]
+      }
+    ]
+  }
+]

@@ -1481,3 +1481,212 @@ export async function syncProfessionsToCompendium(source, options = {}) {
     return result;
   }
 }
+
+/* ──────────────────────────── Training Packages ─────────────────────────── */
+
+async function getTrainingPackageTemplate() {
+  const fromDocTypes = foundry.utils.getProperty(game.system, 'documentTypes.Item.trainingPackage.template');
+  if (fromDocTypes && typeof fromDocTypes === 'object') return fromDocTypes;
+  try {
+    const resp = await fetch('systems/rmf/template.json');
+    if (resp.ok) {
+      const data = await resp.json();
+      return (data?.Item?.trainingPackage) ?? {};
+    }
+  } catch (e) {
+    console.warn('RMF | Failed to load training package template fallback', e);
+  }
+  return {};
+}
+
+/**
+ * Coerce a single `categoryRanks` entry to the canonical shape:
+ *   { category, ranks, isChoice, skills: [{name, ranks, isChoice}] }
+ *
+ * @private
+ */
+function normalizeTrainingPackageCategoryRanks(raw) {
+  if (!Array.isArray(raw)) return [];
+  return raw.map(c => ({
+    category: typeof c?.category === "string" ? c.category : "",
+    ranks:    Number(c?.ranks) || 0,
+    isChoice: !!c?.isChoice,
+    skills:   Array.isArray(c?.skills)
+      ? c.skills.map(s => ({
+          name:     typeof s?.name === "string" ? s.name : "",
+          ranks:    Number(s?.ranks) || 0,
+          isChoice: !!s?.isChoice
+        }))
+      : []
+  }));
+}
+
+function buildTrainingPackageSystemData(sysSource, template) {
+  return foundry.utils.mergeObject(
+    foundry.utils.duplicate(template),
+    {
+      type:           String(sysSource?.type ?? ""),
+      description:    String(sysSource?.description ?? ""),
+      timeToAcquire:  String(sysSource?.timeToAcquire ?? ""),
+      startingMoney:  String(sysSource?.startingMoney ?? ""),
+      statGains:      String(sysSource?.statGains ?? ""),
+      special:        Array.isArray(sysSource?.special)
+        ? sysSource.special.map(e => ({
+            name:   typeof e?.name === "string" ? e.name : "",
+            dpCost: Number(e?.dpCost) || 0
+          }))
+        : [],
+      categoryRanks:  normalizeTrainingPackageCategoryRanks(sysSource?.categoryRanks),
+      fromBook:       String(sysSource?.fromBook ?? "basic")
+    },
+    { inplace: false, insertKeys: true, insertValues: true, overwrite: true }
+  );
+}
+
+/**
+ * Import multiple Training Package items from a JSON source.
+ *
+ * @param {string|Array|Object} source - URL, JSON string, or parsed array/object
+ * @param {Object} [options]
+ * @param {string} [options.folderName="Training Packages"] - Target folder name
+ * @param {boolean} [options.dedupeByName=false]
+ * @returns {Promise<{created: Item[], skipped: string[], errors: any[]}>}
+ */
+export async function importTrainingPackages(source, options = {}) {
+  _assertGM("importTrainingPackages");
+  const folderName = options.folderName ?? "Training Packages";
+  const dedupeByName = options.dedupeByName ?? false;
+
+  const result = { created: [], skipped: [], errors: [] };
+
+  try {
+    const input = await resolveSource(source);
+    const packages = Array.isArray(input)
+      ? input
+      : (input?.trainingPackages ?? [input]).filter(Boolean);
+    if (!packages?.length) return result;
+
+    let folder = game.folders.find(f => f.type === "Item" && f.name === folderName) || null;
+    if (!folder) {
+      try {
+        folder = await Folder.create({ name: folderName, type: "Item" });
+      } catch (e) {
+        console.warn("RMF | Failed creating folder for training packages", e);
+      }
+    }
+
+    const template = await getTrainingPackageTemplate();
+    const existingByName = dedupeByName
+      ? game.items.reduce((acc, it) => { if (it.type === "trainingPackage") acc[it.name] = true; return acc; }, {})
+      : {};
+
+    const docs = [];
+    for (let i = 0; i < packages.length; i++) {
+      const entry = packages[i];
+      const name = entry.name ?? `Training Package ${i + 1}`;
+      if (dedupeByName && existingByName[name]) {
+        result.skipped.push(name);
+        continue;
+      }
+      const sysSource = entry.system ?? entry;
+      const system = buildTrainingPackageSystemData(sysSource, template);
+      const img = pickImageFromEntry(entry, sysSource, "icons/svg/book.svg");
+      docs.push({ name, type: "trainingPackage", img, system, folder: folder?.id ?? null });
+    }
+
+    if (!docs.length) return result;
+    const created = await Item.createDocuments(docs);
+    result.created = created;
+    return result;
+  } catch (err) {
+    console.error("RMF | importTrainingPackages error", err);
+    result.errors.push(err);
+    return result;
+  }
+}
+
+/**
+ * Synchronize training-package items into a compendium pack
+ * (upsert by type+name).
+ *
+ * @param {string|Array|Object} source
+ * @param {Object} [options]
+ * @param {string} [options.pack="world.basic-core"]
+ * @param {string} [options.folderName="Training Packages"]
+ * @param {boolean} [options.createMissing=true]
+ * @param {boolean} [options.updateExisting=true]
+ * @returns {Promise<{created: number, updated: number, skipped: number, errors: any[]}>}
+ */
+export async function syncTrainingPackagesToCompendium(source, options = {}) {
+  _assertGM("syncTrainingPackagesToCompendium");
+  const packCollection = options.pack ?? "world.basic-core";
+  const folderName = options.folderName ?? "Training Packages";
+  const createMissing = options.createMissing ?? true;
+  const updateExisting = options.updateExisting ?? true;
+
+  const result = { created: 0, updated: 0, skipped: 0, errors: [] };
+
+  try {
+    const pack = game.packs.get(packCollection);
+    if (!pack) throw new Error(`Compendium pack not found: ${packCollection}`);
+    if (pack.documentName !== "Item") throw new Error(`Pack ${packCollection} is not an Item compendium`);
+
+    const input = await resolveSource(source);
+    const packages = Array.isArray(input)
+      ? input
+      : (input?.trainingPackages ?? [input]).filter(Boolean);
+    if (!packages?.length) return result;
+
+    const template = await getTrainingPackageTemplate();
+    await pack.getIndex({ fields: ["name", "type", "folder"] });
+    const existingByKey = new Map(
+      pack.index.map(entry => [`${entry.type}::${String(entry.name).toLowerCase()}`, entry])
+    );
+
+    const folderIds = getPackFolderIdsByName(pack, folderName);
+    const createPayload = [];
+    const updatePayload = [];
+
+    for (let i = 0; i < packages.length; i++) {
+      const entry = packages[i];
+      const name = entry.name ?? `Training Package ${i + 1}`;
+      const key = `trainingPackage::${String(name).toLowerCase()}`;
+      const existing = existingByKey.get(key);
+      const sysSource = entry.system ?? entry;
+
+      const system = buildTrainingPackageSystemData(sysSource, template);
+      const img = pickImageFromEntry(entry, sysSource, "icons/svg/book.svg");
+      const base = { name, type: "trainingPackage", img, system };
+
+      if (existing) {
+        if (!updateExisting) {
+          result.skipped += 1;
+          continue;
+        }
+        updatePayload.push({ _id: existing._id, ...base });
+      } else {
+        if (!createMissing) {
+          result.skipped += 1;
+          continue;
+        }
+        const folderId = folderIds[0] ?? null;
+        createPayload.push({ ...base, folder: folderId });
+      }
+    }
+
+    if (createPayload.length) {
+      const created = await Item.createDocuments(createPayload, { pack: packCollection });
+      result.created = created.length;
+    }
+    if (updatePayload.length) {
+      const updated = await Item.updateDocuments(updatePayload, { pack: packCollection, diff: false });
+      result.updated = updated.length;
+    }
+
+    return result;
+  } catch (err) {
+    console.error("RMF | syncTrainingPackagesToCompendium error", err);
+    result.errors.push(err);
+    return result;
+  }
+}

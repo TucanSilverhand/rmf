@@ -325,6 +325,31 @@
         "Mentalism": "Mentalismo"
       }
     },
+    "TrainingPackage": {
+      "NamePlaceholder": "Nombre del Paquete de Entrenamiento",
+      "Type": "Categoría",
+      "TimeToAcquire": "Tiempo de Adquisición",
+      "StartingMoney": "Dinero Inicial",
+      "StatGains": "Mejoras de Estadísticas",
+      "Meta": "Metadatos",
+      "Special": "Especial",
+      "SpecialName": "Bonus / Objeto",
+      "SpecialDPCost": "Coste DP",
+      "CategoryRanks": "Rangos de Categoría y Habilidad",
+      "CategoryOrSkill": "Categoría / Habilidad",
+      "Ranks": "Rangos",
+      "None": "Ninguno definido.",
+      "ApplyTitle": "Aplicar Paquete de Entrenamiento",
+      "ApplyConfirm": "¿Aplicar <strong>{name}</strong> a <strong>{actor}</strong>? Los rangos se sumarán al nivel actual del personaje. El paquete será consumido tras aplicarse.",
+      "ApplyError": "No se pudo aplicar el paquete de entrenamiento. Revisa la consola para más detalles.",
+      "AppliedHeader": "{name} aplicado a {actor}",
+      "AppliedSection": "Aplicado",
+      "AppliedCategory": "Categoría «{name}» +{ranks}",
+      "AppliedSkill": "Habilidad «{name}» +{ranks}",
+      "ChoicesSection": "Elecciones pendientes (resolver manualmente)",
+      "MissingSection": "Faltan en el personaje (omitidos)"
+    },
+    "TrainingPackageSheet": "Hoja de Paquete de Entrenamiento RMF",
     "Profession": {
       "NamePlaceholder": "Nombre de Profesión",
       "PrimeStats": "Características Primarias",
@@ -354,7 +379,8 @@
       "skill": "Habilidad",
       "category": "Categoría",
       "realm": "Reino",
-      "profession": "Profesión"
+      "profession": "Profesión",
+      "trainingPackage": "Paquete de Entrenamiento"
     }
   }
 }

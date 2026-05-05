@@ -67,15 +67,21 @@ const SHAPES = {
     everymanSkills: isArr, occupationalSkills: isArr,
     restrictedSkills: isArr, categoryPrice: isArr, spellPrice: isArr,
     trainingPackages: isArr, fromBook: isStr
+  },
+  trainingPackage: {
+    type: isStr, description: isStr, timeToAcquire: isStr,
+    startingMoney: isStr, statGains: isStr,
+    special: isArr, categoryRanks: isArr, fromBook: isStr
   }
 };
 
 const FILES = [
-  ["data/categories.json",  "category"],
-  ["data/skills.json",      "skill"],
-  ["data/races.json",       "race"],
-  ["data/realms.json",      "realm"],
-  ["data/professions.json", "profession"]
+  ["data/categories.json",        "category"],
+  ["data/skills.json",            "skill"],
+  ["data/races.json",             "race"],
+  ["data/realms.json",            "realm"],
+  ["data/professions.json",       "profession"],
+  ["data/training_packages.json", "trainingPackage"]
 ];
 
 /* ───────────────────── Validation logic ───────────────────── */
@@ -137,6 +143,27 @@ function checkEntry(file, idx, entry, type) {
           errors.push(`${file} "${name}".${k}[${i}] should be { name: string }, got ${JSON.stringify(e)?.slice(0, 60)}`);
         }
       });
+    }
+  }
+
+  if (type === "trainingPackage") {
+    // special[]: array of {name, dpCost: number}
+    for (const [i, e] of (sysd.special ?? []).entries()) {
+      if (!isObj(e) || !isStr(e.name) || !isNum(e.dpCost)) {
+        errors.push(`${file} "${name}".special[${i}] should be { name: string, dpCost: number }, got ${JSON.stringify(e)?.slice(0, 80)}`);
+      }
+    }
+    // categoryRanks[]: array of {category, ranks, isChoice?, skills: [{name, ranks, isChoice?}]}
+    for (const [i, c] of (sysd.categoryRanks ?? []).entries()) {
+      if (!isObj(c) || !isStr(c.category) || !isNum(c.ranks)) {
+        errors.push(`${file} "${name}".categoryRanks[${i}] should be { category: string, ranks: number, ... }, got ${JSON.stringify(c)?.slice(0, 80)}`);
+        continue;
+      }
+      for (const [j, s] of (c.skills ?? []).entries()) {
+        if (!isObj(s) || !isStr(s.name) || !isNum(s.ranks)) {
+          errors.push(`${file} "${name}".categoryRanks[${i}].skills[${j}] should be { name: string, ranks: number, ... }, got ${JSON.stringify(s)?.slice(0, 80)}`);
+        }
+      }
     }
   }
 }

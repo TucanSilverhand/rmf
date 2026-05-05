@@ -1,0 +1,123 @@
+{{!--
+  RMF Training Package Item Sheet — single-tab view.
+  Top-level descriptive fields are editable; special[] and categoryRanks[]
+  are read-only summaries (canonical authoring path is the JSON +
+  syncTrainingPackagesToCompendium).
+--}}
+<div class="{{cssClass}} rmf-item-sheet-root training-package-sheet-root" data-root>
+  <header class="sheet-header">
+    <img class="profile-img" src="{{item.img}}" alt="{{item.name}}" data-edit="img" data-action="pickImage" title="{{item.name}}" height="64" width="64"/>
+    <div class="header-fields">
+      <h1 class="item-name">
+        <input name="name" type="text" value="{{item.name}}" placeholder="{{localize 'RMF.TrainingPackage.NamePlaceholder'}}" autocomplete="off"/>
+      </h1>
+    </div>
+  </header>
+
+  <section class="sheet-body">
+
+    {{!-- Description (rich, editable) --}}
+    <fieldset class="form-group">
+      <legend>{{localize "RMF.Description"}}</legend>
+      <div class="editor-container description-editor">
+        <textarea name="system.description"
+                  style="height: 140px; resize: vertical;"
+                  placeholder="{{localize 'RMF.DescriptionPlaceholder'}}">{{system.description}}</textarea>
+      </div>
+    </fieldset>
+
+    {{!-- Top-level descriptive fields (editable) --}}
+    <fieldset class="form-group">
+      <legend>{{localize "RMF.TrainingPackage.Meta"}}</legend>
+      <div class="two-col-tables">
+        <div>
+          <label>{{localize "RMF.TrainingPackage.Type"}}</label>
+          <input type="text"
+                 name="system.type"
+                 value="{{system.type}}"
+                 placeholder="L / M / H"
+                 autocomplete="off" />
+
+          <label>{{localize "RMF.TrainingPackage.TimeToAcquire"}}</label>
+          <input type="text"
+                 name="system.timeToAcquire"
+                 value="{{system.timeToAcquire}}"
+                 autocomplete="off" />
+        </div>
+        <div>
+          <label>{{localize "RMF.TrainingPackage.StartingMoney"}}</label>
+          <input type="text"
+                 name="system.startingMoney"
+                 value="{{system.startingMoney}}"
+                 autocomplete="off" />
+
+          <label>{{localize "RMF.TrainingPackage.StatGains"}}</label>
+          <input type="text"
+                 name="system.statGains"
+                 value="{{system.statGains}}"
+                 autocomplete="off" />
+        </div>
+      </div>
+
+      <label>{{localize "RMF.Category.Source"}}</label>
+      <input type="text"
+             name="system.fromBook"
+             value="{{system.fromBook}}"
+             placeholder="basic"
+             autocomplete="off" />
+    </fieldset>
+
+    {{!-- Special list — read-only summary --}}
+    <fieldset class="form-group">
+      <legend>{{localize "RMF.TrainingPackage.Special"}}</legend>
+      {{#if specialRows.length}}
+      <table class="summary-table">
+        <thead>
+          <tr>
+            <th>{{localize "RMF.TrainingPackage.SpecialName"}}</th>
+            <th>{{localize "RMF.TrainingPackage.SpecialDPCost"}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each specialRows as |row|}}
+          <tr>
+            <td><input type="text"   value="{{row.name}}"   readonly /></td>
+            <td><input type="number" value="{{row.dpCost}}" readonly data-dtype="Number" inputmode="numeric" /></td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+      {{else}}
+      <em>{{localize "RMF.TrainingPackage.None"}}</em>
+      {{/if}}
+    </fieldset>
+
+    {{!-- Category ranks — flat read-only summary, skills indented --}}
+    <fieldset class="form-group">
+      <legend>{{localize "RMF.TrainingPackage.CategoryRanks"}}</legend>
+      {{#if categoryRanksSummary.length}}
+      <table class="summary-table">
+        <thead>
+          <tr>
+            <th>{{localize "RMF.TrainingPackage.CategoryOrSkill"}}</th>
+            <th>{{localize "RMF.TrainingPackage.Ranks"}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each categoryRanksSummary as |row|}}
+          <tr class="rmf-tp-row rmf-tp-{{row.kind}}{{#if row.isChoice}} rmf-tp-choice{{/if}}">
+            <td>
+              {{#if (rmfEq row.kind "skill")}}<span class="rmf-tp-indent">↳ </span>{{/if}}{{row.name}}
+            </td>
+            <td><input type="number" value="{{row.ranks}}" readonly data-dtype="Number" inputmode="numeric" /></td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+      {{else}}
+      <em>{{localize "RMF.TrainingPackage.None"}}</em>
+      {{/if}}
+    </fieldset>
+
+  </section>
+</div>

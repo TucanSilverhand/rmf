@@ -325,6 +325,31 @@
         "Mentalism": "Mentalism"
       }
     },
+    "TrainingPackage": {
+      "NamePlaceholder": "Training Package Name",
+      "Type": "Tier",
+      "TimeToAcquire": "Time to Acquire",
+      "StartingMoney": "Starting Money",
+      "StatGains": "Stat Gains",
+      "Meta": "Metadata",
+      "Special": "Special",
+      "SpecialName": "Bonus / Item",
+      "SpecialDPCost": "DP Cost",
+      "CategoryRanks": "Category & Skill Ranks",
+      "CategoryOrSkill": "Category / Skill",
+      "Ranks": "Ranks",
+      "None": "None defined.",
+      "ApplyTitle": "Apply Training Package",
+      "ApplyConfirm": "Apply <strong>{name}</strong> to <strong>{actor}</strong>? Ranks will be added at the actor's current level. The package will be consumed afterwards.",
+      "ApplyError": "Could not apply the training package. Check the console for details.",
+      "AppliedHeader": "{name} applied to {actor}",
+      "AppliedSection": "Applied",
+      "AppliedCategory": "Category \"{name}\" +{ranks}",
+      "AppliedSkill": "Skill \"{name}\" +{ranks}",
+      "ChoicesSection": "Pending choices (resolve manually)",
+      "MissingSection": "Missing on actor (skipped)"
+    },
+    "TrainingPackageSheet": "RMF Training Package Sheet",
     "Profession": {
       "NamePlaceholder": "Profession Name",
       "PrimeStats": "Prime Stats",
@@ -354,7 +379,8 @@
       "skill": "Skill",
       "category": "Category",
       "realm": "Realm",
-      "profession": "Profession"
+      "profession": "Profession",
+      "trainingPackage": "Training Package"
     }
   }
 }
