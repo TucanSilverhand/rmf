@@ -14,7 +14,7 @@ import {
   SKILL_CLASSIFICATIONS
 } from "../utils/rank-bonus.mjs";
 import { totalBoughtRanks } from "./_shared.mjs";
-import { CATEGORY_GROUPS } from "./category.mjs";
+import { CATEGORY_GROUPS, normalizeCategoryGroup } from "./category.mjs";
 
 const fields = foundry.data.fields;
 
@@ -62,6 +62,24 @@ export class SkillData extends foundry.abstract.TypeDataModel {
       specialStatus: str("none", { choices: SPECIAL_STATUS_CHOICES }),
       fromBook: str("basic")
     };
+  }
+
+  /* ───────────────────────── Migration ───────────────────────── */
+
+  /**
+   * Heal pre-existing skills whose `group` field uses a legacy spelling
+   * ("None" instead of "none", "Power" instead of "Power Awareness",
+   * "Technical/Trade" instead of "Technical", …) before the schema's
+   * `choices` validator runs. Shares the normalizer with CategoryData.
+   *
+   * @param {Object} source - Raw `system` data being initialised
+   * @returns {Object} The (possibly mutated) source
+   */
+  static migrateData(source) {
+    if (source && typeof source === "object" && "group" in source) {
+      source.group = normalizeCategoryGroup(source.group);
+    }
+    return super.migrateData(source);
   }
 
   /* ───────────────────────── Derivation ───────────────────────── */

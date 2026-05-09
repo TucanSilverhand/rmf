@@ -9,6 +9,7 @@ import {
   normalizeSkillClassification
 } from "./utils/rank-bonus.mjs";
 import { STAT_SHORT_TO_FULL } from "./utils/constants.mjs";
+import { normalizeCategoryGroup } from "./data-models/category.mjs";
 
 /**
  * Throw a permission error unless the current user is GM.
@@ -396,7 +397,7 @@ export async function importCategories(source, options = {}) {
           spec1Bonus: normalizeNumber(sysSource.spec1Bonus ?? entry.spec1Bonus, 0),
           spec2Bonus: normalizeNumber(sysSource.spec2Bonus ?? entry.spec2Bonus, 0),
           fromBook: sysSource.fromBook ?? entry.fromBook ?? "basic",
-          group: sysSource.group ?? entry.group ?? "none"
+          group: normalizeCategoryGroup(sysSource.group ?? entry.group)
         },
         { inplace: false, insertKeys: true, insertValues: true, overwrite: true }
       );
@@ -580,7 +581,7 @@ export async function syncCategoriesToCompendium(source, options = {}) {
           spec1Bonus: normalizeNumber(sysSource.spec1Bonus ?? entry.spec1Bonus, 0),
           spec2Bonus: normalizeNumber(sysSource.spec2Bonus ?? entry.spec2Bonus, 0),
           fromBook: sysSource.fromBook ?? entry.fromBook ?? "basic",
-          group: sysSource.group ?? entry.group ?? "none"
+          group: normalizeCategoryGroup(sysSource.group ?? entry.group)
         },
         { inplace: false, insertKeys: true, insertValues: true, overwrite: true }
       );
@@ -778,7 +779,7 @@ function buildSkillSystemData(sysSource, template) {
       description: String(sysSource?.description ?? ""),
       rank: normalizeNumber(sysSource?.rank ?? sysSource?.ranks, 0),
       category: String(sysSource?.category ?? ""),
-      group: String(sysSource?.group ?? "none"),
+      group: normalizeCategoryGroup(sysSource?.group),
       classification: normalizeSkillClassification(sysSource?.classification),
       dpCost: normalizeSkillDPCost(sysSource?.dpCost),
       boughtByLevel: normalizeBoughtByLevel(sysSource?.boughtByLevel),

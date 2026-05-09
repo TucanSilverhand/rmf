@@ -39,6 +39,7 @@ export const CATEGORY_GROUP_OPTIONS = Object.freeze([
   { value: "Power Point Development", label: "RMF.Category.Groups.PowerPointDevelopment" },
   { value: "Science",                 label: "RMF.Category.Groups.Science" },
   { value: "Self Control",            label: "RMF.Category.Groups.SelfControl" },
+  { value: "Spells",                  label: "RMF.Category.Groups.Spells" },
   { value: "Subterfuge",              label: "RMF.Category.Groups.Subterfuge" },
   { value: "Technical",               label: "RMF.Category.Groups.Technical" },
   { value: "Urban",                   label: "RMF.Category.Groups.Urban" },
@@ -47,6 +48,27 @@ export const CATEGORY_GROUP_OPTIONS = Object.freeze([
 
 /** Plain values, derived for `choices` validation in the schema. */
 export const CATEGORY_GROUPS = Object.freeze(CATEGORY_GROUP_OPTIONS.map(g => g.value));
+
+/**
+ * Map legacy / variant `group` values to the canonical set above. Used by
+ * `migrateData` (auto-heals existing world items at load time) and by the
+ * importer (defense-in-depth so freshly-imported documents are clean).
+ *
+ * @param {*} value
+ * @returns {string} A canonical group value, or "none" when unrecognised.
+ */
+export function normalizeCategoryGroup(value) {
+  if (typeof value !== "string" || !value.length) return "none";
+  if (CATEGORY_GROUPS.includes(value)) return value;
+  // Common legacy spellings observed in pre-existing data dumps. Used
+  // by both CategoryData.migrateData and SkillData.migrateData (skills
+  // share the same group enum).
+  if (value === "None") return "none";
+  if (value === "Spell" || value === "Spell List") return "Spells";
+  if (value === "Power") return "Power Awareness";
+  if (value === "Technical/Trade") return "Technical";
+  return "none";
+}
 
 const CATEGORY_PROGRESSIONS = ["standard", "nonstandard"];
 
@@ -97,6 +119,24 @@ export class CategoryData extends foundry.abstract.TypeDataModel {
 
       fromBook: str("basic")
     };
+  }
+
+  /* ───────────────────────── Migration ───────────────────────── */
+
+  /**
+   * Heal pre-existing items whose `group` field uses a legacy spelling
+   * ("None" instead of "none", "Spell" instead of "Spells", …) before
+   * the schema's `choices` validator runs and rejects them. Foundry
+   * calls this once per source object, prior to validation.
+   *
+   * @param {Object} source - Raw `system` data being initialised
+   * @returns {Object} The (possibly mutated) source
+   */
+  static migrateData(source) {
+    if (source && typeof source === "object" && "group" in source) {
+      source.group = normalizeCategoryGroup(source.group);
+    }
+    return super.migrateData(source);
   }
 
   /* ───────────────────────── Derivation ───────────────────────── */

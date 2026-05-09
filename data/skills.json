@@ -821,7 +821,7 @@
     "description": "This skill enhances the character’s ability to resist damage, and withstand pain and shock. A character’s Body Development skill bonus determines how many hits (concussion hits) a character can take without passing out. Note that this is not merely strength training—training in this skill provides a greater tolerance for pain, physical toughness and discipline in the face of wounds and bleeding. An individual might remain a very slight and frail-looking individual but still hold a large number of ranks of body development.\nA character takes hits as damage from attacks—hits reflect pain, shock, and bleeding. When the hits that a character has taken are greater than or equal to his maximum hits, he passes out. When the hits that a character has taken are greater than or equal to his maximum hits plus his Constitution, he dies.",
     "rank": 0,
     "category": "Body Development",
-    "group": "None",
+    "group": "none",
     "classification": "specialPurpose",
     "dpCost": {
       "price1": 0,
@@ -838,7 +838,7 @@
     "description": "This skill limits one’s OB against an opponent while mounted. The OB of an attack made while mounted can not exceed the attacker’s Mounted Combat skill bonus. A character's Mounted Combat skill cannot have more skill ranks developed than his Riding skill ranks.",
     "rank": 0,
     "category": "Combat Maneuvers",
-    "group": "None",
+    "group": "none",
     "classification": "specialPurpose",
     "dpCost": {
       "price1": 0,
@@ -855,7 +855,7 @@
     "description": "This skill provides a bonus for getting a weapon from scabbard into battle very quickly. If successful, the weapon is out of the scabbard and in hand without the normal 20% activity required (-20 penalty) for drawing a weapon. If the maneuver roll fails, he has dropped the weapon. If partially successful, the character takes the normal time (and penalty) to draw the weapon.",
     "rank": 0,
     "category": "Combat Maneuvers",
-    "group": "None",
+    "group": "none",
     "classification": "staticManeuver",
     "dpCost": {
       "price1": 0,
@@ -872,7 +872,7 @@
     "description": "This skill allows an individual to perform elaborate maneuvers with his weapon, including flourishes and feats of weapon control. This skill may, at the GM’s discretion, be used to recover control of a fumbled weapon (only possible if a fumble result has indicated that the wielder has “lost control” of a weapon, not “dropped” it), and may be used to perform unusual maneuvers with one’s weapon. Note that fumbles resulting from swashbuckling attempts may not be negated by further use of this skill.",
     "rank": 0,
     "category": "Combat Maneuvers",
-    "group": "None",
+    "group": "none",
     "classification": "staticManeuver",
     "dpCost": {
       "price1": 0,
@@ -889,7 +889,7 @@
     "description": "This skill allows a combatant to fight with two weapons simultaneously. He is allowed to make 2 weapon attacks for each melee attack action, and may engage two opponents providing neither opponent is receiving any positional combat modifiers for their OB (e.g., If either opponent is receiving +15 for Flank Attack or +20 for Rear Attack the individual cannot attack both opponents in the same round).\nTw o Weapon Combat skill must be developed for each individual two-weapon combination (e.g., shortsword/handaxe, rapier/dagger, etc.). A character's skill rank with a two-weapon combination may not exceed his skill rank of either of the individual weapons (e.g., if a Fighter has 5 skill ranks with a dagger and 9 skill ranks with a short sword, he may only have 5 skill ranks with his short sword/dagger two weapon combination). The OB for each weapon attack is equal to the skill bonus for the Two-weapon Combat skill for the combination of those two weapons.\nAgainst 1 Opponent: There is no negative attack modification against one opponent.\nAgainst 2 Opponents: There is -20 modification to both attacks.\nParrying: The user must reduce both weapon OBs by the same amount (i.e., the amount of his parry). Against one opponent, the user increases his DB by the amount of his parry. Against two opponents, the amount of his parry must be split between the two opponents as the user sees fit.\nUsing the off-hand: Each weapon combination is considered to have been developed for each specific weapon in a specific hand. For example, a Rogue trained in a rapier/ dagger combination might have decided to use the rapier left-handed and the dagger in his right. Switching either weapon to the other hand incurs the normal -20 penalty for use with the off-hand.",
     "rank": 0,
     "category": "Combat Maneuvers",
-    "group": "None",
+    "group": "none",
     "classification": "offensiveBonus",
     "dpCost": {
       "price1": 0,
@@ -906,7 +906,7 @@
     "description": "Rolemaster is created for a world with a variety of cultures and languages. There is no such thing as a common tongue or an alignment tongue (though a GM can add them for his world system), although certain professions have developed their own languages for use in research. Each language must be developed individually, with the written and spoken versions of a language each counting separately. Skills in one language normally have little effect on others; however, “brother languages,” those deriving from an immediate common ancestor, may be an exception.\nOne’s skill rank indicates the level of comprehension of a spoken or written language. See the Language Rank Table T-4.7.\nOne’s skill bonus with a written form of a language serves as a skill bonus to writing attempts using that language. The spoken skill bonus for a language is used to improve communication with someone. A successful static maneuver means that the spoken language rank of the person with whom you are communicating is temporarily increased for the purposes of this conversation, to a maximum of the rank developed by the individual performing the static maneuver.",
     "rank": 0,
     "category": "Communications",
-    "group": "None",
+    "group": "none",
     "classification": "staticManeuver",
     "dpCost": {
       "price1": 0,
@@ -923,7 +923,7 @@
     "description": "Rolemaster is created for a world with a variety of cultures and languages. There is no such thing as a common tongue or an alignment tongue (though a GM can add them for his world system), although certain professions have developed their own languages for use in research. Each language must be developed individually, with the written and spoken versions of a language each counting separately. Skills in one language normally have little effect on others; however, “brother languages,” those deriving from an immediate common ancestor, may be an exception.\nOne’s skill rank indicates the level of comprehension of a spoken or written language. See the Language Rank Table T-4.7.\nOne’s skill bonus with a written form of a language serves as a skill bonus to writing attempts using that language. The spoken skill bonus for a language is used to improve communication with someone. A successful static maneuver means that the spoken language rank of the person with whom you are communicating is temporarily increased for the purposes of this conversation, to a maximum of the rank developed by the individual performing the static maneuver.",
     "rank": 0,
     "category": "Communications",
-    "group": "None",
+    "group": "none",
     "classification": "staticManeuver",
     "dpCost": {
       "price1": 0,
@@ -940,7 +940,7 @@
     "description": "This skill provides a bonus for reading lips and sign language. Lip reading is only possible with languages that the lip reader knows and then only to the known spoken skill rank. Special creatures (e.g., the Chicken People) might cause a penalty to be added to the character’s bonus due to distinct lack of lips. Line of sight must be maintained with the subject’s mouth. Skill is halved for reading the lips of creatures not of the same general type. Types: Human, Reptile, Avian, Non-Human Mammalian, etc.",
     "rank": 0,
     "category": "Communications",
-    "group": "None",
+    "group": "none",
     "classification": "staticManeuver",
     "dpCost": {
       "price1": 0,
@@ -957,7 +957,7 @@
     "description": "This skill provides a bonus when using any form of signal communications. This skill is a specialized form of language and language guidelines apply.",
     "rank": 0,
     "category": "Communications",
-    "group": "None",
+    "group": "none",
     "classification": "staticManeuver",
     "dpCost": {
       "price1": 0,
@@ -1076,7 +1076,7 @@
     "description": "The skills in this category provide bonuses to directed spell attacks. Such attacks use the Bolt Spell Attack Table A-10.9.9 (p. 228). See Appendix A-10.7 (p. 219) for guidelines on handling Directed Spell attacks.\nThe five types of directed spells are Fire Bolts, Ice Bolts, Lightning Bolts, Shock Bolts, and Water Bolts—skill must be developed separately for each different type. A character wishing to develop skill with such a spell must be able to cast it without the need of a spell casting static maneuver at least once a day, either intrinsically or from an item or runes.",
     "rank": 0,
     "category": "Directed Spells",
-    "group": "None",
+    "group": "none",
     "classification": "offensiveBonus",
     "dpCost": {
       "price1": 0,
@@ -1093,7 +1093,7 @@
     "description": "This skill provides a bonus for offering a bribe to an individual in the proper and unobtrusive manner. The Gm may also allow the the use of this skill to identify bribeable individuals and    and    and    and    and to identify persons likely to have been bribed.",
     "rank": 0,
     "category": "Influence",
-    "group": "None",
+    "group": "none",
     "classification": "staticManeuver",
     "dpCost": {
       "price1": 0,
@@ -1110,7 +1110,7 @@
     "description": "This skill provides a bonus for operating successfully in a complex, bureaucratic foreign environment, such as a foreign royal court or any other large foreign government structure. Tact, negotiation, and deceit are all facets of diplomacy. It is used for the conducting of relations between nations. It is important to note that this skill provides a bonus for using the proper protocol in an unfamiliar situation and impressing a person in authority. This applies to situations ranging from an audience with the High King to an involuntary meeting with the Prince of Thieves.",
     "rank": 0,
     "category": "Influence",
-    "group": "None",
+    "group": "none",
     "classification": "staticManeuver",
     "dpCost": {
       "price1": 0,
@@ -1127,7 +1127,7 @@
     "description": "This skill provides a bonus for speaking quickly, convincingly, and confusingly in order to get a victim to do something they would not ordinarily do. This skill usually may be used on only one person at a time.",
     "rank": 0,
     "category": "Influence",
-    "group": "None",
+    "group": "none",
     "classification": "staticManeuver",
     "dpCost": {
       "price1": 0,
@@ -1144,7 +1144,7 @@
     "description": "This skill provides a bonus for extracting information from an intelligent source. This may or may not include causing discomfort to the target. If a target is discomforted and the “interrogation roll” fails, the target may suffer a major injury or death. In such a case, the target should roll an RR vs. level 10, using his Co/SD/Co stat bonus total as a modifier to determine the extent of the injury. This skill not only applies to torture but also includes the ability to piece together scattered fragments of information received.",
     "rank": 0,
     "category": "Influence",
-    "group": "None",
+    "group": "none",
     "classification": "staticManeuver",
     "dpCost": {
       "price1": 0,
@@ -1161,7 +1161,7 @@
     "description": "This skill provides a bonus to inspire and command others to follow you, and to make others believe that you are competent to lead and that you know what you are doing. This includes the ability to raise the morale of those you command.",
     "rank": 0,
     "category": "Influence",
-    "group": "None",
+    "group": "none",
     "classification": "staticManeuver",
     "dpCost": {
       "price1": 0,
@@ -1178,7 +1178,7 @@
     "description": "This skill provides a bonus for impressing, entertaining, or manipulating groups of people directly. Note that this is different from the Tale Telling skill, which is used on small groups, using stories and fables for entertainment and instruction. Public Speaking is for larger groups, is often more extemporaneous, and is used to manipulate the emotions or views of a crowd.",
     "rank": 0,
     "category": "Influence",
-    "group": "None",
+    "group": "none",
     "classification": "staticManeuver",
     "dpCost": {
       "price1": 0,
@@ -1195,7 +1195,7 @@
     "description": "This skill provides a bonus when attempting to emotionally, sensually, or sexually manipulate someone. Note that this is not limited to sexual seduction! Manipulation of a persons sensual sensibilities, urging a person to indulge in some fantasy or desire, and convincing a person of some tenet on emotional rather than rational grounds can all be classified as seduction.",
     "rank": 0,
     "category": "Influence",
-    "group": "None",
+    "group": "none",
     "classification": "staticManeuver",
     "dpCost": {
       "price1": 0,
@@ -1212,7 +1212,7 @@
     "description": "This skill provides a bonus for transactions involving a bargained exchange of money or goods, particularly with respect to rolls on the purchase and resale price charts found in Gamemaster Law.",
     "rank": 0,
     "category": "Influence",
-    "group": "None",
+    "group": "none",
     "classification": "staticManeuver",
     "dpCost": {
       "price1": 0,
@@ -1807,7 +1807,7 @@
     "description": "This skill enables a character to use the spell abilities of a staff, wand, or any item with spell casting abilities. In order to cast spells from an item, the wielder of the item must have made an Attunement static maneuver.\nIf an item has several spells or groups of spells that are widely separated in power or type, the GM may require separate attunement (staves & wands) static maneuvers for each spell or group of spells.\n“Teaching” someone else an item is not permitted because using an item is a personal experience between the individual and the item. Although you may tell someone what the item does and thus remove any penalty for not knowing the spell(s) in the item, you cannot aid them. Certain spells on items do not normally require Attunement rolls, subject to GM stipulation. ",
     "rank": 0,
     "category": "Power Awareness",
-    "group": "Power",
+    "group": "Power Awareness",
     "classification": "staticManeuver",
     "dpCost": {
       "price1": 0,
@@ -1824,7 +1824,7 @@
     "description": "Rune skill enables a character to decipher and use runes (spells inscribed in suitable media). If the level of the spell on the rune is less than or equal to the level of the character attempting to use it to cast a spell, deciphering the rune is sufficient to use it (subject to the normal chances of spell failure). If the rune is a level above the character, or of a realm of magic other than his specialty, a second roll, similar to the first, must be made to successfully cast the spell from the rune. Runes are generally not reusable, but the rune paper is.\nA character should be given one chance to decipher a rune. If he fails, he may not try again until he improves his skill rank with Read Runes.",
     "rank": 0,
     "category": "Power Awareness",
-    "group": "Power",
+    "group": "Power Awareness",
     "classification": "staticManeuver",
     "dpCost": {
       "price1": 0,
@@ -1841,7 +1841,7 @@
     "description": "Developing this skill allows a spell user to increase the total number of power points (PP) he may have available at any given time. In order to cast a spell, a number of PPs equal to the spell’s level must be used.",
     "rank": 0,
     "category": "Power Point Development",
-    "group": "None",
+    "group": "none",
     "classification": "specialPurpose",
     "dpCost": {
       "price1": 0,
@@ -1943,7 +1943,7 @@
     "description": "This skill provides a bonus to attempt to go into a state of single-minded, unpredictable rage which results in an additional +30 to melee OB, the ability to take twice normal concussion damage and the ability to deliver double melee concussion hit damage. While in frenzy, you have no DB other than the armor bonus, get no shield bonus, and cannot parry. The static maneuver (i.e., preparation) for frenzy takes one round. Once in a frenzied/berserk state, the berserker may make a static maneuver each round in order to resume one’s normal state. Once frenzied, the berserker will continue to fight until there is no one left standing except himself, at which time he receives a +30 modification to static maneuvers to end the frenzy. While frenzied,  the berserker may attempt  a Situational Awareness (Combat) static maneuver with a -30 modification to distinguish friend from foe.",
     "rank": 0,
     "category": "Self Control",
-    "group": "None",
+    "group": "none",
     "classification": "staticManeuver",
     "dpCost": {
       "price1": 0,
@@ -1960,7 +1960,7 @@
     "description": "This skill provides a bonus for an individual entering, leaving and exploiting a mental trance.  Physical prodding allows one to make a static maneuver to leave the trance, as does a painful strike (modify by +25).\nA GM may allow a successful meditation maneuver to give the meditator a bonus for a maneuver related to the meditation. Such related maneuvers can include: solving a difficult problem, making a spell casting static maneuver, making an attunement static maneuver, etc. We suggest the following bonuses based upon the degree of success of the meditation static maneuver: +5 bonus for “partial success,” +10 for “near success,” +15 for “success,” and +25 for “absolute success.” The meditator must spend at least one minute (6 rounds) in meditation to get the bonus.",
     "rank": 0,
     "category": "Self Control",
-    "group": "None",
+    "group": "none",
     "classification": "staticManeuver",
     "dpCost": {
       "price1": 0,
@@ -1977,7 +1977,7 @@
     "description": "This skill provides a bonus for recalling information through the use of memory aids, techniques and tricks.",
     "rank": 0,
     "category": "Self Control",
-    "group": "None",
+    "group": "none",
     "classification": "staticManeuver",
     "dpCost": {
       "price1": 0,
@@ -2249,7 +2249,7 @@
     "description": "This skill provides a bonus for eliciting a sympathetic response from the person being solicited.",
     "rank": 0,
     "category": "Technical · General",
-    "group": "Technical/Trade",
+    "group": "Technical",
     "classification": "staticManeuver",
     "dpCost": {
       "price1": 0,
@@ -2266,7 +2266,7 @@
     "description": "This skill provides a bonus for applications of emergency aid or treatment (limited to type of creature), such as attempts to halt or slow bleeding or damaging deterioration. It is suggested that, provided with the proper tools or bandages, a character using first aid could stop up to 5 hits/round of “bleeding” damage without resorting to a tourniquet. Used normally in the field without the benefits of a proper medical facility or elaborate equipment. See Section 24.1 (p. 75) for more details.",
     "rank": 0,
     "category": "Technical · General",
-    "group": "Technical/Trade",
+    "group": "Technical",
     "classification": "staticManeuver",
     "dpCost": {
       "price1": 0,
@@ -2283,7 +2283,7 @@
     "description": "This skill provides a bonus when playing any game with a significant element of luck. Also includes cheating as a form of improving one’s luck at any game.",
     "rank": 0,
     "category": "Technical · General",
-    "group": "Technical/Trade",
+    "group": "Technical",
     "classification": "staticManeuver",
     "dpCost": {
       "price1": 0,
@@ -2300,7 +2300,7 @@
     "description": "CThis skill provides a bonus to making, recognizing and using simple maps. This skill is not capable of producing fully detailed maps like those of a cartographer, but it is sufficient to the task of marking out one’s journey well enough to find one’s way home.",
     "rank": 0,
     "category": "Technical · General",
-    "group": "Technical/Trade",
+    "group": "Technical",
     "classification": "staticManeuver",
     "dpCost": {
       "price1": 0,
@@ -2317,7 +2317,7 @@
     "description": "This skill provides a bonus to operate simple equipment, or a specific set of complex equipment, such as millworks, automatic looms, etc.",
     "rank": 0,
     "category": "Technical · General",
-    "group": "Technical/Trade",
+    "group": "Technical",
     "classification": "staticManeuver",
     "dpCost": {
       "price1": 0,
@@ -2334,7 +2334,7 @@
     "description": "This skill provides a bonus for using landmarks, the sun, stars and other simple navigational tricks to arrive at a desired location. Note that Orienteering provides only a general sense of the proper direction towards a location; hazards, obstacles, or distances are not learned.",
     "rank": 0,
     "category": "Technical · General",
-    "group": "Technical/Trade",
+    "group": "Technical",
     "classification": "staticManeuver",
     "dpCost": {
       "price1": 0,
@@ -2351,7 +2351,7 @@
     "description": "This skill provides a bonus for operating a sailing vessel or for serving as part of a crew operating a sailing vessel.",
     "rank": 0,
     "category": "Technical · General",
-    "group": "Technical/Trade",
+    "group": "Technical",
     "classification": "movingManeuver",
     "dpCost": {
       "price1": 0,
@@ -2368,7 +2368,7 @@
     "description": "This skill provides a bonus for playing games which contain very little chance element, such as Chess or Go.",
     "rank": 0,
     "category": "Technical · General",
-    "group": "Technical/Trade",
+    "group": "Technical",
     "classification": "staticManeuver",
     "dpCost": {
       "price1": 0,
@@ -2385,7 +2385,7 @@
     "description": "This skill allows the user to properly apply herbs that have already been prepared for use.",
     "rank": 0,
     "category": "Technical · General",
-    "group": "Technical/Trade",
+    "group": "Technical",
     "classification": "staticManeuver",
     "dpCost": {
       "price1": 0,
@@ -2402,7 +2402,7 @@
     "description": "This skill provides a bonus for determining the medical condition of a patient. Skill must be learned for a particular race or type of creature. One must pick the skill in either general diagnosis, or diagnosis of a specific race. General diagnostics skill of 6 ranks or higher allows certification of simple medical practice on all races (use of field equipment and healing drugs). Diagnostics skill for a specific race of 12 ranks or higher is required for surgical certification (and reasonable competence).",
     "rank": 0,
     "category": "Technical · Professional",
-    "group": "Technical/Trade",
+    "group": "Technical",
     "classification": "staticManeuver",
     "dpCost": {
       "price1": 0,
@@ -2419,7 +2419,7 @@
     "description": "This skill provides a bonus for knowing major facts about engineering of the appropriate technical level known to the culture. Also provides a bonus for attempts to utilize that knowledge in new projects. A GM may require different types of Engineering to be treated as separate skills.",
     "rank": 0,
     "category": "Technical · Professional",
-    "group": "Technical/Trade",
+    "group": "Technical",
     "classification": "staticManeuver",
     "dpCost": {
       "price1": 0,
@@ -2436,7 +2436,7 @@
     "description": "This skill provides a bonus for building and using a machine that already exists. It will be necessary to have the appropriate tools to build the machine. Each type of machine is a potential specialization.",
     "rank": 0,
     "category": "Technical · Professional",
-    "group": "Technical/Trade",
+    "group": "Technical",
     "classification": "staticManeuver",
     "dpCost": {
       "price1": 0,
@@ -2453,7 +2453,7 @@
     "description": "This skill provides a bonus for assessing the possibilities of mining in an area, and supervising the creation and running of the mine. The following is a partial listing of specialized mining processes:\n• Dredging: Scraping material off the bottom of a river, ocean, etc.\n• Open Pit: Removal of top layers to extract materials.\n• Quarry: Removal of materials in block form.\n• Tunneling: Making underground passages to extract materials.",
     "rank": 0,
     "category": "Technical · Professional",
-    "group": "Technical/Trade",
+    "group": "Technical",
     "classification": "staticManeuver",
     "dpCost": {
       "price1": 0,
@@ -2470,7 +2470,7 @@
     "description": "This skill provides a bonus for performing minor surgery, including sewing closed wounds, removing diseased or mangled limbs, bone setting and any other minor surgery operation.",
     "rank": 0,
     "category": "Technical · Professional",
-    "group": "Technical/Trade",
+    "group": "Technical",
     "classification": "staticManeuver",
     "dpCost": {
       "price1": 0,
@@ -2487,7 +2487,7 @@
     "description": "This skill provides a bonus for functioning successfully within a familiar government where record keeping, personnel interaction, and bureaucracy is present. Also useful in gaining public office and applying governmental power.",
     "rank": 0,
     "category": "Technical · Vocational",
-    "group": "Technical/Trade",
+    "group": "Technical",
     "classification": "staticManeuver",
     "dpCost": {
       "price1": 0,
@@ -2504,7 +2504,7 @@
     "description": "This skill provides a bonus for determining or estimating the value of an object or goods other than armor, metal, stones or weapons.",
     "rank": 0,
     "category": "Technical · Vocational",
-    "group": "Technical/Trade",
+    "group": "Technical",
     "classification": "staticManeuver",
     "dpCost": {
       "price1": 0,
@@ -2521,7 +2521,7 @@
     "description": "This skill provides a bonus for knowledge of water courses such as the locations of sand bars, rapids, waterfalls, whirlpools, currents, reefs, icebergs, vegetation clogs (underwater snags and roots, overhead hanging branches and vines), etc. Each different water course is a potential specialization.",
     "rank": 0,
     "category": "Technical · Vocational",
-    "group": "Technical/Trade",
+    "group": "Technical",
     "classification": "staticManeuver",
     "dpCost": {
       "price1": 0,
@@ -2538,7 +2538,7 @@
     "description": "Provides a bonus for determining the value and quality of armor.",
     "rank": 0,
     "category": "Technical · Vocational",
-    "group": "Technical/Trade",
+    "group": "Technical",
     "classification": "staticManeuver",
     "dpCost": {
       "price1": 0,
@@ -2555,7 +2555,7 @@
     "description": "Provides a bonus for determining the value and quality of metal objects in worked, refined or raw condition.",
     "rank": 0,
     "category": "Technical · Vocational",
-    "group": "Technical/Trade",
+    "group": "Technical",
     "classification": "staticManeuver",
     "dpCost": {
       "price1": 0,
@@ -2572,7 +2572,7 @@
     "description": "Provides a bonus for determining the value and quality of stone objects in worked, refined, or raw condition—also used to evaluate gems.",
     "rank": 0,
     "category": "Technical · Vocational",
-    "group": "Technical/Trade",
+    "group": "Technical",
     "classification": "staticManeuver",
     "dpCost": {
       "price1": 0,
@@ -2589,7 +2589,7 @@
     "description": "Provides a bonus for determining the value and quality of weapons.",
     "rank": 0,
     "category": "Technical · Vocational",
-    "group": "Technical/Trade",
+    "group": "Technical",
     "classification": "staticManeuver",
     "dpCost": {
       "price1": 0,
@@ -2606,7 +2606,7 @@
     "description": "This skill provides a bonus for determining proper directions and distances when using a map in conjunction with various directional aids, such as a compass, sextant, clock, etc. This includes the concept of orienting, and is applicable on land, water or the stars. Note that this skill is far more precise and complex than Orienteering.",
     "rank": 0,
     "category": "Technical · Vocational",
-    "group": "Technical/Trade",
+    "group": "Technical",
     "classification": "staticManeuver",
     "dpCost": {
       "price1": 0,
@@ -2623,7 +2623,7 @@
     "description": "hese skills provide bonuses for perceiving and planning appropriate and effective strategy in tactical military situations. Skill with each tactical situation must be developed separately.\nThe following is a partial listing of types of tactics:\n• Battle Field: Cavalry and infantry tactics.\n• Naval: Ship and boat tactics.\n• Sabotage: Underground/behind enemy lines tactics.\n• Siege: Reduction of fortified position tactics.\n• Small Unit: Conflict between small groups.",
     "rank": 0,
     "category": "Technical · Vocational",
-    "group": "Technical/Trade",
+    "group": "Technical",
     "classification": "staticManeuver",
     "dpCost": {
       "price1": 0,
@@ -2640,7 +2640,7 @@
     "description": "This skill provides a bonus to locating individuals of influence or knowledge within an urban environment. It includes knowledge of where such individuals may be found as well a information involving how they might be reached (e.g., locating a crime boss or fence, politician, etc.). This skill is the equivalent of scrounging except that it operates for individuals or locations. Note that actual interaction with such persons are covered by the skills in the Influence Skill Category.",
     "rank": 0,
     "category": "Urban",
-    "group": "None",
+    "group": "none",
     "classification": "staticManeuver",
     "dpCost": {
       "price1": 0,
@@ -2657,7 +2657,7 @@
     "description": "This skill provides a bonus to attempts to mix easily with a large urban population, whether for the purposes of remaining unnoticed, escaping pursuers, or simply moving easily through a crowd.",
     "rank": 0,
     "category": "Urban",
-    "group": "None",
+    "group": "none",
     "classification": "staticManeuver",
     "dpCost": {
       "price1": 0,
@@ -2674,7 +2674,7 @@
     "description": "This skill provides a bonus in being able to come up with the location of a particular needed item, part or ingredient. This skill is normally used in an urban type of setting.",
     "rank": 0,
     "category": "Urban",
-    "group": "None",
+    "group": "none",
     "classification": "staticManeuver",
     "dpCost": {
       "price1": 0,
@@ -2691,7 +2691,7 @@
     "description": "Awareness of events and protocol in the street society and underworld and the ability to interact with the individuals who run and live in the common or underworld society. Note that this skill does not necessarily enable a character to find such individuals.",
     "rank": 0,
     "category": "Urban",
-    "group": "None",
+    "group": "none",
     "classification": "staticManeuver",
     "dpCost": {
       "price1": 0,
