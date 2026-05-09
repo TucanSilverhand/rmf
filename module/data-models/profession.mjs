@@ -25,18 +25,30 @@ function pricedNameEntry() {
   });
 }
 
-/** `{ name }` row used by skill lists (everyman/occupational/restricted). */
+/**
+ * `{ name, isChoice }` row used by skill lists (everyman/occupational/restricted).
+ *
+ * `isChoice` flags entries whose `name` is a free-form placeholder ("any
+ * one Combat Maneuver", "choice of one Situational Awareness", …) instead
+ * of a canonical skill from `data/skills.json`. Same semantics as the
+ * `isChoice` field on `training-package.mjs` rows.
+ */
 function namedRow() {
   return new fields.SchemaField({
-    name: new fields.StringField({ required: true, nullable: false, blank: true, initial: "" })
+    name:     new fields.StringField({ required: true, nullable: false, blank: true, initial: "" }),
+    isChoice: new fields.BooleanField({ required: true, nullable: false, initial: false })
   });
 }
 
-/** `{ name, bonus }` row used by professionalBonuses. */
+/**
+ * `{ name, bonus, isChoice }` row used by professionalBonuses.
+ * See `namedRow` for the meaning of `isChoice`.
+ */
 function bonusRow() {
   return new fields.SchemaField({
-    name:  new fields.StringField({ required: true, nullable: false, blank: true,  initial: "" }),
-    bonus: new fields.NumberField({ required: true, nullable: false, integer: true, initial: 0 })
+    name:     new fields.StringField({ required: true, nullable: false, blank: true,  initial: "" }),
+    bonus:    new fields.NumberField({ required: true, nullable: false, integer: true, initial: 0 }),
+    isChoice: new fields.BooleanField({ required: true, nullable: false, initial: false })
   });
 }
 

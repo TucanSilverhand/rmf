@@ -1,0 +1,30 @@
+{{!--
+  RMF Training Package Item Sheet Header Partial
+  Training package name and image. The name input lives here so it stays
+  visible across both tabs (same pattern as profession-sheet).
+--}}
+
+<header class="sheet-header">
+  <div class="header-row">
+    <img class="profile-img"
+         src="{{item.img}}"
+         alt="{{item.name}}"
+         data-edit="img"
+         data-action="pickImage"
+         title="{{item.name}}"
+         height="64"
+         width="64"/>
+
+    <div class="header-fields">
+      <h1 class="item-name">
+        <label class="sr-only" for="trainingpackage_name">{{localize "RMF.TrainingPackage.NamePlaceholder"}}:</label>
+        <input id="trainingpackage_name"
+               name="name"
+               type="text"
+               value="{{item.name}}"
+               placeholder="{{localize 'RMF.TrainingPackage.NamePlaceholder'}}"
+               autocomplete="off"/>
+      </h1>
+    </div>
+  </div>
+</header>

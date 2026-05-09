@@ -1,0 +1,148 @@
+{{!--
+  RMF Training Package Item Sheet — Details Partial
+  Read-only summary view of the training package.
+--}}
+
+<div class="tab details-section" data-group="primary-tabs" data-tab="details" style="display: block;">
+
+  {{!-- Description (enriched, read-only) --}}
+  <div class="description-preview ProseMirror">
+    {{{enrichedDescription}}}
+  </div>
+
+  {{!-- Meta — type / time / money / stat gains / source --}}
+  <div class="summary-wrapper">
+    <h3>{{localize "RMF.TrainingPackage.Meta"}}</h3>
+    <div class="two-col-tables">
+      <table class="summary-table">
+        <tbody>
+          <tr>
+            <th scope="row">{{localize "RMF.TrainingPackage.Type"}}</th>
+            <td><input type="text" value="{{system.type}}" readonly /></td>
+          </tr>
+          <tr>
+            <th scope="row">{{localize "RMF.TrainingPackage.TimeToAcquire"}}</th>
+            <td><input type="text" value="{{system.timeToAcquire}}" readonly /></td>
+          </tr>
+          <tr>
+            <th scope="row">{{localize "RMF.Category.Source"}}</th>
+            <td><input type="text" value="{{system.fromBook}}" readonly /></td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="summary-table">
+        <tbody>
+          <tr>
+            <th scope="row">{{localize "RMF.TrainingPackage.StartingMoney"}}</th>
+            <td><input type="text" value="{{system.startingMoney}}" readonly /></td>
+          </tr>
+          <tr>
+            <th scope="row">{{localize "RMF.TrainingPackage.StatGains"}}</th>
+            <td><input type="text" value="{{system.statGains}}" readonly /></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  {{!-- Special list — read-only, two columns --}}
+  <div class="summary-wrapper">
+    <h3>{{localize "RMF.TrainingPackage.Special"}}</h3>
+    {{#if specialRows.length}}
+    <div class="two-col-tables">
+      <table class="summary-table">
+        <thead>
+          <tr>
+            <th>{{localize "RMF.TrainingPackage.SpecialName"}}</th>
+            <th>{{localize "RMF.TrainingPackage.SpecialDPCost"}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each specialRowsLeft as |row|}}
+          <tr>
+            <td><input type="text"   value="{{row.name}}"   readonly /></td>
+            <td><input type="number" value="{{row.dpCost}}" readonly data-dtype="Number" inputmode="numeric" /></td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+      <table class="summary-table">
+        <thead>
+          <tr>
+            <th>{{localize "RMF.TrainingPackage.SpecialName"}}</th>
+            <th>{{localize "RMF.TrainingPackage.SpecialDPCost"}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each specialRowsRight as |row|}}
+          <tr>
+            <td><input type="text"   value="{{row.name}}"   readonly /></td>
+            <td><input type="number" value="{{row.dpCost}}" readonly data-dtype="Number" inputmode="numeric" /></td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    {{else}}
+    <em>{{localize "RMF.TrainingPackage.None"}}</em>
+    {{/if}}
+  </div>
+
+  {{!-- Category ranks — two columns; each side renders its category-blocks
+       with skills indented. Categories travel with their skills (no row
+       split mid-category). --}}
+  <div class="summary-wrapper">
+    <h3>{{localize "RMF.TrainingPackage.CategoryRanks"}}</h3>
+    {{#if categoryRankRows.length}}
+    <div class="two-col-tables">
+      <table class="summary-table">
+        <thead>
+          <tr>
+            <th>{{localize "RMF.TrainingPackage.CategoryOrSkill"}}</th>
+            <th>{{localize "RMF.TrainingPackage.Ranks"}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each categoryRankRowsLeft as |cat|}}
+          <tr class="rmf-tp-row rmf-tp-category{{#if cat.isChoice}} rmf-tp-choice{{/if}}">
+            <td>{{cat.category}}</td>
+            <td><input type="number" value="{{cat.ranks}}" readonly data-dtype="Number" inputmode="numeric" /></td>
+          </tr>
+          {{#each cat.skills as |sk|}}
+          <tr class="rmf-tp-row rmf-tp-skill{{#if sk.isChoice}} rmf-tp-choice{{/if}}">
+            <td><span class="rmf-tp-indent">↳ </span>{{sk.name}}</td>
+            <td><input type="number" value="{{sk.ranks}}" readonly data-dtype="Number" inputmode="numeric" /></td>
+          </tr>
+          {{/each}}
+          {{/each}}
+        </tbody>
+      </table>
+      <table class="summary-table">
+        <thead>
+          <tr>
+            <th>{{localize "RMF.TrainingPackage.CategoryOrSkill"}}</th>
+            <th>{{localize "RMF.TrainingPackage.Ranks"}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each categoryRankRowsRight as |cat|}}
+          <tr class="rmf-tp-row rmf-tp-category{{#if cat.isChoice}} rmf-tp-choice{{/if}}">
+            <td>{{cat.category}}</td>
+            <td><input type="number" value="{{cat.ranks}}" readonly data-dtype="Number" inputmode="numeric" /></td>
+          </tr>
+          {{#each cat.skills as |sk|}}
+          <tr class="rmf-tp-row rmf-tp-skill{{#if sk.isChoice}} rmf-tp-choice{{/if}}">
+            <td><span class="rmf-tp-indent">↳ </span>{{sk.name}}</td>
+            <td><input type="number" value="{{sk.ranks}}" readonly data-dtype="Number" inputmode="numeric" /></td>
+          </tr>
+          {{/each}}
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    {{else}}
+    <em>{{localize "RMF.TrainingPackage.None"}}</em>
+    {{/if}}
+  </div>
+
+</div>

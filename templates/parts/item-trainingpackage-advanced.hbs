@@ -1,0 +1,150 @@
+{{!--
+  RMF Training Package Item Sheet — Advanced Partial
+  Editable view: description, meta scalars, special[] entries, and the
+  category/skill rank tree (categoryRanks[] with nested skills[]).
+
+  All array edits route through the sheet's _onFieldChange handler, which
+  rewrites the whole array (or nested array) atomically — same pattern the
+  profession-sheet uses for indexed lists.
+--}}
+
+<div class="tab advanced-section" data-group="primary-tabs" data-tab="advanced">
+
+  {{!-- Description --}}
+  <fieldset class="form-group">
+    <legend>{{localize "RMF.Description"}}</legend>
+    <div class="editor-container description-editor">
+      <textarea name="system.description"
+                style="height: 160px; resize: vertical;"
+                placeholder="{{localize 'RMF.DescriptionPlaceholder'}}">{{system.description}}</textarea>
+    </div>
+  </fieldset>
+
+  {{!-- Meta scalars --}}
+  <fieldset class="form-group">
+    <legend>{{localize "RMF.TrainingPackage.Meta"}}</legend>
+    <div class="two-col-tables">
+      <div>
+        <label>{{localize "RMF.TrainingPackage.Type"}}</label>
+        <input type="text"
+               name="system.type"
+               value="{{system.type}}"
+               placeholder="L / M / H"
+               autocomplete="off" />
+
+        <label>{{localize "RMF.TrainingPackage.TimeToAcquire"}}</label>
+        <input type="text"
+               name="system.timeToAcquire"
+               value="{{system.timeToAcquire}}"
+               autocomplete="off" />
+      </div>
+      <div>
+        <label>{{localize "RMF.TrainingPackage.StartingMoney"}}</label>
+        <input type="text"
+               name="system.startingMoney"
+               value="{{system.startingMoney}}"
+               autocomplete="off" />
+
+        <label>{{localize "RMF.TrainingPackage.StatGains"}}</label>
+        <input type="text"
+               name="system.statGains"
+               value="{{system.statGains}}"
+               autocomplete="off" />
+      </div>
+    </div>
+
+    <label>{{localize "RMF.Category.Source"}}</label>
+    <input type="text"
+           name="system.fromBook"
+           value="{{system.fromBook}}"
+           placeholder="basic"
+           autocomplete="off" />
+  </fieldset>
+
+  {{!-- Special list — editable, two columns --}}
+  <fieldset class="form-group">
+    <legend>{{localize "RMF.TrainingPackage.Special"}}</legend>
+    {{#if specialRows.length}}
+    <div class="two-col-tables">
+      <table class="summary-table">
+        <thead>
+          <tr>
+            <th>{{localize "RMF.TrainingPackage.SpecialName"}}</th>
+            <th>{{localize "RMF.TrainingPackage.SpecialDPCost"}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each specialRowsLeft as |row|}}
+          <tr>
+            <td>
+              <input type="text"
+                     name="system.special.{{row.index}}.name"
+                     value="{{row.name}}"
+                     placeholder="{{localize 'RMF.TrainingPackage.SpecialName'}}"
+                     autocomplete="off" />
+            </td>
+            <td>
+              <input type="number"
+                     name="system.special.{{row.index}}.dpCost"
+                     value="{{row.dpCost}}"
+                     data-dtype="Number" inputmode="numeric" min="0" />
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+      <table class="summary-table">
+        <thead>
+          <tr>
+            <th>{{localize "RMF.TrainingPackage.SpecialName"}}</th>
+            <th>{{localize "RMF.TrainingPackage.SpecialDPCost"}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each specialRowsRight as |row|}}
+          <tr>
+            <td>
+              <input type="text"
+                     name="system.special.{{row.index}}.name"
+                     value="{{row.name}}"
+                     placeholder="{{localize 'RMF.TrainingPackage.SpecialName'}}"
+                     autocomplete="off" />
+            </td>
+            <td>
+              <input type="number"
+                     name="system.special.{{row.index}}.dpCost"
+                     value="{{row.dpCost}}"
+                     data-dtype="Number" inputmode="numeric" min="0" />
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    {{else}}
+    <em>{{localize "RMF.TrainingPackage.None"}}</em>
+    {{/if}}
+  </fieldset>
+
+  {{!-- Category ranks tree — editable, two columns --}}
+  <fieldset class="form-group">
+    <legend>{{localize "RMF.TrainingPackage.CategoryRanks"}}</legend>
+    {{#if categoryRankRows.length}}
+    <div class="two-col-tables">
+      <div class="rmf-tp-cat-column">
+        {{#each categoryRankRowsLeft as |cat|}}
+          {{> "parts/trainingpackage-cat-block" cat=cat}}
+        {{/each}}
+      </div>
+      <div class="rmf-tp-cat-column">
+        {{#each categoryRankRowsRight as |cat|}}
+          {{> "parts/trainingpackage-cat-block" cat=cat}}
+        {{/each}}
+      </div>
+    </div>
+    {{else}}
+    <em>{{localize "RMF.TrainingPackage.None"}}</em>
+    {{/if}}
+  </fieldset>
+
+</div>

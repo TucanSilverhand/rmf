@@ -365,7 +365,7 @@
         "category": "Crafts",
         "ranks": 0,
         "skills": [
-          { "name": "Horticulture", "ranks": 2 }
+          { "name": "Horticulture", "ranks": 2, "isChoice": true }
         ]
       },
       {
@@ -437,7 +437,7 @@
         "category": "Crafts",
         "ranks": 0,
         "skills": [
-          { "name": "Skinning", "ranks": 1 }
+          { "name": "Skinning", "ranks": 1, "isChoice": true }
         ]
       },
       {

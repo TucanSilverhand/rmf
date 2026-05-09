@@ -338,6 +338,8 @@
       "CategoryRanks": "Rangos de Categoría y Habilidad",
       "CategoryOrSkill": "Categoría / Habilidad",
       "Ranks": "Rangos",
+      "IsChoice": "Elección",
+      "IsChoiceHint": "Marcar como entrada de elección (no resoluble contra el canon; el GM elige al aplicar).",
       "None": "Ninguno definido.",
       "ApplyTitle": "Aplicar Paquete de Entrenamiento",
       "ApplyConfirm": "¿Aplicar <strong>{name}</strong> a <strong>{actor}</strong>? Los rangos se sumarán al nivel actual del personaje. El paquete será consumido tras aplicarse.",

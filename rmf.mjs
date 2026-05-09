@@ -407,6 +407,13 @@ async function _preloadHandlebarsTemplates() {
     "parts/profession-training-table": "systems/rmf/templates/parts/profession-training-table.hbs",
     "parts/profession-dpcost-table": "systems/rmf/templates/parts/profession-dpcost-table.hbs",
 
+    // Training package sheet partials
+    "parts/item-trainingpackage-header": "systems/rmf/templates/parts/item-trainingpackage-header.hbs",
+    "parts/item-trainingpackage-navigation": "systems/rmf/templates/parts/item-trainingpackage-navigation.hbs",
+    "parts/item-trainingpackage-details": "systems/rmf/templates/parts/item-trainingpackage-details.hbs",
+    "parts/item-trainingpackage-advanced": "systems/rmf/templates/parts/item-trainingpackage-advanced.hbs",
+    "parts/trainingpackage-cat-block": "systems/rmf/templates/parts/trainingpackage-cat-block.hbs",
+
     // Chat templates
     "rmf/chat/stat-roll": "systems/rmf/templates/chat/stat-roll.hbs",
     "rmf/chat/race-applied": "systems/rmf/templates/chat/race-applied.hbs"

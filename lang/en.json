@@ -338,6 +338,8 @@
       "CategoryRanks": "Category & Skill Ranks",
       "CategoryOrSkill": "Category / Skill",
       "Ranks": "Ranks",
+      "IsChoice": "Choice",
+      "IsChoiceHint": "Flag this entry as a choice placeholder (not resolvable against the canon; the GM picks the resolution at apply time).",
       "None": "None defined.",
       "ApplyTitle": "Apply Training Package",
       "ApplyConfirm": "Apply <strong>{name}</strong> to <strong>{actor}</strong>? Ranks will be added at the actor's current level. The package will be consumed afterwards.",

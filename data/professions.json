@@ -26,7 +26,8 @@
     ],
     "everymanSkills": [
       {
-        "name": "Situational Awareness: Combat"
+        "name": "Situational Awareness: Combat",
+        "isChoice": true
       },
       {
         "name": "Leadership"
@@ -35,7 +36,8 @@
         "name": "Frenzy"
       },
       {
-        "name": "any one non-Restricted Combat Maneuver"
+        "name": "any one non-Restricted Combat Maneuver",
+        "isChoice": true
       },
       {
         "name": "Boxing"
@@ -580,7 +582,8 @@
     ],
     "everymanSkills": [
       {
-        "name": "choice of one Situational Awareness"
+        "name": "choice of one Situational Awareness",
+        "isChoice": true
       },
       {
         "name": "Duping"
@@ -1139,10 +1142,12 @@
         "name": "Lock Lore"
       },
       {
-        "name": "choice of one Situational Awareness"
+        "name": "choice of one Situational Awareness",
+        "isChoice": true
       },
       {
-        "name": "one of either Boxing or Tackling."
+        "name": "one of either Boxing or Tackling.",
+        "isChoice": true
       }
     ],
     "occupationalSkills": [],
@@ -2230,7 +2235,8 @@
         "name": "Religion"
       },
       {
-        "name": "Divination [Power Awareness]"
+        "name": "Divination [Power Awareness]",
+        "isChoice": true
       }
     ],
     "restrictedSkills": [],

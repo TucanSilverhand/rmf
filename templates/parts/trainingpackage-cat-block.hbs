@@ -1,0 +1,100 @@
+{{!--
+  RMF Training Package — editable category-block
+  Renders one category row + its nested skill rows.
+
+  For `isChoice` rows we swap the text input for a `<select>` populated
+  from `world.basic-core` (categories for the parent row, skills for the
+  nested rows). The placeholder text is always present as the first
+  option so the GM can revert. If the basic-core compendium is missing
+  the option lists arrive empty and we fall back to a text input.
+
+  Expected scope: `cat` = one row from categoryRankRows.
+--}}
+<div class="rmf-tp-cat-block">
+  <div class="rmf-tp-cat-row">
+    {{#if cat.isChoice}}
+      {{#if cat.categoryOptions.length}}
+        <select name="system.categoryRanks.{{cat.catIndex}}.category"
+                class="rmf-tp-choice-select"
+                title="{{localize 'RMF.TrainingPackage.IsChoiceHint'}}">
+          {{#each cat.categoryOptions as |opt|}}
+            <option value="{{opt.value}}" {{#if opt.selected}}selected{{/if}}>{{opt.label}}</option>
+          {{/each}}
+        </select>
+      {{else}}
+        {{!-- basic-core compendium not available; fall back to text input --}}
+        <input type="text"
+               name="system.categoryRanks.{{cat.catIndex}}.category"
+               value="{{cat.category}}"
+               placeholder="{{localize 'RMF.Skills.Category'}}"
+               autocomplete="off" />
+      {{/if}}
+    {{else}}
+      <input type="text"
+             name="system.categoryRanks.{{cat.catIndex}}.category"
+             value="{{cat.category}}"
+             placeholder="{{localize 'RMF.Skills.Category'}}"
+             autocomplete="off" />
+    {{/if}}
+
+    <input type="number"
+           name="system.categoryRanks.{{cat.catIndex}}.ranks"
+           value="{{cat.ranks}}"
+           data-dtype="Number" inputmode="numeric"
+           title="{{localize 'RMF.TrainingPackage.Ranks'}}" />
+
+    <label class="rmf-tp-choice-toggle" title="{{localize 'RMF.TrainingPackage.IsChoiceHint'}}">
+      <input type="checkbox"
+             name="system.categoryRanks.{{cat.catIndex}}.isChoice"
+             {{#if cat.isChoice}}checked{{/if}} />
+      {{localize "RMF.TrainingPackage.IsChoice"}}
+    </label>
+  </div>
+
+  {{#if cat.skills.length}}
+  <div class="rmf-tp-skills">
+    {{#each cat.skills as |sk|}}
+    <div class="rmf-tp-skill-row">
+      <span class="rmf-tp-indent">↳</span>
+
+      {{#if sk.isChoice}}
+        {{#if sk.skillOptions.length}}
+          <select name="system.categoryRanks.{{cat.catIndex}}.skills.{{sk.skillIndex}}.name"
+                  class="rmf-tp-choice-select"
+                  title="{{localize 'RMF.TrainingPackage.IsChoiceHint'}}">
+            {{#each sk.skillOptions as |opt|}}
+              <option value="{{opt.value}}" {{#if opt.selected}}selected{{/if}}>{{opt.label}}</option>
+            {{/each}}
+          </select>
+        {{else}}
+          <input type="text"
+                 name="system.categoryRanks.{{cat.catIndex}}.skills.{{sk.skillIndex}}.name"
+                 value="{{sk.name}}"
+                 placeholder="{{localize 'RMF.Skills.Skill'}}"
+                 autocomplete="off" />
+        {{/if}}
+      {{else}}
+        <input type="text"
+               name="system.categoryRanks.{{cat.catIndex}}.skills.{{sk.skillIndex}}.name"
+               value="{{sk.name}}"
+               placeholder="{{localize 'RMF.Skills.Skill'}}"
+               autocomplete="off" />
+      {{/if}}
+
+      <input type="number"
+             name="system.categoryRanks.{{cat.catIndex}}.skills.{{sk.skillIndex}}.ranks"
+             value="{{sk.ranks}}"
+             data-dtype="Number" inputmode="numeric"
+             title="{{localize 'RMF.TrainingPackage.Ranks'}}" />
+
+      <label class="rmf-tp-choice-toggle" title="{{localize 'RMF.TrainingPackage.IsChoiceHint'}}">
+        <input type="checkbox"
+               name="system.categoryRanks.{{cat.catIndex}}.skills.{{sk.skillIndex}}.isChoice"
+               {{#if sk.isChoice}}checked{{/if}} />
+        {{localize "RMF.TrainingPackage.IsChoice"}}
+      </label>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+</div>

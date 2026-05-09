@@ -1257,7 +1257,7 @@ function normalizeProfessionalBonuses(value) {
       const parsed = parseInt(rawBonus.trim(), 10);
       bonus = Number.isFinite(parsed) ? parsed : 0;
     }
-    out.push({ name: rawName, bonus });
+    out.push({ name: rawName, bonus, isChoice: !!entry.isChoice });
   }
   return out;
 }
@@ -1273,13 +1273,14 @@ function normalizeProfessionSkillList(value) {
   const seen = new Set();
   const out = [];
   for (const entry of value) {
-    const raw = entry && typeof entry === "object" ? entry.name : entry;
+    const isObj = entry && typeof entry === "object";
+    const raw = isObj ? entry.name : entry;
     const name = typeof raw === "string" ? raw.trim() : "";
     if (!name) continue;
     const key = name.toLowerCase();
     if (seen.has(key)) continue;
     seen.add(key);
-    out.push({ name });
+    out.push({ name, isChoice: isObj ? !!entry.isChoice : false });
   }
   return out;
 }
@@ -1507,18 +1508,37 @@ async function getTrainingPackageTemplate() {
  */
 function normalizeTrainingPackageCategoryRanks(raw) {
   if (!Array.isArray(raw)) return [];
-  return raw.map(c => ({
-    category: typeof c?.category === "string" ? c.category : "",
-    ranks:    Number(c?.ranks) || 0,
-    isChoice: !!c?.isChoice,
-    skills:   Array.isArray(c?.skills)
-      ? c.skills.map(s => ({
-          name:     typeof s?.name === "string" ? s.name : "",
-          ranks:    Number(s?.ranks) || 0,
-          isChoice: !!s?.isChoice
-        }))
-      : []
-  }));
+  return raw.map(c => {
+    const catName = typeof c?.category === "string" ? c.category : "";
+    const catIsChoice = !!c?.isChoice;
+    // Preserve any explicit `placeholderName` in the source; otherwise
+    // seed it from `name` for choice entries so the sheet's choice
+    // dropdown can offer the original placeholder as a revert option.
+    const catPlaceholder = typeof c?.placeholderName === "string" && c.placeholderName.length
+      ? c.placeholderName
+      : (catIsChoice ? catName : "");
+    return {
+      category:        catName,
+      ranks:           Number(c?.ranks) || 0,
+      isChoice:        catIsChoice,
+      placeholderName: catPlaceholder,
+      skills:   Array.isArray(c?.skills)
+        ? c.skills.map(s => {
+            const skName = typeof s?.name === "string" ? s.name : "";
+            const skIsChoice = !!s?.isChoice;
+            const skPlaceholder = typeof s?.placeholderName === "string" && s.placeholderName.length
+              ? s.placeholderName
+              : (skIsChoice ? skName : "");
+            return {
+              name:            skName,
+              ranks:           Number(s?.ranks) || 0,
+              isChoice:        skIsChoice,
+              placeholderName: skPlaceholder
+            };
+          })
+        : []
+    };
+  });
 }
 
 function buildTrainingPackageSystemData(sysSource, template) {

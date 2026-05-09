@@ -28,6 +28,7 @@ import {
 } from "./importers.mjs";
 import { runWorldMigration } from "./migration.mjs";
 import { applyTrainingPackageToActor } from "./training-package-apply.mjs";
+import { RMFTrainingPackageSheet } from "./training-package-sheet.js";
 
 /**
  * Centralized hook management for the RMF system
@@ -97,6 +98,12 @@ export class RMFHooks {
     game.rmf.syncRealmsToCompendium = syncRealmsToCompendium;
     game.rmf.syncProfessionsToCompendium = syncProfessionsToCompendium;
     game.rmf.syncTrainingPackagesToCompendium = syncTrainingPackagesToCompendium;
+
+    // Drop the cached basic-core index used by the Training Package
+    // sheet's choice-row dropdowns. Call after running any of the
+    // sync* helpers if a sheet is already open.
+    game.rmf.invalidateTrainingPackageChoiceCache =
+      () => RMFTrainingPackageSheet.invalidateChoiceOptionsCache();
 
     // Migration framework — `runWorldMigration({ force: true })` re-runs
     // every step (debug only). The init flow already calls it once.

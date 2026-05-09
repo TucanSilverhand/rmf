@@ -24,25 +24,34 @@ function specialEntry() {
   });
 }
 
-/** Schema for `{ name, ranks, isChoice }` rows inside categoryRanks[].skills. */
+/**
+ * Schema for `{ name, ranks, isChoice, placeholderName }` rows inside
+ * categoryRanks[].skills. `placeholderName` preserves the original
+ * choice text (e.g. "choice of one skill") after the GM resolves the
+ * choice via the sheet dropdown — so the placeholder remains as a
+ * "revert" option in the select even after a canonical name is picked.
+ */
 function skillEntry() {
   return new fields.SchemaField({
-    name:     new fields.StringField({ required: true, nullable: false, blank: true,  initial: "" }),
-    ranks:    new fields.NumberField({ required: true, nullable: false, integer: true, initial: 0 }),
-    isChoice: new fields.BooleanField({ required: true, nullable: false, initial: false })
+    name:            new fields.StringField({ required: true, nullable: false, blank: true,  initial: "" }),
+    ranks:           new fields.NumberField({ required: true, nullable: false, integer: true, initial: 0 }),
+    isChoice:        new fields.BooleanField({ required: true, nullable: false, initial: false }),
+    placeholderName: new fields.StringField({ required: true, nullable: false, blank: true,  initial: "" })
   });
 }
 
 /**
  * Schema for the outer category-rank entries: a category reference
  * plus the ranks granted to it AND the skills it touches.
+ * See `skillEntry` for the meaning of `placeholderName`.
  */
 function categoryRankEntry() {
   return new fields.SchemaField({
-    category: new fields.StringField({ required: true, nullable: false, blank: true,  initial: "" }),
-    ranks:    new fields.NumberField({ required: true, nullable: false, integer: true, initial: 0 }),
-    isChoice: new fields.BooleanField({ required: true, nullable: false, initial: false }),
-    skills:   new fields.ArrayField(skillEntry(), { required: true, nullable: false, initial: [] })
+    category:        new fields.StringField({ required: true, nullable: false, blank: true,  initial: "" }),
+    ranks:           new fields.NumberField({ required: true, nullable: false, integer: true, initial: 0 }),
+    isChoice:        new fields.BooleanField({ required: true, nullable: false, initial: false }),
+    placeholderName: new fields.StringField({ required: true, nullable: false, blank: true,  initial: "" }),
+    skills:          new fields.ArrayField(skillEntry(), { required: true, nullable: false, initial: [] })
   });
 }
 
