@@ -202,6 +202,7 @@
       "StatNotFound": "Característica {stat} no encontrada",
       "AlreadyHasRace": "Este personaje ya tiene una raza asignada",
       "AlreadyHasRealm": "Este personaje ya tiene un reino asignado",
+      "AlreadyHasProfession": "Este personaje ya tiene una profesión asignada",
       "AlreadyHasCategory": "Esta categoría ya está asignada"
     },
     "Dialogs": {
@@ -369,7 +370,15 @@
       "TrainingPackages": "Paquetes de Entrenamiento",
       "PackageName": "Paquete",
       "PackageCost": "Coste DP",
-      "None": "Ninguno definido."
+      "None": "Ninguno definido.",
+      "ApplyError": "No se pudo aplicar la profesión. Revisa la consola para más detalles.",
+      "AppliedHeader": "Profesión «{name}» aplicada a {actor}",
+      "AppliedSection": "Bonus aplicados",
+      "AppliedCategory": "Categoría «{name}» +{bonus}",
+      "AppliedSkill": "Habilidad «{name}» +{bonus}",
+      "CreatedSection": "Habilidades creadas (desde basic-core)",
+      "MissingSection": "Categorías no encontradas en el actor",
+      "UnrecognisedSection": "Bonus con sufijo no reconocido (revisar datos)"
     }
   },
   "TYPES": {

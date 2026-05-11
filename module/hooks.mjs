@@ -29,6 +29,11 @@ import {
 import { runWorldMigration } from "./migration.mjs";
 import { applyTrainingPackageToActor } from "./training-package-apply.mjs";
 import { RMFTrainingPackageSheet } from "./training-package-sheet.js";
+import {
+  applyProfessionToActor,
+  unapplyProfessionFromActor,
+  invalidateProfessionApplyCache
+} from "./profession-apply.mjs";
 
 /**
  * Centralized hook management for the RMF system
@@ -104,6 +109,11 @@ export class RMFHooks {
     // sync* helpers if a sheet is already open.
     game.rmf.invalidateTrainingPackageChoiceCache =
       () => RMFTrainingPackageSheet.invalidateChoiceOptionsCache();
+
+    // Drop the cached basic-core skill index used by the profession
+    // apply pass (look-up by group/category). Same trigger context as
+    // the choice-cache helper above.
+    game.rmf.invalidateProfessionApplyCache = invalidateProfessionApplyCache;
 
     // Migration framework — `runWorldMigration({ force: true })` re-runs
     // every step (debug only). The init flow already calls it once.
@@ -266,6 +276,19 @@ export class RMFHooks {
         console.error("RMF | Failed to apply training package:", err);
         ui.notifications?.error(game.i18n.localize("RMF.TrainingPackage.ApplyError"));
       }
+      return;
+    }
+
+    // Profession dropped on the actor → walk professionalBonuses and
+    // bump the matching category/skill profBonus values; record the
+    // applied deltas on actor flags for later reversal.
+    if (item.type === "profession") {
+      try {
+        await applyProfessionToActor(item);
+      } catch (err) {
+        console.error("RMF | Failed to apply profession:", err);
+        ui.notifications?.error(game.i18n.localize("RMF.Profession.ApplyError"));
+      }
     }
   }
 
@@ -303,6 +326,19 @@ export class RMFHooks {
    */
   static async #onDeleteItem(item, options, userId) {
     if (game.userId !== userId) return;
+
+    // Profession removed → revert the profBonus deltas applied at
+    // assign time (recorded on actor flags). Independent from race
+    // removal; we return early so the race code below doesn't run.
+    if (item.type === "profession") {
+      try {
+        await unapplyProfessionFromActor(item);
+      } catch (err) {
+        console.error("RMF | Failed to unapply profession:", err);
+      }
+      return;
+    }
+
     if (item.type !== "race") return;
     const actor = item.parent;
     if (!actor || actor.documentName !== "Actor") return;

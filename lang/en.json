@@ -202,6 +202,7 @@
       "StatNotFound": "Stat {stat} not found",
       "AlreadyHasRace": "You already have a race assigned",
       "AlreadyHasRealm": "You already have a realm assigned",
+      "AlreadyHasProfession": "You already have a profession assigned",
       "AlreadyHasCategory": "This category is already assigned"
     },
     "Dialogs": {
@@ -369,7 +370,15 @@
       "TrainingPackages": "Training Packages",
       "PackageName": "Package",
       "PackageCost": "DP Cost",
-      "None": "None defined."
+      "None": "None defined.",
+      "ApplyError": "Could not apply the profession. Check the console for details.",
+      "AppliedHeader": "Profession \"{name}\" applied to {actor}",
+      "AppliedSection": "Applied bonuses",
+      "AppliedCategory": "Category \"{name}\" +{bonus}",
+      "AppliedSkill": "Skill \"{name}\" +{bonus}",
+      "CreatedSection": "Skills created (from basic-core)",
+      "MissingSection": "Categories missing on actor",
+      "UnrecognisedSection": "Bonuses with unrecognised suffix (check data)"
     }
   },
   "TYPES": {

@@ -36,7 +36,7 @@
               {{#if group.skills.length}}
                 <ul class="skills-list">
                   {{#each group.skills as |skill|}}
-                    <li class="skill-item" data-item-id="{{skill.id}}" title="{{skill.name}} -> Ranks: {{skill.system.totalRankBonus}} + Category: {{skill.system.categoryBonus}} --> Total: {{skill.system.totalBonus}}">
+                    <li class="skill-item" data-item-id="{{skill.id}}" title="{{skill.name}} -> Ranks: {{skill.system.totalRankBonus}} + Category: {{skill.system.categoryBonus}} + Prof: {{skill.system.profBonus}} + S1: {{skill.system.spec1Bonus}} + S2: {{skill.system.spec2Bonus}} --> Total: {{skill.system.totalBonus}}">
                       <a class="skill-name rollable"
                          data-action="rollSkill"
                          data-item-id="{{skill.id}}"
@@ -64,7 +64,7 @@
         <h3 class="section-title">{{localize "RMF.Skills.Uncategorized"}}</h3>
         <ul class="skills-list">
           {{#each uncategorizedSkills as |skill|}}
-            <li class="skill-item" data-item-id="{{skill.id}}" title="{{skill.name}} -> Ranks: {{skill.system.totalRankBonus}} + Category: {{skill.system.categoryBonus}} --> Total: {{skill.system.totalBonus}}">
+            <li class="skill-item" data-item-id="{{skill.id}}" title="{{skill.name}} -> Ranks: {{skill.system.totalRankBonus}} + Category: {{skill.system.categoryBonus}} + Prof: {{skill.system.profBonus}} + S1: {{skill.system.spec1Bonus}} + S2: {{skill.system.spec2Bonus}} --> Total: {{skill.system.totalBonus}}">
               <a class="skill-name rollable"
                  data-action="rollSkill"
                  data-item-id="{{skill.id}}"

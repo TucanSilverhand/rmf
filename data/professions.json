@@ -12,11 +12,11 @@
         "bonus": 10
       },
       {
-        "name": "Body Development",
+        "name": "Body Development Category",
         "bonus": 10
       },
       {
-        "name": "Combat Maneuvers",
+        "name": "Combat Maneuvers Category",
         "bonus": 10
       },
       {
@@ -556,7 +556,7 @@
     ],
     "professionalBonuses": [
       {
-        "name": "Athletic · Gymnastics",
+        "name": "Athletic · Gymnastics Category",
         "bonus": 5
       },
       {
@@ -564,11 +564,11 @@
         "bonus": 10
       },
       {
-        "name": "Body Development",
+        "name": "Body Development Category",
         "bonus": 5
       },
       {
-        "name": "Self Control",
+        "name": "Self Control Category",
         "bonus": 5
       },
       {
@@ -1110,7 +1110,7 @@
         "bonus": 5
       },
       {
-        "name": "Athletic · Gymnastics",
+        "name": "Athletic · Gymnastics Category",
         "bonus": 5
       },
       {
@@ -1118,11 +1118,11 @@
         "bonus": 5
       },
       {
-        "name": "Body Development",
+        "name": "Body Development Category",
         "bonus": 5
       },
       {
-        "name": "Combat Maneuvers",
+        "name": "Combat Maneuvers Category",
         "bonus": 5
       },
       {
@@ -1660,19 +1660,19 @@
     ],
     "professionalBonuses": [
       {
-        "name": "Directed Spells",
+        "name": "Directed Spells Category",
         "bonus": 10
       },
       {
-        "name": "Lore · Magical",
+        "name": "Lore · Magical Category",
         "bonus": 10
       },
       {
-        "name": "Power Awareness",
+        "name": "Power Awareness Category",
         "bonus": 20
       },
       {
-        "name": "Power Point Development",
+        "name": "Power Point Development Category",
         "bonus": 5
       },
       {
@@ -2194,11 +2194,11 @@
         "bonus": 5
       },
       {
-        "name": "Influence",
+        "name": "Influence Category",
         "bonus": 5
       },
       {
-        "name": "Lore · Magical",
+        "name": "Lore · Magical Category",
         "bonus": 5
       },
       {
@@ -2206,11 +2206,11 @@
         "bonus": 5
       },
       {
-        "name": "Power Awareness",
+        "name": "Power Awareness Category",
         "bonus": 15
       },
       {
-        "name": "Power Point Development",
+        "name": "Power Point Development Category",
         "bonus": 5
       },
       {
@@ -2744,27 +2744,27 @@
         "bonus": 5
       },
       {
-        "name": "Body Development",
+        "name": "Body Development Category",
         "bonus": 5
       },
       {
-        "name": "Influence",
+        "name": "Influence Category",
         "bonus": 10
       },
       {
-        "name": "Lore · Magical",
+        "name": "Lore · Magical Category",
         "bonus": 5
       },
       {
-        "name": "Power Awareness",
+        "name": "Power Awareness Category",
         "bonus": 10
       },
       {
-        "name": "Power Point Development",
+        "name": "Power Point Development Category",
         "bonus": 5
       },
       {
-        "name": "Self Control",
+        "name": "Self Control Category",
         "bonus": 5
       },
       {
@@ -3293,7 +3293,7 @@
         "bonus": 10
       },
       {
-        "name": "Body Development",
+        "name": "Body Development Category",
         "bonus": 5
       },
       {
@@ -3301,7 +3301,7 @@
         "bonus": 20
       },
       {
-        "name": "Subterfuge · Stealth",
+        "name": "Subterfuge · Stealth Category",
         "bonus": 5
       },
       {
@@ -3816,19 +3816,19 @@
         "bonus": 10
       },
       {
-        "name": "Body Development",
+        "name": "Body Development Category",
         "bonus": 5
       },
       {
-        "name": "Influence",
+        "name": "Influence Category",
         "bonus": 5
       },
       {
-        "name": "Lore · Magical",
+        "name": "Lore · Magical Category",
         "bonus": 5
       },
       {
-        "name": "Power Awareness",
+        "name": "Power Awareness Category",
         "bonus": 10
       },
       {
@@ -3836,7 +3836,7 @@
         "bonus": 5
       },
       {
-        "name": "Urban",
+        "name": "Urban Category",
         "bonus": 5
       },
       {
@@ -4364,7 +4364,7 @@
     ],
     "professionalBonuses": [
       {
-        "name": "Artistic · Active",
+        "name": "Artistic · Active Category",
         "bonus": 5
       },
       {
@@ -4372,15 +4372,15 @@
         "bonus": 5
       },
       {
-        "name": "Body Development",
+        "name": "Body Development Category",
         "bonus": 5
       },
       {
-        "name": "Communications",
+        "name": "Communications Category",
         "bonus": 5
       },
       {
-        "name": "Influence",
+        "name": "Influence Category",
         "bonus": 5
       },
       {
@@ -4388,11 +4388,11 @@
         "bonus": 10
       },
       {
-        "name": "Power Awareness",
+        "name": "Power Awareness Category",
         "bonus": 5
       },
       {
-        "name": "Self Control",
+        "name": "Self Control Category",
         "bonus": 5
       },
       {

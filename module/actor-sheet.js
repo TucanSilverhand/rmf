@@ -390,6 +390,21 @@ export class RMFActorSheet extends HandlebarsApplicationMixin(foundry.applicatio
       return created;
     }
 
+    // Enforce single profession per actor
+    if (item.type === 'profession') {
+      const hasProfession = this.document.items.some(i => i.type === 'profession');
+      if (hasProfession) {
+        ui.notifications?.warn(game.i18n.localize('RMF.Messages.AlreadyHasProfession') || 'You already have a profession assigned');
+        return false;
+      }
+      // Create profession and sync chProfession field with the profession name
+      delete itemData._id;
+      const created = await this.document.createEmbeddedDocuments('Item', [itemData]);
+      const professionName = itemData.name || created?.[0]?.name || '';
+      await this.document.update({ 'system.chProfession': professionName });
+      return created;
+    }
+
     // Prevent duplicate categories by name
     if (item.type === 'category') {
       const hasCategory = this.document.items.some(i => i.type === 'category' && i.name === item.name);
@@ -460,7 +475,12 @@ export class RMFActorSheet extends HandlebarsApplicationMixin(foundry.applicatio
 
     // Resolve the source document for any skill that doesn't yet exist on
     // the actor. We query world Items first, then the basic-core compendium.
-    const missing = skills.filter(e => e?.name && !findOwnItem('skill', e.name));
+    // Skills with 0 racial ranks are skipped: there's nothing to seed and
+    // we don't want to clutter the actor with empty skills it never gets
+    // from the race (existing skills with the same name keep their value).
+    const missing = skills.filter(
+      e => e?.name && (Number(e?.ranks) || 0) > 0 && !findOwnItem('skill', e.name)
+    );
     const skillCreatePayload = [];
     for (const entry of missing) {
       const name = entry.name;
