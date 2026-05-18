@@ -1,0 +1,210 @@
+{
+  "specialCodes": {
+    "instantaneous": {
+      "symbol": "*",
+      "description": "Instantaneous; spell does not require preparation rounds."
+    },
+    "noPowerPoints": {
+      "symbol": "•",
+      "description": "Spell does not require power points."
+    },
+    "spellSet": {
+      "symbol": "‡",
+      "description": "Part of a set of spells that must be thrown in conjunction with other spells continuously to be effective (or fully effective)."
+    },
+    "rrMod": {
+      "symbol": "[RR Mod #]",
+      "description": "Any RRs against the effects of this spell are modified by #. Stored per-spell as numeric `rrMod` field."
+    }
+  },
+  "lists": [
+    {
+      "name": "Barrier Law",
+      "realm": "Channeling",
+      "type": "Open",
+      "reference": "A-9.5.1",
+      "spells": [
+        {
+          "level": 1,
+          "name": "Light Wall I",
+          "areaOfEffect": "20' x 20' x 1\"",
+          "duration": "C",
+          "range": "50'",
+          "type": "E",
+          "description": "Creates a black, insubstantial wall up to 20' x 20' x 1\" that light cannot pass into or through (i.e., it does not hinder movement, but it blocks vision)."
+        },
+        {
+          "level": 2,
+          "name": "Airwall",
+          "areaOfEffect": "10'x10'x3'",
+          "duration": "C",
+          "range": "50'",
+          "type": "E",
+          "description": "Creates a wall of dense churning air up to 10' x 10' x 3'. This wall reduces all movement through it by 50%. In addition, all attacks through the wall suffer a -50 penalty."
+        },
+        {
+          "level": 3,
+          "name": "Light Wall II",
+          "areaOfEffect": "20' x 20' x 1\"",
+          "duration": "1 min/lvl",
+          "range": "50'",
+          "type": "E",
+          "description": "As Light Wall I, except for duration."
+        },
+        {
+          "level": 4,
+          "name": "Waterwall",
+          "areaOfEffect": "10'x10'x1'",
+          "duration": "C",
+          "range": "50'",
+          "type": "E",
+          "description": "Creates a wall of water up to 10' x 10' x 1'. This wall reduces all movement through it by 80%. In addition, all attacks through the wall suffer a -80 penalty."
+        },
+        {
+          "level": 5,
+          "name": "Woodwall",
+          "areaOfEffect": "10'x20'x2\"",
+          "duration": "1 min/lvl",
+          "range": "50'",
+          "type": "E",
+          "description": "Creates a wall of wood up to 10' x 20' x 2\". This wall can be burned through, chopped through, or toppled (if not propped up somehow)."
+        },
+        {
+          "level": 6,
+          "name": null
+        },
+        {
+          "level": 7,
+          "name": "Earthwall",
+          "areaOfEffect": "10'x10'x3'",
+          "duration": "1 min/lvl",
+          "range": "50'",
+          "type": "E",
+          "description": "As Woodwall, except wall is made of earth and has a size up to 10' x 10' x (3' at base, 1' at top) of packed earth."
+        },
+        {
+          "level": 8,
+          "name": "Icewall I",
+          "areaOfEffect": "10'x10'x2'",
+          "duration": "P",
+          "range": "50'",
+          "type": "E",
+          "description": "As Woodwall, except wall is made of ice and has a size up to 10' x 10' x (2' at base, 1' at top). It can be melted, chipped through, or toppled (if not propped up somehow)."
+        },
+        {
+          "level": 9,
+          "name": null
+        },
+        {
+          "level": 10,
+          "name": "Barrier Pit",
+          "areaOfEffect": "varies",
+          "duration": "P",
+          "range": "50'",
+          "type": "E",
+          "description": "Opens a pit (500 cubic feet in stone; 1000 cubic feet in earth or ice). The entire pit must be within 50' of caster. A pit may not be opened except on a horizontal surface with an incline of less than 45°."
+        }
+      ]
+    },
+    {
+      "name": "Concussion's Ways",
+      "realm": "Channeling",
+      "type": "Open",
+      "reference": "A-9.5.2",
+      "spells": [
+        {
+          "level": 1,
+          "name": "Healing I",
+          "areaOfEffect": "1 target",
+          "duration": "P",
+          "range": "touch",
+          "type": "U",
+          "description": "Target is healed of d10 concussion hits."
+        },
+        {
+          "level": 2,
+          "name": "Frost/Burn Relief I",
+          "areaOfEffect": "1 target",
+          "duration": "P",
+          "range": "touch",
+          "type": "U",
+          "description": "Target is healed of one area of up to mild frostbite or 1st degree burn."
+        },
+        {
+          "level": 3,
+          "name": "Minor Irritation Relief",
+          "areaOfEffect": "1 target",
+          "duration": "P",
+          "range": "touch",
+          "type": "U",
+          "description": "Target is healed of one minor irritation (e.g., headache, toothache, bee-sting, hangover, etc.)."
+        },
+        {
+          "level": 4,
+          "name": "Healing III",
+          "areaOfEffect": "1 target",
+          "duration": "P",
+          "range": "touch",
+          "type": "U",
+          "description": "As Healing I, except that target is healed of 3d10 concussion hits."
+        },
+        {
+          "level": 5,
+          "name": "Stun Relief",
+          "codes": ["instantaneous"],
+          "areaOfEffect": "1 target",
+          "duration": "P",
+          "range": "touch",
+          "type": "Us",
+          "description": "Target is relieved of 1 round's worth of accumulated stun effects."
+        },
+        {
+          "level": 6,
+          "name": "Frost/Burn Relief II",
+          "areaOfEffect": "1 target",
+          "duration": "P",
+          "range": "touch",
+          "type": "U",
+          "description": "As Frost/Burn Relief I, except caster can heal 2 areas of mild damage or 1 area of moderate damage (e.g., 2nd degree burn)."
+        },
+        {
+          "level": 7,
+          "name": "Regeneration I",
+          "codes": ["instantaneous"],
+          "areaOfEffect": "1 target",
+          "duration": "C",
+          "range": "touch",
+          "type": "Us",
+          "description": "Will reduce damage target has by 1 hit every minute as long as caster concentrates. If the caster is unconscious this spell will operate on him without concentration."
+        },
+        {
+          "level": 8,
+          "name": "Healing V",
+          "areaOfEffect": "1 target",
+          "duration": "P",
+          "range": "touch",
+          "type": "U",
+          "description": "As Healing I, except that target is healed of 5d10 concussion hits."
+        },
+        {
+          "level": 9,
+          "name": "Frost/Burn Relief III",
+          "areaOfEffect": "1 target",
+          "duration": "P",
+          "range": "touch",
+          "type": "U",
+          "description": "As Frost/Burn Relief I, except caster can heal 3 areas of mild damage or 1 area of severe damage (e.g., 3rd degree burn) or a combination of 1 mild and 1 moderate area of damage."
+        },
+        {
+          "level": 10,
+          "name": "Awakening",
+          "areaOfEffect": "1 target",
+          "duration": "—",
+          "range": "100'",
+          "type": "U",
+          "description": "Target is instantly awake."
+        }
+      ]
+    }
+  ]
+}
