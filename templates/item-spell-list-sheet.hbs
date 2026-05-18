@@ -1,0 +1,23 @@
+{{!--
+  RMF Spell List Item Sheet Template - FoundryVTT v13 Compatible
+  ApplicationV2 with HandlebarsApplicationMixin
+  Three-tab layout: read-only "details", editable "advanced",
+  read-only "key" (the Spell Description Key legend from CONFIG.RMF).
+  NOTE: Do NOT wrap with <form>; ApplicationV2 provides the root form.
+--}}
+
+<div class="{{cssClass}} rmf-item-sheet spell-list-sheet-root">
+  <div class="sheet-main-container spell-list-sheet">
+    {{> "parts/item-spelllist-navigation"}}
+    <div class="sheet-content">
+      {{> "parts/item-spelllist-header"}}
+      <section class="sheet-body">
+        <div class="sheet-body-inner" data-rich="true">
+          {{> "parts/item-spelllist-details"}}
+          {{> "parts/item-spelllist-advanced"}}
+          {{> "parts/item-spelllist-key"}}
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

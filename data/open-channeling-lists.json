@@ -1,28 +1,16 @@
 {
-  "specialCodes": {
-    "instantaneous": {
-      "symbol": "*",
-      "description": "Instantaneous; spell does not require preparation rounds."
-    },
-    "noPowerPoints": {
-      "symbol": "•",
-      "description": "Spell does not require power points."
-    },
-    "spellSet": {
-      "symbol": "‡",
-      "description": "Part of a set of spells that must be thrown in conjunction with other spells continuously to be effective (or fully effective)."
-    },
-    "rrMod": {
-      "symbol": "[RR Mod #]",
-      "description": "Any RRs against the effects of this spell are modified by #. Stored per-spell as numeric `rrMod` field."
-    }
-  },
   "lists": [
     {
       "name": "Barrier Law",
       "realm": "Channeling",
       "type": "Open",
       "reference": "A-9.5.1",
+      "specialNotes": [
+        "All “Wall” spells created by spells on this list must rest (i.e., stand) on a solid surface.",
+        "All “Wall” spells require that at least 1 cubic foot of the material that the wall consists of be within 50' of the caster.",
+        "With all walls, the caster has the option of varying the width and height (not the thickness) up to the allowed dimensions. If the caster is attempting to “fill” a space with the wall, the wall will not fit perfectly (i.e., not snug).",
+        "See Appendix A-9.17.7 (p. 205) for more on walls."
+      ],
       "spells": [
         {
           "level": 1,
@@ -111,6 +99,9 @@
       "realm": "Channeling",
       "type": "Open",
       "reference": "A-9.5.2",
+      "specialNotes": [
+        "See Section 24.1 (p. 75) for more on healing."
+      ],
       "spells": [
         {
           "level": 1,
@@ -151,7 +142,9 @@
         {
           "level": 5,
           "name": "Stun Relief",
-          "codes": ["instantaneous"],
+          "codes": [
+            "instantaneous"
+          ],
           "areaOfEffect": "1 target",
           "duration": "P",
           "range": "touch",
@@ -170,7 +163,9 @@
         {
           "level": 7,
           "name": "Regeneration I",
-          "codes": ["instantaneous"],
+          "codes": [
+            "instantaneous"
+          ],
           "areaOfEffect": "1 target",
           "duration": "C",
           "range": "touch",
@@ -203,6 +198,751 @@
           "range": "100'",
           "type": "U",
           "description": "Target is instantly awake."
+        }
+      ]
+    },
+    {
+      "name": "Detection Mastery",
+      "realm": "Channeling",
+      "type": "Open",
+      "reference": "A-9.5.3",
+      "specialNotes": [
+        "All of the spells on this list are Passive in type. The target of the spell is allowed an RR, but success only indicates that the target is aware that a spell was cast upon him (i.e., the spell still works).",
+        "A “curse” (for the purposes of the Detect Curse spell) is defined as something that is detrimental and magical in nature (e.g., delivered from the Curses spell list)."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Detect Channeling",
+          "areaOfEffect": "5'R",
+          "duration": "1 min/lvl (C)",
+          "range": "50'",
+          "type": "P",
+          "description": "Detects any active spell or item from the Channeling realm; caster can concentrate on a different 5 foot radius each round."
+        },
+        {
+          "level": 2,
+          "name": "Detect Essence",
+          "areaOfEffect": "5'R",
+          "duration": "1 min/lvl (C)",
+          "range": "50'",
+          "type": "P",
+          "description": "As Detect Channeling, except realm is Essence."
+        },
+        {
+          "level": 3,
+          "name": "Detect Mentalism",
+          "areaOfEffect": "5'R",
+          "duration": "1 min/lvl (C)",
+          "range": "50'",
+          "type": "P",
+          "description": "As Detect Channeling, except realm is Mentalism."
+        },
+        {
+          "level": 4,
+          "name": "Detect Life",
+          "areaOfEffect": "5'R",
+          "duration": "1 min/lvl (C)",
+          "range": "50'",
+          "type": "P",
+          "description": "As Detect Channeling, except detects living beings."
+        },
+        {
+          "level": 5,
+          "name": "Detect Curse",
+          "areaOfEffect": "5'R",
+          "duration": "1 min/lvl (C)",
+          "range": "50'",
+          "type": "P",
+          "description": "As Detect Channeling, except detects curses on people or things."
+        },
+        {
+          "level": 6,
+          "name": "Detect Undead",
+          "areaOfEffect": "5'R",
+          "duration": "1 min/lvl (C)",
+          "range": "50'",
+          "type": "P",
+          "description": "As Detect Channeling, except detects the presence of Undead."
+        },
+        {
+          "level": 7,
+          "name": "Detect Traps",
+          "areaOfEffect": "5'R",
+          "duration": "1 min/lvl (C)",
+          "range": "50'",
+          "type": "P",
+          "description": "As Detect Channeling, except it gives a 75% chance of detecting a trap (trap sophistication modifiers may reduce or enhance this chance)."
+        },
+        {
+          "level": 8,
+          "name": "Life Typing",
+          "areaOfEffect": "1 target",
+          "duration": "—",
+          "range": "50'",
+          "type": "P",
+          "description": "As Detect Channeling, except it analyzes one living being; giving race, age, and current state of health."
+        },
+        {
+          "level": 9,
+          "name": "Detect Invisible",
+          "areaOfEffect": "5'R",
+          "duration": "1 min/lvl (C)",
+          "range": "50'",
+          "type": "P",
+          "description": "As Detect Channeling, except detects invisible things. All attacks against an invisible target suffer a -50 penalty (instead of the standard -100)."
+        },
+        {
+          "level": 10,
+          "name": "Perceive Power I",
+          "areaOfEffect": "5'R",
+          "duration": "1 min/lvl (C)",
+          "range": "50'",
+          "type": "P",
+          "description": "As Detect Channeling, except it will give an estimate of the power (i.e., level) of the person, item, or spell examined."
+        }
+      ]
+    },
+    {
+      "name": "Light's Way",
+      "realm": "Channeling",
+      "type": "Open",
+      "reference": "A-9.5.4",
+      "specialNotes": [
+        "None of the Aura spells (Aura and True Aura) are cumulative with each other."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Projected Light",
+          "areaOfEffect": "50' beam",
+          "duration": "10 min/lvl",
+          "range": "self",
+          "type": "E",
+          "description": "A beam of light (like a flashlight) springs from the caster's palm; 50' effective range. If the caster closes his fist, the light will “turn off;” when the fist is opened, the light will come back on (so long as the spell duration has not expired)."
+        },
+        {
+          "level": 2,
+          "name": "Light I",
+          "areaOfEffect": "10'R",
+          "duration": "10 min/lvl",
+          "range": "touch",
+          "type": "E",
+          "description": "Lights a 10 foot radius area about the point touched; if the point is on a mobile object or being, it will move with the object/being."
+        },
+        {
+          "level": 3,
+          "name": "Aura",
+          "areaOfEffect": "1 target",
+          "duration": "10 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "Creates a bright aura about the target, making him appear more powerful and subtracting 10 from all attacks against the target."
+        },
+        {
+          "level": 4,
+          "name": "Light II",
+          "areaOfEffect": "20'R",
+          "duration": "10 min/lvl",
+          "range": "touch",
+          "type": "E",
+          "description": "As Light I, except 1 or 2 areas can be created with a total radius of 20' (e.g., one area of 20' or two areas of 10')."
+        },
+        {
+          "level": 5,
+          "name": "Sudden Light",
+          "areaOfEffect": "10'R",
+          "duration": "—",
+          "range": "100'",
+          "type": "F",
+          "description": "Causes a 10 foot radius burst of intense light, all within are stunned for 1 round per 10 failure."
+        },
+        {
+          "level": 6,
+          "name": "True Aura",
+          "areaOfEffect": "1 target",
+          "duration": "10 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "As Aura, except it makes him appear very powerful; subtracting 15 from all attacks against the target."
+        },
+        {
+          "level": 7,
+          "name": "Shock Bolt",
+          "areaOfEffect": "1 target",
+          "duration": "—",
+          "range": "100'",
+          "type": "DE",
+          "description": "A bolt of intense, charged light is shot from the palm of the caster; results are determined on the Bolt Spell Attack Table A-10.9.9 (p. 228)."
+        },
+        {
+          "level": 8,
+          "name": "Light III",
+          "areaOfEffect": "30'R",
+          "duration": "10 min/lvl",
+          "range": "touch",
+          "type": "E",
+          "description": "As Light II, up to 3 areas can be created with a total radius of 30'."
+        },
+        {
+          "level": 9,
+          "name": "Utterlight I",
+          "areaOfEffect": "10'R",
+          "duration": "1 min/lvl",
+          "range": "touch",
+          "type": "E",
+          "description": "As Light I, except it is the equivalent of full daylight; it also nullifies all magically created darkness for the duration."
+        },
+        {
+          "level": 10,
+          "name": "Waiting Light",
+          "areaOfEffect": "10'R",
+          "duration": "10 min/lvl",
+          "range": "touch",
+          "type": "E",
+          "description": "As Light I, except caster can delay the spell up to 24 hours; it can be triggered by one of the following (decided by caster): elapsed time, specific movements, specific sounds, or touch."
+        }
+      ]
+    },
+    {
+      "name": "Lofty Movements",
+      "realm": "Channeling",
+      "type": "Open",
+      "reference": "A-9.5.5",
+      "specialNotes": [
+        "See Appendix 9.17.6 (p. 205) for notes on encumbrance limits for movement spells."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": null
+        },
+        {
+          "level": 2,
+          "name": "Edgewalking",
+          "areaOfEffect": "1 target",
+          "duration": "1 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "Target can walk along narrow edges (down to 2\" wide) that can support his weight. Maneuver rolls are not normally required."
+        },
+        {
+          "level": 3,
+          "name": null
+        },
+        {
+          "level": 4,
+          "name": "Limbwalking",
+          "areaOfEffect": "1 target",
+          "duration": "1 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "Target can walk along tree limbs as if he were on level ground."
+        },
+        {
+          "level": 5,
+          "name": "Stonewalking",
+          "areaOfEffect": "1 target",
+          "duration": "1 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "Target can walk on stone surfaces of up to 60° as if he were on level ground."
+        },
+        {
+          "level": 6,
+          "name": "Waterwalking",
+          "areaOfEffect": "1 target",
+          "duration": "1 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "Target can walk on water as if he were on level ground; may not be used on rough water."
+        },
+        {
+          "level": 7,
+          "name": "Merging Organic",
+          "areaOfEffect": "1 target",
+          "duration": "1 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "Target can merge into organic material (live or dead). While merged, the target cannot move or perceive. When the target emerges from the material, he can emerge from any side or face of the material. The target cannot move “through” material greater in width than his own body size plus 2 feet."
+        },
+        {
+          "level": 8,
+          "name": "Store Sanctuary",
+          "areaOfEffect": "caster",
+          "duration": "P",
+          "range": "self",
+          "type": "U",
+          "description": "Caster “stores” a location for use with certain spells above 10th level (see Spell Law). While casting this spell, the caster must meditate for one hour in the location that will be stored. The caster can only have one sanctuary stored at a time. As long as this location remains “stored,” it will detect as a magical (i.e., “holy”) place."
+        },
+        {
+          "level": 9,
+          "name": "Limbrunning",
+          "areaOfEffect": "1 target",
+          "duration": "1 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "As Limbwalking, except target can run."
+        },
+        {
+          "level": 10,
+          "name": "Stonerunning",
+          "areaOfEffect": "1 target",
+          "duration": "1 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "As Stonewalking, except target can run."
+        }
+      ]
+    },
+    {
+      "name": "Nature's Law",
+      "realm": "Channeling",
+      "type": "Open",
+      "reference": "A-9.5.6",
+      "specialNotes": [
+        "Any spell that provides information to the caster can be tricky for the GM to run. Every GM should examine lore spells and determine how much information he is willing to impart to the players. See Appendix A-9.17.13 (p. 206) for more on information spells.",
+        "An herb is defined as a plant that, when specially prepared, provides some unusual benefit to the user. This does not apply to poisons."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": null
+        },
+        {
+          "level": 2,
+          "name": "Plant Lore",
+          "areaOfEffect": "1 plant",
+          "duration": "—",
+          "range": "10'",
+          "type": "I",
+          "description": "Caster learns nature, history, and value of any 1 plant."
+        },
+        {
+          "level": 3,
+          "name": "Herb Lore",
+          "areaOfEffect": "1 herb",
+          "duration": "—",
+          "range": "10'",
+          "type": "I",
+          "description": "Caster can understand the nature, origin, and value of any 1 herb; if the plant is not an herb, no information will be related."
+        },
+        {
+          "level": 4,
+          "name": null
+        },
+        {
+          "level": 5,
+          "name": "Stone Lore",
+          "areaOfEffect": "1 stone",
+          "duration": "—",
+          "range": "10'",
+          "type": "I",
+          "description": "Caster learns the nature, history, and origin of any 1 stone."
+        },
+        {
+          "level": 6,
+          "name": "Speed Growth",
+          "areaOfEffect": "1 species",
+          "duration": "1 day",
+          "range": "10'",
+          "type": "U",
+          "description": "Caster can increase speed of growth for any 1 species of plant within the radius by 10 times."
+        },
+        {
+          "level": 7,
+          "name": "Animal Tongues",
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "I",
+          "description": "Allows caster to understand and “speak” the language of any 1 animal species."
+        },
+        {
+          "level": 8,
+          "name": null
+        },
+        {
+          "level": 9,
+          "name": "Animal Mastery I",
+          "areaOfEffect": "1 animal",
+          "duration": "C",
+          "range": "100'",
+          "type": "Fm",
+          "description": "Caster can control the actions of any 1 animal."
+        },
+        {
+          "level": 10,
+          "name": "Nature's Awareness I",
+          "areaOfEffect": "caster",
+          "duration": "C",
+          "range": "100'",
+          "type": "I",
+          "description": "Caster can monitor animate activity in the area (e.g., he will be aware of subtle movements). For the duration of the spell, the caster cannot move."
+        }
+      ]
+    },
+    {
+      "name": "Purifications",
+      "realm": "Channeling",
+      "type": "Open",
+      "reference": "A-9.5.7",
+      "specialNotes": [],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Disease Purification",
+          "areaOfEffect": "1 target",
+          "duration": "P",
+          "range": "touch",
+          "type": "U",
+          "description": "Stops infection and/or spread of a disease in 1 target after he has acquired the disease. No further damage will occur in uninfected areas of the body."
+        },
+        {
+          "level": 2,
+          "name": "Food Preservation",
+          "areaOfEffect": "varies",
+          "duration": "1 week",
+          "range": "touch",
+          "type": "U",
+          "description": "This spell perfectly preserves one day's worth of food for 1 week, after which it will spoil normally."
+        },
+        {
+          "level": 3,
+          "name": "Poison Purification",
+          "areaOfEffect": "1 target",
+          "duration": "P",
+          "range": "touch",
+          "type": "U",
+          "description": "Neutralizes any 1 poison in the system of 1 target. Damage already sustained is not cured."
+        },
+        {
+          "level": 4,
+          "name": "Disease Resistance I",
+          "areaOfEffect": "1 target",
+          "duration": "10 min/lvl",
+          "range": "touch",
+          "type": "U",
+          "description": "For the duration of the spell, target gets an additional RR versus any disease(s)."
+        },
+        {
+          "level": 5,
+          "name": "Poison Resistance I",
+          "areaOfEffect": "1 target",
+          "duration": "10 min/lvl",
+          "range": "touch",
+          "type": "U",
+          "description": "For the duration of the spell, target gets an additional RR versus any poison(s)."
+        },
+        {
+          "level": 6,
+          "name": "Sustenance Purification",
+          "areaOfEffect": "varies",
+          "duration": "P",
+          "range": "touch",
+          "type": "U",
+          "description": "This spell neutralizes abnormal diseases, poison, and other similar substances in one day's worth of food and/or water. It will not neutralize a poison or similar substance that is a natural part of the food (e.g., it will not neutralize the natural poison in poisoned mushrooms)."
+        },
+        {
+          "level": 7,
+          "name": null
+        },
+        {
+          "level": 8,
+          "name": "Disease Resistance II",
+          "areaOfEffect": "1 target",
+          "duration": "10 min/lvl",
+          "range": "touch",
+          "type": "U",
+          "description": "As Disease Resistance I, except target gets 2 additional RRs."
+        },
+        {
+          "level": 9,
+          "name": "Poison Resistance II",
+          "areaOfEffect": "1 target",
+          "duration": "10 min/lvl",
+          "range": "touch",
+          "type": "U",
+          "description": "As Poison Resistance I, except target gets 2 additional RRs."
+        },
+        {
+          "level": 10,
+          "name": "Mind Disease Cures",
+          "areaOfEffect": "1 target",
+          "duration": "P",
+          "range": "touch",
+          "type": "U",
+          "description": "Target is cured of any 1 mind disease, recovery 1-50 days."
+        }
+      ]
+    },
+    {
+      "name": "Sound's Way",
+      "realm": "Channeling",
+      "type": "Open",
+      "reference": "A-9.5.8",
+      "specialNotes": [],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Speech I",
+          "areaOfEffect": "1 target",
+          "duration": "C",
+          "range": "10'",
+          "type": "U",
+          "description": "Target is able to communicate basic ideas in the language of a specific being (e.g., hungry, thirsty, bathroom, peace, etc.). For the duration of the spell, the target has the equivalent of skill rank 2 in the language."
+        },
+        {
+          "level": 2,
+          "name": null
+        },
+        {
+          "level": 3,
+          "name": "Quiet I",
+          "areaOfEffect": "1 target",
+          "duration": "1 min/lvl",
+          "range": "100'",
+          "type": "E",
+          "description": "Creates a 1 foot radius area around the target, into and out of which sound cannot travel; if the point is on a mobile object or being, it will move with the object/being. +25 to any Stalking maneuvers."
+        },
+        {
+          "level": 4,
+          "name": null
+        },
+        {
+          "level": 5,
+          "name": "Soundwall I",
+          "areaOfEffect": "20'x20'",
+          "duration": "10 min/lvl",
+          "range": "100'",
+          "type": "E",
+          "description": "Creates a plane (up to 20' x 20'), through which sound will not pass."
+        },
+        {
+          "level": 6,
+          "name": "Speech II",
+          "areaOfEffect": "1 target",
+          "duration": "C",
+          "range": "10'",
+          "type": "U",
+          "description": "As Speech I, except target can communicate in more complex concepts, although there is a good chance of misinterpretations. For the duration of the spell, the target has the equivalent of skill rank 4 in the language."
+        },
+        {
+          "level": 7,
+          "name": "Silence I",
+          "areaOfEffect": "10'R",
+          "duration": "1 min/lvl",
+          "range": "100'",
+          "type": "E",
+          "description": "As Quiet I, except radius is 10'."
+        },
+        {
+          "level": 8,
+          "name": "Quiet III",
+          "areaOfEffect": "3 targets",
+          "duration": "1 min/lvl",
+          "range": "100'",
+          "type": "E",
+          "description": "As Quiet I, except 3 targets can be affected."
+        },
+        {
+          "level": 9,
+          "name": null
+        },
+        {
+          "level": 10,
+          "name": "Soundwall V",
+          "areaOfEffect": "(20'x20')x5",
+          "duration": "10 min/lvl",
+          "range": "100'",
+          "type": "E",
+          "description": "As Soundwall I, except 5 such walls are created. Each Soundwall must be connected to at least one other Soundwall."
+        }
+      ]
+    },
+    {
+      "name": "Spell Defense",
+      "realm": "Channeling",
+      "type": "Open",
+      "reference": "A-9.5.9",
+      "specialNotes": [],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Protection I",
+          "areaOfEffect": "1 target",
+          "duration": "1 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "Subtracts 5 from elemental attack rolls against the target, and adds 5 to all of the target's RRs versus spells."
+        },
+        {
+          "level": 2,
+          "name": "Cancel Channeling",
+          "areaOfEffect": "caster",
+          "duration": "C",
+          "range": "self",
+          "type": "F",
+          "description": "When the caster of this spell is a target of a spell from the realm of Channeling, the “incoming” spell must first make an RR before the caster makes an RR. For RR purposes, each spell uses a level equal to its caster's level. If the “incoming” spell passes the RR, it may target the caster of this spell normally; otherwise the incoming spell has no effect on this target."
+        },
+        {
+          "level": 3,
+          "name": "Protection Sphere I",
+          "areaOfEffect": "varies",
+          "duration": "C",
+          "range": "10'",
+          "type": "U",
+          "description": "As Protection I, except for duration and all beings within 10' of target get the benefits."
+        },
+        {
+          "level": 4,
+          "name": "Cancel Essence",
+          "areaOfEffect": "caster",
+          "duration": "C",
+          "range": "self",
+          "type": "F",
+          "description": "As Cancel Channeling, except the caster is protected from spells in the realm of Essence."
+        },
+        {
+          "level": 5,
+          "name": "Protection II",
+          "areaOfEffect": "1 target",
+          "duration": "1 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "As Protection I, except bonuses are 10."
+        },
+        {
+          "level": 6,
+          "name": "Cancel Mentalism",
+          "areaOfEffect": "caster",
+          "duration": "C",
+          "range": "self",
+          "type": "F",
+          "description": "As Cancel Channeling, except the caster is protected from spells in the realm of Mentalism."
+        },
+        {
+          "level": 7,
+          "name": "Protection Sphere II",
+          "areaOfEffect": "varies",
+          "duration": "C",
+          "range": "10'",
+          "type": "U",
+          "description": "As Protection Sphere I, except bonuses are 10."
+        },
+        {
+          "level": 8,
+          "name": "Dispel Channeling I",
+          "areaOfEffect": "1 target",
+          "duration": "C",
+          "range": "10'",
+          "type": "F",
+          "description": "Any active spell from the realm of Channeling that is on the target must make an RR (use the level of that spell's caster as the spell's level). If the spell fails its RR, it is dispelled."
+        },
+        {
+          "level": 9,
+          "name": "Channeling Shield",
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "Creates a shimmering shield in front of the caster. This shield subtracts 10 from all frontal Channeling attack rolls on the caster (base and elemental). In addition, if the caster performs no other actions during a round, he can “parry” (as with a normal shield) one spell attack. The parry bonus is equal to 10 plus the caster's skill rank with this list."
+        },
+        {
+          "level": 10,
+          "name": "Protection III",
+          "areaOfEffect": "1 target",
+          "duration": "1 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "As Protection I, except bonuses are 15."
+        }
+      ]
+    },
+    {
+      "name": "Weather Ways",
+      "realm": "Channeling",
+      "type": "Open",
+      "reference": "A-9.5.10",
+      "specialNotes": [
+        "All weather generating spells cause weather to gradually form over a period of one minute. In addition, weather generating spells have no effect in areas where there are not normally occurring weather patterns (i.e., inside buildings, etc.).",
+        "See App. A-9.17.13 (p. 206) for more on information spells."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Living Gauge",
+          "areaOfEffect": "caster",
+          "duration": "C",
+          "range": "self",
+          "type": "I",
+          "description": "Caster can ascertain information from the surrounding atmosphere. Information that may be gained includes: temperature, humidity, barometric pressure, and wind speed. The caster can gain a different piece of information each round."
+        },
+        {
+          "level": 2,
+          "name": "Rain Prediction",
+          "areaOfEffect": "caster",
+          "duration": "—",
+          "range": "self",
+          "type": "I",
+          "description": "Gives caster a 95% chance of predicting the time and type of precipitation (±15 min.) over the next 24 hr. period."
+        },
+        {
+          "level": 3,
+          "name": null
+        },
+        {
+          "level": 4,
+          "name": "Storm Prediction",
+          "areaOfEffect": "caster",
+          "duration": "—",
+          "range": "self",
+          "type": "I",
+          "description": "As Rain Prediction, except it allows a 95% chance of predicting the time and type of a storm, ±15 minutes over the next 24 hour period."
+        },
+        {
+          "level": 5,
+          "name": "Weather Prediction I",
+          "areaOfEffect": "caster",
+          "duration": "—",
+          "range": "self",
+          "type": "I",
+          "description": "As Rain Prediction except it allows 95% chance of predicting time, type, and severity of weather (±15 minutes) over the next 24 hour period."
+        },
+        {
+          "level": 6,
+          "name": null
+        },
+        {
+          "level": 7,
+          "name": "Breeze Call",
+          "areaOfEffect": "10'R",
+          "duration": "1 rnd/lvl",
+          "range": "self",
+          "type": "E",
+          "description": "Caster causes a breeze to come forth that will drive out any gaseous matter (cloud, etc.) and modifies by -10 all missile attacks entering, exiting, or passing through the area of effect. Once set, the direction of the breeze will not change."
+        },
+        {
+          "level": 8,
+          "name": "Fog Call",
+          "areaOfEffect": "10'R/lvl",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "E",
+          "description": "Caster causes fog to arise that obscures all vision in and through the radius. All missile attacks into or out of the fog are modified by -10 to -50 (GM's discretion). See Appendix A-9.17.12 (p. 206) for more on fog."
+        },
+        {
+          "level": 9,
+          "name": null
+        },
+        {
+          "level": 10,
+          "name": "Weather Prediction III",
+          "areaOfEffect": "caster",
+          "duration": "—",
+          "range": "self",
+          "type": "I",
+          "description": "As Weather Prediction I, except that caster has a 95% chance of predicting weather over a 3 day period."
         }
       ]
     }

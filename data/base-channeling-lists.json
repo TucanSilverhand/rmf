@@ -1,0 +1,1206 @@
+{
+  "lists": [
+    {
+      "name": "Channels",
+      "realm": "Channeling",
+      "type": "Base",
+      "profession": "Cleric",
+      "reference": "A-9.7.1",
+      "specialNotes": [
+        "Note that the spells on this list may vary in appearance or usage based upon the nature of the deity. GMs should feel free to replace some of the spells above for spells more appropriate to the deity. For example, a deity of fire might have a Bolt of Fire instead of Stunning (attacking on the Bolt Spell Attack Table with a special -25 modification)."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Create Holy Water",
+          "areaOfEffect": "4 oz. water",
+          "duration": "P",
+          "range": "touch",
+          "type": "E",
+          "description": "When this spell is cast, up to four ounces of clean, clear water is transformed into holy water. This spell takes one hour to cast. If the water is not placed into a clean receptacle, its holy nature is ruined."
+        },
+        {
+          "level": 2,
+          "name": "Calming",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 target",
+          "duration": "1 rnd/10 fail",
+          "range": "50'",
+          "type": "F",
+          "description": "Caster points his arm (elbow locked and fist clenched) at the target and channels raw power from his power source (usually a deity). The target of the spell may take no aggressive/offensive action, and will only fight if attacked."
+        },
+        {
+          "level": 3,
+          "name": "Channels I",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 spell",
+          "duration": "—",
+          "range": "varies",
+          "type": "U",
+          "description": "When this spell is cast, the first level spell that the caster begins to cast the next round will be “channeled” to another spell user of the Channeling realm. The “channeled” spell is transmitted to the other spell user when it would normally take effect, and must be used by the receiving spell user immediately (i.e., the receiving spell user is now treated as the caster of the spell). All normal restrictions apply to the transmitted spell. The caster of the Channels spell must be able to see the receiver of the spell or know exactly where he is (direction and distance, or specific location). The receiver must know exactly when the spell is coming (though he need not know exactly what spell is coming)."
+        },
+        {
+          "level": 4,
+          "name": null
+        },
+        {
+          "level": 5,
+          "name": "Stunning",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 target",
+          "duration": "1 rnd/10 fail",
+          "range": "50'",
+          "type": "F",
+          "description": "Caster points his arm (elbow locked and fist clenched) at the target and channels raw power from his power source (usually a deity). The target of the spell is stunned."
+        },
+        {
+          "level": 6,
+          "name": "Channels III",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 spell",
+          "duration": "—",
+          "range": "varies",
+          "type": "U",
+          "description": "As Channels I, except up to a third level spell may be transmitted."
+        },
+        {
+          "level": 7,
+          "name": null
+        },
+        {
+          "level": 8,
+          "name": "Golden Slumbers",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 target",
+          "duration": "1 rnd/10 fail",
+          "range": "10'",
+          "type": "F",
+          "description": "Caster points his arm (elbow locked and fist clenched) at the target and channels raw power from his power source (usually a deity). The target of the spell falls into a deep sleep. The first minute of this sleep is magical (and the target cannot be awakened in any normal fashion). After the first minute, the target may be awakened normally (though his deep sleep will prevent him from waking on his own until he has slept a full eight hours)."
+        },
+        {
+          "level": 9,
+          "name": null
+        },
+        {
+          "level": 10,
+          "name": "Channels V",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 spell",
+          "duration": "—",
+          "range": "varies",
+          "type": "U",
+          "description": "As Channels I, except up to a fifth level spell may be transmitted."
+        }
+      ]
+    },
+    {
+      "name": "Communal Ways",
+      "realm": "Channeling",
+      "type": "Base",
+      "profession": "Cleric",
+      "reference": "A-9.7.2",
+      "specialNotes": [
+        "When using Guess, the caster must have a limited number of options (i.e., finite and countable). After the spell is cast, the caster may not cast another Guess for the same information until his experience level has increased."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Guess",
+          "areaOfEffect": "caster",
+          "duration": "—",
+          "range": "self",
+          "type": "I",
+          "description": "When faced with a choice about which he has little or no information (e.g., which corridor leads outside the quickest), the caster may cast this spell and the GM will determine which way he goes, biasing the choice favorable by 25% (e.g., roll d100: correct on a 26-100, incorrect on 1-25)."
+        },
+        {
+          "level": 2,
+          "name": null
+        },
+        {
+          "level": 3,
+          "name": "Intuitions I",
+          "areaOfEffect": "caster",
+          "duration": "—",
+          "range": "self",
+          "type": "I",
+          "description": "Caster gains a vision of what will probably happen in the next minute if he takes a specified action."
+        },
+        {
+          "level": 4,
+          "name": "Dream I",
+          "areaOfEffect": "caster",
+          "duration": "sleep",
+          "range": "self",
+          "type": "I",
+          "description": "Caster has a dream relating to a topic decided upon just before retiring. The caster must sleep for a normal sleep cycle (minimum of 4 hours) for this spell to work."
+        },
+        {
+          "level": 5,
+          "name": "Intuitions III",
+          "areaOfEffect": "caster",
+          "duration": "—",
+          "range": "self",
+          "type": "I",
+          "description": "As Intuitions I, except the caster gets to gaze 3 minutes into the future."
+        },
+        {
+          "level": 6,
+          "name": "Death's Tale",
+          "areaOfEffect": "caster",
+          "duration": "—",
+          "range": "self",
+          "type": "I",
+          "description": "Caster gets a vision of the events surrounding the death of any 1 dead target through the eyes of the deceased. He also gets a view of the killer (if any). The caster must be within 10' of the corpse. Corpse must have died within a number of years equal to caster's level."
+        },
+        {
+          "level": 7,
+          "name": "Channel Opening I",
+          "areaOfEffect": "1 being",
+          "duration": "C",
+          "range": "1 mile/lvl",
+          "type": "U",
+          "description": "The caster can make contact with any 1 known target he his acquainted with. This spell will enable the caster to learn the specific location (direction and distance only) of the other being. This spell is often used with a Channels spell (see the left hand column)."
+        },
+        {
+          "level": 8,
+          "name": "Intuitions V",
+          "areaOfEffect": "caster",
+          "duration": "—",
+          "range": "self",
+          "type": "I",
+          "description": "As Intuitions I, except caster may gaze 5 minutes into the future."
+        },
+        {
+          "level": 9,
+          "name": null
+        },
+        {
+          "level": 10,
+          "name": "Dreams III",
+          "areaOfEffect": "caster",
+          "duration": "sleep",
+          "range": "self",
+          "type": "I",
+          "description": "As Dream I, except limit is 3 dreams per night on different topics."
+        }
+      ]
+    },
+    {
+      "name": "Life Mastery",
+      "realm": "Channeling",
+      "type": "Base",
+      "profession": "Cleric",
+      "reference": "A-9.7.3",
+      "specialNotes": [
+        "See Section 24.1 (p. 75) for more on soul damage and the effects of death."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Preservation I",
+          "areaOfEffect": "1 body",
+          "duration": "1 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "Caster can preserve a “dead” body, preventing any further deterioration (i.e., stat deterioration) or damage from already existing wounds; the target will be in a coma; this spell will not prevent the target's soul from leaving the body."
+        },
+        {
+          "level": 2,
+          "name": "Lifekeeping I",
+          "areaOfEffect": "1 body",
+          "duration": "1 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "Caster can prevent the soul of a “dead” body from leaving its body (thus preventing actual death and enabling the fallen being to be restored via simple bodily repairs). This spell must be cast before the soul leaves the body or Lifegiving (see p. 77) will be necessary for recovery."
+        },
+        {
+          "level": 3,
+          "name": "Preservation II",
+          "areaOfEffect": "1 body",
+          "duration": "1 hr/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "As Preservation I, except for the duration."
+        },
+        {
+          "level": 4,
+          "name": "Heal Life Essence I",
+          "areaOfEffect": "1 target",
+          "duration": "P",
+          "range": "10'",
+          "type": "U",
+          "description": "The target of this spell is any being who has suffered some amount of soul damage. The target will be healed of d10 points of lost temporary Constitution. See Section 7.2 for more information on soul damage."
+        },
+        {
+          "level": 5,
+          "name": "Lifekeeping II",
+          "areaOfEffect": "1 body",
+          "duration": "1 hr/lvl",
+          "range": "touch",
+          "type": "U",
+          "description": "As Lifekeeping I, except for the duration."
+        },
+        {
+          "level": 6,
+          "name": "Heal Life Essence II",
+          "areaOfEffect": "1 target",
+          "duration": "P",
+          "range": "10'",
+          "type": "U",
+          "description": "As Heal Life Essence I, except will heal 2d10 lost points."
+        },
+        {
+          "level": 7,
+          "name": "Preservation III",
+          "areaOfEffect": "1 body",
+          "duration": "1 day/lvl",
+          "range": "touch",
+          "type": "U",
+          "description": "As Preservation I, except for the duration."
+        },
+        {
+          "level": 8,
+          "name": null
+        },
+        {
+          "level": 9,
+          "name": "Heal Life Essence III",
+          "areaOfEffect": "1 target",
+          "duration": "P",
+          "range": "10'",
+          "type": "U",
+          "description": "As Heal Life Essence I, except will heal 3d10 lost points of temporary Constitution."
+        },
+        {
+          "level": 10,
+          "name": "Preservation IV",
+          "areaOfEffect": "1 body",
+          "duration": "1 week/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "As Preservation I, except for duration."
+        }
+      ]
+    },
+    {
+      "name": "Protections",
+      "realm": "Channeling",
+      "type": "Base",
+      "profession": "Cleric",
+      "reference": "A-9.7.4",
+      "specialNotes": [
+        "Resistance, Prayer, Bless, and Protection Spheres are not cumulative with each other."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Prayer I",
+          "areaOfEffect": "1 target",
+          "duration": "1 min/lvl",
+          "range": "100'",
+          "type": "U",
+          "description": "Target gets a special bonus of +5 to his resistance rolls and maneuver rolls. If the target is more than 100' from the caster at any time, the spell is cancelled."
+        },
+        {
+          "level": 2,
+          "name": "Bless I",
+          "areaOfEffect": "1 target",
+          "duration": "1 min/lvl",
+          "range": "100'",
+          "type": "U",
+          "description": "As Prayer I, except target gets a special bonus of 5 to his defensive bonus and maneuver rolls."
+        },
+        {
+          "level": 3,
+          "name": "Resistance I",
+          "areaOfEffect": "1 target",
+          "duration": "1 min/lvl",
+          "range": "100'",
+          "type": "U",
+          "description": "As Prayer I, except target gets a special bonus of 5 to his resistance rolls and defensive bonus."
+        },
+        {
+          "level": 4,
+          "name": "Heat Resistance",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 target",
+          "duration": "10 min/lvl",
+          "range": "100'",
+          "type": "U",
+          "description": "As Prayer I, except the duration is 10 minutes per level and the target is protected from natural heat up to 170°F (treat as if target were in 70°F temperature). For temperatures above 170°F, subtract 100°F to determine the effective temperature for the target. Target also receives +20 to all RRs versus heat spells and heat attacks (+20 DB versus elemental fire and heat attacks)."
+        },
+        {
+          "level": 5,
+          "name": "Cold Resistance",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 target",
+          "duration": "10 min/lvl",
+          "range": "100'",
+          "type": "U",
+          "description": "As Prayer I, except the duration is 10 minutes per level and the target is protected from natural cold down to 20°F (treat as if target were in 70°F temperature). For temperatures below 20°F, add 50°F to determine the effective temperature for the target. Target also receives +20 to all RRs versus cold spells and cold attacks (+20 DB versus elemental cold and ice attacks)."
+        },
+        {
+          "level": 6,
+          "name": null
+        },
+        {
+          "level": 7,
+          "name": null
+        },
+        {
+          "level": 8,
+          "name": "Temperature Sphere I",
+          "areaOfEffect": "10'R",
+          "duration": "10 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "All who are within the sphere are allowed benefits of either a Heat Resistance or a Cold Resistance spell (must be the same for all targets). If the sphere is more than 100' from the caster at any time, the spell is cancelled."
+        },
+        {
+          "level": 9,
+          "name": null
+        },
+        {
+          "level": 10,
+          "name": "Protections Sphere I",
+          "areaOfEffect": "10'R",
+          "duration": "1 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "All within the radius are allowed the benefits of Prayer I or Bless I or Resistance I spell (must be the same for all targets). If the sphere is more than 100' from the caster at any time, the spell is cancelled."
+        }
+      ]
+    },
+    {
+      "name": "Repulsions",
+      "realm": "Channeling",
+      "type": "Base",
+      "profession": "Cleric",
+      "reference": "A-9.7.5",
+      "specialNotes": [
+        "See Creatures & Monsters for a complete listing of Undead. A GM may want to give modifications to powerful Undead.",
+        "If a Repel Undead spell has been cast on a given Undead, the caster cannot cast a Repel Undead spell on that Undead until he has increased his skill rank with this list."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Repel Undead V",
+          "areaOfEffect": "varies",
+          "duration": "1 min/lvl",
+          "range": "100'",
+          "type": "F",
+          "description": "Causes up to 5 Undead to flee or disintegrate. All Undead have a class assigned to them. This spell will affect up to 5 points of Undead (Class I Undead count as 1 point, Class II Undead count as 2 points, etc.). Animated Dead (see the Evil Channeling List, Necromancy) are treated as Class I Undead and are not entitled to an RR (i.e., they automatically disintegrate if the spell does not fail). Each target is entitled to an RR. If the target fails the RR by 50 or less, it will flee (if it cannot flee, it will remain motionless). If the target fails by more than 50, it disintegrates. One Base Attack Roll is applied to all targets. The RR of an Undead can be modified by concentrating the effects of the spell: for each additional point of the spell allocated to a target (beyond those normally needed to affect it), that target's RR is modified by -5."
+        },
+        {
+          "level": 2,
+          "name": "Cancel Channeling",
+          "areaOfEffect": "caster",
+          "duration": "C",
+          "range": "self",
+          "type": "F",
+          "description": "When the caster of this spell is a target of a spell from the realm of Channeling, the “incoming” spell must first make a RR (before the caster of this spell makes a RR). For RR purposes, each spell uses a level equal to its caster's level. If the “incoming” spell's RR is successful, it may target the caster normally; otherwise, the incoming spell has no effect on this target."
+        },
+        {
+          "level": 3,
+          "name": "Anti-Channels I",
+          "areaOfEffect": "1 spell",
+          "duration": "—",
+          "range": "100'",
+          "type": "E",
+          "description": "Cancels a Channels I spell being transmitted or received within the range. Note that the Channels I spell gets no RR."
+        },
+        {
+          "level": 4,
+          "name": "Neutralize Curse I",
+          "rrMod": -20,
+          "areaOfEffect": "1 curse",
+          "duration": "1 min/lvl",
+          "range": "100'",
+          "type": "F",
+          "description": "Nullifies a curse for the duration of this spell. The curse is not dispelled and takes effect after the duration of this spell ends."
+        },
+        {
+          "level": 5,
+          "name": "Anti-Channels III",
+          "areaOfEffect": "1 spell",
+          "duration": "—",
+          "range": "100'",
+          "type": "E",
+          "description": "As Anti-Channels I, except affects to a Channels III."
+        },
+        {
+          "level": 6,
+          "name": "Repel Undead IX",
+          "areaOfEffect": "varies",
+          "duration": "1 min/lvl",
+          "range": "100'",
+          "type": "F",
+          "description": "As Repel Undead V, except 9 points of Undead may be affected."
+        },
+        {
+          "level": 7,
+          "name": "Remove Curse",
+          "areaOfEffect": "1 target",
+          "duration": "P",
+          "range": "touch",
+          "type": "F",
+          "description": "Dispels a curse if the curse fails an RR. The curse's level is the level of the caster of the original curse. If the curse is not dispelled, the caster cannot try again until he has increased his skill rank with this list."
+        },
+        {
+          "level": 8,
+          "name": "Dispel Channeling I",
+          "areaOfEffect": "1 target",
+          "duration": "—",
+          "range": "10'",
+          "type": "F",
+          "description": "Any active spell from the realm of Channeling that is on the target must make an RR (use the level of that spell's caster as the spell's level). If the spell fails its RR, it is dispelled."
+        },
+        {
+          "level": 9,
+          "name": "Neutralize Curse II",
+          "areaOfEffect": "1 curse",
+          "duration": "1 hr/lvl",
+          "range": "100'",
+          "type": "F",
+          "description": "As Neutralize Curse I, except curse is nullified for 1 hour per level."
+        },
+        {
+          "level": 10,
+          "name": "Anti-Channels V",
+          "areaOfEffect": "1 spell",
+          "duration": "—",
+          "range": "100'",
+          "type": "E",
+          "description": "As Anti-Channels I, except affects up to a Channels V."
+        }
+      ]
+    },
+    {
+      "name": "Summons",
+      "realm": "Channeling",
+      "type": "Base",
+      "profession": "Cleric",
+      "reference": "A-9.7.6",
+      "specialNotes": [
+        "When allowed to choose more than one option on summoning spells, the same option may be chosen more than once. For example, with a Summons III, two options are available. This means that if both options are used for the same thing: three first-level creatures could be summoned, or one third-level creature could be summoned, or one first-level creature could be summoned for four times as long.",
+        "Demons are assumed to be beings of another plane who are brought into the caster's plane through the use of an elemental force (one not of the Demon's plane). Thus, the Demon and caster do not make RRs during the summons. See Creatures & Monsters for a full description of Demons."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Summons I",
+          "areaOfEffect": "1 creature",
+          "duration": "varies",
+          "range": "100'",
+          "type": "U",
+          "description": "Caster magically summons a 1st-level, non-intelligent creature from the surrounding area. The caster can specify the type of creature, but the GM should determine the type of creature that answers the summons. If the creature can understand the caster (e.g., Animal Tongues), the creature can be controlled through normal communication. Otherwise, control is maintained only through concentration of the caster. If the creature summoned is used for a task that is not dangerous (in its own perception), the duration for this spell is 10 minutes per level. However, if the creature is ever put into a dangerous situation, the duration immediately drops to 1 round per level."
+        },
+        {
+          "level": 2,
+          "name": "Summons II",
+          "areaOfEffect": "1-2 creatures",
+          "duration": "varies",
+          "range": "100'",
+          "type": "U",
+          "description": "As Summons I, except caster chooses one of the following options: a) the level of the summoned creature is increased by one, b) an extra 1st level creature can be summoned, or c) the duration can be doubled."
+        },
+        {
+          "level": 3,
+          "name": "Summons III",
+          "areaOfEffect": "1-3 creatures",
+          "duration": "varies",
+          "range": "100'",
+          "type": "U",
+          "description": "As Summons II, except 2 options are chosen."
+        },
+        {
+          "level": 4,
+          "name": "Summons IV",
+          "areaOfEffect": "1-4 creatures",
+          "duration": "varies",
+          "range": "100'",
+          "type": "U",
+          "description": "As Summons II, except 3 options are chosen."
+        },
+        {
+          "level": 5,
+          "name": "Summons V",
+          "areaOfEffect": "1-5 creatures",
+          "duration": "varies",
+          "range": "100'",
+          "type": "U",
+          "description": "As Summons II, except 4 options are chosen."
+        },
+        {
+          "level": 6,
+          "name": "Summons VI",
+          "areaOfEffect": "1-6 creatures",
+          "duration": "varies",
+          "range": "100'",
+          "type": "U",
+          "description": "As Summons II, except 5 options are chosen."
+        },
+        {
+          "level": 7,
+          "name": "Summons VII",
+          "areaOfEffect": "1-7 creatures",
+          "duration": "varies",
+          "range": "100'",
+          "type": "U",
+          "description": "As Summons II, except 6 options are chosen."
+        },
+        {
+          "level": 8,
+          "name": "Summons VIII",
+          "areaOfEffect": "1-8 creatures",
+          "duration": "varies",
+          "range": "100'",
+          "type": "U",
+          "description": "As Summons II, except 7 options are chosen."
+        },
+        {
+          "level": 9,
+          "name": "Summons X",
+          "areaOfEffect": "1-9 creatures",
+          "duration": "varies",
+          "range": "100'",
+          "type": "U",
+          "description": "As Summons II, except 9 options are chosen."
+        },
+        {
+          "level": 10,
+          "name": "Demonic Gate I",
+          "areaOfEffect": "1 demon",
+          "duration": "C",
+          "range": "10'",
+          "type": "U",
+          "description": "Caster summons a Type I Demon that appears over the course of 2 rounds. The caster can only control it by concentrating. After the caster stops concentrating, the demon will fade out over the course of 2 rounds. However, during this two rounds, it will attack the closest being."
+        }
+      ]
+    },
+    {
+      "name": "Inner Walls",
+      "realm": "Channeling",
+      "type": "Base",
+      "profession": "Ranger",
+      "reference": "A-9.8.1",
+      "specialNotes": [
+        "Bless, Prayer, and Resistance are not cumulative with each other."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Heat Resistance",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 target",
+          "duration": "1 min/lvl",
+          "range": "touch",
+          "type": "U",
+          "description": "Target is protected from natural heat up to 170°F (treat as if target were in 70°F temperature). For temperatures above 170°F, subtract 100°F to determine the effective temperature for the target. Target also receives +20 to all RRs versus heat spells and heat attacks (+20 DB versus elemental fire and heat attacks). If the target is more than 10' from the caster at any time, the spell is cancelled."
+        },
+        {
+          "level": 2,
+          "name": "Cold Resistance",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 target",
+          "duration": "1 min/lvl",
+          "range": "touch",
+          "type": "U",
+          "description": "Target is protected from natural cold down to 20°F (treat as if target were in 70°F temperature). For temperatures below 20°F, add 50°F to determine the effective temperature for the target. Target also receives +20 to all RRs versus cold spells and cold attacks (+20 DB versus elemental cold and ice attacks). If the target is more than 10' from the caster at any time, the spell is cancelled."
+        },
+        {
+          "level": 3,
+          "name": "Resistance I",
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "Caster gets a special bonus of +5 to his resistance rolls and defensive bonus."
+        },
+        {
+          "level": 4,
+          "name": "Bless I",
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "Caster gets a special bonus of +5 to his maneuver rolls and defensive bonus."
+        },
+        {
+          "level": 5,
+          "name": "Prayer I",
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "Caster gets a special bonus of +5 to his resistance rolls and maneuver rolls."
+        },
+        {
+          "level": 6,
+          "name": null
+        },
+        {
+          "level": 7,
+          "name": "Sterilization",
+          "areaOfEffect": "1 cu'/lvl",
+          "duration": "—",
+          "range": "touch",
+          "type": "U",
+          "description": "Caster can sterilize 1 cubic foot per level of any solid or liquid. This will not affect inert poisons or harm creatures larger than 0.25\" in length."
+        },
+        {
+          "level": 8,
+          "name": "Resistance II",
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "As Resistance I, except bonus is +10."
+        },
+        {
+          "level": 9,
+          "name": "Bless II",
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "As Bless I, except bonus is +10."
+        },
+        {
+          "level": 10,
+          "name": "Prayer II",
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "As Prayer I, except bonus is +10."
+        }
+      ]
+    },
+    {
+      "name": "Moving Ways",
+      "realm": "Channeling",
+      "type": "Base",
+      "profession": "Ranger",
+      "reference": "A-9.8.2",
+      "specialNotes": [
+        "See Appendix 9.17.6 (p. 205) for notes on encumbrance limits for movement spells."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Rockrunning",
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "Caster can run on any nearly horizontal rocky and earthen surfaces as if he was on level ground. He will expend exhaustion points as if he were walking."
+        },
+        {
+          "level": 2,
+          "name": "Limbwalking",
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "Allows caster to walk along tree limbs as if he were on level ground."
+        },
+        {
+          "level": 3,
+          "name": "Swimming",
+          "areaOfEffect": "1 target",
+          "duration": "1 min/lvl",
+          "range": "100'",
+          "type": "U",
+          "description": "Target can swim without expending energy (i.e., will expend no exhaustion points)."
+        },
+        {
+          "level": 4,
+          "name": "Waterwalking",
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "Caster can walk on water as if he were on level dry ground. This may not be used on rough water."
+        },
+        {
+          "level": 5,
+          "name": "Sandrunning",
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "Caster can run on sandy surfaces as if he was on level ground. He will expend exhaustion points as if he were walking."
+        },
+        {
+          "level": 6,
+          "name": "Limbrunning",
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "As Limbwalking, except caster can move at two times normal pace (i.e., Run pace). He will expend exhaustion points as if he were walking."
+        },
+        {
+          "level": 7,
+          "name": "Traceless Passing",
+          "areaOfEffect": "caster",
+          "duration": "C",
+          "range": "self",
+          "type": "U",
+          "description": "Caster can walk without leaving tracks or other visible signs of his passing."
+        },
+        {
+          "level": 8,
+          "name": "Hide Tracks I",
+          "areaOfEffect": "tracks of 1",
+          "duration": "C",
+          "range": "50'",
+          "type": "U",
+          "description": "Caster can hide the tracks of any 1 being. This spell and Traceless Passing can be used simultaneously and caster will still maintain 50% activity (i.e., he can concentrate on both spells at the same time)."
+        },
+        {
+          "level": 9,
+          "name": "Waterrunning",
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "As Waterwalking, except caster can move at two times normal pace (i.e., Run pace). He will expend exhaustion points as if he were walking."
+        },
+        {
+          "level": 10,
+          "name": "Hide Tracks II",
+          "areaOfEffect": "tracks of 2",
+          "duration": "C",
+          "range": "50'",
+          "type": "U",
+          "description": "As Hide Tracks I, except it hides 2 beings' tracks."
+        }
+      ]
+    },
+    {
+      "name": "Nature's Guises",
+      "realm": "Channeling",
+      "type": "Base",
+      "profession": "Ranger",
+      "reference": "A-9.8.3",
+      "specialNotes": [
+        "For the purposes of spells on this list, an animal is a creature that has no greater than animal intelligence; and a plant has no measurable intelligence.",
+        "If Shade, Light, or Darkness is cast with the center point of its area of effect on a mobile target the area of effect moves with the target."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Hues",
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "Allows caster to take on the physical coloration of any 1 organic object. The caster must be in contact with object when the spell is cast. In many situations this will give a special bonus of +10 to +50 (GM's discretion) to Hiding maneuvers (and perhaps to some Stalking maneuvers)."
+        },
+        {
+          "level": 2,
+          "name": "Shade",
+          "areaOfEffect": "100'R",
+          "duration": "10 min/lvl",
+          "range": "touch",
+          "type": "E",
+          "description": "All shadows in the area of effect deepen. All Hiding maneuvers gain a special bonus of +25 (+10 to all Stalking maneuvers)."
+        },
+        {
+          "level": 3,
+          "name": "Freeze Liquid",
+          "areaOfEffect": "1 cu'/lvl",
+          "duration": "C",
+          "range": "10'",
+          "type": "F",
+          "description": "Up to 1 cubic foot of liquid per level is cooled to freezing at a rate of 1 cubic foot per round. This will not drop a liquid's temperature below -20°F (thus, liquids with a freezing point below -20°F will only get cooler)."
+        },
+        {
+          "level": 4,
+          "name": "Silent Moves",
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "Caster can move silently, so long as he does not create a sound originating more than 1' from his body. In many situations, this will give a special bonus of +10 to +50 (GM discretion) to Stalking and/or Hiding maneuvers."
+        },
+        {
+          "level": 5,
+          "name": "Self Cloaking",
+          "areaOfEffect": "caster",
+          "duration": "C",
+          "range": "self",
+          "type": "U",
+          "description": "Caster blends into surrounding terrain. This results in a special bonus of +75 to Hiding maneuvers. Caster may not move (appreciably) without loosing this bonus."
+        },
+        {
+          "level": 6,
+          "name": "Light",
+          "areaOfEffect": "10'R",
+          "duration": "10 min/lvl",
+          "range": "touch",
+          "type": "E",
+          "description": "Lights a 10'R area surrounding point touched."
+        },
+        {
+          "level": 7,
+          "name": "Darkness I",
+          "areaOfEffect": "10'R",
+          "duration": "10 min/lvl",
+          "range": "touch",
+          "type": "E",
+          "description": "Throws a 10'R area surrounding point touched into normal darkness. See Appendix A-9.17.12 (p. 206)."
+        },
+        {
+          "level": 8,
+          "name": "Shadow",
+          "areaOfEffect": "caster",
+          "duration": "1 hr/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "Caster and objects on his person appear to be a shadow; and thus are almost invisible in dark areas (e.g., in many situations this could be handled with a special bonus to Stalking and Hiding of between +25 and +75)."
+        },
+        {
+          "level": 9,
+          "name": "Study Form",
+          "areaOfEffect": "caster",
+          "duration": "P",
+          "range": "self",
+          "type": "I",
+          "description": "Caster studies and memorizes the form of one type of animal or plant for use with spells later on this list. The caster can only have as many forms studied as he has levels."
+        },
+        {
+          "level": 10,
+          "name": "Plant Facade",
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "E",
+          "description": "Allows caster to appear as any one type of plant that he has studied. Caster retains his size and will not smell or feel like the plant (i.e., it is purely a visual illusion and is subject to normal illusion rules, see Appendix A-9.17.14, p. 206)."
+        }
+      ]
+    },
+    {
+      "name": "Nature's Summons",
+      "realm": "Channeling",
+      "type": "Base",
+      "profession": "Ranger",
+      "reference": "A-9.8.4",
+      "specialNotes": [
+        "The caster must be outdoors to cast the spells from this list.",
+        "When summoning, the caster can specify a type of animal (bird, squirrel, deer, etc.). An animal of that type must exist within the region and the animal must be able to reach the caster within the specified time (this is usually a range of about 20 miles). If multiple animals exist, a random animal is summoned. The animal will take 10+1d100 minutes to arrive. The animal must leave when the spell expires. If the spell is cast again, a different animal will be summoned.",
+        "For the duration of the spell(s), the animal(s) summoned will ignore their natural instincts. For example, if a creature is summoned for warmth and a creature is summoned as a guardian, the two creatures will not be antagonistic to each other.",
+        "If a summoned animal is attacked, it will attack back in its natural fashion (and will no longer be under the influence of the spell). However, this violates the “trust” of the animal.",
+        "The animal summoning spells on this list require that the caster has done nothing to violate the trust of the animals in the area. If this trust is violated, the summoning spell types change to Fm and all animals will now get an RR (a special modifier of +50) to resist (e.g., harming a Summoned animal would be a violation)."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Summon Nourishment",
+          "areaOfEffect": "1 creature",
+          "duration": "—",
+          "range": "varies",
+          "type": "U",
+          "description": "An animal will arrive bearing some form of nourishment: berries, nuts, or tubers (vegetable matter). The animal will drop the food and return to the wilderness."
+        },
+        {
+          "level": 2,
+          "name": "Summon Warmth",
+          "areaOfEffect": "1 creature",
+          "duration": "8 hours",
+          "range": "varies",
+          "type": "U",
+          "description": "A heavily-furred animal will arrive and lie down near the caster. The animal will allow the caster (and only the caster) to lie down next to it."
+        },
+        {
+          "level": 3,
+          "name": "Summon Guide",
+          "areaOfEffect": "1 creature",
+          "duration": "24 hours (C)",
+          "range": "varies",
+          "type": "U",
+          "description": "An animal who knows the path to a specific location will arrive. The animal will guide the caster to that location as long as he concentrates on the desired location."
+        },
+        {
+          "level": 4,
+          "name": "Summon Guardian",
+          "areaOfEffect": "1 creature",
+          "duration": "8 hours",
+          "range": "varies",
+          "type": "U",
+          "description": "A suitable large animal that is capable of inflicting at least Medium animal attacks will arrive. This animal will attempt to protect the caster from hostile attacks. If the caster leaves the general area in which the spell was cast, the animal will not travel with him (i.e., it will leave)."
+        },
+        {
+          "level": 5,
+          "name": "Summon Mount",
+          "areaOfEffect": "1 creature",
+          "duration": "24 hours",
+          "range": "varies",
+          "type": "U",
+          "description": "A large animal will arrive and serve as a mount for the caster."
+        },
+        {
+          "level": 6,
+          "name": "Summon Hunter",
+          "areaOfEffect": "1 creature",
+          "duration": "—",
+          "range": "varies",
+          "type": "U",
+          "description": "As Summon Nourishment, except animal brings a recently killed prey (some form of meat)."
+        },
+        {
+          "level": 7,
+          "name": "Summon Sense",
+          "areaOfEffect": "1 creature",
+          "duration": "24 hours (C)",
+          "range": "varies",
+          "type": "U",
+          "description": "An animal with a specified heightened sense will arrive. For the duration of the spell, the animal will “perceive” for the caster. The caster can concentrate to have the animal communicate what he has been perceiving."
+        },
+        {
+          "level": 8,
+          "name": null
+        },
+        {
+          "level": 9,
+          "name": "Summon Group",
+          "areaOfEffect": "1 group",
+          "duration": "24 hours",
+          "range": "varies",
+          "type": "U",
+          "description": "A “group” of animals will arrive and stay near the area where the spell was cast. For the purposes of this spell, the animals summoned must normally travel in groups (e.g., wolves, deer, birds, etc.)."
+        },
+        {
+          "level": 10,
+          "name": "Mass Summons",
+          "areaOfEffect": "1 creature/lvl",
+          "duration": "varies",
+          "range": "varies",
+          "type": "U",
+          "description": "The caster can use any lower level spells on this list, except that one animal per level will be summoned."
+        }
+      ]
+    },
+    {
+      "name": "Nature's Way",
+      "realm": "Channeling",
+      "type": "Base",
+      "profession": "Ranger",
+      "reference": "A-9.8.5",
+      "specialNotes": [
+        "Some of the spells on this list are Passive in type. The target of the spell is allowed a RR, but success only indicates that the target is aware that a spell was cast upon him."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Trap Detection",
+          "areaOfEffect": "5'R",
+          "duration": "1 min/lvl",
+          "range": "50'",
+          "type": "P",
+          "description": "Caster has a 75% chance of detecting a trap in the area of effect. The caster can concentrate on a different area each round. There must be living plants or animals in the area of effect or no information will be gained."
+        },
+        {
+          "level": 2,
+          "name": "Water Finding I",
+          "areaOfEffect": "1 mile R",
+          "duration": "—",
+          "range": "self",
+          "type": "I",
+          "description": "Caster can locate the closest natural source of running water, exposed groundwater, etc. exceeding 1 gallon. He will learn the approximate size and quality of source."
+        },
+        {
+          "level": 3,
+          "name": "Fire Starting",
+          "areaOfEffect": "1'R",
+          "duration": "—",
+          "range": "1'",
+          "type": "E",
+          "description": "Allows caster to set a fire of 1' radius. Fire will burn as long as there is fuel. A target in the 1' radius will take an 'A' Heat critical."
+        },
+        {
+          "level": 4,
+          "name": null
+        },
+        {
+          "level": 5,
+          "name": "Food Finding I",
+          "areaOfEffect": "1 mile R",
+          "duration": "—",
+          "range": "self",
+          "type": "I",
+          "description": "Caster learns location, type, and approximate quantity of edible food (e.g., dead animal matter, plants, etc.). The food source must exceed 1 pound."
+        },
+        {
+          "level": 6,
+          "name": "Water Purification",
+          "areaOfEffect": "varies",
+          "duration": "P",
+          "range": "touch",
+          "type": "E",
+          "description": "Allows caster to purify a number of gallons of water equal to his level."
+        },
+        {
+          "level": 7,
+          "name": "Shelter Finding I",
+          "areaOfEffect": "1 mile R",
+          "duration": "—",
+          "range": "self",
+          "type": "I",
+          "description": "Caster learns location, type, and approximate size of any waterproof, covered space exceeding 125 cubic feet. The shelter must have an entry (exceeding 2' radius) opening onto open air."
+        },
+        {
+          "level": 8,
+          "name": "Lesser Traps",
+          "areaOfEffect": "1-10'R",
+          "duration": "P",
+          "range": "touch",
+          "type": "E",
+          "description": "This spell creates a minor, normal trap (constructed magically). The trap can deliver up to a 'B' critical strike (must be either a Slash, a Krush, or a Puncture; specified by the caster at the time of casting) to any one target. The size of the trap can vary from 1' radius to 10' radius. The time to construct the trap is 1 round per 1' radius."
+        },
+        {
+          "level": 9,
+          "name": "Weather Prediction I",
+          "areaOfEffect": "caster",
+          "duration": "—",
+          "range": "1 mi/lvl",
+          "type": "I",
+          "description": "Gives caster a 95% chance of predicting time, type, and severity of weather over next 24 hour period."
+        },
+        {
+          "level": 10,
+          "name": "Nature's Awareness I",
+          "areaOfEffect": "100'R",
+          "duration": "C",
+          "range": "self",
+          "type": "I",
+          "description": "Caster can monitor animate activity in the area (e.g., he will be aware of subtle movements). For the duration of this spell, the caster cannot move."
+        }
+      ]
+    },
+    {
+      "name": "Path Mastery",
+      "realm": "Channeling",
+      "type": "Base",
+      "profession": "Ranger",
+      "reference": "A-9.8.6",
+      "specialNotes": [
+        "The various “Path” spells (Pathfinding, Path Lore, etc.) share a common definition of “path.” A “Path,” for these purposes, is a road, track or way created or constructed for a purpose, and along which something travels or moves with at least moderate frequency. This may have been constructed by men, animals, or other means. In addition, the bounds of the path, for the purposes of these spells, should be between those points at which a larger path, population center (e.g., village, town, city, etc.), or dead end intersects the original."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Pathlore",
+          "areaOfEffect": "10'R",
+          "duration": "—",
+          "range": "self",
+          "type": "I",
+          "description": "Caster learns origin and nearest “destination” of the closest path within the area of effect."
+        },
+        {
+          "level": 2,
+          "name": "Nightvision",
+          "areaOfEffect": "caster",
+          "duration": "10 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "Target can see 100' on a normal night as if it were daylight. See Appendix A-9.17.12 (p. 206)."
+        },
+        {
+          "level": 3,
+          "name": "Tracking I",
+          "areaOfEffect": "caster",
+          "duration": "C",
+          "range": "self",
+          "type": "U",
+          "description": "Caster gets a special bonus of +50 for all Tracking maneuvers."
+        },
+        {
+          "level": 4,
+          "name": "Path Tale",
+          "areaOfEffect": "caster",
+          "duration": "C",
+          "range": "self",
+          "type": "I",
+          "description": "Caster acquires visual image of any user(s) of a given path, up to 1 hour in the past per level of the caster."
+        },
+        {
+          "level": 5,
+          "name": "Pathfinding I",
+          "areaOfEffect": "caster",
+          "duration": "C",
+          "range": "1 mile",
+          "type": "I",
+          "description": "Caster learns the location(s) of any path(s) within 1 mile. This spell reveals the nearest point on path, but not the path's course."
+        },
+        {
+          "level": 6,
+          "name": "Tracks Lore",
+          "areaOfEffect": "caster",
+          "duration": "—",
+          "range": "touch",
+          "type": "I",
+          "description": "Caster learns origin of tracks, and acquires a visual image of the one who left them. Caster will gain a special bonus of +25 when tracking this particular being or animal."
+        },
+        {
+          "level": 7,
+          "name": "Detect Ambush I",
+          "areaOfEffect": "50'R",
+          "duration": "10 min/lvl (C)",
+          "range": "self",
+          "type": "I",
+          "description": "Caster is aware of any being within the area of effect that has hostile intentions towards him. The hostility must be directed specifically at the caster. The being's hostility must be active (i.e., the being intends to perform aggressive actions), not passive (i.e., no action is planned)."
+        },
+        {
+          "level": 8,
+          "name": "Passing Lore",
+          "areaOfEffect": "1 object",
+          "duration": "—",
+          "range": "touch",
+          "type": "I",
+          "description": "Caster acquires visual and aural (sound) image of any being or animal that has passed within a 50' radius of a specific object. The being or animal can have passed up to 1 hour per level earlier. If more than one being or animal has passed, the caster will see them one image at a time, 1 image per round (starting with the oldest image)."
+        },
+        {
+          "level": 9,
+          "name": "Pathfinding V",
+          "areaOfEffect": "caster",
+          "duration": "C",
+          "range": "5 miles",
+          "type": "I",
+          "description": "As Pathfinding I, except range is 5 miles."
+        },
+        {
+          "level": 10,
+          "name": "Animal Tongues",
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "I",
+          "description": "Allows caster to understand and “speak” the language of any 1 animal species."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{{!--
+  RMF Spell List Item Sheet — Spell Description Key Partial
+  Read-only legend rendered straight from CONFIG.RMF.spellDescriptionKey
+  (RMF Appendix A-9.3). This is shared rules reference, NOT item data —
+  it is not editable and not persisted on the document.
+--}}
+
+<div class="tab key-section" data-group="primary-tabs" data-tab="key">
+
+  <p class="rmf-key-intro">
+    {{localize "RMF.SpellList.KeyIntro"}}
+    {{#if key.reference}}<span class="ref">{{key.reference}}</span>{{/if}}
+  </p>
+
+  <div class="summary-wrapper">
+    <h3>{{localize "RMF.SpellKey.SpecialCodes"}}</h3>
+    <table class="summary-table">
+      <tbody>
+        {{#each key.specialCodes as |entry code|}}
+        <tr><th scope="row">{{entry.symbol}}</th><td>{{entry.description}}</td></tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="summary-wrapper">
+    <h3>{{localize "RMF.SpellKey.SpellTypes"}}</h3>
+    <table class="summary-table">
+      <tbody>
+        {{#each key.spellTypes as |desc code|}}
+        <tr><th scope="row">{{code}}</th><td>{{desc}}</td></tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="summary-wrapper">
+    <h3>{{localize "RMF.SpellKey.SpellSubTypes"}}</h3>
+    <table class="summary-table">
+      <tbody>
+        {{#each key.spellSubTypes as |desc code|}}
+        <tr><th scope="row">{{code}}</th><td>{{desc}}</td></tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="two-col-tables">
+    <div class="summary-wrapper">
+      <h3>{{localize "RMF.SpellKey.AreasOfEffect"}}</h3>
+      <table class="summary-table">
+        <tbody>
+          {{#each key.areasOfEffect as |desc code|}}
+          <tr><th scope="row">{{code}}</th><td>{{desc}}</td></tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    <div class="summary-wrapper">
+      <h3>{{localize "RMF.SpellKey.Ranges"}}</h3>
+      <table class="summary-table">
+        <tbody>
+          {{#each key.ranges as |desc code|}}
+          <tr><th scope="row">{{code}}</th><td>{{desc}}</td></tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="summary-wrapper">
+    <h3>{{localize "RMF.SpellKey.Durations"}}</h3>
+    <table class="summary-table">
+      <tbody>
+        {{#each key.durations as |desc code|}}
+        <tr><th scope="row">{{code}}</th><td>{{desc}}</td></tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="summary-wrapper">
+    <h3>{{localize "RMF.SpellKey.Definitions"}}</h3>
+    <table class="summary-table">
+      <tbody>
+        {{#each key.definitions as |desc term|}}
+        <tr><th scope="row">{{term}}</th><td>{{desc}}</td></tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+
+</div>

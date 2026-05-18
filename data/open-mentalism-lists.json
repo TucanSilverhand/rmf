@@ -1,0 +1,986 @@
+{
+  "lists": [
+    {
+      "name": "Anticipations",
+      "realm": "Mentalism",
+      "type": "Open",
+      "reference": "A-9.13.1",
+      "specialNotes": [
+        "When using Guess, the caster must have a limited number of options (i.e., finite and countable). After the spell is cast, the caster may not cast another Guess for the same information until his skill rank for this list has increased.",
+        "When dealing with Dreams, a GM should use symbology (see Appendix A-9.17.16, p. 207).",
+        "See App. A-9.17.13 (p. 206) for more on information spells."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Anticipate Missile",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 missile",
+          "duration": "—",
+          "range": "self",
+          "type": "I",
+          "description": "Caster is aware of any missiles being fired at him this round. If the caster is currently capable of moving, he gets a special bonus of +50 to his DB against the missile attack of his choice. It is assumed that the caster moves at least slightly to attempt to avoid the attack."
+        },
+        {
+          "level": 2,
+          "name": "Anticipate Blow",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 attack",
+          "duration": "—",
+          "range": "self",
+          "type": "I",
+          "description": "As Anticipate Missile, except applies to melee attacks."
+        },
+        {
+          "level": 3,
+          "name": "Guess",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "caster",
+          "duration": "—",
+          "range": "self",
+          "type": "I",
+          "description": "When faced with a choice about which he has little or no information (e.g., which corridor leads outside the quickest) the caster may cast this spell and the Gamemaster will determine which way he goes, biasing the choice favorable by 25% (e.g, roll 1-100: correct on 26-100, incorrect on 01-25)."
+        },
+        {
+          "level": 4,
+          "name": "Anticipate Spell",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 spell",
+          "duration": "—",
+          "range": "self",
+          "type": "I",
+          "description": "As Anticipate Missile, except applies to spell attacks. Caster gets a special bonus of +50 to his DB against a directed elemental attack; or +20 against an area elemental attack; or a basic spell attack suffers a special penalty of -10."
+        },
+        {
+          "level": 5,
+          "name": "Intuitions I",
+          "areaOfEffect": "caster",
+          "duration": "—",
+          "range": "self",
+          "type": "I",
+          "description": "Caster gains a vision of what will probably happen in the next minute if he takes a specified action."
+        },
+        {
+          "level": 6,
+          "name": "Anticipate Hostility",
+          "areaOfEffect": "10'R",
+          "duration": "—",
+          "range": "self",
+          "type": "I",
+          "description": "Caster is aware of any being within the area of effect that has hostile intentions towards him. The hostility must be directed specifically at the caster or the spell reveals nothing. The being's hostility must be active (i.e., driving the being to perform aggressive actions), not passive (i.e., hate exists, but no action is planned)."
+        },
+        {
+          "level": 7,
+          "name": null
+        },
+        {
+          "level": 8,
+          "name": "Dream I",
+          "areaOfEffect": "caster",
+          "duration": "sleep",
+          "range": "self",
+          "type": "I",
+          "description": "Caster has a dream relating to a topic decided upon just before retiring. This spell can only be used once per night. The caster must sleep a minimum of one normal sleep cycle."
+        },
+        {
+          "level": 9,
+          "name": "Room Feel I",
+          "areaOfEffect": "1'R/lvl",
+          "duration": "varies",
+          "range": "100'",
+          "type": "I",
+          "description": "Caster has a vision of what has occurred in a room or place; limited to up to 1 minute per level into the past. The size of the room is limited to the area of effect."
+        },
+        {
+          "level": 10,
+          "name": "Anticipations",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 being",
+          "duration": "—",
+          "range": "100'",
+          "type": "Pm",
+          "description": "Predicts most probable actions of a being (the target) in the next round; specifics are not learned (e.g., attack in melee, cast a spell; but no detail on attack target or what spell). This results in the caster being able to declare his statement of intent for the round after hearing what the target has decided to do. Note that the target is free to change his declared action with the requisite penalties."
+        }
+      ]
+    },
+    {
+      "name": "Attack Avoidance",
+      "realm": "Mentalism",
+      "type": "Open",
+      "reference": "A-9.13.2",
+      "specialNotes": [],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Turn Missile",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 missile",
+          "duration": "—",
+          "range": "100'",
+          "type": "U",
+          "description": "Caster can deflect any one missile that passes within 100' of him (caster must be able to see the missile). This causes 20 to be subtracted from the missile's attack."
+        },
+        {
+          "level": 2,
+          "name": "Turn Blade",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 attack",
+          "duration": "—",
+          "range": "100'",
+          "type": "U",
+          "description": "As Turn Missile, except applies to a melee attack."
+        },
+        {
+          "level": 3,
+          "name": "Shield",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "Creates an invisible force shield in front of the caster. This functions as a normal shield (subtracting 25 from appropriate attacks, etc.), except it does not occupy a hand. This spell cannot be combined with a “real” shield."
+        },
+        {
+          "level": 4,
+          "name": null
+        },
+        {
+          "level": 5,
+          "name": "Deflect I",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 missile",
+          "duration": "—",
+          "range": "100'",
+          "type": "U",
+          "description": "As Turn Missile except 100 is subtracted from the attack."
+        },
+        {
+          "level": 6,
+          "name": "Bladeturn I",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 attack",
+          "duration": "—",
+          "range": "100'",
+          "type": "U",
+          "description": "Caster can deflect any one melee attack that he can see (and is within range). This causes 50 to be subtracted from the attack."
+        },
+        {
+          "level": 7,
+          "name": null
+        },
+        {
+          "level": 8,
+          "name": "Aim Untrue I",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 missile",
+          "duration": "—",
+          "range": "100'",
+          "type": "U",
+          "description": "Caster can deflect any one missile that passes within 100' of him (caster must be able to see the missile). This causes the missile to automatically miss its target."
+        },
+        {
+          "level": 9,
+          "name": null
+        },
+        {
+          "level": 10,
+          "name": "Still Air",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1\"R/lvl",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "Creates a pocket of still air 1\" per level on all sides of the caster, that no outside gas can come into. Normally, one person will consume all of the oxygen in the pocket over the course of the spell (1 minute per level)."
+        }
+      ]
+    },
+    {
+      "name": "Brilliance",
+      "realm": "Mentalism",
+      "type": "Open",
+      "reference": "A-9.13.3",
+      "specialNotes": [
+        "None of the Aura spells (Self Aura and True Aura) are cumulative with each other or with the Blur spell."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Projected Light",
+          "areaOfEffect": "50' beam",
+          "duration": "10 min/lvl",
+          "range": "self",
+          "type": "E",
+          "description": "A beam of light (like a flashlight) springs from the caster's palm. This beam has a 50' effective range. When his hand is made into a fist, the light will “shut off” until the fist is opened again."
+        },
+        {
+          "level": 2,
+          "name": "Glow",
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "E",
+          "description": "Causes a small, 1\" diameter point of light that will glow softly. This spell provides enough light for Nightvision to work properly; but not enough light to allow much mobility in the dark."
+        },
+        {
+          "level": 3,
+          "name": "Light I",
+          "areaOfEffect": "10'R",
+          "duration": "10 min/lvl",
+          "range": "touch",
+          "type": "E",
+          "description": "Lights a 10' radius area about the point touched. If the point is on a mobile object or being, it will move with the object/being."
+        },
+        {
+          "level": 4,
+          "name": "Self Aura",
+          "areaOfEffect": "caster",
+          "duration": "10 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "Causes a bright aura about the caster, making him appear more powerful and subtracting 5 from all attacks."
+        },
+        {
+          "level": 5,
+          "name": "Light Eruption",
+          "rrMod": -10,
+          "areaOfEffect": "10'R",
+          "duration": "—",
+          "range": "100'",
+          "type": "F",
+          "description": "Causes a 10' radius sphere of intense light. All within are stunned for 1 round per 10 failure."
+        },
+        {
+          "level": 6,
+          "name": "Shock Bolt",
+          "areaOfEffect": "1 target",
+          "duration": "—",
+          "range": "100'",
+          "type": "DE",
+          "description": "A bolt of intense, charged light is shot form the palm of the caster. Results are determined on the Bolt Spell Attack Table A-10.9.9 (p. 228)."
+        },
+        {
+          "level": 7,
+          "name": "Darkness I",
+          "areaOfEffect": "10'R",
+          "duration": "10 min/lvl",
+          "range": "touch",
+          "type": "E",
+          "description": "As Light, except a 10' radius of normal darkness is created. See Appendix A-9.17.12 (p. 206)."
+        },
+        {
+          "level": 8,
+          "name": "True Aura",
+          "areaOfEffect": "caster",
+          "duration": "10 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "As Self Aura, except it makes him appear extremely powerful and subtracts 15 from all attacks."
+        },
+        {
+          "level": 9,
+          "name": null
+        },
+        {
+          "level": 10,
+          "name": "Light V",
+          "areaOfEffect": "50'R",
+          "duration": "10 min/lvl",
+          "range": "touch",
+          "type": "E",
+          "description": "As Light I, except radius is 50'."
+        }
+      ]
+    },
+    {
+      "name": "Cloaking",
+      "realm": "Mentalism",
+      "type": "Open",
+      "reference": "A-9.13.4",
+      "specialNotes": [
+        "Cloaking spells are not Invisibility spells and none of the normal rules for invisibility apply (e.g., the caster does not become “visible” when he attacks or is hit, etc.)."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Blur",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "Causes caster to appear blurred to attackers, subtracting 10 from all attacks directed at the caster."
+        },
+        {
+          "level": 2,
+          "name": "Shadow",
+          "areaOfEffect": "caster",
+          "duration": "10 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "Caster and objects on his person appear to be a shadow; and thus are almost invisible in dark areas (e.g., in many situations this could be handled with a special bonus between +25 and +75 to Stalking/Hiding maneuvers)."
+        },
+        {
+          "level": 3,
+          "name": "Unseen",
+          "areaOfEffect": "object",
+          "duration": "24 hours",
+          "range": "touch",
+          "type": "U",
+          "description": "A single object is made invisible (1 garment, 1 naked body, etc.); until 24 hours pass or the object is struck by a violent blow (being hit by a weapon, falling, etc.) or the object makes a violent move (i.e., an attack). See Appendix 9.17.5 (p. 204) for more on Invisibility."
+        },
+        {
+          "level": 4,
+          "name": "Cloaking I",
+          "rrMod": -50,
+          "areaOfEffect": "1 target",
+          "duration": "1 min/lvl (C)",
+          "range": "10'/lvl",
+          "type": "Fm",
+          "description": "Target makes an RR. Failure results in the caster being invisible to the target; others see the caster normally. If the caster makes an obvious action (e.g., talking, moving an object, etc.), the target may make another RR (the GM may deem it appropriate to apply modifiers to this RR based upon the action the caster takes). If the caster attacks the target, he may make another RR with a special modifier of +50. If the caster begins to concentrate (50% activity), he can extend the duration of this spell indefinitely (as long as he can concentrate)."
+        },
+        {
+          "level": 5,
+          "name": "Facades I",
+          "areaOfEffect": "caster",
+          "duration": "1 hr/lvl",
+          "range": "self",
+          "type": "E",
+          "description": "A limited illusion that allows the caster to look like any humanoid figure within 20% of his own size. See Appendix A-9.17.14 (p. 206) for more on illusions."
+        },
+        {
+          "level": 6,
+          "name": "Cloaking III",
+          "rrMod": -50,
+          "areaOfEffect": "3 targets",
+          "duration": "1 min/lvl (C)",
+          "range": "10'/lvl",
+          "type": "Fm",
+          "description": "As Cloaking I, except the caster can affect 3 targets (the caster makes one BAR that applies to all targets)."
+        },
+        {
+          "level": 7,
+          "name": "Cloaking Sphere I",
+          "areaOfEffect": "10'R",
+          "duration": "C",
+          "range": "self",
+          "type": "Fm",
+          "description": "As Cloaking I, except every target in the area of effect must make a RR (one BAR a round for all targets). Once a target makes a successful RR, he need not make another RR against the spell."
+        },
+        {
+          "level": 8,
+          "name": "Cloaking V",
+          "rrMod": -50,
+          "areaOfEffect": "5 targets",
+          "duration": "1 min/lvl (C)",
+          "range": "10'/lvl",
+          "type": "Fm",
+          "description": "As Cloaking I, except the caster can affect 5 targets (the caster makes one BAR that applies to all targets)."
+        },
+        {
+          "level": 9,
+          "name": "Cloaking Sphere II",
+          "areaOfEffect": "20'R",
+          "duration": "C",
+          "range": "self",
+          "type": "Fm",
+          "description": "As Cloaking Sphere I, except for the area of effect."
+        },
+        {
+          "level": 10,
+          "name": "Shadow Mentalist I",
+          "areaOfEffect": "varies",
+          "duration": "1 min/lvl",
+          "range": "100'",
+          "type": "F",
+          "description": "Creates a duplicate of the caster; if he concentrates, it will move as he wills; otherwise, it does exactly as he does. The duplicate is limited to moving within the area of effect. If the caster concentrates, he can “merge” the duplicate with himself and then split back apart again (making it difficult to discern which one is the “real” caster)."
+        }
+      ]
+    },
+    {
+      "name": "Damage Resistance",
+      "realm": "Mentalism",
+      "type": "Open",
+      "reference": "A-9.13.5",
+      "specialNotes": [
+        "For more on healing, see Section 24.1 (p. 75)."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Heat Resistance",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "Caster is protected from natural heat up to 170°F (treat as if target were in 70°F temperature). For temperatures above 170°F, subtract 100°F to determine the effective temperature for the target. Caster also receives +20 to all RRs versus heat spells and heat attacks (+20 DB versus elemental fire and heat attacks)."
+        },
+        {
+          "level": 2,
+          "name": "Cold Resistance",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "Caster is protected from natural cold down to 20°F (treat as if target were in 70°F temperature). For temperatures below 20°F, add 50°F to determine the effective temperature for the target. Caster also receives +20 to all RRs versus cold spells and cold attacks (+20 DB versus elemental cold and cold attacks)."
+        },
+        {
+          "level": 3,
+          "name": null
+        },
+        {
+          "level": 4,
+          "name": null
+        },
+        {
+          "level": 5,
+          "name": "Unpain I",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "Us",
+          "description": "Caster is able to sustain an additional 25% of his total concussion hits (round off) before passing out. Hits are still taken and remain when the duration expires."
+        },
+        {
+          "level": 6,
+          "name": "Stun Relief I",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "caster",
+          "duration": "—",
+          "range": "self",
+          "type": "Us",
+          "description": "Relieves 1 round's worth of accumulated stun."
+        },
+        {
+          "level": 7,
+          "name": "Resist Poison",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "caster",
+          "duration": "C",
+          "range": "self",
+          "type": "Us",
+          "description": "Delays the effect of a poison as long as the caster concentrates."
+        },
+        {
+          "level": 8,
+          "name": null
+        },
+        {
+          "level": 9,
+          "name": null
+        },
+        {
+          "level": 10,
+          "name": "Unpain II",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "As Unpain I, except 50% additional hits may be sustained."
+        }
+      ]
+    },
+    {
+      "name": "Delving",
+      "realm": "Mentalism",
+      "type": "Open",
+      "reference": "A-9.13.6",
+      "specialNotes": [
+        "A “curse” is usually something that is detrimental and magical in nature (e.g., delivered from the Curses spell list, see Spell Law). The GM may decide that the “curses” spells on this spell list apply only to magical curses.",
+        "See App. A-9.17.13 (p. 206) for more on information spells."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Item Feel",
+          "areaOfEffect": "1 object",
+          "duration": "—",
+          "range": "touch",
+          "type": "I",
+          "description": "Caster receives basic idea of item's purpose, if any."
+        },
+        {
+          "level": 2,
+          "name": "Detect Power",
+          "areaOfEffect": "varies",
+          "duration": "1 min/lvl (C)",
+          "range": "touch",
+          "type": "I",
+          "description": "Detects power in an object, but not what realm or how much; caster may concentrate on a different object each round."
+        },
+        {
+          "level": 3,
+          "name": "Origins",
+          "areaOfEffect": "1 object",
+          "duration": "—",
+          "range": "touch",
+          "type": "I",
+          "description": "Gives a general idea of the place of origin of an item."
+        },
+        {
+          "level": 4,
+          "name": null
+        },
+        {
+          "level": 5,
+          "name": "Detect Curse",
+          "areaOfEffect": "1 object",
+          "duration": "—",
+          "range": "touch",
+          "type": "I",
+          "description": "Detects if a curse is on an item."
+        },
+        {
+          "level": 6,
+          "name": "Power Lore",
+          "areaOfEffect": "1 object",
+          "duration": "—",
+          "range": "touch",
+          "type": "I",
+          "description": "Gives the origins of an item's power."
+        },
+        {
+          "level": 7,
+          "name": "Rock Lore",
+          "areaOfEffect": "1 rock",
+          "duration": "—",
+          "range": "touch",
+          "type": "I",
+          "description": "Gives details of where, when, and how the examined piece of rock was worked."
+        },
+        {
+          "level": 8,
+          "name": "Item Vision",
+          "areaOfEffect": "1 object",
+          "duration": "varies",
+          "range": "touch",
+          "type": "I",
+          "description": "Gives a vision of a significant event in the item's past."
+        },
+        {
+          "level": 9,
+          "name": null
+        },
+        {
+          "level": 10,
+          "name": "Delving",
+          "areaOfEffect": "1 object",
+          "duration": "—",
+          "range": "touch",
+          "type": "I",
+          "description": "Gives significant details about an item's construction and purpose (not specific powers)."
+        }
+      ]
+    },
+    {
+      "name": "Detections",
+      "realm": "Mentalism",
+      "type": "Open",
+      "reference": "A-9.13.7",
+      "specialNotes": [
+        "“Evil” (for the Detect Evil spell) is defined as something that causes (or is a source of) intentional suffering, injury, or destruction. See Appendix A-9.17.2 (p. 204)."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Detect Mentalism",
+          "areaOfEffect": "5'R",
+          "duration": "1 min/lvl (C)",
+          "range": "50'",
+          "type": "P",
+          "description": "Detects any active spell or item from the Mentalism realm; caster can concentrate on a 5' radius area each round."
+        },
+        {
+          "level": 2,
+          "name": "Detect Essence",
+          "areaOfEffect": "5'R",
+          "duration": "1 min/lvl (C)",
+          "range": "50'",
+          "type": "P",
+          "description": "As Detect Mentalism, except realm is Essence."
+        },
+        {
+          "level": 3,
+          "name": "Detect Channeling",
+          "areaOfEffect": "5'R",
+          "duration": "1 min/lvl (C)",
+          "range": "50'",
+          "type": "P",
+          "description": "As Detect Mentalism, except realm is Channeling."
+        },
+        {
+          "level": 4,
+          "name": "Detect Emotion",
+          "areaOfEffect": "5'R",
+          "duration": "1 min/lvl (C)",
+          "range": "50'",
+          "type": "P",
+          "description": "As Detect Mentalism, except caster can detect extremes of emotion and which emotions they are (e.g., hatred, love, sadness, etc.). If there are no extremes of emotion (i.e., only normal feelings), this spell detects nothing."
+        },
+        {
+          "level": 5,
+          "name": "Detect Invisible",
+          "areaOfEffect": "5'R",
+          "duration": "1 min/lvl (C)",
+          "range": "50'",
+          "type": "P",
+          "description": "As Detect Mentalism, except detects all invisible things; all attacks against something so detected are at -50."
+        },
+        {
+          "level": 6,
+          "name": "Detect Evil",
+          "areaOfEffect": "5'R",
+          "duration": "1 min/lvl (C)",
+          "range": "50'",
+          "type": "P",
+          "description": "As Detect Mentalism, except detects if a being is evil or an item created by evil or long used by a very evil person."
+        },
+        {
+          "level": 7,
+          "name": "Detect Traps",
+          "areaOfEffect": "5'R",
+          "duration": "1 min/lvl (C)",
+          "range": "50'",
+          "type": "P",
+          "description": "As Detect Mentalism, except that it gives a 75% chance of detecting a trap (trap sophistication modifiers may reduce or enhance this chance)."
+        },
+        {
+          "level": 8,
+          "name": "Perceive Power I",
+          "areaOfEffect": "5'R",
+          "duration": "1 min/lvl (C)",
+          "range": "50'",
+          "type": "P",
+          "description": "As Detect Mentalism, except it will give an estimate of the power (i.e., level) of the person or item or spell examined."
+        },
+        {
+          "level": 9,
+          "name": null
+        },
+        {
+          "level": 10,
+          "name": "Power Typing",
+          "areaOfEffect": "5'R",
+          "duration": "1 min/lvl (C)",
+          "range": "50'",
+          "type": "P",
+          "description": "As Detect Mentalism, except it analyzes general spell type (in item or cast) and what list it was cast from. In the case of a person it gives the person's profession."
+        }
+      ]
+    },
+    {
+      "name": "Illusions",
+      "realm": "Mentalism",
+      "type": "Open",
+      "reference": "A-9.13.8",
+      "specialNotes": [
+        "If more than one of the options may be chosen, the same option may be chosen more than once. For example, if two options were available, the range for an Illusion could be doubled to 100' and then doubled again to 200'.",
+        "Illusions created with spells off of this list are “real” in as much as they can be seen and/or heard. Detecting that an illusion is just an illusion can only be accomplished through spells or through the use of conflicting senses (i.e., you reach out and don't feel anything).",
+        "See Appendix A-9.17.14 (p. 206) for more."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Bending",
+          "areaOfEffect": "1000 cu'",
+          "duration": "10 min/lvl",
+          "range": "100'",
+          "type": "E",
+          "description": "Makes an inanimate object (up to 1000 cubic feet) appear to be 10' to one side of its actual location."
+        },
+        {
+          "level": 2,
+          "name": null
+        },
+        {
+          "level": 3,
+          "name": "Light/Sound Mirage",
+          "areaOfEffect": "10'R",
+          "duration": "1 min/lvl",
+          "range": "50'",
+          "type": "E",
+          "description": "Creates any simple immobile image or scene up to 10' radius or any constant (including repetitive) sounds coming from a 10' radius."
+        },
+        {
+          "level": 4,
+          "name": null
+        },
+        {
+          "level": 5,
+          "name": "Illusion II",
+          "areaOfEffect": "10'R",
+          "duration": "1 min/lvl",
+          "range": "50'",
+          "type": "E",
+          "description": "Creates a simple immobile image or scene up to an area of 10' radius. One of the following options may also be chosen: a) sound can be added to the illusion or b) the duration can be doubled or c) the range can be doubled or d) the radius of effect can be doubled. Note that all parts of the area of effect must be within the range of the spell."
+        },
+        {
+          "level": 6,
+          "name": "Phantasm I",
+          "areaOfEffect": "10'R",
+          "duration": "1 min/lvl (C)",
+          "range": "100'",
+          "type": "E",
+          "description": "Creates the image of one object or being, that will move however the caster wants while he concentrates. When the caster stops concentrating the image remains, but stops moving (the caster can resume concentration later and resume moving the phantasm). The image must fit in the area of effect."
+        },
+        {
+          "level": 7,
+          "name": "Light Glamour",
+          "areaOfEffect": "1 object",
+          "duration": "1 day/lvl",
+          "range": "50'",
+          "type": "E",
+          "description": "This spell may only be cast on one inanimate object of up to 10 lb./level of the caster. The spell alters the visual appearance of the object, concealing its true appearance."
+        },
+        {
+          "level": 8,
+          "name": "Illusion III",
+          "areaOfEffect": "10'R",
+          "duration": "1 min/lvl",
+          "range": "50'",
+          "type": "E",
+          "description": "As Illusion II, except two of the options can be chosen."
+        },
+        {
+          "level": 9,
+          "name": null
+        },
+        {
+          "level": 10,
+          "name": "Waiting Illusion I",
+          "areaOfEffect": "10'R",
+          "duration": "varies",
+          "range": "50'",
+          "type": "E",
+          "description": "As Light/Sound Mirage, except the spell can be delayed up to 24 hours or until triggered by: a) time period, b) specified movements, or c) specified sounds."
+        }
+      ]
+    },
+    {
+      "name": "Self Healing",
+      "realm": "Mentalism",
+      "type": "Open",
+      "reference": "A-9.13.9",
+      "specialNotes": [
+        "See Section 24.1 (p. 75) for more on healing."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": null
+        },
+        {
+          "level": 2,
+          "name": "Clot I",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "caster",
+          "duration": "varies",
+          "range": "self",
+          "type": "Us",
+          "description": "Clots a wound to reduce bleeding (i.e., hits per round damage) by one as long as caster concentrates or is immobile. This effect is permanent after an hour. If caster is unconscious, spell will operate without concentration."
+        },
+        {
+          "level": 3,
+          "name": null
+        },
+        {
+          "level": 4,
+          "name": "Clot III",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "caster",
+          "duration": "varies",
+          "range": "self",
+          "type": "Us",
+          "description": "As Clot I, except bleeding is reduced by up to 3 hits per round."
+        },
+        {
+          "level": 5,
+          "name": "Pain Relief I",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "caster",
+          "duration": "C",
+          "range": "self",
+          "type": "Us",
+          "description": "Heals 1 hit per minute for as long as the caster concentrates. If caster is unconscious, this spell will operate without concentration."
+        },
+        {
+          "level": 6,
+          "name": "Fracture Repair",
+          "areaOfEffect": "caster",
+          "duration": "varies",
+          "range": "self",
+          "type": "U",
+          "description": "Concentrating with this spell for 2 hours will repair a broken bone (though not a shattered or destroyed bone)."
+        },
+        {
+          "level": 7,
+          "name": "Cut Repair I",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "caster",
+          "duration": "—",
+          "range": "self",
+          "type": "U",
+          "description": "As Clot I, except it is permanent immediately."
+        },
+        {
+          "level": 8,
+          "name": "Muscle/Tendon Repair",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "caster",
+          "duration": "varies",
+          "range": "self",
+          "type": "U",
+          "description": "As Fracture Repair I, except damaged muscles or tendons may be repaired."
+        },
+        {
+          "level": 9,
+          "name": null
+        },
+        {
+          "level": 10,
+          "name": "Minor Nerve Repair",
+          "areaOfEffect": "caster",
+          "duration": "varies",
+          "range": "self",
+          "type": "U",
+          "description": "Repairs minor damage to one nerve. Requires a 1 day recovery period. Minor damage is defined as any nerve damage that results in penalties up to -20."
+        }
+      ]
+    },
+    {
+      "name": "Spell Resistance",
+      "realm": "Mentalism",
+      "type": "Open",
+      "reference": "A-9.13.10",
+      "specialNotes": [],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Protection I",
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "Subtracts 5 from elemental attack rolls against the caster and adds 5 to all of the caster's RRs vs. spells."
+        },
+        {
+          "level": 2,
+          "name": "Cancel Mentalism",
+          "areaOfEffect": "1 spell",
+          "duration": "C",
+          "range": "self",
+          "type": "F",
+          "description": "When the caster is a target of a Mentalism spell, the “incoming” spell must first make an RR before the caster makes an RR. For RR purposes, each spell uses a level equal its caster's level. If the “incoming” spell passes the RR, it may target the caster of this spell normally; otherwise the incoming spell has no effect on this target."
+        },
+        {
+          "level": 3,
+          "name": null
+        },
+        {
+          "level": 4,
+          "name": "Cancel Essence",
+          "areaOfEffect": "1 spell",
+          "duration": "C",
+          "range": "self",
+          "type": "F",
+          "description": "As Cancel Mentalism, except affects spells from the realm of Essence."
+        },
+        {
+          "level": 5,
+          "name": "Protection II",
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "As Protection I, except bonuses are 10."
+        },
+        {
+          "level": 6,
+          "name": "Cancel Channeling",
+          "areaOfEffect": "1 spell",
+          "duration": "C",
+          "range": "self",
+          "type": "F",
+          "description": "As Cancel Mentalism, except affects spells from the realm of Channeling."
+        },
+        {
+          "level": 7,
+          "name": null
+        },
+        {
+          "level": 8,
+          "name": "Mind Shield",
+          "areaOfEffect": "caster",
+          "duration": "C",
+          "range": "self",
+          "type": "U",
+          "description": "Creates a shimmering shield in front of the caster. The shield subtracts 10 from all frontal Mentalism attack rolls on the caster (base and elemental). In addition, if the caster performs no other actions during a round, he can “parry” (as with a normal shield) one spell attack. The parry bonus is equal to 10 plus the caster's skill rank with this spell list."
+        },
+        {
+          "level": 9,
+          "name": null
+        },
+        {
+          "level": 10,
+          "name": "Essence Shield",
+          "areaOfEffect": "caster",
+          "duration": "C",
+          "range": "self",
+          "type": "U",
+          "description": "As Mind Shield, except is effective only against Essence spells."
+        }
+      ]
+    }
+  ]
+}

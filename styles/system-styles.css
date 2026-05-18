@@ -1857,3 +1857,45 @@
   display: flex;
   align-items: center;
 }
+
+/* -------------------------------------------------
+   Spell List sheet — vertical scroll
+   The enumerated flex/scroll-chain selectors above cover
+   rmf-item-sheet-root / race / category / skill / realm
+   but not spell-list-sheet-root, so its .sheet-body never
+   got a constrained height and could not scroll. This
+   block replicates that chain scoped to the spell-list
+   root only (purely additive — no other sheet affected).
+   ------------------------------------------------- */
+.window-app .window-content > form.standard-form > .spell-list-sheet-root,
+.application .window-content > form.standard-form > .spell-list-sheet-root,
+.window-app .window-content > .spell-list-sheet-root,
+.application .window-content > .spell-list-sheet-root {
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 0 !important;
+}
+.spell-list-sheet-root .sheet-main-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+.spell-list-sheet-root .sheet-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+.spell-list-sheet-root .sheet-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.window-app .window-content > form.standard-form > .spell-list-sheet-root .sheet-body,
+.application .window-content > form.standard-form > .spell-list-sheet-root .sheet-body {
+  overflow-y: auto !important;
+  overflow-x: hidden;
+}

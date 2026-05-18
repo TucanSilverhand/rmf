@@ -1,0 +1,86 @@
+{{!--
+  RMF Spell List Item Sheet — Details Partial
+  Read-only summary: meta, the 10-level spell ladder (parameters) and
+  the spell descriptions + special notes.
+--}}
+
+<div class="tab details-section" data-group="primary-tabs" data-tab="details" style="display: block;">
+
+  {{!-- Meta --}}
+  <div class="summary-wrapper">
+    <h3>{{localize "RMF.SpellList.Meta"}}</h3>
+    <div class="two-col-tables">
+      <table class="summary-table">
+        <tbody>
+          <tr><th scope="row">{{localize "RMF.SpellList.Realm"}}</th><td><input type="text" value="{{system.realm}}" readonly /></td></tr>
+          <tr><th scope="row">{{localize "RMF.SpellList.ListType"}}</th><td><input type="text" value="{{system.listType}}" readonly /></td></tr>
+          <tr><th scope="row">{{localize "RMF.SpellList.Profession"}}</th><td><input type="text" value="{{system.profession}}" readonly /></td></tr>
+        </tbody>
+      </table>
+      <table class="summary-table">
+        <tbody>
+          <tr><th scope="row">{{localize "RMF.SpellList.Reference"}}</th><td><input type="text" value="{{system.reference}}" readonly /></td></tr>
+          <tr><th scope="row">{{localize "RMF.SpellList.SpellCount"}}</th><td><input type="text" value="{{system.totalSpells}}" readonly /></td></tr>
+          <tr><th scope="row">{{localize "RMF.Category.Source"}}</th><td><input type="text" value="{{system.fromBook}}" readonly /></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  {{!-- Spell ladder (parameters) --}}
+  <div class="summary-wrapper">
+    <h3>{{localize "RMF.SpellList.Spells"}}</h3>
+    <table class="summary-table rmf-spell-ladder">
+      <thead>
+        <tr>
+          <th>{{localize "RMF.SpellList.Lvl"}}</th>
+          <th>{{localize "RMF.SpellList.SpellName"}}</th>
+          <th>{{localize "RMF.SpellList.Area"}}</th>
+          <th>{{localize "RMF.SpellList.Duration"}}</th>
+          <th>{{localize "RMF.SpellList.Range"}}</th>
+          <th>{{localize "RMF.SpellList.Type"}}</th>
+          <th>{{localize "RMF.SpellList.Codes"}}</th>
+          <th>{{localize "RMF.SpellList.RRMod"}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each spellRows as |row|}}
+        <tr class="rmf-spell-row{{#if row.isEmpty}} rmf-spell-empty{{/if}}">
+          <td class="rmf-spell-lvl">{{row.level}}</td>
+          <td>{{#if row.isEmpty}}<em>—</em>{{else}}{{row.name}}{{/if}}</td>
+          <td>{{row.areaOfEffect}}</td>
+          <td>{{row.duration}}</td>
+          <td>{{row.range}}</td>
+          <td>{{row.type}}</td>
+          <td>{{#each row.codeFlags as |c|}}{{#if c.checked}}<span class="code-flag" title="{{c.label}}">{{c.sym}}</span> {{/if}}{{/each}}</td>
+          <td>{{#unless row.isEmpty}}{{row.rrModStr}}{{/unless}}</td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+
+  {{!-- Spell descriptions --}}
+  <div class="summary-wrapper">
+    <h3>{{localize "RMF.SpellList.Descriptions"}}</h3>
+    <dl class="rmf-spell-desc-list">
+      {{#each spellRows as |row|}}
+      {{#unless row.isEmpty}}
+      <dt>{{row.level}}. {{row.name}}</dt>
+      <dd class="ProseMirror">{{{row.enrichedDescription}}}</dd>
+      {{/unless}}
+      {{/each}}
+    </dl>
+  </div>
+
+  {{!-- Special notes --}}
+  {{#if specialNoteRows.length}}
+  <div class="summary-wrapper">
+    <h3>{{localize "RMF.SpellList.SpecialNotes"}}</h3>
+    <ul class="rmf-spell-notes">
+      {{#each specialNoteRows as |n|}}<li>{{n.note}}</li>{{/each}}
+    </ul>
+  </div>
+  {{/if}}
+
+</div>

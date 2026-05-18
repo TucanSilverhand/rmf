@@ -1,0 +1,926 @@
+{
+  "lists": [
+    {
+      "name": "Blood Law",
+      "realm": "Channeling",
+      "type": "Closed",
+      "reference": "A-9.6.1",
+      "specialNotes": [
+        "See Section 24.1 (p. 75) for more information on healing."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Flowstop I",
+          "areaOfEffect": "1 target",
+          "duration": "—",
+          "range": "touch",
+          "type": "U",
+          "description": "Allows caster to stop bleeding on a wound that is bleeding 1 hit per round; target may not be moved, or bleeding will resume at prior rate."
+        },
+        {
+          "level": 2,
+          "name": "Flowstop III",
+          "areaOfEffect": "1 target",
+          "duration": "—",
+          "range": "touch",
+          "type": "U",
+          "description": "As Flowstop I, except that caster can stop bleeding on a wound that is bleeding up to 3 hits per round (total)."
+        },
+        {
+          "level": 3,
+          "name": "Clotting I",
+          "areaOfEffect": "1 target",
+          "duration": "—",
+          "range": "touch",
+          "type": "U",
+          "description": "Allows caster to stop bleeding on a wound that is bleeding 1 hit per round; for 1 hour, target can move at no more than a walking pace, or bleeding will resume at prior rate."
+        },
+        {
+          "level": 4,
+          "name": "Flowstop V",
+          "areaOfEffect": "1 target",
+          "duration": "—",
+          "range": "touch",
+          "type": "U",
+          "description": "As Flowstop I, except that caster can stop bleeding in a wound that is bleeding up to 5 hits per round."
+        },
+        {
+          "level": 5,
+          "name": "Limb Preservation",
+          "codes": [
+            "spellSet",
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 limb",
+          "duration": "1 day/lvl",
+          "range": "touch",
+          "type": "U",
+          "description": "Allows caster to prevent the deterioration of 1 limb (even while severed). Also requires use of same spells from Muscle Law, Bone Law, and Nerve Law."
+        },
+        {
+          "level": 6,
+          "name": "Cut Repair I",
+          "areaOfEffect": "1 target",
+          "duration": "P",
+          "range": "touch",
+          "type": "U",
+          "description": "Allows caster to stop bleeding from 1 wound that is bleeding 1 hit per round."
+        },
+        {
+          "level": 7,
+          "name": "Clotting III",
+          "areaOfEffect": "1 target",
+          "duration": "—",
+          "range": "touch",
+          "type": "U",
+          "description": "As Clotting I, except that caster can stop bleeding in a wound that is bleeding up to 3 hits per round (total)."
+        },
+        {
+          "level": 8,
+          "name": "Minor Vessel Repair",
+          "areaOfEffect": "1 target",
+          "duration": "P",
+          "range": "touch",
+          "type": "U",
+          "description": "Allows caster to completely mend a damaged minor blood vessel (a vessel that bleeds at up to 4 hits per round, not major arteries or veins)."
+        },
+        {
+          "level": 9,
+          "name": "Cut Repair III",
+          "areaOfEffect": "1 target",
+          "duration": "P",
+          "range": "touch",
+          "type": "U",
+          "description": "As Cut Repair I, except that caster can repair wound(s) that bleed(s) up to 3 hits per round (total); three 1 hit per round wounds or one 3 hit per round wound or one 2 hit per round and one 1 hit per round wound can be healed."
+        },
+        {
+          "level": 10,
+          "name": "Major Vessel Repair",
+          "areaOfEffect": "1 target",
+          "duration": "P",
+          "range": "touch",
+          "type": "U",
+          "description": "Allows caster to repair 1 damaged blood vessel of any size, including severed veins and arteries; recovery time: 1d10 days, depending on size of vessel and severity of damage. A major vessel is one that bleeds at 5 hit per round or more when severed."
+        }
+      ]
+    },
+    {
+      "name": "Bone Law",
+      "realm": "Channeling",
+      "type": "Closed",
+      "reference": "A-9.6.2",
+      "specialNotes": [
+        "See Section 24.1 (p. 75) for more information on healing."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Bone Lore",
+          "areaOfEffect": "1 target",
+          "duration": "—",
+          "range": "touch",
+          "type": "I",
+          "description": "Caster acquires complete understanding of any bone damage, including the tools and methods required for healing. Caster does not receive the skill or power to perform the cure."
+        },
+        {
+          "level": 2,
+          "name": null
+        },
+        {
+          "level": 3,
+          "name": "Minor Fracture Repair",
+          "areaOfEffect": "1 target",
+          "duration": "P",
+          "range": "touch",
+          "type": "U",
+          "description": "Allows caster to mend one simple fracture (not compound fractures, shatters, joint damage, etc.). Recovery time is one day."
+        },
+        {
+          "level": 4,
+          "name": "Cartilage Repair",
+          "areaOfEffect": "1 target",
+          "duration": "P",
+          "range": "touch",
+          "type": "U",
+          "description": "Allows caster to repair all cartilage damage around one joint. Recovery time is one day."
+        },
+        {
+          "level": 5,
+          "name": "Limb Preservation",
+          "codes": [
+            "spellSet",
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 target",
+          "duration": "1 day/lvl",
+          "range": "touch",
+          "type": "U",
+          "description": "Allows caster to prevent the deterioration of one limb (even if severed). Also requires the use of the same spell from Nerve Law, Muscle Law, and Blood Law."
+        },
+        {
+          "level": 6,
+          "name": "Major Fracture Repair",
+          "areaOfEffect": "1 target",
+          "duration": "P",
+          "range": "touch",
+          "type": "U",
+          "description": "As Minor Fracture Repair, except that the caster can also repair compound fractures. Recovery time is one day."
+        },
+        {
+          "level": 7,
+          "name": null
+        },
+        {
+          "level": 8,
+          "name": "Skull Repair",
+          "areaOfEffect": "1 target",
+          "duration": "P",
+          "range": "touch",
+          "type": "U",
+          "description": "Allows caster to mend one fracture in a skull (but not a shattered area). Recovery time is 1d10 days (depending on the damage)."
+        },
+        {
+          "level": 9,
+          "name": null
+        },
+        {
+          "level": 10,
+          "name": "Joint Repair",
+          "areaOfEffect": "1 target",
+          "duration": "P",
+          "range": "touch",
+          "type": "U",
+          "description": "Allows caster to repair one broken (but not shattered) joint. Recovery time is 1d10 days."
+        }
+      ]
+    },
+    {
+      "name": "Calm Spirits",
+      "realm": "Channeling",
+      "type": "Closed",
+      "reference": "A-9.6.3",
+      "specialNotes": [
+        "An “aggressive” action is defined as any action with the intent to directly harm any individual(s). Actions that indirectly result in harm to individuals are not “aggressive.” Pulling the lever on the wall to drop an individual into a pit is an aggressive action (the action directly resulted in the harm on an individual). Running away to get help is not an aggressive action."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Animal Calming I",
+          "areaOfEffect": "1 target",
+          "duration": "2 min/lvl",
+          "range": "100'",
+          "type": "Fm",
+          "description": "Target animal will take no aggressive/offensive action, and will fight only if attacked."
+        },
+        {
+          "level": 2,
+          "name": "Calm I",
+          "areaOfEffect": "1 target",
+          "duration": "1 min/lvl",
+          "range": "100'",
+          "type": "Fm",
+          "description": "Target will take no aggressive/offensive action, and will fight only if attacked."
+        },
+        {
+          "level": 3,
+          "name": "Animal Calming III",
+          "areaOfEffect": "3 targets",
+          "duration": "2 min/lvl",
+          "range": "100'",
+          "type": "Fm",
+          "description": "As Animal Calming I, except 3 targets may be affected."
+        },
+        {
+          "level": 4,
+          "name": "Calm II",
+          "areaOfEffect": "2 targets",
+          "duration": "1 min/lvl",
+          "range": "100'",
+          "type": "Fm",
+          "description": "As Calm I, except 2 targets may be affected."
+        },
+        {
+          "level": 5,
+          "name": "Hold Kind",
+          "areaOfEffect": "1 target",
+          "duration": "C",
+          "range": "100'",
+          "type": "Fm",
+          "description": "Humanoid target is held to 25% of normal action."
+        },
+        {
+          "level": 6,
+          "name": "Calm III",
+          "areaOfEffect": "3 targets",
+          "duration": "1 min/lvl",
+          "range": "100'",
+          "type": "Fm",
+          "description": "As Calm I, except 3 targets may be affected."
+        },
+        {
+          "level": 7,
+          "name": "Animal Calming V",
+          "areaOfEffect": "5 targets",
+          "duration": "2 min/lvl",
+          "range": "100'",
+          "type": "Fm",
+          "description": "As Animal Calming I, except 5 targets may be affected."
+        },
+        {
+          "level": 8,
+          "name": "Calm IV",
+          "areaOfEffect": "4 targets",
+          "duration": "1 min/lvl",
+          "range": "100'",
+          "type": "Fm",
+          "description": "As Calm I, except 4 targets may affected."
+        },
+        {
+          "level": 9,
+          "name": "Calm V",
+          "areaOfEffect": "5 targets",
+          "duration": "1 min/lvl",
+          "range": "100'",
+          "type": "Fm",
+          "description": "As Calm I, except 5 targets may be affected."
+        },
+        {
+          "level": 10,
+          "name": "Mass Animal Calming I",
+          "areaOfEffect": "varies",
+          "duration": "2 min/lvl",
+          "range": "100'",
+          "type": "Fm",
+          "description": "Caster can calm a number of animals equal to his level."
+        }
+      ]
+    },
+    {
+      "name": "Creations",
+      "realm": "Channeling",
+      "type": "Closed",
+      "reference": "A-9.6.4",
+      "specialNotes": [
+        "The Herb Enhancement spell increases the potency (e.g., 2x, 3x, etc.) of herbs; this normally increases the effects of a dose of the herb (e.g., 2x potency for a “Heal 1-10” herb would give a “Heal 2-20” herb). However, a GM may wish to have this spell increase the number of doses of an herb (e.g., 2x potency cast on 2 doses of a “Heal 1-10” herb would result in 4 doses). In either case, only one of these spells may be cast upon a specific herb. Plant growth spells do not work on herbs.",
+        "See Section 24.1 (p. 75) for more information on the effects of herbs."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": null
+        },
+        {
+          "level": 2,
+          "name": "Sustain Self",
+          "areaOfEffect": "caster",
+          "duration": "1 day",
+          "range": "self",
+          "type": "U",
+          "description": "Allows caster to go without food or water and not suffer damage (i.e., provides nutrition and water for 1 day)."
+        },
+        {
+          "level": 3,
+          "name": "Water Production I",
+          "areaOfEffect": "—",
+          "duration": "P",
+          "range": "10'",
+          "type": "E",
+          "description": "Caster can produce sufficient water in any available receptacle to supply a normal, human-sized being for one day."
+        },
+        {
+          "level": 4,
+          "name": "Food Production I",
+          "areaOfEffect": "—",
+          "duration": "P",
+          "range": "10'",
+          "type": "E",
+          "description": "Caster can produce sufficient food from the surrounding area to feed 1 hearty appetite for 1 day."
+        },
+        {
+          "level": 5,
+          "name": "Fire Starting",
+          "areaOfEffect": "1'R",
+          "duration": "—",
+          "range": "1'",
+          "type": "E",
+          "description": "Allows caster to set a fire of 1 foot radius; fire will then last as long as there is fuel. A target in the 1 foot radius will take an 'A' Heat critical."
+        },
+        {
+          "level": 6,
+          "name": "Nutrient Conjures I",
+          "areaOfEffect": "—",
+          "duration": "P",
+          "range": "10'",
+          "type": "E",
+          "description": "Caster can produce 1 loaf of bread that weighs 0.5 lb. and will nutritionally support 1 being for 1 day; the loaf will lose potency in 1 month."
+        },
+        {
+          "level": 7,
+          "name": "Water Production III",
+          "areaOfEffect": "—",
+          "duration": "P",
+          "range": "10'",
+          "type": "E",
+          "description": "As Water Production I, except caster can produce 3 days of water."
+        },
+        {
+          "level": 8,
+          "name": "Food Production III",
+          "areaOfEffect": "—",
+          "duration": "P",
+          "range": "10'",
+          "type": "E",
+          "description": "As Food Production I, except caster can produce sufficient food to feed 3 beings for 1 day."
+        },
+        {
+          "level": 9,
+          "name": "Herb Enhancement",
+          "areaOfEffect": "1 herb",
+          "duration": "P",
+          "range": "touch",
+          "type": "U",
+          "description": "Allows caster to enhance the potency of any 1 growing herb by 100% (i.e., by 2x, see notes below); spell may be employed only once per herb."
+        },
+        {
+          "level": 10,
+          "name": "Water Production V",
+          "areaOfEffect": "—",
+          "duration": "P",
+          "range": "10'",
+          "type": "E",
+          "description": "As Water Production I, except caster can produce 5 days of water."
+        }
+      ]
+    },
+    {
+      "name": "Locating Ways",
+      "realm": "Channeling",
+      "type": "Closed",
+      "reference": "A-9.6.5",
+      "specialNotes": [
+        "When using Guess, the caster must have a limited number of options (i.e., finite and countable). After the spell is cast, the caster may not cast another Guess for the same information until his experience level has increased.",
+        "The various “Path” spells (Pathfinding, Path Lore, etc.) share a common definition of “path.” A “Path,” for these purposes, is a road, track or way created or constructed for a purpose, and along which something travels or moves with at least moderate frequency. This may have been constructed by men, animals, or other means. In addition, the bounds of the path, for the purposes of these spells, should be between those points at which a larger path, population center (e.g., village, town, city, etc.), or dead end intersects the original.",
+        "When using any Location spell, the caster must provide an unambiguous description of the object being sought. This includes a minimum of: the item's dimensions (within 10% of actual size) and at least two other identifying attributes (e.g., color, weight, shape, texture, etc.). Often, it will take more than two other attributes to make the description “unique” (i.e., no other item within range of the spell can match the description).",
+        "See App. A-9.17.13 (p. 206) for more on information spells."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": null
+        },
+        {
+          "level": 2,
+          "name": "Guess",
+          "areaOfEffect": "caster",
+          "duration": "—",
+          "range": "self",
+          "type": "I",
+          "description": "When faced with a choice about which he has little or no information (e.g., which corridor leads outside the quickest) the caster may cast this spell and the Gamemaster will determine which way he goes, biasing the choice favorable by 25% (e.g., roll 1-100: correct on 26-100, incorrect on 01-25)."
+        },
+        {
+          "level": 3,
+          "name": "Pathfinding I",
+          "areaOfEffect": "caster",
+          "duration": "—",
+          "range": "100'",
+          "type": "I",
+          "description": "Caster learns the location(s) of any “path(s)” within 100'; gives the nearest point on path, but not the path's course."
+        },
+        {
+          "level": 4,
+          "name": "Guidance",
+          "areaOfEffect": "caster",
+          "duration": "10 min/lvl (C)",
+          "range": "100'/lvl",
+          "type": "E",
+          "description": "The caster is subtly directed (hints and clues) towards a specific destination (within 100' per level of the caster) by guidance from his deity. The exact form of the guidance may vary from deity to deity (e.g., a deity of water might leave hints in the rocks of a stream, etc.). For the duration of the spell, the caster must concentrate on following the guidance."
+        },
+        {
+          "level": 5,
+          "name": "Location I",
+          "areaOfEffect": "1 target",
+          "duration": "—",
+          "range": "100'",
+          "type": "P",
+          "description": "Gives the direction and distance to any specific object or place that the caster is familiar with or has had described in detail."
+        },
+        {
+          "level": 6,
+          "name": "Pathfinding III",
+          "areaOfEffect": "caster",
+          "duration": "—",
+          "range": "300'",
+          "type": "I",
+          "description": "As Pathfinding I, except range is 300'."
+        },
+        {
+          "level": 7,
+          "name": null
+        },
+        {
+          "level": 8,
+          "name": "Location III",
+          "areaOfEffect": "1 target",
+          "duration": "—",
+          "range": "300'",
+          "type": "P",
+          "description": "As Location I, except range is 300'."
+        },
+        {
+          "level": 9,
+          "name": "Pathfinding V",
+          "areaOfEffect": "caster",
+          "duration": "—",
+          "range": "500'",
+          "type": "I",
+          "description": "As Pathfinding I, except range is 500'."
+        },
+        {
+          "level": 10,
+          "name": "Location V",
+          "areaOfEffect": "1 target",
+          "duration": "—",
+          "range": "500'",
+          "type": "P",
+          "description": "As Location I, except range is 500'."
+        }
+      ]
+    },
+    {
+      "name": "Lore",
+      "realm": "Channeling",
+      "type": "Closed",
+      "reference": "A-9.6.6",
+      "specialNotes": [
+        "A “curse” is usually something that is detrimental and magical in nature (e.g., delivered from the Curses spell list, see Spell Law). The GM may decide that the “curses” spells on this list only apply to “magical” curses. Normally, curses may not be Dispelled; they may only be affected by Remove Curse spells."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Afterthoughts",
+          "areaOfEffect": "caster",
+          "duration": "—",
+          "range": "self",
+          "type": "I",
+          "description": "Allows caster virtual total recall of any conversation or writing he encountered within a period of days equal to his level."
+        },
+        {
+          "level": 2,
+          "name": "Detect Evil",
+          "areaOfEffect": "5'R",
+          "duration": "1 min/lvl",
+          "range": "100'",
+          "type": "P",
+          "description": "Detects “true evil” in an animate or inanimate target; caster can concentrate on a 5' radius area each round."
+        },
+        {
+          "level": 3,
+          "name": "Detect Curse",
+          "areaOfEffect": "5'R",
+          "duration": "1 min/lvl",
+          "range": "100'",
+          "type": "P",
+          "description": "As Detect Evil, except caster can detect curses."
+        },
+        {
+          "level": 4,
+          "name": "Detect Emotion",
+          "areaOfEffect": "5'R",
+          "duration": "1 min/lvl",
+          "range": "100'",
+          "type": "Pm",
+          "description": "As Detect Evil, except caster can detect extremes of emotion (e.g., hatred, love, sadness, etc.). In addition, the caster learns which emotions the target is feeling in extreme. If there are no extremes of emotion (i.e., only normal feelings), this spell detects nothing."
+        },
+        {
+          "level": 5,
+          "name": "Light Lore I",
+          "areaOfEffect": "1 item",
+          "duration": "—",
+          "range": "10'",
+          "type": "P",
+          "description": "Caster can ascertain the origin point and nature of any 1 “holy item” that is not “of darkness” or “of evil;” will not give specific capabilities."
+        },
+        {
+          "level": 6,
+          "name": "Poison Lore",
+          "areaOfEffect": "1 poison",
+          "duration": "—",
+          "range": "10'",
+          "type": "P",
+          "description": "Caster can ascertain exact nature and type of poison; he can determine what cure may be used, but does not receive the required tools or skills."
+        },
+        {
+          "level": 7,
+          "name": null
+        },
+        {
+          "level": 8,
+          "name": "Life Lore",
+          "areaOfEffect": "1 target",
+          "duration": "—",
+          "range": "100'",
+          "type": "P",
+          "description": "Caster can determine the nature and type of any 1 living target. He will not be able to ascertain the target's personal traits or capabilities, but will know the normal abilities associated with the target's species."
+        },
+        {
+          "level": 9,
+          "name": null
+        },
+        {
+          "level": 10,
+          "name": "Curse Tales",
+          "areaOfEffect": "1 curse",
+          "duration": "—",
+          "range": "10'",
+          "type": "P",
+          "description": "Caster can determine nature and origin of any 1 curse, including the name of the one who bequeathed it."
+        }
+      ]
+    },
+    {
+      "name": "Muscle Law",
+      "realm": "Channeling",
+      "type": "Closed",
+      "reference": "A-9.6.7",
+      "specialNotes": [
+        "See Section 24.1 (p. 75) for more information on healing."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Muscle Lore",
+          "areaOfEffect": "1 target",
+          "duration": "—",
+          "range": "touch",
+          "type": "I",
+          "description": "Caster acquires a complete understanding of any muscle damage, including the tools and methods required for healing; caster does not receive the skill or power to perform the cure."
+        },
+        {
+          "level": 2,
+          "name": "Tendon Lore",
+          "areaOfEffect": "1 target",
+          "duration": "—",
+          "range": "touch",
+          "type": "I",
+          "description": "As Muscle Lore, except the knowledge obtained concerns the healing of tendon damage."
+        },
+        {
+          "level": 3,
+          "name": "Sprain Repair",
+          "areaOfEffect": "1 target",
+          "duration": "P",
+          "range": "touch",
+          "type": "U",
+          "description": "Allows caster to repair (not replace) 1 sprain; recovery time: 1 hour."
+        },
+        {
+          "level": 4,
+          "name": "Muscle Repair I",
+          "areaOfEffect": "1 target",
+          "duration": "P",
+          "range": "touch",
+          "type": "U",
+          "description": "Allows caster to repair, but not replace, 1 damaged muscle. Recovery time is 1 hour."
+        },
+        {
+          "level": 5,
+          "name": "Limb Preservation",
+          "codes": [
+            "spellSet",
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 target",
+          "duration": "1 day/lvl",
+          "range": "touch",
+          "type": "U",
+          "description": "Allows caster to prevent the deterioration of 1 limb (even while severed). Also requires use of same spells from Nerve Law, Bone Law, and Blood Law."
+        },
+        {
+          "level": 6,
+          "name": "Tendon Repair I",
+          "areaOfEffect": "1 target",
+          "duration": "P",
+          "range": "touch",
+          "type": "U",
+          "description": "Allows caster to repair one damaged tendon; recovery time: 1 hour."
+        },
+        {
+          "level": 7,
+          "name": null
+        },
+        {
+          "level": 8,
+          "name": null
+        },
+        {
+          "level": 9,
+          "name": "Muscle Repair III",
+          "areaOfEffect": "1 target",
+          "duration": "P",
+          "range": "touch",
+          "type": "U",
+          "description": "As Muscle Repair I, except caster can repair 3 damaged muscles."
+        },
+        {
+          "level": 10,
+          "name": "Tendon Repair III",
+          "areaOfEffect": "1 target",
+          "duration": "P",
+          "range": "touch",
+          "type": "U",
+          "description": "As Tendon Repair I, except caster can repair 3 damaged tendons."
+        }
+      ]
+    },
+    {
+      "name": "Nerve Law",
+      "realm": "Channeling",
+      "type": "Closed",
+      "reference": "A-9.6.8",
+      "specialNotes": [
+        "See Section 24.1 (p. 75) for more information on healing."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Nerve Lore",
+          "areaOfEffect": "1 target",
+          "duration": "—",
+          "range": "touch",
+          "type": "I",
+          "description": "Caster acquires complete understanding of any nerve damage, including the tools and methods required for healing: caster does not receive the skill or power to perform the cure."
+        },
+        {
+          "level": 2,
+          "name": null
+        },
+        {
+          "level": 3,
+          "name": null
+        },
+        {
+          "level": 4,
+          "name": "Minor Nerve Repair",
+          "areaOfEffect": "1 target",
+          "duration": "P",
+          "range": "touch",
+          "type": "U",
+          "description": "Allows caster to repair minor damage to 1 nerve; requires 1 day recovery period. Minor damage is defined as any nerve damage that results in penalties up to -20."
+        },
+        {
+          "level": 5,
+          "name": "Limb Preservation",
+          "codes": [
+            "spellSet",
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 limb",
+          "duration": "1 day/lvl",
+          "range": "touch",
+          "type": "U",
+          "description": "Allows caster to prevent the deterioration of 1 limb (even while severed). Also requires use of same spells from Muscle Law, Bone Law, and Blood Law."
+        },
+        {
+          "level": 6,
+          "name": null
+        },
+        {
+          "level": 7,
+          "name": null
+        },
+        {
+          "level": 8,
+          "name": null
+        },
+        {
+          "level": 9,
+          "name": "Major Nerve Repair",
+          "areaOfEffect": "1 target",
+          "duration": "P",
+          "range": "touch",
+          "type": "U",
+          "description": "As Minor Nerve Repair, except will heal any nerve damage. This will not heal nerves that are totally destroyed."
+        },
+        {
+          "level": 10,
+          "name": "Unparalysis",
+          "areaOfEffect": "1 target",
+          "duration": "10 min/lvl",
+          "range": "touch",
+          "type": "U",
+          "description": "Caster can cure any 1 paralysis problem."
+        }
+      ]
+    },
+    {
+      "name": "Organ Law",
+      "realm": "Channeling",
+      "type": "Closed",
+      "reference": "A-9.6.9",
+      "specialNotes": [
+        "See Section 24.1 (p. 75) for more information on healing."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Organ Lore",
+          "areaOfEffect": "1 target",
+          "duration": "—",
+          "range": "touch",
+          "type": "I",
+          "description": "Caster acquires complete understanding of any organ damage, including the tools and the methods required for healing; caster does not receive the skill or power to perform the cure."
+        },
+        {
+          "level": 2,
+          "name": null
+        },
+        {
+          "level": 3,
+          "name": "Nasal Repair",
+          "areaOfEffect": "1 target",
+          "duration": "P",
+          "range": "touch",
+          "type": "U",
+          "description": "Allows caster to repair any nose damage short of complete nose loss; requires 6d60 minutes depending on damage."
+        },
+        {
+          "level": 4,
+          "name": null
+        },
+        {
+          "level": 5,
+          "name": "Minor Ear Repair",
+          "areaOfEffect": "1 target",
+          "duration": "P",
+          "range": "touch",
+          "type": "U",
+          "description": "Caster can repair any external damage, including ear loss (regeneration takes 1d10 hours)."
+        },
+        {
+          "level": 6,
+          "name": "Minor Eye Repair",
+          "areaOfEffect": "1 target",
+          "duration": "P",
+          "range": "touch",
+          "type": "U",
+          "description": "Allows caster to repair any minor eye damage (e.g., corneal scratch, removal of foreign object, etc.)."
+        },
+        {
+          "level": 7,
+          "name": null
+        },
+        {
+          "level": 8,
+          "name": null
+        },
+        {
+          "level": 9,
+          "name": "Major Ear Repair",
+          "areaOfEffect": "1 target",
+          "duration": "P",
+          "range": "touch",
+          "type": "U",
+          "description": "As Minor Ear Repair except that caster can repair any interior or exterior damage; hearing is restored in 1-10 days (note that complete replacement of the inner ear is an exception)."
+        },
+        {
+          "level": 10,
+          "name": null
+        }
+      ]
+    },
+    {
+      "name": "Symbolic Ways",
+      "realm": "Channeling",
+      "type": "Closed",
+      "reference": "A-9.6.10",
+      "specialNotes": [
+        "A symbol is permanent unless dispelled magically or unless the stone it is placed upon is moved.",
+        "The precise size of a symbol may vary. Suggested sizes range from 3\" x 3\" to 1' x 1'.",
+        "The GM may decide to make the attack level of the symbol equal to the type of Symbol spell used. For example, a first level spell placed in a Symbol X would attack as a 10th level spell rather than a 1st level spell."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Analyze Symbol",
+          "areaOfEffect": "1 symbol",
+          "duration": "—",
+          "range": "50'",
+          "type": "I",
+          "description": "Caster learns what spell is emplaced within one Symbol within 50'. The Symbol will not be triggered (unless specifically created to be triggered by an Analyze Symbol spell)."
+        },
+        {
+          "level": 2,
+          "name": "Spell Prime",
+          "areaOfEffect": "caster",
+          "duration": "varies",
+          "range": "self",
+          "type": "U",
+          "description": "This spell “primes” the next spell cast by the caster—that spell is treated as if it were instantaneous. The PP cost of this spell is equal to the highest level that the caster desires to be primed. For example, if the caster wants any fourth level spell (or less) to be treated as instantaneous, this spell will cost 4 PPs. In addition, when casting this spell, the caster must pray for one minute per PP spent in the spell. For example, if the caster spends 4 PPs on this spell, he must pray for 4 minutes before this spell is completed. Any interruption of this process results in the failure of this spell. The effects of this spell end when the caster casts his next spell (even if the next spell is higher level than the number of PPs expended on this spell)."
+        },
+        {
+          "level": 3,
+          "name": "Unsymbol I",
+          "areaOfEffect": "1 symbol",
+          "duration": "P",
+          "range": "10'",
+          "type": "F",
+          "description": "Caster can remove one Symbol I (an emplaced 1st level spell). The Symbol's RR is based on the level of the spell in the Symbol spell (target level) and the level of the Unsymbol spell (attack level)."
+        },
+        {
+          "level": 4,
+          "name": null
+        },
+        {
+          "level": 5,
+          "name": "Symbol I",
+          "areaOfEffect": "varies",
+          "duration": "P",
+          "range": "10'",
+          "type": "U",
+          "description": "Caster can emplace one 1st level spell on any 1 given non-mobile stone (see below). Within one minute, the spell to be emplaced must also be cast (within 10'). The symbol is usually visible, but is only required to be visible if reading is the trigger (see below). • The Symbol must be placed on a slab of stone (block, piece, etc.) weighing at least 2,000 pounds. Only one Symbol may be placed on each continuous slab. The stone may not be moved without dispelling the Symbol. • A Symbol can be triggered by one of the following (decided by caster): time period, specified movements, specified sounds, touch, reading, violent actions in the area, etc. The triggering range is normally 10' or the range of the emplaced spell, whichever is larger. • If the spell emplaced is an attack spell, the attack level is the spell's level (i.e., for Symbol I the attack level is always 1st level, not the level of the caster). If the spell is an elemental attack, the OB is normally +0. However, the attack can be focused on a location (as opposed to the person who triggers the symbol). In this case, the OB is +50. • Normally, if the Symbol affects a being or thing (e.g., healing, attacks, etc.), it can be triggered only once per day."
+        },
+        {
+          "level": 6,
+          "name": null
+        },
+        {
+          "level": 7,
+          "name": "Symbol II",
+          "areaOfEffect": "varies",
+          "duration": "P",
+          "range": "10'",
+          "type": "U",
+          "description": "As above, except a 2nd level spell is emplaced."
+        },
+        {
+          "level": 8,
+          "name": "Unsymbol II",
+          "areaOfEffect": "1 symbol",
+          "duration": "P",
+          "range": "10'",
+          "type": "F",
+          "description": "As Unsymbol I, except 2nd level spell is removed."
+        },
+        {
+          "level": 9,
+          "name": "Symbol III",
+          "areaOfEffect": "varies",
+          "duration": "P",
+          "range": "10'",
+          "type": "U",
+          "description": "As above, except a 3rd level spell is emplaced."
+        },
+        {
+          "level": 10,
+          "name": "Analyze Symbol True",
+          "areaOfEffect": "varies",
+          "duration": "—",
+          "range": "50'",
+          "type": "I",
+          "description": "As Analyze Symbol, except caster learns what spells are emplaced in Symbols within 50' radius."
+        }
+      ]
+    }
+  ]
+}

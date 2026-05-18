@@ -13,8 +13,41 @@
     "ProfessionName": "Profession Name",
     "CharacterName": "Character Name",
     "Level": "Level",
-    "Profession": "Profession",
-    "Realm": "Realm",
+    "Profession": {
+      "NamePlaceholder": "Profession Name",
+      "PrimeStats": "Prime Stats",
+      "PrimeStatsHint": "Stats that define this profession's specialization.",
+      "ProfessionalBonuses": "Professional Bonuses",
+      "BonusName": "Bonus",
+      "BonusValue": "Value",
+      "EverymanSkills": "Everyman Skills",
+      "OccupationalSkills": "Occupational Skills",
+      "RestrictedSkills": "Restricted Skills",
+      "CategoryPrice": "Category Prices (DP)",
+      "SpellPrice": "Spell Prices (DP)",
+      "SpellGroup": "Spell Group",
+      "TrainingPackages": "Training Packages",
+      "PackageName": "Package",
+      "PackageCost": "DP Cost",
+      "None": "None defined.",
+      "ApplyError": "Could not apply the profession. Check the console for details.",
+      "AppliedHeader": "Profession \"{name}\" applied to {actor}",
+      "AppliedSection": "Applied bonuses",
+      "AppliedCategory": "Category \"{name}\" +{bonus}",
+      "AppliedSkill": "Skill \"{name}\" +{bonus}",
+      "CreatedSection": "Skills created (from basic-core)",
+      "MissingSection": "Categories missing on actor",
+      "UnrecognisedSection": "Bonuses with unrecognised suffix (check data)"
+    },
+    "Realm": {
+      "NamePlaceholder": "Realm Name",
+      "PowerPointsType": "Power Points Type",
+      "PowerPointsTypes": {
+        "Essence": "Essence",
+        "Channeling": "Channeling",
+        "Mentalism": "Mentalism"
+      }
+    },
     "Experience": "Experience",
     "ClickToRoll": "Click to roll",
     "NoSkill": "No skill",
@@ -318,15 +351,6 @@
         "Weapon": "Weapon"
       }
     },
-    "Realm": {
-      "NamePlaceholder": "Realm Name",
-      "PowerPointsType": "Power Points Type",
-      "PowerPointsTypes": {
-        "Essence": "Essence",
-        "Channeling": "Channeling",
-        "Mentalism": "Mentalism"
-      }
-    },
     "TrainingPackage": {
       "NamePlaceholder": "Training Package Name",
       "Type": "Tier",
@@ -354,31 +378,41 @@
       "MissingSection": "Missing on actor (skipped)"
     },
     "TrainingPackageSheet": "RMF Training Package Sheet",
-    "Profession": {
-      "NamePlaceholder": "Profession Name",
-      "PrimeStats": "Prime Stats",
-      "PrimeStatsHint": "Stats that define this profession's specialization.",
-      "ProfessionalBonuses": "Professional Bonuses",
-      "BonusName": "Bonus",
-      "BonusValue": "Value",
-      "EverymanSkills": "Everyman Skills",
-      "OccupationalSkills": "Occupational Skills",
-      "RestrictedSkills": "Restricted Skills",
-      "CategoryPrice": "Category Prices (DP)",
-      "SpellPrice": "Spell Prices (DP)",
-      "SpellGroup": "Spell Group",
-      "TrainingPackages": "Training Packages",
-      "PackageName": "Package",
-      "PackageCost": "DP Cost",
+    "SpellListSheet": "RMF Spell List Sheet",
+    "SpellList": {
+      "NamePlaceholder": "Spell List Name",
+      "Meta": "List Information",
+      "Realm": "Realm",
+      "ListType": "List Type",
+      "Profession": "Profession",
+      "Reference": "Reference",
+      "SpellCount": "Spells",
+      "Spells": "Spells",
+      "Lvl": "Lvl",
+      "SpellName": "Spell",
+      "Area": "Area of Effect",
+      "Duration": "Duration",
+      "Range": "Range",
+      "Type": "Type",
+      "Codes": "Codes",
+      "RRMod": "RR Mod",
+      "Descriptions": "Spell Descriptions",
+      "SpecialNotes": "Special Notes",
+      "SpellDescription": "Description",
+      "EmptyLevel": "(no spell at this level)",
       "None": "None defined.",
-      "ApplyError": "Could not apply the profession. Check the console for details.",
-      "AppliedHeader": "Profession \"{name}\" applied to {actor}",
-      "AppliedSection": "Applied bonuses",
-      "AppliedCategory": "Category \"{name}\" +{bonus}",
-      "AppliedSkill": "Skill \"{name}\" +{bonus}",
-      "CreatedSection": "Skills created (from basic-core)",
-      "MissingSection": "Categories missing on actor",
-      "UnrecognisedSection": "Bonuses with unrecognised suffix (check data)"
+      "NoProfession": "(none)",
+      "KeyTab": "Spell Key",
+      "KeyIntro": "Static rules legend shared by every spell list (not editable here)."
+    },
+    "SpellKey": {
+      "SpecialCodes": "Special Spell Codes",
+      "SpellTypes": "Spell Types",
+      "SpellSubTypes": "Spell Sub-Types",
+      "AreasOfEffect": "Areas of Effect",
+      "Ranges": "Ranges",
+      "Durations": "Durations",
+      "Definitions": "Definitions"
     }
   },
   "TYPES": {
@@ -392,7 +426,8 @@
       "category": "Category",
       "realm": "Realm",
       "profession": "Profession",
-      "trainingPackage": "Training Package"
+      "trainingPackage": "Training Package",
+      "spellList": "Spell List"
     }
   }
 }

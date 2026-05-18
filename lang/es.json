@@ -13,8 +13,41 @@
     "ProfessionName": "Nombre de Profesión",
     "CharacterName": "Nombre del Personaje",
     "Level": "Nivel",
-    "Profession": "Profesión",
-    "Realm": "Reino",
+    "Profession": {
+      "NamePlaceholder": "Nombre de Profesión",
+      "PrimeStats": "Características Primarias",
+      "PrimeStatsHint": "Características que definen la especialización de esta profesión.",
+      "ProfessionalBonuses": "Bonus Profesionales",
+      "BonusName": "Bonus",
+      "BonusValue": "Valor",
+      "EverymanSkills": "Habilidades Comunes",
+      "OccupationalSkills": "Habilidades Ocupacionales",
+      "RestrictedSkills": "Habilidades Restringidas",
+      "CategoryPrice": "Precios de Categoría (DP)",
+      "SpellPrice": "Precios de Hechizos (DP)",
+      "SpellGroup": "Grupo de Hechizos",
+      "TrainingPackages": "Paquetes de Entrenamiento",
+      "PackageName": "Paquete",
+      "PackageCost": "Coste DP",
+      "None": "Ninguno definido.",
+      "ApplyError": "No se pudo aplicar la profesión. Revisa la consola para más detalles.",
+      "AppliedHeader": "Profesión «{name}» aplicada a {actor}",
+      "AppliedSection": "Bonus aplicados",
+      "AppliedCategory": "Categoría «{name}» +{bonus}",
+      "AppliedSkill": "Habilidad «{name}» +{bonus}",
+      "CreatedSection": "Habilidades creadas (desde basic-core)",
+      "MissingSection": "Categorías no encontradas en el actor",
+      "UnrecognisedSection": "Bonus con sufijo no reconocido (revisar datos)"
+    },
+    "Realm": {
+      "NamePlaceholder": "Nombre del Reino",
+      "PowerPointsType": "Tipo de Puntos de Poder",
+      "PowerPointsTypes": {
+        "Essence": "Esencia",
+        "Channeling": "Canalización",
+        "Mentalism": "Mentalismo"
+      }
+    },
     "Experience": "Experiencia",
     "ClickToRoll": "Pulsa para tirar",
     "NoSkill": "Sin habilidad",
@@ -318,15 +351,6 @@
         "Weapon": "Armas"
       }
     },
-    "Realm": {
-      "NamePlaceholder": "Nombre del Reino",
-      "PowerPointsType": "Tipo de Puntos de Poder",
-      "PowerPointsTypes": {
-        "Essence": "Esencia",
-        "Channeling": "Canalización",
-        "Mentalism": "Mentalismo"
-      }
-    },
     "TrainingPackage": {
       "NamePlaceholder": "Nombre del Paquete de Entrenamiento",
       "Type": "Categoría",
@@ -354,31 +378,41 @@
       "MissingSection": "Faltan en el personaje (omitidos)"
     },
     "TrainingPackageSheet": "Hoja de Paquete de Entrenamiento RMF",
-    "Profession": {
-      "NamePlaceholder": "Nombre de Profesión",
-      "PrimeStats": "Características Primarias",
-      "PrimeStatsHint": "Características que definen la especialización de esta profesión.",
-      "ProfessionalBonuses": "Bonus Profesionales",
-      "BonusName": "Bonus",
-      "BonusValue": "Valor",
-      "EverymanSkills": "Habilidades Comunes",
-      "OccupationalSkills": "Habilidades Ocupacionales",
-      "RestrictedSkills": "Habilidades Restringidas",
-      "CategoryPrice": "Precios de Categoría (DP)",
-      "SpellPrice": "Precios de Hechizos (DP)",
-      "SpellGroup": "Grupo de Hechizos",
-      "TrainingPackages": "Paquetes de Entrenamiento",
-      "PackageName": "Paquete",
-      "PackageCost": "Coste DP",
-      "None": "Ninguno definido.",
-      "ApplyError": "No se pudo aplicar la profesión. Revisa la consola para más detalles.",
-      "AppliedHeader": "Profesión «{name}» aplicada a {actor}",
-      "AppliedSection": "Bonus aplicados",
-      "AppliedCategory": "Categoría «{name}» +{bonus}",
-      "AppliedSkill": "Habilidad «{name}» +{bonus}",
-      "CreatedSection": "Habilidades creadas (desde basic-core)",
-      "MissingSection": "Categorías no encontradas en el actor",
-      "UnrecognisedSection": "Bonus con sufijo no reconocido (revisar datos)"
+    "SpellListSheet": "Hoja de Lista de Hechizos RMF",
+    "SpellList": {
+      "NamePlaceholder": "Nombre de la Lista de Hechizos",
+      "Meta": "Información de la Lista",
+      "Realm": "Reino",
+      "ListType": "Tipo de Lista",
+      "Profession": "Profesión",
+      "Reference": "Referencia",
+      "SpellCount": "Hechizos",
+      "Spells": "Hechizos",
+      "Lvl": "Niv",
+      "SpellName": "Hechizo",
+      "Area": "Área de Efecto",
+      "Duration": "Duración",
+      "Range": "Alcance",
+      "Type": "Tipo",
+      "Codes": "Códigos",
+      "RRMod": "Mod TR",
+      "Descriptions": "Descripciones de Hechizos",
+      "SpecialNotes": "Notas Especiales",
+      "SpellDescription": "Descripción",
+      "EmptyLevel": "(sin hechizo en este nivel)",
+      "None": "Ninguna definida.",
+      "NoProfession": "(ninguna)",
+      "KeyTab": "Clave de Hechizos",
+      "KeyIntro": "Leyenda de reglas compartida por todas las listas (no editable aquí)."
+    },
+    "SpellKey": {
+      "SpecialCodes": "Códigos Especiales de Hechizo",
+      "SpellTypes": "Tipos de Hechizo",
+      "SpellSubTypes": "Subtipos de Hechizo",
+      "AreasOfEffect": "Áreas de Efecto",
+      "Ranges": "Alcances",
+      "Durations": "Duraciones",
+      "Definitions": "Definiciones"
     }
   },
   "TYPES": {
@@ -392,7 +426,8 @@
       "category": "Categoría",
       "realm": "Reino",
       "profession": "Profesión",
-      "trainingPackage": "Paquete de Entrenamiento"
+      "trainingPackage": "Paquete de Entrenamiento",
+      "spellList": "Lista de Hechizos"
     }
   }
 }

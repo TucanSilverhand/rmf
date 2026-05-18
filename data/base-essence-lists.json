@@ -1,0 +1,1216 @@
+{
+  "lists": [
+    {
+      "name": "Earth Law",
+      "realm": "Essence",
+      "type": "Base",
+      "profession": "Magician",
+      "reference": "A-9.11.1",
+      "specialNotes": [
+        "See Appendix A-9.17.7 (p. 205) for more on walls."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Enchanted Rope",
+          "areaOfEffect": "10'/lvl",
+          "duration": "C",
+          "range": "touch",
+          "type": "U",
+          "description": "If caster holds one end of a rope he can cause the rope to move up to its length (within the area of effect) in any direction and to tie itself in knots (it cannot attack or tie up a living being)."
+        },
+        {
+          "level": 2,
+          "name": "Loosen Earth",
+          "areaOfEffect": "100 cu'",
+          "duration": "P",
+          "range": "100'",
+          "type": "F",
+          "description": "Loosens 100 cubic feet of earth to the consistency of plowed ground."
+        },
+        {
+          "level": 3,
+          "name": null
+        },
+        {
+          "level": 4,
+          "name": "Earthwall",
+          "areaOfEffect": "10'x10'x3'",
+          "duration": "1 min/lvl",
+          "range": "100'",
+          "type": "E",
+          "description": "Creates a wall of earth up to 10' x 10' x (3' at the base, 1' at the top). This wall can be dug through."
+        },
+        {
+          "level": 5,
+          "name": "Cracks Call",
+          "areaOfEffect": "10'x10'x10'",
+          "duration": "—",
+          "range": "100'",
+          "type": "F",
+          "description": "Any previous cracks or flaws in material up to 10'x10'x10' section will extend to their limit."
+        },
+        {
+          "level": 6,
+          "name": "Repair",
+          "areaOfEffect": "1 object",
+          "duration": "P",
+          "range": "touch",
+          "type": "U",
+          "description": "The caster may mend a single break in a small (up to 2 pounds) inorganic object or multiple breaks, rips, or cracks in a larger (up to 10 pounds) organic object. All component parts of the object must be within a 10' radius."
+        },
+        {
+          "level": 7,
+          "name": "Stonewall",
+          "areaOfEffect": "10'x10'x1'",
+          "duration": "1 min/lvl",
+          "range": "100'",
+          "type": "E",
+          "description": "As Earthwall, except wall is up to 10'x10'x1' of stone. It can be chipped through."
+        },
+        {
+          "level": 8,
+          "name": "Earthen Spikes",
+          "areaOfEffect": "20' x 20'",
+          "duration": "10 min/lvl",
+          "range": "100'",
+          "type": "E",
+          "description": "This spell causes the area of effect to bristle with hundreds of 6\" to 12\" sharp edges and blades. The exact composition of these spikes will depend on the material the ground is made of. The area of effect must be placed horizontally on a surface (i.e., it cannot be placed on walls). Most animals and creatures cannot be induced to walk through the area. Anyone moving through the area must make a maneuver roll (at least Extremely Hard difficulty) for every 5' moved through. Anyone who falls inside the area of effect receives an 'A' Puncture critical strike."
+        },
+        {
+          "level": 9,
+          "name": "Stone/Earth",
+          "areaOfEffect": "100 cu'",
+          "duration": "P",
+          "range": "100'",
+          "type": "F",
+          "description": "Changes 100 cubic feet of stone to packed earth. This change is gradual (taking three rounds for complete change)."
+        },
+        {
+          "level": 10,
+          "name": "Earthwall True",
+          "areaOfEffect": "10'x10'x3'",
+          "duration": "P",
+          "range": "100'",
+          "type": "E",
+          "description": "As Earthwall, except duration is permanent."
+        }
+      ]
+    },
+    {
+      "name": "Fire Law",
+      "realm": "Essence",
+      "type": "Base",
+      "profession": "Magician",
+      "reference": "A-9.11.2",
+      "specialNotes": [],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Boil Liquid",
+          "areaOfEffect": "1 cu'/lvl",
+          "duration": "C",
+          "range": "10'",
+          "type": "F",
+          "description": "For each level of caster, one cubic foot of liquid can be heated to boiling at a rate of 1 cubic foot per round."
+        },
+        {
+          "level": 2,
+          "name": "Warm Solid",
+          "areaOfEffect": "1 cu'/lvl",
+          "duration": "24 hr",
+          "range": "10'",
+          "type": "F",
+          "description": "Any solid inanimate, non-metal material (up to 1 cubic foot per level) can be warmed to 100°F at a rate of 1 cubic foot per round of concentration."
+        },
+        {
+          "level": 3,
+          "name": "Woodfires",
+          "areaOfEffect": "1'R",
+          "duration": "—",
+          "range": "self",
+          "type": "F",
+          "description": "Causes any wood to ignite and burn. All wood ignited must be within 1' of caster's palm."
+        },
+        {
+          "level": 4,
+          "name": "Wall of Fire",
+          "areaOfEffect": "10'x10'x6'",
+          "duration": "1 rnd/lvl",
+          "range": "100'",
+          "type": "E",
+          "description": "Creates an opaque wall of fire (up to 10' x 10' x 6'). Anyone passing through it takes an 'A' Heat critical (no RR)."
+        },
+        {
+          "level": 5,
+          "name": "Heat Solid",
+          "areaOfEffect": "1 cu'/lvl",
+          "duration": "1 min/lvl (C)",
+          "range": "10'",
+          "type": "F",
+          "description": "As Warm Solid, except for duration and material can be heated to 500°F at a rate of 50°F per round. The caster must concentrate to increase the temperature (without concentration, the material will remain at its current temperature for the duration of the spell)."
+        },
+        {
+          "level": 6,
+          "name": "Fire Bolt I",
+          "areaOfEffect": "1 target",
+          "duration": "—",
+          "range": "100'",
+          "type": "DE",
+          "description": "A bolt of fire is shot from the palm of the caster. Resolve attack on the Bolt Spell Attack Table A-10.9.9 (p. 228)."
+        },
+        {
+          "level": 7,
+          "name": "Call Flame I",
+          "areaOfEffect": "10'x10'x10'",
+          "duration": "1 rnd/lvl",
+          "range": "10'",
+          "type": "E",
+          "description": "As Wall of Fire, except it creates a cube of flame (up to 10' x 10' x 10'). The cube takes a complete round to form and be effective. Anyone passing through or that is caught inside the cube takes an 'A' Heat critical each round he is inside."
+        },
+        {
+          "level": 8,
+          "name": "Fire Ball",
+          "areaOfEffect": "10'R",
+          "duration": "—",
+          "range": "100'",
+          "type": "BE",
+          "description": "A 1' diameter ball of fire is shot from the palm of the caster. Upon reaching its target, it explodes to affect a 10' radius area. Resolve the attack on the Ball Spell Attack Table A-10.9.10 (p. 229)."
+        },
+        {
+          "level": 9,
+          "name": "Ignite",
+          "areaOfEffect": "5'R/lvl",
+          "duration": "P",
+          "range": "5'/lvl",
+          "type": "E",
+          "description": "The caster may designate a type of burning light source to ignite or extinguish (e.g., candles, torches, fireplaces, lanterns, etc.). This spell will affect all of the light sources of the specified type(s) within the area of effect."
+        },
+        {
+          "level": 10,
+          "name": "Circle Aflame",
+          "areaOfEffect": "10'R",
+          "duration": "1 rnd/lvl",
+          "range": "self",
+          "type": "E",
+          "description": "As Wall of Fire, except “wall” is 10' high and forms a 10' radius circle (6\" thick) with the caster at the center (the wall will not move with the caster)."
+        }
+      ]
+    },
+    {
+      "name": "Ice Law",
+      "realm": "Essence",
+      "type": "Base",
+      "profession": "Magician",
+      "reference": "A-9.11.3",
+      "specialNotes": [
+        "See Appendix A-9.17.7 (p. 205) for more on walls."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Freeze Liquid",
+          "areaOfEffect": "1 cu'/lvl",
+          "duration": "C",
+          "range": "10'",
+          "type": "F",
+          "description": "For every level of the caster, 1 cubic foot of liquid is cooled to freezing at a rate of one cubic foot per round. This will not drop a liquid's temperature below -20°F (thus, liquids with a freezing point below -20°F will not freeze)."
+        },
+        {
+          "level": 2,
+          "name": "Cool Solid",
+          "areaOfEffect": "1 cu'/lvl",
+          "duration": "24 hr",
+          "range": "10'",
+          "type": "F",
+          "description": "Any solid, inanimate, non-metal material can be cooled to -20°F, at a rate of 1 cubic foot per round of concentration."
+        },
+        {
+          "level": 3,
+          "name": "Wall of Cold",
+          "areaOfEffect": "10'x10'x1'",
+          "duration": "1 rnd/lvl",
+          "range": "100'",
+          "type": "E",
+          "description": "Creates a clear wall of intense cold (up to 10'x10'x1'). Anyone passing through this wall takes an 'A' Cold critical (no RR)."
+        },
+        {
+          "level": 4,
+          "name": null
+        },
+        {
+          "level": 5,
+          "name": "Chill Solid",
+          "areaOfEffect": "1 cu'/lvl",
+          "duration": "1 min/lvl (C)",
+          "range": "10'",
+          "type": "F",
+          "description": "As Cool Solid, except material can be cooled to -200°F, at a rate of 50°F per round. The caster must concentrate to decrease the temperature (without concentration, the material will remain at its current temperature for the duration of the spell)."
+        },
+        {
+          "level": 6,
+          "name": "Ice Bolt I",
+          "areaOfEffect": "1 target",
+          "duration": "—",
+          "range": "100'",
+          "type": "DE",
+          "description": "A bolt of ice is shot from the palm of the caster. Resolve attack on the Bolt Spell Attack Table A-10.9.9 (p. 228)."
+        },
+        {
+          "level": 7,
+          "name": "Cold Ball II",
+          "areaOfEffect": "20'R",
+          "duration": "—",
+          "range": "100'",
+          "type": "BE",
+          "description": "A 1' diameter ball of cold is shot from the palm of the caster. Upon reaching its target, it explodes to affect a 20' radius area. Resolve the attack on the Ball Spell Attack Table A-10.9.10 (p. 229)."
+        },
+        {
+          "level": 8,
+          "name": "Wall of Ice",
+          "areaOfEffect": "10'x10'x2'",
+          "duration": "P",
+          "range": "100'",
+          "type": "E",
+          "description": "Summons a wall of ice up to 10'x10'x(2' at base, 1' at top). It can be melted through or chipped through or toppled (if not against a solid surface)."
+        },
+        {
+          "level": 9,
+          "name": "Call Cold I",
+          "areaOfEffect": "10'x10'x10'",
+          "duration": "1 rnd/lvl",
+          "range": "10'",
+          "type": "E",
+          "description": "As Wall of Cold, except it creates a cube of cold (up to 10' x 10' x 10'). The cube takes a complete round to form and be effective. Anyone passing through or that is caught inside the cube takes an 'A' Cold critical each round he is inside."
+        },
+        {
+          "level": 10,
+          "name": "Circle of Cold",
+          "areaOfEffect": "20'R",
+          "duration": "1 rnd/lvl",
+          "range": "self",
+          "type": "E",
+          "description": "As Wall of Cold, except “wall” is 10' high and forms a 20' radius circle (6\" thick) with the caster at the center (the wall will not move with the caster)."
+        }
+      ]
+    },
+    {
+      "name": "Light Law",
+      "realm": "Essence",
+      "type": "Base",
+      "profession": "Magician",
+      "reference": "A-9.11.4",
+      "specialNotes": [],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Projected Light",
+          "areaOfEffect": "50' beam",
+          "duration": "10 min/lvl",
+          "range": "self",
+          "type": "E",
+          "description": "A beam of light (like a flashlight) springs from the caster's palm. This light has a 50' effective range. If the caster closes his fist, the light will “turn off;” when the fist is opened, the light will come back on (so long as the duration of the spell has not expired)."
+        },
+        {
+          "level": 2,
+          "name": "Shock Bolt I",
+          "areaOfEffect": "1 target",
+          "duration": "—",
+          "range": "100'",
+          "type": "DE",
+          "description": "A bolt of intense, charged light is shot from the palm of the caster. Attack is resolved on the Bolt Spell Attack Table A-10.9.9 (p. 228)."
+        },
+        {
+          "level": 3,
+          "name": "Light I",
+          "areaOfEffect": "10'R",
+          "duration": "10 min/lvl",
+          "range": "touch",
+          "type": "E",
+          "description": "Lights a 10' radius area about the point touched. If the point is on a mobile object or being, it will move with the object/being."
+        },
+        {
+          "level": 4,
+          "name": "Shade",
+          "areaOfEffect": "100'R",
+          "duration": "10 min/lvl",
+          "range": "touch",
+          "type": "E",
+          "description": "All shadows in the area of effect deepen. This results in a special bonus of +25 to hiding maneuvers and +10 to stalking maneuvers."
+        },
+        {
+          "level": 5,
+          "name": "Sudden Light",
+          "areaOfEffect": "10'R",
+          "duration": "—",
+          "range": "100'",
+          "type": "F",
+          "description": "Causes a 10' radius burst of intense light. All those in the area of effect are stunned 1 round per 5 failure."
+        },
+        {
+          "level": 6,
+          "name": "Dark I",
+          "areaOfEffect": "10'R",
+          "duration": "10 min/lvl",
+          "range": "touch",
+          "type": "E",
+          "description": "As Light I, except the radius is as dark as a dark night. See Appendix A-9.17.12 (p. 206)."
+        },
+        {
+          "level": 7,
+          "name": "Light V",
+          "areaOfEffect": "50'R",
+          "duration": "10 min/lvl",
+          "range": "touch",
+          "type": "E",
+          "description": "As Light I, except radius can be up to 50' (the exact radius can be changed by concentrating for one round)."
+        },
+        {
+          "level": 8,
+          "name": "Shock Bolt III",
+          "areaOfEffect": "1 target",
+          "duration": "—",
+          "range": "300'",
+          "type": "DE",
+          "description": "As Shock Bolt I, except range is 300'."
+        },
+        {
+          "level": 9,
+          "name": "Dark V",
+          "areaOfEffect": "50'R",
+          "duration": "10 min/lvl",
+          "range": "touch",
+          "type": "E",
+          "description": "As Dark I, except radius can be up to 50' (the exact radius can be changed by concentrating for one round)."
+        },
+        {
+          "level": 10,
+          "name": "Lightning Bolt I",
+          "areaOfEffect": "1 target",
+          "duration": "—",
+          "range": "100'",
+          "type": "DE",
+          "description": "As Shock Bolt, except a Lightning Bolt is shot. Resolve the attack on the Bolt Spell Attack Table A-10.9.9 (p. 228)."
+        }
+      ]
+    },
+    {
+      "name": "Water Law",
+      "realm": "Essence",
+      "type": "Base",
+      "profession": "Magician",
+      "reference": "A-9.11.5",
+      "specialNotes": [
+        "All walls created by spells on this list must rest on a solid surface."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Condensation",
+          "areaOfEffect": "1 cu' water",
+          "duration": "P",
+          "range": "touch",
+          "type": "E",
+          "description": "Condenses 1 cubic foot of water from the surrounding air. Water gradually condenses into caster's hands and may be funneled into any suitable receptacle."
+        },
+        {
+          "level": 2,
+          "name": "Fog",
+          "areaOfEffect": "10'R/lvl",
+          "duration": "P",
+          "range": "100'",
+          "type": "E",
+          "description": "Creates dense fog within up to 10' radius per level of the caster. See Appendix A-9.17.12 (p. 206)."
+        },
+        {
+          "level": 3,
+          "name": "Waterwall",
+          "areaOfEffect": "10'x10'x1'",
+          "duration": "C",
+          "range": "100'",
+          "type": "E",
+          "description": "Creates a wall of water up to 10' x 10' x 1'. This wall reduces all movement through it by 80%. In addition, all attacks through the wall suffer a -80 penalty."
+        },
+        {
+          "level": 4,
+          "name": "Water Bolt I",
+          "areaOfEffect": "1 target",
+          "duration": "—",
+          "range": "100'",
+          "type": "DE",
+          "description": "A bolt of water is shot from the caster's palm. Resolve attack on the Bolt Spell Attack Table A-10.9.9 (p. 228)."
+        },
+        {
+          "level": 5,
+          "name": "Unfog",
+          "areaOfEffect": "10'R/lvl",
+          "duration": "P",
+          "range": "100'",
+          "type": "F",
+          "description": "Disperses any fog in the area of effect. If all of a fog is not dispersed (i.e., the fog covers a greater area than the area of effect for this spell), the fog will refill the area of effect at a rate of 10' radius every 1-5 minutes."
+        },
+        {
+          "level": 6,
+          "name": null
+        },
+        {
+          "level": 7,
+          "name": null
+        },
+        {
+          "level": 8,
+          "name": "Calm Water",
+          "areaOfEffect": "100'R",
+          "duration": "C",
+          "range": "100'",
+          "type": "F",
+          "description": "Water within radius is calmed. Waves are cut by 20' in center and less towards the perimeter."
+        },
+        {
+          "level": 9,
+          "name": null
+        },
+        {
+          "level": 10,
+          "name": "Waterwall True",
+          "areaOfEffect": "10'x10'x1'",
+          "duration": "1 min/lvl",
+          "range": "100'",
+          "type": "E",
+          "description": "As Waterwall, except for the duration."
+        }
+      ]
+    },
+    {
+      "name": "Wind Law",
+      "realm": "Essence",
+      "type": "Base",
+      "profession": "Magician",
+      "reference": "A-9.11.6",
+      "specialNotes": [
+        "All vacuums created by spells on this list also create a loud noise. The larger the radius, the louder the noise. The GM may wish to rule that all within the radius must make a second RR or be deafened for 1 round per 10 failure (RR attack level equals the radius of the vacuum).",
+        "All walls created by spells on this list must rest on a solid surface.",
+        "An elemental creature made of gas will be cut to 20% activity if it is the target of an Air Stop spell (and the creature fits into the area of effect). A Vacuum spell thrown upon an elemental creature made of gas will result in a Slaying critical on the creature."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Breezes",
+          "areaOfEffect": "10'R/lvl",
+          "duration": "C",
+          "range": "10'/lvl",
+          "type": "E",
+          "description": "Causes a light breeze (up to 20' per round) as long as the caster concentrates. Any gasses in the area are moved by the breeze."
+        },
+        {
+          "level": 2,
+          "name": "Airwall",
+          "areaOfEffect": "10'x10'x3'",
+          "duration": "C",
+          "range": "100'",
+          "type": "E",
+          "description": "Creates a wall of dense churning air up to 10' x 10' x 3'. This wall reduces all movement through it by 50%. In addition, all attacks through the wall suffer a -50 penalty."
+        },
+        {
+          "level": 3,
+          "name": "Slumber Mist",
+          "areaOfEffect": "5'R/lvl",
+          "duration": "C",
+          "range": "5'/lvl",
+          "type": "F",
+          "description": "By concentrating, the caster can remove most of the oxygen from the area of effect. After three rounds of concentration, all targets in the area of effect must make an RR each round in the area of effect or fall asleep (1 round per 10 failure). All fire spells in the area suffer a -20 penalty (or are 20% less effective in the case of non-attack spells)."
+        },
+        {
+          "level": 4,
+          "name": "Stun Cloud I",
+          "areaOfEffect": "5'R",
+          "duration": "6 rnds",
+          "range": "10'",
+          "type": "E",
+          "description": "Creates a 5' radius cloud of charged gas particles. This cloud delivers a 'C' Electricity critical to all within the area of effect on the first and second rounds; a 'B' on the third and fourth rounds; and an 'A' on the fifth and sixth rounds (after 6 rounds, the cloud dissipates). This cloud drifts with the wind. The cloud takes one round to form (so anyone in the radius when it is cast may make a maneuver to move out of the radius without taking a critical)."
+        },
+        {
+          "level": 5,
+          "name": "Air Stop I",
+          "areaOfEffect": "10'R",
+          "duration": "C",
+          "range": "100'",
+          "type": "F",
+          "description": "Stops all generalized air movement (e.g., wind) up to winds of 30 mph; cuts stronger winds by 30 mph in the area of effect."
+        },
+        {
+          "level": 6,
+          "name": "Stun Cloud II",
+          "areaOfEffect": "10'R",
+          "duration": "6 rnds",
+          "range": "20'",
+          "type": "E",
+          "description": "As Stun Cloud I, except radius is 10'."
+        },
+        {
+          "level": 7,
+          "name": "Vacuum I",
+          "areaOfEffect": "5'R",
+          "duration": "—",
+          "range": "100'",
+          "type": "F",
+          "description": "Creates a 5' radius near vacuum. Anyone inside the radius must make a successful RR or take a 'B' Impact critical, as air leaves and rushes back in."
+        },
+        {
+          "level": 8,
+          "name": "Air Stop II",
+          "areaOfEffect": "20'R",
+          "duration": "C",
+          "range": "100'",
+          "type": "F",
+          "description": "As Air Stop I, except radius is 20'."
+        },
+        {
+          "level": 9,
+          "name": "Slumber Cloud",
+          "areaOfEffect": "1'R/lvl",
+          "duration": "1 min/lvl",
+          "range": "5'/lvl",
+          "type": "F",
+          "description": "As Slumber Mist, except for the duration, and it drifts with the wind."
+        },
+        {
+          "level": 10,
+          "name": "Stun Cloud IV",
+          "areaOfEffect": "20'R",
+          "duration": "6 rnds",
+          "range": "40'",
+          "type": "E",
+          "description": "As Stun Cloud I, except radius is 20'."
+        }
+      ]
+    },
+    {
+      "name": "Concealment Mastery",
+      "realm": "Essence",
+      "type": "Base",
+      "profession": "Dabbler",
+      "reference": "A-9.12.1",
+      "specialNotes": [
+        "When using the Locate Object spell, the caster must provide an unambiguous description of the object. This includes a minimum of: the item's dimensions (within 10% of actual size) and at least two other identifying attributes (e.g., color, weight, shape, texture, etc.). Often, it will take more than two other attributes to make the description “unique.”"
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Shadow",
+          "areaOfEffect": "caster",
+          "duration": "10 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "Target and objects on his person appear to be a shadow; and thus are almost invisible in dark areas (e.g., in many situations this could be handled with a special bonus between +25 and +75 to Stalking/Hiding maneuvers)."
+        },
+        {
+          "level": 2,
+          "name": "Unseen III",
+          "areaOfEffect": "3 targets",
+          "duration": "24 hours",
+          "range": "10'/lvl",
+          "type": "E",
+          "description": "Up to three objects (e.g., 1 garment, 1 naked body, and 1 weapon) are made invisible. The object(s) will remain invisible until 24 hours pass, or the object is struck by a violent blow (being hit by a weapon, falling, etc.), or the object makes a violent move (i.e., an attack)."
+        },
+        {
+          "level": 3,
+          "name": "Conceal I",
+          "areaOfEffect": "1 object",
+          "duration": "4 hrs/lvl",
+          "range": "touch",
+          "type": "E",
+          "description": "Target inanimate object takes on the visual appearance of a similar object. For example, a small red key may appear as a small blue spoon. The object cannot vary in dimensions by more than 100% of actual size in any given dimension. This is strictly a visual illusion (and can be detected as such), see Appendix A-9.17.14 (p. 206)."
+        },
+        {
+          "level": 4,
+          "name": "Locate Object",
+          "areaOfEffect": "1 object",
+          "duration": "—",
+          "range": "5'/lvl",
+          "type": "I",
+          "description": "Allows the caster to find any inanimate object. The caster must be able to uniquely describe the object."
+        },
+        {
+          "level": 5,
+          "name": "Darkness",
+          "areaOfEffect": "2'R/lvl",
+          "duration": "10 min/lvl",
+          "range": "10'",
+          "type": "E",
+          "description": "Creates an area of darkness up to 2' radius per level about the point touched. The darkness is equal to the darkest night. If the point is on a mobile object or being, it will move with the object or being. See Appendix A-9.17.12 (p. 206)."
+        },
+        {
+          "level": 6,
+          "name": "Secret I",
+          "areaOfEffect": "1 object",
+          "duration": "4 hrs/lvl",
+          "range": "touch",
+          "type": "U",
+          "description": "Target inanimate object takes on the visual and tactile appearance of another object. For example, a crystal goblet might look and feel like a wooden mug. The object cannot vary in dimensions by more than 100% of actual size in any given dimension. This is an illusion (and can be detected as such)."
+        },
+        {
+          "level": 7,
+          "name": "Unseen V",
+          "areaOfEffect": "5 targets",
+          "duration": "24 hours",
+          "range": "10'/lvl",
+          "type": "E",
+          "description": "As Unseen III, except affects up to five objects."
+        },
+        {
+          "level": 8,
+          "name": "Displacement I",
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "E",
+          "description": "Target appears to be offset from where he actually is. All attacks have no effect 10% of the time. Each time a foe misses him, the chance of that foe missing again drops by 5%."
+        },
+        {
+          "level": 9,
+          "name": "Conceal III",
+          "areaOfEffect": "3 objects",
+          "duration": "4 hrs/lvl",
+          "range": "touch",
+          "type": "E",
+          "description": "As Conceal I, except affects up to three objects."
+        },
+        {
+          "level": 10,
+          "name": "Unseen X",
+          "areaOfEffect": "10 targets",
+          "duration": "24 hours",
+          "range": "10'/lvl",
+          "type": "E",
+          "description": "As Unseen III, except affects up to ten objects."
+        }
+      ]
+    },
+    {
+      "name": "Influences",
+      "realm": "Essence",
+      "type": "Base",
+      "profession": "Dabbler",
+      "reference": "A-9.12.2",
+      "specialNotes": [],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Sleep III",
+          "areaOfEffect": "varies",
+          "duration": "—",
+          "range": "100'",
+          "type": "Fm",
+          "description": "Causes target(s) to fall into a natural sleep. This spell can affect a number of targets whose levels total up to 3. The caster must be able to see all targets. At the time of casting, the caster should designate target priority (e.g., affect 1st target; if levels are left, affect 2nd target; etc.). The first 2 rounds of sleep is magical (the target cannot be awakened through normal means)."
+        },
+        {
+          "level": 2,
+          "name": "Charm Animals",
+          "areaOfEffect": "1 animal/lvl",
+          "duration": "1 hour",
+          "range": "100'",
+          "type": "Fm",
+          "description": "Target animal(s) will believe the caster is a good friend."
+        },
+        {
+          "level": 3,
+          "name": "Charm Kind",
+          "areaOfEffect": "1 target",
+          "duration": "1 hr/lvl",
+          "range": "100'",
+          "type": "Fm",
+          "description": "Target humanoid believes the caster is a good friend."
+        },
+        {
+          "level": 4,
+          "name": "Sleep V",
+          "areaOfEffect": "varies",
+          "duration": "—",
+          "range": "100'",
+          "type": "Fm",
+          "description": "As Sleep III, except affects a total of 5 levels."
+        },
+        {
+          "level": 5,
+          "name": "Suggestion",
+          "areaOfEffect": "1 target",
+          "duration": "varies",
+          "range": "100'",
+          "type": "Fm",
+          "description": "Target will follow a single suggested act that is not completely alien to him (e.g., no suicide suggestions, no blinding himself suggestions, etc.)."
+        },
+        {
+          "level": 6,
+          "name": "Telepathy I",
+          "areaOfEffect": "1 target",
+          "duration": "1 rnd/lvl (C)",
+          "range": "2'/lvl",
+          "type": "Fm",
+          "description": "Caster receives surface thoughts from target. If target makes his RR by more than 25 he realizes that someone is trying to read his thoughts."
+        },
+        {
+          "level": 7,
+          "name": "Sleep VII",
+          "areaOfEffect": "varies",
+          "duration": "—",
+          "range": "100'",
+          "type": "Fm",
+          "description": "As Sleep III, except affects a total of 7 levels."
+        },
+        {
+          "level": 8,
+          "name": "Hold Kind",
+          "areaOfEffect": "1 target",
+          "duration": "C",
+          "range": "100'",
+          "type": "Fm",
+          "description": "Target humanoid is held to 25% activity."
+        },
+        {
+          "level": 9,
+          "name": "Greater Charm Kind",
+          "areaOfEffect": "1 target/5 lvl",
+          "duration": "1 hr/lvl",
+          "range": "100'",
+          "type": "Fm",
+          "description": "As Charm Kind, except will affect one target for every five levels (or fraction thereof) of the caster."
+        },
+        {
+          "level": 10,
+          "name": "Sleep X",
+          "areaOfEffect": "varies",
+          "duration": "—",
+          "range": "100'",
+          "type": "Fm",
+          "description": "As Sleep III, except affects a total of 10 levels."
+        }
+      ]
+    },
+    {
+      "name": "Mechanisms",
+      "realm": "Essence",
+      "type": "Base",
+      "profession": "Dabbler",
+      "reference": "A-9.12.3",
+      "specialNotes": [
+        "For the purposes of spells on this list, a machine is any man-made device built to perform a specific function.",
+        "All percentage chances given with spells on this list are modified by the sophistication of the trap, lock, or machine (see the special notes on p. 176)."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Machine Lore",
+          "areaOfEffect": "1 object",
+          "duration": "—",
+          "range": "touch",
+          "type": "I",
+          "description": "This spell analyzes one “machine,” giving the caster an idea of its purpose and operating procedures. This gives the caster a special bonus of +20 when operating this particular machine, and +10 to anyone to whom he describes the machine."
+        },
+        {
+          "level": 2,
+          "name": "Tune",
+          "areaOfEffect": "1 object",
+          "duration": "—",
+          "range": "touch",
+          "type": "U",
+          "description": "When this spell is cast upon a machine, the machine's efficiency will return to its original level. For example, if cast upon a rusty lock, the lock will return to its original non-rusty operational level."
+        },
+        {
+          "level": 3,
+          "name": "Jam I",
+          "areaOfEffect": "1 trap",
+          "duration": "—",
+          "range": "touch",
+          "type": "U",
+          "description": "This spell has a 50% chance of jamming the target mechanism (e.g., trap, lock, machine, etc.). If it is jammed, there is only a 5% chance that the target mechanism operates normally when used/triggered normally (check each time the mechanism is used). For example, if this spell is cast upon a pressure plate in the floor (that drops a portcullis), there is a 5% chance the mechanism will trigger each time someone walks over it."
+        },
+        {
+          "level": 4,
+          "name": "Unlock I",
+          "areaOfEffect": "1 lock",
+          "duration": "—",
+          "range": "touch",
+          "type": "U",
+          "description": "This spell has a 30% chance of opening any non-magical lock. If the lock is not unlocked, there is a 10% chance that any traps associated with it are set off. Rolls are open-ended and the sophistication of the lock may modify the roll."
+        },
+        {
+          "level": 5,
+          "name": "Untrap I",
+          "areaOfEffect": "1 trap",
+          "duration": "—",
+          "range": "touch",
+          "type": "U",
+          "description": "As Unlock I, except its concerns disarming traps. There is a 10% chance the trap being disarmed is set off."
+        },
+        {
+          "level": 6,
+          "name": "Operate I",
+          "areaOfEffect": "1 machine",
+          "duration": "1 min/lvl",
+          "range": "touch",
+          "type": "U",
+          "description": "As Unlock I, except this spell has a 30% chance of operating any non-magical machine in its normal capacity for the duration of the spell. After the duration, the machine will operate normally. For example, if this spell were used to turn a wheel, the wheel would spin for the duration of the spell, then slowly stop."
+        },
+        {
+          "level": 7,
+          "name": "Detect Active Power",
+          "areaOfEffect": "5'R",
+          "duration": "1 min/lvl (C)",
+          "range": "self",
+          "type": "P",
+          "description": "For the duration of this spell, the caster will be aware when any active magic is in the area of effect. The caster will not know what the magic is or where it is; only that it is in the area of effect. For example, a Dabbler with this spell active can move down a passageway; the moment he gets near magical symbols on a door, he will be warned of active magic in the area."
+        },
+        {
+          "level": 8,
+          "name": "Jam II",
+          "areaOfEffect": "1 trap",
+          "duration": "—",
+          "range": "touch",
+          "type": "U",
+          "description": "As Jam I, except has a 70% chance of jamming the mechanism (and only a 4% chance of setting it off)."
+        },
+        {
+          "level": 9,
+          "name": "Unlock II",
+          "areaOfEffect": "1 lock",
+          "duration": "—",
+          "range": "touch",
+          "type": "U",
+          "description": "As Unlock I, except has a 50% chance of opening the lock (and only an 8% chance of setting off associated traps)."
+        },
+        {
+          "level": 10,
+          "name": "Untrap II",
+          "areaOfEffect": "1 trap",
+          "duration": "—",
+          "range": "touch",
+          "type": "U",
+          "description": "As Untrap I, except has a 50% chance of disarming the trap (8% chance of setting off the trap)."
+        }
+      ]
+    },
+    {
+      "name": "Movement Mastery",
+      "realm": "Essence",
+      "type": "Base",
+      "profession": "Dabbler",
+      "reference": "A-9.12.4",
+      "specialNotes": [
+        "See Appendix 9.17.6 (p. 205) for notes on encumbrance limits for movement spells."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Run",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "caster",
+          "duration": "10 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "Allows caster to move at two times normal walking pace (i.e. Run pace), while expending exhaustion points as if walking. Once he stops or performs another action, the spell is canceled."
+        },
+        {
+          "level": 2,
+          "name": "Longjump",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "caster",
+          "duration": "—",
+          "range": "self",
+          "type": "U",
+          "description": "The caster may jump (from any pace) up to 10' plus 5' per level of the caster horizontally, or 5' plus 2' per level of the caster vertically. This spell will allow the caster to always land safely from jumps of this distance or less."
+        },
+        {
+          "level": 3,
+          "name": "Landing",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "caster",
+          "duration": "—",
+          "range": "self",
+          "type": "U",
+          "description": "Allows the caster to land safely in a fall up to 20' per level of the caster; and the caster can take that distance off the severity of any longer fall."
+        },
+        {
+          "level": 4,
+          "name": "Shadow Steps",
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "Allows the caster to cloak all of his movements in complete silence, so long as he moves no faster than a walking pace."
+        },
+        {
+          "level": 5,
+          "name": "Underwater Movement",
+          "areaOfEffect": "caster",
+          "duration": "10 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "The caster may move underwater as if he were on land."
+        },
+        {
+          "level": 6,
+          "name": "Balance I",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "caster",
+          "duration": "1 rnd/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "With this spell, the caster gets a special bonus of +50 to any movement maneuvers requiring balance that are performed at a walking pace."
+        },
+        {
+          "level": 7,
+          "name": "Spider's Step",
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "The caster can move (half walking pace) along any solid surface angled up to 90°; so long as he keeps at least a 3-point contact with the surface (e.g., both feet and one hand)."
+        },
+        {
+          "level": 8,
+          "name": "Long Dive",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "caster",
+          "duration": "—",
+          "range": "self",
+          "type": "U",
+          "description": "Caster can safely dive through the air up to 50' per level if water deep enough is present (at least 2' of water per 50' of the dive)."
+        },
+        {
+          "level": 9,
+          "name": "Traceless Passing",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "caster",
+          "duration": "C",
+          "range": "self",
+          "type": "U",
+          "description": "Caster can move at a walking pace without leaving tracks or other visible signs of his passing."
+        },
+        {
+          "level": 10,
+          "name": "Spider's Step True",
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "As Spider's Step, except caster can move along any surface (including ceilings)."
+        }
+      ]
+    },
+    {
+      "name": "Senses",
+      "realm": "Essence",
+      "type": "Base",
+      "profession": "Dabbler",
+      "reference": "A-9.12.5",
+      "specialNotes": [],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Sly Ears",
+          "areaOfEffect": "caster",
+          "duration": "10 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "Caster gains double normal hearing. This results in a special bonus of +50 to Awareness • Searching and Awareness • Senses skills involving only hearing (or +5 for Alertness skill). This bonus is +25 to such skills involving hearing and other senses (or +3 for Alertness skill)."
+        },
+        {
+          "level": 2,
+          "name": "Nightvision",
+          "areaOfEffect": "caster",
+          "duration": "10 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "Caster can see 100' on a normal night as if it were daylight. See Appendix A-9.17.12 (p. 206)."
+        },
+        {
+          "level": 3,
+          "name": "Scent",
+          "areaOfEffect": "caster",
+          "duration": "10 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "As Sly Ears except caster gains an extremely acute sense of smell and the bonuses indicated apply to Awareness skills involving smelling."
+        },
+        {
+          "level": 4,
+          "name": "Sensory Marker",
+          "areaOfEffect": "caster",
+          "duration": "P",
+          "range": "touch",
+          "type": "U",
+          "description": "One location is “marked” so that the caster can find it again later with a Far Sense spell. The marker is automatically located when the caster casts a Far Sense spell if the marker is within range of the Far Sense spell. A marker can be placed on any inanimate object. The caster can only have as many markers as he has levels."
+        },
+        {
+          "level": 5,
+          "name": "Far Sense I",
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl (C)",
+          "range": "50'/lvl",
+          "type": "U",
+          "description": "Caster may designate one of his senses to be used at any “marked” location within range (see Sensory Marker). The caster can use any perception skill he has at the time (e.g., if he is currently under the effects of Nightvision, he will have Nightvision at the marked location). The remote sensory point may be rotated to face any direction. While he is sensing at the marked location, he must remain immobile and concentrate."
+        },
+        {
+          "level": 6,
+          "name": "Sidevision",
+          "areaOfEffect": "caster",
+          "duration": "10 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "Caster has a 300° field of vision. The flank bonus for attacks against the caster is lowered to +5 and the rear bonus is lowered to +15."
+        },
+        {
+          "level": 7,
+          "name": "Touch",
+          "areaOfEffect": "caster",
+          "duration": "10 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "Caster gains extreme tactile sensitivity. This results in a special bonus of +25 to all actions that depend on tactile sense (e.g., pick locks, disarm traps, etc.)."
+        },
+        {
+          "level": 8,
+          "name": "Watervision",
+          "areaOfEffect": "caster",
+          "duration": "10 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "Caster can see 100' in any water (including murky water) as if it were daylight."
+        },
+        {
+          "level": 9,
+          "name": "Darkvision",
+          "areaOfEffect": "caster",
+          "duration": "10 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "As Nightvision, except any darkness can be seen through. Also, no light is needed for this spell to work."
+        },
+        {
+          "level": 10,
+          "name": "Far Sense II",
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl (C)",
+          "range": "50'/lvl",
+          "type": "U",
+          "description": "As Far Sense I, except caster may designate up to two senses at the marked location."
+        }
+      ]
+    },
+    {
+      "name": "Thieving Law",
+      "realm": "Essence",
+      "type": "Base",
+      "profession": "Dabbler",
+      "reference": "A-9.12.6",
+      "specialNotes": [
+        "The GM must decide what constitutes ownership in his world. See Appendix A-9.17.13 (p. 206) for more on information spells."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Gauge Wealth",
+          "areaOfEffect": "1 target",
+          "duration": "—",
+          "range": "10'",
+          "type": "P",
+          "description": "The caster gets a feeling for how much the target of this spell believes he is worth (i.e., his net worth). Note that this could be drastically different than how much money the target has (as wealth could include land, livestock, etc.)."
+        },
+        {
+          "level": 2,
+          "name": "Weigh Pockets",
+          "areaOfEffect": "1 target",
+          "duration": "—",
+          "range": "10'",
+          "type": "P",
+          "description": "The caster knows approximately how much “wealth” the target has upon his person."
+        },
+        {
+          "level": 3,
+          "name": "Mark Target",
+          "areaOfEffect": "1 target",
+          "duration": "1 hr/lvl",
+          "range": "touch",
+          "type": "P",
+          "description": "The caster magically “marks” a target for use with the Locate Target spell. The caster can only have one target marked at a time."
+        },
+        {
+          "level": 4,
+          "name": "Find Buyer I",
+          "areaOfEffect": "500'R/lvl",
+          "duration": "—",
+          "range": "self",
+          "type": "I",
+          "description": "Locates the nearest person (within the area of effect; direction and distance) who wants a specific object. The caster must be touching the object at the time this spell is cast."
+        },
+        {
+          "level": 5,
+          "name": "Locate Target",
+          "areaOfEffect": "50'R/lvl",
+          "duration": "—",
+          "range": "self",
+          "type": "I",
+          "description": "The caster knows the exact location (direction and distance) of a “marked” target."
+        },
+        {
+          "level": 6,
+          "name": "Jewel/Metal Assessment",
+          "areaOfEffect": "1 object",
+          "duration": "—",
+          "range": "self",
+          "type": "I",
+          "description": "Caster can assess the value of jewels and metals within 10% of actual value. This spell allows him to calculate different values for all the cultures he is familiar with. Note that this spell evaluates the materials only (not the craftsmanship or the magical properties)."
+        },
+        {
+          "level": 7,
+          "name": "Item Assessment",
+          "areaOfEffect": "1 object",
+          "duration": "—",
+          "range": "self",
+          "type": "I",
+          "description": "As Jewel/Metal Assessment, except this spell will take into account the craftsmanship of the item. Magical properties are not evaluated."
+        },
+        {
+          "level": 8,
+          "name": "Find Buyer II",
+          "areaOfEffect": "500'R/lvl",
+          "duration": "—",
+          "range": "self",
+          "type": "I",
+          "description": "Locates the nearest person (within the area of effect; direction and distance) who wants a specific object and is willing to acquire it at this time. Caster must be touching the object."
+        },
+        {
+          "level": 9,
+          "name": "Detect Power",
+          "areaOfEffect": "1 object",
+          "duration": "—",
+          "range": "self",
+          "type": "I",
+          "description": "Detects magical power in an item (but not the realm or how much power is in the item)."
+        },
+        {
+          "level": 10,
+          "name": "Item Analysis I",
+          "areaOfEffect": "1 object",
+          "duration": "—",
+          "range": "self",
+          "type": "I",
+          "description": "Caster has a 10% chance of determining the enchanted abilities of an object (roll separately for each ability). Once this spell has been cast on an item, it may not be cast on the same item again until the caster has gained a level of experience."
+        }
+      ]
+    }
+  ]
+}

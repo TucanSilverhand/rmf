@@ -1,0 +1,950 @@
+{
+  "lists": [
+    {
+      "name": "Delving Ways",
+      "realm": "Essence",
+      "type": "Open",
+      "reference": "A-9.9.1",
+      "specialNotes": [
+        "See Appendix A-9.17.13 (p. 206) for more on information spells."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": null
+        },
+        {
+          "level": 2,
+          "name": "Text Analysis I",
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl (C)",
+          "range": "self",
+          "type": "U",
+          "description": "Caster can read text written in an unknown language, but only understand basic concepts of it. This spell gives the caster the equivalent of rank 2 knowledge in a written language."
+        },
+        {
+          "level": 3,
+          "name": "Stone Analysis",
+          "areaOfEffect": "caster",
+          "duration": "—",
+          "range": "10'",
+          "type": "I",
+          "description": "Gives nature and origin of natural stone, and when and how worked stone was obtained and worked."
+        },
+        {
+          "level": 4,
+          "name": "Metal Analysis",
+          "areaOfEffect": "caster",
+          "duration": "—",
+          "range": "10'",
+          "type": "I",
+          "description": "As Stone Analysis, except metal may be examined."
+        },
+        {
+          "level": 5,
+          "name": "Gas Analysis",
+          "areaOfEffect": "caster",
+          "duration": "—",
+          "range": "10'",
+          "type": "I",
+          "description": "As Stone Analysis, except gas may be examined."
+        },
+        {
+          "level": 6,
+          "name": null
+        },
+        {
+          "level": 7,
+          "name": "Text Analysis II",
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl (C)",
+          "range": "self",
+          "type": "U",
+          "description": "As Text Analysis I, except gives a complete technical analysis (vocabulary and syntax) but not an understanding of idioms (jargon), implications, or cultural references. This spell gives the caster the equivalent of rank 5 knowledge in a written language."
+        },
+        {
+          "level": 8,
+          "name": "Liquid Analysis",
+          "areaOfEffect": "caster",
+          "duration": "—",
+          "range": "10'",
+          "type": "I",
+          "description": "As Stone Analysis, except liquid may be examined."
+        },
+        {
+          "level": 9,
+          "name": null
+        },
+        {
+          "level": 10,
+          "name": "Delving",
+          "areaOfEffect": "1 item",
+          "duration": "—",
+          "range": "touch",
+          "type": "I",
+          "description": "Gives significant details about an item's construction and purpose (not specific powers)."
+        }
+      ]
+    },
+    {
+      "name": "Detecting Ways",
+      "realm": "Essence",
+      "type": "Open",
+      "reference": "A-9.9.2",
+      "specialNotes": [
+        "For the purposes of spells on this list, “evil” is defined as something that causes (or is a source of) intentional suffering, injury, or destruction.",
+        "When using a Location spell, the caster must provide an unambiguous description of the object being sought. This includes a minimum of: the item's dimensions (within 10% of actual size) and at least two other identifying attributes (e.g., color, weight, shape, texture, etc.). In many cases, it will take more than two other attributes to make the description “unique” (i.e., no other item within range can possibly match the description)."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Detect Essence",
+          "areaOfEffect": "5'R",
+          "duration": "1 min/lvl (C)",
+          "range": "100'",
+          "type": "P",
+          "description": "Detects any active spell or item from the Essence realm. Caster can concentrate on a 5' radius area each round."
+        },
+        {
+          "level": 2,
+          "name": "Detect Mentalism",
+          "areaOfEffect": "5'R",
+          "duration": "1 min/lvl (C)",
+          "range": "100'",
+          "type": "P",
+          "description": "As Detect Essence, except the realm is Mentalism."
+        },
+        {
+          "level": 3,
+          "name": "Detect Channeling",
+          "areaOfEffect": "5'R",
+          "duration": "1 min/lvl (C)",
+          "range": "100'",
+          "type": "P",
+          "description": "As Detect Essence, except the realm is Channeling."
+        },
+        {
+          "level": 4,
+          "name": null
+        },
+        {
+          "level": 5,
+          "name": "Detect Invisible",
+          "areaOfEffect": "5'R",
+          "duration": "1 min/lvl (C)",
+          "range": "100'",
+          "type": "P",
+          "description": "As Detect Essence, except detects invisible things. All attacks against something so detected receive a special modification of -50."
+        },
+        {
+          "level": 6,
+          "name": "Detect Traps",
+          "areaOfEffect": "5'R",
+          "duration": "1 min/lvl (C)",
+          "range": "100'",
+          "type": "P",
+          "description": "As Detect Essence, except it gives a 75% chance of detecting a trap (trap sophistication may modify this chance)."
+        },
+        {
+          "level": 7,
+          "name": "Detect Evil",
+          "areaOfEffect": "5'R",
+          "duration": "1 min/lvl",
+          "range": "100'",
+          "type": "P",
+          "description": "As Detect Essence, except detects if a being is evil or an item created by evil or long used by a very evil person."
+        },
+        {
+          "level": 8,
+          "name": "Location I",
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl",
+          "range": "100'",
+          "type": "P",
+          "description": "Gives the direction and distance to any specific object or place that the caster is familiar with or has had described in detail."
+        },
+        {
+          "level": 9,
+          "name": null
+        },
+        {
+          "level": 10,
+          "name": "Perceive Power I",
+          "areaOfEffect": "5'R",
+          "duration": "1 min/lvl (C)",
+          "range": "100'",
+          "type": "P",
+          "description": "As Detect Essence, except it will give an estimate of the power of the person (level) or item or spell examined."
+        }
+      ]
+    },
+    {
+      "name": "Elemental Shields",
+      "realm": "Essence",
+      "type": "Open",
+      "reference": "A-9.9.3",
+      "specialNotes": [
+        "No spells on this list are cumulative with each other."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Resist Light",
+          "areaOfEffect": "1 target",
+          "duration": "1 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "Target is totally protected from all natural light (includes glare, sunburn, and temporary blinding; but not lightning). This also give a special modification of +10 to all RRs versus light (electricity), and a special modification of +10 to target's DB against elemental electricity attacks."
+        },
+        {
+          "level": 2,
+          "name": "Resist Heat",
+          "areaOfEffect": "1 target",
+          "duration": "1 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "As Resist Light, except protects against natural heat to 200°F and the modifications apply to heat."
+        },
+        {
+          "level": 3,
+          "name": "Resist Cold",
+          "areaOfEffect": "1 target",
+          "duration": "1 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "As Resist Light, except protects against natural cold to -20°F and the modifications apply to cold."
+        },
+        {
+          "level": 4,
+          "name": "Resist Light Sphere",
+          "areaOfEffect": "10'R",
+          "duration": "1 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "As Resist Light, except all beings within a 10' radius of target are protected."
+        },
+        {
+          "level": 5,
+          "name": "Resist Heat Sphere",
+          "areaOfEffect": "10'R",
+          "duration": "1 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "As Resist Heat, except all beings within a 10' radius of target are protected."
+        },
+        {
+          "level": 6,
+          "name": "Resist Cold Sphere",
+          "areaOfEffect": "10'R",
+          "duration": "1 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "As Resist Cold, except all beings within a 10' radius of target are protected."
+        },
+        {
+          "level": 7,
+          "name": null
+        },
+        {
+          "level": 8,
+          "name": "Lightarmor",
+          "areaOfEffect": "1 target",
+          "duration": "1 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "As Resist Light, except protects against all natural light and electricity and the modifications are +20 for RRs and +20 for DB against attacks."
+        },
+        {
+          "level": 9,
+          "name": "Heatarmor",
+          "areaOfEffect": "1 target",
+          "duration": "1 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "As Lightarmor, except protects against heat."
+        },
+        {
+          "level": 10,
+          "name": "Coldarmor",
+          "areaOfEffect": "1 target",
+          "duration": "1 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "As Lightarmor, except protects against cold."
+        }
+      ]
+    },
+    {
+      "name": "Essence Hand",
+      "realm": "Essence",
+      "type": "Open",
+      "reference": "A-9.9.4",
+      "specialNotes": [],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Vibrations I",
+          "areaOfEffect": "1 target, 1 lb",
+          "duration": "1 rnd/lvl",
+          "range": "100'",
+          "type": "F",
+          "description": "Causes an object of up to 1 pound mass to vibrate rapidly; if fragile it may break (roll a RR). If it is an object held by a being the being must make a RR or fumble it (each round)."
+        },
+        {
+          "level": 2,
+          "name": "Staying I",
+          "areaOfEffect": "1 target, 1 lb",
+          "duration": "1 min/lvl",
+          "range": "100'",
+          "type": "F",
+          "description": "Exerts 1 pound of pressure on a person or object. Object cannot be moved by staying alone, and pressure can only be in one direction."
+        },
+        {
+          "level": 3,
+          "name": "Telekinesis I",
+          "areaOfEffect": "1 target, 1 lb",
+          "duration": "1 min/lvl (C)",
+          "range": "100'",
+          "type": "F",
+          "description": "Can move one object, up to 1 pound in mass, up to 1' per second (with no acceleration). If the caster stops concentration before the duration is up, the object remains stationary as if it had a Staying spell of an equal weight limit cast upon it."
+        },
+        {
+          "level": 4,
+          "name": "Vibrations II",
+          "areaOfEffect": "1 target, 5 lbs",
+          "duration": "1 rnd/lvl",
+          "range": "100'",
+          "type": "F",
+          "description": "As Vibrations I, except mass limit is 5 pounds."
+        },
+        {
+          "level": 5,
+          "name": "Staying II",
+          "areaOfEffect": "1 target, 5 lbs",
+          "duration": "1 min/lvl",
+          "range": "100'",
+          "type": "F",
+          "description": "As Staying I, except mass limit is 5 pounds."
+        },
+        {
+          "level": 6,
+          "name": "Telekinesis II",
+          "areaOfEffect": "1 target, 5 lbs",
+          "duration": "1 min/lvl (C)",
+          "range": "100'",
+          "type": "F",
+          "description": "As Telekinesis I, except mass limit is 5 pounds."
+        },
+        {
+          "level": 7,
+          "name": "Vibrations III",
+          "areaOfEffect": "1 target, 25 lbs",
+          "duration": "1 rnd/lvl",
+          "range": "100'",
+          "type": "F",
+          "description": "As Vibrations I, except mass limit is 25 pounds."
+        },
+        {
+          "level": 8,
+          "name": "Staying III",
+          "areaOfEffect": "1 target, 25 lbs",
+          "duration": "1 min/lvl",
+          "range": "100'",
+          "type": "F",
+          "description": "As Staying I, except mass limit is 25 pounds."
+        },
+        {
+          "level": 9,
+          "name": "Vibrations IV",
+          "areaOfEffect": "1 target, 50 lbs",
+          "duration": "1 rnd/lvl",
+          "range": "100'",
+          "type": "F",
+          "description": "As Vibrations I, except mass limit is 50 pounds."
+        },
+        {
+          "level": 10,
+          "name": "Aiming",
+          "areaOfEffect": "1 target",
+          "duration": "1 rnd (C)",
+          "range": "touch",
+          "type": "U",
+          "description": "By concentrating on the mind of a missile firer (the firer cannot be the caster) and the flight of the missile, the caster causes +50 to be added to the attack roll of the missile. The caster must concentrate, touch the firer and see the missile for the entire round that the missile is fired."
+        }
+      ]
+    },
+    {
+      "name": "Essence's Perceptions",
+      "realm": "Essence",
+      "type": "Open",
+      "reference": "A-9.9.5",
+      "specialNotes": [],
+      "spells": [
+        {
+          "level": 1,
+          "name": null
+        },
+        {
+          "level": 2,
+          "name": "Presence",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "20'R",
+          "duration": "1 rnd/lvl (C)",
+          "range": "10'",
+          "type": "U",
+          "description": "Caster is aware of the presence of all sentient/thinking beings within 20'."
+        },
+        {
+          "level": 3,
+          "name": "Listen I",
+          "areaOfEffect": "varies",
+          "duration": "1 rnd/lvl (C)",
+          "range": "10'",
+          "type": "U",
+          "description": "Caster can pick a point up to 10' away and he will hear as if he were at that point."
+        },
+        {
+          "level": 4,
+          "name": null
+        },
+        {
+          "level": 5,
+          "name": "Long Ear I",
+          "areaOfEffect": "varies",
+          "duration": "1 min/lvl (C)",
+          "range": "100'",
+          "type": "U",
+          "description": "Caster's point of hearing may be moved independently up to 100' away (moves at the rate of 10' per round). He must physically be able to go there (e.g., he could not send his point of hearing through walls or closed doors)."
+        },
+        {
+          "level": 6,
+          "name": "Watch I",
+          "areaOfEffect": "varies",
+          "duration": "1 rnd/lvl (C)",
+          "range": "10'",
+          "type": "U",
+          "description": "As Listen I, except the caster sees from the fixed point (it can rotate)."
+        },
+        {
+          "level": 7,
+          "name": "Long Eye I",
+          "areaOfEffect": "varies",
+          "duration": "1 min/lvl (C)",
+          "range": "100'",
+          "type": "U",
+          "description": "As Long Ear I, except the caster sees from the moving point (it can rotate)."
+        },
+        {
+          "level": 8,
+          "name": "Listen II",
+          "areaOfEffect": "varies",
+          "duration": "1 rnd/lvl (C)",
+          "range": "100'",
+          "type": "U",
+          "description": "As Listen I, except the range is 100'."
+        },
+        {
+          "level": 9,
+          "name": null
+        },
+        {
+          "level": 10,
+          "name": "Telepathy",
+          "areaOfEffect": "1 target",
+          "duration": "1 rnd/lvl (C)",
+          "range": "10'",
+          "type": "Pm",
+          "description": "Caster receives surface thoughts from target. If target makes his RR by more than 25 he realizes that someone is trying to read his thoughts."
+        }
+      ]
+    },
+    {
+      "name": "Lesser Illusions",
+      "realm": "Essence",
+      "type": "Open",
+      "reference": "A-9.9.6",
+      "specialNotes": [
+        "If more than one option can be added to the Illusion or Phantasm spell, the same option may be chosen more than once. For example, with an Illusion III, two options are available. The range could be doubled once to 200' and then doubled again to 400'.",
+        "The sense aspects of the illusion (mirage or phantasm) are actually created (no RR) and detecting that it is an illusion can normally be accomplished only through spells or through the use of a conflicting sense. Even after the illusion is detected, it still exists (but the detector knows that it is not real).",
+        "See Appendix A-9.17.14 (p. 206) for more on illusions."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Ventriloquism",
+          "areaOfEffect": "1 point",
+          "duration": "C",
+          "range": "100'",
+          "type": "E",
+          "description": "Caster can speak and his voice will appear to come from any point that he wants within 100' (point must be in his field of vision)."
+        },
+        {
+          "level": 2,
+          "name": "Sound/Light Mirage",
+          "areaOfEffect": "10'R",
+          "duration": "10 min/lvl",
+          "range": "100'",
+          "type": "E",
+          "description": "Creates any simple, immobile image, scene, or sounds in an area up to 10' radius, or creates a set of immobile sounds in an area up to 10' radius."
+        },
+        {
+          "level": 3,
+          "name": "Taste/Smell Mirage",
+          "areaOfEffect": "10'R",
+          "duration": "10 min/lvl",
+          "range": "100'",
+          "type": "E",
+          "description": "As Sound/Light Mirage, except creates a set of immobile smells in the area of effect, or a set of immobile tastes in the area of effect."
+        },
+        {
+          "level": 4,
+          "name": "Illusions II",
+          "areaOfEffect": "10'R",
+          "duration": "1 min/lvl",
+          "range": "100'",
+          "type": "E",
+          "description": "Creates a simple, immobile image or scene up to an area of 10' radius. One of the following options may also be chosen: a) an extra sense can be added (not the tactile or Presence senses), b) the duration can be doubled, c) the range can be doubled, or d) the radius of the area of effect can be doubled. All parts of the area of effect must be within the range of the spell (and all of the area of effect must be in the caster's field of vision)."
+        },
+        {
+          "level": 5,
+          "name": "Phantasm I",
+          "areaOfEffect": "10'R",
+          "duration": "1 min/lvl (C)",
+          "range": "100'",
+          "type": "E",
+          "description": "Creates the image of one object or being that will move however the caster wants (as long as the caster concentrates). When the caster stops concentrating, the image remains but stops moving. The caster may resume concentration again later and make the image move again (presuming that the duration has not expired). The image can be of any size that would fit in the radius."
+        },
+        {
+          "level": 6,
+          "name": "Light Glamour",
+          "areaOfEffect": "1 object",
+          "duration": "1 day/lvl",
+          "range": "50'",
+          "type": "E",
+          "description": "Changes the visual appearance of one object. The target can be no larger than 10 pounds per level."
+        },
+        {
+          "level": 7,
+          "name": "Waiting Illusion II",
+          "areaOfEffect": "10'R",
+          "duration": "varies",
+          "range": "50'",
+          "type": "E",
+          "description": "As Illusion II, except it can be delayed up to 24 hours. At the time of casting, the caster must decide upon the trigger for the spell. The caster can choose one of the following: a) time period, b) specified movements, c) specified sounds, d) specified smells, e) specified tastes. If a sense is used to trigger the spell, that sense must be included in the illusion."
+        },
+        {
+          "level": 8,
+          "name": "Illusions III",
+          "areaOfEffect": "10'R",
+          "duration": "1 min/lvl",
+          "range": "100'",
+          "type": "E",
+          "description": "As Illusion II, except two options may be chosen. See the notes for guidelines on how to combine the options."
+        },
+        {
+          "level": 9,
+          "name": "Phantasm II",
+          "areaOfEffect": "10'R",
+          "duration": "1 min/lvl (C)",
+          "range": "100'",
+          "type": "E",
+          "description": "As Phantasm I, except one of the following options may also be chosen: a) an extra sense can be added (not the tactile or Presence senses), b) the duration can be doubled, c) the range can be doubled, d) the radius of the area of effect can be doubled, e) another image can be created and moved independently of the first (all separate images must be within the caster's field of vision and within range of the spell), or f) limited repetitious sounds, movements, etc. can be added that do not require concentration of the caster (the proper senses involved must also be included with the illusion)."
+        },
+        {
+          "level": 10,
+          "name": "Waiting Phantasm II",
+          "areaOfEffect": "10'R",
+          "duration": "varies",
+          "range": "100'",
+          "type": "E",
+          "description": "As Phantasm II, except it can be delayed as in Waiting Illusion II. The phantasm will move and act if given a simple command (at the time of casting), or it can deliver a short speech (if sound was one of the included senses)."
+        }
+      ]
+    },
+    {
+      "name": "Physical Enhancement",
+      "realm": "Essence",
+      "type": "Open",
+      "reference": "A-9.9.7",
+      "specialNotes": [],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Mannish Scale",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 object",
+          "duration": "—",
+          "range": "1'",
+          "type": "I",
+          "description": "Caster can tell the exact dimensions, mass, and/or weight of one object."
+        },
+        {
+          "level": 2,
+          "name": "Sly Ears",
+          "areaOfEffect": "1 target",
+          "duration": "10 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "Target gains double normal hearing. This results in a special bonus of +50 to Awareness • Searching and Awareness • Senses skills involving only hearing (or +5 for Alertness skill). This bonus is +25 to such skills involving hearing and other senses (or +3 for Alertness skill)."
+        },
+        {
+          "level": 3,
+          "name": "Balance",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 target",
+          "duration": "varies",
+          "range": "10'",
+          "type": "U",
+          "description": "Target gets a special bonus of +50 for maneuver rolls for a slow maneuver requiring balance (e.g., walking a 3\" beam)."
+        },
+        {
+          "level": 4,
+          "name": "Nightvision",
+          "areaOfEffect": "1 target",
+          "duration": "10 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "Target can see 100' on a normal night as if it were daylight. See Appendix A-9.17.12 (p.206)."
+        },
+        {
+          "level": 5,
+          "name": "Sidevision",
+          "areaOfEffect": "1 target",
+          "duration": "10 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "Target has a 300° field of vision. The flank bonus for attacks against the target is lowered to +5 and the rear bonus is lowered to +15."
+        },
+        {
+          "level": 6,
+          "name": "Sounding",
+          "areaOfEffect": "1 target",
+          "duration": "10 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "Target's voice has its loudness tripled. This has no effect on spell casting capabilities (it simply allows the caster to make himself heard without difficulty over long distances)."
+        },
+        {
+          "level": 7,
+          "name": "Watervision",
+          "areaOfEffect": "1 target",
+          "duration": "10 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "As Nightvision, except target can see 100' in any water; even muddy, murky water."
+        },
+        {
+          "level": 8,
+          "name": "Waterlungs",
+          "areaOfEffect": "1 target",
+          "duration": "10 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "Target can breathe water but not air."
+        },
+        {
+          "level": 9,
+          "name": "Heatvision",
+          "areaOfEffect": "1 target",
+          "duration": "10 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "As Nightvision, except target can see varying degrees of heat on the surfaces of objects. This spell does not allow the caster to see “through” things. This vision is not sufficient for detailed actions like reading or mapping."
+        },
+        {
+          "level": 10,
+          "name": "Gaslungs",
+          "areaOfEffect": "1 target",
+          "duration": "10 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "As Waterlungs, except target can breathe any gas as normal air."
+        }
+      ]
+    },
+    {
+      "name": "Rune Mastery",
+      "realm": "Essence",
+      "type": "Open",
+      "reference": "A-9.9.8",
+      "specialNotes": [
+        "Rune paper is a special prepared paper, designed to hold enchantments (see Section 24.2, p. 80). After the rune is read from the paper, it fades from the paper. The paper may then hold another rune.",
+        "The attack level of a rune is the level of the spell that is put into the rune. If the spell is an elemental attack, the reader's appropriate Directed Spell OB is used."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": null
+        },
+        {
+          "level": 2,
+          "name": "Spell Store",
+          "areaOfEffect": "1 spell",
+          "duration": "varies",
+          "range": "self",
+          "type": "U",
+          "description": "Caster may cast this spell with any spell he wants to store. The spell to be stored must be cast within one minute after the Spell Store is cast. The stored spell may then be cast later as an instantaneous spell. The Spell Store spell costs the same number of PPs as the spell that is stored. No other spell may be cast while a spell is stored."
+        },
+        {
+          "level": 3,
+          "name": "Rune I",
+          "areaOfEffect": "1 spell",
+          "duration": "varies",
+          "range": "self",
+          "type": "U",
+          "description": "This spell inscribes a spell on a specially prepared piece of paper. The rune can then be used to cast the inscribed spell once. The spell to be inscribed must be cast within one minute after the Rune # spell is cast. Rune I can only inscribe 1st level spells. The rune can be set to affect the reader."
+        },
+        {
+          "level": 4,
+          "name": null
+        },
+        {
+          "level": 5,
+          "name": null
+        },
+        {
+          "level": 6,
+          "name": "Rune II",
+          "areaOfEffect": "1 spell",
+          "duration": "varies",
+          "range": "self",
+          "type": "U",
+          "description": "As Rune I, except up to 2nd level spells can be inscribed."
+        },
+        {
+          "level": 7,
+          "name": null
+        },
+        {
+          "level": 8,
+          "name": "Rune III",
+          "areaOfEffect": "1 spell",
+          "duration": "varies",
+          "range": "self",
+          "type": "U",
+          "description": "As Rune I, except up to 3rd level spells can be inscribed."
+        },
+        {
+          "level": 9,
+          "name": null
+        },
+        {
+          "level": 10,
+          "name": "Rune V",
+          "areaOfEffect": "1 spell",
+          "duration": "varies",
+          "range": "self",
+          "type": "U",
+          "description": "As Rune I, except up to 5th level spells can be inscribed."
+        }
+      ]
+    },
+    {
+      "name": "Spell Wall",
+      "realm": "Essence",
+      "type": "Open",
+      "reference": "A-9.9.9",
+      "specialNotes": [],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Protection I",
+          "areaOfEffect": "1 target",
+          "duration": "1 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "Subtracts 5 from elemental attack rolls against the target and adds 5 to all of the target's RRs versus spells."
+        },
+        {
+          "level": 2,
+          "name": "Cancel Essence",
+          "areaOfEffect": "1 spell",
+          "duration": "C",
+          "range": "self",
+          "type": "F",
+          "description": "When the caster of this spell is a target of a spell from the realm of Essence, the “incoming” spell must first make an RR before the caster makes an RR. For RR purposes, each spell uses a level equal to its caster's level. If the “incoming” spell passes the RR, it may target the caster of this spell normally; otherwise the incoming spell has no effect on this target."
+        },
+        {
+          "level": 3,
+          "name": "Protection Sphere I",
+          "areaOfEffect": "10'R",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "As Protection I, except all beings within 10' radius of target get the benefits."
+        },
+        {
+          "level": 4,
+          "name": "Cancel Mentalism",
+          "areaOfEffect": "1 spell",
+          "duration": "C",
+          "range": "self",
+          "type": "F",
+          "description": "As Cancel Essence except affects spells from the realm of Mentalism."
+        },
+        {
+          "level": 5,
+          "name": "Protection II",
+          "areaOfEffect": "1 target",
+          "duration": "1 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "As Protection I, except bonuses are 10."
+        },
+        {
+          "level": 6,
+          "name": "Cancel Channeling",
+          "areaOfEffect": "1 spell",
+          "duration": "C",
+          "range": "self",
+          "type": "F",
+          "description": "As Cancel Essence, except affects spells from the realm of Channeling."
+        },
+        {
+          "level": 7,
+          "name": "Protection Sphere II",
+          "areaOfEffect": "10'R",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "As Protection II, except it has a 10' radius as in Protection Sphere I."
+        },
+        {
+          "level": 8,
+          "name": "Dispel Essence Sphere I",
+          "areaOfEffect": "10'R",
+          "duration": "C",
+          "range": "self",
+          "type": "F",
+          "description": "As Cancel Essence, except for the area of effect (centered on the caster). If the radius encounters an already existing spell, that spell must make an RR (with a special modifier of +30) or be cancelled."
+        },
+        {
+          "level": 9,
+          "name": "Essence Shield",
+          "areaOfEffect": "caster",
+          "duration": "C",
+          "range": "self",
+          "type": "U",
+          "description": "Creates a shimmering shield in front of the caster. This shield subtracts 10 from all frontal Essence attack rolls on the caster (base and elemental). In addition, if the caster performs no other actions during a round, he can “parry” (as with a normal shield) one spell attack. The parry bonus is equal to 10 plus the caster's skill rank with this list."
+        },
+        {
+          "level": 10,
+          "name": "Mind Shield",
+          "areaOfEffect": "caster",
+          "duration": "C",
+          "range": "self",
+          "type": "U",
+          "description": "As Essence Shield, except is effective only against Mentalism spells."
+        }
+      ]
+    },
+    {
+      "name": "Unbarring Ways",
+      "realm": "Essence",
+      "type": "Open",
+      "reference": "A-9.9.10",
+      "specialNotes": [
+        "Each lock and trap is rated according to the difficulty in unlocking/disarming it. The standard difficulty modifiers apply: Routine (+30), Easy (+20), Light (+10), Medium (0), Hard (-10), Very Hard (-20), Extremely Hard (-30), Sheer Folly (-50), Absurd (at least -70). Some suggested difficulty modifiers are: Simple Shackle Lock (Easy), Padlock (Medium to Hard), Tumbler Luck (Hard to Extremely Hard), Double Key Tumbler (Sheer Folly).",
+        "If a spell (e.g., Opening I, Disarm I, etc.) is used to attempt to unlock/disarm a device, the chance of the spell successfully operating the lock is modified by half of the modifier given above."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Lock",
+          "areaOfEffect": "1 lock",
+          "duration": "—",
+          "range": "100'",
+          "type": "U",
+          "description": "Caster can cause any lock he can see within 100' to be locked (the lock is just normally locked and can be opened normally)."
+        },
+        {
+          "level": 2,
+          "name": "Magic Lock",
+          "areaOfEffect": "1 door",
+          "duration": "1 min/lvl",
+          "range": "touch",
+          "type": "U",
+          "description": "A door (or container) can be magically “locked.” The door can be broken down normally or the spell can be dispelled. Otherwise, the door cannot be opened for the duration of the spell."
+        },
+        {
+          "level": 3,
+          "name": "Locklore",
+          "areaOfEffect": "1 lock",
+          "duration": "—",
+          "range": "touch",
+          "type": "I",
+          "description": "Gives the caster a special bonus of +20 for picking the lock analyzed. If the caster describes the information gained from this spell, the listener will get a special bonus of +10 to picking the lock analyzed."
+        },
+        {
+          "level": 4,
+          "name": "Opening I",
+          "areaOfEffect": "1 lock",
+          "duration": "—",
+          "range": "touch",
+          "type": "U",
+          "description": "When cast upon a lock, there is a 20% chance a normal lock will open, and a 45% chance that a Magic Lock will open. There is a 10% chance that any associated traps are set off. Rolls are open-ended, and the sophistication of the lock may modify the roll."
+        },
+        {
+          "level": 5,
+          "name": "Traplore",
+          "areaOfEffect": "1 trap",
+          "duration": "—",
+          "range": "touch",
+          "type": "I",
+          "description": "As Locklore, except applies to disarming traps."
+        },
+        {
+          "level": 6,
+          "name": "Disarm I",
+          "areaOfEffect": "1 trap",
+          "duration": "—",
+          "range": "touch",
+          "type": "U",
+          "description": "As Opening I, except its chances concern disarming traps. There is a 10% chance that the trap being disarmed is set off."
+        },
+        {
+          "level": 7,
+          "name": "Jamming",
+          "areaOfEffect": "1 door",
+          "duration": "P",
+          "range": "50'",
+          "type": "U",
+          "description": "Causes a door to expand and jam into its frame. Roll d100 to determine the severity of the jam (a 01 means the door is only slightly stuck; a 100 means that the door is unopenable)."
+        },
+        {
+          "level": 8,
+          "name": "Weakening",
+          "areaOfEffect": "1 door",
+          "duration": "P",
+          "range": "50'",
+          "type": "U",
+          "description": "Reduces the inherent strength of a door by 50%. All maneuvers to break down the door get a special bonus of +50."
+        },
+        {
+          "level": 9,
+          "name": "Open Prison I",
+          "areaOfEffect": "5'R/lvl",
+          "duration": "P",
+          "range": "self",
+          "type": "U",
+          "description": "When cast, there is a 20% chance that all locks within the area of effect are unlocked (45% chance for Magic Locks). Roll separately for each lock in the area of effect. Rolls are open-ended, and the sophistication of the lock may modify the roll."
+        },
+        {
+          "level": 10,
+          "name": "Opening II",
+          "areaOfEffect": "1 lock",
+          "duration": "—",
+          "range": "touch",
+          "type": "U",
+          "description": "As Opening I, except chance is 40% (90% for Magic Locks)."
+        }
+      ]
+    }
+  ]
+}

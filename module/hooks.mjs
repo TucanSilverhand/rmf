@@ -19,12 +19,14 @@ import {
   importSkills,
   importProfessions,
   importTrainingPackages,
+  importSpellLists,
   syncCategoriesToCompendium,
   syncRacesToCompendium,
   syncSkillsToCompendium,
   syncRealmsToCompendium,
   syncProfessionsToCompendium,
-  syncTrainingPackagesToCompendium
+  syncTrainingPackagesToCompendium,
+  syncSpellListsToCompendium
 } from "./importers.mjs";
 import { runWorldMigration } from "./migration.mjs";
 import { applyTrainingPackageToActor } from "./training-package-apply.mjs";
@@ -97,12 +99,14 @@ export class RMFHooks {
     game.rmf.importSkills = importSkills;
     game.rmf.importProfessions = importProfessions;
     game.rmf.importTrainingPackages = importTrainingPackages;
+    game.rmf.importSpellLists = importSpellLists;
     game.rmf.syncCategoriesToCompendium = syncCategoriesToCompendium;
     game.rmf.syncRacesToCompendium = syncRacesToCompendium;
     game.rmf.syncSkillsToCompendium = syncSkillsToCompendium;
     game.rmf.syncRealmsToCompendium = syncRealmsToCompendium;
     game.rmf.syncProfessionsToCompendium = syncProfessionsToCompendium;
     game.rmf.syncTrainingPackagesToCompendium = syncTrainingPackagesToCompendium;
+    game.rmf.syncSpellListsToCompendium = syncSpellListsToCompendium;
 
     // Drop the cached basic-core index used by the Training Package
     // sheet's choice-row dropdowns. Call after running any of the

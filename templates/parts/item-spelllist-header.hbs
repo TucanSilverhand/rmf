@@ -1,0 +1,36 @@
+{{!--
+  RMF Spell List Item Sheet Header Partial
+  List name + image. The name input lives here so it stays visible
+  across all tabs (same pattern as profession/training-package sheets).
+--}}
+
+<header class="sheet-header">
+  <div class="header-row">
+    <img class="profile-img"
+         src="{{item.img}}"
+         alt="{{item.name}}"
+         data-edit="img"
+         data-action="pickImage"
+         title="{{item.name}}"
+         height="64"
+         width="64"/>
+
+    <div class="header-fields">
+      <h1 class="item-name">
+        <label class="sr-only" for="spelllist_name">{{localize "RMF.SpellList.NamePlaceholder"}}:</label>
+        <input id="spelllist_name"
+               name="name"
+               type="text"
+               value="{{item.name}}"
+               placeholder="{{localize 'RMF.SpellList.NamePlaceholder'}}"
+               autocomplete="off"/>
+      </h1>
+      <div class="spelllist-subtitle">
+        <span class="badge">{{system.realm}}</span>
+        <span class="badge">{{system.listType}}</span>
+        {{#if system.profession}}<span class="badge">{{system.profession}}</span>{{/if}}
+        {{#if system.reference}}<span class="ref">{{system.reference}}</span>{{/if}}
+      </div>
+    </div>
+  </div>
+</header>

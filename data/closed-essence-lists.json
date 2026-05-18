@@ -1,0 +1,1022 @@
+{
+  "lists": [
+    {
+      "name": "Dispelling Ways",
+      "realm": "Essence",
+      "type": "Closed",
+      "reference": "A-9.10.1",
+      "specialNotes": [],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Cancel Essence I",
+          "areaOfEffect": "caster",
+          "duration": "C",
+          "range": "self",
+          "type": "F",
+          "description": "When the caster of this spell is a target of a spell from the realm of Essence, the “incoming” spell must first make an RR before the caster makes an RR. For RR purposes, each spell uses a level equal to the level of its caster. If the “incoming” spell passes the RR, it may target the caster normally; otherwise, the incoming spell has no effect on this target."
+        },
+        {
+          "level": 2,
+          "name": "Cancel Mentalism I",
+          "areaOfEffect": "caster",
+          "duration": "C",
+          "range": "self",
+          "type": "F",
+          "description": "As Cancel Essence I, except affects spells from the realm of Mentalism."
+        },
+        {
+          "level": 3,
+          "name": "Cancel Channeling I",
+          "areaOfEffect": "caster",
+          "duration": "C",
+          "range": "self",
+          "type": "F",
+          "description": "As Cancel Essence I, except affects spells from the realm of Channeling."
+        },
+        {
+          "level": 4,
+          "name": "Dispel Essence I",
+          "areaOfEffect": "1 target",
+          "duration": "—",
+          "range": "10'",
+          "type": "F",
+          "description": "Any active spell from the realm of Essence that is on the target must make a RR (use the level of that spell's caster as the spell's level). If the spell fails its RR, it is dispelled."
+        },
+        {
+          "level": 5,
+          "name": "Dispel Mentalism I",
+          "areaOfEffect": "1 target",
+          "duration": "—",
+          "range": "10'",
+          "type": "F",
+          "description": "As Dispel Essence I, except affects spells from the realm of Mentalism."
+        },
+        {
+          "level": 6,
+          "name": "Dispel Channeling I",
+          "areaOfEffect": "1 target",
+          "duration": "—",
+          "range": "10'",
+          "type": "F",
+          "description": "As Dispel Essence I, except affects spells from the realm of Channeling."
+        },
+        {
+          "level": 7,
+          "name": "Dispel Essence Sphere I",
+          "areaOfEffect": "10'R",
+          "duration": "C",
+          "range": "self",
+          "type": "F",
+          "description": "As Dispel Essence I, except for the area of effect (centered on the caster). If the radius encounters an already existing spell, the spell must make an RR (with a special modifier of +30) or be cancelled (not dispelled) for as long as the active spell is inside the radius."
+        },
+        {
+          "level": 8,
+          "name": "Dispel Mentalism Sphere I",
+          "areaOfEffect": "10'R",
+          "duration": "C",
+          "range": "self",
+          "type": "F",
+          "description": "As Dispel Essence Sphere I, except only Mentalism spells are affected."
+        },
+        {
+          "level": 9,
+          "name": "Dispel Channeling Sphere I",
+          "areaOfEffect": "10'R",
+          "duration": "C",
+          "range": "self",
+          "type": "F",
+          "description": "As Dispel Essence Sphere I, except only Channeling spells are affected."
+        },
+        {
+          "level": 10,
+          "name": "Dispel Essence Sphere V",
+          "areaOfEffect": "50'R",
+          "duration": "C",
+          "range": "self",
+          "type": "F",
+          "description": "As Dispel Essence Sphere I, except radius is 50'."
+        }
+      ]
+    },
+    {
+      "name": "Gate Mastery",
+      "realm": "Essence",
+      "type": "Closed",
+      "reference": "A-9.10.2",
+      "specialNotes": [
+        "Demons are summoned through an elemental force; the Demon and caster do not make RRs during the summons. See special notes on p. 168 (Cleric Base Summons) and Creatures & Monsters for more details on Demons."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Familiar",
+          "areaOfEffect": "1 animal",
+          "duration": "P",
+          "range": "touch",
+          "type": "U",
+          "description": "The caster can attune to a creature (of animal intelligence and no more than 10% of caster's mass) to serve as his familiar. The caster must obtain the creature through normal means and cast this spell on the creature once per day for 1 week (concentrating for 2 hours/day). The caster can then control the familiar and view the world through its senses by concentrating on it if the familiar is within 50' per level. If the creature is killed, the caster will have a -25 modification to all actions for 2 weeks."
+        },
+        {
+          "level": 2,
+          "name": "Summons I",
+          "areaOfEffect": "1 creature",
+          "duration": "varies",
+          "range": "100'",
+          "type": "U",
+          "description": "Caster can instantly summon a first level, non-intelligent creature that he can control. If the caster can communicate with the creature, it will follow orders. Otherwise, control is only maintained through concentration of the caster. The general type of the creature can be specified by the caster but exactly what the creature is should be determined by the GM (selected from creatures commonly found in the area). If the creature was summoned for a task that is not dangerous to it, the duration is 10 minutes per level. However, if the creature is ever put into a dangerous situation, the duration drops to 1 round per level."
+        },
+        {
+          "level": 3,
+          "name": "Companion",
+          "areaOfEffect": "1 creature",
+          "duration": "varies",
+          "range": "100'",
+          "type": "U",
+          "description": "The caster can make a semi-intelligent being a companion. The companion can be no more than 50% of the caster's mass. The companion cannot be more intelligent than the caster. The relationship between the caster and the companion is not magical (and the caster must strive to maintain good relations with the companion or it will leave him). The relationship should be treated as a parent/child relationship. The companion will almost always obey a “do not” command; but the companion may make an RR to resist a “do” command."
+        },
+        {
+          "level": 4,
+          "name": null
+        },
+        {
+          "level": 5,
+          "name": "Summons II",
+          "areaOfEffect": "varies",
+          "duration": "varies",
+          "range": "100'",
+          "type": "U",
+          "description": "As Summons I, except caster can also choose one of the following options: a) the level of a summoned creature is increased by one, b) an extra first level creature can be summoned, or c) the duration can be doubled."
+        },
+        {
+          "level": 6,
+          "name": "Control Demon I",
+          "areaOfEffect": "1 demon",
+          "duration": "C",
+          "range": "10'/lvl",
+          "type": "E",
+          "description": "Allows the caster to control a Type I demon for the duration of the spell. At the time of casting, there is a 2% chance per Type of the demon that the demon can ignore the control."
+        },
+        {
+          "level": 7,
+          "name": "Summons III",
+          "areaOfEffect": "varies",
+          "duration": "varies",
+          "range": "100'",
+          "type": "U",
+          "description": "As Summons II, except 2 options can be chosen."
+        },
+        {
+          "level": 8,
+          "name": "Lesser Demonic Gate",
+          "areaOfEffect": "1 demon",
+          "duration": "varies",
+          "range": "10'",
+          "type": "U",
+          "description": "Caster summons a demon who gradually appears over the course of d10+1 rounds. The GM should roll d100 (not open-ended) to determine the type of the demon. A result of 1-60 summons a Type I demon. A result of 61-90 summons a Type II demon. A result of 91-100 summons a Type III demon. If demon is not “controlled” or “mastered” before it fully appears, it will attack."
+        },
+        {
+          "level": 9,
+          "name": "Summons V",
+          "areaOfEffect": "varies",
+          "duration": "varies",
+          "range": "100'",
+          "type": "U",
+          "description": "As Summons III, except 4 options can be chosen."
+        },
+        {
+          "level": 10,
+          "name": "Control Demon II",
+          "areaOfEffect": "1 demon",
+          "duration": "C",
+          "range": "10'/lvl",
+          "type": "E",
+          "description": "As Control Demon I, except Type I and Type II demons can be controlled."
+        }
+      ]
+    },
+    {
+      "name": "Invisible Ways",
+      "realm": "Essence",
+      "type": "Closed",
+      "reference": "A-9.10.3",
+      "specialNotes": [
+        "Only objects/beings totally contained in an invisibility radius at the time of casting become invisible; such an object/being would become visible upon totally leaving the radius; such an object/being would become visible upon violating the normal Unseen/Invisibility restrictions (e.g., attacking, receiving a violent blow, etc.), but the other objects/beings associated with the radius would remain invisible.",
+        "See Appendix 9.17.5 (p. 204) for more on Invisibility."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": null
+        },
+        {
+          "level": 2,
+          "name": "Unseen I",
+          "areaOfEffect": "1 target",
+          "duration": "24 hours",
+          "range": "10'",
+          "type": "E",
+          "description": "A single object is made invisible (1 garment, 1 naked body, etc.); until 24 hours pass or the object is struck by a violent blow (being hit by a weapon, falling, etc.) or the object makes a violent move (i.e., an attack)."
+        },
+        {
+          "level": 3,
+          "name": null
+        },
+        {
+          "level": 4,
+          "name": "Invisibility I",
+          "areaOfEffect": "1 target",
+          "duration": "24 hours",
+          "range": "10'",
+          "type": "E",
+          "description": "As Unseen I, except everything within 1' of the target is invisible as long as it is within 1' and as long as none of the Unseen I termination conditions occur."
+        },
+        {
+          "level": 5,
+          "name": null
+        },
+        {
+          "level": 6,
+          "name": "Invisibility II",
+          "areaOfEffect": "1 target",
+          "duration": "24 hours",
+          "range": "10'",
+          "type": "E",
+          "description": "As Invisibility I, except the radius can vary up to 1' (chosen at the time of casting). This makes the invisible target harder to see."
+        },
+        {
+          "level": 7,
+          "name": null
+        },
+        {
+          "level": 8,
+          "name": "Invisibility Sphere I",
+          "areaOfEffect": "1 target",
+          "duration": "24 hours",
+          "range": "10'",
+          "type": "E",
+          "description": "As Invisibility I, except the radius is 10'."
+        },
+        {
+          "level": 9,
+          "name": null
+        },
+        {
+          "level": 10,
+          "name": "Unseen III",
+          "areaOfEffect": "3 targets",
+          "duration": "24 hours",
+          "range": "10'",
+          "type": "E",
+          "description": "As Unseen I, except 3 objects can be affected."
+        }
+      ]
+    },
+    {
+      "name": "Living Change",
+      "realm": "Essence",
+      "type": "Closed",
+      "reference": "A-9.10.4",
+      "specialNotes": [],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Shrink Self",
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "Caster may shrink by up to 50% his normal mass (height in most situations). The caster retains his previous strength."
+        },
+        {
+          "level": 2,
+          "name": "Enlarge Self",
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "As Shrink Self, except caster may increase his mass by 50% (height in most situations); there is no increase in his strength (except for movement purposes)."
+        },
+        {
+          "level": 3,
+          "name": "Change Lore",
+          "areaOfEffect": "caster",
+          "duration": "—",
+          "range": "100'",
+          "type": "P",
+          "description": "Allows caster to analyze the form of another being for future use with True Change (an 11+ level spell that is on this spell list, see Spell Law)."
+        },
+        {
+          "level": 4,
+          "name": null
+        },
+        {
+          "level": 5,
+          "name": "Change to Kind",
+          "areaOfEffect": "1 target",
+          "duration": "10 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "Caster can alter the target's form to the form of any desired humanoid race. The form cannot be a specific form. For example, the target could take on the form of a Dwarf, but not the Dwarven king. Only physical form is gained (e.g., the target who becomes a Dwarf would not receive the dwarves ability to see in the dark)."
+        },
+        {
+          "level": 6,
+          "name": null
+        },
+        {
+          "level": 7,
+          "name": "Shrink",
+          "areaOfEffect": "1 target",
+          "duration": "10 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "As Shrink Self, except the maximum decrease is 10% of caster's mass per level (to a maximum of 90% of the target's mass) and it can be cast on any material that is living or was once living."
+        },
+        {
+          "level": 8,
+          "name": null
+        },
+        {
+          "level": 9,
+          "name": null
+        },
+        {
+          "level": 10,
+          "name": "Enlarge",
+          "areaOfEffect": "1 target",
+          "duration": "10 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "As Shrink, except it increases target's mass up to 10% of caster's mass per level."
+        }
+      ]
+    },
+    {
+      "name": "Lofty Bridge",
+      "realm": "Essence",
+      "type": "Closed",
+      "reference": "A-9.10.5",
+      "specialNotes": [
+        "See Appendix 9.17.6 (p. 205) for notes on encumbrance limits for movement spells."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Leaping",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 target",
+          "duration": "1 rnd",
+          "range": "100'",
+          "type": "U",
+          "description": "Allows the target to leap 50' laterally or 20' vertically in the round that the spell is cast."
+        },
+        {
+          "level": 2,
+          "name": "Landing",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 target",
+          "duration": "varies",
+          "range": "100'",
+          "type": "U",
+          "description": "Allows the target to land safely after a fall up to 20' per level of the caster. In addition, the target may take that distance off the severity of any longer fall."
+        },
+        {
+          "level": 3,
+          "name": "Leaving I",
+          "areaOfEffect": "1 target",
+          "duration": "—",
+          "range": "10'",
+          "type": "U",
+          "description": "Caster teleports the target to a point up to 100' away. There can be no intervening “barriers” in a direct line between the target and the point. A “barrier” is defined as anything the target could not physically go through (e.g., a closed door is a barrier, a pit is not)."
+        },
+        {
+          "level": 4,
+          "name": "Levitation",
+          "areaOfEffect": "1 target",
+          "duration": "1 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "Allows target to move up and down vertically at a rate of 10' per round. The spell does not confer any ability to control horizontal movement."
+        },
+        {
+          "level": 5,
+          "name": "Fly I",
+          "areaOfEffect": "1 target",
+          "duration": "1 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "Target can fly at a rate of 75' per round (approximately 5 mph). While Fly is active, normal movement (e.g., walking, running, etc.) is not allowed."
+        },
+        {
+          "level": 6,
+          "name": "Portal",
+          "areaOfEffect": "3'x6'x3'",
+          "duration": "1 rnd/lvl",
+          "range": "touch",
+          "type": "U",
+          "description": "Opens a 3'x6'x3' portal in any solid surface. When the duration ends, the surface is returned to its previous state. If anyone is in the area of effect when the spell ends, he is forced back to his point of entry."
+        },
+        {
+          "level": 7,
+          "name": "Fly II",
+          "areaOfEffect": "1 target",
+          "duration": "1 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "As Fly I, except rate is 150' per round."
+        },
+        {
+          "level": 8,
+          "name": "Long Door I",
+          "areaOfEffect": "1 target",
+          "duration": "—",
+          "range": "10'",
+          "type": "U",
+          "description": "As Leaving I, except target can pass through barriers by specifying exact distances. If the arrival point coincides with solid or liquid material, the target does not move; instead, he is stunned 1d10 rounds (the caster still expends the PPs for this spell)."
+        },
+        {
+          "level": 9,
+          "name": "Leaving III",
+          "areaOfEffect": "1 target",
+          "duration": "—",
+          "range": "10'",
+          "type": "U",
+          "description": "As Leaving I, except movement range is 300'."
+        },
+        {
+          "level": 10,
+          "name": "Teleport I",
+          "areaOfEffect": "1 target",
+          "duration": "—",
+          "range": "10'",
+          "type": "U",
+          "description": "As Long Door I, except movement range is 10 miles per level. This can be very risky depending upon the caster's familiarity with the destination's locale. The following chances for failure exist: Never seen place (but has had described) = 50%; Been briefly (one hour or less) = 25%; Studied (been in for 24 hours) = 10%; Studied carefully (7 days) = 1%; Lived in (for at least one year) = 0.01%. In the case of failure, first determine the direction of the error (randomly). The amount of error is then determined by making a 1d100 (open-ended) to determine the distance of the error in feet."
+        }
+      ]
+    },
+    {
+      "name": "Rapid Ways",
+      "realm": "Essence",
+      "type": "Closed",
+      "reference": "A-9.10.6",
+      "specialNotes": [
+        "Only one Haste or Speed spell may be in effect on an individual at any given time. In addition, Speed requires a 50% activity penalty after the spell effects end; casting a Speed or Haste spell at that point will only bring a person to normal activity, rather than extending the 200% activity time (50% x 2 = 100%)."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Run I",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 target",
+          "duration": "10 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "Target may run at double his normal walking pace; he expends exhaustion points at the same rate he would if he were walking, once he stops or performs some other action the spell is canceled."
+        },
+        {
+          "level": 2,
+          "name": "Speed I",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 target",
+          "duration": "1 rnd",
+          "range": "10'",
+          "type": "U",
+          "description": "Target may act at twice his normal rate (i.e., 200% activity per round), but immediately afterwards must spend a number of rounds equal to the rounds speeded at half rate—only 50% normal activity per round."
+        },
+        {
+          "level": 3,
+          "name": "Speed Reading",
+          "areaOfEffect": "1 target",
+          "duration": "10 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "Target reads at a rate of 10 pages per minute."
+        },
+        {
+          "level": 4,
+          "name": "Speed II",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "varies",
+          "duration": "varies",
+          "range": "10'",
+          "type": "U",
+          "description": "As Speed I, except duration is 2 rounds for one target or 1 round for each of 2 targets."
+        },
+        {
+          "level": 5,
+          "name": "Sprint I",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 target",
+          "duration": "10 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "Target may run at triple his normal walking pace and only expends exhaustion points at the same rate he would if he were walking. Once he stops or performs some other action the spell is canceled."
+        },
+        {
+          "level": 6,
+          "name": "Haste I",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 target",
+          "duration": "1 rnd",
+          "range": "10'",
+          "type": "U",
+          "description": "Target may act at twice his normal rate (i.e., 200% activity)."
+        },
+        {
+          "level": 7,
+          "name": "Speed III",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "varies",
+          "duration": "varies",
+          "range": "10'",
+          "type": "U",
+          "description": "As Speed I, except duration is 3 rounds split among one to three targets (in any combination)."
+        },
+        {
+          "level": 8,
+          "name": "Haste II",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "varies",
+          "duration": "varies",
+          "range": "10'",
+          "type": "U",
+          "description": "As Haste I, except duration is 2 rounds for one target or 1 round for each of 2 targets."
+        },
+        {
+          "level": 9,
+          "name": "Fast Sprint",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 target",
+          "duration": "10 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "Target may run at four times his normal walking pace and only expend exhaustion points at the same rate he would if he were walking, but once he stops or performs some other action the spell is canceled."
+        },
+        {
+          "level": 10,
+          "name": "Speed V",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "varies",
+          "duration": "varies",
+          "range": "10'",
+          "type": "U",
+          "description": "As Speed III, except duration is 5 rounds split among one to five targets (in any combination)."
+        }
+      ]
+    },
+    {
+      "name": "Shield Mastery",
+      "realm": "Essence",
+      "type": "Closed",
+      "reference": "A-9.10.7",
+      "specialNotes": [
+        "When casting a spell that can affect multiple targets, the caster can concentrate in order to hold the spell until it can be applied to the allowed number of targets.",
+        "The bonuses from Enchanted Robes and Enchanted Leather are not cumulative and they are not cumulative with bonuses from other armor."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Enchanted Shield",
+          "areaOfEffect": "1 shield",
+          "duration": "1 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "Caster temporarily enchants a non-magic, non-metal shield with a special bonus of +10 to defensive bonus (DB)."
+        },
+        {
+          "level": 2,
+          "name": "Shield",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "Creates an invisible force shield in front of the caster. This functions as a normal shield (subtracting 25 from appropriate attacks, etc.), except it does not occupy a hand. This spell cannot be combined with a “real” shield."
+        },
+        {
+          "level": 3,
+          "name": "Blur",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 target",
+          "duration": "1 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "Causes target to appear blurred to attackers. This subtracts 10 from all attacks directed at the target."
+        },
+        {
+          "level": 4,
+          "name": "Enchanted Robes",
+          "areaOfEffect": "1 robe",
+          "duration": "1 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "Caster temporarily enchants one robe to confer a special bonus of +10 to DB."
+        },
+        {
+          "level": 5,
+          "name": "Deflections I",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 missile",
+          "duration": "—",
+          "range": "100'",
+          "type": "U",
+          "description": "Caster can deflect any one missile that passes within 100' of him (caster must be able to see the missile). This causes 100 to be subtracted from the missile's attack."
+        },
+        {
+          "level": 6,
+          "name": "Enchanted Leather",
+          "areaOfEffect": "1 leather",
+          "duration": "1 min/lvl",
+          "range": "10'",
+          "type": "U",
+          "description": "Caster temporarily enchants one non-magic suit of leather (usually a shirt) with a special bonus of +10 to DB."
+        },
+        {
+          "level": 7,
+          "name": "Bladeturn I",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 attack",
+          "duration": "—",
+          "range": "100'",
+          "type": "U",
+          "description": "Caster can deflect any one melee attack that he can see (and is within range). This causes 50 to be subtracted from the attack."
+        },
+        {
+          "level": 8,
+          "name": null
+        },
+        {
+          "level": 9,
+          "name": "Deflections II",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "2 missiles",
+          "duration": "—",
+          "range": "100'",
+          "type": "U",
+          "description": "As Deflections I, except 2 missiles may be affected."
+        },
+        {
+          "level": 10,
+          "name": "Aim Untrue I",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 missile",
+          "duration": "—",
+          "range": "100'",
+          "type": "U",
+          "description": "Caster can deflect any one missile that passes within 100' of him (caster must be able to see the missile). This causes the missile to automatically miss its target."
+        }
+      ]
+    },
+    {
+      "name": "Spell Enhancement",
+      "realm": "Essence",
+      "type": "Closed",
+      "reference": "A-9.10.8",
+      "specialNotes": [
+        "Only spells with a defined duration can have their duration changed with an Extension spell. This does not include spells with a duration of “concentration” or “instant” spells.",
+        "Only spells with a “radius” effect can have their area of effect changed by the Increase Radius spells.",
+        "Only spells with a range other than “self” can be altered by Ranging spells.",
+        "Instant Ranging does not allow two spells to be cast in the same round. Thus, a spell that is utilizing Instant Ranging still takes a minimum of two rounds to cast (one for the Instant Ranging and one for the other spell)."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Special Effects",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 spell",
+          "duration": "varies",
+          "range": "self",
+          "type": "U",
+          "description": "Caster can add a minor smell, visual, or audio aspect to the next spell that he casts. This minor effect cannot increase or change the effects of the spell in any fashion."
+        },
+        {
+          "level": 2,
+          "name": "Extension II",
+          "areaOfEffect": "1 spell",
+          "duration": "varies",
+          "range": "self",
+          "type": "U",
+          "description": "Causes the next spell that the caster casts (within 1 minute) to have double the normal duration. This spell is not cumulative with any other Extension spells."
+        },
+        {
+          "level": 3,
+          "name": null
+        },
+        {
+          "level": 4,
+          "name": "Ranging I",
+          "areaOfEffect": "1 spell",
+          "duration": "varies",
+          "range": "self",
+          "type": "U",
+          "description": "Causes the next spell that the caster casts (within 1 minute) to have its range increased by 50'. This spell is not cumulative with any other Ranging spells."
+        },
+        {
+          "level": 5,
+          "name": "Extension III",
+          "areaOfEffect": "1 spell",
+          "duration": "varies",
+          "range": "self",
+          "type": "U",
+          "description": "As Extension II, except duration is 3 times normal."
+        },
+        {
+          "level": 6,
+          "name": "Instant Ranging I",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 spell",
+          "duration": "varies",
+          "range": "self",
+          "type": "U",
+          "description": "As Ranging I, except the casting time is instant."
+        },
+        {
+          "level": 7,
+          "name": "Increased Radius I",
+          "areaOfEffect": "1 spell",
+          "duration": "varies",
+          "range": "self",
+          "type": "U",
+          "description": "Causes the next spell that the caster casts (within 1 minute) to have its area of effect increased by 5'. This spell is not cumulative with other Increased Radius spells."
+        },
+        {
+          "level": 8,
+          "name": "Ranging II",
+          "areaOfEffect": "1 spell",
+          "duration": "varies",
+          "range": "self",
+          "type": "U",
+          "description": "As Ranging I, except range increase is 100'."
+        },
+        {
+          "level": 9,
+          "name": "Extension IV",
+          "areaOfEffect": "1 spell",
+          "duration": "varies",
+          "range": "self",
+          "type": "U",
+          "description": "As Extension II, except duration is 4 times normal."
+        },
+        {
+          "level": 10,
+          "name": "Instant Ranging II",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 spell",
+          "duration": "varies",
+          "range": "self",
+          "type": "U",
+          "description": "As Instant Ranging I, except range is increased by 100'."
+        }
+      ]
+    },
+    {
+      "name": "Spell Reins",
+      "realm": "Essence",
+      "type": "Closed",
+      "reference": "A-9.10.9",
+      "specialNotes": [],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Spell Store",
+          "areaOfEffect": "1 spell",
+          "duration": "varies",
+          "range": "self",
+          "type": "U",
+          "description": "Caster may cast this spell with any spell he wants to store. The spell to be stored must be cast within one minute after the Spell Store is cast. The stored spell may then be cast later as an instantaneous spell. The Spell Store costs the same number of PPs as the spell that is stored. No other spell may be cast while a spell is stored."
+        },
+        {
+          "level": 2,
+          "name": "Identify Casting",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 target",
+          "duration": "—",
+          "range": "self",
+          "type": "P",
+          "description": "If the target of this spell is casting a spell, the caster will know what realm the spell is from and what type of spell the target is casting."
+        },
+        {
+          "level": 3,
+          "name": "Spell Hold I",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 spell",
+          "duration": "1 rnd",
+          "range": "100'",
+          "type": "F",
+          "description": "The attack spell that is targeted with this spell must make an RR (using its caster's level as its level). If the RR succeeds, it will attack its original target as intended; otherwise, the effects of that spell are delayed for 1 round. After 1 round, if the target of the held spell has moved more than 20', the held spell may randomly affect another target within 10' of the original target point. If not cast upon the original target, Basic attack spells will suffer a special modification of -20 and Elemental attack spells suffer a special modification of -30."
+        },
+        {
+          "level": 4,
+          "name": null
+        },
+        {
+          "level": 5,
+          "name": "Spell Bending I",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 spell",
+          "duration": "—",
+          "range": "100'",
+          "type": "F",
+          "description": "Caster can deflect 1 elemental attack spell. The incoming spell must make an RR (using its caster's level as its level). If the RR succeeds, it will attack its target normally; otherwise, its attack roll is modified by -10 per 10 failure."
+        },
+        {
+          "level": 6,
+          "name": "Spell Hold II",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 spell",
+          "duration": "2 rnds",
+          "range": "100'",
+          "type": "F",
+          "description": "As Spell Hold I, except attack spells can be held up to 2 rounds."
+        },
+        {
+          "level": 7,
+          "name": null
+        },
+        {
+          "level": 8,
+          "name": "Spell Bending II",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 spell",
+          "duration": "—",
+          "range": "100'",
+          "type": "F",
+          "description": "As Spell Bending I, except attack roll is modified by -20 per 10 failure."
+        },
+        {
+          "level": 9,
+          "name": "Spell Hold III",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 spell",
+          "duration": "3 rnds",
+          "range": "100'",
+          "type": "F",
+          "description": "As Spell Hold I, except attack spells can be held up to 3 rounds."
+        },
+        {
+          "level": 10,
+          "name": "Reverse Spell I",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 spell",
+          "duration": "—",
+          "range": "100'",
+          "type": "F",
+          "description": "The target elemental attack spell must make an RR (using its caster's level as its level) with a modification of +20 (in favor of the elemental attack spell). If the RR succeeds, it makes its attack as normal; otherwise, the attack spell is reversed back on its caster. Resolve the attack with only a +0 OB."
+        }
+      ]
+    },
+    {
+      "name": "Spirit Mastery",
+      "realm": "Essence",
+      "type": "Closed",
+      "reference": "A-9.10.10",
+      "specialNotes": [],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Sleep V",
+          "areaOfEffect": "varies",
+          "duration": "—",
+          "range": "100'",
+          "type": "Fm",
+          "description": "Causes target(s) to fall into a natural sleep. This spell can affect a number of targets whose levels total up to 5. The caster must be able to see all the targets. At the time of casting, the caster should designate target priority (e.g., affect 1st target; if levels are left, affect 2nd target; etc.). The first 2 rounds of sleep are magical (target cannot be awakened through normal means)."
+        },
+        {
+          "level": 2,
+          "name": "Charm Kind",
+          "areaOfEffect": "1 target",
+          "duration": "1 hour/lvl",
+          "range": "100'",
+          "type": "Fm",
+          "description": "Target humanoid believes the caster is a good friend."
+        },
+        {
+          "level": 3,
+          "name": "Sleep VII",
+          "areaOfEffect": "varies",
+          "duration": "—",
+          "range": "100'",
+          "type": "Fm",
+          "description": "As Sleep V, except a total of 7 levels can be affected."
+        },
+        {
+          "level": 4,
+          "name": "Confusion",
+          "areaOfEffect": "1 target",
+          "duration": "1 rnd/5 failure",
+          "range": "100'",
+          "type": "Fm",
+          "description": "Target is incapable of making decisions or initiating action. However, the target may continue to fight if already engaged; he may also fight in self defense."
+        },
+        {
+          "level": 5,
+          "name": "Suggestion",
+          "areaOfEffect": "1 target",
+          "duration": "varies",
+          "range": "10'",
+          "type": "Fm",
+          "description": "Target will follow a single suggested act that is not completely alien to him (e.g., no suicide suggestions, no blinding himself suggestions, etc.)."
+        },
+        {
+          "level": 6,
+          "name": "Sleep X",
+          "areaOfEffect": "varies",
+          "duration": "—",
+          "range": "100'",
+          "type": "Fm",
+          "description": "As Sleep V, except a total of 10 levels may be affected."
+        },
+        {
+          "level": 7,
+          "name": "Hold Kind",
+          "areaOfEffect": "1 target",
+          "duration": "C",
+          "range": "100'",
+          "type": "Fm",
+          "description": "Target humanoid is held to 25% activity per round."
+        },
+        {
+          "level": 8,
+          "name": "Master of Kind",
+          "areaOfEffect": "1 target",
+          "duration": "10 min/lvl",
+          "range": "50'",
+          "type": "Fm",
+          "description": "Target humanoid must obey caster. However, he will not perform any act that is completely alien to him (e.g., no suicide suggestions, no blinding himself, etc.)."
+        },
+        {
+          "level": 9,
+          "name": "Lord Sleep",
+          "areaOfEffect": "varies",
+          "duration": "—",
+          "range": "100'",
+          "type": "Fm",
+          "description": "As Sleep V, except a total of 20 levels may be affected."
+        },
+        {
+          "level": 10,
+          "name": "True Charm",
+          "areaOfEffect": "1 target",
+          "duration": "1 hour/lvl",
+          "range": "100'",
+          "type": "Fm",
+          "description": "As Charm Kind, except any sentient creature may be affected."
+        }
+      ]
+    }
+  ]
+}

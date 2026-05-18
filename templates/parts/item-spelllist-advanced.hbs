@@ -1,0 +1,99 @@
+{{!--
+  RMF Spell List Item Sheet — Advanced Partial
+  Editable: meta selects + the 10-level spell ladder (one block per
+  level) + the special-notes list. Every array edit routes through the
+  sheet's _onFieldChange handler, which rewrites the whole array
+  atomically (same pattern as the training-package sheet).
+--}}
+
+<div class="tab advanced-section" data-group="primary-tabs" data-tab="advanced">
+
+  {{!-- Meta --}}
+  <fieldset class="form-group">
+    <legend>{{localize "RMF.SpellList.Meta"}}</legend>
+    <div class="two-col-tables">
+      <div>
+        <label>{{localize "RMF.SpellList.Realm"}}</label>
+        <select name="system.realm">
+          {{#each realmOptions as |o|}}<option value="{{o.value}}" {{#if o.selected}}selected{{/if}}>{{o.label}}</option>{{/each}}
+        </select>
+
+        <label>{{localize "RMF.SpellList.ListType"}}</label>
+        <select name="system.listType">
+          {{#each listTypeOptions as |o|}}<option value="{{o.value}}" {{#if o.selected}}selected{{/if}}>{{o.label}}</option>{{/each}}
+        </select>
+
+        <label>{{localize "RMF.SpellList.Profession"}}</label>
+        <select name="system.profession">
+          {{#each professionOptions as |o|}}<option value="{{o.value}}" {{#if o.selected}}selected{{/if}}>{{o.label}}</option>{{/each}}
+        </select>
+      </div>
+      <div>
+        <label>{{localize "RMF.SpellList.Reference"}}</label>
+        <input type="text" name="system.reference" value="{{system.reference}}" placeholder="A-9.5.1" autocomplete="off" />
+
+        <label>{{localize "RMF.Category.Source"}}</label>
+        <input type="text" name="system.fromBook" value="{{system.fromBook}}" placeholder="basic" autocomplete="off" />
+      </div>
+    </div>
+  </fieldset>
+
+  {{!-- Spell ladder — one block per level --}}
+  <fieldset class="form-group">
+    <legend>{{localize "RMF.SpellList.Spells"}}</legend>
+    {{#each spellRows as |row|}}
+    <div class="rmf-spell-block{{#if row.isEmpty}} rmf-spell-empty{{/if}}">
+      <div class="rmf-spell-block-head">
+        <span class="rmf-spell-lvl">{{localize "RMF.SpellList.Lvl"}} {{row.level}}</span>
+        <input type="text"
+               class="rmf-spell-name"
+               name="system.spells.{{row.index}}.name"
+               value="{{row.name}}"
+               placeholder="{{localize 'RMF.SpellList.EmptyLevel'}}"
+               autocomplete="off" />
+      </div>
+      <div class="rmf-spell-block-params">
+        <label>{{localize "RMF.SpellList.Area"}}
+          <input type="text" name="system.spells.{{row.index}}.areaOfEffect" value="{{row.areaOfEffect}}" autocomplete="off" /></label>
+        <label>{{localize "RMF.SpellList.Duration"}}
+          <input type="text" name="system.spells.{{row.index}}.duration" value="{{row.duration}}" autocomplete="off" /></label>
+        <label>{{localize "RMF.SpellList.Range"}}
+          <input type="text" name="system.spells.{{row.index}}.range" value="{{row.range}}" autocomplete="off" /></label>
+        <label>{{localize "RMF.SpellList.Type"}}
+          <input type="text" name="system.spells.{{row.index}}.type" value="{{row.type}}" placeholder="E / Fm / Us / DE" autocomplete="off" /></label>
+        <label>{{localize "RMF.SpellList.RRMod"}}
+          <input type="number" name="system.spells.{{row.index}}.rrMod" value="{{row.rrModStr}}" data-dtype="Number" inputmode="numeric" step="1" /></label>
+      </div>
+      <div class="rmf-spell-block-codes">
+        {{#each row.codeFlags as |c|}}
+        <label class="rmf-code-toggle" title="{{c.label}}">
+          <input type="checkbox"
+                 name="system.spells.{{../row.index}}.codes.{{c.key}}"
+                 {{#if c.checked}}checked{{/if}} />
+          <span>{{c.sym}} {{c.key}}</span>
+        </label>
+        {{/each}}
+      </div>
+      <label class="rmf-spell-desc-label">{{localize "RMF.SpellList.SpellDescription"}}</label>
+      <textarea name="system.spells.{{row.index}}.description"
+                style="height: 90px; resize: vertical;"
+                placeholder="{{localize 'RMF.SpellList.SpellDescription'}}">{{row.description}}</textarea>
+    </div>
+    {{/each}}
+  </fieldset>
+
+  {{!-- Special notes --}}
+  <fieldset class="form-group">
+    <legend>{{localize "RMF.SpellList.SpecialNotes"}}</legend>
+    {{#if specialNoteRows.length}}
+    {{#each specialNoteRows as |n|}}
+    <textarea name="system.specialNotes.{{n.index}}"
+              style="height: 60px; resize: vertical;"
+              placeholder="{{localize 'RMF.SpellList.SpecialNotes'}}">{{n.note}}</textarea>
+    {{/each}}
+    {{else}}
+    <em>{{localize "RMF.SpellList.None"}}</em>
+    {{/if}}
+  </fieldset>
+
+</div>

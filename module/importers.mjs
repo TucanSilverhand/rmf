@@ -8,7 +8,7 @@ import {
   normalizeSkillProgression,
   normalizeSkillClassification
 } from "./utils/rank-bonus.mjs";
-import { STAT_SHORT_TO_FULL } from "./utils/constants.mjs";
+import { STAT_SHORT_TO_FULL, SPELL_SPECIAL_CODES } from "./utils/constants.mjs";
 import { normalizeCategoryGroup } from "./data-models/category.mjs";
 
 /**
@@ -1707,6 +1707,292 @@ export async function syncTrainingPackagesToCompendium(source, options = {}) {
     return result;
   } catch (err) {
     console.error("RMF | syncTrainingPackagesToCompendium error", err);
+    result.errors.push(err);
+    return result;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════════════
+ * Spell Lists
+ *
+ * One Item (type "spellList") per spell list. Sources are the
+ * `data/*-lists.json` files, each shaped `{ "lists": [ ... ] }` (the
+ * old top-level `spellDescriptionKey` was moved to constants.mjs /
+ * CONFIG.RMF and is intentionally NOT imported).
+ *
+ * Field-name note: the JSON calls the Open/Closed/Base axis `type`,
+ * which collides with the Foundry document `type`; it is mapped to
+ * `listType` here (matches SpellListData).
+ * ════════════════════════════════════════════════════════════════════ */
+
+async function getSpellListTemplate() {
+  const fromDocTypes = foundry.utils.getProperty(game.system, "documentTypes.Item.spellList.template");
+  if (fromDocTypes && typeof fromDocTypes === "object") return fromDocTypes;
+  try {
+    const resp = await fetch("systems/rmf/template.json");
+    if (resp.ok) {
+      const data = await resp.json();
+      return (data?.Item?.spellList) ?? {};
+    }
+  } catch (e) {
+    console.warn("RMF | Failed to load spell list template fallback", e);
+  }
+  return {};
+}
+
+/**
+ * Organizational folder name for a list: always "<Realm> <ListType>"
+ * (e.g. "Channeling Open", "Essence Base"). Base lists group by realm,
+ * NOT by profession, so the whole set lands in exactly 9 folders
+ * (3 realms × Open/Closed/Base).
+ *
+ * @private
+ */
+function _spellListFolderName(realm, listType) {
+  const r = String(realm ?? "").trim();
+  const lt = String(listType ?? "").trim();
+  return `${r} ${lt}`.trim();
+}
+
+/**
+ * Find-or-create an Item folder INSIDE a compendium pack and return its
+ * id. Unlike `getPackFolderIdsByName` (find-only), this creates the
+ * folder if missing so the spell-list sync produces its 9 folders
+ * without the user pre-creating them. Cached per run.
+ *
+ * @private
+ */
+async function _ensurePackFolder(pack, name, cache) {
+  if (!name) return null;
+  if (cache.has(name)) return cache.get(name);
+  const target = String(name).trim().toLowerCase();
+  let folder = (pack.folders ? Array.from(pack.folders.values()) : [])
+    .find(f => String(f.name ?? "").trim().toLowerCase() === target) || null;
+  if (!folder) {
+    try {
+      folder = await Folder.create(
+        { name, type: pack.documentName },
+        { pack: pack.collection }
+      );
+    } catch (e) {
+      console.warn(`RMF | Failed creating pack folder "${name}" in ${pack.collection}`, e);
+    }
+  }
+  const id = folder?.id ?? null;
+  cache.set(name, id);
+  return id;
+}
+
+/**
+ * Coerce the raw `spells` array to the canonical shape. Always returns
+ * the entries in level order; codes are filtered to the canonical set
+ * and ordered (instantaneous, noPowerPoints, spellSet).
+ *
+ * @private
+ */
+function normalizeSpellEntries(raw) {
+  if (!Array.isArray(raw)) return [];
+  const codeOrder = SPELL_SPECIAL_CODES;
+  return raw.map((s, i) => {
+    const codesIn = Array.isArray(s?.codes) ? s.codes : [];
+    const codeSet = new Set(codesIn.filter(c => codeOrder.includes(c)));
+    let rrMod = null;
+    if (s?.rrMod !== null && s?.rrMod !== undefined && s?.rrMod !== "") {
+      const n = Number.parseInt(s.rrMod, 10);
+      rrMod = Number.isFinite(n) ? n : null;
+    }
+    let level = Number.parseInt(s?.level, 10);
+    if (!Number.isFinite(level) || level < 1 || level > 10) level = i + 1;
+    return {
+      level,
+      name:         typeof s?.name === "string" ? s.name : "",
+      codes:        codeOrder.filter(c => codeSet.has(c)),
+      rrMod,
+      areaOfEffect: typeof s?.areaOfEffect === "string" ? s.areaOfEffect : "",
+      duration:     typeof s?.duration === "string" ? s.duration : "",
+      range:        typeof s?.range === "string" ? s.range : "",
+      type:         typeof s?.type === "string" ? s.type : "",
+      description:  typeof s?.description === "string" ? s.description : ""
+    };
+  });
+}
+
+function buildSpellListSystemData(sysSource, template) {
+  const realm    = String(sysSource?.realm ?? "Channeling");
+  // Accept either `listType` (canonical) or the source's `type`.
+  const listType = String(sysSource?.listType ?? sysSource?.type ?? "Open");
+  const profession = String(sysSource?.profession ?? "");
+  return foundry.utils.mergeObject(
+    foundry.utils.duplicate(template),
+    {
+      realm,
+      listType,
+      profession,
+      reference:    String(sysSource?.reference ?? ""),
+      specialNotes: Array.isArray(sysSource?.specialNotes)
+        ? sysSource.specialNotes.map(n => (typeof n === "string" ? n : String(n ?? "")))
+        : [],
+      spells:       normalizeSpellEntries(sysSource?.spells),
+      fromBook:     String(sysSource?.fromBook ?? "basic")
+    },
+    { inplace: false, insertKeys: true, insertValues: true, overwrite: true }
+  );
+}
+
+/**
+ * Find-or-create an Item Folder by name, caching within a run so the
+ * same group folder is only resolved once per import.
+ *
+ * @private
+ */
+async function _ensureItemFolder(name, cache) {
+  if (!name) return null;
+  if (cache.has(name)) return cache.get(name);
+  let folder = game.folders.find(f => f.type === "Item" && f.name === name) || null;
+  if (!folder) {
+    try {
+      folder = await Folder.create({ name, type: "Item" });
+    } catch (e) {
+      console.warn(`RMF | Failed creating folder "${name}" for spell lists`, e);
+    }
+  }
+  const id = folder?.id ?? null;
+  cache.set(name, id);
+  return id;
+}
+
+/**
+ * Import spell-list items from a JSON source (`{ lists: [...] }`, a
+ * bare array, or a single list object).
+ *
+ * @param {string|Array|Object} source - URL, JSON string, or parsed data
+ * @param {Object} [options]
+ * @param {boolean} [options.dedupeByName=false]
+ * @returns {Promise<{created: Item[], skipped: string[], errors: any[]}>}
+ */
+export async function importSpellLists(source, options = {}) {
+  _assertGM("importSpellLists");
+  const dedupeByName = options.dedupeByName ?? false;
+  const result = { created: [], skipped: [], errors: [] };
+
+  try {
+    const input = await resolveSource(source);
+    const lists = Array.isArray(input)
+      ? input
+      : (input?.lists ?? [input]).filter(Boolean);
+    if (!lists?.length) return result;
+
+    const template = await getSpellListTemplate();
+    const folderCache = new Map();
+    const existingByName = dedupeByName
+      ? game.items.reduce((acc, it) => { if (it.type === "spellList") acc[it.name] = true; return acc; }, {})
+      : {};
+
+    const docs = [];
+    for (let i = 0; i < lists.length; i++) {
+      const entry = lists[i];
+      const name = entry.name ?? `Spell List ${i + 1}`;
+      if (dedupeByName && existingByName[name]) {
+        result.skipped.push(name);
+        continue;
+      }
+      const sysSource = entry.system ?? entry;
+      const system = buildSpellListSystemData(sysSource, template);
+      const img = pickImageFromEntry(entry, sysSource, "icons/svg/book.svg");
+      const folderId = await _ensureItemFolder(
+        _spellListFolderName(system.realm, system.listType),
+        folderCache
+      );
+      docs.push({ name, type: "spellList", img, system, folder: folderId });
+    }
+
+    if (!docs.length) return result;
+    result.created = await Item.createDocuments(docs);
+    return result;
+  } catch (err) {
+    console.error("RMF | importSpellLists error", err);
+    result.errors.push(err);
+    return result;
+  }
+}
+
+/**
+ * Synchronize spell-list items into a compendium pack (upsert by
+ * type+name). Folders are resolved by group name within the pack;
+ * lists land at the pack root when the matching folder is absent.
+ *
+ * @param {string|Array|Object} source
+ * @param {Object} [options]
+ * @param {string} [options.pack="world.basic-core"]
+ * @param {boolean} [options.createMissing=true]
+ * @param {boolean} [options.updateExisting=true]
+ * @returns {Promise<{created:number, updated:number, skipped:number, errors:any[]}>}
+ */
+export async function syncSpellListsToCompendium(source, options = {}) {
+  _assertGM("syncSpellListsToCompendium");
+  const packCollection = options.pack ?? "world.basic-core";
+  const createMissing = options.createMissing ?? true;
+  const updateExisting = options.updateExisting ?? true;
+  const result = { created: 0, updated: 0, skipped: 0, errors: [] };
+
+  try {
+    const pack = game.packs.get(packCollection);
+    if (!pack) throw new Error(`Compendium pack not found: ${packCollection}`);
+    if (pack.documentName !== "Item") throw new Error(`Pack ${packCollection} is not an Item compendium`);
+
+    const input = await resolveSource(source);
+    const lists = Array.isArray(input)
+      ? input
+      : (input?.lists ?? [input]).filter(Boolean);
+    if (!lists?.length) return result;
+
+    const template = await getSpellListTemplate();
+    await pack.getIndex({ fields: ["name", "type", "folder"] });
+    const existingByKey = new Map(
+      pack.index.map(e => [`${e.type}::${String(e.name).toLowerCase()}`, e])
+    );
+
+    const folderCache = new Map();
+    const createPayload = [];
+    const updatePayload = [];
+    for (let i = 0; i < lists.length; i++) {
+      const entry = lists[i];
+      const name = entry.name ?? `Spell List ${i + 1}`;
+      const key = `spellList::${String(name).toLowerCase()}`;
+      const existing = existingByKey.get(key);
+      const sysSource = entry.system ?? entry;
+      const system = buildSpellListSystemData(sysSource, template);
+      const img = pickImageFromEntry(entry, sysSource, "icons/svg/book.svg");
+      const base = { name, type: "spellList", img, system };
+
+      // Resolve (creating if needed) the "<Realm> <ListType>" folder so
+      // the 9 folders appear automatically. Folder is set on BOTH create
+      // and update so a re-run relocates lists already imported to the
+      // pack root.
+      const folderId = await _ensurePackFolder(
+        pack, _spellListFolderName(system.realm, system.listType), folderCache
+      );
+
+      if (existing) {
+        if (!updateExisting) { result.skipped += 1; continue; }
+        updatePayload.push({ _id: existing._id, folder: folderId, ...base });
+      } else {
+        if (!createMissing) { result.skipped += 1; continue; }
+        createPayload.push({ ...base, folder: folderId });
+      }
+    }
+
+    if (createPayload.length) {
+      const created = await Item.createDocuments(createPayload, { pack: packCollection });
+      result.created = created.length;
+    }
+    if (updatePayload.length) {
+      const updated = await Item.updateDocuments(updatePayload, { pack: packCollection, diff: false });
+      result.updated = updated.length;
+    }
+    return result;
+  } catch (err) {
+    console.error("RMF | syncSpellListsToCompendium error", err);
     result.errors.push(err);
     return result;
   }

@@ -1,0 +1,1229 @@
+{
+  "lists": [
+    {
+      "name": "Mind Attack",
+      "realm": "Mentalism",
+      "type": "Base",
+      "profession": "Mentalist",
+      "reference": "A-9.15.1",
+      "specialNotes": [],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Jolts I",
+          "areaOfEffect": "1 target",
+          "duration": "1 rnd/10 fail",
+          "range": "100'",
+          "type": "Fm",
+          "description": "Target is stunned."
+        },
+        {
+          "level": 2,
+          "name": "Hesitation",
+          "areaOfEffect": "1 target",
+          "duration": "1 rnd/10 fail",
+          "range": "100'",
+          "type": "Fm",
+          "description": "Target hesitates in any nondefensive action. He suffers a -20 to initiative rolls and he must parry with at least half of his OB."
+        },
+        {
+          "level": 3,
+          "name": "Minor Pain",
+          "areaOfEffect": "1 target",
+          "duration": "—",
+          "range": "100'",
+          "type": "Fm",
+          "description": "Target takes 25% of his remaining concussion hits (i.e., those not already taken)."
+        },
+        {
+          "level": 4,
+          "name": "Shock A",
+          "areaOfEffect": "1 target",
+          "duration": "—",
+          "range": "100'",
+          "type": "Fm",
+          "description": "Target takes an 'A' Electricity critical strike."
+        },
+        {
+          "level": 5,
+          "name": "Jolts III",
+          "areaOfEffect": "1 target",
+          "duration": "3 rnd/10 fail",
+          "range": "100'",
+          "type": "Fm",
+          "description": "As Jolts I, except for duration."
+        },
+        {
+          "level": 6,
+          "name": null
+        },
+        {
+          "level": 7,
+          "name": "Paralyze I",
+          "areaOfEffect": "1 target",
+          "duration": "1 rnd/10 fail",
+          "range": "100'",
+          "type": "Fm",
+          "description": "Target is paralyzed."
+        },
+        {
+          "level": 8,
+          "name": "Shock B",
+          "areaOfEffect": "1 target",
+          "duration": "—",
+          "range": "100'",
+          "type": "Fm",
+          "description": "As Shock A, except Electricity critical is a 'B'."
+        },
+        {
+          "level": 9,
+          "name": "Major Pain",
+          "areaOfEffect": "1 target",
+          "duration": "—",
+          "range": "100'",
+          "type": "Fm",
+          "description": "As Minor Pain, except 50% of remaining concussion hits are taken."
+        },
+        {
+          "level": 10,
+          "name": "Mind Shout I",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "10'R",
+          "duration": "1 rnd/10 fail",
+          "range": "self",
+          "type": "Fm",
+          "description": "Everyone except the caster within the area of effect is a target, all failing to resist are stunned."
+        }
+      ]
+    },
+    {
+      "name": "Mind Control",
+      "realm": "Mentalism",
+      "type": "Base",
+      "profession": "Mentalist",
+      "reference": "A-9.15.2",
+      "specialNotes": [],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Question",
+          "areaOfEffect": "1 target",
+          "duration": "—",
+          "range": "10'",
+          "type": "Fm",
+          "description": "Target must answer a single-concept question truthfully (though he must be able to understand the question)."
+        },
+        {
+          "level": 2,
+          "name": "Sleep",
+          "areaOfEffect": "1 target",
+          "duration": "—",
+          "range": "50'",
+          "type": "Fm",
+          "description": "Target falls into natural sleep. The first round is a magical sleep (the target cannot be awakened through normal means)."
+        },
+        {
+          "level": 3,
+          "name": "Charm Kind",
+          "areaOfEffect": "1 target",
+          "duration": "10 min/lvl",
+          "range": "50'",
+          "type": "Fm",
+          "description": "Humanoid target believes caster is a good friend."
+        },
+        {
+          "level": 4,
+          "name": "Calm",
+          "areaOfEffect": "1 target",
+          "duration": "1 min/lvl",
+          "range": "100'",
+          "type": "Fm",
+          "description": "Target will take no offensive action, and he will fight only in self-defense."
+        },
+        {
+          "level": 5,
+          "name": "Confusion",
+          "areaOfEffect": "1 target",
+          "duration": "1 rnd/5 fail",
+          "range": "100'",
+          "type": "Fm",
+          "description": "Target is incapable of making decisions or initiating action; but he may continue to fight current foes or in self-defense."
+        },
+        {
+          "level": 6,
+          "name": "Fear",
+          "areaOfEffect": "1 target",
+          "duration": "1 min/10 fail",
+          "range": "100'",
+          "type": "Fm",
+          "description": "Target fears caster and attempts to flee. Fleeing usually equates to running at maximum pace away from the caster."
+        },
+        {
+          "level": 7,
+          "name": "Suggestion",
+          "areaOfEffect": "1 target",
+          "duration": "varies",
+          "range": "10'",
+          "type": "Fm",
+          "description": "Target will follow a single suggested act that is not completely alien to him (e.g., no suicide suggestions, no blinding himself, etc.)."
+        },
+        {
+          "level": 8,
+          "name": "Hold Kind",
+          "areaOfEffect": "1 target",
+          "duration": "C",
+          "range": "50'",
+          "type": "Fm",
+          "description": "Target is held to 25% of normal action."
+        },
+        {
+          "level": 9,
+          "name": "Emotions",
+          "areaOfEffect": "1 target",
+          "duration": "1 min/lvl",
+          "range": "100'",
+          "type": "Fm",
+          "description": "Causes any desired emotion. Possible emotions include hate, love, sadness, anger, etc."
+        },
+        {
+          "level": 10,
+          "name": "Master of Kind",
+          "areaOfEffect": "1 target",
+          "duration": "10 min/lvl",
+          "range": "10'",
+          "type": "Fm",
+          "description": "Target must obey the caster as specified in Suggestion."
+        }
+      ]
+    },
+    {
+      "name": "Mind Merge",
+      "realm": "Mentalism",
+      "type": "Base",
+      "profession": "Mentalist",
+      "reference": "A-9.15.3",
+      "specialNotes": [],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Empathy",
+          "areaOfEffect": "1 target/rnd",
+          "duration": "1 rnd/lvl (C)",
+          "range": "10'",
+          "type": "Pm",
+          "description": "Caster learns target's basic feelings. The caster can concentrate on a new target each round."
+        },
+        {
+          "level": 2,
+          "name": "Read Emotions",
+          "areaOfEffect": "1 target/rnd",
+          "duration": "1 rnd/lvl (C)",
+          "range": "50'",
+          "type": "Pm",
+          "description": "Caster learns target's emotions in detail. The caster can concentrate on a new target each round."
+        },
+        {
+          "level": 3,
+          "name": "Merge With Mentalist",
+          "areaOfEffect": "caster+1 tgt",
+          "duration": "C",
+          "range": "touch",
+          "type": "U",
+          "description": "Allows two Mentalism spell users to communicate mentally and exchange power points."
+        },
+        {
+          "level": 4,
+          "name": "Focus Merge",
+          "areaOfEffect": "caster",
+          "duration": "C",
+          "range": "self",
+          "type": "U",
+          "description": "When cast before (within 1 minute) a Mind Merge spell or a Ready Merge spell (an 11th+ level spell on this spell list in Spell Law), this spell allows the caster to focus on a specific person as the target (that he has Mind Stored previously). This spell allows certain spells to work even if the caster doesn't know the target's exact location."
+        },
+        {
+          "level": 5,
+          "name": "Thoughts",
+          "areaOfEffect": "1 target/rnd",
+          "duration": "1 rnd/lvl (C)",
+          "range": "100'",
+          "type": "Fm",
+          "description": "Caster receives surface thoughts from target. If target makes his RR by more than 25 he realizes that someone is trying to read his thoughts. The caster can concentrate on a new target each round."
+        },
+        {
+          "level": 6,
+          "name": "Mind Merge I",
+          "areaOfEffect": "caster+1 tgt",
+          "duration": "C",
+          "range": "touch",
+          "type": "U",
+          "description": "Allows caster and target to interchange thoughts; if both are Mentalism spell users they can interchange power points. They must be able to see each other or the caster must know the exact location of the target or the caster must use Focus Merge to locate the target (in all cases, the target must be within range)."
+        },
+        {
+          "level": 7,
+          "name": "Prepare Merge",
+          "areaOfEffect": "caster",
+          "duration": "C",
+          "range": "self",
+          "type": "U",
+          "description": "The caster prepares himself to be the target of a Mind Merge spell or Ready Merge spell (an 11th+ level spell on this spell list in Spell Law), thus, increases the range of the “incoming” spell. The increased range is equal to the original range times the number of power points used to cast the Prepare Merge spell (e.g., if a caster uses 18 PPs, the range is 18 times normal)."
+        },
+        {
+          "level": 8,
+          "name": "Mind Merge II",
+          "areaOfEffect": "caster+1 tgt",
+          "duration": "C",
+          "range": "100'",
+          "type": "U",
+          "description": "As Mind Merge I, except range is 100'."
+        },
+        {
+          "level": 9,
+          "name": null
+        },
+        {
+          "level": 10,
+          "name": "Inner Thoughts",
+          "areaOfEffect": "1 target/rnd",
+          "duration": "1 rnd/lvl",
+          "range": "100'",
+          "type": "Fm",
+          "description": "As in Thoughts, except caster also learns reasoning and thought patterns behind surface thoughts."
+        }
+      ]
+    },
+    {
+      "name": "Mind Speech",
+      "realm": "Mentalism",
+      "type": "Base",
+      "profession": "Mentalist",
+      "reference": "A-9.15.4",
+      "specialNotes": [
+        "Except where communication is noted as being only “one-way,” the spells above create a “two-way” communication between the target and the caster. The caster is not required to speak verbally. The target speaks verbally, but the caster is actually reading the thoughts of the target (though some targets may learn to use mental communication—any caster who knows this list is presumed to have this ability)."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Mentalist Tongue",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "caster+1 tgt",
+          "duration": "C",
+          "range": "100'",
+          "type": "Fm",
+          "description": "Caster may mentally speak with another spell caster of the Mentalism realm."
+        },
+        {
+          "level": 2,
+          "name": "Prepare Mind I",
+          "areaOfEffect": "caster",
+          "duration": "C",
+          "range": "self",
+          "type": "U",
+          "description": "The caster enters a trance-like state to prepare his mind to be the recipient for a Mind Tongue spell. While he is under the effects of this spell, any “incoming” Mind Tongue spell has its range increased by 10 times."
+        },
+        {
+          "level": 3,
+          "name": "Mind Tongue I",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "caster+1 tgt",
+          "duration": "C",
+          "range": "100'",
+          "type": "Fm",
+          "description": "Caster may mentally speak with any one thinking being. They must be able to see each other or the caster must know the exact location of the target or the caster must use Focus Mind to locate the target (in all cases, the target must be within range)."
+        },
+        {
+          "level": 4,
+          "name": "Focus Mind",
+          "areaOfEffect": "caster",
+          "duration": "C",
+          "range": "self",
+          "type": "U",
+          "description": "When this spell is cast, the next Mind Tongue spell (cast within one minute of this spell) will be able to focus in on a specific person as its target. The person must be Mind Stored (see the Presence spell list). This spell allows certain spells to work even if the caster doesn't know the target's exact location."
+        },
+        {
+          "level": 5,
+          "name": "Prepare Mind II",
+          "areaOfEffect": "caster",
+          "duration": "C",
+          "range": "self",
+          "type": "U",
+          "description": "As Prepare Mind I, except range is increased by 20 times."
+        },
+        {
+          "level": 6,
+          "name": "Mind Tongue II",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "caster+1 tgt",
+          "duration": "C",
+          "range": "500'",
+          "type": "Fm",
+          "description": "As Mind Tongue I, except range is 500'."
+        },
+        {
+          "level": 7,
+          "name": null
+        },
+        {
+          "level": 8,
+          "name": "Prepare Mind III",
+          "areaOfEffect": "caster",
+          "duration": "C",
+          "range": "self",
+          "type": "U",
+          "description": "As Prepare Mind I, except range is increased by 50 times."
+        },
+        {
+          "level": 9,
+          "name": "Mind Speech I",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "10'R",
+          "duration": "C",
+          "range": "self",
+          "type": "Fm",
+          "description": "Caster can broadcast thoughts to minds of all within range. This is a “one-way” communication."
+        },
+        {
+          "level": 10,
+          "name": "Mind Tongue III",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "caster+1 tgt",
+          "duration": "C",
+          "range": "1000'",
+          "type": "Fm",
+          "description": "As Mind Tongue I, except range is 1,000'."
+        }
+      ]
+    },
+    {
+      "name": "Presence",
+      "realm": "Mentalism",
+      "type": "Base",
+      "profession": "Mentalist",
+      "reference": "A-9.15.5",
+      "specialNotes": [],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Presence",
+          "codes": [
+            "noPowerPoints",
+            "instantaneous"
+          ],
+          "areaOfEffect": "10'R/lvl",
+          "duration": "C",
+          "range": "self",
+          "type": "U",
+          "description": "Caster is aware of the presence of all sentient/thinking beings within his range."
+        },
+        {
+          "level": 2,
+          "name": "Feel I",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 target",
+          "duration": "—",
+          "range": "10'/lvl",
+          "type": "Pm",
+          "description": "Caster gets general idea of the race and level of one being. The target must first be located by Presence or Presence True."
+        },
+        {
+          "level": 3,
+          "name": "Mind Store",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 target",
+          "duration": "—",
+          "range": "10'/lvl",
+          "type": "Pm",
+          "description": "As Feel I, except caster stores mental pattern of target. This can be used with other spells (both on this list and others). The caster can only have as many patterns stored as the sum of his Memory and Presence temporary stats (not the bonuses). The caster can choose to release a stored pattern at any given time (the GM should require that a character keep track of all the patterns he has stored)."
+        },
+        {
+          "level": 4,
+          "name": "Transfer Mind Store",
+          "areaOfEffect": "1 target",
+          "duration": "—",
+          "range": "touch",
+          "type": "U",
+          "description": "The caster can transfer a copy of any one Mind Stored person to another caster from the Mentalism realm (i.e., both casters now have the person stored). The target of this spell must know the Mind Store spell."
+        },
+        {
+          "level": 5,
+          "name": "Feel III",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "3 targets",
+          "duration": "—",
+          "range": "10'/lvl",
+          "type": "Pm",
+          "description": "As Feel I, except analyzes 3 targets at once (all targets must be within range)."
+        },
+        {
+          "level": 6,
+          "name": "Mind Typing",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 target",
+          "duration": "—",
+          "range": "10'/lvl",
+          "type": "Pm",
+          "description": "As Feel I, except caster learns race, profession, and level of target."
+        },
+        {
+          "level": 7,
+          "name": "Finding I",
+          "areaOfEffect": "caster",
+          "duration": "C",
+          "range": "100'/lvl",
+          "type": "Pm",
+          "description": "Caster gets direction and distance to any unshielded mind that he has a mental pattern of (from Mind Store)."
+        },
+        {
+          "level": 8,
+          "name": "Direction I",
+          "areaOfEffect": "caster",
+          "duration": "C",
+          "range": "1000'/lvl",
+          "type": "Pm",
+          "description": "Caster gets direction to any unshielded mind which he has a mental pattern of (from Mind Store)."
+        },
+        {
+          "level": 9,
+          "name": "Presence True",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "50'R",
+          "duration": "—",
+          "range": "100'/lvl",
+          "type": "Pm",
+          "description": "Can get presences in one 50' radius. The caster can concentrate on one 50' radius area each round."
+        },
+        {
+          "level": 10,
+          "name": "Awareness",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 target",
+          "duration": "C",
+          "range": "10'/lvl",
+          "type": "Pm",
+          "description": "As Presence, plus a general knowledge of the target's actions. In a tactical situation, the caster can declare his actions after learning one of the target's actions for the round (and when he wants to perform the action). This does not prevent the target from changing his action (with the appropriate penalty for cancelling his action, see p. 54)."
+        }
+      ]
+    },
+    {
+      "name": "Sense Control",
+      "realm": "Mentalism",
+      "type": "Base",
+      "profession": "Mentalist",
+      "reference": "A-9.15.6",
+      "specialNotes": [
+        "All of the sensations created by spells on this list are strictly mental (i.e., not real). For example, the sound created with Audio Attack is heard only in the target's head (and it will work on a deaf person)."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Distraction",
+          "areaOfEffect": "1 target",
+          "duration": "C",
+          "range": "100'",
+          "type": "Fm",
+          "description": "Target suffers a special modification of -30 to all actions."
+        },
+        {
+          "level": 2,
+          "name": "Numbing",
+          "areaOfEffect": "1 target",
+          "duration": "C",
+          "range": "100'",
+          "type": "Fm",
+          "description": "Random limb of target's is numb and useless. If the limb is a leg, the target loses 40% of his movement. If the limb is an arm, the target suffers a special modification of -40 to melee and missile fire with that arm."
+        },
+        {
+          "level": 3,
+          "name": "Blur Vision",
+          "areaOfEffect": "1 target",
+          "duration": "C",
+          "range": "100'",
+          "type": "Fm",
+          "description": "Target has a special modification of -100 to his OB for missile attacks and -50 for all other actions."
+        },
+        {
+          "level": 4,
+          "name": "Minor Sense Control",
+          "areaOfEffect": "1 target",
+          "duration": "C",
+          "range": "100'",
+          "type": "Fm",
+          "description": "Causes minor, false sensations in any one of: smell, taste, or touch (e.g., a stinky smell, a salty taste, or an itch)."
+        },
+        {
+          "level": 5,
+          "name": "Audio Attack",
+          "areaOfEffect": "1 target",
+          "duration": "1 rnd/10 fail",
+          "range": "100'",
+          "type": "Fm",
+          "description": "Loud sound stuns target."
+        },
+        {
+          "level": 6,
+          "name": "Audio Control",
+          "areaOfEffect": "1 target",
+          "duration": "C",
+          "range": "100'",
+          "type": "Fm",
+          "description": "Causes target to hear any sound(s) desired."
+        },
+        {
+          "level": 7,
+          "name": "Fumble",
+          "areaOfEffect": "1 target",
+          "duration": "—",
+          "range": "100'",
+          "type": "Fm",
+          "description": "Target fumbles weapon or item in hands. The target should roll on the appropriate Fumble Table."
+        },
+        {
+          "level": 8,
+          "name": "Vision Control",
+          "areaOfEffect": "1 target",
+          "duration": "C",
+          "range": "100'",
+          "type": "Fm",
+          "description": "Causes target to see whatever the caster desires."
+        },
+        {
+          "level": 9,
+          "name": "Vision Attack",
+          "areaOfEffect": "1 target",
+          "duration": "1 rnd/10 fail",
+          "range": "100'",
+          "type": "Fm",
+          "description": "Bright light blinds target."
+        },
+        {
+          "level": 10,
+          "name": "Nerve Stun",
+          "areaOfEffect": "1 target",
+          "duration": "1 rnd/10 fail",
+          "range": "100'",
+          "type": "Fm",
+          "description": "Target is totally numbed. He suffers a special modification of -75 to all actions and he is stunned."
+        }
+      ]
+    },
+    {
+      "name": "Controlling Songs",
+      "realm": "Mentalism",
+      "type": "Base",
+      "profession": "Bard",
+      "reference": "A-9.16.1",
+      "specialNotes": [
+        "All of the spells on this list require that the Bard provide some form of entertainment for the target (this is the “concentration” duration). This could take the form of singing, musical instrument, oratory, dance, tale telling, juggling, etc."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Calm Song",
+          "areaOfEffect": "1 target",
+          "duration": "C",
+          "range": "50'",
+          "type": "Fm",
+          "description": "Target is calmed and cannot take aggressive (offensive) action, while caster concentrates."
+        },
+        {
+          "level": 2,
+          "name": "Holding Song",
+          "areaOfEffect": "1 target",
+          "duration": "C",
+          "range": "50'",
+          "type": "Fm",
+          "description": "As Calm Song, except target only has 25% of his normal activity each round."
+        },
+        {
+          "level": 3,
+          "name": "Stun Song",
+          "areaOfEffect": "1 target",
+          "duration": "C",
+          "range": "50'",
+          "type": "Fm",
+          "description": "As Calm Song, except target is stunned."
+        },
+        {
+          "level": 4,
+          "name": null
+        },
+        {
+          "level": 5,
+          "name": "Sleep Song",
+          "areaOfEffect": "1 target",
+          "duration": "C",
+          "range": "50'",
+          "type": "Fm",
+          "description": "As Calm Song, except target falls into a light sleep. Target gets another RR if someone attempts to wake him while this spell is still active. When the duration is up, the target can be awakened normally."
+        },
+        {
+          "level": 6,
+          "name": "Charm Song",
+          "areaOfEffect": "1 target",
+          "duration": "C",
+          "range": "50'",
+          "type": "Fm",
+          "description": "As Calm Song, except target believes caster is a good friend."
+        },
+        {
+          "level": 7,
+          "name": "Fear's Song",
+          "areaOfEffect": "1 target",
+          "duration": "C",
+          "range": "50'",
+          "type": "Fm",
+          "description": "As Calm Song, except target fears caster and tries to flee from him. Fleeing usually equates to moving at maximum pace away from the caster."
+        },
+        {
+          "level": 8,
+          "name": "Calm Song True",
+          "areaOfEffect": "1 target",
+          "duration": "C(x2)",
+          "range": "50'",
+          "type": "Fm",
+          "description": "As Calm Song, except after the caster stops concentrating the effect will continue for as many rounds as the caster has already concentrated. For example, if the caster sings to a target for 3 rounds, the target will be calmed for those 3 rounds plus the following 3 rounds."
+        },
+        {
+          "level": 9,
+          "name": "Stun Song True",
+          "areaOfEffect": "1 target",
+          "duration": "C(x2)",
+          "range": "50'",
+          "type": "Fm",
+          "description": "As Calm Song True, except target is stunned."
+        },
+        {
+          "level": 10,
+          "name": "Forgetting Song",
+          "areaOfEffect": "1 target",
+          "duration": "P",
+          "range": "50'",
+          "type": "Fm",
+          "description": "Target will forget what transpired in a certain period of time specified by the caster (the beginning of the time period must be within 1 day per level of the caster in the past). The length of the “forgetting” time period is equal to the amount of time the caster plays/sings (concentrates)."
+        }
+      ]
+    },
+    {
+      "name": "Entertaining Ways",
+      "realm": "Mentalism",
+      "type": "Base",
+      "profession": "Bard",
+      "reference": "A-9.16.2",
+      "specialNotes": [],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Spotlight",
+          "areaOfEffect": "caster",
+          "duration": "10 min/lvl (C)",
+          "range": "self",
+          "type": "E",
+          "description": "The caster is lit by a bright circle of light. At the time of casting, the caster designates his “front” and the light will shine from that direction. The caster can change his “front” by concentrating (the light will blink off and another will blink on)."
+        },
+        {
+          "level": 2,
+          "name": "Dim Lights",
+          "areaOfEffect": "10'R/lvl",
+          "duration": "10 min/lvl",
+          "range": "self",
+          "type": "E",
+          "description": "All non-magical light sources in the area of effect are dimmed to the luminosity of soft candle light."
+        },
+        {
+          "level": 3,
+          "name": "Hush",
+          "areaOfEffect": "10'R/lvl",
+          "duration": "10 min/lvl (C)",
+          "range": "self",
+          "type": "E",
+          "description": "For the duration of this spell, all sounds in the area of effect are no louder than a whisper. The caster is immune to the effects of this spell. In addition, the caster can designate up to one extra target per level to be immune to the effects of the spell. By concentrating for 1 round, caster may designate the extra targets."
+        },
+        {
+          "level": 4,
+          "name": "Fanfare",
+          "areaOfEffect": "10'R",
+          "duration": "1 rnd/lvl",
+          "range": "self",
+          "type": "E",
+          "description": "A fanfare of music plays. The caster may designate one instrument (that will make the sounds of the fanfare) for every five levels of experience (or portion thereof). The volume of the fanfare cannot exceed that which would be normally made by the designated instrument(s)."
+        },
+        {
+          "level": 5,
+          "name": "Showman I",
+          "areaOfEffect": "caster",
+          "duration": "10 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "The caster receives a special bonus of +5 to all performing skills (in the Artistic • Active category) for the duration of this spell."
+        },
+        {
+          "level": 6,
+          "name": "Legerdemain",
+          "areaOfEffect": "1 target",
+          "duration": "1 min/lvl",
+          "range": "touch",
+          "type": "F",
+          "description": "The caster can make any one target (up to 1 pound per level of the caster) he touches vanish. The caster must designate a location for the target to “reappear” in (the location must be within the caster's line of sight). The object is teleported to the designated location at the time of casting."
+        },
+        {
+          "level": 7,
+          "name": "Enthrall I",
+          "areaOfEffect": "1 target",
+          "duration": "1 min/lvl",
+          "range": "10'",
+          "type": "Fm",
+          "description": "The target of this spell is enthralled with the caster (for as long as the caster is performing or for the duration of this spell, whichever is shorter). While enthralled, the target is limited to only 20% of his normal activity."
+        },
+        {
+          "level": 8,
+          "name": "Hidden Pocket",
+          "areaOfEffect": "1 object",
+          "duration": "1 min/lvl",
+          "range": "touch",
+          "type": "U",
+          "description": "The caster can place any one inanimate object (up to 1 cubic foot per level of the caster) into any available container. The container opening must be large enough to fit at least one dimension of the object. When the container is examined, it will appear empty to all normal perception (including feeling). The caster may pluck the item from the container at any time (up to the duration of the spell). If the object is not taken from the container before the duration is up, the object appears in the container as if it were there all along."
+        },
+        {
+          "level": 9,
+          "name": "Lightshow",
+          "areaOfEffect": "5'R",
+          "duration": "1 rnd/lvl",
+          "range": "touch",
+          "type": "E",
+          "description": "The caster can create a colored light that will shine in the area of effect. The caster can change the color of the light by concentrating. The light can take any form the caster desires, but the light will not illuminate more than the area of effect. For example, several small spheres of various colors can float around the caster's feet, or five red beams can flash back and forth across the caster's body."
+        },
+        {
+          "level": 10,
+          "name": "Showman II",
+          "areaOfEffect": "caster",
+          "duration": "10 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "As Showman I, except bonus is +10."
+        }
+      ]
+    },
+    {
+      "name": "Item Lore",
+      "realm": "Mentalism",
+      "type": "Base",
+      "profession": "Bard",
+      "reference": "A-9.16.3",
+      "specialNotes": [
+        "See Appendix A-9.17.13 (p. 206) for more on information spells."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Jewel/Metal Assessment",
+          "areaOfEffect": "1 object",
+          "duration": "—",
+          "range": "touch",
+          "type": "I",
+          "description": "Caster can assess the value of jewels and metals to within 10% of their actual value. This spell allows the caster to calculate different values for the different cultures he is familiar with. This spell only assesses the value of the materials (not the craftsmanship)."
+        },
+        {
+          "level": 2,
+          "name": "Item Assessment",
+          "areaOfEffect": "1 object",
+          "duration": "—",
+          "range": "touch",
+          "type": "I",
+          "description": "As Jewel and Metal Assessment, except will determine the value of the object including the craftsmanship of the object. Magic capabilities are not included."
+        },
+        {
+          "level": 3,
+          "name": "Detect Power",
+          "areaOfEffect": "1 object",
+          "duration": "1 rnd/lvl (C)",
+          "range": "touch",
+          "type": "I",
+          "description": "Detects power in an item, but not the realm or how much. One item can be examined each round by concentrating."
+        },
+        {
+          "level": 4,
+          "name": "Item Analysis I",
+          "areaOfEffect": "1 object",
+          "duration": "—",
+          "range": "touch",
+          "type": "I",
+          "description": "Caster has a 10% chance for each ability of determining what enchanted abilities the item has. Once an Item Analysis spell has been cast on an item, it may not be cast on that item again until the caster has reached a new level of experience."
+        },
+        {
+          "level": 5,
+          "name": "Assessment True",
+          "areaOfEffect": "1 object",
+          "duration": "—",
+          "range": "touch",
+          "type": "I",
+          "description": "As Item Assessment, except anything can be assessed (livestock, houses, boats, etc.)."
+        },
+        {
+          "level": 6,
+          "name": "Significance",
+          "areaOfEffect": "1 object",
+          "duration": "—",
+          "range": "touch",
+          "type": "I",
+          "description": "Determines if the item examined has any cultural or historical significance, but not specifically what significance."
+        },
+        {
+          "level": 7,
+          "name": "Item Analysis II",
+          "areaOfEffect": "1 object",
+          "duration": "—",
+          "range": "touch",
+          "type": "I",
+          "description": "As Item Analysis I, except there is a 20% chance for each ability."
+        },
+        {
+          "level": 8,
+          "name": "Origins",
+          "areaOfEffect": "1 object",
+          "duration": "—",
+          "range": "touch",
+          "type": "I",
+          "description": "Gives the area of origin of the item, the race of the being who made it, and when it was made (within 100 years)."
+        },
+        {
+          "level": 9,
+          "name": "Item Vision",
+          "areaOfEffect": "1 object",
+          "duration": "—",
+          "range": "touch",
+          "type": "I",
+          "description": "Gives a vision of the most significant event in the item's past. The event cannot have occurred more than 1 hour per level of the caster in the past."
+        },
+        {
+          "level": 10,
+          "name": "Item Analysis III",
+          "areaOfEffect": "1 object",
+          "duration": "—",
+          "range": "touch",
+          "type": "I",
+          "description": "As Item Analysis I, except there is a 30% chance for each ability."
+        }
+      ]
+    },
+    {
+      "name": "Lores",
+      "realm": "Mentalism",
+      "type": "Base",
+      "profession": "Bard",
+      "reference": "A-9.16.4",
+      "specialNotes": [],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Recall",
+          "areaOfEffect": "caster",
+          "duration": "C",
+          "range": "self",
+          "type": "U",
+          "description": "Allows the caster to access his memory as if he had total recall. Any skill resolution involving Memory gets a special bonus. If the skill uses Memory as one of its applicable stats (Science/Analytic skills), the bonus is +10. If the skill uses Memory as two of its applicable stats (Lore skills), the bonus is +25, if the skill uses Memory as all three of its applicable stats (i.e., a straight “memory” check), the bonus is +50."
+        },
+        {
+          "level": 2,
+          "name": "Learn Language II",
+          "areaOfEffect": "caster",
+          "duration": "C",
+          "range": "self",
+          "type": "U",
+          "description": "Doubles the rate at which the caster can learn a language. Every rank of language developed (i.e., DPs spent), results in two ranks being learned. It is assumed that this spell is cast and in effect while the language is being learned—that is, whenever the development points are allocated."
+        },
+        {
+          "level": 3,
+          "name": "Language Lore",
+          "areaOfEffect": "caster",
+          "duration": "—",
+          "range": "self",
+          "type": "I",
+          "description": "Caster learns what language a piece of text is written in, and the author if he was noteworthy or the caster has seen his work."
+        },
+        {
+          "level": 4,
+          "name": "Mind's Lore I",
+          "areaOfEffect": "1 target",
+          "duration": "1 rnd/lvl (C)",
+          "range": "50'",
+          "type": "Fm",
+          "description": "Caster can scan the target's mind and receive some of the target's knowledge (conscious and unconscious) concerning one very specific topic. For each bit of knowledge on the topic, there is a 10% chance that the caster will learn it (roll for each bit once per round)."
+        },
+        {
+          "level": 5,
+          "name": "Study II",
+          "areaOfEffect": "caster",
+          "duration": "C",
+          "range": "self",
+          "type": "U",
+          "description": "Caster can read at double the normal rate (resulting in 2 pages per minute while this spell is active)."
+        },
+        {
+          "level": 6,
+          "name": null
+        },
+        {
+          "level": 7,
+          "name": "Learn Language III",
+          "areaOfEffect": "caster",
+          "duration": "C",
+          "range": "self",
+          "type": "U",
+          "description": "As Learn Language II, except rate is tripled (and three ranks are gained for every one)."
+        },
+        {
+          "level": 8,
+          "name": "Mind's Lore III",
+          "areaOfEffect": "1 target",
+          "duration": "1 rnd/lvl (C)",
+          "range": "50'",
+          "type": "Fm",
+          "description": "As Mind's Lore I, except chance is 30% for each bit of knowledge."
+        },
+        {
+          "level": 9,
+          "name": null
+        },
+        {
+          "level": 10,
+          "name": "Study III",
+          "areaOfEffect": "caster",
+          "duration": "C",
+          "range": "self",
+          "type": "U",
+          "description": "As Study II, except caster can read at three times normal rate (i.e., 3 pages per minute)."
+        }
+      ]
+    },
+    {
+      "name": "Sound Control",
+      "realm": "Mentalism",
+      "type": "Base",
+      "profession": "Bard",
+      "reference": "A-9.16.5",
+      "specialNotes": [],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Quiet I",
+          "areaOfEffect": "1'R",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "E",
+          "description": "Any sounds originating within the area of effect cannot be heard outside the area of effect. This results in a special bonus of +25 to Stalking maneuvers."
+        },
+        {
+          "level": 2,
+          "name": "Sonic Law I",
+          "areaOfEffect": "1'R",
+          "duration": "C",
+          "range": "self",
+          "type": "E",
+          "description": "Caster may manipulate sound within the area of effect. He can create any single sound he wants, and, if he desires, that sound can be heard outside the area of effect."
+        },
+        {
+          "level": 3,
+          "name": null
+        },
+        {
+          "level": 4,
+          "name": "Silence I",
+          "areaOfEffect": "10'R",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "E",
+          "description": "As Quiet I, except area of effect is 10' radius."
+        },
+        {
+          "level": 5,
+          "name": "Sonic Law II",
+          "areaOfEffect": "10'R",
+          "duration": "C",
+          "range": "self",
+          "type": "E",
+          "description": "As Sonic Law I, except area of effect is 10' radius."
+        },
+        {
+          "level": 6,
+          "name": "Sudden Sound",
+          "areaOfEffect": "1 target",
+          "duration": "1 rnd/5 fail",
+          "range": "100'",
+          "type": "F",
+          "description": "Causes a very loud, sudden sound next to the target's ears. The target is stunned for the duration."
+        },
+        {
+          "level": 7,
+          "name": "Deafen",
+          "areaOfEffect": "1 target",
+          "duration": "1 rnd/5 fail",
+          "range": "100'",
+          "type": "F",
+          "description": "Target cannot hear sounds occurring more than 6\" from his ears."
+        },
+        {
+          "level": 8,
+          "name": "Cracks",
+          "areaOfEffect": "1000 cu'",
+          "duration": "—",
+          "range": "100'",
+          "type": "F",
+          "description": "Certain sound waves cause any cracks or flaws in solid, inanimate material (up to 1,000 cubic feet) to expand to their limit."
+        },
+        {
+          "level": 9,
+          "name": null
+        },
+        {
+          "level": 10,
+          "name": "Silence III",
+          "areaOfEffect": "50'R",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "E",
+          "description": "As Silence I, except area of effect is 50' radius."
+        }
+      ]
+    },
+    {
+      "name": "Sound Projection",
+      "realm": "Mentalism",
+      "type": "Base",
+      "profession": "Bard",
+      "reference": "A-9.16.6",
+      "specialNotes": [
+        "Many of the spells on this list are designed for use with spells on the Controlling Songs spell list."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Long Whisper I",
+          "areaOfEffect": "1 point",
+          "duration": "C",
+          "range": "100'",
+          "type": "E",
+          "description": "Caster can whisper and the whisper can be heard at any point he chooses within the range."
+        },
+        {
+          "level": 2,
+          "name": "Sounding II",
+          "areaOfEffect": "caster",
+          "duration": "C",
+          "range": "self",
+          "type": "E",
+          "description": "Caster's voice is amplified two times. This is useful for talking to large crowds."
+        },
+        {
+          "level": 3,
+          "name": "Song Sounding II",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 spell",
+          "duration": "varies",
+          "range": "self",
+          "type": "U",
+          "description": "Doubles the range of a spell on the Controlling Songs spell list. The spell from that list must be cast within one minute after completing this spell."
+        },
+        {
+          "level": 4,
+          "name": "Song II",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 spell",
+          "duration": "varies",
+          "range": "self",
+          "type": "U",
+          "description": "Allows the caster to affect 2 targets with a spell off the Controlling Songs spell list. The spell from that list must be cast within 1 minute after completing this spell."
+        },
+        {
+          "level": 5,
+          "name": "Long Whisper III",
+          "areaOfEffect": "1 point",
+          "duration": "C",
+          "range": "300'",
+          "type": "E",
+          "description": "As Long Whisper I, except range is 300'."
+        },
+        {
+          "level": 6,
+          "name": "Sounding V",
+          "areaOfEffect": "caster",
+          "duration": "C",
+          "range": "self",
+          "type": "E",
+          "description": "As Sounding II, except amplification is five times."
+        },
+        {
+          "level": 7,
+          "name": "Great Song I",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 spell",
+          "duration": "varies",
+          "range": "self",
+          "type": "U",
+          "description": "As Song II, except everyone within a 10' radius of the caster is a target."
+        },
+        {
+          "level": 8,
+          "name": "Song Sounding III",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 spell",
+          "duration": "varies",
+          "range": "self",
+          "type": "U",
+          "description": "As Song Sounding II, except range is three times normal."
+        },
+        {
+          "level": 9,
+          "name": "Long Whisper V",
+          "areaOfEffect": "1 point",
+          "duration": "C",
+          "range": "500'",
+          "type": "E",
+          "description": "As Long Whisper I, except range is 500'."
+        },
+        {
+          "level": 10,
+          "name": "Song III",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "1 spell",
+          "duration": "varies",
+          "range": "self",
+          "type": "U",
+          "description": "As Song II, except 3 targets may be affected."
+        }
+      ]
+    }
+  ]
+}

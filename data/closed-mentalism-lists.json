@@ -1,0 +1,1002 @@
+{
+  "lists": [
+    {
+      "name": "Gas Manipulation",
+      "realm": "Mentalism",
+      "type": "Closed",
+      "reference": "A-9.14.1",
+      "specialNotes": [
+        "All vacuums created by spells on this list also create a loud noise. The larger the radius the louder the noise. The GM may wish to rule that all within the radius must make a second RR or be deafened for 1 round per 10 failure (RR attack level equals the radius of the vacuum).",
+        "An elemental creature made of a gas will be cut to 20% activity if attacked with an Air Stop spell (and the creature fits into the area of effect). A Vacuum spell cast upon an elemental creature made of gas will result in a Slaying Critical on the creature."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Condensation",
+          "areaOfEffect": "1 cu' water",
+          "duration": "P",
+          "range": "touch",
+          "type": "E",
+          "description": "Condenses 1 cubic foot of water from the surrounding air. Water condenses gradually into the caster's hands and may be funneled into any suitable receptacle."
+        },
+        {
+          "level": 2,
+          "name": "Warm Air",
+          "areaOfEffect": "1 cu'/lvl",
+          "duration": "24 hr",
+          "range": "touch",
+          "type": "F",
+          "description": "Warms 1 cubic foot per level of air (any inanimate gas) up to 100°F above normal."
+        },
+        {
+          "level": 3,
+          "name": "Fog I",
+          "areaOfEffect": "10'R",
+          "duration": "1 min/lvl",
+          "range": "100'",
+          "type": "E",
+          "description": "Creates dense fog in a 10' radius; normal visibility is 1'. See Appendix A-9.17.12 (p. 206)."
+        },
+        {
+          "level": 4,
+          "name": "Airwall",
+          "areaOfEffect": "10'x10'x3'",
+          "duration": "C",
+          "range": "10'",
+          "type": "E",
+          "description": "Creates a 10'x10'x3' wall of dense churning air: cuts all movement and attacks through it by 50% (i.e., -50 to attacks)."
+        },
+        {
+          "level": 5,
+          "name": "Air Stop I",
+          "areaOfEffect": "10'R",
+          "duration": "C",
+          "range": "touch",
+          "type": "F",
+          "description": "Stops generalized air movement (e.g., wind) up to winds of 30 mph and cuts higher winds by 30 mph in a 10' radius."
+        },
+        {
+          "level": 6,
+          "name": "Vacuum I",
+          "areaOfEffect": "5'R",
+          "duration": "—",
+          "range": "100'",
+          "type": "F",
+          "description": "Creates a 5' radius near vacuum, all in radius take an 'A' Impact critical, as air leaves and rushes back in."
+        },
+        {
+          "level": 7,
+          "name": "Fog V",
+          "areaOfEffect": "50'R",
+          "duration": "1 min/lvl",
+          "range": "100'",
+          "type": "E",
+          "description": "As Fog I, except radius is 50'."
+        },
+        {
+          "level": 8,
+          "name": "Unfog V",
+          "areaOfEffect": "50'R",
+          "duration": "P",
+          "range": "100'",
+          "type": "F",
+          "description": "All fog is dissipated in a 50' radius."
+        },
+        {
+          "level": 9,
+          "name": "Curved Airwall",
+          "areaOfEffect": "10'x20'x3'",
+          "duration": "C",
+          "range": "10'",
+          "type": "E",
+          "description": "As Airwall, except wall is 10'x20'x3' and can be curved up to a semicircle."
+        },
+        {
+          "level": 10,
+          "name": "Airwall True",
+          "areaOfEffect": "10'x10'x3'",
+          "duration": "1 min/lvl",
+          "range": "10'",
+          "type": "E",
+          "description": "As Airwall, but has a set duration of 1 minute per level and doesn't require concentration."
+        }
+      ]
+    },
+    {
+      "name": "Liquid Manipulation",
+      "realm": "Mentalism",
+      "type": "Closed",
+      "reference": "A-9.14.2",
+      "specialNotes": [
+        "Unless otherwise stated, after the duration of any spell above, the material returns to its natural state. For example, water boiled with the Boil Water spell will begin to cool after the duration of the spell.",
+        "Unless specifically stated, all of the spells on this list apply to any liquid (not just water)."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Boil Water",
+          "areaOfEffect": "1 cu'/lvl",
+          "duration": "P",
+          "range": "2'",
+          "type": "F",
+          "description": "Heats 1 cubic foot of liquid per level to boiling, at a rate of 50° per round of concentration. Caster is immune to the heat."
+        },
+        {
+          "level": 2,
+          "name": "Freeze Water",
+          "areaOfEffect": "1 cu'/lvl",
+          "duration": "P",
+          "range": "2'",
+          "type": "F",
+          "description": "As Boil Water, except the liquid can be cooled until frozen."
+        },
+        {
+          "level": 3,
+          "name": "Clear Water",
+          "areaOfEffect": "1 cu'/lvl",
+          "duration": "P",
+          "range": "2'",
+          "type": "F",
+          "description": "As Boil Water, except that it clears liquid of all sediment."
+        },
+        {
+          "level": 4,
+          "name": null
+        },
+        {
+          "level": 5,
+          "name": "Desalination",
+          "areaOfEffect": "1 cu'/lvl",
+          "duration": "P",
+          "range": "2'",
+          "type": "F",
+          "description": "As Boil Water, except that it removes all dissolved substances from the liquid."
+        },
+        {
+          "level": 6,
+          "name": "Waterwall",
+          "areaOfEffect": "10'x10'x1'",
+          "duration": "C",
+          "range": "10'",
+          "type": "E",
+          "description": "Creates a 10'x10'x1' wall of churning water (a water source must be within 10'). All attacks through the wall suffer a -80 penalty, and all movement is reduced by 80%."
+        },
+        {
+          "level": 7,
+          "name": "Evaporation",
+          "areaOfEffect": "1 cu'/lvl",
+          "duration": "P",
+          "range": "2'",
+          "type": "E",
+          "description": "As Boil Water, except all the liquid is evaporated at a rate of 1 cubic foot per round of concentration."
+        },
+        {
+          "level": 8,
+          "name": "Water Corridor I",
+          "areaOfEffect": "100'x3'x10'",
+          "duration": "C",
+          "range": "10'",
+          "type": "F",
+          "description": "Creates a corridor through liquid up to 100' long, 3' wide, and 10' deep (must be open at the top)."
+        },
+        {
+          "level": 9,
+          "name": "Water Bolt",
+          "areaOfEffect": "1 target",
+          "duration": "—",
+          "range": "100'",
+          "type": "DE",
+          "description": "A bolt of water is shot from the palm of the caster (a water source must be within 10'). Attack results are determined on the Bolt Spell Attack Table A-10.9.9 (p. 228)."
+        },
+        {
+          "level": 10,
+          "name": "Curved Waterwall",
+          "areaOfEffect": "10'x20'x1'",
+          "duration": "C",
+          "range": "touch",
+          "type": "E",
+          "description": "As Waterwall, except wall is 10'x20'x1' and can be curved up to a semicircle."
+        }
+      ]
+    },
+    {
+      "name": "Mind Mastery",
+      "realm": "Mentalism",
+      "type": "Closed",
+      "reference": "A-9.14.3",
+      "specialNotes": [],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Storing",
+          "areaOfEffect": "1 spell",
+          "duration": "varies",
+          "range": "self",
+          "type": "U",
+          "description": "Caster may cast this spell with any spell he wants to store. The spell to be stored must be cast within one minute after the Spell Store is cast. The stored spell may be cast later as an instantaneous spell. The Storing spell costs the same number of PPs as the spell stored. No other spell may be cast while a spell is stored."
+        },
+        {
+          "level": 2,
+          "name": "Presence",
+          "codes": [
+            "instantaneous",
+            "noPowerPoints"
+          ],
+          "areaOfEffect": "20'R",
+          "duration": "C",
+          "range": "self",
+          "type": "U",
+          "description": "Caster is aware of the presence of all sentient/thinking beings within 20'."
+        },
+        {
+          "level": 3,
+          "name": "Inner Wall I",
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "Caster gets a special bonus of +5 to his RRs versus mind attacks."
+        },
+        {
+          "level": 4,
+          "name": null
+        },
+        {
+          "level": 5,
+          "name": "Recall",
+          "areaOfEffect": "caster",
+          "duration": "C",
+          "range": "self",
+          "type": "U",
+          "description": "Allows the caster to access his memory as if he had total recall. Any skill resolution involving Memory gets a special bonus. If the skill uses Memory as one of its applicable stats (Science/Analytic skills), the bonus is +10. If the skill uses Memory as two of its applicable stats (Lore skills), the bonus is +25, if the skill uses Memory as all three of its applicable stats (i.e., a straight “memory” check), the bonus is +50."
+        },
+        {
+          "level": 6,
+          "name": "Misfeel Kind",
+          "codes": [
+            "noPowerPoints"
+          ],
+          "areaOfEffect": "caster",
+          "duration": "C",
+          "range": "self",
+          "type": "U",
+          "description": "For the purposes of mental or magical detections, the caster appears to be of any race he is familiar with."
+        },
+        {
+          "level": 7,
+          "name": "Observation",
+          "areaOfEffect": "caster",
+          "duration": "1 round (C)",
+          "range": "self",
+          "type": "U",
+          "description": "Caster gains insight or facts by observing a person or thing with intense concentration for one round. Gives the caster a special bonus of +50 to his Awareness • Searching skill bonuses."
+        },
+        {
+          "level": 8,
+          "name": "Inner Wall II",
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "As Inner Wall I, except bonus is +10."
+        },
+        {
+          "level": 9,
+          "name": "Misfeel Calling",
+          "codes": [
+            "noPowerPoints"
+          ],
+          "areaOfEffect": "caster",
+          "duration": "C",
+          "range": "self",
+          "type": "U",
+          "description": "As Misfeel Kind, except caster's profession may appear to be of any profession that he is familiar with."
+        },
+        {
+          "level": 10,
+          "name": "Correlation",
+          "areaOfEffect": "caster",
+          "duration": "C",
+          "range": "self",
+          "type": "U",
+          "description": "Caster is able to correlate known facts to obtain conclusions. Any skill resolution involving Reasoning gets a special bonus. If the skill uses Reasoning as one of its applicable stats (Lore skills), the bonus is +10. If the skill uses Reasoning as two of its applicable stats (Science/Analytic skills), the bonus is +25, if the skill uses Reasoning as all three of its applicable stats (i.e., a straight “reasoning” check), the bonus is +50."
+        }
+      ]
+    },
+    {
+      "name": "Mind's Door",
+      "realm": "Mentalism",
+      "type": "Closed",
+      "reference": "A-9.14.4",
+      "specialNotes": [
+        "See Appendix 9.17.6 (p. 205) for notes on encumbrance limits for movement spells."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": null
+        },
+        {
+          "level": 2,
+          "name": "Leave Item I",
+          "areaOfEffect": "1 object",
+          "duration": "—",
+          "range": "50'",
+          "type": "U",
+          "description": "Caster “teleports” a single inanimate object to a point up to 100' away from its current location. There can be no intervening barriers in a direct line between the target and the point (for these purposes, a barrier is anything the object could not physically go through). The object has a maximum weight limit of 1 pound per level of the caster."
+        },
+        {
+          "level": 3,
+          "name": null
+        },
+        {
+          "level": 4,
+          "name": "Long Door Item I",
+          "areaOfEffect": "1 object",
+          "duration": "—",
+          "range": "10'",
+          "type": "U",
+          "description": "As Leave Item I, except the object can pass through barriers by specifying exact direction and distance. If the arrival point coincides with solid or liquid material, the object does not move (though the caster loses the PPs)."
+        },
+        {
+          "level": 5,
+          "name": "Leaving I",
+          "areaOfEffect": "caster",
+          "duration": "—",
+          "range": "self",
+          "type": "U",
+          "description": "Caster “teleports” to a point up to 100' away, but there can be no intervening barriers directly between the target and the point (for these purposes a barrier is anything he could not physically go through; a closed door is a barrier, a pit is not)."
+        },
+        {
+          "level": 6,
+          "name": "Leave Item III",
+          "areaOfEffect": "1 object",
+          "duration": "—",
+          "range": "50'",
+          "type": "U",
+          "description": "As Leave Item I, except object can be moved up to 300'."
+        },
+        {
+          "level": 7,
+          "name": "Long Door Item V",
+          "areaOfEffect": "1 object",
+          "duration": "—",
+          "range": "50'",
+          "type": "U",
+          "description": "As Long Door Item I, except for range."
+        },
+        {
+          "level": 8,
+          "name": "Leaving III",
+          "areaOfEffect": "caster",
+          "duration": "—",
+          "range": "self",
+          "type": "U",
+          "description": "As Leaving I, except caster can move 300'."
+        },
+        {
+          "level": 9,
+          "name": "Leave Item V",
+          "areaOfEffect": "1 object",
+          "duration": "—",
+          "range": "50'",
+          "type": "U",
+          "description": "As Leave Item I, except object can be moved up to 500'."
+        },
+        {
+          "level": 10,
+          "name": "Minor Long Door",
+          "areaOfEffect": "caster",
+          "duration": "—",
+          "range": "self",
+          "type": "U",
+          "description": "As Leaving, except caster can move 50' and he can pass through barriers by specifying exact direction and distance. If the arrival point coincides with solid or liquid material, the caster does not move. In addition, he is stunned d10 rounds, and the PPs for this spell are still expended."
+        }
+      ]
+    },
+    {
+      "name": "Movement",
+      "realm": "Mentalism",
+      "type": "Closed",
+      "reference": "A-9.14.5",
+      "specialNotes": [
+        "See Appendix 9.17.6 (p. 205) for notes on encumbrance limits for movement spells."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Leaping",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "caster",
+          "duration": "1 rnd",
+          "range": "self",
+          "type": "U",
+          "description": "Allows caster to leap 50' laterally or 20' vertically."
+        },
+        {
+          "level": 2,
+          "name": "Landing",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "caster",
+          "duration": "varies",
+          "range": "self",
+          "type": "U",
+          "description": "Allows caster to land safely in a fall up to 20' per level, and to take that distance off the severity of any longer fall."
+        },
+        {
+          "level": 3,
+          "name": "Levitation I",
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "Allows caster to move up and down vertically 10' per round. The spell does not provide a means for horizontal movement."
+        },
+        {
+          "level": 4,
+          "name": "Wind Drift",
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "Caster becomes weightless, but has no magical movement control. Weight gradually returns at the end of the duration."
+        },
+        {
+          "level": 5,
+          "name": "Underwater Movement",
+          "areaOfEffect": "caster",
+          "duration": "10 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "Caster can take actions underwater as if on land."
+        },
+        {
+          "level": 6,
+          "name": "Fly I",
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "As Levitation I, except caster can fly at a rate of 15' per round (i.e., 1 mph)."
+        },
+        {
+          "level": 7,
+          "name": "Levitation V",
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "As Levitation I, except rate is 50' per round."
+        },
+        {
+          "level": 8,
+          "name": "Long Dive",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "caster",
+          "duration": "—",
+          "range": "self",
+          "type": "U",
+          "description": "Caster can safely dive through the air up to 50' per level. At the end of the dive, the caster must land in water that is deep enough for the dive (at least 2' of water per 50' dived)."
+        },
+        {
+          "level": 9,
+          "name": null
+        },
+        {
+          "level": 10,
+          "name": "Merging",
+          "areaOfEffect": "caster",
+          "duration": "10 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "Caster can merge into any solid, inanimate material. While merged, the caster cannot move or perceive. When the caster emerges from the material, he can emerge from any side or face of the material. The caster cannot move “through” material greater in width than his own body size plus 2 feet. The caster can exit at any time up to 10 minutes per level."
+        }
+      ]
+    },
+    {
+      "name": "Sense Mastery",
+      "realm": "Mentalism",
+      "type": "Closed",
+      "reference": "A-9.14.6",
+      "specialNotes": [],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Sly Ears",
+          "areaOfEffect": "caster",
+          "duration": "10 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "Caster gains double normal hearing. This results in a special bonus of +50 to Awareness • Searching and Awareness • Senses skills involving only hearing (or +5 for Alertness skill). This bonus is +25 to such skills involving hearing and other senses (or +3 for Alertness skill)."
+        },
+        {
+          "level": 2,
+          "name": "Nightvision",
+          "areaOfEffect": "caster",
+          "duration": "10 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "Caster can see 100' on a clear night as if it were day. At least some small amount of residual light is required for this spell to work. See Appendix A-9.17.12 (p. 206)."
+        },
+        {
+          "level": 3,
+          "name": "Sidevision",
+          "areaOfEffect": "caster",
+          "duration": "10 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "Caster has a 300° field of vision. The flank bonus is reduced to +5 and the rear bonus is reduced to +15."
+        },
+        {
+          "level": 4,
+          "name": "Detect Illusion",
+          "areaOfEffect": "5'R",
+          "duration": "—",
+          "range": "100'",
+          "type": "U",
+          "description": "Caster can check one object or place (up to a 5' radius) and tell if it is an illusion or has an illusion on it."
+        },
+        {
+          "level": 5,
+          "name": "Watervision",
+          "areaOfEffect": "caster",
+          "duration": "10 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "As Nightvision, except affects vision underwater (and other liquids)."
+        },
+        {
+          "level": 6,
+          "name": "Scent",
+          "areaOfEffect": "caster",
+          "duration": "10 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "As Sly Ears except caster gains an extremely acute sense of smell and the bonuses indicated apply to Awareness skills involving smelling."
+        },
+        {
+          "level": 7,
+          "name": "Fogvision",
+          "areaOfEffect": "caster",
+          "duration": "10 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "As Nightvision, except works in any precipitation or gas. See Appendix A-9.17.12 (p. 206)."
+        },
+        {
+          "level": 8,
+          "name": "Touch",
+          "areaOfEffect": "caster",
+          "duration": "10 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "Caster gains extreme tactile sensitivity. This results in a special bonus of +25 to all actions that depend on tactile sense (e.g., pick locks, disarm traps, etc.)."
+        },
+        {
+          "level": 9,
+          "name": "Darkvision",
+          "areaOfEffect": "caster",
+          "duration": "10 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "As Nightvision, except no light is required and caster can see even in magically created darkness."
+        },
+        {
+          "level": 10,
+          "name": "Mentalist Ear",
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl (C)",
+          "range": "100'/lvl",
+          "type": "U",
+          "description": "Caster can pick a point up to 100' per level away and he will hear as if he were at that point (there can be intervening objects such as walls); he must have been at the location before or the location must be within his field of vision."
+        }
+      ]
+    },
+    {
+      "name": "Shifting",
+      "realm": "Mentalism",
+      "type": "Closed",
+      "reference": "A-9.14.7",
+      "specialNotes": [],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Balance",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "caster",
+          "duration": "varies",
+          "range": "self",
+          "type": "U",
+          "description": "Gives a special bonus of +50 to any rolls for one slow maneuver requiring balance (e.g., walking a 3\" beam, etc.)."
+        },
+        {
+          "level": 2,
+          "name": "Contraction",
+          "areaOfEffect": "caster",
+          "duration": "C",
+          "range": "self",
+          "type": "U",
+          "description": "Allows caster to disjoint limbs, contract muscles, etc. to escape manacles/ropes and to slip through small places. Gives a special bonus of +25 to +50 to Contortions maneuvers."
+        },
+        {
+          "level": 3,
+          "name": "Face Shifting",
+          "areaOfEffect": "caster",
+          "duration": "10 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "Allows caster to alter the form of his face. The caster may specify a specific person, but the change will not be exact."
+        },
+        {
+          "level": 4,
+          "name": null
+        },
+        {
+          "level": 5,
+          "name": "Waterlungs",
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "For the duration, the caster can breathe water but not air."
+        },
+        {
+          "level": 6,
+          "name": null
+        },
+        {
+          "level": 7,
+          "name": "Change to Kind",
+          "areaOfEffect": "caster",
+          "duration": "10 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "Caster can alter his form to the form of any desired humanoid race. The form cannot be a specific form. For example, a human caster could take on the form of a Dwarf, but not the Dwarven king. Only physical form is gained (e.g., a target who becomes a Dwarf would not receive the Dwarves' ability to see in the dark). The caster can only alter his size by up to 25%."
+        },
+        {
+          "level": 8,
+          "name": "Gaslungs",
+          "areaOfEffect": "caster",
+          "duration": "1 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "As Waterlungs, except caster can breathe any gas as normal air."
+        },
+        {
+          "level": 9,
+          "name": null
+        },
+        {
+          "level": 10,
+          "name": "Greater Face Shifting",
+          "areaOfEffect": "caster",
+          "duration": "1 hr/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "As Face Shifting, except lasts 1 hour per level."
+        }
+      ]
+    },
+    {
+      "name": "Solid Manipulation",
+      "realm": "Mentalism",
+      "type": "Closed",
+      "reference": "A-9.14.8",
+      "specialNotes": [],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Warm Stone",
+          "areaOfEffect": "1 cu'/lvl",
+          "duration": "24 hr",
+          "range": "touch",
+          "type": "F",
+          "description": "Warms 1 cubic foot of stone per level up to 100°F at a rate of 1 cubic foot per round of concentration (without concentration, the material will remain at its current temperature for the remainder of the duration)."
+        },
+        {
+          "level": 2,
+          "name": "Warm Metal",
+          "areaOfEffect": "6 cu\"/lvl",
+          "duration": "24 hr",
+          "range": "touch",
+          "type": "F",
+          "description": "As Warm Stone, except 6 cubic inches of metal per level can be warmed each round."
+        },
+        {
+          "level": 3,
+          "name": "Warm Solid",
+          "areaOfEffect": "1 cu'/lvl",
+          "duration": "24 hr",
+          "range": "touch",
+          "type": "F",
+          "description": "As Warm Stone, except can affect any solid, inanimate, non-metal material."
+        },
+        {
+          "level": 4,
+          "name": "Heat Stone",
+          "areaOfEffect": "1 cu'/lvl",
+          "duration": "1 min/lvl",
+          "range": "touch",
+          "type": "F",
+          "description": "As Warm Stone except temperature limit is 500°F. In addition, caster must concentrate for 1 round to raise the temperature 50°F (up to the maximum). Caster need only touch the target when the spell is cast."
+        },
+        {
+          "level": 5,
+          "name": "Heat Metal",
+          "areaOfEffect": "6 cu\"/lvl",
+          "duration": "1 min/lvl",
+          "range": "touch",
+          "type": "F",
+          "description": "As Heat Stone, except 6 cubic inches of metal per level can be heated."
+        },
+        {
+          "level": 6,
+          "name": "Heat Solid",
+          "areaOfEffect": "1 cu'/lvl",
+          "duration": "1 min/lvl",
+          "range": "touch",
+          "type": "F",
+          "description": "As Heat Stone, except affects any solid, inanimate, non-metal material."
+        },
+        {
+          "level": 7,
+          "name": "Cool Solid",
+          "areaOfEffect": "1 cu'/lvl",
+          "duration": "24 hours",
+          "range": "touch",
+          "type": "F",
+          "description": "As Warm Stone, except chills any solid, inanimate material down to 0°F."
+        },
+        {
+          "level": 8,
+          "name": null
+        },
+        {
+          "level": 9,
+          "name": "Chill Solid",
+          "areaOfEffect": "1 cu'/lvl",
+          "duration": "1 min/lvl",
+          "range": "touch",
+          "type": "F",
+          "description": "As Heat Stone, except temperature can be lowered to -200°F at a rate of 100°F per round."
+        },
+        {
+          "level": 10,
+          "name": "Cracks Call",
+          "areaOfEffect": "10'x10'x10'",
+          "duration": "—",
+          "range": "100'",
+          "type": "F",
+          "description": "Any previous cracks or flaws in material up to 10'x10'x10' section will extend to their limit."
+        }
+      ]
+    },
+    {
+      "name": "Speed",
+      "realm": "Mentalism",
+      "type": "Closed",
+      "reference": "A-9.14.9",
+      "specialNotes": [
+        "Only one Haste or Speed spell may be in effect on an individual at any given time. In addition, Speed requires a 50% activity penalty after the spell effects end; casting a Speed or Haste spell at that point will only bring a person to normal activity, rather than extending the 200% activity time (50% x 2 = 100%)."
+      ],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Run",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "caster",
+          "duration": "10 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "Caster may run (double walking pace) without tiring (i.e., expends exhaustion points as if he were walking), but once he stops or performs any other action the spell is canceled."
+        },
+        {
+          "level": 2,
+          "name": "Speed Reading",
+          "areaOfEffect": "caster",
+          "duration": "10 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "Caster reads 10 pages per minute."
+        },
+        {
+          "level": 3,
+          "name": "Speed I",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "caster",
+          "duration": "varies",
+          "range": "self",
+          "type": "U",
+          "description": "For the duration of the spell, caster has 200% activity for one round. Afterwards, the caster must spend as many rounds in rest (maximum of 50% activity) as he spent under the effects of Speed."
+        },
+        {
+          "level": 4,
+          "name": null
+        },
+        {
+          "level": 5,
+          "name": "Speed II",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "caster",
+          "duration": "2 rnd",
+          "range": "self",
+          "type": "U",
+          "description": "As Speed I, except duration is 2 rounds."
+        },
+        {
+          "level": 6,
+          "name": "Haste I",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "caster",
+          "duration": "1 rnd",
+          "range": "self",
+          "type": "U",
+          "description": "As Speed I, except no resting rounds are required."
+        },
+        {
+          "level": 7,
+          "name": "Speed III",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "caster",
+          "duration": "3 rnd",
+          "range": "self",
+          "type": "U",
+          "description": "As Speed I, except duration is three rounds."
+        },
+        {
+          "level": 8,
+          "name": "Sprint",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "caster",
+          "duration": "10 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "As Run, except caster may move at 3x walking pace."
+        },
+        {
+          "level": 9,
+          "name": "Haste II",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "caster",
+          "duration": "2 rnd",
+          "range": "self",
+          "type": "U",
+          "description": "As Haste I, except duration is 2 rounds."
+        },
+        {
+          "level": 10,
+          "name": "Fast Swim",
+          "codes": [
+            "instantaneous"
+          ],
+          "areaOfEffect": "caster",
+          "duration": "10 min/lvl",
+          "range": "self",
+          "type": "U",
+          "description": "As Run, except caster swims double normal pace."
+        }
+      ]
+    },
+    {
+      "name": "Telekinesis",
+      "realm": "Mentalism",
+      "type": "Closed",
+      "reference": "A-9.14.10",
+      "specialNotes": [],
+      "spells": [
+        {
+          "level": 1,
+          "name": "Telekinesis I",
+          "areaOfEffect": "1 lb",
+          "duration": "1 min/lvl (C)",
+          "range": "100'",
+          "type": "F",
+          "description": "Caster can move one object, up to 1 pound in mass, up to 1' per second (with no acceleration). If the caster stops concentration before the duration is up, the object remains stationary as if it had a Staying spell with an equal weight limit cast upon it."
+        },
+        {
+          "level": 2,
+          "name": "Staying II",
+          "areaOfEffect": "5 lbs",
+          "duration": "1 min/lvl",
+          "range": "100'",
+          "type": "F",
+          "description": "Exerts 5 pounds of pressure on a person or object. Object cannot be moved by Staying alone and pressure can only be in one direction."
+        },
+        {
+          "level": 3,
+          "name": "Telekinesis II",
+          "areaOfEffect": "5 lbs",
+          "duration": "1 min/lvl (C)",
+          "range": "100'",
+          "type": "F",
+          "description": "As Telekinesis I, except mass limit is 5 pounds."
+        },
+        {
+          "level": 4,
+          "name": "Staying III",
+          "areaOfEffect": "25 lbs",
+          "duration": "1 min/lvl",
+          "range": "100'",
+          "type": "F",
+          "description": "As Staying II, except pressure limit is 25 pounds."
+        },
+        {
+          "level": 5,
+          "name": "Greater Staying II",
+          "areaOfEffect": "varies",
+          "duration": "1 min/lvl",
+          "range": "varies",
+          "type": "F",
+          "description": "As Staying II, except 2 objects may be affected with 5 pounds total pressure or Staying II can be used to 200'."
+        },
+        {
+          "level": 6,
+          "name": "Greater Telekinesis II",
+          "areaOfEffect": "varies",
+          "duration": "1 min/lvl (C)",
+          "range": "varies",
+          "type": "F",
+          "description": "As Telekinesis I, except 2 objects of 5 pounds total mass may be moved or Telekinesis I can be used at 200'."
+        },
+        {
+          "level": 7,
+          "name": "Telekinesis III",
+          "areaOfEffect": "25 lbs",
+          "duration": "1 min/lvl (C)",
+          "range": "100'",
+          "type": "F",
+          "description": "As Telekinesis I, except mass limit is 25 pounds."
+        },
+        {
+          "level": 8,
+          "name": "Staying IV",
+          "areaOfEffect": "50 lbs",
+          "duration": "1 min/lvl",
+          "range": "100'",
+          "type": "F",
+          "description": "As Staying II, except pressure limit is 50 pounds."
+        },
+        {
+          "level": 9,
+          "name": "Telekinesis IV",
+          "areaOfEffect": "50 lbs",
+          "duration": "1 min/lvl (C)",
+          "range": "100'",
+          "type": "F",
+          "description": "As Telekinesis I, except mass limit is 50 pounds."
+        },
+        {
+          "level": 10,
+          "name": "Hurling I",
+          "areaOfEffect": "1 lb",
+          "duration": "—",
+          "range": "10'",
+          "type": "E",
+          "description": "Caster may “hurl” one object (that starts within 10' of him) of 1 pound or less with sufficient force to deliver an attack on the Missile Weapon Attack Table A-10.9.4 (p. 223). Treat as a sling attack with a short range of 11-100', a medium range of 101-200', and a long range of 201'-300'. The caster's OB is his directed spell skill with this spell."
+        }
+      ]
+    }
+  ]
+}
