@@ -6,6 +6,6 @@
   },
   "Item": {
     "types": ["equipment", "race", "skill", "category", "realm", "profession", "trainingPackage", "spellList"],
-    "htmlFields": ["description", "racialAbilities", "spells.description"]
+    "htmlFields": ["description", "racialAbilities"]
   }
 }

@@ -512,8 +512,13 @@ export class RMFActions {
     
     const current = this.document.img;
     
-    // Use modern FilePicker implementation
-    const fp = new foundry.applications.apps.FilePicker({
+    // Resolve the configured FilePicker class. In v13 core classes are
+    // exposed as a base + a swappable `.implementation` accessor (same
+    // idiom as `Item.implementation`); fall back to the base class on
+    // builds where the accessor is absent so this can't regress.
+    const FilePickerClass = foundry.applications.apps.FilePicker.implementation
+      ?? foundry.applications.apps.FilePicker;
+    const fp = new FilePickerClass({
       type: "image",
       current: current,
       callback: async (path) => {
