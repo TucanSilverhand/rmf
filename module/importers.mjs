@@ -1997,3 +1997,209 @@ export async function syncSpellListsToCompendium(source, options = {}) {
     return result;
   }
 }
+
+/* ════════════════════════════════════════════════════════════════════
+ * Attack Tables
+ *
+ * One Item (type "attackTable") per weapon attack table. Sources are the
+ * `data/attack-tables/*.json` files, each a single table object shaped
+ * { name, tableId, critType, fumbleRange, armorTypes, legend, rows, fumble }.
+ * The matrix looks two-dimensional on paper but resolves to a 1-D lookup
+ * at query time (see module/tables/). Stored as Item system data because
+ * FoundryVTT has no native 2-D table document.
+ * ════════════════════════════════════════════════════════════════════ */
+
+async function getAttackTableTemplate() {
+  const fromDocTypes = foundry.utils.getProperty(game.system, "documentTypes.Item.attackTable.template");
+  if (fromDocTypes && typeof fromDocTypes === "object") return fromDocTypes;
+  return {};
+}
+
+/** Coerce to a finite number, else fallback. */
+function _atNum(v, fb = 0) {
+  const n = Number(v);
+  return Number.isFinite(n) ? n : fb;
+}
+
+/** Normalize the roll-band rows; keeps `rollMin: null` as the low catch-all. */
+function normalizeAttackRows(raw) {
+  if (!Array.isArray(raw)) return [];
+  return raw.map(r => {
+    const src = (r?.results && typeof r.results === "object") ? r.results : {};
+    const results = {};
+    for (const [k, v] of Object.entries(src)) {
+      results[String(k)] = (v === null || v === undefined) ? "" : String(v);
+    }
+    const hasMin = !(r?.rollMin === null || r?.rollMin === undefined);
+    return {
+      label:   typeof r?.label === "string" ? r.label : "",
+      rollMin: hasMin ? _atNum(r.rollMin, 0) : null,
+      rollMax: _atNum(r?.rollMax, 0),
+      results
+    };
+  });
+}
+
+/** Normalize the armor-type groups (presentation only). */
+function normalizeAttackArmorTypes(raw) {
+  if (!Array.isArray(raw)) return [];
+  return raw.map(g => ({
+    name: typeof g?.name === "string" ? g.name : "",
+    ats:  Array.isArray(g?.ats) ? g.ats.map(a => _atNum(a, 0)) : []
+  }));
+}
+
+/** Build the attackTable `system` payload from a raw source entry. */
+function buildAttackTableSystemData(sysSource, template) {
+  const src = sysSource && typeof sysSource === "object" ? sysSource : {};
+  const fr = src.fumbleRange && typeof src.fumbleRange === "object" ? src.fumbleRange : {};
+  const fumbleSrc = src.fumble && typeof src.fumble === "object" ? src.fumble : {};
+  const fumbleResults = {};
+  if (fumbleSrc.results && typeof fumbleSrc.results === "object") {
+    for (const [k, v] of Object.entries(fumbleSrc.results)) {
+      fumbleResults[String(k)] = String(v ?? "");
+    }
+  }
+  return foundry.utils.mergeObject(
+    foundry.utils.duplicate(template),
+    {
+      tableId:    String(src.tableId ?? ""),
+      critType:   String(src.critType ?? ""),
+      fumbleRange: { min: _atNum(fr.min, 1), max: _atNum(fr.max, 2) },
+      armorTypes: normalizeAttackArmorTypes(src.armorTypes),
+      legend:     (src.legend && typeof src.legend === "object") ? src.legend : null,
+      rollMatchPolicy: String(src.rollMatchPolicy ?? ""),
+      rows:       normalizeAttackRows(src.rows),
+      fumble: {
+        label:       String(fumbleSrc.label ?? ""),
+        description: String(fumbleSrc.description ?? ""),
+        results:     fumbleResults
+      },
+      fromBook:   String(src.fromBook ?? "basic")
+    },
+    { inplace: false, insertKeys: true, insertValues: true, overwrite: true }
+  );
+}
+
+/**
+ * Import attack-table items from a JSON source. Accepts a single table
+ * object, an array of tables, or `{ tables: [...] }`.
+ *
+ * @param {string|Array|Object} source - URL, JSON string, or parsed data
+ * @param {Object} [options]
+ * @param {string} [options.folderName="Attack Tables"]
+ * @param {boolean} [options.dedupeByName=false]
+ * @returns {Promise<{created: Item[], skipped: string[], errors: any[]}>}
+ */
+export async function importAttackTables(source, options = {}) {
+  _assertGM("importAttackTables");
+  const folderName = options.folderName ?? "Attack Tables";
+  const dedupeByName = options.dedupeByName ?? false;
+  const result = { created: [], skipped: [], errors: [] };
+
+  try {
+    const input = await resolveSource(source);
+    const tables = Array.isArray(input) ? input : (input?.tables ?? [input]).filter(Boolean);
+    if (!tables?.length) return result;
+
+    const template = await getAttackTableTemplate();
+    const folderCache = new Map();
+    const existingByName = dedupeByName
+      ? game.items.reduce((acc, it) => { if (it.type === "attackTable") acc[it.name] = true; return acc; }, {})
+      : {};
+
+    const docs = [];
+    for (let i = 0; i < tables.length; i++) {
+      const entry = tables[i];
+      const name = entry.name ?? `Attack Table ${i + 1}`;
+      if (dedupeByName && existingByName[name]) { result.skipped.push(name); continue; }
+      const sysSource = entry.system ?? entry;
+      const system = buildAttackTableSystemData(sysSource, template);
+      const img = pickImageFromEntry(entry, sysSource, "icons/svg/sword.svg");
+      const folderId = await _ensureItemFolder(folderName, folderCache);
+      docs.push({ name, type: "attackTable", img, system, folder: folderId });
+    }
+
+    if (!docs.length) return result;
+    result.created = await Item.createDocuments(docs);
+    return result;
+  } catch (err) {
+    console.error("RMF | importAttackTables error", err);
+    result.errors.push(err);
+    return result;
+  }
+}
+
+/**
+ * Synchronize attack-table items into a compendium pack (upsert by
+ * type+name). Lands them in an "Attack Tables" folder, created if absent.
+ *
+ * @param {string|Array|Object} source
+ * @param {Object} [options]
+ * @param {string} [options.pack="world.basic-core"]
+ * @param {string} [options.folderName="Attack Tables"]
+ * @param {boolean} [options.createMissing=true]
+ * @param {boolean} [options.updateExisting=true]
+ * @returns {Promise<{created:number, updated:number, skipped:number, errors:any[]}>}
+ */
+export async function syncAttackTablesToCompendium(source, options = {}) {
+  _assertGM("syncAttackTablesToCompendium");
+  const packCollection = options.pack ?? "world.basic-core";
+  const folderName = options.folderName ?? "Attack Tables";
+  const createMissing = options.createMissing ?? true;
+  const updateExisting = options.updateExisting ?? true;
+  const result = { created: 0, updated: 0, skipped: 0, errors: [] };
+
+  try {
+    const pack = game.packs.get(packCollection);
+    if (!pack) throw new Error(`Compendium pack not found: ${packCollection}`);
+    if (pack.documentName !== "Item") throw new Error(`Pack ${packCollection} is not an Item compendium`);
+
+    const input = await resolveSource(source);
+    const tables = Array.isArray(input) ? input : (input?.tables ?? [input]).filter(Boolean);
+    if (!tables?.length) return result;
+
+    const template = await getAttackTableTemplate();
+    await pack.getIndex({ fields: ["name", "type", "folder"] });
+    const existingByKey = new Map(
+      pack.index.map(e => [`${e.type}::${String(e.name).toLowerCase()}`, e])
+    );
+
+    const folderCache = new Map();
+    const createPayload = [];
+    const updatePayload = [];
+    for (let i = 0; i < tables.length; i++) {
+      const entry = tables[i];
+      const name = entry.name ?? `Attack Table ${i + 1}`;
+      const key = `attackTable::${String(name).toLowerCase()}`;
+      const existing = existingByKey.get(key);
+      const sysSource = entry.system ?? entry;
+      const system = buildAttackTableSystemData(sysSource, template);
+      const img = pickImageFromEntry(entry, sysSource, "icons/svg/sword.svg");
+      const base = { name, type: "attackTable", img, system };
+
+      const folderId = await _ensurePackFolder(pack, folderName, folderCache);
+      if (existing) {
+        if (!updateExisting) { result.skipped += 1; continue; }
+        updatePayload.push({ _id: existing._id, folder: folderId, ...base });
+      } else {
+        if (!createMissing) { result.skipped += 1; continue; }
+        createPayload.push({ ...base, folder: folderId });
+      }
+    }
+
+    if (createPayload.length) {
+      const created = await Item.createDocuments(createPayload, { pack: packCollection });
+      result.created = created.length;
+    }
+    if (updatePayload.length) {
+      const updated = await Item.updateDocuments(updatePayload, { pack: packCollection, diff: false });
+      result.updated = updated.length;
+    }
+    return result;
+  } catch (err) {
+    console.error("RMF | syncAttackTablesToCompendium error", err);
+    result.errors.push(err);
+    return result;
+  }
+}

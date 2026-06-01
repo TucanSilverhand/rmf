@@ -12,3 +12,4 @@ export { RealmData }           from "./realm.mjs";
 export { ProfessionData }      from "./profession.mjs";
 export { TrainingPackageData } from "./training-package.mjs";
 export { SpellListData }       from "./spell-list.mjs";
+export { AttackTableData }     from "./attack-table.mjs";

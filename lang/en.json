@@ -413,6 +413,39 @@
       "Ranges": "Ranges",
       "Durations": "Durations",
       "Definitions": "Definitions"
+    },
+    "AttackTableSheet": "RMF Attack Table",
+    "AttackTable": {
+      "NamePlaceholder": "Attack Table Name",
+      "Meta": "Table Information",
+      "TableId": "Table Id",
+      "CritType": "Critical Type",
+      "FumbleRange": "Fumble Range (UM)",
+      "ArmorType": "AT",
+      "Source": "Source",
+      "Legend": "Cell Notation",
+      "Columns": "Columns",
+      "Rows": "Rows",
+      "RollBand": "Roll",
+      "TableTab": "Table",
+      "ResolveTab": "Resolve",
+      "OB": "OB",
+      "Mods": "Modifiers",
+      "TargetAT": "Target AT",
+      "TargetDB": "Target DB",
+      "ResolveButton": "Roll Attack",
+      "Result": "Result",
+      "NaturalRoll": "Natural d100",
+      "RollTotal": "Open-ended Total",
+      "AttackTotal": "Attack Total",
+      "Hits": "Hits",
+      "Critical": "Critical",
+      "Fumble": "Fumble!",
+      "Miss": "No effect",
+      "OpenEnded": "open-ended",
+      "ChatTitle": "{name} vs AT {at}",
+      "ChatNeedsCrit": "Roll a {severity} critical on the {critType} table.",
+      "NoResult": "—"
     }
   },
   "TYPES": {
@@ -427,7 +460,8 @@
       "realm": "Realm",
       "profession": "Profession",
       "trainingPackage": "Training Package",
-      "spellList": "Spell List"
+      "spellList": "Spell List",
+      "attackTable": "Attack Table"
     }
   }
 }

@@ -413,6 +413,39 @@
       "Ranges": "Alcances",
       "Durations": "Duraciones",
       "Definitions": "Definiciones"
+    },
+    "AttackTableSheet": "Tabla de Ataque RMF",
+    "AttackTable": {
+      "NamePlaceholder": "Nombre de la Tabla de Ataque",
+      "Meta": "Información de la Tabla",
+      "TableId": "Id de Tabla",
+      "CritType": "Tipo de Crítico",
+      "FumbleRange": "Rango de Pifia (DSM)",
+      "ArmorType": "TA",
+      "Source": "Fuente",
+      "Legend": "Notación de Celdas",
+      "Columns": "Columnas",
+      "Rows": "Filas",
+      "RollBand": "Tirada",
+      "TableTab": "Tabla",
+      "ResolveTab": "Resolver",
+      "OB": "BO",
+      "Mods": "Modificadores",
+      "TargetAT": "TA Objetivo",
+      "TargetDB": "BD Objetivo",
+      "ResolveButton": "Tirar Ataque",
+      "Result": "Resultado",
+      "NaturalRoll": "d100 Natural",
+      "RollTotal": "Total Abierto",
+      "AttackTotal": "Total de Ataque",
+      "Hits": "Impactos",
+      "Critical": "Crítico",
+      "Fumble": "¡Pifia!",
+      "Miss": "Sin efecto",
+      "OpenEnded": "abierta",
+      "ChatTitle": "{name} vs TA {at}",
+      "ChatNeedsCrit": "Tira un crítico {severity} en la tabla de {critType}.",
+      "NoResult": "—"
     }
   },
   "TYPES": {
@@ -427,7 +460,8 @@
       "realm": "Reino",
       "profession": "Profesión",
       "trainingPackage": "Paquete de Entrenamiento",
-      "spellList": "Lista de Hechizos"
+      "spellList": "Lista de Hechizos",
+      "attackTable": "Tabla de Ataque"
     }
   }
 }

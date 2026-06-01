@@ -1,0 +1,45 @@
+{{!--
+  RMF Attack Table Sheet — Resolve Partial
+  A compact form (OB / mods / target AT / target DB) + a "Roll Attack"
+  button (data-action) that runs the table engine and posts a chat card.
+  The last result is shown inline. Inputs use name="resolve.*" so the
+  sheet caches them on the instance (never persisted to the document).
+--}}
+
+<div class="tab attacktable-resolve" data-group="primary-tabs" data-tab="resolve" style="display: none;">
+
+  <div class="summary-wrapper">
+    <h3>{{localize "RMF.AttackTable.ResolveTab"}}</h3>
+    <div class="resolve-form">
+      <label>{{localize "RMF.AttackTable.OB"}}
+        <input type="number" name="resolve.ob" value="{{resolve.ob}}" data-dtype="Number"/></label>
+      <label>{{localize "RMF.AttackTable.Mods"}}
+        <input type="number" name="resolve.mods" value="{{resolve.mods}}" data-dtype="Number"/></label>
+      <label>{{localize "RMF.AttackTable.TargetAT"}}
+        <input type="number" name="resolve.targetAT" value="{{resolve.targetAT}}" min="1" max="20" data-dtype="Number"/></label>
+      <label>{{localize "RMF.AttackTable.TargetDB"}}
+        <input type="number" name="resolve.targetDB" value="{{resolve.targetDB}}" data-dtype="Number"/></label>
+      <button type="button" class="resolve-button" data-action="resolveAttack">
+        <i class="fas fa-dice-d20"></i> {{localize "RMF.AttackTable.ResolveButton"}}
+      </button>
+    </div>
+  </div>
+
+  {{#if lastResult}}
+  <div class="summary-wrapper resolve-result">
+    <h3>{{localize "RMF.AttackTable.Result"}}</h3>
+    <table class="summary-table">
+      <tbody>
+        <tr><th scope="row">{{localize "RMF.AttackTable.NaturalRoll"}}</th>
+          <td>{{lastResult.natural}}{{#if lastResult.openHigh}} → {{lastResult.rollTotal}} ({{localize "RMF.AttackTable.OpenEnded"}}){{/if}}</td></tr>
+        <tr><th scope="row">{{localize "RMF.AttackTable.TargetAT"}}</th><td>{{lastResult.targetAT}}</td></tr>
+        <tr><th scope="row">{{localize "RMF.AttackTable.AttackTotal"}}</th><td>{{lastResult.attackTotal}}</td></tr>
+        <tr><th scope="row">{{localize "RMF.AttackTable.Result"}}</th>
+          <td class="outcome{{#if lastResult.needsCritical}} is-crit{{/if}}">{{lastResult.outcome}}</td></tr>
+      </tbody>
+    </table>
+    {{#if lastResult.needsCritical}}<p class="crit-hint">{{lastResult.critHint}}</p>{{/if}}
+  </div>
+  {{/if}}
+
+</div>

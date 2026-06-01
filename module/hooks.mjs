@@ -26,8 +26,11 @@ import {
   syncRealmsToCompendium,
   syncProfessionsToCompendium,
   syncTrainingPackagesToCompendium,
-  syncSpellListsToCompendium
+  syncSpellListsToCompendium,
+  importAttackTables,
+  syncAttackTablesToCompendium
 } from "./importers.mjs";
+import { TablesAPI } from "./tables/index.mjs";
 import { runWorldMigration } from "./migration.mjs";
 import { applyTrainingPackageToActor } from "./training-package-apply.mjs";
 import { RMFTrainingPackageSheet } from "./training-package-sheet.js";
@@ -107,6 +110,13 @@ export class RMFHooks {
     game.rmf.syncProfessionsToCompendium = syncProfessionsToCompendium;
     game.rmf.syncTrainingPackagesToCompendium = syncTrainingPackagesToCompendium;
     game.rmf.syncSpellListsToCompendium = syncSpellListsToCompendium;
+    game.rmf.importAttackTables = importAttackTables;
+    game.rmf.syncAttackTablesToCompendium = syncAttackTablesToCompendium;
+
+    // Multidimensional-table engine (lookup / open-ended d100 / attack
+    // resolver). Clean API boundary — see module/tables/. Re-exposed here
+    // mirroring the importer surface so GM macros / sheets can reach it.
+    game.rmf.tables = TablesAPI;
 
     // Drop the cached basic-core index used by the Training Package
     // sheet's choice-row dropdowns. Call after running any of the

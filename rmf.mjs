@@ -25,6 +25,7 @@ import { RMFRealmSheet } from "./module/realm-sheet.js";
 import { RMFProfessionSheet } from "./module/profession-sheet.js";
 import { RMFTrainingPackageSheet } from "./module/training-package-sheet.js";
 import { RMFSpellListSheet } from "./module/spell-list-sheet.js";
+import { RMFAttackTableSheet } from "./module/attack-table-sheet.js";
 import { RMFActor, RMFItem } from "./module/data-models.mjs";
 import { RMFHooks } from "./module/hooks.mjs";
 import { SKILL_CLASSIFICATIONS } from "./module/utils/rank-bonus.mjs";
@@ -39,7 +40,8 @@ import {
   RealmData,
   ProfessionData,
   TrainingPackageData,
-  SpellListData
+  SpellListData,
+  AttackTableData
 } from "./module/data-models/index.mjs";
 
 /**
@@ -83,7 +85,8 @@ Hooks.once('init', async function() {
     realm:            RealmData,
     profession:       ProfessionData,
     trainingPackage:  TrainingPackageData,
-    spellList:        SpellListData
+    spellList:        SpellListData,
+    attackTable:      AttackTableData
   };
 
   // Register system settings before other initialization
@@ -145,6 +148,12 @@ Hooks.once('init', async function() {
     makeDefault: true,
     label: "RMF.SpellListSheet"
   });
+
+  foundry.applications.apps.DocumentSheetConfig.registerSheet(Item, "rmf-attackTable", RMFAttackTableSheet, {
+    types: ["attackTable"],
+    makeDefault: true,
+    label: "RMF.AttackTableSheet"
+  });
   // Initialize RMF system configuration namespace.
   // The version is read from system.json at runtime (game.system.version),
   // so we never duplicate the source of truth.
@@ -167,7 +176,7 @@ Hooks.once('init', async function() {
     // not need to import the module directly.
     statShortToFull: STAT_SHORT_TO_FULL,
 
-    itemTypes: ["equipment", "race", "skill", "category", "realm", "profession", "trainingPackage", "spellList"],
+    itemTypes: ["equipment", "race", "skill", "category", "realm", "profession", "trainingPackage", "spellList", "attackTable"],
     actorTypes: ["character"],
 
     // Canonical skill classifications. Same set used by data-models and importers
@@ -383,6 +392,7 @@ async function _preloadHandlebarsTemplates() {
     "rmf/item-profession-sheet": "systems/rmf/templates/item-profession-sheet.hbs",
     "rmf/item-training-package-sheet": "systems/rmf/templates/item-training-package-sheet.hbs",
     "rmf/item-spell-list-sheet": "systems/rmf/templates/item-spell-list-sheet.hbs",
+    "rmf/item-attack-table-sheet": "systems/rmf/templates/item-attack-table-sheet.hbs",
 
     // Actor sheet partials
     "parts/actor-header": "systems/rmf/templates/parts/actor-header.hbs",
@@ -437,6 +447,12 @@ async function _preloadHandlebarsTemplates() {
     "parts/item-spelllist-details": "systems/rmf/templates/parts/item-spelllist-details.hbs",
     "parts/item-spelllist-advanced": "systems/rmf/templates/parts/item-spelllist-advanced.hbs",
     "parts/item-spelllist-key": "systems/rmf/templates/parts/item-spelllist-key.hbs",
+
+    // Attack table sheet partials
+    "parts/item-attacktable-navigation": "systems/rmf/templates/parts/item-attacktable-navigation.hbs",
+    "parts/item-attacktable-header": "systems/rmf/templates/parts/item-attacktable-header.hbs",
+    "parts/item-attacktable-table": "systems/rmf/templates/parts/item-attacktable-table.hbs",
+    "parts/item-attacktable-resolve": "systems/rmf/templates/parts/item-attacktable-resolve.hbs",
 
     // Chat templates
     "rmf/chat/stat-roll": "systems/rmf/templates/chat/stat-roll.hbs",

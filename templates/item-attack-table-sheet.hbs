@@ -1,0 +1,21 @@
+{{!--
+  RMF Attack Table Item Sheet Template - FoundryVTT v13 Compatible
+  ApplicationV2 with HandlebarsApplicationMixin.
+  Two-tab layout: read-only "table" (the matrix) + "resolve" (roll a hit).
+  NOTE: Do NOT wrap with <form>; ApplicationV2 provides the root form.
+--}}
+
+<div class="{{cssClass}} rmf-item-sheet attack-table-sheet-root">
+  <div class="sheet-main-container attack-table-sheet">
+    {{> "parts/item-attacktable-navigation"}}
+    <div class="sheet-content">
+      {{> "parts/item-attacktable-header"}}
+      <section class="sheet-body">
+        <div class="sheet-body-inner">
+          {{> "parts/item-attacktable-table"}}
+          {{> "parts/item-attacktable-resolve"}}
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

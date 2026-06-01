@@ -1899,3 +1899,123 @@
   overflow-y: auto !important;
   overflow-x: hidden;
 }
+
+/* ════════════════════════════════════════════════════════════════════
+ * Attack Table sheet (multidimensional lookup matrix)
+ * ════════════════════════════════════════════════════════════════════ */
+
+.attack-table-sheet-root { display: flex; flex-direction: column; height: 100%; }
+.attack-table-sheet-root .sheet-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.window-app .window-content > form.standard-form > .attack-table-sheet-root .sheet-body,
+.application .window-content > form.standard-form > .attack-table-sheet-root .sheet-body {
+  overflow-y: auto !important;
+  overflow-x: hidden;
+}
+
+.attack-table-sheet-root .attacktable-subtitle {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+  margin-top: 4px;
+}
+.attack-table-sheet-root .attacktable-subtitle .badge {
+  background: rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+  padding: 1px 6px;
+  font-size: 0.78rem;
+}
+.attack-table-sheet-root .attacktable-subtitle .ref {
+  font-family: monospace;
+  font-weight: bold;
+  opacity: 0.8;
+}
+.attack-table-sheet-root .fumble-range { display: flex; align-items: center; gap: 4px; }
+.attack-table-sheet-root .fumble-range input { width: 3.5em; text-align: center; }
+
+/* The matrix --------------------------------------------------------- */
+.attacktable-grid-wrapper { overflow-x: auto; }
+table.rmf-attack-grid {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: max-content;
+  font-size: 0.75rem;
+}
+table.rmf-attack-grid th,
+table.rmf-attack-grid td {
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  padding: 1px 3px;
+  text-align: center;
+  white-space: nowrap;
+}
+table.rmf-attack-grid thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: #d9c7a8;
+  font-weight: bold;
+}
+table.rmf-attack-grid .armor-group { background: #cdb88f; }
+table.rmf-attack-grid .at-col { width: 2.4em; }
+table.rmf-attack-grid .roll-col {
+  position: sticky;
+  left: 0;
+  z-index: 3;
+  background: #d9c7a8;
+  width: 4.5em;
+  font-weight: bold;
+  font-family: monospace;
+}
+table.rmf-attack-grid thead .roll-col { z-index: 4; }
+table.rmf-attack-grid tbody tr:nth-child(even) td.cell { background: rgba(0, 0, 0, 0.03); }
+table.rmf-attack-grid td.cell { color: #222; }
+table.rmf-attack-grid td.cell.is-miss { color: rgba(0, 0, 0, 0.25); background: rgba(0, 0, 0, 0.04); }
+table.rmf-attack-grid td.cell.has-crit { color: #7a1414; font-weight: bold; background: rgba(160, 20, 20, 0.10); }
+table.rmf-attack-grid tr.fumble-row td.cell,
+table.rmf-attack-grid tr.fumble-row .roll-col {
+  background: #5a3030;
+  color: #f3e0e0;
+  font-weight: bold;
+}
+
+.rmf-attack-legend { display: grid; grid-template-columns: max-content 1fr; gap: 2px 10px; }
+.rmf-attack-legend dt { font-family: monospace; font-weight: bold; }
+.rmf-attack-legend dd { margin: 0; }
+
+/* Resolve tab -------------------------------------------------------- */
+.attack-table-sheet-root .resolve-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: flex-end;
+}
+.attack-table-sheet-root .resolve-form label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.8rem;
+  gap: 2px;
+}
+.attack-table-sheet-root .resolve-form input { width: 5em; text-align: center; }
+.attack-table-sheet-root .resolve-button { white-space: nowrap; }
+.attack-table-sheet-root .resolve-result .outcome.is-crit { color: #7a1414; font-weight: bold; }
+.attack-table-sheet-root .crit-hint { color: #7a1414; font-style: italic; }
+
+/* Chat card ---------------------------------------------------------- */
+.rmf-attack-card h3 { margin: 0 0 4px; }
+.rmf-attack-card .line { font-size: 0.85rem; }
+.rmf-attack-card .outcome {
+  margin-top: 4px;
+  padding: 3px 6px;
+  border-radius: 3px;
+  font-weight: bold;
+  background: rgba(0, 0, 0, 0.06);
+}
+.rmf-attack-card .outcome.is-crit { background: rgba(160, 20, 20, 0.14); color: #7a1414; }
+.rmf-attack-card .outcome.is-fumble { background: #5a3030; color: #f3e0e0; }
+.rmf-attack-card .crit-hint { margin-top: 3px; font-style: italic; color: #7a1414; }

@@ -34,8 +34,9 @@
     }
   ],
   "grid": {
-    "distance": 1,
-    "units": "m"
+    "units": "ft",
+    "distance": 5,
+    "diagonals": 0
   },
   "initiative": "1d100 + @stats.quickness",
   "primaryTokenAttribute": "system.derivedStats.hitPoints",

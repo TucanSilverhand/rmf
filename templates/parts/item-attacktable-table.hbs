@@ -1,0 +1,78 @@
+{{!--
+  RMF Attack Table Sheet — Table (matrix) Partial
+  Editable bridge fields on top; below, the read-only matrix:
+  armor-group headers, the AT columns (20 → 1) and every roll band.
+  Cells are tinted by the sheet's parsed `kind`/`hasCrit`.
+--}}
+
+<div class="tab attacktable-table" data-group="primary-tabs" data-tab="table" style="display: block;">
+
+  {{!-- Bridge fields (editable) --}}
+  <div class="summary-wrapper">
+    <h3>{{localize "RMF.AttackTable.Meta"}}</h3>
+    <div class="two-col-tables">
+      <table class="summary-table">
+        <tbody>
+          <tr><th scope="row">{{localize "RMF.AttackTable.TableId"}}</th>
+            <td><input type="text" name="system.tableId" value="{{system.tableId}}" {{#unless editable}}readonly{{/unless}}/></td></tr>
+          <tr><th scope="row">{{localize "RMF.AttackTable.CritType"}}</th>
+            <td><input type="text" name="system.critType" value="{{system.critType}}" {{#unless editable}}readonly{{/unless}}/></td></tr>
+        </tbody>
+      </table>
+      <table class="summary-table">
+        <tbody>
+          <tr><th scope="row">{{localize "RMF.AttackTable.FumbleRange"}}</th>
+            <td class="fumble-range">
+              <input type="number" name="system.fumbleRange.min" value="{{system.fumbleRange.min}}" data-dtype="Number" {{#unless editable}}readonly{{/unless}}/>
+              <span>–</span>
+              <input type="number" name="system.fumbleRange.max" value="{{system.fumbleRange.max}}" data-dtype="Number" {{#unless editable}}readonly{{/unless}}/>
+            </td></tr>
+          <tr><th scope="row">{{localize "RMF.AttackTable.Source"}}</th>
+            <td><input type="text" name="system.fromBook" value="{{system.fromBook}}" {{#unless editable}}readonly{{/unless}}/></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  {{!-- The matrix --}}
+  <div class="summary-wrapper attacktable-grid-wrapper">
+    <table class="rmf-attack-grid">
+      <thead>
+        <tr class="armor-groups">
+          <th class="roll-col" rowspan="2">{{localize "RMF.AttackTable.RollBand"}}</th>
+          {{#each armorGroups as |g|}}<th class="armor-group" colspan="{{g.span}}">{{g.name}}</th>{{/each}}
+        </tr>
+        <tr class="armor-ats">
+          {{#each columns as |at|}}<th class="at-col">{{at}}</th>{{/each}}
+        </tr>
+      </thead>
+      <tbody>
+        {{#each gridRows as |row|}}
+        <tr>
+          <th scope="row" class="roll-col">{{row.label}}</th>
+          {{#each row.cells as |c|}}
+          <td class="cell{{#if c.hasCrit}} has-crit{{/if}}{{#if (rmfEq c.kind 'miss')}} is-miss{{/if}}">{{c.text}}</td>
+          {{/each}}
+        </tr>
+        {{/each}}
+        {{#if fumbleRow.label}}
+        <tr class="fumble-row">
+          <th scope="row" class="roll-col">{{fumbleRow.label}}</th>
+          {{#each fumbleRow.cells as |c|}}<td class="cell is-fumble">{{c.text}}</td>{{/each}}
+        </tr>
+        {{/if}}
+      </tbody>
+    </table>
+  </div>
+
+  {{!-- Cell-notation legend --}}
+  {{#if legendRows.length}}
+  <div class="summary-wrapper">
+    <h3>{{localize "RMF.AttackTable.Legend"}}</h3>
+    <dl class="rmf-attack-legend">
+      {{#each legendRows as |row|}}<dt>{{row.key}}</dt><dd>{{row.text}}</dd>{{/each}}
+    </dl>
+  </div>
+  {{/if}}
+
+</div>
