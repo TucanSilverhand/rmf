@@ -11,6 +11,7 @@ import {
 import { STAT_SHORT_TO_FULL, SPELL_SPECIAL_CODES } from "./utils/constants.mjs";
 import { normalizeCategoryGroup } from "./data-models/category.mjs";
 import { SPECIAL_ROLES } from "./data-models/_identity.mjs";
+import { formatDPCost } from "./utils/dp-cost.mjs";
 
 /**
  * Pass an authored `slug` straight through from the JSON source (the
@@ -372,14 +373,10 @@ export async function importCategories(source, options = {}) {
       return Number.isFinite(num) ? num : fallback;
     };
 
-    const normalizeDPCost = (cost) => {
-      const sourceCost = cost && typeof cost === "object" ? cost : {};
-      return {
-        price1: normalizeNumber(sourceCost.price1 ?? sourceCost[1]),
-        price2: normalizeNumber(sourceCost.price2 ?? sourceCost[2]),
-        price3: normalizeNumber(sourceCost.price3 ?? sourceCost[3])
-      };
-    };
+    // dpCost is now the RMF slash-notation string. formatDPCost accepts the
+    // legacy { price1, price2, price3 } triple, an array, or a string and
+    // always returns the canonical string. See module/utils/dp-cost.mjs.
+    const normalizeDPCost = (cost) => formatDPCost(cost);
 
     const normalizeBoughtByLevel = (bought) => {
       if (!bought || typeof bought !== "object") return {};
@@ -414,7 +411,6 @@ export async function importCategories(source, options = {}) {
           boughtByLevel: normalizeBoughtByLevel(sysSource.boughtByLevel ?? entry.boughtByLevel),
           freeRanks: normalizeNumber(sysSource.freeRanks ?? entry.freeRanks, 0),
           categoryRankBonusProgression: normalizeCategoryProgression(sysSource.categoryRankBonusProgression ?? entry.categoryRankBonusProgression),
-          ranks: normalizeNumber(sysSource.ranks ?? entry.ranks, 0),
           statBonus: {
             stat1: normalizeStatKey(sysSource.statBonus?.stat1 ?? sysSource.stat1 ?? entry.stat1),
             stat2: normalizeStatKey(sysSource.statBonus?.stat2 ?? sysSource.stat2 ?? entry.stat2),
@@ -564,14 +560,10 @@ export async function syncCategoriesToCompendium(source, options = {}) {
       return Number.isFinite(num) ? num : fallback;
     };
 
-    const normalizeDPCost = (cost) => {
-      const sourceCost = cost && typeof cost === "object" ? cost : {};
-      return {
-        price1: normalizeNumber(sourceCost.price1 ?? sourceCost[1]),
-        price2: normalizeNumber(sourceCost.price2 ?? sourceCost[2]),
-        price3: normalizeNumber(sourceCost.price3 ?? sourceCost[3])
-      };
-    };
+    // dpCost is now the RMF slash-notation string. formatDPCost accepts the
+    // legacy { price1, price2, price3 } triple, an array, or a string and
+    // always returns the canonical string. See module/utils/dp-cost.mjs.
+    const normalizeDPCost = (cost) => formatDPCost(cost);
 
     const normalizeBoughtByLevel = (bought) => {
       if (!bought || typeof bought !== "object") return {};
@@ -602,7 +594,6 @@ export async function syncCategoriesToCompendium(source, options = {}) {
           boughtByLevel: normalizeBoughtByLevel(sysSource.boughtByLevel ?? entry.boughtByLevel),
           freeRanks: normalizeNumber(sysSource.freeRanks ?? entry.freeRanks, 0),
           categoryRankBonusProgression: normalizeCategoryProgression(sysSource.categoryRankBonusProgression ?? entry.categoryRankBonusProgression),
-          ranks: normalizeNumber(sysSource.ranks ?? entry.ranks, 0),
           statBonus: {
             stat1: canonicalizeStatKey(sysSource.statBonus?.stat1 ?? sysSource.stat1 ?? entry.stat1),
             stat2: canonicalizeStatKey(sysSource.statBonus?.stat2 ?? sysSource.stat2 ?? entry.stat2),
@@ -781,21 +772,9 @@ function buildSkillSystemData(sysSource, template) {
     }, {});
   };
 
-  const normalizeSkillDPCost = (value) => {
-    const out = { price1: 0, price2: 0, price3: 0 };
-    if (Array.isArray(value)) {
-      out.price1 = normalizeNumber(value[0], 0);
-      out.price2 = normalizeNumber(value[1], 0);
-      out.price3 = normalizeNumber(value[2], 0);
-      return out;
-    }
-    if (value && typeof value === "object") {
-      out.price1 = normalizeNumber(value.price1 ?? value[0] ?? value[1], 0);
-      out.price2 = normalizeNumber(value.price2 ?? value[1] ?? value[2], 0);
-      out.price3 = normalizeNumber(value.price3 ?? value[2] ?? value[3], 0);
-    }
-    return out;
-  };
+  // dpCost is now the RMF slash-notation string. formatDPCost accepts a
+  // string, the legacy triple, or an array and returns the canonical form.
+  const normalizeSkillDPCost = (value) => formatDPCost(value);
 
   const normalizeProgression = (value) => normalizeSkillProgression(value);
 
@@ -812,7 +791,6 @@ function buildSkillSystemData(sysSource, template) {
     foundry.utils.duplicate(template),
     {
       description: String(sysSource?.description ?? ""),
-      rank: normalizeNumber(sysSource?.rank ?? sysSource?.ranks, 0),
       category: String(sysSource?.category ?? ""),
       group: normalizeCategoryGroup(sysSource?.group),
       classification: normalizeSkillClassification(sysSource?.classification),
@@ -1324,31 +1302,20 @@ function normalizeProfessionSkillList(value) {
 }
 
 /**
- * Normalize a list of `{name, dpCost: {price1, price2, price3}}` entries
- * (used for both categoryPrice and spellPrice).
+ * Normalize a list of `{name, dpCost}` entries (categoryPrice / spellPrice).
+ * `dpCost` is emitted as the RMF slash-notation string; formatDPCost accepts
+ * the legacy triple, an array, or a string. See module/utils/dp-cost.mjs.
  * @param {*} value
- * @returns {Array<{name: string, dpCost: {price1: number, price2: number, price3: number}}>}
+ * @returns {Array<{name: string, dpCost: string}>}
  */
 function normalizeDpCostList(value) {
   if (!Array.isArray(value)) return [];
-  const num = (v) => {
-    const n = Number(v);
-    return Number.isFinite(n) ? n : 0;
-  };
   const out = [];
   for (const entry of value) {
     if (!entry || typeof entry !== "object") continue;
     const name = typeof entry.name === "string" ? entry.name.trim() : "";
     if (!name) continue;
-    const dpRaw = entry.dpCost && typeof entry.dpCost === "object" ? entry.dpCost : {};
-    out.push({
-      name,
-      dpCost: {
-        price1: num(dpRaw.price1 ?? dpRaw[0] ?? dpRaw[1]),
-        price2: num(dpRaw.price2 ?? dpRaw[1] ?? dpRaw[2]),
-        price3: num(dpRaw.price3 ?? dpRaw[2] ?? dpRaw[3])
-      }
-    });
+    out.push({ name, dpCost: formatDPCost(entry.dpCost) });
   }
   return out;
 }

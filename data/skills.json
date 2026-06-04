@@ -4,15 +4,10 @@
     "slug": "plate",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "Training in maneuvering while wearing rigid metal armor (plate types).",
-    "rank": 0,
     "category": "Armor · Heavy",
     "group": "Armor",
     "classification": "movingManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -22,15 +17,10 @@
     "slug": "rigid-leather",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "Training in maneuvering while wearing rigid leather armor types.",
-    "rank": 0,
     "category": "Armor · Light",
     "group": "Armor",
     "classification": "movingManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -40,15 +30,10 @@
     "slug": "soft-leather",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "Training in maneuvering while wearing soft leather armor types.",
-    "rank": 0,
     "category": "Armor · Light",
     "group": "Armor",
     "classification": "movingManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -58,15 +43,10 @@
     "slug": "chain",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "Training in maneuvering while wearing flexible metal armor (chain/scale types).",
-    "rank": 0,
     "category": "Armor · Medium",
     "group": "Armor",
     "classification": "movingManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -76,15 +56,10 @@
     "slug": "acting",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for simulating actions or reactions of others, as often used in drama performances, devising new identities, etc. This skill may be used to impersonate others, or hide one’s own reactions from others. It may be used anytime a character wishes to behave or appear in a manner other than that normal and natural to him under any given circumstances.",
-    "rank": 0,
     "category": "Artistic · Active",
     "group": "Artistic",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -94,15 +69,10 @@
     "slug": "dancing",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for performing dances. It may also apply to any circumstances in which complex and/or precise footwork is necessary (e.g., negotiating a pattern on the floor, performing certain rituals, etc.).",
-    "rank": 0,
     "category": "Artistic · Active",
     "group": "Artistic",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -112,15 +82,10 @@
     "slug": "mimery",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for conveying concepts or information without verbal communication or a codified sign language. This skill is useful when trying to span a language barrier,  entertain others, etc. Also used when trying to imitate a particular action (i.e., a movement not requiring a maneuver).",
-    "rank": 0,
     "category": "Artistic · Active",
     "group": "Artistic",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -130,15 +95,10 @@
     "slug": "mimicry",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for imitating sounds. This skill is useful when trying to imitate individuals, animals or even non-animate sounds (e.g., wind, stairs creaking, etc.).",
-    "rank": 0,
     "category": "Artistic · Active",
     "group": "Artistic",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -148,15 +108,10 @@
     "slug": "play-instrument",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for using a specific instrument, such as flute, drum, lute, etc. It may also be used to recognize musical patterns or rhythms, notes, etc. Note that separate development is required for skill with each instrument.",
-    "rank": 0,
     "category": "Artistic · Active",
     "group": "Artistic",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -166,15 +121,10 @@
     "slug": "poetic-improvisation",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for improvising or reading poetry. It may also be used to recognize poetical styles, forms, etc. Note that a minimum of 4 ranks in the spoken language utilized is required to use this skill.",
-    "rank": 0,
     "category": "Artistic · Active",
     "group": "Artistic",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -184,15 +134,10 @@
     "slug": "singing",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for vocally reproducing musical tunes and/or words. Note that although one may perform a song in an unfamiliar language, this skill does not provide any understanding of that language; this skill merely allows the memorization and reproduction of a song.",
-    "rank": 0,
     "category": "Artistic · Active",
     "group": "Artistic",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -202,15 +147,10 @@
     "slug": "tale-telling",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for conveying information in the form of stories or fables in an engaging manner. This is primarily for the purpose of entertainment or subtle instruction; attempts to inform or influence large groups of people should use the Public Speaking skill (Influence skill category) instead. This skill may be used for improvisation or to relate memorized stories. This may (GM’s discretion) also be used when attempting to memorize a new story.",
-    "rank": 0,
     "category": "Artistic · Active",
     "group": "Artistic",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -220,15 +160,10 @@
     "slug": "ventriloquism",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for speaking without appearing to do so. A successful maneuver roll will make the individual’s voice seem to originate somewhere other than himself.",
-    "rank": 0,
     "category": "Artistic · Active",
     "group": "Artistic",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -238,15 +173,10 @@
     "slug": "music",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus to writing, recognizing or performing in concert a piece of music. This skill may be used to determine the ability of the individual to play in concert with others, or to direct others in doing so. A successful maneuver roll by a conductor will give those he is conducting a bonus of +20 to their own use of this skill.",
-    "rank": 0,
     "category": "Artistic · Passive",
     "group": "Artistic",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -256,15 +186,10 @@
     "slug": "painting",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for creating graphic images. This may be on a flat medium such as sketching or painting with pigments, or painting on an object of some kind. Any activity that involves the creation of an image or deliberate design may benefit from this skill.",
-    "rank": 0,
     "category": "Artistic · Passive",
     "group": "Artistic",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -274,15 +199,10 @@
     "slug": "poetry",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for the writing of poetry, or any highly stylized form of writing. Note that the individual must have at least four (4) ranks in the written language to be used. Note that this form of poetry is typically of a significantly greater quality than improvisational poetry.",
-    "rank": 0,
     "category": "Artistic · Passive",
     "group": "Artistic",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -292,15 +212,10 @@
     "slug": "sculpting",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for the manipulation of a malleable material or the carving of a resilient material into a desired three dimensional shape. This skill does not confer the ability to work materials normally unworkable (e.g., the individual must have the means to mold and form copper if the sculpture is to be formed of that metal). Note that this skill may also be used to identify styles of sculpture and to imitate other sculptures.",
-    "rank": 0,
     "category": "Artistic · Passive",
     "group": "Artistic",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -310,15 +225,10 @@
     "slug": "athletic-games-brawn",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill encompasses any athletic game that primarily involves brawn (e.g., wrestling, etc.). Skill in each game must be developed separately, and includes rules, techniques, etc.",
-    "rank": 0,
     "category": "Athletic · Brawn",
     "group": "Athletic",
     "classification": "movingManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -328,15 +238,10 @@
     "slug": "jumping",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for jumping, either from a running or a standing start.\nThe base jump (running horizontal) for the average man of 5'10 is equal to 50 + (2 x St bonus in inches). For every 2 inches above or below this average height, add or subtract one from the base jump. The difficulties listed below assume that the character is running at a dash at the time of takeoff. For every speed category (fast sprint/sprint/run/etc.) below the dash rate, raise the difficulty of the running jump by one (e.g., hard becomes very hard, etc.).\nThe base jump (standing horizontal) for the average man of 5'10 is equal to the base jump (running horizontal) divided by two.\nThe base jump (running vertical) for the average man of 5'10 is equal to (12 + St bonus) in inches. For every 3 inches above or below this average height, add or subtract one inch from the base jump. The optimal speed for a vertical jump with a running start is a run.\nThe base jump (standing vertical) for the average man of 5'10 is equal to the base jump (running vertical) divided by 3.",
-    "rank": 0,
     "category": "Athletic · Brawn",
     "group": "Athletic",
     "classification": "movingManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -346,15 +251,10 @@
     "slug": "weight-lifting",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "Normally, a character can lift up to half his own weight using his hands. This skill provides a bonus to attempts to lift heavier weights or objects. While it is possible to lift these weights without the use of this skill, the techniques conferred by this skill allow greater weights to be lifted, and the likelihood of injury to be lessened. Note that this skill requires a great deal of practice and exercise to develop properly, and will increase the musculature of the individual. The use of this skill requires a round of preparation, during which only 10% activity may be performed and the individual’s DB is reduced to zero.",
-    "rank": 0,
     "category": "Athletic · Brawn",
     "group": "Athletic",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -364,15 +264,10 @@
     "slug": "athletic-games-endurance",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill encompasses any athletic game that primarily involves endurance (e.g., track events, etc.). Skill in each game must be developed separately, and includes rules, techniques, etc.",
-    "rank": 0,
     "category": "Athletic · Endurance",
     "group": "Athletic",
     "classification": "movingManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -382,15 +277,10 @@
     "slug": "distance-running",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for maintaining one’s speed over long distances at slow to moderate paces, including pacing one’s resources (exhaustion point expenditure) and running in a safe and non-injurious manner. This skill is used when making movement maneuvers based on pace—see Section 18.17 (p. 56).",
-    "rank": 0,
     "category": "Athletic · Endurance",
     "group": "Athletic",
     "classification": "movingManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -400,15 +290,10 @@
     "slug": "rowing",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for the propulsion of watercraft through the use of paddles, oars, or poles. It combines the skills required to control and guide the craft with the coordination to work with others in rhythm (when necessary), in addition to the marshaling and pacing of internal resources.",
-    "rank": 0,
     "category": "Athletic · Endurance",
     "group": "Athletic",
     "classification": "movingManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -418,15 +303,10 @@
     "slug": "scaling",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for climbing maneuvers of extended duration, including the climbing of mountains, long stairways, etc. It combines the skills required to climb safely and the marshaling and pacing of internal resources to last throughout the entire climb.",
-    "rank": 0,
     "category": "Athletic · Endurance",
     "group": "Athletic",
     "classification": "movingManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -436,15 +316,10 @@
     "slug": "sprinting",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for maximizing one’s speed over short distances, including marshaling and pacing one’s resources (exhaustion point expenditure) and running in a safe and non-injurious manner. This skill is used when making movement maneuvers based on pace—see Sections 16.0 (p. 51) & 18.17 (p. 56).",
-    "rank": 0,
     "category": "Athletic · Endurance",
     "group": "Athletic",
     "classification": "movingManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -454,15 +329,10 @@
     "slug": "swimming",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus to swimming maneuvers. Skill rank 1 will prevent the character from drowning in water over his head, provided there are no applicable penalties (weight penalty, armor penalties, etc.). Further skill ranks will enable the character to make headway against a current, to stay afloat for longer periods of time without touching ground, to swim longer distances, to move faster in the water, and to make maneuvers in the water.\nFor this skill, MMPs are tripled. The GM should assign high difficulty to swimming in armor.",
-    "rank": 0,
     "category": "Athletic · Endurance",
     "group": "Athletic",
     "classification": "movingManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -472,15 +342,10 @@
     "slug": "acrobatics",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for in-air maneuvers (e.g., flying or levitation) or swinging on objects. This skill includes the use of parallel bars, uneven bars, and other gymnastic activities in which most of the activity is spent in airborne maneuvers. A successful maneuver roll can reduce the severity of a falling critical by one (i.e., an 'A' is ignored, a 'B' becomes a 'A', a 'D' becomes a 'C', etc.).",
-    "rank": 0,
     "category": "Athletic · Gymnastics",
     "group": "Athletic",
     "classification": "movingManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -490,15 +355,10 @@
     "slug": "athletic-games-gymnastic",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill encompasses any athletic game that primarily involves gymnastic skills (e.g., gymnastic events, soccer, basketball, etc.). Skill in each game must be developed separately, and includes rules, techniques, etc.",
-    "rank": 0,
     "category": "Athletic · Gymnastics",
     "group": "Athletic",
     "classification": "movingManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -508,15 +368,10 @@
     "slug": "climbing",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for climbing maneuvers over relatively short distances through the use of hand holds, etc. This could range from the ability to climb sheer faces (absurd) to climbing a ladder (easy). The normal climbing rate for walls with adequate hand holds is 10'/round as a “Medium” moving maneuver. Poorer handholds or greater speed will increase the difficulty of the maneuver. Note that extended climbs may require the use of the Athletic Endurance: Scaling Skill.",
-    "rank": 0,
     "category": "Athletic · Gymnastics",
     "group": "Athletic",
     "classification": "movingManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -526,15 +381,10 @@
     "slug": "contortions",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for manipulating one’s body in order to move through small openings or absorb sudden crushing impact (other than falls). This skill also helps one escape from bonds, etc.",
-    "rank": 0,
     "category": "Athletic · Gymnastics",
     "group": "Athletic",
     "classification": "movingManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -544,15 +394,10 @@
     "slug": "diving",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for controlled falling maneuvers. This can range from controlling the direction of an extended fall to diving into water safely from a great height (up to 20'/skill rank if a successful maneuver roll is made).",
-    "rank": 0,
     "category": "Athletic · Gymnastics",
     "group": "Athletic",
     "classification": "movingManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -562,15 +407,10 @@
     "slug": "flying-gliding",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for flying or gliding through the use of natural or artificial wings (e.g., feathered wings, parachute, hang-glider, balloonist, etc.). Flying/gliding has a natural -75 for all types of maneuvers performed while trying to fly/glide if this skill is not learned or developed. Does not include powered aircraft.",
-    "rank": 0,
     "category": "Athletic · Gymnastics",
     "group": "Athletic",
     "classification": "movingManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -580,15 +420,10 @@
     "slug": "juggling",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for tossing objects up and manipulating them in such a manner as to keep them up in the air.",
-    "rank": 0,
     "category": "Athletic · Gymnastics",
     "group": "Athletic",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -598,15 +433,10 @@
     "slug": "tumbling",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for horizontal dives, rolling, vaulting maneuvers, or swinging on stationary objects. Also used to decrease the damage one takes from a fall. A character could fall safely up to 2'/skill rank if a successful maneuver roll is made.",
-    "rank": 0,
     "category": "Athletic · Gymnastics",
     "group": "Athletic",
     "classification": "movingManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -616,15 +446,10 @@
     "slug": "alertness",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for unconscious observation and assimilation of information from the general environment. The GM should use this skill to allow characters a chance to notice objects, events, and other phenomena around them. Note that the use of this skill assumes that the character has not indicated that he is looking for such a thing. If the player is actively seeking something within the environment, the appropriate Awareness • Searching skill should be used.\nThe existence of this as a skill indicates one’s ability to train sensitivity to such things, but more active observation should be handled by the skills of Observation and Situational Awareness.",
-    "rank": 0,
     "category": "Awareness · Perceptions",
     "group": "Awareness",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -634,15 +459,10 @@
     "slug": "sense-ambush",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus to detect animate traps, ambushes or assassinations in progress. Note that this is a passive skill, and should not be used when the player has indicated that he is actively searching for signs of ambush or assassins. Range is 10' per skill rank.\nThe existence of this as an acquirable skill indicates one’s ability to train one’s level of sensitivity to such things, but more active observation should be handled by the skills of Observation and/or Situational Awareness.",
-    "rank": 0,
     "category": "Awareness · Perceptions",
     "group": "Awareness",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -652,15 +472,10 @@
     "slug": "detect-traps",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for detecting inanimate traps or ambushes.",
-    "rank": 0,
     "category": "Awareness · Searching",
     "group": "Awareness",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -670,15 +485,10 @@
     "slug": "lie-perception",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for perceiving lies told by an individual under proximate observation (within 10' and within visual/ hearing range) by the user of this skill.",
-    "rank": 0,
     "category": "Awareness · Searching",
     "group": "Awareness",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -688,15 +498,10 @@
     "slug": "locate-hidden",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for locating secret openings or hidden objects.",
-    "rank": 0,
     "category": "Awareness · Searching",
     "group": "Awareness",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -706,15 +511,10 @@
     "slug": "observation",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for noticing details about the environment for assimilation and analysis. This is normally only usable in an active fashion, and requires concentration. Note that this skill is different from Alertness, which represents a general and unconscious level of receptivity and awareness of events and details within one's immediate environment. This skill reflects the active observation, noting and appraisal of such details. For example, if a character were about to make camp in an unsafe location, the GM might make an Alertness static maneuver for that character to determine whether or not he notices the danger. If the character indicated that he wished to examine the location for suitability, the character would instead make an Observation static maneuver.",
-    "rank": 0,
     "category": "Awareness · Searching",
     "group": "Awareness",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -724,15 +524,10 @@
     "slug": "poison-perception",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for perceiving the presence of poison in/on an item or object. Note that some poisons might be virtually undetectable (e.g., a colorless, tasteless, odorless powder that dissolves completely in water will be very difficult if not impossible to detect).",
-    "rank": 0,
     "category": "Awareness · Searching",
     "group": "Awareness",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -742,15 +537,10 @@
     "slug": "reading-tracks",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for gleaning information from a set of tracks or spoor. Detailed information about the tracks can be obtained, such as type of creatures, age of tracks, weight of creature, speed creature moving at, back tracking, etc. The skill, Tracking, is used for spotting and following the tracks.",
-    "rank": 0,
     "category": "Awareness · Searching",
     "group": "Awareness",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -760,15 +550,10 @@
     "slug": "surveillance",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for surreptitiously keeping watch over a person, place, or object.",
-    "rank": 0,
     "category": "Awareness · Searching",
     "group": "Awareness",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -778,15 +563,10 @@
     "slug": "tracking",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for tracking maneuvers and following a trail left by someone or something such as foot prints, broken branches, crushed grass, hanging pieces of cloth, etc. The skill Reading Tracks gives the tracker the information about the tracks.",
-    "rank": 0,
     "category": "Awareness · Searching",
     "group": "Awareness",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -796,15 +576,10 @@
     "slug": "direction-sense",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for determining which way is north or any specific direction, without the aid of navigational instruments. Skill is useful determining direction while underground, during the darkest night without stars, moon, or other night lights.",
-    "rank": 0,
     "category": "Awareness · Senses",
     "group": "Awareness",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -814,15 +589,10 @@
     "slug": "sense-awareness",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus to the ability to discern detail and information through the use of a particular sense (i.e., sight, touch, etc.). Note that skill for each sense must be developed separately.",
-    "rank": 0,
     "category": "Awareness · Senses",
     "group": "Awareness",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -832,15 +602,10 @@
     "slug": "situational-awareness",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus to the individual’s ability to notice and assimilate information from the environment in a specific type of situation. This is a combination of active and passive skills specifically trained for maximum effectiveness within a given situation. For example, Scouting Awareness is used by the point man in a squad of soldiers to be alert to possible enemy approaches, traps, Sleep Awareness might aid in sleeping lightly to prevent being taken unawares, etc. Urban Awareness might aid in staying alert for muggers, vehicles, etc. Skill with Situational Awareness must be developed for each situation, as determined by the GM.",
-    "rank": 0,
     "category": "Awareness · Senses",
     "group": "Awareness",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -850,15 +615,10 @@
     "slug": "time-sense",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for determining the time of day or how much time has passed over a specific period. This is a combination of the ability to estimate internally the passage of time, as well as using external references such as the sun, stars, etc. When no external referents are available (e.g., underground, in a jail cell, etc.), it is significantly more difficult to estimate the passage of time. Also, after sleep or unconsciousness one typically requires the use of external referents to 'reset' one's internal clock; the lack of same will hinder the use of this skill.\nThis skill may be used to attempt to wake oneself from sleep at a predetermined time.",
-    "rank": 0,
     "category": "Awareness · Senses",
     "group": "Awareness",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -869,15 +629,10 @@
     "specialRole": "bodyDevelopment",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill enhances the character’s ability to resist damage, and withstand pain and shock. A character’s Body Development skill bonus determines how many hits (concussion hits) a character can take without passing out. Note that this is not merely strength training—training in this skill provides a greater tolerance for pain, physical toughness and discipline in the face of wounds and bleeding. An individual might remain a very slight and frail-looking individual but still hold a large number of ranks of body development.\nA character takes hits as damage from attacks—hits reflect pain, shock, and bleeding. When the hits that a character has taken are greater than or equal to his maximum hits, he passes out. When the hits that a character has taken are greater than or equal to his maximum hits plus his Constitution, he dies.",
-    "rank": 0,
     "category": "Body Development",
     "group": "none",
     "classification": "specialPurpose",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "special",
     "commonlyUsed": false
@@ -887,15 +642,10 @@
     "slug": "mounted-combat",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill limits one’s OB against an opponent while mounted. The OB of an attack made while mounted can not exceed the attacker’s Mounted Combat skill bonus. A character's Mounted Combat skill cannot have more skill ranks developed than his Riding skill ranks.",
-    "rank": 0,
     "category": "Combat Maneuvers",
     "group": "none",
     "classification": "specialPurpose",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -905,15 +655,10 @@
     "slug": "quickdraw",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for getting a weapon from scabbard into battle very quickly. If successful, the weapon is out of the scabbard and in hand without the normal 20% activity required (-20 penalty) for drawing a weapon. If the maneuver roll fails, he has dropped the weapon. If partially successful, the character takes the normal time (and penalty) to draw the weapon.",
-    "rank": 0,
     "category": "Combat Maneuvers",
     "group": "none",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -923,15 +668,10 @@
     "slug": "swashbuckling",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill allows an individual to perform elaborate maneuvers with his weapon, including flourishes and feats of weapon control. This skill may, at the GM’s discretion, be used to recover control of a fumbled weapon (only possible if a fumble result has indicated that the wielder has “lost control” of a weapon, not “dropped” it), and may be used to perform unusual maneuvers with one’s weapon. Note that fumbles resulting from swashbuckling attempts may not be negated by further use of this skill.",
-    "rank": 0,
     "category": "Combat Maneuvers",
     "group": "none",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -941,15 +681,10 @@
     "slug": "two-weapon-combat",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill allows a combatant to fight with two weapons simultaneously. He is allowed to make 2 weapon attacks for each melee attack action, and may engage two opponents providing neither opponent is receiving any positional combat modifiers for their OB (e.g., If either opponent is receiving +15 for Flank Attack or +20 for Rear Attack the individual cannot attack both opponents in the same round).\nTw o Weapon Combat skill must be developed for each individual two-weapon combination (e.g., shortsword/handaxe, rapier/dagger, etc.). A character's skill rank with a two-weapon combination may not exceed his skill rank of either of the individual weapons (e.g., if a Fighter has 5 skill ranks with a dagger and 9 skill ranks with a short sword, he may only have 5 skill ranks with his short sword/dagger two weapon combination). The OB for each weapon attack is equal to the skill bonus for the Two-weapon Combat skill for the combination of those two weapons.\nAgainst 1 Opponent: There is no negative attack modification against one opponent.\nAgainst 2 Opponents: There is -20 modification to both attacks.\nParrying: The user must reduce both weapon OBs by the same amount (i.e., the amount of his parry). Against one opponent, the user increases his DB by the amount of his parry. Against two opponents, the amount of his parry must be split between the two opponents as the user sees fit.\nUsing the off-hand: Each weapon combination is considered to have been developed for each specific weapon in a specific hand. For example, a Rogue trained in a rapier/ dagger combination might have decided to use the rapier left-handed and the dagger in his right. Switching either weapon to the other hand incurs the normal -20 penalty for use with the off-hand.",
-    "rank": 0,
     "category": "Combat Maneuvers",
     "group": "none",
     "classification": "offensiveBonus",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -959,15 +694,10 @@
     "slug": "language-spoken",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "Rolemaster is created for a world with a variety of cultures and languages. There is no such thing as a common tongue or an alignment tongue (though a GM can add them for his world system), although certain professions have developed their own languages for use in research. Each language must be developed individually, with the written and spoken versions of a language each counting separately. Skills in one language normally have little effect on others; however, “brother languages,” those deriving from an immediate common ancestor, may be an exception.\nOne’s skill rank indicates the level of comprehension of a spoken or written language. See the Language Rank Table T-4.7.\nOne’s skill bonus with a written form of a language serves as a skill bonus to writing attempts using that language. The spoken skill bonus for a language is used to improve communication with someone. A successful static maneuver means that the spoken language rank of the person with whom you are communicating is temporarily increased for the purposes of this conversation, to a maximum of the rank developed by the individual performing the static maneuver.",
-    "rank": 0,
     "category": "Communications",
     "group": "none",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -977,15 +707,10 @@
     "slug": "language-written",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "Rolemaster is created for a world with a variety of cultures and languages. There is no such thing as a common tongue or an alignment tongue (though a GM can add them for his world system), although certain professions have developed their own languages for use in research. Each language must be developed individually, with the written and spoken versions of a language each counting separately. Skills in one language normally have little effect on others; however, “brother languages,” those deriving from an immediate common ancestor, may be an exception.\nOne’s skill rank indicates the level of comprehension of a spoken or written language. See the Language Rank Table T-4.7.\nOne’s skill bonus with a written form of a language serves as a skill bonus to writing attempts using that language. The spoken skill bonus for a language is used to improve communication with someone. A successful static maneuver means that the spoken language rank of the person with whom you are communicating is temporarily increased for the purposes of this conversation, to a maximum of the rank developed by the individual performing the static maneuver.",
-    "rank": 0,
     "category": "Communications",
     "group": "none",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -995,15 +720,10 @@
     "slug": "lip-reading",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for reading lips and sign language. Lip reading is only possible with languages that the lip reader knows and then only to the known spoken skill rank. Special creatures (e.g., the Chicken People) might cause a penalty to be added to the character’s bonus due to distinct lack of lips. Line of sight must be maintained with the subject’s mouth. Skill is halved for reading the lips of creatures not of the same general type. Types: Human, Reptile, Avian, Non-Human Mammalian, etc.",
-    "rank": 0,
     "category": "Communications",
     "group": "none",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1013,15 +733,10 @@
     "slug": "signaling",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus when using any form of signal communications. This skill is a specialized form of language and language guidelines apply.",
-    "rank": 0,
     "category": "Communications",
     "group": "none",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1031,15 +746,10 @@
     "slug": "cooking",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus cooking or preparing food. This skill bonus may also be used when detecting bad food, or preparing/ neutralizing dangerous food ingredients. The following is a partial listing of specialized cookery skills:\n• Baking: Turning of flour into breads, cakes, pies, etc.\n• Brewing: Making ale, beer, cider, malt or mead beverages.\n• Curing: Salting or preserving of food.\n• Distilling: Making alcohol.\n• Winery: Making wines.",
-    "rank": 0,
     "category": "Crafts",
     "group": "Craft",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1049,15 +759,10 @@
     "slug": "leather-crafts",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for working with hides and creating leather goods (e.g., leather armor, bolas, etc.). The following is a partial listing of specialized leather crafts:\n• Cobbler: Manufacture of shoes and boots.\n• Saddler: Manufacture of saddles and other horse trappings.\n• Tanner: Turning hides into leather.\n• Tooler: Decorating leather with imprinted designs & coloring them.",
-    "rank": 0,
     "category": "Crafts",
     "group": "Craft",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1067,15 +772,10 @@
     "slug": "metal-crafts",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for working with normal metals to create or repair desired objects (e.g., horse shoes, metal ornaments), as well as for oven or kiln building, and doubling effects of fires. The following is a partial listing of specialized smithing crafts:\n• Armorer: Manufacture of iron or steel armor.\n• Blacksmith: Manufacture of small iron wares, horse shoes, etc.\n• Bronze Smith: Working and casting of bronze.\n• Copper Smith: Working and casting of copper.\n• Etcher: Decorating of metals.\n• Fire Starting: Starting of fires.\n• Foundry: Casting, rolling, cutting and spinning of iron.\n• Gold Smith: Working of gold into ornamental and functional items.\n• Iron Smith: Manufacture of iron wares.\n• Silver Smith: Working of silver into ornamental and functional items.\n• Tin Smith: Working of tin into ornamental and functional items.\n• Tooler: Manufacture of metal tools.\n• Weapon Smith: Manufacture of iron or steel weapons.",
-    "rank": 0,
     "category": "Crafts",
     "group": "Craft",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1085,15 +785,10 @@
     "slug": "rope-mastery",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for knot recognition, knot-tying, braiding, rope splicing, making a maneuver while suspended from a rope (or analogous flexible line), or when throwing a line.",
-    "rank": 0,
     "category": "Crafts",
     "group": "Craft",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1103,15 +798,10 @@
     "slug": "stone-crafts",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for working with stone and creating sculptures, writings, or any other form of inscription or relief. The following is a partial listing of specialized stone crafts:\n• Brick Maker: Manufacture of bricks.\n• Gem Cutter: Cutting and setting of stones and gems.\n• Masonry: Construction of buildings, bridges, etc. from bricks and stone.\n• Stone Carving: Carving of stone.\n• Stone Cutter: Cutting and shaping large stones from a quarry.",
-    "rank": 0,
     "category": "Crafts",
     "group": "Craft",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1121,15 +811,10 @@
     "slug": "wood-crafts",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for fashioning any object out of the required amount of wood, bone or similar material. The following is a partial listing of specialized wood crafts:\n• Carpentry: Cabinet maker.\n• Cartwright: Manufacture of carts, wagons and other similar vehicles.\n• Building: Construction of buildings from wood.\n• Lumbering: Felling of trees.\n• Shipwright: Building of sea going vessels.\n• Wheelwright: Manufacture of wheels.\n• Wood Carving: Carving of wood.",
-    "rank": 0,
     "category": "Crafts",
     "group": "Craft",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1139,15 +824,10 @@
     "slug": "direct-spell-attack-choose-one-type",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "The skills in this category provide bonuses to directed spell attacks. Such attacks use the Bolt Spell Attack Table A-10.9.9 (p. 228). See Appendix A-10.7 (p. 219) for guidelines on handling Directed Spell attacks.\nThe five types of directed spells are Fire Bolts, Ice Bolts, Lightning Bolts, Shock Bolts, and Water Bolts—skill must be developed separately for each different type. A character wishing to develop skill with such a spell must be able to cast it without the need of a spell casting static maneuver at least once a day, either intrinsically or from an item or runes.",
-    "rank": 0,
     "category": "Directed Spells",
     "group": "none",
     "classification": "offensiveBonus",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1157,15 +837,10 @@
     "slug": "bribery",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for offering a bribe to an individual in the proper and unobtrusive manner. The Gm may also allow the the use of this skill to identify bribeable individuals and    and    and    and    and to identify persons likely to have been bribed.",
-    "rank": 0,
     "category": "Influence",
     "group": "none",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1175,15 +850,10 @@
     "slug": "diplomacy",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for operating successfully in a complex, bureaucratic foreign environment, such as a foreign royal court or any other large foreign government structure. Tact, negotiation, and deceit are all facets of diplomacy. It is used for the conducting of relations between nations. It is important to note that this skill provides a bonus for using the proper protocol in an unfamiliar situation and impressing a person in authority. This applies to situations ranging from an audience with the High King to an involuntary meeting with the Prince of Thieves.",
-    "rank": 0,
     "category": "Influence",
     "group": "none",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1193,15 +863,10 @@
     "slug": "duping",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for speaking quickly, convincingly, and confusingly in order to get a victim to do something they would not ordinarily do. This skill usually may be used on only one person at a time.",
-    "rank": 0,
     "category": "Influence",
     "group": "none",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1211,15 +876,10 @@
     "slug": "interrogation",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for extracting information from an intelligent source. This may or may not include causing discomfort to the target. If a target is discomforted and the “interrogation roll” fails, the target may suffer a major injury or death. In such a case, the target should roll an RR vs. level 10, using his Co/SD/Co stat bonus total as a modifier to determine the extent of the injury. This skill not only applies to torture but also includes the ability to piece together scattered fragments of information received.",
-    "rank": 0,
     "category": "Influence",
     "group": "none",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1229,15 +889,10 @@
     "slug": "leadership",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus to inspire and command others to follow you, and to make others believe that you are competent to lead and that you know what you are doing. This includes the ability to raise the morale of those you command.",
-    "rank": 0,
     "category": "Influence",
     "group": "none",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1247,15 +902,10 @@
     "slug": "public-speaking",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for impressing, entertaining, or manipulating groups of people directly. Note that this is different from the Tale Telling skill, which is used on small groups, using stories and fables for entertainment and instruction. Public Speaking is for larger groups, is often more extemporaneous, and is used to manipulate the emotions or views of a crowd.",
-    "rank": 0,
     "category": "Influence",
     "group": "none",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1265,15 +915,10 @@
     "slug": "seduction",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus when attempting to emotionally, sensually, or sexually manipulate someone. Note that this is not limited to sexual seduction! Manipulation of a persons sensual sensibilities, urging a person to indulge in some fantasy or desire, and convincing a person of some tenet on emotional rather than rational grounds can all be classified as seduction.",
-    "rank": 0,
     "category": "Influence",
     "group": "none",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1283,15 +928,10 @@
     "slug": "trading",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for transactions involving a bargained exchange of money or goods, particularly with respect to rolls on the purchase and resale price charts found in Gamemaster Law.",
-    "rank": 0,
     "category": "Influence",
     "group": "none",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1301,15 +941,10 @@
     "slug": "fauna-lore",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for recognizing and identifying the major animal forms within a specific area, region and climate. May be developed either in-depth for a specific area or as general education in fauna/zoological trends. Several different regions/climates may be developed simultaneously, provided that research materials are available. Note: This skill may be used for learning about specific species as well, providing great detail on the characteristics and habits of a particular type of animal.",
-    "rank": 0,
     "category": "Lore · General",
     "group": "Lore",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1319,15 +954,10 @@
     "slug": "flora-lore",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for recognizing and identifying the major plant forms within a specific area, region and climate. May be developed either in-depth for a specific area or as general education in flora/botanical trends. Several different regions/climates may be developed simultaneously, provided that research materials are available. This is a general knowledge skill—a GM may want halve this skill’s bonus when used for herbs (see Herb Lore on the next page). Note: This skill may be used for learning about specific species as well, providing great detail on the characteristics and habitats of a particular type of plant.",
-    "rank": 0,
     "category": "Lore · General",
     "group": "Lore",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1337,15 +967,10 @@
     "slug": "heraldry",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for designing or recognizing the particular heraldic crests (coats-of-arms) specific to a given culture. Separate cultures must be developed separately.",
-    "rank": 0,
     "category": "Lore · General",
     "group": "Lore",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1355,15 +980,10 @@
     "slug": "history",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides knowledge about the past. One may develop this skill in general World History (subject to the available learning materials—i.e., if knowledge about the other side of the world is not available, it may not be learned) although the information will be far less specific, focusing instead on the broad strokes of history. If this skill is developed in the history of a particular region or subject, the information will be far more specific. In essence, the smaller the focus of the skill, the greater the level of detail and accuracy. Developing skill in the history of the Kingdom of Harran, for instance, might provide information about the rulers and the great events in the Kingdom's past; skill in the history of the Guild of Architects in the city of Jeppod would likely include all of the names of the Guild’s officers, the bylaws memorized by heart, etc. This skill encompasses military history as well.",
-    "rank": 0,
     "category": "Lore · General",
     "group": "Lore",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1373,15 +993,10 @@
     "slug": "philosophy",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for recognizing and identifying major aspects of philosophic doctrines. Each philosophy doctrine may be concentrated in and learned separately for in-depth knowledge and understanding.",
-    "rank": 0,
     "category": "Lore · General",
     "group": "Lore",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1391,15 +1006,10 @@
     "slug": "race-lore",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides information about the beliefs, rituals, or other information about a specific race. Note that skill for each race must be developed separately.  Each character begins with ranks in Race Lore for his own race.",
-    "rank": 0,
     "category": "Lore · General",
     "group": "Lore",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1409,15 +1019,10 @@
     "slug": "culture-lore",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides information about the beliefs, rituals, or other information about a specific race. Note that skill for each race must be developed separately.  Each character begins with ranks in Race Lore for his own race.",
-    "rank": 0,
     "category": "Lore · General",
     "group": "Lore",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1427,15 +1032,10 @@
     "slug": "region-lore",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides knowledge about the beliefs, rituals, or other information about a specific region. Note that skill for each region must be developed separately.  All characters begin with ranks in Region Lore for their own region.",
-    "rank": 0,
     "category": "Lore · General",
     "group": "Lore",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1445,15 +1045,10 @@
     "slug": "religion",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for recognizing and identifying major aspects of religious doctrines. Each religion may be concentrated in and learned separately for in-depth knowledge and understanding.",
-    "rank": 0,
     "category": "Lore · General",
     "group": "Lore",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1463,15 +1058,10 @@
     "slug": "artifact-lore",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for recognizing and knowing the powers of potent magical items.",
-    "rank": 0,
     "category": "Lore · Magical",
     "group": "Lore",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1481,15 +1071,10 @@
     "slug": "spell-lore",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus to recognize and understand spells. When a character realizes that he has been targeted by a spell, this skill enables him to recognize the spell being used against him. When attempting to recognize an unfamiliar written spell, the character must be able to read the language used.",
-    "rank": 0,
     "category": "Lore · Magical",
     "group": "Lore",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1499,15 +1084,10 @@
     "slug": "undead-lore",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for recognizing and identifying the major powers and abilities of Undead, and information pertaining to Undead.",
-    "rank": 0,
     "category": "Lore · Magical",
     "group": "Lore",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1517,15 +1097,10 @@
     "slug": "demon-devil-lore",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for recognizing and identifying the major powers and abilities of extra-dimensional beings, and information pertaining to demons/devils (land, items, etc.).",
-    "rank": 0,
     "category": "Lore · Obscure",
     "group": "Lore",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1535,15 +1110,10 @@
     "slug": "dragon-lore",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for recognizing and identifying the major powers and abilities of dragons, and information pertaining to dragons (e.g., lands, items).",
-    "rank": 0,
     "category": "Lore · Obscure",
     "group": "Lore",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1553,15 +1123,10 @@
     "slug": "faerie-lore",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for recognizing and identifying the major powers and abilities of faeries, and information pertaining to faeries (e.g., lands, items, etc.).",
-    "rank": 0,
     "category": "Lore · Obscure",
     "group": "Lore",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1571,15 +1136,10 @@
     "slug": "xeno-lores",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill should be used by the GM to insert Lores dealing with unusual or rare races not listed here. This skill may also be used to simulate esoteric Lores developed by those races.\nExample: The Shimmiebops of Dimension X have their own Philosophy which is radically different from our own. The GM rules that learning Shimmiebop Philosophy  falls under Xeno-lore.",
-    "rank": 0,
     "category": "Lore · Obscure",
     "group": "Lore",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1589,15 +1149,10 @@
     "slug": "herb-lore",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for recognizing/identifying herbs. For these purposes, an herb is a plant or plant part valued for medicinal qualities.",
-    "rank": 0,
     "category": "Lore · Technical",
     "group": "Lore",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1607,15 +1162,10 @@
     "slug": "lock-lore",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for recognizing and identifying major forms of locks and similar devices.",
-    "rank": 0,
     "category": "Lore · Technical",
     "group": "Lore",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1625,15 +1175,10 @@
     "slug": "metal-lore",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for recognizing and identifying metals, alloys, metallic crystal structures, etc. Also will give information on famous, magical, historic, legendary, or cursed types of metals. Skill must be developed separately for each culture or region as applicable to the GM’s world scheme.",
-    "rank": 0,
     "category": "Lore · Technical",
     "group": "Lore",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1643,15 +1188,10 @@
     "slug": "poison-lore",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for recognizing and identifying poisons, as well as knowledge of proper application and usage techniques. (These may require a Using/Removing Poison maneuver roll to actually carry through.)",
-    "rank": 0,
     "category": "Lore · Technical",
     "group": "Lore",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1661,15 +1201,10 @@
     "slug": "stone-lore",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for recognizing and identifying stones. Also will give information on famous, magical, powerful, historic, legendary or cursed types of stone. Skill lore is developed separately for each culture or region as applicable to GM’s world scheme.",
-    "rank": 0,
     "category": "Lore · Technical",
     "group": "Lore",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1679,15 +1214,10 @@
     "slug": "trading-lore",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides knowledge of trade-related affairs. Trade routes, customs laws, exchange rates, traditions and rituals, etc. are all encompassed by this skill.",
-    "rank": 0,
     "category": "Lore · Technical",
     "group": "Lore",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1697,15 +1227,10 @@
     "slug": "boxing",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This is the skill of using one’s fists and feet to strike an opponent, while protecting oneself from similar blows. This skill uses the To oth & Claw Attack Table A-10.9.7 (p. 226) and may not exceed the damage done by a “small” attack.",
-    "rank": 0,
     "category": "Martial Arts · Striking",
     "group": "Martial Arts",
     "classification": "offensiveBonus",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1715,15 +1240,10 @@
     "slug": "tackling",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This is the skill of diving at a person in order to bring them to the ground in the intent of momentarily immobilizing them. This skill uses the Bash & Grapple Attack Table A-10.9.8 (p. 227) and may not exceed the damage done by a “small” attack.",
-    "rank": 0,
     "category": "Martial Arts · Striking",
     "group": "Martial Arts",
     "classification": "offensiveBonus",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1733,15 +1253,10 @@
     "slug": "animal-handling",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for the care and feeding of animals including bedding, hobbling, etc. This skill must be developed separately for each different type of animal. This skill is normally used in the handling of one animal at a time.",
-    "rank": 0,
     "category": "Outdoor · Animal",
     "group": "Outdoor",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1751,15 +1266,10 @@
     "slug": "animal-training",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for training a particular type of animal, such as birds of prey, dogs, bears, big cats, etc. Skill normally results in the taming of the animal.  This skill must be developed separately for each different type of animal.",
-    "rank": 0,
     "category": "Outdoor · Animal",
     "group": "Outdoor",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1769,15 +1279,10 @@
     "slug": "driving",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "As in Riding, skill ranks in driving must be developed separately for different types of vehicles. Vehicles are defined as animals pulling such objects as wagons, carts, sleighs, etc. One skill rank allows basic understanding of the controls; subsequent ranks reflect increased ability and some quickness in maneuvers.",
-    "rank": 0,
     "category": "Outdoor · Animal",
     "group": "Outdoor",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1787,15 +1292,10 @@
     "slug": "riding",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "A single skill rank is necessary to keep from constantly falling off the animal being ridden. Higher skill ranks enhance the chance of controlling of the animal, or gaining control of an unfamiliar animal (of the type you have skill with). This skill must be developed separately for each different type of animal.",
-    "rank": 0,
     "category": "Outdoor · Animal",
     "group": "Outdoor",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1805,15 +1305,10 @@
     "slug": "caving-spelunking",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for determining natural course and lay of a cave or cavern (passage or chamber). It can also provide a bonus for certain maneuvers in caves and caverns.",
-    "rank": 0,
     "category": "Outdoor · Environmental",
     "group": "Outdoor",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1823,15 +1318,10 @@
     "slug": "foraging",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for finding any local source of potable water or edible plants and animals. Includes basic food acquisition such as gathering or fishing.",
-    "rank": 0,
     "category": "Outdoor · Environmental",
     "group": "Outdoor",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1841,15 +1331,10 @@
     "slug": "hunting",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus to hunting maneuvers. Note that tracking and recognizing game is covered by other skills; this skill gives bonuses to the actual hunt, including setting up blind runs, leading and driving game, etc.",
-    "rank": 0,
     "category": "Outdoor · Environmental",
     "group": "Outdoor",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1859,15 +1344,10 @@
     "slug": "star-gazing",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for determining dates, directions, and locations when the stars are visible. May provide a bonus to one’s navigation skills.",
-    "rank": 0,
     "category": "Outdoor · Environmental",
     "group": "Outdoor",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1877,15 +1357,10 @@
     "slug": "survival",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for living in a specific dangerous or hostile environment. Note that this skill encompasses only those methods needed to stay alive against the actively dangerous elements of an environment (e.g., blistering heat, cold, pressure, unusual animals typical of the environment, etc.). It does not include food gathering, although it does include the knowledge necessary to find water. Skill must be developed in each type of environment (e.g., desert, jungle, arctic, water, etc.). The GM may rule that unusually hostile environments may also be covered by this skill (e.g., vacuum, underwater, elemental planes of fire, etc.).",
-    "rank": 0,
     "category": "Outdoor · Environmental",
     "group": "Outdoor",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1895,15 +1370,10 @@
     "slug": "weather-watching",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for determining local weather for the next 24 hours.",
-    "rank": 0,
     "category": "Outdoor · Environmental",
     "group": "Outdoor",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1913,15 +1383,10 @@
     "slug": "attunement",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill enables a character to use the spell abilities of a staff, wand, or any item with spell casting abilities. In order to cast spells from an item, the wielder of the item must have made an Attunement static maneuver.\nIf an item has several spells or groups of spells that are widely separated in power or type, the GM may require separate attunement (staves & wands) static maneuvers for each spell or group of spells.\n“Teaching” someone else an item is not permitted because using an item is a personal experience between the individual and the item. Although you may tell someone what the item does and thus remove any penalty for not knowing the spell(s) in the item, you cannot aid them. Certain spells on items do not normally require Attunement rolls, subject to GM stipulation. ",
-    "rank": 0,
     "category": "Power Awareness",
     "group": "Power Awareness",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1931,15 +1396,10 @@
     "slug": "read-runes",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "Rune skill enables a character to decipher and use runes (spells inscribed in suitable media). If the level of the spell on the rune is less than or equal to the level of the character attempting to use it to cast a spell, deciphering the rune is sufficient to use it (subject to the normal chances of spell failure). If the rune is a level above the character, or of a realm of magic other than his specialty, a second roll, similar to the first, must be made to successfully cast the spell from the rune. Runes are generally not reusable, but the rune paper is.\nA character should be given one chance to decipher a rune. If he fails, he may not try again until he improves his skill rank with Read Runes.",
-    "rank": 0,
     "category": "Power Awareness",
     "group": "Power Awareness",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1950,15 +1410,10 @@
     "specialRole": "powerPointDevelopment",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "Developing this skill allows a spell user to increase the total number of power points (PP) he may have available at any given time. In order to cast a spell, a number of PPs equal to the spell’s level must be used.",
-    "rank": 0,
     "category": "Power Point Development",
     "group": "none",
     "classification": "specialPurpose",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "special",
     "commonlyUsed": false
@@ -1968,15 +1423,10 @@
     "slug": "basic-math",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for everyday math. This includes simple counting up through proficiency at basic mathematical manipulations. Generally, the major mathematical functions (multiplication, division, addition, subtraction, etc.) may be acquired through the use of this skill. At much higher levels, skill in geometry and even algebra is possible. Calculus, trigonometry, tensor math, etc. all require the acquisition of Advanced Math (see below).",
-    "rank": 0,
     "category": "Science · Basic",
     "group": "Science",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -1986,15 +1436,10 @@
     "slug": "research",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for using multiple sources of reference to assimilate the knowledge and information necessary to solve a problem, support a creative effort, or otherwise answer questions important to the individual. It includes the skills necessary to organize and effect a search through reference material, and collate the results. If appropriate materials are available, a successful maneuver roll using such materials will give  up to a +40 modification to a related Lore maneuver roll.",
-    "rank": 0,
     "category": "Science · Basic",
     "group": "Science",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2004,15 +1449,10 @@
     "slug": "advanced-math",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for using multiple sources of reference to assimilate the knowledge and information necessary to solve a problem, support a creative effort, or otherwise answer questions important to the individual. It includes the skills necessary to organize and effect a search through reference material, and collate the results. If appropriate materials are available, a successful maneuver roll using such materials will give  up to a +40 modification to a related Lore maneuver roll.",
-    "rank": 0,
     "category": "Science · Specialized",
     "group": "Science",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "combined",
     "commonlyUsed": false
@@ -2022,15 +1462,10 @@
     "slug": "anthropology",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides knowledge of linguistic trends, customs, habits and cultural trends of any known races and cultures. Skill may be developed in-depth of a specific race or culture from your home world. Several different races or cultures may be developed simultaneously, assuming research materials are available.",
-    "rank": 0,
     "category": "Science · Specialized",
     "group": "Science",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "combined",
     "commonlyUsed": false
@@ -2040,15 +1475,10 @@
     "slug": "alchemy",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for identifying and mixing various non-magical substances with relatively predictable results. Acids, itching powders, toxins, etc. are just a few of the possible results. Some combinations the GM may deem inappropriate for his world (e.g., he might disallow gunpowder or petroleum products). Allows user to know elemental composition, reactions, compounds, etc. Skill is modified from -30 to -70 for lack of laboratory equipment, supplies, etc.",
-    "rank": 0,
     "category": "Science · Specialized",
     "group": "Science",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "combined",
     "commonlyUsed": false
@@ -2058,15 +1488,10 @@
     "slug": "frenzy",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus to attempt to go into a state of single-minded, unpredictable rage which results in an additional +30 to melee OB, the ability to take twice normal concussion damage and the ability to deliver double melee concussion hit damage. While in frenzy, you have no DB other than the armor bonus, get no shield bonus, and cannot parry. The static maneuver (i.e., preparation) for frenzy takes one round. Once in a frenzied/berserk state, the berserker may make a static maneuver each round in order to resume one’s normal state. Once frenzied, the berserker will continue to fight until there is no one left standing except himself, at which time he receives a +30 modification to static maneuvers to end the frenzy. While frenzied,  the berserker may attempt  a Situational Awareness (Combat) static maneuver with a -30 modification to distinguish friend from foe.",
-    "rank": 0,
     "category": "Self Control",
     "group": "none",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2076,15 +1501,10 @@
     "slug": "meditation",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for an individual entering, leaving and exploiting a mental trance.  Physical prodding allows one to make a static maneuver to leave the trance, as does a painful strike (modify by +25).\nA GM may allow a successful meditation maneuver to give the meditator a bonus for a maneuver related to the meditation. Such related maneuvers can include: solving a difficult problem, making a spell casting static maneuver, making an attunement static maneuver, etc. We suggest the following bonuses based upon the degree of success of the meditation static maneuver: +5 bonus for “partial success,” +10 for “near success,” +15 for “success,” and +25 for “absolute success.” The meditator must spend at least one minute (6 rounds) in meditation to get the bonus.",
-    "rank": 0,
     "category": "Self Control",
     "group": "none",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2094,15 +1514,10 @@
     "slug": "mnemonics",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for recalling information through the use of memory aids, techniques and tricks.",
-    "rank": 0,
     "category": "Self Control",
     "group": "none",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2112,15 +1527,10 @@
     "slug": "spell-list-own-base",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "One skill per spell list: base lists of the spell user’s own profession/realm.",
-    "rank": 0,
     "category": "Spells · Own Base List",
     "group": "Spells",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2130,15 +1540,10 @@
     "slug": "spell-list-own-realm-closed",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "One skill per spell list; represents ranks in a closed list of the caster’s realm.",
-    "rank": 0,
     "category": "Spells · Own Realm Closed List",
     "group": "Spells",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2148,15 +1553,10 @@
     "slug": "spell-list-own-realm-open",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "One skill per spell list; represents ranks in an open list of the caster’s realm.",
-    "rank": 0,
     "category": "Spells · Own Realm Open List",
     "group": "Spells",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2166,15 +1566,10 @@
     "slug": "ambush",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill is the ability to make a very precise melee attack. To use his Ambush skill a character must approach his foe undetected and be able to strike before the foe can react. An attack is then made normally, and an Ambush static maneuver is made (0% activity) and modified by target’s alertness and other factors (e.g., position, lighting, etc.).\nIf the Ambush static maneuver is successful, the character may modify his result on the resulting critical strike roll. This modification consists of being allowed to adjust the critical strike roll by any number up to the Ambush skill rank (not bonus) of the attacker. This adjustment may be either up or down. Note that to use this bonus, the attacker must first get a normal critical strike result on an attack table. If he does, however, this ability greatly increases the chance of a killing or incapacitating blow and tremendously increases the chance of a result that takes effect instantly.\nSince position is relatively unpredictable in a general melee situation, Ambush skill rank is halved if an ambushed foe is in a melee situation. (Note: You must still approach the foe undetected and strike before he can react.)\nIf a “Large” or “Super-large” creature is ambushed, the Ambush skill rank is added (never subtracted) to the critical roll. If the resulting modified roll is above 95, a second roll is made and added to the modified critical as in a normal open-ended roll.",
-    "rank": 0,
     "category": "Subterfuge · Attack",
     "group": "Subterfuge",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2184,15 +1579,10 @@
     "slug": "silent-attack",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill is used in conjunction with an Ambush static maneuver. A successful Ambush static maneuver followed by a successful static maneuver using this skill (0% activity) results in the target being unable to make a sound during the attack. Note that this skill also requires that the attacker approach the foe undetected and strike before he can react. If an instant kill or immobilization result is obtained on a critical chart, the target does not make any noise.",
-    "rank": 0,
     "category": "Subterfuge · Attack",
     "group": "Subterfuge",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2202,15 +1592,10 @@
     "slug": "camouflage",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus in hiding or concealing an item or another person by using the natural attributes of the surrounding environment.",
-    "rank": 0,
     "category": "Subterfuge · Mechanics",
     "group": "Subterfuge",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2220,15 +1605,10 @@
     "slug": "disarming-traps",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus in identifying and disarming, but not locating, an inanimate trap.",
-    "rank": 0,
     "category": "Subterfuge · Mechanics",
     "group": "Subterfuge",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2238,15 +1618,10 @@
     "slug": "disguise",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus to change one’s appearance (not his actual shape or weight) by application of cosmetics and other props.",
-    "rank": 0,
     "category": "Subterfuge · Mechanics",
     "group": "Subterfuge",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2256,15 +1631,10 @@
     "slug": "picking-locks",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for locking and unlocking locks and similar devices.",
-    "rank": 0,
     "category": "Subterfuge · Mechanics",
     "group": "Subterfuge",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2274,15 +1644,10 @@
     "slug": "setting-traps",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for setting traps. Traps can be lethal or non-lethal. The traps used by this skill are either very simple snares or pre-built mechanisms that are set into place.",
-    "rank": 0,
     "category": "Subterfuge · Mechanics",
     "group": "Subterfuge",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2292,15 +1657,10 @@
     "slug": "using-removing-poison",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for the handling, caring, and storing of poisons. Allows an individual to use poison without accidentally poisoning himself or rendering the poison useless.",
-    "rank": 0,
     "category": "Subterfuge · Mechanics",
     "group": "Subterfuge",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2310,15 +1670,10 @@
     "slug": "hiding",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "Hiding is the ability to conceal one’s presence by remaining still, using silence, shadow and camouflage.",
-    "rank": 0,
     "category": "Subterfuge · Stealth",
     "group": "Subterfuge",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2328,15 +1683,10 @@
     "slug": "picking-pockets",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for picking pockets. If successful, the contents are lifted and the skill bonus is applied against rolls made for any alertness or observation maneuvers the victim makes.",
-    "rank": 0,
     "category": "Subterfuge · Stealth",
     "group": "Subterfuge",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2346,15 +1696,10 @@
     "slug": "stalking",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "Stalking is the ability to move using silence, camouflage, and shadows to conceal your presence.",
-    "rank": 0,
     "category": "Subterfuge · Stealth",
     "group": "Subterfuge",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2364,15 +1709,10 @@
     "slug": "trickery",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for any maneuvers involving slight of hand; confusing sight tricks and slight-of-hand diversions.",
-    "rank": 0,
     "category": "Subterfuge · Stealth",
     "group": "Subterfuge",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2382,15 +1722,10 @@
     "slug": "begging",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for eliciting a sympathetic response from the person being solicited.",
-    "rank": 0,
     "category": "Technical · General",
     "group": "Technical",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2400,15 +1735,10 @@
     "slug": "first-aid",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for applications of emergency aid or treatment (limited to type of creature), such as attempts to halt or slow bleeding or damaging deterioration. It is suggested that, provided with the proper tools or bandages, a character using first aid could stop up to 5 hits/round of “bleeding” damage without resorting to a tourniquet. Used normally in the field without the benefits of a proper medical facility or elaborate equipment. See Section 24.1 (p. 75) for more details.",
-    "rank": 0,
     "category": "Technical · General",
     "group": "Technical",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2418,15 +1748,10 @@
     "slug": "gambling",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus when playing any game with a significant element of luck. Also includes cheating as a form of improving one’s luck at any game.",
-    "rank": 0,
     "category": "Technical · General",
     "group": "Technical",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2436,15 +1761,10 @@
     "slug": "mapping",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "CThis skill provides a bonus to making, recognizing and using simple maps. This skill is not capable of producing fully detailed maps like those of a cartographer, but it is sufficient to the task of marking out one’s journey well enough to find one’s way home.",
-    "rank": 0,
     "category": "Technical · General",
     "group": "Technical",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2454,15 +1774,10 @@
     "slug": "operating-equipment",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus to operate simple equipment, or a specific set of complex equipment, such as millworks, automatic looms, etc.",
-    "rank": 0,
     "category": "Technical · General",
     "group": "Technical",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2472,15 +1787,10 @@
     "slug": "orienteering",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for using landmarks, the sun, stars and other simple navigational tricks to arrive at a desired location. Note that Orienteering provides only a general sense of the proper direction towards a location; hazards, obstacles, or distances are not learned.",
-    "rank": 0,
     "category": "Technical · General",
     "group": "Technical",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2490,15 +1800,10 @@
     "slug": "sailing",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for operating a sailing vessel or for serving as part of a crew operating a sailing vessel.",
-    "rank": 0,
     "category": "Technical · General",
     "group": "Technical",
     "classification": "movingManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2508,15 +1813,10 @@
     "slug": "tactical-games",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for playing games which contain very little chance element, such as Chess or Go.",
-    "rank": 0,
     "category": "Technical · General",
     "group": "Technical",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2526,15 +1826,10 @@
     "slug": "using-prepared-herbs",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill allows the user to properly apply herbs that have already been prepared for use.",
-    "rank": 0,
     "category": "Technical · General",
     "group": "Technical",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2544,15 +1839,10 @@
     "slug": "diagnostics",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for determining the medical condition of a patient. Skill must be learned for a particular race or type of creature. One must pick the skill in either general diagnosis, or diagnosis of a specific race. General diagnostics skill of 6 ranks or higher allows certification of simple medical practice on all races (use of field equipment and healing drugs). Diagnostics skill for a specific race of 12 ranks or higher is required for surgical certification (and reasonable competence).",
-    "rank": 0,
     "category": "Technical · Professional",
     "group": "Technical",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2562,15 +1852,10 @@
     "slug": "engineering",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for knowing major facts about engineering of the appropriate technical level known to the culture. Also provides a bonus for attempts to utilize that knowledge in new projects. A GM may require different types of Engineering to be treated as separate skills.",
-    "rank": 0,
     "category": "Technical · Professional",
     "group": "Technical",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2580,15 +1865,10 @@
     "slug": "mechanition",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for building and using a machine that already exists. It will be necessary to have the appropriate tools to build the machine. Each type of machine is a potential specialization.",
-    "rank": 0,
     "category": "Technical · Professional",
     "group": "Technical",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2598,15 +1878,10 @@
     "slug": "mining",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for assessing the possibilities of mining in an area, and supervising the creation and running of the mine. The following is a partial listing of specialized mining processes:\n• Dredging: Scraping material off the bottom of a river, ocean, etc.\n• Open Pit: Removal of top layers to extract materials.\n• Quarry: Removal of materials in block form.\n• Tunneling: Making underground passages to extract materials.",
-    "rank": 0,
     "category": "Technical · Professional",
     "group": "Technical",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2616,15 +1891,10 @@
     "slug": "second-aid",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for performing minor surgery, including sewing closed wounds, removing diseased or mangled limbs, bone setting and any other minor surgery operation.",
-    "rank": 0,
     "category": "Technical · Professional",
     "group": "Technical",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2634,15 +1904,10 @@
     "slug": "administration",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for functioning successfully within a familiar government where record keeping, personnel interaction, and bureaucracy is present. Also useful in gaining public office and applying governmental power.",
-    "rank": 0,
     "category": "Technical · Vocational",
     "group": "Technical",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2652,15 +1917,10 @@
     "slug": "appraisal",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for determining or estimating the value of an object or goods other than armor, metal, stones or weapons.",
-    "rank": 0,
     "category": "Technical · Vocational",
     "group": "Technical",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2670,15 +1930,10 @@
     "slug": "boat-pilot",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for knowledge of water courses such as the locations of sand bars, rapids, waterfalls, whirlpools, currents, reefs, icebergs, vegetation clogs (underwater snags and roots, overhead hanging branches and vines), etc. Each different water course is a potential specialization.",
-    "rank": 0,
     "category": "Technical · Vocational",
     "group": "Technical",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2688,15 +1943,10 @@
     "slug": "evaluate-armor",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "Provides a bonus for determining the value and quality of armor.",
-    "rank": 0,
     "category": "Technical · Vocational",
     "group": "Technical",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2706,15 +1956,10 @@
     "slug": "evaluate-metal",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "Provides a bonus for determining the value and quality of metal objects in worked, refined or raw condition.",
-    "rank": 0,
     "category": "Technical · Vocational",
     "group": "Technical",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2724,15 +1969,10 @@
     "slug": "evaluate-stone",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "Provides a bonus for determining the value and quality of stone objects in worked, refined, or raw condition—also used to evaluate gems.",
-    "rank": 0,
     "category": "Technical · Vocational",
     "group": "Technical",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2742,15 +1982,10 @@
     "slug": "evaluate-weapon",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "Provides a bonus for determining the value and quality of weapons.",
-    "rank": 0,
     "category": "Technical · Vocational",
     "group": "Technical",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2760,15 +1995,10 @@
     "slug": "navigation",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus for determining proper directions and distances when using a map in conjunction with various directional aids, such as a compass, sextant, clock, etc. This includes the concept of orienting, and is applicable on land, water or the stars. Note that this skill is far more precise and complex than Orienteering.",
-    "rank": 0,
     "category": "Technical · Vocational",
     "group": "Technical",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2778,15 +2008,10 @@
     "slug": "tactics",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "hese skills provide bonuses for perceiving and planning appropriate and effective strategy in tactical military situations. Skill with each tactical situation must be developed separately.\nThe following is a partial listing of types of tactics:\n• Battle Field: Cavalry and infantry tactics.\n• Naval: Ship and boat tactics.\n• Sabotage: Underground/behind enemy lines tactics.\n• Siege: Reduction of fortified position tactics.\n• Small Unit: Conflict between small groups.",
-    "rank": 0,
     "category": "Technical · Vocational",
     "group": "Technical",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2796,15 +2021,10 @@
     "slug": "contacting",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus to locating individuals of influence or knowledge within an urban environment. It includes knowledge of where such individuals may be found as well a information involving how they might be reached (e.g., locating a crime boss or fence, politician, etc.). This skill is the equivalent of scrounging except that it operates for individuals or locations. Note that actual interaction with such persons are covered by the skills in the Influence Skill Category.",
-    "rank": 0,
     "category": "Urban",
     "group": "none",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2814,15 +2034,10 @@
     "slug": "mingling",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus to attempts to mix easily with a large urban population, whether for the purposes of remaining unnoticed, escaping pursuers, or simply moving easily through a crowd.",
-    "rank": 0,
     "category": "Urban",
     "group": "none",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2832,15 +2047,10 @@
     "slug": "scrounging",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "This skill provides a bonus in being able to come up with the location of a particular needed item, part or ingredient. This skill is normally used in an urban type of setting.",
-    "rank": 0,
     "category": "Urban",
     "group": "none",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2850,15 +2060,10 @@
     "slug": "streetwise",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "Awareness of events and protocol in the street society and underworld and the ability to interact with the individuals who run and live in the common or underworld society. Note that this skill does not necessarily enable a character to find such individuals.",
-    "rank": 0,
     "category": "Urban",
     "group": "none",
     "classification": "staticManeuver",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2868,15 +2073,10 @@
     "slug": "weapon-skill-1h-concussion",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "One skill per one-handed concussion weapon (mace, club, morning star, etc.).",
-    "rank": 0,
     "category": "Weapon · 1H Concussion",
     "group": "Weapon",
     "classification": "offensiveBonus",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2886,15 +2086,10 @@
     "slug": "weapon-skill-1h-edged",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "One skill per one-handed edged weapon (most swords, daggers, etc.).",
-    "rank": 0,
     "category": "Weapon · 1H Edged",
     "group": "Weapon",
     "classification": "offensiveBonus",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2904,15 +2099,10 @@
     "slug": "weapon-skill-2handed",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "One skill per two-handed weapon (quarterstaff, flail, two-handed sword, etc.).",
-    "rank": 0,
     "category": "Weapon · 2Handed",
     "group": "Weapon",
     "classification": "offensiveBonus",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2922,15 +2112,10 @@
     "slug": "weapon-skill-missile",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "One skill per missile weapon designed to project a missile (bows, crossbows, slings).",
-    "rank": 0,
     "category": "Weapon · Missile",
     "group": "Weapon",
     "classification": "offensiveBonus",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2940,15 +2125,10 @@
     "slug": "weapon-skill-pole-arms",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "One skill per missile weapon designed to project a missile (bows, crossbows, slings).",
-    "rank": 0,
     "category": "Weapon · Pole Arms",
     "group": "Weapon",
     "classification": "offensiveBonus",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false
@@ -2958,15 +2138,10 @@
     "slug": "weapon-skill-thrown",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
     "description": "One skill per missile weapon designed to project a missile (bows, crossbows, slings).",
-    "rank": 0,
     "category": "Weapon · Thrown",
     "group": "Weapon",
     "classification": "offensiveBonus",
-    "dpCost": {
-      "price1": 0,
-      "price2": 0,
-      "price3": 0
-    },
+    "dpCost": "",
     "boughtByLevel": {},
     "skillRankBonusProgression": "standard",
     "commonlyUsed": false

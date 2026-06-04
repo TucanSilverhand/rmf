@@ -16,6 +16,7 @@ import {
   normalizeSkillProgression
 } from "./utils/rank-bonus.mjs";
 import { RMFActions } from "./actions.mjs";
+import { formatDPCost, parseDPCost } from "./utils/dp-cost.mjs";
 
 export class RMFSkillSheet extends HandlebarsApplicationMixin(foundry.applications.sheets.ItemSheetV2) {
   static DEFAULT_OPTIONS = {
@@ -93,7 +94,9 @@ export class RMFSkillSheet extends HandlebarsApplicationMixin(foundry.applicatio
       context.enrichedDescription = "";
     }
 
-    context.dpCostSummary = this._formatDPCost(system.dpCost);
+    context.dpCost = system.dpCost ?? "";
+    context.dpCostSummary = this._formatDPCost(context.dpCost);
+    context.dpCostHint = this._dpCostHint(context.dpCost);
 
     // Progression options driven by the rank-bonus helper (single source of truth).
     const localizeProgression = (value) => {
@@ -145,12 +148,19 @@ export class RMFSkillSheet extends HandlebarsApplicationMixin(foundry.applicatio
     return context;
   }
 
+  /** Canonical slash-notation string for display (accepts string or legacy triple). */
   _formatDPCost(cost) {
-    const prices = cost && typeof cost === "object" ? cost : {};
-    const p1 = Number(prices.price1 ?? prices[0] ?? 0) || 0;
-    const p2 = Number(prices.price2 ?? prices[1] ?? 0) || 0;
-    const p3 = Number(prices.price3 ?? prices[2] ?? 0) || 0;
-    return `${p1}/${p2}/${p3}`;
+    return formatDPCost(cost);
+  }
+
+  /** Short human hint describing the cost (ranks per level / unlimited). */
+  _dpCostHint(cost) {
+    const p = parseDPCost(cost);
+    if (!p.valid) return game.i18n?.localize?.("RMF.Category.DPCostInvalid") || "?";
+    if (p.empty) return game.i18n?.localize?.("RMF.Category.DPCostNone") || "—";
+    if (p.unlimited) return game.i18n?.localize?.("RMF.Category.DPCostUnlimited") || "ilimitado";
+    const n = p.ranksPerLevel;
+    return game.i18n?.format?.("RMF.Category.DPCostRanksPerLevel", { n }) || `${n} rango(s)/nivel`;
   }
 
   _prepareLevelEntries(boughtByLevel, maxLevel) {
@@ -212,7 +222,10 @@ export class RMFSkillSheet extends HandlebarsApplicationMixin(foundry.applicatio
     const target = event.target;
     const name = target?.name || target?.getAttribute?.("name");
     if (!name) return;
-    const value = coerceInputValue(target);
+    let value = coerceInputValue(target);
+    // Canonicalise the DP-cost string on save ("2 / 5" → "2/5") so the
+    // stored value matches the summary, mirroring the profession sheet.
+    if (name === "system.dpCost") value = formatDPCost(value);
     const tag = buildEntityTag(this.document);
     if (CONFIG?.RMF?.debug) {
       console.debug("RMF DEBUG | SkillSheet granular update", { item: tag, name, value });

@@ -1,6 +1,7 @@
 {{!--
-  Reusable table partial for `{name, dpCost: {price1, price2, price3}}`
-  rows. Used by both categoryPrice (header "Category") and spellPrice
+  Reusable table partial for `{name, dpCost}` rows, where `dpCost` is the RMF
+  slash-notation string ("2/5", "2/2/2", "20", "3/*" = ilimitado, "" = sin
+  coste). Used by both categoryPrice (header "Category") and spellPrice
   (header "SpellGroup").
 
   Invoke with:
@@ -14,7 +15,7 @@
         nameHeader="RMF.Profession.SpellGroup"}}
 
   Hash parameters:
-    rows         (Array<{index, name, price1, price2, price3}>)
+    rows         (Array<{index, name, dpCost}>)
     arrayPath    (String)   — array path for input names (e.g. "categoryPrice")
     nameHeader   (String)   — i18n key for the leftmost column header
     placeholder  (String, optional) — i18n key for the name <input> placeholder
@@ -24,26 +25,26 @@
   <thead>
     <tr>
       <th>{{localize nameHeader}}</th>
-      <th>P1</th><th>P2</th><th>P3</th>
+      <th>{{localize "RMF.Category.DPCost"}}</th>
     </tr>
   </thead>
   <tbody>
     {{#each rows as |row|}}
     <tr>
       {{#if ../readonly}}
-      <td><input type="text"   value="{{row.name}}"   readonly /></td>
-      <td><input type="number" value="{{row.price1}}" readonly data-dtype="Number" inputmode="numeric" /></td>
-      <td><input type="number" value="{{row.price2}}" readonly data-dtype="Number" inputmode="numeric" /></td>
-      <td><input type="number" value="{{row.price3}}" readonly data-dtype="Number" inputmode="numeric" /></td>
+      <td><input type="text" value="{{row.name}}"   readonly /></td>
+      <td><input type="text" value="{{row.dpCost}}" readonly /></td>
       {{else}}
       <td><input type="text"
                  name="system.{{../arrayPath}}.{{row.index}}.name"
                  value="{{row.name}}"
                  placeholder="{{localize ../placeholder}}"
                  autocomplete="off" /></td>
-      <td><input type="number" name="system.{{../arrayPath}}.{{row.index}}.dpCost.price1" value="{{row.price1}}" min="-99" max="999" step="1" inputmode="numeric" data-dtype="Number" /></td>
-      <td><input type="number" name="system.{{../arrayPath}}.{{row.index}}.dpCost.price2" value="{{row.price2}}" min="-99" max="999" step="1" inputmode="numeric" data-dtype="Number" /></td>
-      <td><input type="number" name="system.{{../arrayPath}}.{{row.index}}.dpCost.price3" value="{{row.price3}}" min="-99" max="999" step="1" inputmode="numeric" data-dtype="Number" /></td>
+      <td><input type="text"
+                 name="system.{{../arrayPath}}.{{row.index}}.dpCost"
+                 value="{{row.dpCost}}"
+                 placeholder="2/5"
+                 autocomplete="off" /></td>
       {{/if}}
     </tr>
     {{/each}}

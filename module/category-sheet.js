@@ -13,6 +13,7 @@ import {
 } from "./utils/rank-bonus.mjs";
 import { CATEGORY_GROUP_OPTIONS } from "./data-models/category.mjs";
 import { RMFActions } from "./actions.mjs";
+import { formatDPCost, parseDPCost } from "./utils/dp-cost.mjs";
 
 export class RMFCategorySheet extends HandlebarsApplicationMixin(foundry.applications.sheets.ItemSheetV2) {
   static DEFAULT_OPTIONS = {
@@ -97,7 +98,11 @@ export class RMFCategorySheet extends HandlebarsApplicationMixin(foundry.applica
 
     // All numeric totals are pre-computed by CategoryData.prepareDerivedData;
     // the sheet just exposes them under shorter aliases for templates.
-    context.dpCostSummary = this._formatDPCost(context.system?.dpCost);
+    // dpCost is the RMF slash-notation string. Expose the canonical form and
+    // a human hint ("2 rangos/nivel" / "ilimitado") for the sheet.
+    context.dpCost = context.system?.dpCost ?? "";
+    context.dpCostSummary = this._formatDPCost(context.dpCost);
+    context.dpCostHint = this._dpCostHint(context.dpCost);
     context.totalStatsBonus = Number(context.system?.totalStatsBonus ?? 0);
     context.totalBoughtRanks = this._computeTotalBoughtRanks(context.system?.boughtByLevel);
     context.freeRanks = Number(context.system?.freeRanks ?? 0);
@@ -180,12 +185,19 @@ export class RMFCategorySheet extends HandlebarsApplicationMixin(foundry.applica
     return formatCategoryRankBonusBreakdown(totalRanks, progression);
   }
 
+  /** Canonical slash-notation string for display (accepts string or legacy triple). */
   _formatDPCost(cost) {
-    const prices = cost && typeof cost === 'object' ? cost : {};
-    const p1 = Number(prices.price1 ?? 0);
-    const p2 = Number(prices.price2 ?? 0);
-    const p3 = Number(prices.price3 ?? 0);
-    return `${p1}/${p2}/${p3}`;
+    return formatDPCost(cost);
+  }
+
+  /** Short human hint describing the cost (ranks per level / unlimited). */
+  _dpCostHint(cost) {
+    const p = parseDPCost(cost);
+    if (!p.valid) return game.i18n?.localize?.("RMF.Category.DPCostInvalid") || "?";
+    if (p.empty) return game.i18n?.localize?.("RMF.Category.DPCostNone") || "—";
+    if (p.unlimited) return game.i18n?.localize?.("RMF.Category.DPCostUnlimited") || "ilimitado";
+    const n = p.ranksPerLevel;
+    return game.i18n?.format?.("RMF.Category.DPCostRanksPerLevel", { n }) || `${n} rango(s)/nivel`;
   }
 
   _computeTotalBoughtRanks(boughtByLevel) {
@@ -242,7 +254,10 @@ export class RMFCategorySheet extends HandlebarsApplicationMixin(foundry.applica
     const target = event.target;
     const name = target?.name || target?.getAttribute?.("name");
     if (!name) return;
-    const value = coerceInputValue(target);
+    let value = coerceInputValue(target);
+    // Canonicalise the DP-cost string on save ("2 / 5" → "2/5") so the
+    // stored value matches the summary, mirroring the profession sheet.
+    if (name === "system.dpCost") value = formatDPCost(value);
     const tag = buildEntityTag(this.document);
     if (CONFIG?.RMF?.debug) {
       console.debug("RMF DEBUG | CategorySheet granular update", { item: tag, name, value });

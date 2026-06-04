@@ -189,6 +189,50 @@ export const MIGRATIONS = [
 
       log(`Identity backfill: ${worldItems} sidebar + ${embedded} embedded item(s) stamped.`);
     }
+  },
+  {
+    to: "0.4.0",
+    description: "Fase 1: convert dpCost triples to slash strings and drop the legacy persisted rank/ranks counters (R8).",
+    async run({ actors, items, log }) {
+      // Re-emitting through the schema does two things at once: the per-model
+      // migrateData() rewrites the legacy dpCost triple to the string, and the
+      // schema cleaning drops keys no longer in the schema (the removed
+      // `rank`/`ranks` counters — R8). Scoped to the 3 types that changed.
+      const TYPES = new Set(["category", "skill", "profession"]);
+      const reemit = async (doc) => {
+        try { await doc.update({}, { diff: false }); return 1; }
+        catch (err) { log(`Skip ${doc.name}: ${err.message}`); return 0; }
+      };
+
+      let sidebar = 0;
+      for (const item of items) if (TYPES.has(item.type)) sidebar += await reemit(item);
+
+      let embedded = 0;
+      for (const actor of actors) {
+        for (const item of actor.items) if (TYPES.has(item.type)) embedded += await reemit(item);
+      }
+
+      let packed = 0;
+      const packs = game.packs.filter(
+        p => p.documentName === "Item" && p.metadata?.packageType === "world"
+      );
+      for (const pack of packs) {
+        const wasLocked = pack.locked;
+        let unlocked = false;
+        try {
+          if (wasLocked) { await pack.configure({ locked: false }); unlocked = true; }
+          for (const doc of await pack.getDocuments()) {
+            if (TYPES.has(doc.type)) packed += await reemit(doc);
+          }
+        } catch (err) {
+          log(`Pack ${pack.collection}: ${err.message}`);
+        } finally {
+          if (unlocked) await pack.configure({ locked: true }).catch(() => {});
+        }
+      }
+
+      log(`dpCost migration: re-emitted ${sidebar} sidebar + ${embedded} embedded + ${packed} pack item(s).`);
+    }
   }
 ];
 

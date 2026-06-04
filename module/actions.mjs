@@ -683,8 +683,7 @@ export class RMFActions {
    */
   static async #incrementSkillRank(event, target) {
     event.preventDefault();
-    
-    const currentRank = Number(this.document.system.rank || 0);
+
     const parsedLevel = parseInt(target.dataset.level);
     const level = Number.isFinite(parsedLevel) ? parsedLevel : 1;
 
@@ -698,9 +697,9 @@ export class RMFActions {
       return;
     }
 
-    // Update
+    // Total ranks are derived from boughtByLevel only — there is no
+    // separate persisted `rank` counter to keep in sync (see R8 / Fase 1).
     await this.document.update({
-      "system.rank": currentRank + 1,
       [`system.boughtByLevel.${level}`]: currentBought + 1
     });
 
@@ -720,20 +719,16 @@ export class RMFActions {
    */
   static async #decrementSkillRank(event, target) {
     event.preventDefault();
-    
-    const currentRank = Number(this.document.system.rank || 0);
-    if (currentRank <= 0) return;
 
     const parsedLevel = parseInt(target.dataset.level);
     const level = Number.isFinite(parsedLevel) ? parsedLevel : 1;
     const bought = this.document.system.boughtByLevel || {};
     const currentBought = Number(bought[level] || 0);
-    
+
     if (currentBought <= 0) return;
 
-    // Update
+    // boughtByLevel is the single source of truth (see R8 / Fase 1).
     await this.document.update({
-      "system.rank": currentRank - 1,
       [`system.boughtByLevel.${level}`]: currentBought - 1
     });
 

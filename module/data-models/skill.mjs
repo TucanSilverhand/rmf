@@ -17,6 +17,7 @@ import { totalBoughtRanks } from "./_shared.mjs";
 import { CATEGORY_GROUPS, normalizeCategoryGroup } from "./category.mjs";
 import { slugField, specialRoleField, resolveSpecialRole } from "./_identity.mjs";
 import { matchesIdentity } from "../utils/slug.mjs";
+import { parseDPCost, dpCostFromTriple } from "../utils/dp-cost.mjs";
 
 const fields = foundry.data.fields;
 
@@ -25,8 +26,6 @@ const SPECIAL_STATUS_CHOICES = ["none", "everyman", "occupational", "restricted"
 
 export class SkillData extends foundry.abstract.TypeDataModel {
   static defineSchema() {
-    const num = (initial = 0, opts = {}) =>
-      new fields.NumberField({ required: true, nullable: false, integer: true, initial, ...opts });
     const numFloat = (initial = 0, opts = {}) =>
       new fields.NumberField({ required: true, nullable: false, initial, ...opts });
     const str = (initial = "", opts = {}) =>
@@ -35,9 +34,9 @@ export class SkillData extends foundry.abstract.TypeDataModel {
     return {
       description: new fields.HTMLField({ required: true, nullable: false, initial: "" }),
 
-      // Legacy `rank` field — superseded by totalBoughtRanks but kept
-      // persisted so older worlds load. Derivation overwrites it.
-      rank: num(0, { min: 0 }),
+      // NOTE: the legacy persisted `rank` counter was removed in 0.4.0 (R8).
+      // Total ranks derive purely from `boughtByLevel`; `this.rank` is still
+      // exposed as an in-memory alias in prepareDerivedData for back-compat.
 
       // Reference to a category by name. Free-form string because users
       // may type a custom category that doesn't exist in the world yet.
@@ -46,11 +45,11 @@ export class SkillData extends foundry.abstract.TypeDataModel {
 
       classification: str("movingManeuver", { choices: SKILL_CLASSIFICATIONS }),
 
-      dpCost: new fields.SchemaField({
-        price1: numFloat(0, { min: 0 }),
-        price2: numFloat(0, { min: 0 }),
-        price3: numFloat(0, { min: 0 })
-      }),
+      // dpCost: RMF slash-notation string. On a skill this is the
+      // character's EFFECTIVE cost (empty in the base catalog; the active
+      // profession's per-category/per-list cost is what applies). See
+      // module/utils/dp-cost.mjs and ./refactor.md (Fase 1).
+      dpCost: str(""),
 
       boughtByLevel: new fields.ObjectField({ required: true, nullable: false, initial: () => ({}) }),
 
@@ -86,8 +85,12 @@ export class SkillData extends foundry.abstract.TypeDataModel {
    * @returns {Object} The (possibly mutated) source
    */
   static migrateData(source) {
-    if (source && typeof source === "object" && "group" in source) {
-      source.group = normalizeCategoryGroup(source.group);
+    if (source && typeof source === "object") {
+      if ("group" in source) source.group = normalizeCategoryGroup(source.group);
+      // Legacy dpCost triple { price1, price2, price3 } → slash string.
+      if (source.dpCost && typeof source.dpCost === "object") {
+        source.dpCost = dpCostFromTriple(source.dpCost);
+      }
     }
     return super.migrateData(source);
   }
@@ -105,6 +108,9 @@ export class SkillData extends foundry.abstract.TypeDataModel {
 
     const item = this.parent;
     const actor = item?.parent;
+
+    // Structured view of the DP cost for sheets/engines (ephemeral).
+    this.dpCostParsed = parseDPCost(this.dpCost);
 
     const totalBought = totalBoughtRanks(this.boughtByLevel);
     // Skills don't have freeRanks today; racial ranks are stored under
@@ -127,6 +133,9 @@ export class SkillData extends foundry.abstract.TypeDataModel {
     }
 
     this.totalRanks = totalRanks;
+    // In-memory alias for callers/macros that still read `system.rank`
+    // (the persisted field was dropped in 0.4.0 / R8).
+    this.rank = totalRanks;
     this.totalRankBonus = rankBonus;
     this.categoryBonus = categoryBonus;
     this.totalBonus = rankBonus + categoryBonus

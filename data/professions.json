@@ -52,437 +52,221 @@
     "categoryPrice": [
       {
         "name": "Armor · Heavy",
-        "dpCost": {
-          "price1": 2,
-          "price2": 2,
-          "price3": 2
-        }
+        "dpCost": "2/2/2"
       },
       {
         "name": "Armor · Light",
-        "dpCost": {
-          "price1": 1,
-          "price2": 1,
-          "price3": 1
-        }
+        "dpCost": "1/1/1"
       },
       {
         "name": "Armor · Medium",
-        "dpCost": {
-          "price1": 2,
-          "price2": 2,
-          "price3": 2
-        }
+        "dpCost": "2/2/2"
       },
       {
         "name": "Artistic · Active",
-        "dpCost": {
-          "price1": 2,
-          "price2": 5,
-          "price3": 0
-        }
+        "dpCost": "2/5"
       },
       {
         "name": "Artistic · Passive",
-        "dpCost": {
-          "price1": 2,
-          "price2": 5,
-          "price3": 0
-        }
+        "dpCost": "2/5"
       },
       {
         "name": "Athletic · Brawn",
-        "dpCost": {
-          "price1": 2,
-          "price2": 5,
-          "price3": 0
-        }
+        "dpCost": "2/5"
       },
       {
         "name": "Athletic · Endurance",
-        "dpCost": {
-          "price1": 2,
-          "price2": 6,
-          "price3": 0
-        }
+        "dpCost": "2/6"
       },
       {
         "name": "Athletic · Gymnastics",
-        "dpCost": {
-          "price1": 2,
-          "price2": 5,
-          "price3": 0
-        }
+        "dpCost": "2/5"
       },
       {
         "name": "Awareness · Perceptions",
-        "dpCost": {
-          "price1": 2,
-          "price2": 9,
-          "price3": 0
-        }
+        "dpCost": "2/9"
       },
       {
         "name": "Awareness · Searching",
-        "dpCost": {
-          "price1": 2,
-          "price2": 5,
-          "price3": 0
-        }
+        "dpCost": "2/5"
       },
       {
         "name": "Awareness · Senses",
-        "dpCost": {
-          "price1": 2,
-          "price2": 6,
-          "price3": 0
-        }
+        "dpCost": "2/6"
       },
       {
         "name": "Body Development",
-        "dpCost": {
-          "price1": 2,
-          "price2": 5,
-          "price3": 0
-        }
+        "dpCost": "2/5"
       },
       {
         "name": "Combat Maneuvers",
-        "dpCost": {
-          "price1": 3,
-          "price2": 9,
-          "price3": 0
-        }
+        "dpCost": "3/9"
       },
       {
         "name": "Communications",
-        "dpCost": {
-          "price1": 3,
-          "price2": 3,
-          "price3": 3
-        }
+        "dpCost": "3/3/3"
       },
       {
         "name": "Crafts",
-        "dpCost": {
-          "price1": 4,
-          "price2": 10,
-          "price3": 0
-        }
+        "dpCost": "4/10"
       },
       {
         "name": "Directed Spells",
-        "dpCost": {
-          "price1": 20,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "20"
       },
       {
         "name": "Influence",
-        "dpCost": {
-          "price1": 2,
-          "price2": 7,
-          "price3": 0
-        }
+        "dpCost": "2/7"
       },
       {
         "name": "Lore · General",
-        "dpCost": {
-          "price1": 1,
-          "price2": 3,
-          "price3": 0
-        }
+        "dpCost": "1/3"
       },
       {
         "name": "Lore · Magical",
-        "dpCost": {
-          "price1": 6,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "6"
       },
       {
         "name": "Lore · Obscure",
-        "dpCost": {
-          "price1": 3,
-          "price2": 7,
-          "price3": 0
-        }
+        "dpCost": "3/7"
       },
       {
         "name": "Lore · Technical",
-        "dpCost": {
-          "price1": 2,
-          "price2": 6,
-          "price3": 0
-        }
+        "dpCost": "2/6"
       },
       {
         "name": "Martial Arts · Striking",
-        "dpCost": {
-          "price1": 3,
-          "price2": 5,
-          "price3": 0
-        }
+        "dpCost": "3/5"
       },
       {
         "name": "Outdoor · Animal",
-        "dpCost": {
-          "price1": 1,
-          "price2": 4,
-          "price3": 0
-        }
+        "dpCost": "1/4"
       },
       {
         "name": "Outdoor · Environmental",
-        "dpCost": {
-          "price1": 2,
-          "price2": 5,
-          "price3": 0
-        }
+        "dpCost": "2/5"
       },
       {
         "name": "Power Awareness",
-        "dpCost": {
-          "price1": 8,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "8"
       },
       {
         "name": "Power Point Development",
-        "dpCost": {
-          "price1": 20,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "20"
       },
       {
         "name": "Science · Basic",
-        "dpCost": {
-          "price1": 3,
-          "price2": 6,
-          "price3": 0
-        }
+        "dpCost": "3/6"
       },
       {
         "name": "Science · Specialized",
-        "dpCost": {
-          "price1": 12,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "12"
       },
       {
         "name": "Self Control",
-        "dpCost": {
-          "price1": 2,
-          "price2": 6,
-          "price3": 0
-        }
+        "dpCost": "2/6"
       },
       {
         "name": "Subterfuge · Attack",
-        "dpCost": {
-          "price1": 6,
-          "price2": 10,
-          "price3": 0
-        }
+        "dpCost": "6/10"
       },
       {
         "name": "Subterfuge · Mechanics",
-        "dpCost": {
-          "price1": 3,
-          "price2": 8,
-          "price3": 0
-        }
+        "dpCost": "3/8"
       },
       {
         "name": "Subterfuge · Stealth",
-        "dpCost": {
-          "price1": 2,
-          "price2": 5,
-          "price3": 0
-        }
+        "dpCost": "2/5"
       },
       {
         "name": "Technical · General",
-        "dpCost": {
-          "price1": 3,
-          "price2": 7,
-          "price3": 0
-        }
+        "dpCost": "3/7"
       },
       {
         "name": "Technical · Professional",
-        "dpCost": {
-          "price1": 8,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "8"
       },
       {
         "name": "Technical · Vocational",
-        "dpCost": {
-          "price1": 5,
-          "price2": 12,
-          "price3": 0
-        }
+        "dpCost": "5/12"
       },
       {
         "name": "Urban",
-        "dpCost": {
-          "price1": 2,
-          "price2": 4,
-          "price3": 0
-        }
+        "dpCost": "2/4"
       },
       {
         "name": "Weapon · 1H Concussion",
-        "dpCost": {
-          "price1": 1,
-          "price2": 5,
-          "price3": 0
-        }
+        "dpCost": "1/5"
       },
       {
         "name": "Weapon · 1H Edged",
-        "dpCost": {
-          "price1": 2,
-          "price2": 5,
-          "price3": 0
-        }
+        "dpCost": "2/5"
       },
       {
         "name": "Weapon · 2Handed",
-        "dpCost": {
-          "price1": 2,
-          "price2": 7,
-          "price3": 0
-        }
+        "dpCost": "2/7"
       },
       {
         "name": "Weapon · Missile",
-        "dpCost": {
-          "price1": 2,
-          "price2": 7,
-          "price3": 0
-        }
+        "dpCost": "2/7"
       },
       {
         "name": "Weapon · Missile Artillery",
-        "dpCost": {
-          "price1": 2,
-          "price2": 7,
-          "price3": 0
-        }
+        "dpCost": "2/7"
       },
       {
         "name": "Weapon · Pole Arms",
-        "dpCost": {
-          "price1": 5,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "5"
       },
       {
         "name": "Weapon · Thrown",
-        "dpCost": {
-          "price1": 5,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "5"
       }
     ],
     "spellPrice": [
       {
         "name": "Base list (all)",
-        "dpCost": {
-          "price1": 0,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": ""
       },
       {
         "name": "Open list (1-5)",
-        "dpCost": {
-          "price1": 25,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "25"
       },
       {
         "name": "Open list (6-10)",
-        "dpCost": {
-          "price1": 50,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "50"
       },
       {
         "name": "Open list (11-15)",
-        "dpCost": {
-          "price1": 75,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "75"
       },
       {
         "name": "Open list (16-20)",
-        "dpCost": {
-          "price1": 100,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "100"
       },
       {
         "name": "Open list (21+)",
-        "dpCost": {
-          "price1": 125,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "125"
       },
       {
         "name": "Closed list (1-10)",
-        "dpCost": {
-          "price1": 40,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "40"
       },
       {
         "name": "Closed list (6-10)",
-        "dpCost": {
-          "price1": 80,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "80"
       },
       {
         "name": "Closed list (11-15)",
-        "dpCost": {
-          "price1": 120,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "120"
       },
       {
         "name": "Closed list (16-20)",
-        "dpCost": {
-          "price1": 160,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "160"
       },
       {
         "name": "Closed list (21+)",
-        "dpCost": {
-          "price1": 200,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "200"
       }
     ],
     "trainingPackages": [
@@ -603,437 +387,221 @@
     "categoryPrice": [
       {
         "name": "Armor · Heavy",
-        "dpCost": {
-          "price1": 4,
-          "price2": 4,
-          "price3": 4
-        }
+        "dpCost": "4/4/4"
       },
       {
         "name": "Armor · Light",
-        "dpCost": {
-          "price1": 2,
-          "price2": 2,
-          "price3": 2
-        }
+        "dpCost": "2/2/2"
       },
       {
         "name": "Armor · Medium",
-        "dpCost": {
-          "price1": 3,
-          "price2": 3,
-          "price3": 3
-        }
+        "dpCost": "3/3/3"
       },
       {
         "name": "Artistic · Active",
-        "dpCost": {
-          "price1": 2,
-          "price2": 4,
-          "price3": 0
-        }
+        "dpCost": "2/4"
       },
       {
         "name": "Artistic · Passive",
-        "dpCost": {
-          "price1": 2,
-          "price2": 5,
-          "price3": 0
-        }
+        "dpCost": "2/5"
       },
       {
         "name": "Athletic · Brawn",
-        "dpCost": {
-          "price1": 3,
-          "price2": 6,
-          "price3": 0
-        }
+        "dpCost": "3/6"
       },
       {
         "name": "Athletic · Endurance",
-        "dpCost": {
-          "price1": 2,
-          "price2": 7,
-          "price3": 0
-        }
+        "dpCost": "2/7"
       },
       {
         "name": "Athletic · Gymnastics",
-        "dpCost": {
-          "price1": 1,
-          "price2": 3,
-          "price3": 0
-        }
+        "dpCost": "1/3"
       },
       {
         "name": "Awareness · Perceptions",
-        "dpCost": {
-          "price1": 2,
-          "price2": 5,
-          "price3": 0
-        }
+        "dpCost": "2/5"
       },
       {
         "name": "Awareness · Searching",
-        "dpCost": {
-          "price1": 1,
-          "price2": 3,
-          "price3": 0
-        }
+        "dpCost": "1/3"
       },
       {
         "name": "Awareness · Senses",
-        "dpCost": {
-          "price1": 2,
-          "price2": 5,
-          "price3": 0
-        }
+        "dpCost": "2/5"
       },
       {
         "name": "Body Development",
-        "dpCost": {
-          "price1": 5,
-          "price2": 12,
-          "price3": 0
-        }
+        "dpCost": "5/12"
       },
       {
         "name": "Combat Maneuvers",
-        "dpCost": {
-          "price1": 4,
-          "price2": 12,
-          "price3": 0
-        }
+        "dpCost": "4/12"
       },
       {
         "name": "Communications",
-        "dpCost": {
-          "price1": 3,
-          "price2": 3,
-          "price3": 3
-        }
+        "dpCost": "3/3/3"
       },
       {
         "name": "Crafts",
-        "dpCost": {
-          "price1": 4,
-          "price2": 10,
-          "price3": 0
-        }
+        "dpCost": "4/10"
       },
       {
         "name": "Directed Spells",
-        "dpCost": {
-          "price1": 20,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "20"
       },
       {
         "name": "Influence",
-        "dpCost": {
-          "price1": 2,
-          "price2": 5,
-          "price3": 0
-        }
+        "dpCost": "2/5"
       },
       {
         "name": "Lore · General",
-        "dpCost": {
-          "price1": 1,
-          "price2": 3,
-          "price3": 0
-        }
+        "dpCost": "1/3"
       },
       {
         "name": "Lore · Magical",
-        "dpCost": {
-          "price1": 5,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "5"
       },
       {
         "name": "Lore · Obscure",
-        "dpCost": {
-          "price1": 3,
-          "price2": 7,
-          "price3": 0
-        }
+        "dpCost": "3/7"
       },
       {
         "name": "Lore · Technical",
-        "dpCost": {
-          "price1": 2,
-          "price2": 4,
-          "price3": 0
-        }
+        "dpCost": "2/4"
       },
       {
         "name": "Martial Arts · Striking",
-        "dpCost": {
-          "price1": 3,
-          "price2": 7,
-          "price3": 0
-        }
+        "dpCost": "3/7"
       },
       {
         "name": "Outdoor · Animal",
-        "dpCost": {
-          "price1": 2,
-          "price2": 5,
-          "price3": 0
-        }
+        "dpCost": "2/5"
       },
       {
         "name": "Outdoor · Environmental",
-        "dpCost": {
-          "price1": 2,
-          "price2": 6,
-          "price3": 0
-        }
+        "dpCost": "2/6"
       },
       {
         "name": "Power Awareness",
-        "dpCost": {
-          "price1": 6,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "6"
       },
       {
         "name": "Power Point Development",
-        "dpCost": {
-          "price1": 15,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "15"
       },
       {
         "name": "Science · Basic",
-        "dpCost": {
-          "price1": 3,
-          "price2": 6,
-          "price3": 0
-        }
+        "dpCost": "3/6"
       },
       {
         "name": "Science · Specialized",
-        "dpCost": {
-          "price1": 12,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "12"
       },
       {
         "name": "Self Control",
-        "dpCost": {
-          "price1": 2,
-          "price2": 6,
-          "price3": 0
-        }
+        "dpCost": "2/6"
       },
       {
         "name": "Subterfuge · Attack",
-        "dpCost": {
-          "price1": 2,
-          "price2": 6,
-          "price3": 0
-        }
+        "dpCost": "2/6"
       },
       {
         "name": "Subterfuge · Mechanics",
-        "dpCost": {
-          "price1": 1,
-          "price2": 3,
-          "price3": 0
-        }
+        "dpCost": "1/3"
       },
       {
         "name": "Subterfuge · Stealth",
-        "dpCost": {
-          "price1": 1,
-          "price2": 3,
-          "price3": 0
-        }
+        "dpCost": "1/3"
       },
       {
         "name": "Technical · General",
-        "dpCost": {
-          "price1": 3,
-          "price2": 7,
-          "price3": 0
-        }
+        "dpCost": "3/7"
       },
       {
         "name": "Technical · Professional",
-        "dpCost": {
-          "price1": 8,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "8"
       },
       {
         "name": "Technical · Vocational",
-        "dpCost": {
-          "price1": 5,
-          "price2": 12,
-          "price3": 0
-        }
+        "dpCost": "5/12"
       },
       {
         "name": "Urban",
-        "dpCost": {
-          "price1": 1,
-          "price2": 2,
-          "price3": 0
-        }
+        "dpCost": "1/2"
       },
       {
         "name": "Weapon · 1H Concussion",
-        "dpCost": {
-          "price1": 2,
-          "price2": 7,
-          "price3": 0
-        }
+        "dpCost": "2/7"
       },
       {
         "name": "Weapon · 1H Edged",
-        "dpCost": {
-          "price1": 3,
-          "price2": 8,
-          "price3": 0
-        }
+        "dpCost": "3/8"
       },
       {
         "name": "Weapon · 2Handed",
-        "dpCost": {
-          "price1": 4,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "4"
       },
       {
         "name": "Weapon · Missile",
-        "dpCost": {
-          "price1": 4,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "4"
       },
       {
         "name": "Weapon · Missile Artillery",
-        "dpCost": {
-          "price1": 4,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "4"
       },
       {
         "name": "Weapon · Pole Arms",
-        "dpCost": {
-          "price1": 6,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "6"
       },
       {
         "name": "Weapon · Thrown",
-        "dpCost": {
-          "price1": 6,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "6"
       }
     ],
     "spellPrice": [
       {
         "name": "Base list (all)",
-        "dpCost": {
-          "price1": 0,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": ""
       },
       {
         "name": "Open list (1-5)",
-        "dpCost": {
-          "price1": 18,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "18"
       },
       {
         "name": "Open list (6-10)",
-        "dpCost": {
-          "price1": 36,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "36"
       },
       {
         "name": "Open list (11-15)",
-        "dpCost": {
-          "price1": 54,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "54"
       },
       {
         "name": "Open list (16-20)",
-        "dpCost": {
-          "price1": 72,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "72"
       },
       {
         "name": "Open list (21+)",
-        "dpCost": {
-          "price1": 90,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "90"
       },
       {
         "name": "Closed list (1-10)",
-        "dpCost": {
-          "price1": 35,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "35"
       },
       {
         "name": "Closed list (6-10)",
-        "dpCost": {
-          "price1": 70,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "70"
       },
       {
         "name": "Closed list (11-15)",
-        "dpCost": {
-          "price1": 105,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "105"
       },
       {
         "name": "Closed list (16-20)",
-        "dpCost": {
-          "price1": 140,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "140"
       },
       {
         "name": "Closed list (21+)",
-        "dpCost": {
-          "price1": 175,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "175"
       }
     ],
     "trainingPackages": [
@@ -1158,437 +726,221 @@
     "categoryPrice": [
       {
         "name": "Armor · Heavy",
-        "dpCost": {
-          "price1": 3,
-          "price2": 3,
-          "price3": 3
-        }
+        "dpCost": "3/3/3"
       },
       {
         "name": "Armor · Light",
-        "dpCost": {
-          "price1": 1,
-          "price2": 1,
-          "price3": 1
-        }
+        "dpCost": "1/1/1"
       },
       {
         "name": "Armor · Medium",
-        "dpCost": {
-          "price1": 2,
-          "price2": 2,
-          "price3": 2
-        }
+        "dpCost": "2/2/2"
       },
       {
         "name": "Artistic · Active",
-        "dpCost": {
-          "price1": 2,
-          "price2": 4,
-          "price3": 0
-        }
+        "dpCost": "2/4"
       },
       {
         "name": "Artistic · Passive",
-        "dpCost": {
-          "price1": 2,
-          "price2": 5,
-          "price3": 0
-        }
+        "dpCost": "2/5"
       },
       {
         "name": "Athletic · Brawn",
-        "dpCost": {
-          "price1": 2,
-          "price2": 6,
-          "price3": 0
-        }
+        "dpCost": "2/6"
       },
       {
         "name": "Athletic · Endurance",
-        "dpCost": {
-          "price1": 2,
-          "price2": 5,
-          "price3": 0
-        }
+        "dpCost": "2/5"
       },
       {
         "name": "Athletic · Gymnastics",
-        "dpCost": {
-          "price1": 1,
-          "price2": 5,
-          "price3": 0
-        }
+        "dpCost": "1/5"
       },
       {
         "name": "Awareness · Perceptions",
-        "dpCost": {
-          "price1": 2,
-          "price2": 6,
-          "price3": 0
-        }
+        "dpCost": "2/6"
       },
       {
         "name": "Awareness · Searching",
-        "dpCost": {
-          "price1": 1,
-          "price2": 5,
-          "price3": 0
-        }
+        "dpCost": "1/5"
       },
       {
         "name": "Awareness · Senses",
-        "dpCost": {
-          "price1": 2,
-          "price2": 6,
-          "price3": 0
-        }
+        "dpCost": "2/6"
       },
       {
         "name": "Body Development",
-        "dpCost": {
-          "price1": 3,
-          "price2": 9,
-          "price3": 0
-        }
+        "dpCost": "3/9"
       },
       {
         "name": "Combat Maneuvers",
-        "dpCost": {
-          "price1": 4,
-          "price2": 10,
-          "price3": 0
-        }
+        "dpCost": "4/10"
       },
       {
         "name": "Communications",
-        "dpCost": {
-          "price1": 3,
-          "price2": 3,
-          "price3": 3
-        }
+        "dpCost": "3/3/3"
       },
       {
         "name": "Crafts",
-        "dpCost": {
-          "price1": 4,
-          "price2": 10,
-          "price3": 0
-        }
+        "dpCost": "4/10"
       },
       {
         "name": "Directed Spells",
-        "dpCost": {
-          "price1": 20,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "20"
       },
       {
         "name": "Influence",
-        "dpCost": {
-          "price1": 2,
-          "price2": 5,
-          "price3": 0
-        }
+        "dpCost": "2/5"
       },
       {
         "name": "Lore · General",
-        "dpCost": {
-          "price1": 1,
-          "price2": 3,
-          "price3": 0
-        }
+        "dpCost": "1/3"
       },
       {
         "name": "Lore · Magical",
-        "dpCost": {
-          "price1": 4,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "4"
       },
       {
         "name": "Lore · Obscure",
-        "dpCost": {
-          "price1": 3,
-          "price2": 7,
-          "price3": 0
-        }
+        "dpCost": "3/7"
       },
       {
         "name": "Lore · Technical",
-        "dpCost": {
-          "price1": 2,
-          "price2": 5,
-          "price3": 0
-        }
+        "dpCost": "2/5"
       },
       {
         "name": "Martial Arts · Striking",
-        "dpCost": {
-          "price1": 3,
-          "price2": 7,
-          "price3": 0
-        }
+        "dpCost": "3/7"
       },
       {
         "name": "Outdoor · Animal",
-        "dpCost": {
-          "price1": 1,
-          "price2": 5,
-          "price3": 0
-        }
+        "dpCost": "1/5"
       },
       {
         "name": "Outdoor · Environmental",
-        "dpCost": {
-          "price1": 2,
-          "price2": 4,
-          "price3": 0
-        }
+        "dpCost": "2/4"
       },
       {
         "name": "Power Awareness",
-        "dpCost": {
-          "price1": 7,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "7"
       },
       {
         "name": "Power Point Development",
-        "dpCost": {
-          "price1": 12,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "12"
       },
       {
         "name": "Science · Basic",
-        "dpCost": {
-          "price1": 3,
-          "price2": 6,
-          "price3": 0
-        }
+        "dpCost": "3/6"
       },
       {
         "name": "Science · Specialized",
-        "dpCost": {
-          "price1": 12,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "12"
       },
       {
         "name": "Self Control",
-        "dpCost": {
-          "price1": 2,
-          "price2": 6,
-          "price3": 0
-        }
+        "dpCost": "2/6"
       },
       {
         "name": "Subterfuge · Attack",
-        "dpCost": {
-          "price1": 4,
-          "price2": 8,
-          "price3": 0
-        }
+        "dpCost": "4/8"
       },
       {
         "name": "Subterfuge · Mechanics",
-        "dpCost": {
-          "price1": 2,
-          "price2": 5,
-          "price3": 0
-        }
+        "dpCost": "2/5"
       },
       {
         "name": "Subterfuge · Stealth",
-        "dpCost": {
-          "price1": 1,
-          "price2": 3,
-          "price3": 0
-        }
+        "dpCost": "1/3"
       },
       {
         "name": "Technical · General",
-        "dpCost": {
-          "price1": 3,
-          "price2": 7,
-          "price3": 0
-        }
+        "dpCost": "3/7"
       },
       {
         "name": "Technical · Professional",
-        "dpCost": {
-          "price1": 8,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "8"
       },
       {
         "name": "Technical · Vocational",
-        "dpCost": {
-          "price1": 5,
-          "price2": 12,
-          "price3": 0
-        }
+        "dpCost": "5/12"
       },
       {
         "name": "Urban",
-        "dpCost": {
-          "price1": 1,
-          "price2": 3,
-          "price3": 0
-        }
+        "dpCost": "1/3"
       },
       {
         "name": "Weapon · 1H Concussion",
-        "dpCost": {
-          "price1": 2,
-          "price2": 5,
-          "price3": 0
-        }
+        "dpCost": "2/5"
       },
       {
         "name": "Weapon · 1H Edged",
-        "dpCost": {
-          "price1": 3,
-          "price2": 8,
-          "price3": 0
-        }
+        "dpCost": "3/8"
       },
       {
         "name": "Weapon · 2Handed",
-        "dpCost": {
-          "price1": 3,
-          "price2": 9,
-          "price3": 0
-        }
+        "dpCost": "3/9"
       },
       {
         "name": "Weapon · Missile",
-        "dpCost": {
-          "price1": 3,
-          "price2": 9,
-          "price3": 0
-        }
+        "dpCost": "3/9"
       },
       {
         "name": "Weapon · Missile Artillery",
-        "dpCost": {
-          "price1": 3,
-          "price2": 9,
-          "price3": 0
-        }
+        "dpCost": "3/9"
       },
       {
         "name": "Weapon · Pole Arms",
-        "dpCost": {
-          "price1": 6,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "6"
       },
       {
         "name": "Weapon · Thrown",
-        "dpCost": {
-          "price1": 6,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "6"
       }
     ],
     "spellPrice": [
       {
         "name": "Base list (all)",
-        "dpCost": {
-          "price1": 0,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": ""
       },
       {
         "name": "Open list (1-5)",
-        "dpCost": {
-          "price1": 15,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "15"
       },
       {
         "name": "Open list (6-10)",
-        "dpCost": {
-          "price1": 30,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "30"
       },
       {
         "name": "Open list (11-15)",
-        "dpCost": {
-          "price1": 45,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "45"
       },
       {
         "name": "Open list (16-20)",
-        "dpCost": {
-          "price1": 60,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "60"
       },
       {
         "name": "Open list (21+)",
-        "dpCost": {
-          "price1": 75,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "75"
       },
       {
         "name": "Closed list (1-10)",
-        "dpCost": {
-          "price1": 25,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "25"
       },
       {
         "name": "Closed list (6-10)",
-        "dpCost": {
-          "price1": 50,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "50"
       },
       {
         "name": "Closed list (11-15)",
-        "dpCost": {
-          "price1": 75,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "75"
       },
       {
         "name": "Closed list (16-20)",
-        "dpCost": {
-          "price1": 100,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "100"
       },
       {
         "name": "Closed list (21+)",
-        "dpCost": {
-          "price1": 125,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "125"
       }
     ],
     "trainingPackages": [
@@ -1697,429 +1049,217 @@
     "categoryPrice": [
       {
         "name": "Armor · Heavy",
-        "dpCost": {
-          "price1": 11,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "11"
       },
       {
         "name": "Armor · Light",
-        "dpCost": {
-          "price1": 9,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "9"
       },
       {
         "name": "Armor · Medium",
-        "dpCost": {
-          "price1": 10,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "10"
       },
       {
         "name": "Artistic · Active",
-        "dpCost": {
-          "price1": 2,
-          "price2": 5,
-          "price3": 0
-        }
+        "dpCost": "2/5"
       },
       {
         "name": "Artistic · Passive",
-        "dpCost": {
-          "price1": 2,
-          "price2": 5,
-          "price3": 0
-        }
+        "dpCost": "2/5"
       },
       {
         "name": "Athletic · Brawn",
-        "dpCost": {
-          "price1": 6,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "6"
       },
       {
         "name": "Athletic · Endurance",
-        "dpCost": {
-          "price1": 3,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "3"
       },
       {
         "name": "Athletic · Gymnastics",
-        "dpCost": {
-          "price1": 3,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "3"
       },
       {
         "name": "Awareness · Perceptions",
-        "dpCost": {
-          "price1": 6,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "6"
       },
       {
         "name": "Awareness · Searching",
-        "dpCost": {
-          "price1": 3,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "3"
       },
       {
         "name": "Awareness · Senses",
-        "dpCost": {
-          "price1": 3,
-          "price2": 7,
-          "price3": 0
-        }
+        "dpCost": "3/7"
       },
       {
         "name": "Body Development",
-        "dpCost": {
-          "price1": 15,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "15"
       },
       {
         "name": "Combat Maneuvers",
-        "dpCost": {
-          "price1": 18,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "18"
       },
       {
         "name": "Communications",
-        "dpCost": {
-          "price1": 2,
-          "price2": 2,
-          "price3": 2
-        }
+        "dpCost": "2/2/2"
       },
       {
         "name": "Crafts",
-        "dpCost": {
-          "price1": 4,
-          "price2": 10,
-          "price3": 0
-        }
+        "dpCost": "4/10"
       },
       {
         "name": "Directed Spells",
-        "dpCost": {
-          "price1": 2,
-          "price2": 5,
-          "price3": 0
-        }
+        "dpCost": "2/5"
       },
       {
         "name": "Influence",
-        "dpCost": {
-          "price1": 2,
-          "price2": 6,
-          "price3": 0
-        }
+        "dpCost": "2/6"
       },
       {
         "name": "Lore · General",
-        "dpCost": {
-          "price1": 1,
-          "price2": 3,
-          "price3": 0
-        }
+        "dpCost": "1/3"
       },
       {
         "name": "Lore · Magical",
-        "dpCost": {
-          "price1": 1,
-          "price2": 4,
-          "price3": 0
-        }
+        "dpCost": "1/4"
       },
       {
         "name": "Lore · Obscure",
-        "dpCost": {
-          "price1": 3,
-          "price2": 7,
-          "price3": 0
-        }
+        "dpCost": "3/7"
       },
       {
         "name": "Lore · Technical",
-        "dpCost": {
-          "price1": 2,
-          "price2": 6,
-          "price3": 0
-        }
+        "dpCost": "2/6"
       },
       {
         "name": "Martial Arts · Striking",
-        "dpCost": {
-          "price1": 9,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "9"
       },
       {
         "name": "Outdoor · Animal",
-        "dpCost": {
-          "price1": 3,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "3"
       },
       {
         "name": "Outdoor · Environmental",
-        "dpCost": {
-          "price1": 3,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "3"
       },
       {
         "name": "Power Awareness",
-        "dpCost": {
-          "price1": 1,
-          "price2": 4,
-          "price3": 0
-        }
+        "dpCost": "1/4"
       },
       {
         "name": "Power Point Development",
-        "dpCost": {
-          "price1": 4,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "4"
       },
       {
         "name": "Science · Basic",
-        "dpCost": {
-          "price1": 1,
-          "price2": 4,
-          "price3": 0
-        }
+        "dpCost": "1/4"
       },
       {
         "name": "Science · Specialized",
-        "dpCost": {
-          "price1": 6,
-          "price2": 14,
-          "price3": 0
-        }
+        "dpCost": "6/14"
       },
       {
         "name": "Self Control",
-        "dpCost": {
-          "price1": 6,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "6"
       },
       {
         "name": "Subterfuge · Attack",
-        "dpCost": {
-          "price1": 15,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "15"
       },
       {
         "name": "Subterfuge · Mechanics",
-        "dpCost": {
-          "price1": 7,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "7"
       },
       {
         "name": "Subterfuge · Stealth",
-        "dpCost": {
-          "price1": 5,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "5"
       },
       {
         "name": "Technical · General",
-        "dpCost": {
-          "price1": 3,
-          "price2": 7,
-          "price3": 0
-        }
+        "dpCost": "3/7"
       },
       {
         "name": "Technical · Professional",
-        "dpCost": {
-          "price1": 8,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "8"
       },
       {
         "name": "Technical · Vocational",
-        "dpCost": {
-          "price1": 5,
-          "price2": 12,
-          "price3": 0
-        }
+        "dpCost": "5/12"
       },
       {
         "name": "Urban",
-        "dpCost": {
-          "price1": 3,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "3"
       },
       {
         "name": "Weapon · 1H Concussion",
-        "dpCost": {
-          "price1": 9,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "9"
       },
       {
         "name": "Weapon · 1H Edged",
-        "dpCost": {
-          "price1": 20,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "20"
       },
       {
         "name": "Weapon · 2Handed",
-        "dpCost": {
-          "price1": 20,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "20"
       },
       {
         "name": "Weapon · Missile",
-        "dpCost": {
-          "price1": 20,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "20"
       },
       {
         "name": "Weapon · Missile Artillery",
-        "dpCost": {
-          "price1": 20,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "20"
       },
       {
         "name": "Weapon · Pole Arms",
-        "dpCost": {
-          "price1": 20,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "20"
       },
       {
         "name": "Weapon · Thrown",
-        "dpCost": {
-          "price1": 20,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "20"
       }
     ],
     "spellPrice": [
       {
         "name": "Base list (all)",
-        "dpCost": {
-          "price1": 3,
-          "price2": 3,
-          "price3": 3
-        }
+        "dpCost": "3/3/3"
       },
       {
         "name": "Open list (1-10)",
-        "dpCost": {
-          "price1": 4,
-          "price2": 4,
-          "price3": 4
-        }
+        "dpCost": "4/4/4"
       },
       {
         "name": "Open list (11-15)",
-        "dpCost": {
-          "price1": 4,
-          "price2": 4,
-          "price3": 4
-        }
+        "dpCost": "4/4/4"
       },
       {
         "name": "Open list (16-20)",
-        "dpCost": {
-          "price1": 4,
-          "price2": 4,
-          "price3": 4
-        }
+        "dpCost": "4/4/4"
       },
       {
         "name": "Open list (21+)",
-        "dpCost": {
-          "price1": 6,
-          "price2": 6,
-          "price3": 6
-        }
+        "dpCost": "6/6/6"
       },
       {
         "name": "Closed list (1-10)",
-        "dpCost": {
-          "price1": 4,
-          "price2": 4,
-          "price3": 4
-        }
+        "dpCost": "4/4/4"
       },
       {
         "name": "Closed list (6-10)",
-        "dpCost": {
-          "price1": 4,
-          "price2": 4,
-          "price3": 4
-        }
+        "dpCost": "4/4/4"
       },
       {
         "name": "Closed list (11-15)",
-        "dpCost": {
-          "price1": 4,
-          "price2": 4,
-          "price3": 4
-        }
+        "dpCost": "4/4/4"
       },
       {
         "name": "Closed list (16-20)",
-        "dpCost": {
-          "price1": 4,
-          "price2": 4,
-          "price3": 4
-        }
+        "dpCost": "4/4/4"
       },
       {
         "name": "Closed list (21+)",
-        "dpCost": {
-          "price1": 8,
-          "price2": 8,
-          "price3": 0
-        }
+        "dpCost": "8/8"
       }
     ],
     "trainingPackages": [
@@ -2248,429 +1388,217 @@
     "categoryPrice": [
       {
         "name": "Armor · Heavy",
-        "dpCost": {
-          "price1": 11,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "11"
       },
       {
         "name": "Armor · Light",
-        "dpCost": {
-          "price1": 2,
-          "price2": 2,
-          "price3": 2
-        }
+        "dpCost": "2/2/2"
       },
       {
         "name": "Armor · Medium",
-        "dpCost": {
-          "price1": 10,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "10"
       },
       {
         "name": "Artistic · Active",
-        "dpCost": {
-          "price1": 2,
-          "price2": 5,
-          "price3": 0
-        }
+        "dpCost": "2/5"
       },
       {
         "name": "Artistic · Passive",
-        "dpCost": {
-          "price1": 2,
-          "price2": 5,
-          "price3": 0
-        }
+        "dpCost": "2/5"
       },
       {
         "name": "Athletic · Brawn",
-        "dpCost": {
-          "price1": 5,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "5"
       },
       {
         "name": "Athletic · Endurance",
-        "dpCost": {
-          "price1": 3,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "3"
       },
       {
         "name": "Athletic · Gymnastics",
-        "dpCost": {
-          "price1": 3,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "3"
       },
       {
         "name": "Awareness · Perceptions",
-        "dpCost": {
-          "price1": 6,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "6"
       },
       {
         "name": "Awareness · Searching",
-        "dpCost": {
-          "price1": 2,
-          "price2": 6,
-          "price3": 0
-        }
+        "dpCost": "2/6"
       },
       {
         "name": "Awareness · Senses",
-        "dpCost": {
-          "price1": 3,
-          "price2": 7,
-          "price3": 0
-        }
+        "dpCost": "3/7"
       },
       {
         "name": "Body Development",
-        "dpCost": {
-          "price1": 10,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "10"
       },
       {
         "name": "Combat Maneuvers",
-        "dpCost": {
-          "price1": 10,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "10"
       },
       {
         "name": "Communications",
-        "dpCost": {
-          "price1": 2,
-          "price2": 2,
-          "price3": 2
-        }
+        "dpCost": "2/2/2"
       },
       {
         "name": "Crafts",
-        "dpCost": {
-          "price1": 4,
-          "price2": 10,
-          "price3": 0
-        }
+        "dpCost": "4/10"
       },
       {
         "name": "Directed Spells",
-        "dpCost": {
-          "price1": 3,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "3"
       },
       {
         "name": "Influence",
-        "dpCost": {
-          "price1": 2,
-          "price2": 4,
-          "price3": 0
-        }
+        "dpCost": "2/4"
       },
       {
         "name": "Lore · General",
-        "dpCost": {
-          "price1": 1,
-          "price2": 3,
-          "price3": 0
-        }
+        "dpCost": "1/3"
       },
       {
         "name": "Lore · Magical",
-        "dpCost": {
-          "price1": 2,
-          "price2": 4,
-          "price3": 0
-        }
+        "dpCost": "2/4"
       },
       {
         "name": "Lore · Obscure",
-        "dpCost": {
-          "price1": 3,
-          "price2": 7,
-          "price3": 0
-        }
+        "dpCost": "3/7"
       },
       {
         "name": "Lore · Technical",
-        "dpCost": {
-          "price1": 2,
-          "price2": 6,
-          "price3": 0
-        }
+        "dpCost": "2/6"
       },
       {
         "name": "Martial Arts · Striking",
-        "dpCost": {
-          "price1": 6,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "6"
       },
       {
         "name": "Outdoor · Animal",
-        "dpCost": {
-          "price1": 3,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "3"
       },
       {
         "name": "Outdoor · Environmental",
-        "dpCost": {
-          "price1": 2,
-          "price2": 7,
-          "price3": 0
-        }
+        "dpCost": "2/7"
       },
       {
         "name": "Power Awareness",
-        "dpCost": {
-          "price1": 2,
-          "price2": 5,
-          "price3": 0
-        }
+        "dpCost": "2/5"
       },
       {
         "name": "Power Point Development",
-        "dpCost": {
-          "price1": 4,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "4"
       },
       {
         "name": "Science · Basic",
-        "dpCost": {
-          "price1": 1,
-          "price2": 4,
-          "price3": 0
-        }
+        "dpCost": "1/4"
       },
       {
         "name": "Science · Specialized",
-        "dpCost": {
-          "price1": 6,
-          "price2": 14,
-          "price3": 0
-        }
+        "dpCost": "6/14"
       },
       {
         "name": "Self Control",
-        "dpCost": {
-          "price1": 5,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "5"
       },
       {
         "name": "Subterfuge · Attack",
-        "dpCost": {
-          "price1": 15,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "15"
       },
       {
         "name": "Subterfuge · Mechanics",
-        "dpCost": {
-          "price1": 7,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "7"
       },
       {
         "name": "Subterfuge · Stealth",
-        "dpCost": {
-          "price1": 5,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "5"
       },
       {
         "name": "Technical · General",
-        "dpCost": {
-          "price1": 3,
-          "price2": 7,
-          "price3": 0
-        }
+        "dpCost": "3/7"
       },
       {
         "name": "Technical · Professional",
-        "dpCost": {
-          "price1": 8,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "8"
       },
       {
         "name": "Technical · Vocational",
-        "dpCost": {
-          "price1": 5,
-          "price2": 12,
-          "price3": 0
-        }
+        "dpCost": "5/12"
       },
       {
         "name": "Urban",
-        "dpCost": {
-          "price1": 3,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "3"
       },
       {
         "name": "Weapon · 1H Concussion",
-        "dpCost": {
-          "price1": 6,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "6"
       },
       {
         "name": "Weapon · 1H Edged",
-        "dpCost": {
-          "price1": 7,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "7"
       },
       {
         "name": "Weapon · 2Handed",
-        "dpCost": {
-          "price1": 9,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "9"
       },
       {
         "name": "Weapon · Missile",
-        "dpCost": {
-          "price1": 9,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "9"
       },
       {
         "name": "Weapon · Missile Artillery",
-        "dpCost": {
-          "price1": 9,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "9"
       },
       {
         "name": "Weapon · Pole Arms",
-        "dpCost": {
-          "price1": 20,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "20"
       },
       {
         "name": "Weapon · Thrown",
-        "dpCost": {
-          "price1": 20,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "20"
       }
     ],
     "spellPrice": [
       {
         "name": "Base list (all)",
-        "dpCost": {
-          "price1": 3,
-          "price2": 3,
-          "price3": 3
-        }
+        "dpCost": "3/3/3"
       },
       {
         "name": "Open list (1-10)",
-        "dpCost": {
-          "price1": 4,
-          "price2": 4,
-          "price3": 4
-        }
+        "dpCost": "4/4/4"
       },
       {
         "name": "Open list (11-15)",
-        "dpCost": {
-          "price1": 4,
-          "price2": 4,
-          "price3": 4
-        }
+        "dpCost": "4/4/4"
       },
       {
         "name": "Open list (16-20)",
-        "dpCost": {
-          "price1": 4,
-          "price2": 4,
-          "price3": 4
-        }
+        "dpCost": "4/4/4"
       },
       {
         "name": "Open list (21+)",
-        "dpCost": {
-          "price1": 6,
-          "price2": 6,
-          "price3": 6
-        }
+        "dpCost": "6/6/6"
       },
       {
         "name": "Closed list (1-10)",
-        "dpCost": {
-          "price1": 4,
-          "price2": 4,
-          "price3": 4
-        }
+        "dpCost": "4/4/4"
       },
       {
         "name": "Closed list (6-10)",
-        "dpCost": {
-          "price1": 4,
-          "price2": 4,
-          "price3": 4
-        }
+        "dpCost": "4/4/4"
       },
       {
         "name": "Closed list (11-15)",
-        "dpCost": {
-          "price1": 4,
-          "price2": 4,
-          "price3": 4
-        }
+        "dpCost": "4/4/4"
       },
       {
         "name": "Closed list (16-20)",
-        "dpCost": {
-          "price1": 4,
-          "price2": 4,
-          "price3": 4
-        }
+        "dpCost": "4/4/4"
       },
       {
         "name": "Closed list (21+)",
-        "dpCost": {
-          "price1": 8,
-          "price2": 8,
-          "price3": 0
-        }
+        "dpCost": "8/8"
       }
     ],
     "trainingPackages": [
@@ -2794,429 +1722,217 @@
     "categoryPrice": [
       {
         "name": "Armor · Heavy",
-        "dpCost": {
-          "price1": 7,
-          "price2": 7,
-          "price3": 7
-        }
+        "dpCost": "7/7/7"
       },
       {
         "name": "Armor · Light",
-        "dpCost": {
-          "price1": 4,
-          "price2": 4,
-          "price3": 4
-        }
+        "dpCost": "4/4/4"
       },
       {
         "name": "Armor · Medium",
-        "dpCost": {
-          "price1": 6,
-          "price2": 6,
-          "price3": 6
-        }
+        "dpCost": "6/6/6"
       },
       {
         "name": "Artistic · Active",
-        "dpCost": {
-          "price1": 2,
-          "price2": 5,
-          "price3": 0
-        }
+        "dpCost": "2/5"
       },
       {
         "name": "Artistic · Passive",
-        "dpCost": {
-          "price1": 2,
-          "price2": 5,
-          "price3": 0
-        }
+        "dpCost": "2/5"
       },
       {
         "name": "Athletic · Brawn",
-        "dpCost": {
-          "price1": 5,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "5"
       },
       {
         "name": "Athletic · Endurance",
-        "dpCost": {
-          "price1": 3,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "3"
       },
       {
         "name": "Athletic · Gymnastics",
-        "dpCost": {
-          "price1": 3,
-          "price2": 9,
-          "price3": 0
-        }
+        "dpCost": "3/9"
       },
       {
         "name": "Awareness · Perceptions",
-        "dpCost": {
-          "price1": 5,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "5"
       },
       {
         "name": "Awareness · Searching",
-        "dpCost": {
-          "price1": 3,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "3"
       },
       {
         "name": "Awareness · Senses",
-        "dpCost": {
-          "price1": 3,
-          "price2": 7,
-          "price3": 0
-        }
+        "dpCost": "3/7"
       },
       {
         "name": "Body Development",
-        "dpCost": {
-          "price1": 12,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "12"
       },
       {
         "name": "Combat Maneuvers",
-        "dpCost": {
-          "price1": 14,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "14"
       },
       {
         "name": "Communications",
-        "dpCost": {
-          "price1": 2,
-          "price2": 2,
-          "price3": 2
-        }
+        "dpCost": "2/2/2"
       },
       {
         "name": "Crafts",
-        "dpCost": {
-          "price1": 4,
-          "price2": 10,
-          "price3": 0
-        }
+        "dpCost": "4/10"
       },
       {
         "name": "Directed Spells",
-        "dpCost": {
-          "price1": 2,
-          "price2": 6,
-          "price3": 0
-        }
+        "dpCost": "2/6"
       },
       {
         "name": "Influence",
-        "dpCost": {
-          "price1": 2,
-          "price2": 6,
-          "price3": 0
-        }
+        "dpCost": "2/6"
       },
       {
         "name": "Lore · General",
-        "dpCost": {
-          "price1": 1,
-          "price2": 3,
-          "price3": 0
-        }
+        "dpCost": "1/3"
       },
       {
         "name": "Lore · Magical",
-        "dpCost": {
-          "price1": 2,
-          "price2": 4,
-          "price3": 0
-        }
+        "dpCost": "2/4"
       },
       {
         "name": "Lore · Obscure",
-        "dpCost": {
-          "price1": 3,
-          "price2": 7,
-          "price3": 0
-        }
+        "dpCost": "3/7"
       },
       {
         "name": "Lore · Technical",
-        "dpCost": {
-          "price1": 2,
-          "price2": 6,
-          "price3": 0
-        }
+        "dpCost": "2/6"
       },
       {
         "name": "Martial Arts · Striking",
-        "dpCost": {
-          "price1": 3,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "3"
       },
       {
         "name": "Outdoor · Animal",
-        "dpCost": {
-          "price1": 3,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "3"
       },
       {
         "name": "Outdoor · Environmental",
-        "dpCost": {
-          "price1": 3,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "3"
       },
       {
         "name": "Power Awareness",
-        "dpCost": {
-          "price1": 2,
-          "price2": 5,
-          "price3": 0
-        }
+        "dpCost": "2/5"
       },
       {
         "name": "Power Point Development",
-        "dpCost": {
-          "price1": 4,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "4"
       },
       {
         "name": "Science · Basic",
-        "dpCost": {
-          "price1": 1,
-          "price2": 4,
-          "price3": 0
-        }
+        "dpCost": "1/4"
       },
       {
         "name": "Science · Specialized",
-        "dpCost": {
-          "price1": 6,
-          "price2": 14,
-          "price3": 0
-        }
+        "dpCost": "6/14"
       },
       {
         "name": "Self Control",
-        "dpCost": {
-          "price1": 3,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "3"
       },
       {
         "name": "Subterfuge · Attack",
-        "dpCost": {
-          "price1": 15,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "15"
       },
       {
         "name": "Subterfuge · Mechanics",
-        "dpCost": {
-          "price1": 7,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "7"
       },
       {
         "name": "Subterfuge · Stealth",
-        "dpCost": {
-          "price1": 5,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "5"
       },
       {
         "name": "Technical · General",
-        "dpCost": {
-          "price1": 3,
-          "price2": 7,
-          "price3": 0
-        }
+        "dpCost": "3/7"
       },
       {
         "name": "Technical · Professional",
-        "dpCost": {
-          "price1": 8,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "8"
       },
       {
         "name": "Technical · Vocational",
-        "dpCost": {
-          "price1": 5,
-          "price2": 12,
-          "price3": 0
-        }
+        "dpCost": "5/12"
       },
       {
         "name": "Urban",
-        "dpCost": {
-          "price1": 3,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "3"
       },
       {
         "name": "Weapon · 1H Concussion",
-        "dpCost": {
-          "price1": 6,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "6"
       },
       {
         "name": "Weapon · 1H Edged",
-        "dpCost": {
-          "price1": 8,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "8"
       },
       {
         "name": "Weapon · 2Handed",
-        "dpCost": {
-          "price1": 15,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "15"
       },
       {
         "name": "Weapon · Missile",
-        "dpCost": {
-          "price1": 20,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "20"
       },
       {
         "name": "Weapon · Missile Artillery",
-        "dpCost": {
-          "price1": 20,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "20"
       },
       {
         "name": "Weapon · Pole Arms",
-        "dpCost": {
-          "price1": 20,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "20"
       },
       {
         "name": "Weapon · Thrown",
-        "dpCost": {
-          "price1": 20,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "20"
       }
     ],
     "spellPrice": [
       {
         "name": "Base list (all)",
-        "dpCost": {
-          "price1": 3,
-          "price2": 3,
-          "price3": 3
-        }
+        "dpCost": "3/3/3"
       },
       {
         "name": "Open list (1-10)",
-        "dpCost": {
-          "price1": 4,
-          "price2": 4,
-          "price3": 4
-        }
+        "dpCost": "4/4/4"
       },
       {
         "name": "Open list (11-15)",
-        "dpCost": {
-          "price1": 4,
-          "price2": 4,
-          "price3": 4
-        }
+        "dpCost": "4/4/4"
       },
       {
         "name": "Open list (16-20)",
-        "dpCost": {
-          "price1": 4,
-          "price2": 4,
-          "price3": 4
-        }
+        "dpCost": "4/4/4"
       },
       {
         "name": "Open list (21+)",
-        "dpCost": {
-          "price1": 6,
-          "price2": 6,
-          "price3": 6
-        }
+        "dpCost": "6/6/6"
       },
       {
         "name": "Closed list (1-10)",
-        "dpCost": {
-          "price1": 4,
-          "price2": 4,
-          "price3": 4
-        }
+        "dpCost": "4/4/4"
       },
       {
         "name": "Closed list (6-10)",
-        "dpCost": {
-          "price1": 4,
-          "price2": 4,
-          "price3": 4
-        }
+        "dpCost": "4/4/4"
       },
       {
         "name": "Closed list (11-15)",
-        "dpCost": {
-          "price1": 4,
-          "price2": 4,
-          "price3": 4
-        }
+        "dpCost": "4/4/4"
       },
       {
         "name": "Closed list (16-20)",
-        "dpCost": {
-          "price1": 4,
-          "price2": 4,
-          "price3": 4
-        }
+        "dpCost": "4/4/4"
       },
       {
         "name": "Closed list (21+)",
-        "dpCost": {
-          "price1": 8,
-          "price2": 8,
-          "price3": 0
-        }
+        "dpCost": "8/8"
       }
     ],
     "trainingPackages": [
@@ -3322,429 +2038,217 @@
     "categoryPrice": [
       {
         "name": "Armor · Heavy",
-        "dpCost": {
-          "price1": 5,
-          "price2": 5,
-          "price3": 5
-        }
+        "dpCost": "5/5/5"
       },
       {
         "name": "Armor · Light",
-        "dpCost": {
-          "price1": 2,
-          "price2": 2,
-          "price3": 2
-        }
+        "dpCost": "2/2/2"
       },
       {
         "name": "Armor · Medium",
-        "dpCost": {
-          "price1": 4,
-          "price2": 4,
-          "price3": 4
-        }
+        "dpCost": "4/4/4"
       },
       {
         "name": "Artistic · Active",
-        "dpCost": {
-          "price1": 2,
-          "price2": 5,
-          "price3": 0
-        }
+        "dpCost": "2/5"
       },
       {
         "name": "Artistic · Passive",
-        "dpCost": {
-          "price1": 2,
-          "price2": 5,
-          "price3": 0
-        }
+        "dpCost": "2/5"
       },
       {
         "name": "Athletic · Brawn",
-        "dpCost": {
-          "price1": 3,
-          "price2": 7,
-          "price3": 0
-        }
+        "dpCost": "3/7"
       },
       {
         "name": "Athletic · Endurance",
-        "dpCost": {
-          "price1": 1,
-          "price2": 5,
-          "price3": 0
-        }
+        "dpCost": "1/5"
       },
       {
         "name": "Athletic · Gymnastics",
-        "dpCost": {
-          "price1": 3,
-          "price2": 6,
-          "price3": 0
-        }
+        "dpCost": "3/6"
       },
       {
         "name": "Awareness · Perceptions",
-        "dpCost": {
-          "price1": 3,
-          "price2": 12,
-          "price3": 0
-        }
+        "dpCost": "3/12"
       },
       {
         "name": "Awareness · Searching",
-        "dpCost": {
-          "price1": 1,
-          "price2": 4,
-          "price3": 0
-        }
+        "dpCost": "1/4"
       },
       {
         "name": "Awareness · Senses",
-        "dpCost": {
-          "price1": 2,
-          "price2": 5,
-          "price3": 0
-        }
+        "dpCost": "2/5"
       },
       {
         "name": "Body Development",
-        "dpCost": {
-          "price1": 4,
-          "price2": 12,
-          "price3": 0
-        }
+        "dpCost": "4/12"
       },
       {
         "name": "Combat Maneuvers",
-        "dpCost": {
-          "price1": 5,
-          "price2": 12,
-          "price3": 0
-        }
+        "dpCost": "5/12"
       },
       {
         "name": "Communications",
-        "dpCost": {
-          "price1": 3,
-          "price2": 3,
-          "price3": 3
-        }
+        "dpCost": "3/3/3"
       },
       {
         "name": "Crafts",
-        "dpCost": {
-          "price1": 4,
-          "price2": 10,
-          "price3": 0
-        }
+        "dpCost": "4/10"
       },
       {
         "name": "Directed Spells",
-        "dpCost": {
-          "price1": 15,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "15"
       },
       {
         "name": "Influence",
-        "dpCost": {
-          "price1": 2,
-          "price2": 6,
-          "price3": 0
-        }
+        "dpCost": "2/6"
       },
       {
         "name": "Lore · General",
-        "dpCost": {
-          "price1": 1,
-          "price2": 3,
-          "price3": 0
-        }
+        "dpCost": "1/3"
       },
       {
         "name": "Lore · Magical",
-        "dpCost": {
-          "price1": 3,
-          "price2": 6,
-          "price3": 0
-        }
+        "dpCost": "3/6"
       },
       {
         "name": "Lore · Obscure",
-        "dpCost": {
-          "price1": 3,
-          "price2": 7,
-          "price3": 0
-        }
+        "dpCost": "3/7"
       },
       {
         "name": "Lore · Technical",
-        "dpCost": {
-          "price1": 2,
-          "price2": 6,
-          "price3": 0
-        }
+        "dpCost": "2/6"
       },
       {
         "name": "Martial Arts · Striking",
-        "dpCost": {
-          "price1": 4,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "4"
       },
       {
         "name": "Outdoor · Animal",
-        "dpCost": {
-          "price1": 1,
-          "price2": 5,
-          "price3": 0
-        }
+        "dpCost": "1/5"
       },
       {
         "name": "Outdoor · Environmental",
-        "dpCost": {
-          "price1": 1,
-          "price2": 3,
-          "price3": 0
-        }
+        "dpCost": "1/3"
       },
       {
         "name": "Power Awareness",
-        "dpCost": {
-          "price1": 5,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "5"
       },
       {
         "name": "Power Point Development",
-        "dpCost": {
-          "price1": 8,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "8"
       },
       {
         "name": "Science · Basic",
-        "dpCost": {
-          "price1": 2,
-          "price2": 5,
-          "price3": 0
-        }
+        "dpCost": "2/5"
       },
       {
         "name": "Science · Specialized",
-        "dpCost": {
-          "price1": 8,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "8"
       },
       {
         "name": "Self Control",
-        "dpCost": {
-          "price1": 2,
-          "price2": 7,
-          "price3": 0
-        }
+        "dpCost": "2/7"
       },
       {
         "name": "Subterfuge · Attack",
-        "dpCost": {
-          "price1": 6,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "6"
       },
       {
         "name": "Subterfuge · Mechanics",
-        "dpCost": {
-          "price1": 4,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "4"
       },
       {
         "name": "Subterfuge · Stealth",
-        "dpCost": {
-          "price1": 1,
-          "price2": 5,
-          "price3": 0
-        }
+        "dpCost": "1/5"
       },
       {
         "name": "Technical · General",
-        "dpCost": {
-          "price1": 3,
-          "price2": 7,
-          "price3": 0
-        }
+        "dpCost": "3/7"
       },
       {
         "name": "Technical · Professional",
-        "dpCost": {
-          "price1": 8,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "8"
       },
       {
         "name": "Technical · Vocational",
-        "dpCost": {
-          "price1": 5,
-          "price2": 12,
-          "price3": 0
-        }
+        "dpCost": "5/12"
       },
       {
         "name": "Urban",
-        "dpCost": {
-          "price1": 3,
-          "price2": 6,
-          "price3": 0
-        }
+        "dpCost": "3/6"
       },
       {
         "name": "Weapon · 1H Concussion",
-        "dpCost": {
-          "price1": 3,
-          "price2": 7,
-          "price3": 0
-        }
+        "dpCost": "3/7"
       },
       {
         "name": "Weapon · 1H Edged",
-        "dpCost": {
-          "price1": 4,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "4"
       },
       {
         "name": "Weapon · 2Handed",
-        "dpCost": {
-          "price1": 6,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "6"
       },
       {
         "name": "Weapon · Missile",
-        "dpCost": {
-          "price1": 6,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "6"
       },
       {
         "name": "Weapon · Missile Artillery",
-        "dpCost": {
-          "price1": 6,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "6"
       },
       {
         "name": "Weapon · Pole Arms",
-        "dpCost": {
-          "price1": 9,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "9"
       },
       {
         "name": "Weapon · Thrown",
-        "dpCost": {
-          "price1": 9,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "9"
       }
     ],
     "spellPrice": [
       {
         "name": "Base list (all)",
-        "dpCost": {
-          "price1": 6,
-          "price2": 6,
-          "price3": 6
-        }
+        "dpCost": "6/6/6"
       },
       {
         "name": "Open list (1-10)",
-        "dpCost": {
-          "price1": 8,
-          "price2": 8,
-          "price3": 0
-        }
+        "dpCost": "8/8"
       },
       {
         "name": "Open list (11-15)",
-        "dpCost": {
-          "price1": 12,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "12"
       },
       {
         "name": "Open list (16-20)",
-        "dpCost": {
-          "price1": 18,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "18"
       },
       {
         "name": "Open list (21+)",
-        "dpCost": {
-          "price1": 25,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "25"
       },
       {
         "name": "Closed list (1-10)",
-        "dpCost": {
-          "price1": 10,
-          "price2": 10,
-          "price3": 0
-        }
+        "dpCost": "10/10"
       },
       {
         "name": "Closed list (6-10)",
-        "dpCost": {
-          "price1": 12,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "12"
       },
       {
         "name": "Closed list (11-15)",
-        "dpCost": {
-          "price1": 25,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "25"
       },
       {
         "name": "Closed list (16-20)",
-        "dpCost": {
-          "price1": 40,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "40"
       },
       {
         "name": "Closed list (21+)",
-        "dpCost": {
-          "price1": 60,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "60"
       }
     ],
     "trainingPackages": [
@@ -3875,429 +2379,217 @@
     "categoryPrice": [
       {
         "name": "Armor · Heavy",
-        "dpCost": {
-          "price1": 11,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "11"
       },
       {
         "name": "Armor · Light",
-        "dpCost": {
-          "price1": 5,
-          "price2": 5,
-          "price3": 5
-        }
+        "dpCost": "5/5/5"
       },
       {
         "name": "Armor · Medium",
-        "dpCost": {
-          "price1": 10,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "10"
       },
       {
         "name": "Artistic · Active",
-        "dpCost": {
-          "price1": 2,
-          "price2": 4,
-          "price3": 0
-        }
+        "dpCost": "2/4"
       },
       {
         "name": "Artistic · Passive",
-        "dpCost": {
-          "price1": 2,
-          "price2": 5,
-          "price3": 0
-        }
+        "dpCost": "2/5"
       },
       {
         "name": "Athletic · Brawn",
-        "dpCost": {
-          "price1": 3,
-          "price2": 9,
-          "price3": 0
-        }
+        "dpCost": "3/9"
       },
       {
         "name": "Athletic · Endurance",
-        "dpCost": {
-          "price1": 2,
-          "price2": 7,
-          "price3": 0
-        }
+        "dpCost": "2/7"
       },
       {
         "name": "Athletic · Gymnastics",
-        "dpCost": {
-          "price1": 2,
-          "price2": 4,
-          "price3": 0
-        }
+        "dpCost": "2/4"
       },
       {
         "name": "Awareness · Perceptions",
-        "dpCost": {
-          "price1": 4,
-          "price2": 12,
-          "price3": 0
-        }
+        "dpCost": "4/12"
       },
       {
         "name": "Awareness · Searching",
-        "dpCost": {
-          "price1": 2,
-          "price2": 6,
-          "price3": 0
-        }
+        "dpCost": "2/6"
       },
       {
         "name": "Awareness · Senses",
-        "dpCost": {
-          "price1": 3,
-          "price2": 7,
-          "price3": 0
-        }
+        "dpCost": "3/7"
       },
       {
         "name": "Body Development",
-        "dpCost": {
-          "price1": 6,
-          "price2": 14,
-          "price3": 0
-        }
+        "dpCost": "6/14"
       },
       {
         "name": "Combat Maneuvers",
-        "dpCost": {
-          "price1": 6,
-          "price2": 14,
-          "price3": 0
-        }
+        "dpCost": "6/14"
       },
       {
         "name": "Communications",
-        "dpCost": {
-          "price1": 2,
-          "price2": 2,
-          "price3": 2
-        }
+        "dpCost": "2/2/2"
       },
       {
         "name": "Crafts",
-        "dpCost": {
-          "price1": 4,
-          "price2": 10,
-          "price3": 0
-        }
+        "dpCost": "4/10"
       },
       {
         "name": "Directed Spells",
-        "dpCost": {
-          "price1": 5,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "5"
       },
       {
         "name": "Influence",
-        "dpCost": {
-          "price1": 2,
-          "price2": 4,
-          "price3": 0
-        }
+        "dpCost": "2/4"
       },
       {
         "name": "Lore · General",
-        "dpCost": {
-          "price1": 1,
-          "price2": 3,
-          "price3": 0
-        }
+        "dpCost": "1/3"
       },
       {
         "name": "Lore · Magical",
-        "dpCost": {
-          "price1": 2,
-          "price2": 6,
-          "price3": 0
-        }
+        "dpCost": "2/6"
       },
       {
         "name": "Lore · Obscure",
-        "dpCost": {
-          "price1": 3,
-          "price2": 7,
-          "price3": 0
-        }
+        "dpCost": "3/7"
       },
       {
         "name": "Lore · Technical",
-        "dpCost": {
-          "price1": 2,
-          "price2": 5,
-          "price3": 0
-        }
+        "dpCost": "2/5"
       },
       {
         "name": "Martial Arts · Striking",
-        "dpCost": {
-          "price1": 4,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "4"
       },
       {
         "name": "Outdoor · Animal",
-        "dpCost": {
-          "price1": 2,
-          "price2": 6,
-          "price3": 0
-        }
+        "dpCost": "2/6"
       },
       {
         "name": "Outdoor · Environmental",
-        "dpCost": {
-          "price1": 2,
-          "price2": 6,
-          "price3": 0
-        }
+        "dpCost": "2/6"
       },
       {
         "name": "Power Awareness",
-        "dpCost": {
-          "price1": 2,
-          "price2": 7,
-          "price3": 0
-        }
+        "dpCost": "2/7"
       },
       {
         "name": "Power Point Development",
-        "dpCost": {
-          "price1": 8,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "8"
       },
       {
         "name": "Science · Basic",
-        "dpCost": {
-          "price1": 2,
-          "price2": 5,
-          "price3": 0
-        }
+        "dpCost": "2/5"
       },
       {
         "name": "Science · Specialized",
-        "dpCost": {
-          "price1": 8,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "8"
       },
       {
         "name": "Self Control",
-        "dpCost": {
-          "price1": 2,
-          "price2": 7,
-          "price3": 0
-        }
+        "dpCost": "2/7"
       },
       {
         "name": "Subterfuge · Attack",
-        "dpCost": {
-          "price1": 6,
-          "price2": 12,
-          "price3": 0
-        }
+        "dpCost": "6/12"
       },
       {
         "name": "Subterfuge · Mechanics",
-        "dpCost": {
-          "price1": 2,
-          "price2": 6,
-          "price3": 0
-        }
+        "dpCost": "2/6"
       },
       {
         "name": "Subterfuge · Stealth",
-        "dpCost": {
-          "price1": 1,
-          "price2": 5,
-          "price3": 0
-        }
+        "dpCost": "1/5"
       },
       {
         "name": "Technical · General",
-        "dpCost": {
-          "price1": 3,
-          "price2": 7,
-          "price3": 0
-        }
+        "dpCost": "3/7"
       },
       {
         "name": "Technical · Professional",
-        "dpCost": {
-          "price1": 8,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "8"
       },
       {
         "name": "Technical · Vocational",
-        "dpCost": {
-          "price1": 5,
-          "price2": 12,
-          "price3": 0
-        }
+        "dpCost": "5/12"
       },
       {
         "name": "Urban",
-        "dpCost": {
-          "price1": 1,
-          "price2": 5,
-          "price3": 0
-        }
+        "dpCost": "1/5"
       },
       {
         "name": "Weapon · 1H Concussion",
-        "dpCost": {
-          "price1": 3,
-          "price2": 9,
-          "price3": 0
-        }
+        "dpCost": "3/9"
       },
       {
         "name": "Weapon · 1H Edged",
-        "dpCost": {
-          "price1": 6,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "6"
       },
       {
         "name": "Weapon · 2Handed",
-        "dpCost": {
-          "price1": 7,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "7"
       },
       {
         "name": "Weapon · Missile",
-        "dpCost": {
-          "price1": 8,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "8"
       },
       {
         "name": "Weapon · Missile Artillery",
-        "dpCost": {
-          "price1": 10,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "10"
       },
       {
         "name": "Weapon · Pole Arms",
-        "dpCost": {
-          "price1": 15,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "15"
       },
       {
         "name": "Weapon · Thrown",
-        "dpCost": {
-          "price1": 15,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "15"
       }
     ],
     "spellPrice": [
       {
         "name": "Base list (all)",
-        "dpCost": {
-          "price1": 6,
-          "price2": 6,
-          "price3": 6
-        }
+        "dpCost": "6/6/6"
       },
       {
         "name": "Open list (1-10)",
-        "dpCost": {
-          "price1": 8,
-          "price2": 8,
-          "price3": 0
-        }
+        "dpCost": "8/8"
       },
       {
         "name": "Open list (11-15)",
-        "dpCost": {
-          "price1": 12,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "12"
       },
       {
         "name": "Open list (16-20)",
-        "dpCost": {
-          "price1": 18,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "18"
       },
       {
         "name": "Open list (21+)",
-        "dpCost": {
-          "price1": 25,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "25"
       },
       {
         "name": "Closed list (1-10)",
-        "dpCost": {
-          "price1": 10,
-          "price2": 10,
-          "price3": 0
-        }
+        "dpCost": "10/10"
       },
       {
         "name": "Closed list (6-10)",
-        "dpCost": {
-          "price1": 12,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "12"
       },
       {
         "name": "Closed list (11-15)",
-        "dpCost": {
-          "price1": 25,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "25"
       },
       {
         "name": "Closed list (16-20)",
-        "dpCost": {
-          "price1": 40,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "40"
       },
       {
         "name": "Closed list (21+)",
-        "dpCost": {
-          "price1": 60,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "60"
       }
     ],
     "trainingPackages": [
@@ -4419,429 +2711,217 @@
     "categoryPrice": [
       {
         "name": "Armor · Heavy",
-        "dpCost": {
-          "price1": 5,
-          "price2": 5,
-          "price3": 5
-        }
+        "dpCost": "5/5/5"
       },
       {
         "name": "Armor · Light",
-        "dpCost": {
-          "price1": 2,
-          "price2": 2,
-          "price3": 2
-        }
+        "dpCost": "2/2/2"
       },
       {
         "name": "Armor · Medium",
-        "dpCost": {
-          "price1": 3,
-          "price2": 3,
-          "price3": 3
-        }
+        "dpCost": "3/3/3"
       },
       {
         "name": "Artistic · Active",
-        "dpCost": {
-          "price1": 1,
-          "price2": 2,
-          "price3": 0
-        }
+        "dpCost": "1/2"
       },
       {
         "name": "Artistic · Passive",
-        "dpCost": {
-          "price1": 1,
-          "price2": 3,
-          "price3": 0
-        }
+        "dpCost": "1/3"
       },
       {
         "name": "Athletic · Brawn",
-        "dpCost": {
-          "price1": 4,
-          "price2": 9,
-          "price3": 0
-        }
+        "dpCost": "4/9"
       },
       {
         "name": "Athletic · Endurance",
-        "dpCost": {
-          "price1": 2,
-          "price2": 7,
-          "price3": 0
-        }
+        "dpCost": "2/7"
       },
       {
         "name": "Athletic · Gymnastics",
-        "dpCost": {
-          "price1": 2,
-          "price2": 6,
-          "price3": 0
-        }
+        "dpCost": "2/6"
       },
       {
         "name": "Awareness · Perceptions",
-        "dpCost": {
-          "price1": 4,
-          "price2": 12,
-          "price3": 0
-        }
+        "dpCost": "4/12"
       },
       {
         "name": "Awareness · Searching",
-        "dpCost": {
-          "price1": 2,
-          "price2": 6,
-          "price3": 0
-        }
+        "dpCost": "2/6"
       },
       {
         "name": "Awareness · Senses",
-        "dpCost": {
-          "price1": 3,
-          "price2": 7,
-          "price3": 0
-        }
+        "dpCost": "3/7"
       },
       {
         "name": "Body Development",
-        "dpCost": {
-          "price1": 6,
-          "price2": 14,
-          "price3": 0
-        }
+        "dpCost": "6/14"
       },
       {
         "name": "Combat Maneuvers",
-        "dpCost": {
-          "price1": 6,
-          "price2": 14,
-          "price3": 0
-        }
+        "dpCost": "6/14"
       },
       {
         "name": "Communications",
-        "dpCost": {
-          "price1": 1,
-          "price2": 1,
-          "price3": 1
-        }
+        "dpCost": "1/1/1"
       },
       {
         "name": "Crafts",
-        "dpCost": {
-          "price1": 4,
-          "price2": 10,
-          "price3": 0
-        }
+        "dpCost": "4/10"
       },
       {
         "name": "Directed Spells",
-        "dpCost": {
-          "price1": 10,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "10"
       },
       {
         "name": "Influence",
-        "dpCost": {
-          "price1": 1,
-          "price2": 4,
-          "price3": 0
-        }
+        "dpCost": "1/4"
       },
       {
         "name": "Lore · General",
-        "dpCost": {
-          "price1": 1,
-          "price2": 2,
-          "price3": 0
-        }
+        "dpCost": "1/2"
       },
       {
         "name": "Lore · Magical",
-        "dpCost": {
-          "price1": 1,
-          "price2": 4,
-          "price3": 0
-        }
+        "dpCost": "1/4"
       },
       {
         "name": "Lore · Obscure",
-        "dpCost": {
-          "price1": 2,
-          "price2": 4,
-          "price3": 0
-        }
+        "dpCost": "2/4"
       },
       {
         "name": "Lore · Technical",
-        "dpCost": {
-          "price1": 2,
-          "price2": 4,
-          "price3": 0
-        }
+        "dpCost": "2/4"
       },
       {
         "name": "Martial Arts · Striking",
-        "dpCost": {
-          "price1": 3,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "3"
       },
       {
         "name": "Outdoor · Animal",
-        "dpCost": {
-          "price1": 2,
-          "price2": 7,
-          "price3": 0
-        }
+        "dpCost": "2/7"
       },
       {
         "name": "Outdoor · Environmental",
-        "dpCost": {
-          "price1": 2,
-          "price2": 6,
-          "price3": 0
-        }
+        "dpCost": "2/6"
       },
       {
         "name": "Power Awareness",
-        "dpCost": {
-          "price1": 3,
-          "price2": 6,
-          "price3": 0
-        }
+        "dpCost": "3/6"
       },
       {
         "name": "Power Point Development",
-        "dpCost": {
-          "price1": 8,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "8"
       },
       {
         "name": "Science · Basic",
-        "dpCost": {
-          "price1": 2,
-          "price2": 5,
-          "price3": 0
-        }
+        "dpCost": "2/5"
       },
       {
         "name": "Science · Specialized",
-        "dpCost": {
-          "price1": 8,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "8"
       },
       {
         "name": "Self Control",
-        "dpCost": {
-          "price1": 2,
-          "price2": 7,
-          "price3": 0
-        }
+        "dpCost": "2/7"
       },
       {
         "name": "Subterfuge · Attack",
-        "dpCost": {
-          "price1": 12,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "12"
       },
       {
         "name": "Subterfuge · Mechanics",
-        "dpCost": {
-          "price1": 4,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "4"
       },
       {
         "name": "Subterfuge · Stealth",
-        "dpCost": {
-          "price1": 2,
-          "price2": 7,
-          "price3": 0
-        }
+        "dpCost": "2/7"
       },
       {
         "name": "Technical · General",
-        "dpCost": {
-          "price1": 3,
-          "price2": 7,
-          "price3": 0
-        }
+        "dpCost": "3/7"
       },
       {
         "name": "Technical · Professional",
-        "dpCost": {
-          "price1": 8,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "8"
       },
       {
         "name": "Technical · Vocational",
-        "dpCost": {
-          "price1": 5,
-          "price2": 12,
-          "price3": 0
-        }
+        "dpCost": "5/12"
       },
       {
         "name": "Urban",
-        "dpCost": {
-          "price1": 2,
-          "price2": 4,
-          "price3": 0
-        }
+        "dpCost": "2/4"
       },
       {
         "name": "Weapon · 1H Concussion",
-        "dpCost": {
-          "price1": 3,
-          "price2": 9,
-          "price3": 0
-        }
+        "dpCost": "3/9"
       },
       {
         "name": "Weapon · 1H Edged",
-        "dpCost": {
-          "price1": 6,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "6"
       },
       {
         "name": "Weapon · 2Handed",
-        "dpCost": {
-          "price1": 7,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "7"
       },
       {
         "name": "Weapon · Missile",
-        "dpCost": {
-          "price1": 7,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "7"
       },
       {
         "name": "Weapon · Missile Artillery",
-        "dpCost": {
-          "price1": 7,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "7"
       },
       {
         "name": "Weapon · Pole Arms",
-        "dpCost": {
-          "price1": 15,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "15"
       },
       {
         "name": "Weapon · Thrown",
-        "dpCost": {
-          "price1": 15,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "15"
       }
     ],
     "spellPrice": [
       {
         "name": "Base list (all)",
-        "dpCost": {
-          "price1": 6,
-          "price2": 6,
-          "price3": 6
-        }
+        "dpCost": "6/6/6"
       },
       {
         "name": "Open list (1-10)",
-        "dpCost": {
-          "price1": 8,
-          "price2": 8,
-          "price3": 0
-        }
+        "dpCost": "8/8"
       },
       {
         "name": "Open list (11-15)",
-        "dpCost": {
-          "price1": 12,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "12"
       },
       {
         "name": "Open list (16-20)",
-        "dpCost": {
-          "price1": 18,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "18"
       },
       {
         "name": "Open list (21+)",
-        "dpCost": {
-          "price1": 25,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "25"
       },
       {
         "name": "Closed list (1-10)",
-        "dpCost": {
-          "price1": 10,
-          "price2": 10,
-          "price3": 0
-        }
+        "dpCost": "10/10"
       },
       {
         "name": "Closed list (6-10)",
-        "dpCost": {
-          "price1": 12,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "12"
       },
       {
         "name": "Closed list (11-15)",
-        "dpCost": {
-          "price1": 25,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "25"
       },
       {
         "name": "Closed list (16-20)",
-        "dpCost": {
-          "price1": 40,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "40"
       },
       {
         "name": "Closed list (21+)",
-        "dpCost": {
-          "price1": 60,
-          "price2": 0,
-          "price3": 0
-        }
+        "dpCost": "60"
       }
     ],
     "trainingPackages": [

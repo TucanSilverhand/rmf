@@ -12,6 +12,7 @@ import {
 } from "../utils/rank-bonus.mjs";
 import { totalBoughtRanks, sumActorStatTotals } from "./_shared.mjs";
 import { slugField, specialRoleField, resolveSpecialRole } from "./_identity.mjs";
+import { parseDPCost, dpCostFromTriple } from "../utils/dp-cost.mjs";
 
 const fields = foundry.data.fields;
 
@@ -75,8 +76,6 @@ const CATEGORY_PROGRESSIONS = ["standard", "nonstandard"];
 
 export class CategoryData extends foundry.abstract.TypeDataModel {
   static defineSchema() {
-    const num = (initial = 0, opts = {}) =>
-      new fields.NumberField({ required: true, nullable: false, integer: true, initial, ...opts });
     const numFloat = (initial = 0, opts = {}) =>
       new fields.NumberField({ required: true, nullable: false, initial, ...opts });
     const str = (initial = "", opts = {}) =>
@@ -86,13 +85,11 @@ export class CategoryData extends foundry.abstract.TypeDataModel {
       description: new fields.HTMLField({ required: true, nullable: false, initial: "" }),
       group: str("none", { choices: CATEGORY_GROUPS }),
 
-      // dpCost: schema { price1, price2, price3 } — kept verbatim from
-      // template.json. Float-friendly because some categories use 0.5.
-      dpCost: new fields.SchemaField({
-        price1: numFloat(0, { min: 0 }),
-        price2: numFloat(0, { min: 0 }),
-        price3: numFloat(0, { min: 0 })
-      }),
+      // dpCost: RMF slash-notation string ("2/5", "2/2/2", "20", "3/*").
+      // Empty = no cost / not applicable. Parsed to `dpCostParsed` in
+      // prepareDerivedData, mirroring how race.mjs handles its "0/6/4/2/1"
+      // progression strings. See module/utils/dp-cost.mjs.
+      dpCost: str(""),
 
       // Object keyed by character level (string keys), each holding the
       // number of ranks bought at that level. `0` is reserved for racial
@@ -104,9 +101,9 @@ export class CategoryData extends foundry.abstract.TypeDataModel {
 
       categoryRankBonusProgression: str("standard", { choices: CATEGORY_PROGRESSIONS }),
 
-      // Legacy: ranks (alias of totalRanks). Kept persisted to avoid
-      // breaking older worlds; recomputed each derivation pass.
-      ranks: num(0, { min: 0 }),
+      // NOTE: the legacy persisted `ranks` counter was removed in 0.4.0 (R8).
+      // Total ranks derive from boughtByLevel + freeRanks; `this.ranks` is
+      // still exposed as an in-memory alias in prepareDerivedData.
 
       statBonus: new fields.SchemaField({
         stat1: str("chAgility"),
@@ -140,8 +137,13 @@ export class CategoryData extends foundry.abstract.TypeDataModel {
    * @returns {Object} The (possibly mutated) source
    */
   static migrateData(source) {
-    if (source && typeof source === "object" && "group" in source) {
-      source.group = normalizeCategoryGroup(source.group);
+    if (source && typeof source === "object") {
+      if ("group" in source) source.group = normalizeCategoryGroup(source.group);
+      // Legacy dpCost triple { price1, price2, price3 } → slash string,
+      // so old worlds load against the new StringField schema.
+      if (source.dpCost && typeof source.dpCost === "object") {
+        source.dpCost = dpCostFromTriple(source.dpCost);
+      }
     }
     return super.migrateData(source);
   }
@@ -156,6 +158,9 @@ export class CategoryData extends foundry.abstract.TypeDataModel {
    */
   prepareDerivedData() {
     super.prepareDerivedData();
+
+    // Structured view of the DP cost for sheets/engines (ephemeral).
+    this.dpCostParsed = parseDPCost(this.dpCost);
 
     const item = this.parent;
 

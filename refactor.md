@@ -27,8 +27,88 @@ mientras es barato (54 entradas, todas "basic").
 
 - **Fase 0 — Identidad** (✅ este commit): `slug` + `specialRole`, reenrutado de joins, migración 0.3.0. *Cimiento: todo lo demás se une por slug.*
 - **Fase 1 — Notación de coste + limpieza**: `dpCost` string + `module/utils/dp-cost.mjs`; eliminar el campo `rank`/`ranks` duplicado (drift).
+- **Fase 1 — Notación de coste + limpieza** (✅ completada): `dpCost` string + `module/utils/dp-cost.mjs`; eliminado el campo `rank`/`ranks` duplicado.
 - **Fase 2 — Multi-libro**: `bookId`, upsert por slug, `professionalBonuses` estructurados, packs LevelDB + registro `CONFIG.RMF.contentPacks`, módulos por libro.
 - **Fase 3 — Split definición/estado + ActiveEffects**: estado en `actor.system`, índice síncrono, bonos derivados.
+
+---
+
+## Fase 1 — Notación de coste (dpCost) + limpieza de rangos (✅ completada)
+
+`system.json` → versión **0.4.0**.
+
+### R3 — `dpCost` como string de barras (notación RMF)
+
+**Antes:** `dpCost: { price1, price2, price3 }` (tres `NumberField`) en category, skill y en
+`profession.categoryPrice[]`/`spellPrice[]`. No podía expresar nº de rangos variable ni el
+marcador `*` (ilimitado), y era incoherente con las razas (que ya usan strings `"0/6/4/2/1"`).
+
+**Ahora:** `dpCost` es un `StringField` con la notación literal del libro, parseado en
+`prepareDerivedData` (igual que `race.mjs`), con [module/utils/dp-cost.mjs](module/utils/dp-cost.mjs)
+como fuente única.
+
+| Notación | Significado |
+|---|---|
+| `"2/5"` | 1er rango cuesta 2, 2º cuesta 5; máx 2 rangos/nivel |
+| `"2/2/2"` | 3 rangos/nivel, cada uno a 2 |
+| `"20"` | 1 rango/nivel a 20 |
+| `"3/*"` | **ilimitados** rangos/nivel, todos a 3 (el `*` repite el coste anterior) |
+| `""` | sin coste / no aplica / incluido (p. ej. listas base de `spellPrice`) |
+
+- **API** (`dp-cost.mjs`, pura, 21 tests): `parseDPCost` → `{raw, costPerRank[], unlimited, ranksPerLevel, empty, valid}`;
+  `formatDPCost` (acepta string, triple legacy o array → string canónico, quita ceros finales);
+  `isValidDPCost`; `costOfRank(parsed, n)`; `dpCostFromTriple`.
+- **Decisión de diseño** (revisor de Fase 0): se usa un `StringField` plano + parser, **sin** clase
+  `DPCostField` custom — idéntico al patrón de `race.mjs`.
+- **`dpCost` en skill se mantiene**: es el coste **efectivo** del personaje (vacío en el catálogo;
+  lo fijará la profesión). El campo persiste; `dpCostParsed` es derivado efímero.
+- **Migración sin pérdida**: `{p1,p2,p3}` → unir con `/` quitando ceros finales (verificado: 0 huecos
+  delantero/intermedio, todo enteros). `{0,0,0}` → `""`. **691 dpCost convertidos** en `data/*.json`.
+- **Auto-heal**: cada modelo (category/skill/profession) tiene `migrateData` que convierte el triple
+  legacy a string **antes** de validar, así los mundos existentes cargan. Dev-tool:
+  [tools/convert-dpcost.mjs](tools/convert-dpcost.mjs).
+- **Sheets/plantillas**: un único `<input type="text">` para `system.dpCost` + un hint
+  (`X rango(s)/nivel` / `ilimitado` / `—`). `profession-dpcost-table.hbs` pasa de 3 columnas P1/P2/P3
+  a una columna de texto. Claves i18n `DPCostNone/Unlimited/RanksPerLevel` (en + es).
+- **Importer**: los normalizadores emiten string vía `formatDPCost` (acepta el triple legacy en
+  transición). Eliminado el `_shared.normalizeDpCost` muerto.
+
+### R8 — Eliminado el contador `rank`/`ranks` persistido (deriva-drift)
+
+`actions.mjs` escribía a la vez `system.rank` y `boughtByLevel`, pero los training packages y los
+rangos raciales escribían solo `boughtByLevel` → dos fuentes de verdad que divergían.
+
+- Eliminados los campos persistidos `rank` (skill) y `ranks` (category) del esquema.
+- `this.rank`/`this.ranks` siguen expuestos como **alias derivados en memoria** (compat para macros).
+- `actions.mjs` `#incrementSkillRank`/`#decrementSkillRank` ahora escriben **solo** `boughtByLevel`.
+- Quitados los campos muertos del importer y de `data/*.json` (165 `rank`, 46 `ranks`).
+- La **migración 0.4.0** re-emite category/skill/profession (barra + embebidos + packs de mundo):
+  el `migrateData` convierte `dpCost` y el limpiado del esquema descarta las claves `rank`/`ranks`
+  (mismo mecanismo que usó la migración 0.2.0).
+
+### Revisión adversaria (5 agentes) — hallazgos corregidos
+
+Veredicto: **load-safe, sin pérdida, idiomática v13, round-trip estable** (la migración
+`update({}, {diff:false})` quedó verificada como mecanismo correcto que persiste el string y
+descarta `rank`/`ranks`). Correcciones aplicadas:
+
+- ✅ **(MEDIUM)** Las sheets de category/skill guardaban el string crudo; ahora canonicalizan con
+  `formatDPCost` al guardar (`_onFieldChange`), como ya hacía la de profesión.
+- ✅ `parseDPCost.raw` ya **no** quita ceros explícitos en strings tecleados (`"2/0/0"` se conserva);
+  el drop de relleno queda solo en `dpCostFromTriple`/array (la migración).
+- ✅ `isValidDPCost` delega en `parseDPCost(str).valid` — validador y parser ya no discrepan
+  (p. ej. `"*/3"` con `*` no final es inválido en ambos).
+- ✅ `_dpCostHint` muestra "inválido" para entradas mal formadas en vez de "0 rangos/nivel".
+- ✅ Quitadas las claves i18n huérfanas `DPCostFirst/Second/Third`; añadida `DPCostInvalid` (en+es).
+- Notas LOW dejadas a propósito: el paso 0.4.0 re-emite por-item (necesario para disparar
+  `migrateData`) y su bucle de packs no reusa `migrateWorldItemPacks` (operaciones distintas).
+
+### Pendiente para Fase 1.x / futuro
+
+- El **motor de gasto de DP** (que `costOfRank`/`ranksPerLevel` habilitan) aún no existe; el tope
+  "3 rangos/nivel" en `actions.mjs` sigue hardcodeado (pasará a leer `dpCostParsed.ranksPerLevel`).
+- Que la profesión **rellene** el `dpCost` efectivo del personaje al aplicarse (hoy no lo hace) se
+  abordará junto con R10 (derivar contribuciones de profesión en vez de mutar).
 
 ---
 

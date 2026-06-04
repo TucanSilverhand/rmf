@@ -46,16 +46,10 @@
     <legend>{{localize "RMF.Category.DPCost"}}</legend>
     <div class="flexrow">
       <div class="resource">
-        <label>{{localize "RMF.Category.DPCostFirst"}}</label>
-        <input type="number" name="system.dpCost.price1" value="{{system.dpCost.price1}}" min="0" step="1" data-dtype="Number" inputmode="numeric" />
-      </div>
-      <div class="resource">
-        <label>{{localize "RMF.Category.DPCostSecond"}}</label>
-        <input type="number" name="system.dpCost.price2" value="{{system.dpCost.price2}}" min="0" step="1" data-dtype="Number" inputmode="numeric" />
-      </div>
-      <div class="resource">
-        <label>{{localize "RMF.Category.DPCostThird"}}</label>
-        <input type="number" name="system.dpCost.price3" value="{{system.dpCost.price3}}" min="0" step="1" data-dtype="Number" inputmode="numeric" />
+        {{!-- RMF slash notation: "2/5", "2/2/2", "20", "3/*" (ilimitado), "" = sin coste.
+             En una skill suele estar vacío: el coste efectivo lo fija la profesión. --}}
+        <input type="text" name="system.dpCost" value="{{dpCost}}" placeholder="2/5" autocomplete="off" />
+        <span class="hint">{{dpCostHint}}</span>
       </div>
     </div>
   </fieldset>

@@ -27,6 +27,7 @@ import {
 } from "./utils/sheet-helpers.mjs";
 import { normalizeAnyStatKey } from "./utils/constants.mjs";
 import { RMFActions } from "./actions.mjs";
+import { formatDPCost } from "./utils/dp-cost.mjs";
 
 export class RMFProfessionSheet extends HandlebarsApplicationMixin(
   foundry.applications.sheets.ItemSheetV2
@@ -204,8 +205,10 @@ export class RMFProfessionSheet extends HandlebarsApplicationMixin(
   }
 
   /**
+   * Rows for the categoryPrice / spellPrice tables. `dpCost` is the RMF
+   * slash-notation string ("2/5", "3/*", "" = included).
    * @param {*} list
-   * @returns {Array<{index: number, name: string, price1: number, price2: number, price3: number}>}
+   * @returns {Array<{index: number, name: string, dpCost: string}>}
    * @private
    */
   _prepareDpCostRows(list) {
@@ -213,9 +216,7 @@ export class RMFProfessionSheet extends HandlebarsApplicationMixin(
     return list.map((entry, index) => ({
       index,
       name: typeof entry?.name === "string" ? entry.name : "",
-      price1: Number(entry?.dpCost?.price1) || 0,
-      price2: Number(entry?.dpCost?.price2) || 0,
-      price3: Number(entry?.dpCost?.price3) || 0
+      dpCost: typeof entry?.dpCost === "string" ? entry.dpCost : formatDPCost(entry?.dpCost)
     }));
   }
 
@@ -324,8 +325,8 @@ export class RMFProfessionSheet extends HandlebarsApplicationMixin(
       const profBonusMatch = name.match(/^system\.professionalBonuses\.(\d+)\.(name|bonus)$/);
       // Skill lists: arrays of {name}.
       const skillListMatch = name.match(/^system\.(everymanSkills|occupationalSkills|restrictedSkills)\.(\d+)\.name$/);
-      // dpCost tables: arrays of {name, dpCost: {price1..3}}.
-      const dpCostMatch = name.match(/^system\.(categoryPrice|spellPrice)\.(\d+)\.(?:name|dpCost\.(price1|price2|price3))$/);
+      // dpCost tables: arrays of {name, dpCost: string} (RMF slash notation).
+      const dpCostMatch = name.match(/^system\.(categoryPrice|spellPrice)\.(\d+)\.(name|dpCost)$/);
       // Training packages: array of {name, dpCost: number}.
       const tpMatch = name.match(/^system\.trainingPackages\.(\d+)\.(name|dpCost)$/);
 
@@ -352,18 +353,13 @@ export class RMFProfessionSheet extends HandlebarsApplicationMixin(
       } else if (dpCostMatch) {
         const kind = dpCostMatch[1];
         const index = Number(dpCostMatch[2]);
-        const priceField = dpCostMatch[3]; // undefined when editing the row's name
+        const field = dpCostMatch[3]; // "name" | "dpCost"
         const current = foundry.utils.duplicate(this.document.system?.[kind] ?? []);
         if (!current[index] || typeof current[index] !== "object") {
-          current[index] = { name: "", dpCost: { price1: 0, price2: 0, price3: 0 } };
+          current[index] = { name: "", dpCost: "" };
         }
         current[index] = { ...current[index] };
-        if (priceField) {
-          current[index].dpCost = { ...(current[index].dpCost ?? {}) };
-          current[index].dpCost[priceField] = Number(value) || 0;
-        } else {
-          current[index].name = String(value ?? "");
-        }
+        current[index][field] = field === "dpCost" ? formatDPCost(value) : String(value ?? "");
         await this.document.update({ [`system.${kind}`]: current });
       } else if (tpMatch) {
         const index = Number(tpMatch[1]);

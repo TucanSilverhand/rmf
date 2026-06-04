@@ -734,9 +734,9 @@ La habilidad expone además dos campos derivados de conveniencia ([skill.mjs:137
 - **`rankBonusSummary`**: el desglose legible del bono por rango (p. ej. `"10*3 + 5*2 = 40"`, vía `formatSkillRankBonusBreakdown`, [rank-bonus.mjs:157-161](module/utils/rank-bonus.mjs#L157)), para la cabecera de la ficha; así la sheet no necesita saber resolver el `overrideTable`.
 - **`bonus`**: alias de `totalBonus` que consume `RMFActions.#rollSkill` — mantiene `actions.mjs` sin tocar.
 
-### El alias legado `rank`/`ranks`
+### El alias `rank`/`ranks` (✅ desacoplado en Fase 1 / R8)
 
-Ambos modelos conservan un campo escalar legado: `ranks` en la categoría ([category.mjs:107-109](module/data-models/category.mjs#L107)) y `rank` en la habilidad ([skill.mjs:38-40](module/data-models/skill.mjs#L38)). Se persisten para que mundos antiguos carguen, pero la derivación de la categoría lo **sobrescribe** en cada pase con el total recalculado ([category.mjs:197](module/data-models/category.mjs#L197), `this.ranks = totalRanks;`); la habilidad **no resincroniza `rank` activamente**, ya que `boughtByLevel` lo reemplaza. Son redundantes con `boughtByLevel`/`totalRanks`; los comentarios los marcan como "Legacy … kept persisted to avoid breaking older worlds". El refactor los eliminará: la fuente de verdad ya es `boughtByLevel`.
+Históricamente ambos modelos conservaban un campo escalar **persistido** (`ranks` en categoría, `rank` en habilidad) en paralelo a `boughtByLevel`, lo que provocaba *drift*: cualquier vía que escribiera `boughtByLevel` sin tocar el escalar (training packages, drop de raza, edición directa) los desincronizaba. **La Fase 1 (R8) eliminó esos campos persistidos del esquema.** Ahora la única fuente de verdad es `boughtByLevel`: el total se deriva como `totalBoughtRanks(boughtByLevel)` (+ `freeRanks` en categoría). Para compatibilidad con macros/plantillas que aún leyeran `system.rank`/`system.ranks`, la derivación sigue exponiéndolos como **alias en memoria**: `this.rank = totalRanks` ([skill.mjs](module/data-models/skill.mjs)) y `this.ranks = totalRanks` ([category.mjs](module/data-models/category.mjs)) — pero ya no se persisten ni pueden divergir. La migración 0.4.0 descarta las claves huérfanas de los mundos existentes.
 
 ### El penalizador `-15` por "no skill" en la ficha del actor
 
@@ -1022,7 +1022,7 @@ El modelo está en [profession.mjs](module/data-models/profession.mjs), `Profess
 | `primeStats` | `ArrayField(StringField)` de claves `chXxx` ([profession.mjs:74](module/data-models/profession.mjs#L74)) | Las *Prime Stats* de la profesión (cada string es la clave interna del stat, o cadena vacía para hueco libre). |
 | `professionalBonuses` | `ArrayField` de `{ name, bonus, isChoice }` (`bonusRow()`, [profession.mjs:49](module/data-models/profession.mjs#L49)) | Los *Professional Skill Bonuses*: bonificaciones fijas que la profesión otorga a categorías o grupos de habilidades. |
 | `everymanSkills` / `occupationalSkills` / `restrictedSkills` | `ArrayField` de `{ name, isChoice }` (`namedRow()`, [profession.mjs:38](module/data-models/profession.mjs#L38)) | Las tres clases de skill que define la profesión (Everyman, Occupational, Restricted). |
-| `categoryPrice` / `spellPrice` | `ArrayField` de `{ name, dpCost:{price1,price2,price3} }` (`pricedNameEntry()`, [profession.mjs:23](module/data-models/profession.mjs#L23)) | El **coste efectivo de DP** del personaje por categoría y por lista de hechizos. |
+| `categoryPrice` / `spellPrice` | `ArrayField` de `{ name, dpCost }` donde `dpCost` es el **string de notación RMF** (`pricedNameEntry()`, [profession.mjs:20](module/data-models/profession.mjs#L20)) | El **coste efectivo de DP** del personaje por categoría y por lista de hechizos. |
 | `trainingPackages` | `ArrayField` de `{ name, dpCost }` (un único número, `trainingPackageRow()`, [profession.mjs:58](module/data-models/profession.mjs#L58)) | Los packages que la profesión abarata, con su coste de DP específico. |
 
 #### El campo `isChoice`: nombre canónico vs. placeholder
@@ -1031,9 +1031,15 @@ El modelo está en [profession.mjs](module/data-models/profession.mjs), `Profess
 
 #### `dpCost` como coste EFECTIVO del personaje
 
-Cada fila de `categoryPrice`/`spellPrice` lleva un bloque `dpCost = {price1, price2, price3}` (`dpCostBlock()`, [profession.mjs:14](module/data-models/profession.mjs#L14)). Estos tres números son el coste en *Development Points* de comprar el 1.º, 2.º y 3.er rango de esa categoría/lista **para esta profesión**. En RMF el coste de DP no es propiedad de la habilidad sino de la combinación profesión×habilidad: la misma categoría cuesta distinto a un Fighter que a un Magician. Por eso `dpCost` es un dato **de la profesión**, y el modelo de la skill/category también tiene su propio `dpCost` (ver [category.mjs:91](module/data-models/category.mjs#L91)): cuando se aplica la profesión, ese coste pasa a ser el coste efectivo del personaje en su categoría correspondiente. En Fighter, por ejemplo, `Armor · Heavy` cuesta `{2,2,2}` y `Awareness · Perceptions` cuesta `{2,9,0}` — el `0` en `price3` indica que no se puede comprar un tercer rango.
+Cada fila de `categoryPrice`/`spellPrice` lleva un `dpCost` que es un **string de notación RMF** (`pricedNameEntry()`, [profession.mjs:20](module/data-models/profession.mjs#L20)). Es el coste en *Development Points* de comprar rangos de esa categoría/lista **para esta profesión**. En RMF el coste de DP no es propiedad de la habilidad sino de la combinación profesión×habilidad: la misma categoría cuesta distinto a un Fighter que a un Magician. Por eso `dpCost` es un dato **de la profesión**, y el modelo de la skill/category también tiene su propio `dpCost` (ver [category.mjs](module/data-models/category.mjs)): cuando se aplique la profesión, ese coste pasará a ser el coste efectivo del personaje. En Fighter, por ejemplo, `Armor · Heavy` cuesta `"2/2/2"` (tres rangos/nivel a 2) y `Awareness · Perceptions` cuesta `"2/9"` (solo dos rangos/nivel: el libro no permite un tercero).
 
-> **Decisión de diseño (refactor Fase 1, ver [refactor.md](refactor.md)).** Hoy `dpCost` es un `SchemaField` de tres números. La Fase 1 lo convierte en un **string compacto**: `"2/5"`, `"2/2/2"`, y crucialmente `"3/*"`, donde `N/*` significa "todos los rangos a ese coste, ilimitado" (no "restringido"). El `0` actual de `price3` se volverá `""` (sin coste / no aplicable). El motivo: el modelo `{price1,price2,price3}` no puede expresar el coste ilimitado del libro y obliga a tres campos rígidos. Mientras tanto, el código vigente trata estos números literalmente.
+> **Notación de coste (refactor Fase 1, ✅ implementado — ver [refactor.md](refactor.md) y [dp-cost.mjs](module/utils/dp-cost.mjs)).** `dpCost` es un `StringField` con la notación literal del libro, parseado en `prepareDerivedData` igual que las progresiones de raza:
+> - `"2/5"` = 1er rango a 2, 2º a 5, máx 2 rangos/nivel.
+> - `"2/2/2"` = 3 rangos/nivel a 2.
+> - `"3/*"` = rangos **ilimitados**, todos a 3 (`N/*` repite el coste anterior sin límite; **no** es "restringido").
+> - `""` = sin coste / no aplicable / incluido (las listas base de `spellPrice`).
+>
+> La conversión desde el antiguo `{price1,price2,price3}` fue sin pérdida (los ceros finales eran relleno). Cada modelo (category/skill/profession) tiene un `migrateData` que convierte el triple legacy a string al cargar, y la derivación expone `dpCostParsed` (`{costPerRank[], ranksPerLevel, unlimited, empty}`) para sheets y un futuro motor de gasto de DP.
 
 `fromBook` (inicial `"basic"`, [profession.mjs:89](module/data-models/profession.mjs#L89)) es el identificador de libro de origen, base de la arquitectura multi-libro de la Fase 2. `template.json` es vestigial: solo lista los tipos y los `htmlFields`; la verdad del esquema es este DataModel registrado en [rmf.mjs](rmf.mjs) vía `CONFIG.Item.dataModels`.
 
@@ -1769,12 +1775,11 @@ Por eso la fórmula de iniciativa funciona con `@stats.quickness`: es el `total`
 
 > Nota: el documento Actor también tiene un método propio `rollStat(statKey, options)` ([data-models.mjs:130-164](module/data-models.mjs#L130)) con fórmula por defecto `"1d100 + @bonus"`, pensado para invocación programática/macros (publica directamente con `ChatMessage.implementation.create`, no con `roll.toMessage`). Las acciones de la ficha (`RMFActions.#rollStat`) **no** lo usan: construyen la fórmula con `#buildD100Formula`. Son dos caminos paralelos (uno orientado a UI, otro a API), una redundancia conviene tener presente.
 
-### Botones +1 / −1 de rango y la deuda del alias `system.rank`
+### Botones +1 / −1 de rango (ya sin el alias `system.rank` — R8)
 
-[actions.mjs:684-743](module/actions.mjs#L684) definen `#incrementSkillRank` y `#decrementSkillRank`. Su lógica:
+[actions.mjs](module/actions.mjs) define `#incrementSkillRank` y `#decrementSkillRank`. Tras la Fase 1 (R8) su lógica escribe **solo** `boughtByLevel`:
 
 ```js
-const currentRank = Number(this.document.system.rank || 0);
 const parsedLevel = parseInt(target.dataset.level);
 const level = Number.isFinite(parsedLevel) ? parsedLevel : 1;
 const bought = this.document.system.boughtByLevel || {};
@@ -1782,14 +1787,13 @@ const currentBought = Number(bought[level] || 0);
 // Tope de 3 rangos comprados por nivel:
 if (currentBought >= 3) { ui.notifications.warn(game.i18n.localize("RMF.Skill.MaxRanksPerLevel")); return; }
 await this.document.update({
-  "system.rank": currentRank + 1,
   [`system.boughtByLevel.${level}`]: currentBought + 1
 });
 ```
 
-**Forma del dato y persistencia.** El dato canónico de progresión es **`system.boughtByLevel.<nivel>`**: un mapa de "rangos comprados en cada nivel". Los handlers leen `target.dataset.level` para saber a qué nivel imputar la compra (con fallback a `1` si `parseInt` no devuelve un valor finito), y escriben de forma granular esa entrada del mapa. El **tope de 3 rangos por nivel** (`currentBought >= 3`) es una regla canónica de Rolemaster (máximo 3 rangos de desarrollo por nivel); al alcanzarlo, avisa con `RMF.Skill.MaxRanksPerLevel` y no incrementa. El decremento es simétrico y nunca baja de 0 (`if (currentRank <= 0) return;`, `if (currentBought <= 0) return;`).
+**Forma del dato y persistencia.** El dato canónico de progresión es **`system.boughtByLevel.<nivel>`**: un mapa de "rangos comprados en cada nivel". Los handlers leen `target.dataset.level` para saber a qué nivel imputar la compra (con fallback a `1` si `parseInt` no devuelve un valor finito), y escriben de forma granular esa entrada del mapa. El **tope de 3 rangos por nivel** (`currentBought >= 3`) es una regla canónica de Rolemaster; al alcanzarlo, avisa con `RMF.Skill.MaxRanksPerLevel` y no incrementa. El decremento es simétrico y nunca baja de 0 (`if (currentBought <= 0) return;`).
 
-**La deuda técnica del alias.** Cada `update` escribe **además** `system.rank` (`currentRank + 1` / `currentRank - 1`). Ese `system.rank` es un alias de "rango total" que **el refactor eliminará**: el rango total verdadero debe *derivarse* sumando `boughtByLevel` (ranks comprados) más los rangos raciales/de paquete, no persistirse como número independiente. Mantener `system.rank` persistido en paralelo a `boughtByLevel` provoca **drift**: si por cualquier vía `boughtByLevel` cambia sin pasar por estos botones (importadores, drop de raza que escribe `boughtByLevel.0`, edición directa), `system.rank` queda desincronizado. La dirección correcta —y la que adopta el refactor— es que `system.rank`/`totalRanks` sean **derivados** desde `boughtByLevel`, dejando `boughtByLevel` como única fuente de verdad. Por eso el resto del sistema (p. ej. el drop racial en `_applyRacialRanksFromRace`, [actor-sheet.js:466-469](module/actor-sheet.js#L466)) escribe siempre `boughtByLevel.<n>` y nunca `system.rank`.
+> **Resuelto en Fase 1 (R8).** Antes cada `update` escribía además `system.rank`, un contador "de rango total" **persistido** en paralelo a `boughtByLevel` que provocaba *drift* cuando otra vía (training packages, drop de raza que escribe `boughtByLevel.0`, edición directa) tocaba `boughtByLevel` sin actualizarlo. Ese campo se **eliminó del esquema**: el rango total se *deriva* siempre de `boughtByLevel` (más `freeRanks`/rangos raciales), que es la única fuente de verdad. `this.rank`/`this.ranks` sobreviven solo como alias en memoria (no persistidos). Cuando exista el motor de gasto de DP, el tope "3" pasará a leerse de `dpCostParsed.ranksPerLevel` en vez de estar hardcodeado.
 
 **Estado de enganche.** Conviene señalar que, aunque los handlers `incrementSkillRank`/`decrementSkillRank` están definidos y registrados en `RMFActions.actions` ([actions.mjs:118-129](module/actions.mjs#L118)), **ninguna sheet los declara en su `actions` ni ninguna plantilla emite `data-action="incrementSkillRank"`** actualmente (la skill-sheet solo registra `pickImage`, [skill-sheet.js:42-44](module/skill-sheet.js#L42)). Es decir: la lógica de compra de rango por nivel existe y está lista, pero su botonera +/-1 todavía no está cableada en la UI vigente. (Por contraste, sí está cableado todo lo demás: `rollStat`, `rollSkill`, `rollCategory`, `rollCategoryNoSkill`, `rollDefensive`, `rollResistance`, `createItem`, `editItem`, `deleteItem`, `pickImage`.)
 
