@@ -6,6 +6,8 @@
  * complete so when the user fills them in they pass validation.
  */
 
+import { slugField } from "./_identity.mjs";
+
 const fields = foundry.data.fields;
 
 /** Schema for `{ price1, price2, price3 }` blocks shared by category/spell prices. */
@@ -80,6 +82,9 @@ export class ProfessionData extends foundry.abstract.TypeDataModel {
       categoryPrice:       arrayOf(pricedNameEntry()),
       spellPrice:          arrayOf(pricedNameEntry()),
       trainingPackages:    arrayOf(trainingPackageRow()),
+
+      // Stable identity (locale-independent). See module/utils/slug.mjs.
+      slug: slugField(),
 
       fromBook: new fields.StringField({
         required: true, nullable: false, blank: true, initial: "basic"

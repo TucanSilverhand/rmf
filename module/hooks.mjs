@@ -31,7 +31,7 @@ import {
   syncAttackTablesToCompendium
 } from "./importers.mjs";
 import { TablesAPI } from "./tables/index.mjs";
-import { runWorldMigration } from "./migration.mjs";
+import { runWorldMigration, buildIdentityBackfill } from "./migration.mjs";
 import { applyTrainingPackageToActor } from "./training-package-apply.mjs";
 import { RMFTrainingPackageSheet } from "./training-package-sheet.js";
 import {
@@ -39,6 +39,7 @@ import {
   unapplyProfessionFromActor,
   invalidateProfessionApplyCache
 } from "./profession-apply.mjs";
+import { resolveSpecialRole } from "./data-models/_identity.mjs";
 
 /**
  * Centralized hook management for the RMF system
@@ -68,6 +69,7 @@ export class RMFHooks {
     Hooks.on("createActor", this.#onCreateActor.bind(this));
     Hooks.on("preUpdateActor", this.#onPreUpdateActor.bind(this));
     Hooks.on("updateActor", this.#onUpdateActor.bind(this));
+    Hooks.on("preCreateItem", this.#onPreCreateItem.bind(this));
     Hooks.on("createItem", this.#onCreateItem.bind(this));
     Hooks.on("updateItem", this.#onUpdateItem.bind(this));
     Hooks.on("deleteItem", this.#onDeleteItem.bind(this));
@@ -263,6 +265,28 @@ export class RMFHooks {
    * @static
    * @async
    */
+  /**
+   * Stamp a stable `slug` (and `specialRole` for skill/category) onto any
+   * freshly-created content item that lacks one — hand-created items,
+   * drag-drops, and copies. Runs in `preCreateItem` so the identity is
+   * written into the source BEFORE the document is persisted, on every
+   * client (no userId guard: each client stamps its own pending source).
+   *
+   * @private
+   * @static
+   * @param {Item} item
+   * @param {object} data
+   * @param {object} options
+   * @param {string} userId
+   */
+  static #onPreCreateItem(item, data, options, userId) {
+    const update = buildIdentityBackfill(item);
+    // buildIdentityBackfill returns dot-notation keys (idiomatic for the DB
+    // update paths). Expand them to a nested object so updateSource writes
+    // into system.slug / system.specialRole rather than literal dotted keys.
+    if (update) item.updateSource(foundry.utils.expandObject(update));
+  }
+
   static async #onCreateItem(item, options, userId) {
     if (game.userId !== userId) return;
     const actor = item.parent;
@@ -275,7 +299,7 @@ export class RMFHooks {
     }
 
     // PP Dev category added → sync from existing realm (if any)
-    if (item.type === "category" && item.name === "Power Point Development") {
+    if (item.type === "category" && resolveSpecialRole(item.system?.specialRole, item.name) === "powerPointDevelopment") {
       const realmItem = actor.items.find(i => i.type === "realm");
       if (realmItem) await this.#syncPowerPointDevelopmentStatBonus(actor, realmItem);
       return;
@@ -400,7 +424,8 @@ export class RMFHooks {
    * @param {Item} realmItem
    */
   static async #syncPowerPointDevelopmentStatBonus(actor, realmItem) {
-    const ppDev = actor.items.find(i => i.type === "category" && i.name === "Power Point Development");
+    const ppDev = actor.items.find(i =>
+      i.type === "category" && resolveSpecialRole(i.system?.specialRole, i.name) === "powerPointDevelopment");
     if (!ppDev) return;
 
     const rb = realmItem.system?.statBonus ?? {};
@@ -672,8 +697,11 @@ export class RMFHooks {
     const pack = game.packs.get(collection);
     if (!pack) return [];
 
-    const CRITICAL_NAMES = new Set(["Body Development", "Power Point Development"]);
+    // Identify the two critical skills by their internal specialRole tag
+    // (locale-independent), falling back to the English name for
+    // un-migrated packs. See module/data-models/_identity.mjs.
     const allDocs = await pack.getDocuments();
-    return allDocs.filter(doc => doc.type === "skill" && CRITICAL_NAMES.has(doc.name));
+    return allDocs.filter(doc =>
+      doc.type === "skill" && resolveSpecialRole(doc.system?.specialRole, doc.name) !== "none");
   }
 }

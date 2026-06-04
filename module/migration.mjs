@@ -25,8 +25,86 @@
  * @fileoverview Migration runner. Pure framework — no migrations defined yet.
  */
 
+import { slugify } from "./utils/slug.mjs";
+import { resolveSpecialRole } from "./data-models/_identity.mjs";
+
 const SETTING_LAST_VERSION = "lastMigrationVersion";
 const SETTING_IN_PROGRESS = "migrationInProgress";
+
+/**
+ * Item types that carry a stable `system.slug` (the *content* types — not
+ * `equipment`, which is per-character instance state). Kept in sync with
+ * module/data-models/_identity.mjs usage.
+ * @type {ReadonlySet<string>}
+ */
+const SLUG_CONTENT_TYPES = new Set([
+  "skill", "category", "profession", "race", "realm",
+  "spellList", "trainingPackage", "attackTable"
+]);
+
+/**
+ * Compute the identity-backfill update for a single Item: stamp `slug`
+ * when empty and `specialRole` when derivable from the name. Returns null
+ * when nothing needs changing (so callers can skip no-op writes).
+ *
+ * @param {Item} item
+ * @param {string} [stampVersion] - schema version to record in flags
+ * @returns {Record<string, unknown>|null}
+ */
+export function buildIdentityBackfill(item, stampVersion) {
+  if (!item || !SLUG_CONTENT_TYPES.has(item.type)) return null;
+  const sys = item.system ?? {};
+  const update = {};
+  if (!sys.slug) update["system.slug"] = slugify(item.name);
+  if (item.type === "skill" || item.type === "category") {
+    const role = resolveSpecialRole(sys.specialRole, item.name);
+    if (role !== "none" && sys.specialRole !== role) update["system.specialRole"] = role;
+  }
+  if (!Object.keys(update).length) return null;
+  if (stampVersion) update["flags.rmf.schemaVersion"] = stampVersion;
+  return update;
+}
+
+/**
+ * Apply a per-document transform to every Item in the world's WRITABLE
+ * (packageType "world") Item compendia — e.g. `world.basic-core`. System
+ * and module packs are read-only and ship pre-stamped (they are built from
+ * data/*.json whose entries already carry `slug`/`specialRole`, and any
+ * gaps are filled by the `preCreateItem` hook at build time), so they are
+ * skipped here. Locked world packs are temporarily unlocked and relocked;
+ * the unlock lives inside the try so a configure() failure can't abort the
+ * whole migration step.
+ *
+ * @param {(item: Item) => (Record<string, unknown>|null)} transform
+ * @param {(msg: string) => void} log
+ * @returns {Promise<void>}
+ */
+async function migrateWorldItemPacks(transform, log) {
+  const packs = game.packs.filter(
+    p => p.documentName === "Item" && p.metadata?.packageType === "world"
+  );
+  for (const pack of packs) {
+    const wasLocked = pack.locked;
+    let unlocked = false;
+    try {
+      if (wasLocked) { await pack.configure({ locked: false }); unlocked = true; }
+      const docs = await pack.getDocuments();
+      const updates = [];
+      for (const doc of docs) {
+        const u = transform(doc);
+        if (u) updates.push({ _id: doc.id, ...u });
+      }
+      if (updates.length) {
+        await Item.implementation.updateDocuments(updates, { pack: pack.collection });
+      }
+      log(`Pack ${pack.collection}: updated ${updates.length}/${docs.length} item(s).`);
+    } catch (err) {
+      log(`Pack ${pack.collection}: skipped (${err.message}).`);
+    } finally {
+      if (unlocked) await pack.configure({ locked: true }).catch(() => {});
+    }
+  }
+}
 
 /**
  * Ordered list of migration steps. Each step has:
@@ -64,6 +142,52 @@ export const MIGRATIONS = [
         catch (err) { log(`Skipping item ${item.name}: ${err.message}`); }
       }
       log(`Re-emitted ${actorsUpdated} actor(s) and ${itemsUpdated} world item(s) through the new schema.`);
+    }
+  },
+  {
+    to: "0.3.0",
+    description: "Stamp stable content slugs + specialRole tags (Fase 0: identity). Reroutes joins off display names.",
+    async run({ actors, items, log }) {
+      const STAMP = "0.3.0";
+
+      // 1) Sidebar (world) items.
+      let worldItems = 0;
+      const worldUpdates = [];
+      for (const item of items) {
+        const u = buildIdentityBackfill(item, STAMP);
+        if (u) worldUpdates.push({ _id: item.id, ...u });
+      }
+      if (worldUpdates.length) {
+        try {
+          await Item.implementation.updateDocuments(worldUpdates);
+          worldItems = worldUpdates.length;
+        } catch (err) {
+          log(`Sidebar item backfill failed: ${err.message}`);
+        }
+      }
+
+      // 2) Actor-embedded items (skills/categories/etc. cloned onto actors).
+      let embedded = 0;
+      for (const actor of actors) {
+        const updates = [];
+        for (const item of actor.items) {
+          const u = buildIdentityBackfill(item, STAMP);
+          if (u) updates.push({ _id: item.id, ...u });
+        }
+        if (updates.length) {
+          try {
+            await actor.updateEmbeddedDocuments("Item", updates);
+            embedded += updates.length;
+          } catch (err) {
+            log(`Actor ${actor.name}: embedded backfill skipped (${err.message}).`);
+          }
+        }
+      }
+
+      // 3) Writable world compendia (e.g. world.basic-core).
+      await migrateWorldItemPacks(item => buildIdentityBackfill(item, STAMP), log);
+
+      log(`Identity backfill: ${worldItems} sidebar + ${embedded} embedded item(s) stamped.`);
     }
   }
 ];
@@ -222,6 +346,9 @@ export function sanitizeActorData(actor) {
  * @returns {object|null}
  */
 export function sanitizeItemData(item) {
-  // No-op for v0.1.0; reserved for future use.
+  // No-op: identity stamping for drag-drop / imported items is handled live
+  // by the `preCreateItem` hook (module/hooks.mjs → buildIdentityBackfill),
+  // which fires for every Item creation. Reserved for future per-item
+  // cleanups that must run on already-persisted documents.
   return null;
 }

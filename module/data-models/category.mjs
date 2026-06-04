@@ -11,6 +11,7 @@ import {
   normalizeCategoryProgression
 } from "../utils/rank-bonus.mjs";
 import { totalBoughtRanks, sumActorStatTotals } from "./_shared.mjs";
+import { slugField, specialRoleField, resolveSpecialRole } from "./_identity.mjs";
 
 const fields = foundry.data.fields;
 
@@ -117,6 +118,12 @@ export class CategoryData extends foundry.abstract.TypeDataModel {
       spec1Bonus: numFloat(0),
       spec2Bonus: numFloat(0),
 
+      // Stable identity (locale-independent). See module/utils/slug.mjs.
+      slug: slugField(),
+      // HP/PP-driving role; "none" for ordinary categories. Matched
+      // instead of the English name. See ./_identity.mjs.
+      specialRole: specialRoleField(),
+
       fromBook: str("basic")
     };
   }
@@ -153,7 +160,10 @@ export class CategoryData extends foundry.abstract.TypeDataModel {
     const item = this.parent;
 
     // Inherit stat bonus slots from the realm for the PP-Dev category.
-    if (item?.name === "Power Point Development") {
+    // Match by the internal specialRole tag (locale-independent), with a
+    // name fallback so un-migrated docs still resolve. See _identity.mjs.
+    const role = resolveSpecialRole(this.specialRole, item?.name);
+    if (role === "powerPointDevelopment") {
       const actor = item.parent;
       const realmItem = actor?.documentName === "Actor"
         ? actor.itemTypes?.realm?.[0]

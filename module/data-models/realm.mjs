@@ -7,6 +7,7 @@
  */
 
 import { STAT_KEYS_FULL } from "../utils/constants.mjs";
+import { slugField } from "./_identity.mjs";
 
 const fields = foundry.data.fields;
 
@@ -35,6 +36,8 @@ export class RealmData extends foundry.abstract.TypeDataModel {
         stat2: statKey(""),
         stat3: statKey("")
       }),
+      // Stable identity (locale-independent). See module/utils/slug.mjs.
+      slug: slugField(),
       fromBook: new fields.StringField({
         required: true, nullable: false, blank: true, initial: "basic"
       })

@@ -14,6 +14,8 @@
  * is applied to an actor.
  */
 
+import { slugField } from "./_identity.mjs";
+
 const fields = foundry.data.fields;
 
 /** Schema for `{ name, dpCost }` rows used by the `special` array. */
@@ -72,6 +74,9 @@ export class TrainingPackageData extends foundry.abstract.TypeDataModel {
 
       special:        new fields.ArrayField(specialEntry(),       { required: true, initial: [] }),
       categoryRanks:  new fields.ArrayField(categoryRankEntry(),  { required: true, initial: [] }),
+
+      // Stable identity (locale-independent). See module/utils/slug.mjs.
+      slug: slugField(),
 
       fromBook: str("basic")
     };

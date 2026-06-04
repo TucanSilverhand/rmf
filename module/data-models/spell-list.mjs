@@ -22,6 +22,7 @@ import {
   SPELL_TYPE_CODES,
   SPELL_SUBTYPE_CODES
 } from "../utils/constants.mjs";
+import { slugField } from "./_identity.mjs";
 
 const fields = foundry.data.fields;
 
@@ -92,6 +93,8 @@ export class SpellListData extends foundry.abstract.TypeDataModel {
         { required: true, nullable: false, initial: [] }
       ),
       spells: new fields.ArrayField(spellEntry(), { required: true, nullable: false, initial: [] }),
+      // Stable identity (locale-independent). See module/utils/slug.mjs.
+      slug: slugField(),
       fromBook: str("basic")
     };
   }

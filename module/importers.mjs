@@ -10,6 +10,33 @@ import {
 } from "./utils/rank-bonus.mjs";
 import { STAT_SHORT_TO_FULL, SPELL_SPECIAL_CODES } from "./utils/constants.mjs";
 import { normalizeCategoryGroup } from "./data-models/category.mjs";
+import { SPECIAL_ROLES } from "./data-models/_identity.mjs";
+
+/**
+ * Pass an authored `slug` straight through from the JSON source (the
+ * canonical data files carry it). Empty when absent — the `preCreateItem`
+ * hook then derives one from the name on create, and the world migration
+ * backfills existing docs. Carrying it here keeps an authored/errata slug
+ * authoritative and stable across re-syncs (which take the UPDATE path and
+ * do NOT fire preCreateItem).
+ *
+ * @param {*} src - the system source object (and/or raw entry)
+ * @returns {string}
+ */
+function authoredSlug(src) {
+  return typeof src?.slug === "string" ? src.slug : "";
+}
+
+/**
+ * Pass an authored `specialRole` through when it is one of the canonical
+ * values, else "none". Same rationale as {@link authoredSlug}.
+ *
+ * @param {*} src
+ * @returns {"none"|"bodyDevelopment"|"powerPointDevelopment"}
+ */
+function authoredSpecialRole(src) {
+  return SPECIAL_ROLES.includes(src?.specialRole) ? src.specialRole : "none";
+}
 
 /**
  * Throw a permission error unless the current user is GM.
@@ -397,6 +424,10 @@ export async function importCategories(source, options = {}) {
           spec1Bonus: normalizeNumber(sysSource.spec1Bonus ?? entry.spec1Bonus, 0),
           spec2Bonus: normalizeNumber(sysSource.spec2Bonus ?? entry.spec2Bonus, 0),
           fromBook: sysSource.fromBook ?? entry.fromBook ?? "basic",
+          slug: authoredSlug(sysSource) || authoredSlug(entry),
+          specialRole: SPECIAL_ROLES.includes(sysSource.specialRole ?? entry.specialRole)
+            ? (sysSource.specialRole ?? entry.specialRole)
+            : "none",
           group: normalizeCategoryGroup(sysSource.group ?? entry.group)
         },
         { inplace: false, insertKeys: true, insertValues: true, overwrite: true }
@@ -581,6 +612,10 @@ export async function syncCategoriesToCompendium(source, options = {}) {
           spec1Bonus: normalizeNumber(sysSource.spec1Bonus ?? entry.spec1Bonus, 0),
           spec2Bonus: normalizeNumber(sysSource.spec2Bonus ?? entry.spec2Bonus, 0),
           fromBook: sysSource.fromBook ?? entry.fromBook ?? "basic",
+          slug: authoredSlug(sysSource) || authoredSlug(entry),
+          specialRole: SPECIAL_ROLES.includes(sysSource.specialRole ?? entry.specialRole)
+            ? (sysSource.specialRole ?? entry.specialRole)
+            : "none",
           group: normalizeCategoryGroup(sysSource.group ?? entry.group)
         },
         { inplace: false, insertKeys: true, insertValues: true, overwrite: true }
@@ -789,6 +824,8 @@ function buildSkillSystemData(sysSource, template) {
       spec1Bonus: normalizeNumber(sysSource?.spec1Bonus, 0),
       spec2Bonus: normalizeNumber(sysSource?.spec2Bonus, 0),
       specialStatus: normalizeSkillSpecialStatus(sysSource?.specialStatus),
+      slug: authoredSlug(sysSource),
+      specialRole: authoredSpecialRole(sysSource),
       fromBook: String(sysSource?.fromBook ?? "basic")
     },
     { inplace: false, insertKeys: true, insertValues: true, overwrite: true }

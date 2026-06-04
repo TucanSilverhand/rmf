@@ -1,6 +1,7 @@
 [
   {
     "name": "Fighter",
+    "slug": "fighter",
     "description": "Fighters are non spell users who will find it relatively easy to develop a variety of different weapons and to wear heavier types of armor. They are less skilled in maneuvering and manipulating mechanical devices such as locks and traps (though they are still superior to most spell users in these areas). They have the greatest difficulty learning anything connected with spells. Some literary examples of a Fighter might include Conan the Barbarian, Little John, and Gimli the Dwarf.",
     "primeStats": [
       "chConstitution",
@@ -549,6 +550,7 @@
   },
   {
     "name": "Thief",
+    "slug": "thief",
     "description": "Thieves are non spell users who are specialists at maneu- vering and manipulating. They have the easiest time learn- ing mechanical skills (such as picking locks and disarming traps) and are fairly good at picking up weapon skills. Thieves are also unusually adept at subterfuge skills (Stalking, Hid- ing, etc.). They rarely wear heavy armor, although armor does not especially hinder the exercising of their professional abilities (other than limiting their superb maneuvering abili- ties). Some literary examples of Thieves might include Will Scarlet and Bilbo Baggins.",
     "primeStats": [
       "chAgility",
@@ -1099,6 +1101,7 @@
   },
   {
     "name": "Rogue",
+    "slug": "rogue",
     "description": "Rogues are non spell users with some expertise in thiefly abilities and a more specialized knowledge of arms than that possessed by Fighters. Normally, a Rogue will be almost as good as a Fighter with one weapon of his choice. The cost, in development points, of developing his thiefly skills will generally not allow him to be as good in these areas as a Thief, but his flexibility is unmatched by either profession. Some literary examples of Rogues might include Robin Hood, Fahfard and the Grey Mouser.",
     "primeStats": [
       "chAgility",
@@ -1653,6 +1656,7 @@
   },
   {
     "name": "Magician",
+    "slug": "magician",
     "description": "Magicians are pure spell users of Essence who have con- centrated on elemental spells. Their base spells deal with the elements of earth, water, air, heat, cold, and light.",
     "primeStats": [
       "chEmpathy",
@@ -2183,6 +2187,7 @@
   },
   {
     "name": "Cleric",
+    "slug": "cleric",
     "description": "Clerics are pure spell users of Channeling who have con- centrated in spells that require direct power from their dei- ties. These spell users are the most powerful of the spell users of Channeling, but they are also the most restricted because they should follow the tenants of their deity.",
     "primeStats": [
       "chIntuition",
@@ -2733,6 +2738,7 @@
   },
   {
     "name": "Mentalist",
+    "slug": "mentalist",
     "description": "Mentalists are pure spell users of Mentalism who have concentrated on spells that deal with the interaction of minds. Their base spells deal with the detection of mental Presence, mental communication, mind control, mind attack, mind merging, and sense control.",
     "primeStats": [
       "chPresence",
@@ -3278,6 +3284,7 @@
   },
   {
     "name": "Ranger",
+    "slug": "ranger",
     "description": "Rangers are semi spell users who combine the realm of Channeling with the realm of Arms. Their base spells deal with operating in the outdoors and manipulating the weather.",
     "primeStats": [
       "chConstitution",
@@ -3805,6 +3812,7 @@
   },
   {
     "name": "Dabbler",
+    "slug": "dabbler",
     "description": "Dabblers are semi spell users who combine the realm of Essence with the realm of Arms. Their base spells deal with stealth, detection, perception, movement and manipulating locks and traps.",
     "primeStats": [
       "chAgility",
@@ -4357,6 +4365,7 @@
   },
   {
     "name": "Bard",
+    "slug": "bard",
     "description": "Bards are semi spell users who combine the realm of Mentalism with the realm of Arms. Their base spells deal with sound, lore, entertaining, and item use.",
     "primeStats": [
       "chMemory",

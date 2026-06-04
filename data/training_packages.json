@@ -1,6 +1,7 @@
 [
   {
     "name": "Adventurer",
+    "slug": "adventurer",
     "type": "L",
     "description": "This is the character who seeks his fame and fortune by exploration and taking risks with his own life. The adventurer is at home in most types of inhabited places as well as many kinds of wilderness locales.",
     "timeToAcquire": "24 months",
@@ -76,6 +77,7 @@
 
   {
     "name": "Amateur Mage",
+    "slug": "amateur-mage",
     "type": "L",
     "description": "The Amateur Mage studies magic in his off-time. He is intrigued by the powers of magic and wants to know more.",
     "timeToAcquire": "53 months",
@@ -123,6 +125,7 @@
 
   {
     "name": "Animal Friend",
+    "slug": "animal-friend",
     "type": "L",
     "description": "Generally a loner, except for his animal friends, this type of character spends a great deal of time in the wilderness.",
     "timeToAcquire": "102 months",
@@ -183,6 +186,7 @@
 
   {
     "name": "Burglar",
+    "slug": "burglar",
     "type": "V",
     "description": "A burglar makes his living stealing goods from peoples homes or businesses. They ply their trade around heavily populated areas and then move on to another area.",
     "timeToAcquire": "33 months",
@@ -241,6 +245,7 @@
 
   {
     "name": "City Guard",
+    "slug": "city-guard",
     "type": "V",
     "description": "Almost every urban area has some sort of paid police force. These characters are in charge of making sure that the city remains free of bedlam in the streets. If a promotion is gained (in the Special section), the character has been promoted in the ranks (promotions equate to higher ranks).",
     "timeToAcquire": "25 months",
@@ -304,6 +309,7 @@
 
   {
     "name": "Doctor",
+    "slug": "doctor",
     "type": "V",
     "description": "A doctor is a person dedicated to tending to the sick. This should include all types of persons who are caring for the sick, not just those that actually perform the healing (e.g., the nurses, attendants, etc.). Most people who tend to the sick are doing so on a voluntary basis.",
     "timeToAcquire": "18 months",
@@ -340,6 +346,7 @@
 
   {
     "name": "Herbalist",
+    "slug": "herbalist",
     "type": "V",
     "description": "An herbalist is a person who specializes in growing, preparing, and cultivating herbs. Very often, herbalists are found near urban areas (where demand for herbs is higher), though they also like the secluded nature of a more rural environment.",
     "timeToAcquire": "33 months",
@@ -395,6 +402,7 @@
 
   {
     "name": "Hunter",
+    "slug": "hunter",
     "type": "L",
     "description": "The Hunter is at home in the wilds. He ventures into the civilized areas only to buy supplies and sell his pelts.",
     "timeToAcquire": "18 months",
@@ -461,6 +469,7 @@
 
   {
     "name": "Knight",
+    "slug": "knight",
     "type": "L",
     "description": "A knight is a warrior dedicated to a cause or a lord (as opposed to a Paladin, who is dedicated to a greater power). A knight is known for his heavy armor and ability with weapons.",
     "timeToAcquire": "69 months",
@@ -521,6 +530,7 @@
 
   {
     "name": "Loremaster",
+    "slug": "loremaster",
     "type": "V",
     "description": "The perpetual scholar. The Loremaster studies, constantly striving to know all there is to know. Some Loremasters specialize in areas of knowledge; while others are diverse, knowing little bits about lots of things.",
     "timeToAcquire": "40 months",
@@ -567,6 +577,7 @@
 
   {
     "name": "Merchant",
+    "slug": "merchant",
     "type": "V",
     "description": "From the miserly old cloth-maker to the industrious, travelling silk merchant, everyone eventually deals with a seller of goods.",
     "timeToAcquire": "23 months",
@@ -609,6 +620,7 @@
 
   {
     "name": "Performer",
+    "slug": "performer",
     "type": "V",
     "description": "A performer is a character who makes it his business to entertain crowds, large or small. He will often be found in taverns or perhaps in organized theaters. He is a restless soul, however, and will seldom stay in one place for very long.",
     "timeToAcquire": "40 months",
@@ -656,6 +668,7 @@
 
   {
     "name": "Scout",
+    "slug": "scout",
     "type": "V",
     "description": "Scouts can find employment in a variety of settings. Their general duties include travelling in front of a group for the purposes of finding hazards and/or dangers for the rest of the group to avoid.",
     "timeToAcquire": "33 months",
@@ -705,6 +718,7 @@
 
   {
     "name": "Soldier",
+    "slug": "soldier",
     "type": "V",
     "description": "In almost every culture there is a professional warrior; whose job is to protect the peoples of that culture. If a promotion is gained (in the Special section), the character has been promoted in the ranks (more promotions equate to higher ranks).",
     "timeToAcquire": "26 months",
@@ -766,6 +780,7 @@
 
   {
     "name": "Traveller",
+    "slug": "traveller",
     "type": "V",
     "description": "The traveller is simply that, a traveller. He is somewhat knowledgeable about his local region and knows the basics of the outdoors.",
     "timeToAcquire": "18 months",

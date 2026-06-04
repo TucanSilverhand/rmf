@@ -27,6 +27,7 @@
  */
 
 import { normalizeCategoryGroup } from "./data-models/category.mjs";
+import { matchesIdentity, buildSlugIndex, resolveFromIndex } from "./utils/slug.mjs";
 
 /**
  * Compendium pack that holds the canonical Categories and Skills.
@@ -51,7 +52,7 @@ async function _loadBasicCoreSkills() {
     return _basicCoreCache;
   }
   try {
-    await pack.getIndex({ fields: ["name", "type", "system.group", "system.category"] });
+    await pack.getIndex({ fields: ["name", "type", "system.group", "system.category", "system.slug"] });
   } catch (err) {
     console.warn("RMF | Failed to read basic-core index for profession apply", err);
     _basicCoreCache = { skills: [], byName: new Map() };
@@ -64,6 +65,7 @@ async function _loadBasicCoreSkills() {
     const row = {
       _id: entry._id,
       name: entry.name,
+      slug: typeof entry.system?.slug === "string" ? entry.system.slug : "",
       group: typeof entry.system?.group === "string" ? entry.system.group : "none",
       category: typeof entry.system?.category === "string" ? entry.system.category : ""
     };
@@ -149,8 +151,8 @@ export async function applyProfessionToActor(profItem) {
         continue;
       }
       for (const sk of matches) {
-        queuedSkillBumps.push({ skillName: sk.name, delta: bonus });
-        if (!actor.itemTypes?.skill?.some(s => s.name === sk.name)) {
+        queuedSkillBumps.push({ skillName: sk.slug || sk.name, delta: bonus });
+        if (!actor.itemTypes?.skill?.some(s => matchesIdentity(s, sk.slug || sk.name))) {
           if (!skillsToCreate.has(sk.name)) skillsToCreate.set(sk.name, sk);
         }
       }
@@ -168,12 +170,14 @@ export async function applyProfessionToActor(profItem) {
   }
 
   // Build the final update list, summing on top of the existing profBonus.
-  const skillsByName = new Map(actor.itemTypes?.skill?.map(s => [s.name, s]) ?? []);
-  const categoriesByName = new Map(actor.itemTypes?.category?.map(c => [c.name, c]) ?? []);
+  // Resolve by stable identity (slug → slugified name) so the join matches
+  // the rest of the system. See module/utils/slug.mjs.
+  const skillIndex = buildSlugIndex(actor.itemTypes?.skill ?? []);
+  const categoryIndex = buildSlugIndex(actor.itemTypes?.category ?? []);
   const updates = [];
 
   for (const { categoryName, delta } of queuedCategoryBumps) {
-    const cat = categoriesByName.get(categoryName);
+    const cat = resolveFromIndex(categoryIndex, categoryName);
     if (!cat) {
       log.missingCategories.push(categoryName);
       continue;
@@ -184,9 +188,11 @@ export async function applyProfessionToActor(profItem) {
     log.appliedCategories.push({ name: cat.name, delta });
   }
 
-  // Re-fetch skills map after potential creation.
+  // Re-resolve skills after potential creation (rebuild the index so newly
+  // created skills are included).
+  const skillIndexAfterCreate = buildSlugIndex(actor.itemTypes?.skill ?? []);
   for (const { skillName, delta } of queuedSkillBumps) {
-    const sk = skillsByName.get(skillName) ?? actor.itemTypes?.skill?.find(s => s.name === skillName);
+    const sk = resolveFromIndex(skillIndexAfterCreate, skillName);
     if (!sk) continue; // creation failed; already noted
     const current = Number(sk.system?.profBonus) || 0;
     updates.push({ _id: sk.id, "system.profBonus": current + delta });

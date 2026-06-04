@@ -24,6 +24,7 @@
  */
 
 import { lookupAttack, tableColumns } from "../tables/lookup.mjs";
+import { slugField } from "./_identity.mjs";
 
 const fields = foundry.data.fields;
 
@@ -78,6 +79,8 @@ export class AttackTableData extends foundry.abstract.TypeDataModel {
         description: str(""),
         results:     new fields.ObjectField({ required: true, nullable: false, initial: {} })
       }),
+      // Stable identity (locale-independent). See module/utils/slug.mjs.
+      slug: slugField(),
       fromBook: str("basic")
     };
   }

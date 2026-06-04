@@ -18,6 +18,8 @@
  * @module
  */
 
+import { buildSlugIndex, resolveFromIndex } from "./utils/slug.mjs";
+
 /**
  * Apply a Training Package item to its embedding character actor.
  * Returns true when the TP was applied (and consumed); false when the
@@ -40,8 +42,10 @@ export async function applyTrainingPackageToActor(tpItem) {
   if (!confirmed) return false;
 
   const currentLevel = String(Number(actor.system?.chLevel) || 0);
-  const categoriesByName = new Map((actor.itemTypes?.category ?? []).map(c => [c.name, c]));
-  const skillsByName     = new Map((actor.itemTypes?.skill    ?? []).map(s => [s.name, s]));
+  // Resolve TP category/skill references by stable identity (slug → name),
+  // consistent with profession-apply and the rest of the system.
+  const categoryIndex = buildSlugIndex(actor.itemTypes?.category ?? []);
+  const skillIndex    = buildSlugIndex(actor.itemTypes?.skill    ?? []);
 
   const log = {
     catsApplied: [],
@@ -58,7 +62,7 @@ export async function applyTrainingPackageToActor(tpItem) {
     if (cr.isChoice) {
       log.choices.push({ kind: "category", name: cr.category, ranks });
     } else {
-      const cat = categoriesByName.get(cr.category);
+      const cat = resolveFromIndex(categoryIndex, cr.category);
       if (!cat) {
         log.catsMissing.push(cr.category);
       } else if (ranks > 0) {
@@ -74,7 +78,7 @@ export async function applyTrainingPackageToActor(tpItem) {
         log.choices.push({ kind: "skill", name: sk.name, ranks: skRanks });
         continue;
       }
-      const skill = skillsByName.get(sk.name);
+      const skill = resolveFromIndex(skillIndex, sk.name);
       if (!skill) {
         log.skillsMissing.push(sk.name);
       } else if (skRanks > 0) {

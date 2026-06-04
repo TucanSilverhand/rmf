@@ -10,6 +10,8 @@
  *   - background options & hobby ranks
  */
 
+import { slugField } from "./_identity.mjs";
+
 const fields = foundry.data.fields;
 
 const STAT_SHORT_KEYS = ["ag", "co", "me", "re", "sd", "em", "in", "pr", "qu", "st"];
@@ -80,6 +82,10 @@ export class RaceData extends foundry.abstract.TypeDataModel {
       }),
 
       standardHobbySkills: str(""),
+
+      // Stable identity (locale-independent). See module/utils/slug.mjs.
+      slug: slugField(),
+
       fromBook: str("basic")
     };
   }

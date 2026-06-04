@@ -1,6 +1,7 @@
 [
   {
     "name": "Common Men",
+    "slug": "common-men",
     "img": "icons/creatures/eyes/human-single-brown.webp",
     "description": "This is a generalized label for rural folk of the northern and southern empires. This category represents men born and raised on farms, on grazing lands, and in small hamlets.",
     "racialAbilities": "",
@@ -72,6 +73,7 @@
   },
   {
     "name": "High Men",
+    "slug": "high-men",
     "img": "icons/creatures/eyes/human-single-brown.webp",
     "description": "High Men are great warriors and builders of empires, for their ambition matches their physical stature. They are said to have traces of Elven blood and maybe even a little blood of the Gods.",
     "racialAbilities": "",
@@ -144,6 +146,7 @@
   },
   {
     "name": "Wood Elves",
+    "slug": "wood-elves",
     "img": "icons/creatures/eyes/human-single-brown.webp",
     "description": "Wood Elves are more numerous and “rustic” than their brethren, the High Elves and the Grey Elves. They live in the safety of the woods, forests, and mountains.",
     "racialAbilities": "Cold Resistance, Disease Resistance, Inmortality, Special Rest, Night Shight",
@@ -219,6 +222,7 @@
   },
   {
     "name": "Dwarves",
+    "slug": "dwarves",
     "img": "icons/creatures/eyes/human-single-brown.webp",
     "description": "Although Dwarves are spread across the world, they are close to one another and have spawned a universal reputation for ruggedness, practicality, and unwavering loyalty. Most groups favor the rocky highlands and deep caverns of the mountains. They are superior craftsmen and they love to mine the earth for precious gems and metals to forge into weapons of strength and artifacts of beauty and power.",
     "racialAbilities": "Dwarves see well in extreme darkness. In the dimmest light, they can see 50' perfectly, and fairly well up to 100'. They can see 10' in total darkness (non-magical).",
@@ -281,7 +285,7 @@
     },
     "specialSkills": {
       "everyman": [
-        { "name": "Caving" },
+        { "name": "Caving (Spelunking)" },
         { "name": "Leather-crafts" },
         { "name": "Metal-crafts" },
         { "name": "Mining" },
@@ -296,6 +300,7 @@
   },
   {
     "name": "Halflings",
+    "slug": "halflings",
     "img": "icons/creatures/eyes/human-single-brown.webp",
     "description": "Halflings have an unclear origin, although they arose about the same time as Men. Indeed, they are said to be related to Men. They are the smallest of the races, Halflings range between 2 and 4 feet in height, and tend to be fat or pudgy. They are sometimes called “The Hairfoots” because of their large hairy feet.",
     "racialAbilities": "",
@@ -358,7 +363,7 @@
     },
     "specialSkills": {
       "everyman": [
-        { "name": "Caving" },
+        { "name": "Caving (Spelunking)" },
         { "name": "Horticulture" }
       ],
       "restricted": [

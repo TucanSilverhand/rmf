@@ -20,6 +20,7 @@ import {
 } from "./utils/sheet-helpers.mjs";
 import { RMFActions } from "./actions.mjs";
 import { RMF_CONSTANTS } from "./utils/constants.mjs";
+import { matchesIdentity, buildSlugIndex, resolveFromIndex, identityKey } from "./utils/slug.mjs";
 
 export class RMFActorSheet extends HandlebarsApplicationMixin(foundry.applications.sheets.ActorSheetV2) {
 
@@ -154,17 +155,17 @@ export class RMFActorSheet extends HandlebarsApplicationMixin(foundry.applicatio
     }
 
     // Group skills under their parent category for the Skills tab.
-    // The relation is by category name (skill.system.category matches category.name),
-    // case-insensitive and trimmed to tolerate user input.
+    // The relation is resolved by stable identity (slug, falling back to
+    // slugified name) so it tolerates case, the "·" middot, and renames.
+    // See module/utils/slug.mjs.
     const categories = context.items.category || [];
     const skills = context.items.skill || [];
-    const norm = (s) => String(s ?? "").trim().toLowerCase();
-    const categoryByName = new Map(categories.map(c => [norm(c.name), c]));
+    const categoryIndex = buildSlugIndex(categories);
     const skillsByCategoryId = new Map(categories.map(c => [c.id, []]));
     const uncategorized = [];
 
     for (const skill of skills) {
-      const cat = categoryByName.get(norm(skill.system?.category));
+      const cat = resolveFromIndex(categoryIndex, skill.system?.category);
       if (cat) skillsByCategoryId.get(cat.id).push(skill);
       else uncategorized.push(skill);
     }
@@ -405,9 +406,10 @@ export class RMFActorSheet extends HandlebarsApplicationMixin(foundry.applicatio
       return created;
     }
 
-    // Prevent duplicate categories by name
+    // Prevent duplicate categories by stable identity (slug → name)
     if (item.type === 'category') {
-      const hasCategory = this.document.items.some(i => i.type === 'category' && i.name === item.name);
+      const hasCategory = this.document.items.some(i =>
+        i.type === 'category' && matchesIdentity(i, item.system?.slug || item.name));
       if (hasCategory) {
         ui.notifications?.warn(game.i18n.localize('RMF.Messages.AlreadyHasCategory') || 'This category is already assigned');
         return false;
@@ -448,10 +450,9 @@ export class RMFActorSheet extends HandlebarsApplicationMixin(foundry.applicatio
     const skills = Array.isArray(racialRanks.skills) ? racialRanks.skills : [];
 
     const findOwnItem = (type, name) => {
-      const target = String(name || '').trim().toLowerCase();
-      if (!target) return null;
+      if (!String(name || '').trim()) return null;
       return this.document.items.find(
-        i => i.type === type && String(i.name || '').trim().toLowerCase() === target
+        i => i.type === type && matchesIdentity(i, name)
       ) ?? null;
     };
 
@@ -541,10 +542,9 @@ export class RMFActorSheet extends HandlebarsApplicationMixin(foundry.applicatio
     if (!everyman.length && !restricted.length) return;
 
     const findOwnSkill = (name) => {
-      const target = String(name || '').trim().toLowerCase();
-      if (!target) return null;
+      if (!String(name || '').trim()) return null;
       return this.document.items.find(
-        i => i.type === 'skill' && String(i.name || '').trim().toLowerCase() === target
+        i => i.type === 'skill' && matchesIdentity(i, name)
       ) ?? null;
     };
 
@@ -554,12 +554,12 @@ export class RMFActorSheet extends HandlebarsApplicationMixin(foundry.applicatio
     for (const entry of everyman) {
       const name = typeof entry?.name === 'string' ? entry.name.trim() : '';
       if (!name) continue;
-      statusByName.set(name.toLowerCase(), { name, status: 'everyman' });
+      statusByName.set(identityKey(name), { name, status: 'everyman' });
     }
     for (const entry of restricted) {
       const name = typeof entry?.name === 'string' ? entry.name.trim() : '';
       if (!name) continue;
-      statusByName.set(name.toLowerCase(), { name, status: 'restricted' });
+      statusByName.set(identityKey(name), { name, status: 'restricted' });
     }
     if (!statusByName.size) return;
 
@@ -573,7 +573,7 @@ export class RMFActorSheet extends HandlebarsApplicationMixin(foundry.applicatio
       const sourceData = await this._resolveSkillSourceData(name);
       const itemData = sourceData ?? this._buildStubSkillData(name);
       itemData.system = itemData.system || {};
-      itemData.system.specialStatus = statusByName.get(name.toLowerCase()).status;
+      itemData.system.specialStatus = statusByName.get(identityKey(name)).status;
       skillCreatePayload.push(itemData);
     }
     if (skillCreatePayload.length) {
@@ -606,12 +606,11 @@ export class RMFActorSheet extends HandlebarsApplicationMixin(foundry.applicatio
    * @private
    */
   async _resolveSkillSourceData(name) {
-    const target = String(name || '').trim().toLowerCase();
-    if (!target) return null;
+    if (!String(name || '').trim()) return null;
 
-    // 1) World items
+    // 1) World items (resolve by stable identity — slug or slugified name)
     const worldHit = game.items.find(
-      i => i.type === 'skill' && String(i.name || '').trim().toLowerCase() === target
+      i => i.type === 'skill' && matchesIdentity(i, name)
     );
     if (worldHit) {
       const data = worldHit.toObject();
@@ -624,9 +623,9 @@ export class RMFActorSheet extends HandlebarsApplicationMixin(foundry.applicatio
     const pack = game.packs?.get('world.basic-core');
     if (pack && pack.documentName === 'Item') {
       try {
-        await pack.getIndex({ fields: ['name', 'type'] });
+        await pack.getIndex({ fields: ['name', 'type', 'system.slug'] });
         const entry = pack.index.find(
-          e => e.type === 'skill' && String(e.name || '').trim().toLowerCase() === target
+          e => e.type === 'skill' && matchesIdentity(e, name)
         );
         if (entry) {
           const doc = await pack.getDocument(entry._id);

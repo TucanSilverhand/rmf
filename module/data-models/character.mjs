@@ -12,6 +12,7 @@
  */
 
 import { STAT_KEYS_FULL, RMF_CONSTANTS } from "../utils/constants.mjs";
+import { resolveSpecialRole } from "./_identity.mjs";
 
 const fields = foundry.data.fields;
 
@@ -218,12 +219,17 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
     const ds = this.derivedStats;
     if (!ds) return;
 
+    // Resolve the HP/PP-driving skills by their internal specialRole tag
+    // (locale-independent), falling back to the English name so an
+    // un-migrated world still computes the right maxima. See _identity.mjs.
     const skills = this.parent?.itemTypes?.skill ?? [];
-    const skillByName = new Map(skills.map(s => [s.name, s]));
-    const bonusOf = (name) => Number(skillByName.get(name)?.system?.totalBonus ?? 0) || 0;
+    const bonusOfRole = (role) => {
+      const sk = skills.find(s => resolveSpecialRole(s.system?.specialRole, s.name) === role);
+      return Number(sk?.system?.totalBonus ?? 0) || 0;
+    };
 
     if (ds.hitPoints) {
-      const max = bonusOf("Body Development");
+      const max = bonusOfRole("bodyDevelopment");
       const prev = Number(ds.hitPoints.value);
       ds.hitPoints.max = max;
       ds.hitPoints.value = Number.isFinite(prev)
@@ -231,7 +237,7 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
         : Math.max(0, max);
     }
     if (ds.powerPoints) {
-      const max = bonusOf("Power Point Development");
+      const max = bonusOfRole("powerPointDevelopment");
       const prev = Number(ds.powerPoints.value);
       ds.powerPoints.max = max;
       ds.powerPoints.value = Number.isFinite(prev)

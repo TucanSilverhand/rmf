@@ -15,6 +15,8 @@ import {
 } from "../utils/rank-bonus.mjs";
 import { totalBoughtRanks } from "./_shared.mjs";
 import { CATEGORY_GROUPS, normalizeCategoryGroup } from "./category.mjs";
+import { slugField, specialRoleField, resolveSpecialRole } from "./_identity.mjs";
+import { matchesIdentity } from "../utils/slug.mjs";
 
 const fields = foundry.data.fields;
 
@@ -60,6 +62,14 @@ export class SkillData extends foundry.abstract.TypeDataModel {
       spec2Bonus: numFloat(0),
 
       specialStatus: str("none", { choices: SPECIAL_STATUS_CHOICES }),
+
+      // Stable identity (locale-independent). See module/utils/slug.mjs.
+      slug: slugField(),
+      // HP/PP-driving role; "none" for ordinary skills. The Body /
+      // Power Point Development skills are matched by this tag instead
+      // of their English names. See ./_identity.mjs.
+      specialRole: specialRoleField(),
+
       fromBook: str("basic")
     };
   }
@@ -107,9 +117,11 @@ export class SkillData extends foundry.abstract.TypeDataModel {
 
     let categoryBonus = 0;
     if (actor?.documentName === "Actor" && this.category) {
-      const target = String(this.category).trim().toLowerCase();
+      // Resolve by stable identity (slug, falling back to slugified name)
+      // so the join survives renames, translation, case, and the "·"
+      // middot in names like "Armor · Heavy". See module/utils/slug.mjs.
       const parentCategory = actor.items.find(i =>
-        i.type === "category" && String(i.name || "").trim().toLowerCase() === target
+        i.type === "category" && matchesIdentity(i, this.category)
       );
       if (parentCategory) categoryBonus = Number(parentCategory.system?.totalBonus ?? 0) || 0;
     }
@@ -145,10 +157,14 @@ export class SkillData extends foundry.abstract.TypeDataModel {
     const raceItem = actor.itemTypes?.race?.[0];
     if (!raceItem) return null;
 
-    if (item.name === "Body Development") {
+    // Match by the internal specialRole tag (locale-independent), falling
+    // back to the English name so un-migrated docs still resolve.
+    const role = resolveSpecialRole(this.specialRole, item.name);
+
+    if (role === "bodyDevelopment") {
       return raceItem.system?.bodyDevelopmentTable ?? null;
     }
-    if (item.name === "Power Point Development") {
+    if (role === "powerPointDevelopment") {
       const realmItem = actor.itemTypes?.realm?.[0];
       const field = realmItem?.system?.powerPointsField;
       if (typeof field !== "string" || !field) return null;
