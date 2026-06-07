@@ -31,6 +31,7 @@ import { RMFHooks } from "./module/hooks.mjs";
 import { SKILL_CLASSIFICATIONS } from "./module/utils/rank-bonus.mjs";
 import { STAT_SHORT_TO_FULL, RMF_CONSTANTS, SPELL_DESCRIPTION_KEY } from "./module/utils/constants.mjs";
 import { registerMigrationSettings, runWorldMigration } from "./module/migration.mjs";
+import { RegenerateBasicCoreMenu, WipeBasicCoreMenu } from "./module/compendium-admin.mjs";
 import {
   CharacterData,
   EquipmentData,
@@ -311,6 +312,30 @@ function _registerSystemSettings() {
     config: true,
     type: Array,
     default: ["none"]
+  });
+
+  // GM tool: (re)build the world.basic-core compendium from the system's
+  // canonical JSON data files. Opens a confirmation dialog, then runs every
+  // importer in dependency order (categories → skills → realms → races →
+  // professions → training packages → spell lists → attack tables).
+  game.settings.registerMenu("rmf", "regenerateBasicCore", {
+    name: "RMF.Settings.RegenerateBasicCore.Name",
+    label: "RMF.Settings.RegenerateBasicCore.Label",
+    hint: "RMF.Settings.RegenerateBasicCore.Hint",
+    icon: "fas fa-arrows-rotate",
+    type: RegenerateBasicCoreMenu,
+    restricted: true
+  });
+
+  // GM tool: empty the world.basic-core compendium (delete all items and
+  // folders inside it, keeping the empty pack). Destructive — confirms first.
+  game.settings.registerMenu("rmf", "wipeBasicCore", {
+    name: "RMF.Settings.WipeBasicCore.Name",
+    label: "RMF.Settings.WipeBasicCore.Label",
+    hint: "RMF.Settings.WipeBasicCore.Hint",
+    icon: "fas fa-trash",
+    type: WipeBasicCoreMenu,
+    restricted: true
   });
 
   // Migration framework settings (hidden from the config UI).

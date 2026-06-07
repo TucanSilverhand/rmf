@@ -31,6 +31,7 @@ import {
   syncAttackTablesToCompendium
 } from "./importers.mjs";
 import { TablesAPI } from "./tables/index.mjs";
+import { regenerateBasicCore, wipeBasicCore } from "./compendium-admin.mjs";
 import { runWorldMigration, buildIdentityBackfill } from "./migration.mjs";
 import { applyTrainingPackageToActor } from "./training-package-apply.mjs";
 import { RMFTrainingPackageSheet } from "./training-package-sheet.js";
@@ -66,6 +67,7 @@ export class RMFHooks {
     Hooks.once("ready", this.#onReady.bind(this));
 
     // Document lifecycle hooks
+    Hooks.on("preCreateActor", this.#onPreCreateActor.bind(this));
     Hooks.on("createActor", this.#onCreateActor.bind(this));
     Hooks.on("preUpdateActor", this.#onPreUpdateActor.bind(this));
     Hooks.on("updateActor", this.#onUpdateActor.bind(this));
@@ -115,6 +117,11 @@ export class RMFHooks {
     game.rmf.importAttackTables = importAttackTables;
     game.rmf.syncAttackTablesToCompendium = syncAttackTablesToCompendium;
 
+    // One-shot basic-core compendium management (same actions as the two
+    // settings-menu buttons). `confirm: false` skips the dialog for macros.
+    game.rmf.regenerateBasicCore = regenerateBasicCore;
+    game.rmf.wipeBasicCore = wipeBasicCore;
+
     // Multidimensional-table engine (lookup / open-ended d100 / attack
     // resolver). Clean API boundary — see module/tables/. Re-exposed here
     // mirroring the importer surface so GM macros / sheets can reach it.
@@ -150,11 +157,37 @@ export class RMFHooks {
   // =====================
 
   /**
+   * Actor pre-creation hook — sets system token defaults BEFORE the actor is
+   * persisted (one write, no follow-up update).
+   *
+   * Defaults the prototype token's bar visibility to "Hovered by Owner"
+   * (CONST.TOKEN_DISPLAY_MODES.OWNER_HOVER) so the HP/PP bars appear when the
+   * owning player hovers the token. Skipped when the creation data already
+   * specifies displayBars (e.g. a duplicate or compendium import keeps its
+   * own configuration). Bar attributes themselves come from system.json's
+   * primary/secondaryTokenAttribute.
+   *
+   * @private
+   * @static
+   * @param {Actor} actor - The to-be-created actor (modifiable via updateSource)
+   * @param {Object} data - Raw creation data
+   * @param {Object} options - Creation options
+   * @param {User} user - The user performing the creation
+   */
+  static #onPreCreateActor(actor, data, options, user) {
+    if (actor.type !== "character") return;
+    if (foundry.utils.hasProperty(data, "prototypeToken.displayBars")) return;
+    actor.updateSource({
+      "prototypeToken.displayBars": CONST.TOKEN_DISPLAY_MODES.OWNER_HOVER
+    });
+  }
+
+  /**
    * Actor creation hook
-   * 
+   *
    * Automatically attaches category items from the "basic-core" compendium
    * folder "Categories" when a new character actor is created.
-   * 
+   *
    * @private
    * @static
    * @async

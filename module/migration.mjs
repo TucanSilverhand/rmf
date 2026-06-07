@@ -233,6 +233,64 @@ export const MIGRATIONS = [
 
       log(`dpCost migration: re-emitted ${sidebar} sidebar + ${embedded} embedded + ${packed} pack item(s).`);
     }
+  },
+  {
+    to: "0.4.1",
+    description: "Repair token resource bars: drop the erroneous 'system.' prefix from the HP/PP bar attributes, and default hidden bars to 'Hovered by Owner'.",
+    async run({ actors, scenes, log }) {
+      // Actors created while system.json carried the wrong, "system."-prefixed
+      // primaryTokenAttribute baked that broken path into their token bars
+      // (the bar attribute is resolved against actor.system, so the prefix made
+      // it point at actor.system.system.* → undefined → empty bar). Re-point
+      // ONLY those exact broken values; any GM-customized bar is left untouched.
+      const REMAP = {
+        "system.derivedStats.hitPoints":  "derivedStats.hitPoints",
+        "system.derivedStats.powerPoints": "derivedStats.powerPoints"
+      };
+      const DISPLAY = CONST.TOKEN_DISPLAY_MODES;
+      const barFixes = (token, prefix) => {
+        const update = {};
+        // 1) Re-point broken HP/PP bar attributes.
+        for (const bar of ["bar1", "bar2"]) {
+          const attr = token?.[bar]?.attribute;
+          if (attr && REMAP[attr]) update[`${prefix}${bar}.attribute`] = REMAP[attr];
+        }
+        // 2) Default bar visibility to "Hovered by Owner" where it is still at
+        //    the core default NONE (never shown) — which, combined with the
+        //    broken attribute above, is why HP/PP bars never appeared. A GM who
+        //    deliberately picked another visibility keeps it.
+        if (Number(token?.displayBars) === DISPLAY.NONE) {
+          update[`${prefix}displayBars`] = DISPLAY.OWNER_HOVER;
+        }
+        return update;
+      };
+
+      // 1) Actor prototype tokens (the template each new token is stamped from).
+      let protos = 0;
+      for (const actor of actors) {
+        const u = barFixes(actor.prototypeToken, "prototypeToken.");
+        if (Object.keys(u).length) {
+          try { await actor.update(u); protos++; }
+          catch (err) { log(`Actor ${actor.name}: prototype token bar fix skipped (${err.message}).`); }
+        }
+      }
+
+      // 2) Tokens already placed on scenes (linked or not) keep their own bars.
+      let placed = 0;
+      for (const scene of (scenes ?? [])) {
+        const updates = [];
+        for (const token of scene.tokens) {
+          const u = barFixes(token, "");
+          if (Object.keys(u).length) updates.push({ _id: token.id, ...u });
+        }
+        if (updates.length) {
+          try { await scene.updateEmbeddedDocuments("Token", updates); placed += updates.length; }
+          catch (err) { log(`Scene ${scene.name}: token bar fix skipped (${err.message}).`); }
+        }
+      }
+
+      log(`Token bar repair: ${protos} prototype token(s) + ${placed} placed token(s) fixed (HP/PP attribute and/or default 'owner hover' visibility).`);
+    }
   }
 ];
 

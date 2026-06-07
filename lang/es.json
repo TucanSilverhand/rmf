@@ -269,6 +269,31 @@
           "Basic": "Básico"
         }
       },
+      "RegenerateBasicCore": {
+        "Name": "Compendio basic-core",
+        "Label": "Generar / Recargar",
+        "Hint": "Crea el compendio basic-core si falta y (re)carga todo el contenido canónico desde los JSON del sistema: categorías, habilidades, reinos, razas, profesiones, paquetes de entrenamiento, listas de hechizos y tablas de ataque. Las entradas existentes se actualizan in situ.",
+        "Confirm": {
+          "Title": "Generar basic-core",
+          "Content": "Se (re)cargará todo el contenido canónico desde los ficheros de datos del sistema en el compendio basic-core. Las entradas con el mismo nombre se actualizan in situ; no se borra nada. ¿Continuar?",
+          "Yes": "Generar"
+        },
+        "Done": "basic-core generado: {created} creados, {updated} actualizados.",
+        "DoneWithErrors": "basic-core generado con incidencias: {created} creados, {updated} actualizados, {errors} error(es). Mira la consola (F12).",
+        "CreateFailed": "No se pudo encontrar ni crear el compendio basic-core. Crea un compendio de Items llamado 'basic-core' e inténtalo de nuevo."
+      },
+      "WipeBasicCore": {
+        "Name": "Vaciar compendio basic-core",
+        "Label": "Borrar contenido",
+        "Hint": "Elimina todos los ítems y carpetas dentro del compendio basic-core, dejándolo vacío. El compendio en sí se conserva. No se puede deshacer.",
+        "Confirm": {
+          "Title": "Vaciar basic-core",
+          "Content": "Esto elimina permanentemente TODOS los ítems y carpetas dentro del compendio basic-core. No se puede deshacer. ¿Continuar?",
+          "Yes": "Borrar todo"
+        },
+        "Done": "basic-core vaciado: {docs} ítem(s) y {folders} carpeta(s) eliminados.",
+        "Missing": "No se encontró el compendio basic-core — nada que borrar."
+      },
       "MigrationVersion": {
         "Name": "Última Versión de Migración Aplicada",
         "Hint": "Interno — gestionado por el sistema de migraciones. No editar a mano."
@@ -285,7 +310,8 @@
       "Self": "Solo para mí"
     },
     "Common": {
-      "Empty": "—"
+      "Empty": "—",
+      "Cancel": "Cancelar"
     },
     "Errors": {
       "ImagePickerFailed": "El selector de imagen falló"

@@ -193,7 +193,7 @@
     },
     "DerivedStats": {
       "HitPoints": "Hit Points",
-      "HitPointsMax": "Total Hits",
+      "HitPointsMax": "Total Hit Points",
       "PowerPoints": "Power Points",
       "PowerPointsMax": "Total Power",
       "DefensiveBonus": "Defensive Bonus",
@@ -269,6 +269,31 @@
           "Basic": "Basic"
         }
       },
+      "RegenerateBasicCore": {
+        "Name": "basic-core Compendium",
+        "Label": "Generate / Reload",
+        "Hint": "Create the basic-core compendium if missing and (re)load all canonical content from the system's JSON files: categories, skills, realms, races, professions, training packages, spell lists and attack tables. Existing entries are updated in place.",
+        "Confirm": {
+          "Title": "Generate basic-core",
+          "Content": "All canonical content will be (re)loaded from the system data files into the basic-core compendium. Entries with the same name are updated in place; nothing is deleted. Continue?",
+          "Yes": "Generate"
+        },
+        "Done": "basic-core generated: {created} created, {updated} updated.",
+        "DoneWithErrors": "basic-core generated with issues: {created} created, {updated} updated, {errors} error(s). See the console (F12).",
+        "CreateFailed": "Could not find or create the basic-core compendium. Create an Item compendium named 'basic-core' and try again."
+      },
+      "WipeBasicCore": {
+        "Name": "Empty basic-core Compendium",
+        "Label": "Delete contents",
+        "Hint": "Delete every item and folder inside the basic-core compendium, leaving it empty. The compendium itself is kept. This cannot be undone.",
+        "Confirm": {
+          "Title": "Empty basic-core",
+          "Content": "This permanently deletes ALL items and folders inside the basic-core compendium. This cannot be undone. Continue?",
+          "Yes": "Delete everything"
+        },
+        "Done": "basic-core emptied: {docs} item(s) and {folders} folder(s) deleted.",
+        "Missing": "No basic-core compendium found — nothing to delete."
+      },
       "MigrationVersion": {
         "Name": "Last Applied Migration Version",
         "Hint": "Internal — managed by the migration runner. Do not edit by hand."
@@ -285,7 +310,8 @@
       "Self": "Self Roll"
     },
     "Common": {
-      "Empty": "—"
+      "Empty": "—",
+      "Cancel": "Cancel"
     },
     "Errors": {
       "ImagePickerFailed": "Image picker failed"

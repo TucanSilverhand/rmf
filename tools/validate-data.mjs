@@ -30,6 +30,11 @@ const isNum  = v => typeof v === "number" && Number.isFinite(v);
 const isBool = v => typeof v === "boolean";
 const isObj  = v => v !== null && typeof v === "object" && !Array.isArray(v);
 const isArr  = v => Array.isArray(v);
+// dpCost is the RMF slash-notation string ("2/5", "7/8/9", "3/*"); "" means
+// "no cost / overwritten by the active profession". Legacy { price1, price2,
+// price3 } triples are still tolerated — the data model normalizes them to the
+// string form on load (see module/utils/dp-cost.mjs).
+const isDPCost = v => isStr(v) || isObj(v);
 
 const SKILL_CLASSIFICATIONS = new Set([
   "movingManeuver", "staticManeuver", "offensiveBonus", "specialPurpose"
@@ -40,14 +45,14 @@ const SKILL_PROGRESSIONS    = new Set(["standard", "combined", "limited", "speci
 /** Map type → required-when-present field shape. */
 const SHAPES = {
   category: {
-    description: isStr, group: isStr, dpCost: isObj, boughtByLevel: isObj,
+    description: isStr, group: isStr, dpCost: isDPCost, boughtByLevel: isObj,
     freeRanks: isNum, categoryRankBonusProgression: isStr, ranks: isNum,
     statBonus: isObj, profBonus: isNum, spec1Bonus: isNum, spec2Bonus: isNum,
     fromBook: isStr
   },
   skill: {
     description: isStr, rank: isNum, category: isStr, group: isStr,
-    classification: isStr, dpCost: isObj, boughtByLevel: isObj,
+    classification: isStr, dpCost: isDPCost, boughtByLevel: isObj,
     skillRankBonusProgression: isStr, commonlyUsed: isBool,
     profBonus: isNum, spec1Bonus: isNum, spec2Bonus: isNum,
     specialStatus: isStr, fromBook: isStr
