@@ -72,9 +72,14 @@ const SPELL_LIST_FILES = [
   "spell_lists/open-mentalism-lists.json"
 ];
 
-/** Attack-table data files (currently a single transcribed table). */
+/** Attack-table data files (A-10.9.x weapon attack tables). */
 const ATTACK_TABLE_FILES = [
-  "system_tables/attack_tables/one-handed-concussion.json"
+  "system_tables/attack_tables/one-handed-concussion.json",
+  "system_tables/attack_tables/one-handed-edged.json",
+  "system_tables/attack_tables/two-handed.json",
+  "system_tables/attack_tables/missile.json",
+  "system_tables/attack_tables/pole-arm.json",
+  "system_tables/attack_tables/thrown.json"
 ];
 
 /** Absolute (Foundry-served) path to the system data directory. */
