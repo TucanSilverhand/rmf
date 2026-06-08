@@ -5,6 +5,47 @@
 
 <div class="tab details-section" data-group="primary-tabs" data-tab="details" style="display: block;">
 
+  {{!-- Application controls — only when the package is embedded on a character.
+       Resolve any selectable category/skill first, pick the level it was taken
+       at, then Apply. Recover reverses it. --}}
+  {{#if isOnActor}}
+  <div class="summary-wrapper rmf-tp-apply">
+    <h3>{{localize "RMF.TrainingPackage.Application"}}</h3>
+    <div class="rmf-tp-apply-row">
+      <span class="rmf-tp-status {{#if applied}}is-applied{{else}}is-pending{{/if}}">
+        {{#if applied}}{{localize "RMF.TrainingPackage.AppliedBadge"}}{{else}}{{localize "RMF.TrainingPackage.NotAppliedBadge"}}{{/if}}
+      </span>
+
+      <label class="rmf-tp-level">
+        {{localize "RMF.TrainingPackage.TakenAtLevel"}}
+        <input type="number"
+               name="system.takenAtLevel"
+               value="{{takenAtLevel}}"
+               min="0"
+               max="{{actorLevel}}"
+               data-dtype="Number"
+               inputmode="numeric"
+               {{#if applied}}readonly{{/if}} />
+      </label>
+
+      <button type="button"
+              class="rmf-tp-btn apply"
+              data-action="applyTrainingPackage"
+              {{#if applied}}disabled{{/if}}>
+        <i class="fas fa-circle-check"></i> {{localize "RMF.TrainingPackage.Apply"}}
+      </button>
+
+      <button type="button"
+              class="rmf-tp-btn recover"
+              data-action="recoverTrainingPackage"
+              {{#unless applied}}disabled{{/unless}}>
+        <i class="fas fa-rotate-left"></i> {{localize "RMF.TrainingPackage.Recover"}}
+      </button>
+    </div>
+    <p class="rmf-tp-apply-hint">{{localize "RMF.TrainingPackage.ApplyHint"}}</p>
+  </div>
+  {{/if}}
+
   {{!-- Description (enriched, read-only) --}}
   <div class="description-preview ProseMirror">
     {{{enrichedDescription}}}

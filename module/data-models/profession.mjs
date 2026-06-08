@@ -2,7 +2,7 @@
  * RMF System - Profession item DataModel.
  *
  * Mirrors `template.json:Item.profession`. Most arrays are still empty
- * in the canonical data set (data/professions.json) — the schema is
+ * in the canonical data set (data/build_character/professions.json) — the schema is
  * complete so when the user fills them in they pass validation.
  */
 
@@ -29,7 +29,7 @@ function pricedNameEntry() {
  *
  * `isChoice` flags entries whose `name` is a free-form placeholder ("any
  * one Combat Maneuver", "choice of one Situational Awareness", …) instead
- * of a canonical skill from `data/skills.json`. Same semantics as the
+ * of a canonical skill from `data/build_character/skills.json`. Same semantics as the
  * `isChoice` field on `training-package.mjs` rows.
  */
 function namedRow() {

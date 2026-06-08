@@ -1720,7 +1720,7 @@ export async function syncTrainingPackagesToCompendium(source, options = {}) {
  * Spell Lists
  *
  * One Item (type "spellList") per spell list. Sources are the
- * `data/*-lists.json` files, each shaped `{ "lists": [ ... ] }` (the
+ * `data/spell_lists/*-lists.json` files, each shaped `{ "lists": [ ... ] }` (the
  * old top-level `spellDescriptionKey` was moved to constants.mjs /
  * CONFIG.RMF and is intentionally NOT imported).
  *
@@ -1785,6 +1785,46 @@ async function _ensurePackFolder(pack, name, cache) {
   const id = folder?.id ?? null;
   cache.set(name, id);
   return id;
+}
+
+/**
+ * Find-or-create a NESTED chain of Item folders inside a compendium pack and
+ * return the LEAF folder id. Each level is matched by name AND parent, so two
+ * folders with the same name under different parents never collide. Caches by
+ * full lowercased path within a run. Pass a single-element array for a plain
+ * root folder (equivalent to the old _ensurePackFolder behaviour).
+ *
+ * @param {CompendiumCollection} pack
+ * @param {string[]} names - folder names root→leaf, e.g. ["Build Character", "Categories"]
+ * @param {Map<string,string|null>} [cache]
+ * @returns {Promise<string|null>} leaf folder id (null if names empty / creation failed)
+ */
+export async function ensurePackFolderPath(pack, names, cache = new Map()) {
+  let parentId = null;
+  let key = "";
+  for (const raw of (names ?? [])) {
+    const name = String(raw ?? "").trim();
+    if (!name) continue;
+    key += `/${name.toLowerCase()}`;
+    if (cache.has(key)) { parentId = cache.get(key); continue; }
+    const here = parentId;
+    let folder = (pack.folders ? Array.from(pack.folders.values()) : [])
+      .find(f => String(f.name ?? "").trim().toLowerCase() === name.toLowerCase()
+              && (f.folder?.id ?? null) === here) || null;
+    if (!folder) {
+      try {
+        folder = await Folder.create(
+          { name, type: pack.documentName, folder: here },
+          { pack: pack.collection }
+        );
+      } catch (e) {
+        console.warn(`RMF | Failed creating pack folder path "${(names ?? []).join("/")}" in ${pack.collection}`, e);
+      }
+    }
+    parentId = folder?.id ?? null;
+    cache.set(key, parentId);
+  }
+  return parentId;
 }
 
 /**
@@ -1969,12 +2009,14 @@ export async function syncSpellListsToCompendium(source, options = {}) {
       const img = pickImageFromEntry(entry, sysSource, "icons/svg/book.svg");
       const base = { name, type: "spellList", img, system };
 
-      // Resolve (creating if needed) the "<Realm> <ListType>" folder so
-      // the 9 folders appear automatically. Folder is set on BOTH create
-      // and update so a re-run relocates lists already imported to the
-      // pack root.
-      const folderId = await _ensurePackFolder(
-        pack, _spellListFolderName(system.realm, system.listType), folderCache
+      // Resolve (creating if needed) the "<Realm> <ListType>" folder so the
+      // 9 folders appear automatically — nested under options.parentFolderName
+      // (e.g. "Spell Lists") when given. Folder is set on BOTH create and
+      // update so a re-run relocates lists already imported elsewhere.
+      const folderId = await ensurePackFolderPath(
+        pack,
+        [options.parentFolderName, _spellListFolderName(system.realm, system.listType)].filter(Boolean),
+        folderCache
       );
 
       if (existing) {
@@ -2006,7 +2048,7 @@ export async function syncSpellListsToCompendium(source, options = {}) {
  * Attack Tables
  *
  * One Item (type "attackTable") per weapon attack table. Sources are the
- * `data/attack-tables/*.json` files, each a single table object shaped
+ * `data/system_tables/attack_tables/*.json` files, each a single table object shaped
  * { name, tableId, critType, fumbleRange, armorTypes, legend, rows, fumble }.
  * The matrix looks two-dimensional on paper but resolves to a 1-D lookup
  * at query time (see module/tables/). Stored as Item system data because
@@ -2182,7 +2224,9 @@ export async function syncAttackTablesToCompendium(source, options = {}) {
       const img = pickImageFromEntry(entry, sysSource, "icons/svg/sword.svg");
       const base = { name, type: "attackTable", img, system };
 
-      const folderId = await _ensurePackFolder(pack, folderName, folderCache);
+      const folderId = await ensurePackFolderPath(
+        pack, [options.parentFolderName, folderName].filter(Boolean), folderCache
+      );
       if (existing) {
         if (!updateExisting) { result.skipped += 1; continue; }
         updatePayload.push({ _id: existing._id, folder: folderId, ...base });

@@ -24,18 +24,29 @@ import {
   syncProfessionsToCompendium,
   syncTrainingPackagesToCompendium,
   syncSpellListsToCompendium,
-  syncAttackTablesToCompendium
+  syncAttackTablesToCompendium,
+  ensurePackFolderPath
 } from "./importers.mjs";
 
 /** Preferred world compendium collection id. */
 const PREFERRED_PACK = "world.basic-core";
 
 /**
- * Item folders the find-only syncs (categories/skills/realms/races/professions/
- * training) expect to already exist inside the pack. The spell-list and
- * attack-table syncs create their own folders, so they are not listed here.
+ * Top-level grouping folders inside basic-core, mirroring the data/ layout:
+ *   Build Character/  ← data/build_character (6 per-type subfolders)
+ *   Spell Lists/      ← data/spell_lists (9 realm×type subfolders)
+ *   System Tables/    ← data/system_tables (Attack Tables subfolder)
  */
-const PRECREATE_FOLDERS = [
+const BUILD_CHARACTER_FOLDER = "Build Character";
+const SPELL_LISTS_FOLDER     = "Spell Lists";
+const SYSTEM_TABLES_FOLDER   = "System Tables";
+
+/**
+ * Per-type subfolders nested under "Build Character". The find-only build syncs
+ * (categories/skills/realms/races/professions/training) locate their folder by
+ * name, so pre-creating these nested makes their items land in the right place.
+ */
+const BUILD_CHARACTER_SUBFOLDERS = [
   "Categories",
   "Skills",
   "Realms",
@@ -44,22 +55,26 @@ const PRECREATE_FOLDERS = [
   "Training Packages"
 ];
 
-/** The nine spell-list data files (3 realms × open/closed/base). */
+/**
+ * The nine spell-list data files (3 realms × open/closed/base), grouped under
+ * the `spell_lists/` subdirectory. Paths are relative to the data dir, mirroring
+ * how ATTACK_TABLE_FILES carries its `system_tables/attack_tables/` subdir.
+ */
 const SPELL_LIST_FILES = [
-  "base-channeling-lists.json",
-  "base-essence-lists.json",
-  "base-mentalism-lists.json",
-  "closed-channeling-lists.json",
-  "closed-essence-lists.json",
-  "closed-mentalism-lists.json",
-  "open-channeling-lists.json",
-  "open-essence-lists.json",
-  "open-mentalism-lists.json"
+  "spell_lists/base-channeling-lists.json",
+  "spell_lists/base-essence-lists.json",
+  "spell_lists/base-mentalism-lists.json",
+  "spell_lists/closed-channeling-lists.json",
+  "spell_lists/closed-essence-lists.json",
+  "spell_lists/closed-mentalism-lists.json",
+  "spell_lists/open-channeling-lists.json",
+  "spell_lists/open-essence-lists.json",
+  "spell_lists/open-mentalism-lists.json"
 ];
 
 /** Attack-table data files (currently a single transcribed table). */
 const ATTACK_TABLE_FILES = [
-  "attack-tables/one-handed-concussion.json"
+  "system_tables/attack_tables/one-handed-concussion.json"
 ];
 
 /** Absolute (Foundry-served) path to the system data directory. */
@@ -107,27 +122,6 @@ async function ensureBasicCorePack() {
   } catch (err) {
     console.error("RMF | Failed to create the basic-core compendium", err);
     return null;
-  }
-}
-
-/**
- * Create any of the named Item folders that are missing inside the pack.
- *
- * @param {CompendiumCollection} pack
- * @param {string[]} names
- */
-async function ensurePackFolders(pack, names) {
-  const present = new Set(
-    (pack.folders ? Array.from(pack.folders.values()) : [])
-      .map(f => String(f.name ?? "").trim().toLowerCase())
-  );
-  for (const name of names) {
-    if (present.has(name.toLowerCase())) continue;
-    try {
-      await Folder.create({ name, type: pack.documentName }, { pack: pack.collection });
-    } catch (err) {
-      console.warn(`RMF | Failed creating pack folder "${name}" in ${pack.collection}`, err);
-    }
   }
 }
 
@@ -250,26 +244,31 @@ export async function regenerateBasicCore({ confirm = true } = {}) {
 
   // Build the ordered step list. Each step is [label, () => Promise<result>].
   const steps = [
-    ["Categories",        () => syncCategoriesToCompendium(`${dir}/categories.json`, { pack: packId })],
-    ["Skills",            () => syncSkillsToCompendium(`${dir}/skills.json`, { pack: packId })],
-    ["Realms",            () => syncRealmsToCompendium(`${dir}/realms.json`, { pack: packId })],
-    ["Races",             () => syncRacesToCompendium(`${dir}/races.json`, { pack: packId })],
-    ["Professions",       () => syncProfessionsToCompendium(`${dir}/professions.json`, { pack: packId })],
-    ["Training Packages", () => syncTrainingPackagesToCompendium(`${dir}/training_packages.json`, { pack: packId })],
+    ["Categories",        () => syncCategoriesToCompendium(`${dir}/build_character/categories.json`, { pack: packId })],
+    ["Skills",            () => syncSkillsToCompendium(`${dir}/build_character/skills.json`, { pack: packId })],
+    ["Realms",            () => syncRealmsToCompendium(`${dir}/build_character/realms.json`, { pack: packId })],
+    ["Races",             () => syncRacesToCompendium(`${dir}/build_character/races.json`, { pack: packId })],
+    ["Professions",       () => syncProfessionsToCompendium(`${dir}/build_character/professions.json`, { pack: packId })],
+    ["Training Packages", () => syncTrainingPackagesToCompendium(`${dir}/build_character/training_packages.json`, { pack: packId })],
     ...SPELL_LIST_FILES.map(file => [
       `Spell Lists: ${file}`,
-      () => syncSpellListsToCompendium(`${dir}/${file}`, { pack: packId })
+      () => syncSpellListsToCompendium(`${dir}/${file}`, { pack: packId, parentFolderName: SPELL_LISTS_FOLDER })
     ]),
     ...ATTACK_TABLE_FILES.map(file => [
       `Attack Tables: ${file}`,
-      () => syncAttackTablesToCompendium(`${dir}/${file}`, { pack: packId })
+      () => syncAttackTablesToCompendium(`${dir}/${file}`, { pack: packId, parentFolderName: SYSTEM_TABLES_FOLDER })
     ])
   ];
 
   await withUnlocked(pack, async () => {
-    // Pre-create the folders the find-only syncs rely on, so freshly created
-    // documents land in the right folder instead of the pack root.
-    await ensurePackFolders(pack, PRECREATE_FOLDERS);
+    // Pre-create "Build Character" and its per-type subfolders so the find-only
+    // build syncs (which locate folders by name) drop items into the right
+    // nested folder. The "Spell Lists" / "System Tables" parents are created by
+    // their own syncs via parentFolderName.
+    const folderCache = new Map();
+    for (const sub of BUILD_CHARACTER_SUBFOLDERS) {
+      await ensurePackFolderPath(pack, [BUILD_CHARACTER_FOLDER, sub], folderCache);
+    }
 
     for (const [label, run] of steps) {
       try {

@@ -66,12 +66,12 @@ function backfill(text, { withSpecialRole }) {
 }
 
 const FILES = [
-  { file: "data/categories.json",        withSpecialRole: true  },
-  { file: "data/skills.json",            withSpecialRole: true  },
-  { file: "data/professions.json",       withSpecialRole: false },
-  { file: "data/races.json",             withSpecialRole: false },
-  { file: "data/realms.json",            withSpecialRole: false },
-  { file: "data/training_packages.json", withSpecialRole: false }
+  { file: "data/build_character/categories.json",        withSpecialRole: true  },
+  { file: "data/build_character/skills.json",            withSpecialRole: true  },
+  { file: "data/build_character/professions.json",       withSpecialRole: false },
+  { file: "data/build_character/races.json",             withSpecialRole: false },
+  { file: "data/build_character/realms.json",            withSpecialRole: false },
+  { file: "data/build_character/training_packages.json", withSpecialRole: false }
 ];
 
 let totalRows = 0, totalRoles = 0;

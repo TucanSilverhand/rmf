@@ -1,7 +1,7 @@
 /**
  * RMF System - Spell List item DataModel.
  *
- * Mirrors the shape of the `data/*-lists.json` import sources (one Item
+ * Mirrors the shape of the `data/spell_lists/*-lists.json` import sources (one Item
  * per spell list, e.g. "Barrier Law", "Fire Law"). A spell list bundles
  * up to 10 spells (one per level 1-10; a level with no spell keeps an
  * entry with an empty `name` so the sheet always renders all 10 rows).

@@ -53,11 +53,7 @@ jobs:
             templates/ \
             styles/ \
             lang/ \
-            data/categories.json \
-            data/races.json \
-            data/skills.json \
-            data/realms.json \
-            data/professions.json \
+            data/ \
             README.md \
             LICENSE.txt \
             CHANGELOG.md

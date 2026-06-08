@@ -26,6 +26,7 @@ import {
   wireTabs
 } from "./utils/sheet-helpers.mjs";
 import { RMFActions } from "./actions.mjs";
+import { applyTrainingPackageToActor, unapplyTrainingPackageFromActor } from "./training-package-apply.mjs";
 
 /**
  * Compendium pack key holding the canonical Categories and Skills used
@@ -102,7 +103,12 @@ export class RMFTrainingPackageSheet extends HandlebarsApplicationMixin(foundry.
       minHeight: 600
     },
     position: { width: 720, height: 760 },
-    actions: { pickImage: RMFActions.handlers.pickImage }
+    actions: {
+      pickImage: RMFActions.handlers.pickImage,
+      // Thin wrappers so `this` (the sheet instance) reaches the methods.
+      applyTrainingPackage(event, target) { return this._onApplyRanks(event, target); },
+      recoverTrainingPackage(event, target) { return this._onRecoverRanks(event, target); }
+    }
   };
 
   static PARTS = {
@@ -138,6 +144,15 @@ export class RMFTrainingPackageSheet extends HandlebarsApplicationMixin(foundry.
     context.isEditable = this.isEditable;
     context.owner      = doc?.isOwner;
     context.editable   = this.isEditable;
+
+    // Per-actor application controls (Apply / Recover ranks). Only meaningful
+    // when the package is embedded on a character; standalone (sidebar /
+    // compendium) copies hide them. `actorLevel` caps the "taken at" input.
+    const parentActor  = (doc?.parent?.documentName === "Actor") ? doc.parent : null;
+    context.isOnActor   = !!parentActor;
+    context.applied     = !!sys.applied;
+    context.takenAtLevel = Number(sys.takenAtLevel) || 0;
+    context.actorLevel  = parentActor ? (Number(parentActor.system?.chLevel) || 0) : 0;
 
     try {
       context.enrichedDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(
@@ -382,5 +397,34 @@ export class RMFTrainingPackageSheet extends HandlebarsApplicationMixin(foundry.
       console.error("RMF ERROR | TrainingPackageSheet update failed", { name, err });
       ui.notifications?.error(err?.message || "Update failed");
     }
+  }
+
+  /**
+   * "Apply ranks" button — sum this package's resolved category/skill ranks
+   * onto the owning character at the chosen level, then mark it applied.
+   * Blocked by the apply logic when it is already applied.
+   *
+   * @param {Event} event
+   * @param {HTMLElement} target
+   * @private
+   */
+  async _onApplyRanks(event, target) {
+    event?.preventDefault?.();
+    const ok = await applyTrainingPackageToActor(this.document);
+    if (ok) this.render(false);
+  }
+
+  /**
+   * "Recover ranks" button — subtract this package's ranks back off the
+   * character and clear the applied flag.
+   *
+   * @param {Event} event
+   * @param {HTMLElement} target
+   * @private
+   */
+  async _onRecoverRanks(event, target) {
+    event?.preventDefault?.();
+    const ok = await unapplyTrainingPackageFromActor(this.document);
+    if (ok) this.render(false);
   }
 }

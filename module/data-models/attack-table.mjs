@@ -9,7 +9,7 @@
  * as the spell lists) and resolve lookups with the pure engine in
  * `module/tables/`.
  *
- * Mirrors the shape of `data/attack-tables/*.json`. Two "bridge" fields
+ * Mirrors the shape of `data/system_tables/attack_tables/*.json`. Two "bridge" fields
  * connect a table to the rest of combat:
  *   - `critType`    which critical table a severity result rolls on
  *                   (e.g. "Krush" for concussion weapons).

@@ -1,14 +1,14 @@
 /**
  * RMF System - Training Package item DataModel.
  *
- * Mirrors the shape of `data/training_packages.json`. A Training
+ * Mirrors the shape of `data/build_character/training_packages.json`. A Training
  * Package is a bundle of category/skill ranks plus optional
  * "Special" entries (gear/spell-adders/etc) that the character can
  * "buy" in one go for a fixed list of DP costs.
  *
  * Persistence keeps the canonical name of the referenced category /
- * skill (resolved against `data/categories.json` and
- * `data/skills.json` at import time). Entries flagged `isChoice`
+ * skill (resolved against `data/build_character/categories.json` and
+ * `data/build_character/skills.json` at import time). Entries flagged `isChoice`
  * carry a free-form descriptive name (e.g. "Weapon/Attack (choice)")
  * that the application logic resolves with a dialog when the package
  * is applied to an actor.
@@ -74,6 +74,15 @@ export class TrainingPackageData extends foundry.abstract.TypeDataModel {
 
       special:        new fields.ArrayField(specialEntry(),       { required: true, initial: [] }),
       categoryRanks:  new fields.ArrayField(categoryRankEntry(),  { required: true, initial: [] }),
+
+      // Per-actor application state — only meaningful while the package is
+      // embedded on a character. `applied` guards against double-application
+      // (the Apply button blocks when true, the Recover button reverses it).
+      // `takenAtLevel` is the character level the package was taken at
+      // (0..current level); it selects which `boughtByLevel.<n>` bucket the
+      // ranks land in and, looking ahead, lets us account the DP spent.
+      applied:      new fields.BooleanField({ required: true, nullable: false, initial: false }),
+      takenAtLevel: new fields.NumberField({ required: true, nullable: false, integer: true, initial: 0, min: 0 }),
 
       // Stable identity (locale-independent). See module/utils/slug.mjs.
       slug: slugField(),

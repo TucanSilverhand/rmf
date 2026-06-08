@@ -33,7 +33,7 @@ import {
 import { TablesAPI } from "./tables/index.mjs";
 import { regenerateBasicCore, wipeBasicCore } from "./compendium-admin.mjs";
 import { runWorldMigration, buildIdentityBackfill } from "./migration.mjs";
-import { applyTrainingPackageToActor } from "./training-package-apply.mjs";
+import { unapplyTrainingPackageFromActor } from "./training-package-apply.mjs";
 import { RMFTrainingPackageSheet } from "./training-package-sheet.js";
 import {
   applyProfessionToActor,
@@ -338,17 +338,9 @@ export class RMFHooks {
       return;
     }
 
-    // Training Package dropped on the actor → confirm + apply ranks +
-    // post chat summary + remove the (consumed) item.
-    if (item.type === "trainingPackage") {
-      try {
-        await applyTrainingPackageToActor(item);
-      } catch (err) {
-        console.error("RMF | Failed to apply training package:", err);
-        ui.notifications?.error(game.i18n.localize("RMF.TrainingPackage.ApplyError"));
-      }
-      return;
-    }
+    // Training Package dropped on the actor → just embed it as a record. The
+    // ranks are NOT applied here: the player resolves any choices, picks the
+    // level, and clicks "Apply ranks" on the package sheet.
 
     // Profession dropped on the actor → walk professionalBonuses and
     // bump the matching category/skill profBonus values; record the
@@ -397,6 +389,19 @@ export class RMFHooks {
    */
   static async #onDeleteItem(item, options, userId) {
     if (game.userId !== userId) return;
+
+    // Applied Training Package removed → safety net: reverse the ranks it
+    // added so deleting it doesn't leave them stranded. `updateFlag:false`
+    // because the package itself is being deleted (no flag to clear). No-op
+    // when it was never applied.
+    if (item.type === "trainingPackage") {
+      try {
+        await unapplyTrainingPackageFromActor(item, { updateFlag: false });
+      } catch (err) {
+        console.error("RMF | Failed to recover training package ranks on delete:", err);
+      }
+      return;
+    }
 
     // Profession removed → revert the profBonus deltas applied at
     // assign time (recorded on actor flags). Independent from race

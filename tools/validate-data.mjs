@@ -81,12 +81,12 @@ const SHAPES = {
 };
 
 const FILES = [
-  ["data/categories.json",        "category"],
-  ["data/skills.json",            "skill"],
-  ["data/races.json",             "race"],
-  ["data/realms.json",            "realm"],
-  ["data/professions.json",       "profession"],
-  ["data/training_packages.json", "trainingPackage"]
+  ["data/build_character/categories.json",        "category"],
+  ["data/build_character/skills.json",            "skill"],
+  ["data/build_character/races.json",             "race"],
+  ["data/build_character/realms.json",            "realm"],
+  ["data/build_character/professions.json",       "profession"],
+  ["data/build_character/training_packages.json", "trainingPackage"]
 ];
 
 /* ───────────────────── Validation logic ───────────────────── */

@@ -2019,3 +2019,28 @@ table.rmf-attack-grid tr.fumble-row .roll-col {
 .rmf-attack-card .outcome.is-crit { background: rgba(160, 20, 20, 0.14); color: #7a1414; }
 .rmf-attack-card .outcome.is-fumble { background: #5a3030; color: #f3e0e0; }
 .rmf-attack-card .crit-hint { margin-top: 3px; font-style: italic; color: #7a1414; }
+
+/* Training Package — apply / recover controls (details tab) */
+.rmf-tp-apply .rmf-tp-apply-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.rmf-tp-apply .rmf-tp-status {
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+.rmf-tp-apply .rmf-tp-status.is-applied { background: rgba(30, 120, 40, 0.16); color: #1c6e2a; }
+.rmf-tp-apply .rmf-tp-status.is-pending { background: rgba(0, 0, 0, 0.08); color: #555; }
+.rmf-tp-apply .rmf-tp-level {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.rmf-tp-apply .rmf-tp-level input { width: 4em; }
+.rmf-tp-apply .rmf-tp-btn { flex: 0 0 auto; cursor: pointer; }
+.rmf-tp-apply .rmf-tp-btn[disabled] { opacity: 0.5; cursor: not-allowed; }
+.rmf-tp-apply .rmf-tp-apply-hint { margin: 6px 0 0; font-size: 0.85em; font-style: italic; color: #666; }
