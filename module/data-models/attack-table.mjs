@@ -48,8 +48,31 @@ export class AttackTableData extends foundry.abstract.TypeDataModel {
     return {
       // Book section id, e.g. "A-10.9.1".
       tableId:  str(""),
-      // Critical table a severity result chains into (e.g. "Krush").
+      // Default critical table a severity result chains into (e.g. "Krush").
+      // For single-crit weapon tables this is the one crit. For multi-attack
+      // creature tables (Tooth & Claw) it is blank — the crit is chosen per
+      // attack type from `attackTypes` below.
       critType: str(""),
+      // Per-attack-type critical map (the book's "ATTACK TYPE DATA" box).
+      // Creature attack tables list several attacks (Bite, Claw, …), each with
+      // its own critical table. The resolver picks the row matching the
+      // creature's attack; `criticalType: ""` means that attack deals no crit.
+      attackTypes: new fields.ArrayField(
+        new fields.SchemaField({
+          attackType:   str(""),          // e.g. "Bite" / "Fire Bolt"
+          abbreviation: str(""),          // e.g. "Bi" (creature tables)
+          criticalType: str(""),          // e.g. "Puncture"; "" = no critical
+          ref:          str(""),          // book page, e.g. "p. 234"
+          note:         str(""),          // optional caveat (e.g. severity cap)
+          // Spell-bolt tables (SPELL DATA box) add these; blank/null otherwise.
+          obMod:        str(""),          // OB modifier, e.g. "+10" / "-40"
+          maxResult:    new fields.NumberField({ required: false, nullable: true, integer: true, initial: null }),
+          maxCritical:  str("")           // severity cap, e.g. "E" / "C"
+        }),
+        { required: false, nullable: false, initial: [] }
+      ),
+      // Free-form notes attached to the attack-type box (severity caps, etc.).
+      attackTypeNotes: new fields.ArrayField(str(""), { required: false, nullable: false, initial: [] }),
       // Unmodified-die band that forces a fumble. Per-weapon; default UM 01-02.
       fumbleRange: new fields.SchemaField({
         min: new fields.NumberField({ required: true, nullable: false, integer: true, min: 1, initial: 1 }),
@@ -79,6 +102,20 @@ export class AttackTableData extends foundry.abstract.TypeDataModel {
         description: str(""),
         results:     new fields.ObjectField({ required: true, nullable: false, initial: {} })
       }),
+      // "UM high" rows: high unmodified-die bands (e.g. UM 96-97 / 98-99 / 100)
+      // that apply a fixed result with no modifications. Keyed off the natural
+      // die, not the modified total, so they live apart from `rows`. One entry
+      // for bolt tables (natural 100), three for ball tables. Empty = none.
+      umHigh: new fields.ArrayField(
+        new fields.SchemaField({
+          label:       str(""),
+          naturalMin:  new fields.NumberField({ required: true, nullable: false, integer: true, min: 1, initial: 100 }),
+          naturalMax:  new fields.NumberField({ required: true, nullable: false, integer: true, min: 1, initial: 100 }),
+          description: str(""),
+          results:     new fields.ObjectField({ required: true, nullable: false, initial: {} })
+        }),
+        { required: false, nullable: false, initial: [] }
+      ),
       // Stable identity (locale-independent). See module/utils/slug.mjs.
       slug: slugField(),
       fromBook: str("basic")

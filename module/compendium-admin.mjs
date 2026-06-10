@@ -72,14 +72,33 @@ const SPELL_LIST_FILES = [
   "spell_lists/open-mentalism-lists.json"
 ];
 
-/** Attack-table data files (A-10.9.x weapon attack tables). */
+/**
+ * Attack-table data files (A-10.9.x). The Tooth & Claw table (A-10.9.7) is one
+ * printed matrix split into five per-size tables: each shares every lower band
+ * and differs only in its ceiling row, so the lookup engine's high-clamp caps a
+ * creature's result to its attack-size maximum (Tiny 81 … Huge 150).
+ */
 const ATTACK_TABLE_FILES = [
   "system_tables/attack_tables/one-handed-concussion.json",
   "system_tables/attack_tables/one-handed-edged.json",
   "system_tables/attack_tables/two-handed.json",
   "system_tables/attack_tables/missile.json",
   "system_tables/attack_tables/pole-arm.json",
-  "system_tables/attack_tables/thrown.json"
+  "system_tables/attack_tables/thrown.json",
+  "system_tables/attack_tables/tooth-and-claw-huge.json",
+  "system_tables/attack_tables/tooth-and-claw-large.json",
+  "system_tables/attack_tables/tooth-and-claw-medium.json",
+  "system_tables/attack_tables/tooth-and-claw-small.json",
+  "system_tables/attack_tables/tooth-and-claw-tiny.json",
+  "system_tables/attack_tables/bash-and-grapple-huge.json",
+  "system_tables/attack_tables/bash-and-grapple-large.json",
+  "system_tables/attack_tables/bash-and-grapple-medium.json",
+  "system_tables/attack_tables/bash-and-grapple-small.json",
+  "system_tables/attack_tables/bolt-fire-ice-lightning.json",
+  "system_tables/attack_tables/bolt-water.json",
+  "system_tables/attack_tables/bolt-shock.json",
+  "system_tables/attack_tables/ball-fire.json",
+  "system_tables/attack_tables/ball-cold.json"
 ];
 
 /** Absolute (Foundry-served) path to the system data directory. */
