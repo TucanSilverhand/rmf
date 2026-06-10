@@ -98,7 +98,10 @@ const ATTACK_TABLE_FILES = [
   "system_tables/attack_tables/bolt-water.json",
   "system_tables/attack_tables/bolt-shock.json",
   "system_tables/attack_tables/ball-fire.json",
-  "system_tables/attack_tables/ball-cold.json"
+  "system_tables/attack_tables/ball-cold.json",
+  "system_tables/attack_tables/basic-spell-essence.json",
+  "system_tables/attack_tables/basic-spell-channeling.json",
+  "system_tables/attack_tables/basic-spell-mentalism.json"
 ];
 
 /** Absolute (Foundry-served) path to the system data directory. */

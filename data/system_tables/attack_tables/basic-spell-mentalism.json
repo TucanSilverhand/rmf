@@ -1,0 +1,350 @@
+{
+  "name": "Basic Spell Attack Table (Mentalism)",
+  "tableId": "A-10.9.11",
+  "tableKind": "resistanceMod",
+  "critType": "",
+  "columnDefs": [
+    {
+      "key": "metal-helmet",
+      "label": "Metal Helmet"
+    },
+    {
+      "key": "leather-helmet",
+      "label": "Leather Helmet"
+    },
+    {
+      "key": "other",
+      "label": "Other"
+    }
+  ],
+  "attackTypeNotes": [
+    "Cells are modifiers to the target's Resistance Roll (negative favours the attacker); F = spell fails.",
+    "UM 96-97 / 98-99 / 100 (natural die) apply with no modifications.",
+    "Mentalism realm. Columns: Metal Helmet, Leather Helmet, Other."
+  ],
+  "fumbleRange": {
+    "min": 1,
+    "max": 2
+  },
+  "armorTypes": [],
+  "legend": {
+    "modifier": "Signed number = modifier applied to the target's Resistance Roll (negative favours the attacker).",
+    "spellFails": "\"F\" = the spell fails; roll on Table A-10.11.2 (p. 241).",
+    "umRow": "label \"UM 01-02\" applies when the unmodified die is 01-02; \"UM 96-97/98-99/100\" for those natural bands.",
+    "rangeModifiers": [
+      {
+        "range": "Touching",
+        "modifier": "+30"
+      },
+      {
+        "range": "0'-10'",
+        "modifier": "+10"
+      },
+      {
+        "range": "11'-50'",
+        "modifier": "0"
+      },
+      {
+        "range": "51'-100'",
+        "modifier": "-10"
+      },
+      {
+        "range": "101'-300'",
+        "modifier": "-20"
+      },
+      {
+        "range": "301'+",
+        "modifier": "-30"
+      }
+    ]
+  },
+  "rollMatchPolicy": "rollMin / rollMax are inclusive. A row with rollMin=null matches any roll <= rollMax (low-end catch-all). Cells are Resistance-Roll modifiers, not damage. UM 96-100 via `umHigh`.",
+  "rows": [
+    {
+      "label": "93-95",
+      "rollMin": 93,
+      "rollMax": 95,
+      "results": {
+        "metal-helmet": "-35",
+        "leather-helmet": "-45",
+        "other": "-55"
+      }
+    },
+    {
+      "label": "89-92",
+      "rollMin": 89,
+      "rollMax": 92,
+      "results": {
+        "metal-helmet": "-30",
+        "leather-helmet": "-40",
+        "other": "-50"
+      }
+    },
+    {
+      "label": "85-88",
+      "rollMin": 85,
+      "rollMax": 88,
+      "results": {
+        "metal-helmet": "-25",
+        "leather-helmet": "-35",
+        "other": "-45"
+      }
+    },
+    {
+      "label": "81-84",
+      "rollMin": 81,
+      "rollMax": 84,
+      "results": {
+        "metal-helmet": "-20",
+        "leather-helmet": "-30",
+        "other": "-40"
+      }
+    },
+    {
+      "label": "77-80",
+      "rollMin": 77,
+      "rollMax": 80,
+      "results": {
+        "metal-helmet": "-15",
+        "leather-helmet": "-25",
+        "other": "-35"
+      }
+    },
+    {
+      "label": "73-76",
+      "rollMin": 73,
+      "rollMax": 76,
+      "results": {
+        "metal-helmet": "-10",
+        "leather-helmet": "-20",
+        "other": "-30"
+      }
+    },
+    {
+      "label": "69-72",
+      "rollMin": 69,
+      "rollMax": 72,
+      "results": {
+        "metal-helmet": "-5",
+        "leather-helmet": "-15",
+        "other": "-25"
+      }
+    },
+    {
+      "label": "65-68",
+      "rollMin": 65,
+      "rollMax": 68,
+      "results": {
+        "metal-helmet": "-5",
+        "leather-helmet": "-10",
+        "other": "-20"
+      }
+    },
+    {
+      "label": "61-64",
+      "rollMin": 61,
+      "rollMax": 64,
+      "results": {
+        "metal-helmet": "0",
+        "leather-helmet": "-5",
+        "other": "-15"
+      }
+    },
+    {
+      "label": "57-60",
+      "rollMin": 57,
+      "rollMax": 60,
+      "results": {
+        "metal-helmet": "0",
+        "leather-helmet": "-5",
+        "other": "-10"
+      }
+    },
+    {
+      "label": "53-56",
+      "rollMin": 53,
+      "rollMax": 56,
+      "results": {
+        "metal-helmet": "+5",
+        "leather-helmet": "0",
+        "other": "-5"
+      }
+    },
+    {
+      "label": "49-52",
+      "rollMin": 49,
+      "rollMax": 52,
+      "results": {
+        "metal-helmet": "+10",
+        "leather-helmet": "0",
+        "other": "0"
+      }
+    },
+    {
+      "label": "45-48",
+      "rollMin": 45,
+      "rollMax": 48,
+      "results": {
+        "metal-helmet": "+15",
+        "leather-helmet": "+5",
+        "other": "0"
+      }
+    },
+    {
+      "label": "41-44",
+      "rollMin": 41,
+      "rollMax": 44,
+      "results": {
+        "metal-helmet": "+20",
+        "leather-helmet": "+10",
+        "other": "+5"
+      }
+    },
+    {
+      "label": "37-40",
+      "rollMin": 37,
+      "rollMax": 40,
+      "results": {
+        "metal-helmet": "+25",
+        "leather-helmet": "+15",
+        "other": "+15"
+      }
+    },
+    {
+      "label": "33-36",
+      "rollMin": 33,
+      "rollMax": 36,
+      "results": {
+        "metal-helmet": "+30",
+        "leather-helmet": "+20",
+        "other": "+20"
+      }
+    },
+    {
+      "label": "29-32",
+      "rollMin": 29,
+      "rollMax": 32,
+      "results": {
+        "metal-helmet": "+35",
+        "leather-helmet": "+25",
+        "other": "+30"
+      }
+    },
+    {
+      "label": "25-28",
+      "rollMin": 25,
+      "rollMax": 28,
+      "results": {
+        "metal-helmet": "+45",
+        "leather-helmet": "+30",
+        "other": "+35"
+      }
+    },
+    {
+      "label": "21-24",
+      "rollMin": 21,
+      "rollMax": 24,
+      "results": {
+        "metal-helmet": "F",
+        "leather-helmet": "+35",
+        "other": "+45"
+      }
+    },
+    {
+      "label": "17-20",
+      "rollMin": 17,
+      "rollMax": 20,
+      "results": {
+        "metal-helmet": "F",
+        "leather-helmet": "+40",
+        "other": "+50"
+      }
+    },
+    {
+      "label": "13-16",
+      "rollMin": 13,
+      "rollMax": 16,
+      "results": {
+        "metal-helmet": "F",
+        "leather-helmet": "+45",
+        "other": "+60"
+      }
+    },
+    {
+      "label": "09-12",
+      "rollMin": 9,
+      "rollMax": 12,
+      "results": {
+        "metal-helmet": "F",
+        "leather-helmet": "F",
+        "other": "+65"
+      }
+    },
+    {
+      "label": "05-08",
+      "rollMin": 5,
+      "rollMax": 8,
+      "results": {
+        "metal-helmet": "F",
+        "leather-helmet": "F",
+        "other": "+70"
+      }
+    },
+    {
+      "label": "03-04",
+      "rollMin": null,
+      "rollMax": 4,
+      "results": {
+        "metal-helmet": "F",
+        "leather-helmet": "F",
+        "other": "F"
+      }
+    }
+  ],
+  "fumble": {
+    "label": "UM 01-02",
+    "description": "Unmodified die of 01-02 — the spell fails (roll on Table A-10.11.2).",
+    "results": {
+      "metal-helmet": "F",
+      "leather-helmet": "F",
+      "other": "F"
+    }
+  },
+  "umHigh": [
+    {
+      "label": "UM 96-97",
+      "naturalMin": 96,
+      "naturalMax": 97,
+      "description": "Unmodified die of 96-97 — apply with no modifications.",
+      "results": {
+        "metal-helmet": "-55",
+        "leather-helmet": "-65",
+        "other": "-75"
+      }
+    },
+    {
+      "label": "UM 98-99",
+      "naturalMin": 98,
+      "naturalMax": 99,
+      "description": "Unmodified die of 98-99 — apply with no modifications.",
+      "results": {
+        "metal-helmet": "-80",
+        "leather-helmet": "-90",
+        "other": "-100"
+      }
+    },
+    {
+      "label": "UM 100",
+      "naturalMin": 100,
+      "naturalMax": 100,
+      "description": "Unmodified die of 100 — apply with no modifications.",
+      "results": {
+        "metal-helmet": "-105",
+        "leather-helmet": "-115",
+        "other": "-125"
+      }
+    }
+  ],
+  "slug": "basic-spell-mentalism",
+  "fromBook": "basic"
+}

@@ -64,6 +64,27 @@ export function parseCell(raw) {
 }
 
 /**
+ * Parse a single resistance-modifier cell (Basic Spell Attack Table A-10.9.11).
+ *
+ * These tables don't deal damage: each cell is a signed modifier applied to the
+ * target's Resistance Roll, or "F" when the spell fails.
+ *
+ *   "-50" → modifier -50      "+20" → modifier +20      "0" → modifier 0
+ *   "F"   → spell fails        "-"/""/null → no entry
+ *
+ * @param {string|number|null|undefined} raw
+ * @returns {{kind:"modifier"|"fail"|"none"|"unknown", modifier:number|null, raw:string}}
+ */
+export function parseModifierCell(raw) {
+  const text = (raw === null || raw === undefined) ? "" : String(raw).trim();
+  if (MISS_TOKENS.has(text)) return { kind: "none", modifier: null, raw: text };
+  if (text.toUpperCase() === "F") return { kind: "fail", modifier: null, raw: text };
+  const m = text.match(/^([+-]?\d+)$/);
+  if (m) return { kind: "modifier", modifier: Number.parseInt(m[1], 10), raw: text };
+  return { kind: "unknown", modifier: null, raw: text };
+}
+
+/**
  * Short human label for a parsed cell, used by chat cards / tooltips.
  *
  * @param {ParsedCell} cell

@@ -23,7 +23,7 @@
  * @see module/tables/lookup.mjs  (the lookup engine)
  */
 
-import { lookupAttack, tableColumns } from "../tables/lookup.mjs";
+import { lookupAttack, lookupResistanceMod, tableColumns } from "../tables/lookup.mjs";
 import { slugField } from "./_identity.mjs";
 
 const fields = foundry.data.fields;
@@ -48,6 +48,19 @@ export class AttackTableData extends foundry.abstract.TypeDataModel {
     return {
       // Book section id, e.g. "A-10.9.1".
       tableId:  str(""),
+      // What a cell means. "attack" (default): hits + optional critical, keyed
+      // by AT 1-20. "resistanceMod": a signed Resistance-Roll modifier (or "F"),
+      // keyed by the categorical columns declared in `columnDefs`.
+      tableKind: new fields.StringField({
+        required: true, nullable: false, blank: false,
+        choices: ["attack", "resistanceMod"], initial: "attack"
+      }),
+      // Categorical column definitions for non-AT tables (resistanceMod). Order
+      // is honoured. Empty for AT-based attack tables (columns derive from 1-20).
+      columnDefs: new fields.ArrayField(
+        new fields.SchemaField({ key: str(""), label: str("") }),
+        { required: false, nullable: false, initial: [] }
+      ),
       // Default critical table a severity result chains into (e.g. "Krush").
       // For single-crit weapon tables this is the one crit. For multi-attack
       // creature tables (Tooth & Claw) it is blank — the crit is chosen per
@@ -142,15 +155,18 @@ export class AttackTableData extends foundry.abstract.TypeDataModel {
   /* ───────────────────────── Lookup API ───────────────────────── */
 
   /**
-   * Resolve a single cell: modified total + Armor Type → parsed cell.
-   * Delegates to the shared engine so the DataModel and the attack
-   * resolver never diverge.
+   * Resolve a single cell: modified total + column → parsed cell.
+   * Dispatches on `tableKind` so attack tables return hits/critical and
+   * resistance-modifier tables return a signed RR modifier. Delegates to the
+   * shared engine so the DataModel and the resolver never diverge.
    *
    * @param {number} total  Fully-modified attack total.
-   * @param {number|string} at  Defender's Armor Type (1-20).
-   * @returns {import("../tables/cell-parser.mjs").ParsedCell}
+   * @param {number|string} column  Defender's AT (1-20) or categorical key.
+   * @returns {object}
    */
-  lookup(total, at) {
-    return lookupAttack(this, total, at);
+  lookup(total, column) {
+    return this.tableKind === "resistanceMod"
+      ? lookupResistanceMod(this, total, column)
+      : lookupAttack(this, total, column);
   }
 }

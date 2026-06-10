@@ -23,7 +23,7 @@
  * @module tables/lookup
  */
 
-import { parseCell } from "./cell-parser.mjs";
+import { parseCell, parseModifierCell } from "./cell-parser.mjs";
 
 /**
  * @typedef {Object} TableRow
@@ -85,14 +85,35 @@ export function lookupAttack(table, total, column) {
 }
 
 /**
- * The set of column keys the table exposes, derived from the first row's
- * `results` (falls back to scanning every row). Sorted descending so a
- * sheet renders AT 20 → 1 like the printed page.
+ * Resolve a resistance-modifier lookup (tableKind "resistanceMod"): the printed
+ * cell is a signed RR modifier (or "F"), not damage. Same row-finding rules.
  *
  * @param {{rows: TableRow[]}} table
- * @returns {number[]}
+ * @param {number} total           The fully-modified spell attack total.
+ * @param {string} column          Categorical column key (e.g. "metal-armor").
+ * @returns {{kind:string, modifier:number|null, raw:string, row:TableRow|null, column:string}}
+ */
+export function lookupResistanceMod(table, total, column) {
+  const row = findAttackRow(table, total);
+  const key = String(column);
+  const raw = row?.results?.[key];
+  return { ...parseModifierCell(raw), row, column: key };
+}
+
+/**
+ * The set of column keys the table exposes. For attack tables these are the
+ * numeric AT keys, sorted descending (20 → 1) like the printed page. For
+ * resistance-modifier tables the columns are categorical and ordered: if the
+ * table declares `columnDefs` ([{key,label}]), that order is honoured verbatim.
+ *
+ * @param {{rows: TableRow[], columnDefs?: {key:string}[]}} table
+ * @returns {Array<number|string>}
  */
 export function tableColumns(table) {
+  // Categorical tables declare their columns and order explicitly.
+  const defs = Array.isArray(table?.columnDefs) ? table.columnDefs : [];
+  if (defs.length) return defs.map(d => d.key);
+
   const rows = Array.isArray(table?.rows) ? table.rows : [];
   const keys = new Set();
   for (const row of rows) {
