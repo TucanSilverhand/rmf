@@ -28,7 +28,9 @@ import {
   syncTrainingPackagesToCompendium,
   syncSpellListsToCompendium,
   importAttackTables,
-  syncAttackTablesToCompendium
+  syncAttackTablesToCompendium,
+  importCriticalTables,
+  syncCriticalTablesToCompendium
 } from "./importers.mjs";
 import { TablesAPI } from "./tables/index.mjs";
 import { regenerateBasicCore, wipeBasicCore } from "./compendium-admin.mjs";
@@ -116,6 +118,8 @@ export class RMFHooks {
     game.rmf.syncSpellListsToCompendium = syncSpellListsToCompendium;
     game.rmf.importAttackTables = importAttackTables;
     game.rmf.syncAttackTablesToCompendium = syncAttackTablesToCompendium;
+    game.rmf.importCriticalTables = importCriticalTables;
+    game.rmf.syncCriticalTablesToCompendium = syncCriticalTablesToCompendium;
 
     // One-shot basic-core compendium management (same actions as the two
     // settings-menu buttons). `confirm: false` skips the dialog for macros.

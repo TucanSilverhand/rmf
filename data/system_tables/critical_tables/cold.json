@@ -1,0 +1,662 @@
+{
+  "name": "Cold Critical Strike Table",
+  "tableId": "A-10.10.1",
+  "critType": "Cold",
+  "columnDefs": [
+    {
+      "key": "A",
+      "label": "A"
+    },
+    {
+      "key": "B",
+      "label": "B"
+    },
+    {
+      "key": "C",
+      "label": "C"
+    },
+    {
+      "key": "D",
+      "label": "D"
+    },
+    {
+      "key": "E",
+      "label": "E"
+    }
+  ],
+  "legend": {
+    "key": "ßπ = must parry ß rounds; ß∏ = no parry for ß rounds; ß∑ = stunned for ß rounds; ß∫ = bleed ß hits per round; (-ß) = foe has -ß penalty; (+ß) = attacker gets +ß next round.",
+    "hits": "+ßH = ß concussion hits.",
+    "rounds": "M(-ß) / M(+ß) = the penalty/bonus lasts M rounds. A bare symbol = 1 round.",
+    "none": "\"—\" = no mechanical effect beyond the text (often death).",
+    "variants": "Conditional cells (e.g. \"with helmet / w/o helmet\") apply the matching variant."
+  },
+  "rollMatchPolicy": "rollMin / rollMax are inclusive on an UNMODIFIED d100. The first band (rollMin=null) is the low catch-all; rolls above 100 (modified criticals) clamp to the top band.",
+  "rows": [
+    {
+      "label": "01-05",
+      "rollMin": null,
+      "rollMax": 5,
+      "results": {
+        "A": {
+          "text": "Cold breeze yields little damage.",
+          "effects": "+0H"
+        },
+        "B": {
+          "text": "Attack yields a brief climate change.",
+          "effects": "+0H"
+        },
+        "C": {
+          "text": "You give foe's cheeks a rosy hue.",
+          "effects": "+1H"
+        },
+        "D": {
+          "text": "Your blast looks good, works poorly.",
+          "effects": "+2H"
+        },
+        "E": {
+          "text": "Sharp and cold air assaults foe's skin.",
+          "effects": "+3H"
+        }
+      }
+    },
+    {
+      "label": "06-10",
+      "rollMin": 6,
+      "rollMax": 10,
+      "results": {
+        "A": {
+          "text": "Feeble and poorly directed. Foe is not really concerned.",
+          "effects": "+1H"
+        },
+        "B": {
+          "text": "Burst of cold causes target mild discomfort.",
+          "effects": "+2H"
+        },
+        "C": {
+          "text": "Your attack conjures a bitter arctic wind. Foe is not impressed.",
+          "effects": "+3H"
+        },
+        "D": {
+          "text": "Foe shields himself. Your attack misses most of its mark.",
+          "effects": "+4H"
+        },
+        "E": {
+          "text": "Ice up the ground and foe's feet. He springs clear. You have initiative.",
+          "effects": "+4H"
+        }
+      }
+    },
+    {
+      "label": "11-15",
+      "rollMin": 11,
+      "rollMax": 15,
+      "results": {
+        "A": {
+          "text": "Foe dodges your attack with too much effort. You have initiative.",
+          "effects": "+2H"
+        },
+        "B": {
+          "text": "Foe evades frantically. He is still chilled. You have initiative next round.",
+          "effects": "+3H"
+        },
+        "C": {
+          "text": "Encrust foe with ice. He is unbalanced as he shakes it off. You gain initiative.",
+          "effects": "+4H"
+        },
+        "D": {
+          "text": "Light frosting leaves foe unsteady. You must hit him again.",
+          "effects": "+5H – π"
+        },
+        "E": {
+          "text": "Frigid strike to foe's torso and face. You have the initiative.",
+          "effects": "+6H – π"
+        }
+      }
+    },
+    {
+      "label": "16-20",
+      "rollMin": 16,
+      "rollMax": 20,
+      "results": {
+        "A": {
+          "text": "Foe is fearful of your assault. Your attack gives you the initiative.",
+          "effects": "+3H"
+        },
+        "B": {
+          "text": "Assault blinds foe for a moment. You have 2 rounds of initiative.",
+          "effects": "+4H"
+        },
+        "C": {
+          "text": "Numbing whirlwind encircles foe. You have 2 rounds of initiative.",
+          "effects": "+5H"
+        },
+        "D": {
+          "text": "Foe's attempts to evade and strikes himself. You try not to laugh.",
+          "effects": "+6H – π"
+        },
+        "E": {
+          "text": "Foe's failed efforts to avoid your attack puts him at a grave disadvantage.",
+          "effects": "+7H – π"
+        }
+      }
+    },
+    {
+      "label": "21-35",
+      "rollMin": 21,
+      "rollMax": 35,
+      "results": {
+        "A": {
+          "text": "Burst of cold to the face sends foe stumbling back. You have initiative for 2 rounds.",
+          "effects": "+4H"
+        },
+        "B": {
+          "text": "Frost laden blast forces foe back. Any containers of water freeze and burst open. You have 2 rounds of initiative.",
+          "effects": "+5H"
+        },
+        "C": {
+          "text": "Disorient foe with a tricky shot. His garments have failed to keep out the chill. Press him while you can.",
+          "effects": "+6H – π"
+        },
+        "D": {
+          "text": "With a burst of white, you shower foe with ice crystals. Foe closes his eyes to avoid the onslaught.",
+          "effects": "+7H – π – ∫ – (-20)"
+        },
+        "E": {
+          "text": "Freeze foe's hair and scalp. If foe has long hair, it breaks off! Foe struggles in vain to repair the damage.",
+          "effects": "+8H – (2π-15)"
+        }
+      }
+    },
+    {
+      "label": "36-45",
+      "rollMin": 36,
+      "rollMax": 45,
+      "results": {
+        "A": {
+          "text": "Your attack freezes one of foe's metal items. Foe takes a defensive stance.",
+          "effects": "+5H – π"
+        },
+        "B": {
+          "text": "Foe makes a futile attempt to parry the attack. He loses 3 rounds of initiative.",
+          "effects": "+6H – π"
+        },
+        "C": {
+          "text": "Catch foe in lower leg. You gain initiative while foe regains footing.",
+          "effects": "+7H – 2π – ∫"
+        },
+        "D": {
+          "text": "Foe ices down; freezing any exposed skin. The pain is great.",
+          "effects": "+9H – ∑ – 2∫ – (-20)"
+        },
+        "E": {
+          "text": "Assault to foe's legs. Hypothermic, he struggles to remain standing.",
+          "effects": "∑ – (-20)"
+        }
+      }
+    },
+    {
+      "label": "46-50",
+      "rollMin": 46,
+      "rollMax": 50,
+      "results": {
+        "A": {
+          "text": "Scatter your attack all over foe's chest. Foe is covered with frost. He looks ghoulish.",
+          "effects": "+6H – 2π"
+        },
+        "B": {
+          "text": "Cold penetrates foe's chest and gives him frostbite. The pain must be severe. He stumbles back.",
+          "effects": "+7H – 2π – 2∫"
+        },
+        "C": {
+          "text": "Blast hits foe's chest and scatters. The cold stings all exposed skin. Foe has a shocked look on his face.",
+          "effects": "+8H – ∑"
+        },
+        "D": {
+          "text": "Assault lands on foe's weapon arm. He makes a supreme effort to pull his arm away. Foe is unable to protect himself.",
+          "effects": "+9H – ∑ – 2∫ – (-10)"
+        },
+        "E": {
+          "text": "Glancing strike to lower back. Foe is spun about and slings his weapon away. You have him now.",
+          "effects": "+10H – ∑"
+        }
+      }
+    },
+    {
+      "label": "51-55",
+      "rollMin": 51,
+      "rollMax": 55,
+      "results": {
+        "A": {
+          "text": "Blow to foe's chest. Your attack has force and foe stumbles.",
+          "effects": "+7H – ∑"
+        },
+        "B": {
+          "text": "Strong off-center blast takes foe in his shield arm wrist and side.",
+          "effects": "+8H – ∑ – 3∫"
+        },
+        "C": {
+          "text": "Hard strike to chest, armor does not help. Blow leaves its frigid mark.",
+          "effects": "+5H – 2∑ – (-10)"
+        },
+        "D": {
+          "text": "Heavy blow to shield shoulder. Foe is knocked back 5 feet. Muscle damage.",
+          "effects": "+10H – 2∑ – 3∫"
+        },
+        "E": {
+          "text": "Blow to side. Foe seeks to regain his wind and survive your next onslaught.",
+          "effects": "+11H – ∑∏ – 4∫"
+        }
+      }
+    },
+    {
+      "label": "56-60",
+      "rollMin": 56,
+      "rollMax": 60,
+      "results": {
+        "A": {
+          "text": "Strike falls on an exposed area. Foe gives ground. He is shaken but his guard is still up.",
+          "effects": "+8H – 2∑"
+        },
+        "B": {
+          "text": "Foe turns to avoid your attack and exposes his back. All wood on his back becomes frozen and brittle.",
+          "effects": "+9H – 2∑ – 2∫"
+        },
+        "C": {
+          "text": "Strong blast hits foe low. His legs almost give with the pain. Foe recoils 5 feet away from your assault.",
+          "effects": "",
+          "variants": [
+            {
+              "condition": "with leg armor",
+              "effects": "+5H – 2π"
+            },
+            {
+              "condition": "w/o leg armor",
+              "effects": "+9H – ∑∏"
+            }
+          ]
+        },
+        "D": {
+          "text": "Miss foe's arm and strike his thigh. He loses his footing. Skin and nerve damage causes foe pain.",
+          "effects": "∑∏ – 3∫ – (-15)"
+        },
+        "E": {
+          "text": "Your blast engulfs foe's weapon arm and climbs toward his torso. He steps away frantic to evade the pain.",
+          "effects": "+10H – ∑∏ – 4∫ – (-20)"
+        }
+      }
+    },
+    {
+      "label": "61-65",
+      "rollMin": 61,
+      "rollMax": 65,
+      "results": {
+        "A": {
+          "text": "Well placed. Strike slams into foe's weapon arm. Foe's evasion is comical.",
+          "effects": "",
+          "variants": [
+            {
+              "condition": "with arm greaves",
+              "effects": "+2H – π"
+            },
+            {
+              "condition": "w/o arm greaves",
+              "effects": "+9H – ∑∏"
+            }
+          ]
+        },
+        "B": {
+          "text": "Solid strike to foe's forearm. Foe's hand frozen shut for 1 round.",
+          "effects": "+10H – ∑∏ – (-5) – 3∫"
+        },
+        "C": {
+          "text": "Blast freeze dries organic material on foe's back.",
+          "effects": "+11H – 4∑"
+        },
+        "D": {
+          "text": "Blast freezes foe's arm and shield. If no shield, arm useless from nerve damage.",
+          "effects": "",
+          "variants": [
+            {
+              "condition": "with shield",
+              "effects": "+20H – (-20)"
+            },
+            {
+              "condition": "w/o shield",
+              "effects": "5∑ – (-30)"
+            }
+          ]
+        },
+        "E": {
+          "text": "Strike to foe's waist. All equipment on belt freezes and breaks if foe moves.",
+          "effects": "+13H – 3∑ – (-30)"
+        }
+      }
+    },
+    {
+      "label": "66",
+      "rollMin": 66,
+      "rollMax": 66,
+      "results": {
+        "A": {
+          "text": "Steal the heat from foe's neck and chest area. Foe drops anything he is holding and blocks his throat.",
+          "effects": "+10H – 3∑∏"
+        },
+        "B": {
+          "text": "Foe is covered by the blast. All extremities are damaged. The pain grows until foe is warmed up.",
+          "effects": "4∑∏ – 3∫"
+        },
+        "C": {
+          "text": "Foe's response to your burst of cold sends him to the ground hard. Foe jams his wrist into the ground.",
+          "effects": "6∑ – (-15) – 4∫"
+        },
+        "D": {
+          "text": "Frigid onslaught fills foe's eyes and mouth with ice. Foe is blinded for a moment until he can clear his eyes.",
+          "effects": "4∑ – (-30) – 4∫"
+        },
+        "E": {
+          "text": "Your strike steals the heat out of foe's neck and upper chest. Nerves and muscles are damaged.",
+          "effects": "+15H – 8∑∏ – 4∫"
+        }
+      }
+    },
+    {
+      "label": "67-70",
+      "rollMin": 67,
+      "rollMax": 70,
+      "results": {
+        "A": {
+          "text": "Score a hit to foe's side. It produces mild frostbite. Any herbs on foe's belt are ruined.",
+          "effects": "+10H – ∑∏ – (-5)"
+        },
+        "B": {
+          "text": "Spray foe's face with a powerful chill. He tries without success to push your attack away. The damage endures.",
+          "effects": "+11H – 2∑ – ∏ – (-10)"
+        },
+        "C": {
+          "text": "Freeze foe's weapon arm. It is useless until it is warmed up. Foe is in great pain and struggles to stand.",
+          "effects": "+12H – 2∑ – ∏ – (-15)"
+        },
+        "D": {
+          "text": "Polar wind pierces deep into chest and leaves foe trembling. You are close to victory. Foe faces the wrong way.",
+          "effects": "",
+          "variants": [
+            {
+              "condition": "with chest armor",
+              "effects": "+15H – ∑∏ – (-5)"
+            },
+            {
+              "condition": "w/o chest armor",
+              "effects": "+13H – 3∑ – ∏ – (-20)"
+            }
+          ]
+        },
+        "E": {
+          "text": "Blow to foe's shield arm. He is knocked down. If foe has a shield, it is broken. If not, the arm is broken.",
+          "effects": "",
+          "variants": [
+            {
+              "condition": "with shield",
+              "effects": "2∑"
+            },
+            {
+              "condition": "w/o shield",
+              "effects": "6∑"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "label": "71-75",
+      "rollMin": 71,
+      "rollMax": 75,
+      "results": {
+        "A": {
+          "text": "Strong unbalancing blast. Foe's body temperature drops.",
+          "effects": "+11H – 2∑ – (-10)"
+        },
+        "B": {
+          "text": "Strike lands on foe's legs. The pain and shock cause him to falter.",
+          "effects": "+12H – 2∑∏ – 3∫"
+        },
+        "C": {
+          "text": "Side strike hits foe just right. Any leather or cloth freezes and shatters.",
+          "effects": "2∑∏ – 3∫ – (-20)"
+        },
+        "D": {
+          "text": "Blast drains the heat from foe's weapon arm. Hand and arm are useless. The hand is frozen closed.",
+          "effects": "+13H – 2∑∏ – (-50)"
+        },
+        "E": {
+          "text": "Blast freezes weapon hand, shoulder and face. Foe is numb and needs time to warm up. Foe is still standing.",
+          "effects": "+15H – 3∑"
+        }
+      }
+    },
+    {
+      "label": "76-80",
+      "rollMin": 76,
+      "rollMax": 80,
+      "results": {
+        "A": {
+          "text": "Strike to foe's shield arm. If foe sees it he may block with a shield. Foe recoils 5 feet from the blast.",
+          "effects": "",
+          "variants": [
+            {
+              "condition": "with shield",
+              "effects": "+2H – 2π"
+            },
+            {
+              "condition": "w/o shield",
+              "effects": "+12H – 2∑ – ∏"
+            }
+          ]
+        },
+        "B": {
+          "text": "Chest strike freezes what it touches. Equipment is damaged. The pain persists. Chest armor is destroyed.",
+          "effects": "",
+          "variants": [
+            {
+              "condition": "with chest armor",
+              "effects": "+13H – 4∑ – (+15) – 3∫"
+            },
+            {
+              "condition": "w/o chest armor",
+              "effects": "+20H – 4π – (-5)"
+            }
+          ]
+        },
+        "C": {
+          "text": "Blow to foe's arms. Any metal armguards freeze, immobilizing arms until the armor is removed or unfrozen.",
+          "effects": "",
+          "variants": [
+            {
+              "condition": "with chest armor",
+              "effects": "3∑ – 4∫"
+            },
+            {
+              "condition": "w/o chest armor",
+              "effects": "(-25) – 4∫"
+            }
+          ]
+        },
+        "D": {
+          "text": "Strike to foe's side downs him. Severe frostbite hampers movements. Any liquid among foe's equipment freezes.",
+          "effects": "+15H – 3∑∏ – (-25)"
+        },
+        "E": {
+          "text": "Solid chest strike. Foe flips onto his back, dropping all he holds. Foe is at your mercy.",
+          "effects": "12∑ – (-30)"
+        }
+      }
+    },
+    {
+      "label": "81-85",
+      "rollMin": 81,
+      "rollMax": 85,
+      "results": {
+        "A": {
+          "text": "Back blast. Any glass on back is broken. Painful bruise.",
+          "effects": "+13H – 2∑∏"
+        },
+        "B": {
+          "text": "Clean hard strike pushes foe over, cracking ribs. His recovery lacks grace.",
+          "effects": "+12H – 2∑∏ – (-15) – 4∫"
+        },
+        "C": {
+          "text": "Arctic blast to foe's torso. Foe is badly frostbitten and falls to knees in pain.",
+          "effects": "6∑ – 5∫ – (-40)"
+        },
+        "D": {
+          "text": "Freezes foe's hands. Arms are useless. Foe drops what he was carrying.",
+          "effects": "9∑ – 6∫"
+        },
+        "E": {
+          "text": "Assault to throat and face is terminal. Foe is still active but dies in 12 rounds.",
+          "effects": "+17H"
+        }
+      }
+    },
+    {
+      "label": "86-90",
+      "rollMin": 86,
+      "rollMax": 90,
+      "results": {
+        "A": {
+          "text": "Assault to foe's lower leg freezes part of it. Foe falls down. Without leg armor, foot must be amputated.",
+          "effects": "",
+          "variants": [
+            {
+              "condition": "with leg armor",
+              "effects": "2∑ – 6(-10)"
+            },
+            {
+              "condition": "w/o leg armor",
+              "effects": "(-70)"
+            }
+          ]
+        },
+        "B": {
+          "text": "Strike lower leg and freeze it. With leg armor, he needs aid in 20 rounds to keep the foot. Without leg armor, it's gone.",
+          "effects": "",
+          "variants": [
+            {
+              "condition": "with leg armor",
+              "effects": "3∑"
+            },
+            {
+              "condition": "w/o leg armor",
+              "effects": "(-75)"
+            }
+          ]
+        },
+        "C": {
+          "text": "Blow to foe's knees. They freeze up and foe falls. On impact, foe shatters a knee. His fall makes it twice as bad.",
+          "effects": "9∑ – 6∫ – (-80)"
+        },
+        "D": {
+          "text": "Chest hit causes much pain. If foe is warmly clothed he is knocked out. If not he dies of shock in 12 rounds.",
+          "effects": "+25H – (-40)"
+        },
+        "E": {
+          "text": "Your ruthless tempest entangles foe and steals the warmth from his body. He drops and dies in 9 inactive rounds.",
+          "effects": "—"
+        }
+      }
+    },
+    {
+      "label": "91-95",
+      "rollMin": 91,
+      "rollMax": 95,
+      "results": {
+        "A": {
+          "text": "Blow lands on foe's face. It freezes his nose, ears and cheeks. Foe collapses. Without helm, foe loses both ears.",
+          "effects": "",
+          "variants": [
+            {
+              "condition": "with helmet",
+              "effects": "3∑"
+            },
+            {
+              "condition": "w/o helmet",
+              "effects": "6∑ – (-50)"
+            }
+          ]
+        },
+        "B": {
+          "text": "Connect with foe's hip. Hip is fractured. Skin and muscles are frostbitten. Foe falls down. He is almost helpless.",
+          "effects": "+17H – 3∑∏ – (-75)"
+        },
+        "C": {
+          "text": "Freeze the blood in foe's thigh. As it warms the clots move to his heart killing him in 9 rounds.",
+          "effects": "+15H – 3∑∏ – (-30)"
+        },
+        "D": {
+          "text": "All warmth is driven from foe's lower body. Vital organs are destroyed. Foe is immobile, and dies in 9 rounds.",
+          "effects": "+18H"
+        },
+        "E": {
+          "text": "Push foe backwards and off balance. The blood in foe's extremities is frozen. He dies in 6 rounds of agony.",
+          "effects": "+19H"
+        }
+      }
+    },
+    {
+      "label": "96-99",
+      "rollMin": 96,
+      "rollMax": 99,
+      "results": {
+        "A": {
+          "text": "Chest strike sends foe over hard. He is knocked out. His lips freeze and split open. He cannot speak for 2 weeks.",
+          "effects": "9∑"
+        },
+        "B": {
+          "text": "Blast foe's neck and collarbone. Neck armor will block the attack, but foe is knocked out. If the neck is exposed it freezes solid and foe dies in 9 rounds.",
+          "effects": "—"
+        },
+        "C": {
+          "text": "Your onslaught freezes foe's torso and head. Foe remains standing for a moment. He goes into shock and dies 6 rounds later.",
+          "effects": "+18H"
+        },
+        "D": {
+          "text": "Foe's heart and lungs are suddenly frozen by your arctic blast. Foe is finished. He dies of shock and suffocation in 6 rounds.",
+          "effects": "+19H"
+        },
+        "E": {
+          "text": "Foe is a lifeless frozen statue. He is quite dead and well preserved. Store in a cool dry place.",
+          "effects": "+20H – (+10)"
+        }
+      }
+    },
+    {
+      "label": "100",
+      "rollMin": 100,
+      "rollMax": 100,
+      "results": {
+        "A": {
+          "text": "Foe is sent into a month long coma by the attack. He loses his nose to frostbite.",
+          "effects": "+21H"
+        },
+        "B": {
+          "text": "Assault drops foe's body temperature; his heart stops. He dies in 1 round; well preserved. You are respected by all.",
+          "effects": "(+5)"
+        },
+        "C": {
+          "text": "Blast freezes foe's eyes, mouth, and neck. Foe falls down in a coma for 2 weeks and paralyzed from neck down.",
+          "effects": "—"
+        },
+        "D": {
+          "text": "Massive assault freezes foe's body completely. He remains standing, but if knocked over he will shatter.",
+          "effects": "+20H"
+        },
+        "E": {
+          "text": "Foe freezes solid and shatters into a thousand pieces. Most land within 20 feet from where he was standing.",
+          "effects": "(+20)"
+        }
+      }
+    }
+  ],
+  "slug": "critical-cold",
+  "fromBook": "basic"
+}

@@ -1,0 +1,582 @@
+{
+  "name": "Unbalance Critical Strike Table",
+  "tableId": "A-10.10.6",
+  "critType": "Unbalance",
+  "columnDefs": [
+    {
+      "key": "A",
+      "label": "A"
+    },
+    {
+      "key": "B",
+      "label": "B"
+    },
+    {
+      "key": "C",
+      "label": "C"
+    },
+    {
+      "key": "D",
+      "label": "D"
+    },
+    {
+      "key": "E",
+      "label": "E"
+    }
+  ],
+  "legend": {
+    "key": "ßπ = must parry ß rounds; ß∏ = no parry for ß rounds; ß∑ = stunned for ß rounds; ß∫ = bleed ß hits per round; (-ß) = foe has -ß penalty; (+ß) = attacker gets +ß next round.",
+    "hits": "+ßH = ß concussion hits.",
+    "rounds": "M(-ß) / M(+ß) = the penalty/bonus lasts M rounds. A bare symbol = 1 round.",
+    "none": "\"—\" = no mechanical effect beyond the text (often death).",
+    "variants": "Conditional cells (e.g. \"with helmet / w/o helmet\") apply the matching variant."
+  },
+  "rollMatchPolicy": "rollMin / rollMax are inclusive on an UNMODIFIED d100. The first band (rollMin=null) is the low catch-all; rolls above 100 (modified criticals) clamp to the top band.",
+  "rows": [
+    {
+      "label": "01-05",
+      "rollMin": null,
+      "rollMax": 5,
+      "results": {
+        "A": {
+          "text": "You and your foe both stumble.",
+          "effects": "+0H"
+        },
+        "B": {
+          "text": "You lunge 5 feet past your foe.",
+          "effects": "+0H"
+        },
+        "C": {
+          "text": "Try again. What will your friends say?",
+          "effects": "+0H"
+        },
+        "D": {
+          "text": "“You're not very good, are you?”",
+          "effects": "+1H"
+        },
+        "E": {
+          "text": "You made a good sound effect.",
+          "effects": "+2H"
+        }
+      }
+    },
+    {
+      "label": "06-10",
+      "rollMin": 6,
+      "rollMax": 10,
+      "results": {
+        "A": {
+          "text": "Foe recognizes this assault from grade school.",
+          "effects": "+0H"
+        },
+        "B": {
+          "text": "Your opponent stands firmly in front of you.",
+          "effects": "+1H"
+        },
+        "C": {
+          "text": "When your attempt starts to fail, you slip in a punch.",
+          "effects": "+2H"
+        },
+        "D": {
+          "text": "Your grip is neither firm nor effective. Foe breaks free.",
+          "effects": "+3H"
+        },
+        "E": {
+          "text": "It is solid, even if randomly placed.",
+          "effects": "+5H"
+        }
+      }
+    },
+    {
+      "label": "11-15",
+      "rollMin": 11,
+      "rollMax": 15,
+      "results": {
+        "A": {
+          "text": "Powerful strike fails to land solid. It still does some damage.",
+          "effects": "+3H"
+        },
+        "B": {
+          "text": "Weak side strike glances off kidneys. It could have been great.",
+          "effects": "+4H"
+        },
+        "C": {
+          "text": "Knuckle foe's arm. You will need to do better than this.",
+          "effects": "+5H"
+        },
+        "D": {
+          "text": "Back strike. It has little imagination. You might as well punch.",
+          "effects": "+6H"
+        },
+        "E": {
+          "text": "Strike lands on shoulder blade.",
+          "effects": "+7H"
+        }
+      }
+    },
+    {
+      "label": "16-20",
+      "rollMin": 16,
+      "rollMax": 20,
+      "results": {
+        "A": {
+          "text": "Foe seeks to push you away. He lashes out in defensive manner.",
+          "effects": "+4H – π"
+        },
+        "B": {
+          "text": "Glancing side blow. You unbalance your foe. He recovers quickly.",
+          "effects": "+4H – π"
+        },
+        "C": {
+          "text": "Strike side. Foe moves back to block your next attack.",
+          "effects": "+5H – π"
+        },
+        "D": {
+          "text": "Blow to foe's side sends him reeling. Foe checks wound for the damage.",
+          "effects": "+7H – (-10)"
+        },
+        "E": {
+          "text": "Blow to foe's side unbalances him and destroys equipment there.",
+          "effects": "+8H – 1(-20)"
+        }
+      }
+    },
+    {
+      "label": "21-35",
+      "rollMin": 21,
+      "rollMax": 35,
+      "results": {
+        "A": {
+          "text": "On line strike, but weak. Foe steps back and feigns an attack to draw off your assault.",
+          "effects": "+4H – π"
+        },
+        "B": {
+          "text": "Your strike makes foe's footing uncertain. He pushes you clear and begins to right himself.",
+          "effects": "+5H – 1(-20)"
+        },
+        "C": {
+          "text": "Shot to foe's chest. His lungs hesitate. He coughs it off and regains his footing.",
+          "effects": "+6H – ∑"
+        },
+        "D": {
+          "text": "Quick shot to chest causes foe to hesitate in pain. He still knows you're there.",
+          "effects": "+8H – ∑"
+        },
+        "E": {
+          "text": "Crack! Foe's rib reports damage to him in an unsubtle way. He is in pain.",
+          "effects": "+9H – ∑ – 1(-10)"
+        }
+      }
+    },
+    {
+      "label": "36-45",
+      "rollMin": 36,
+      "rollMax": 45,
+      "results": {
+        "A": {
+          "text": "Light bash breaks foe's focus. You have the initiative next round.",
+          "effects": "+4H"
+        },
+        "B": {
+          "text": "You salvage your attack by tripping foe. You have the initiative next round.",
+          "effects": "+5H – 2(-5)"
+        },
+        "C": {
+          "text": "Grab foe's shoulder, while you bring your knee up to knock him over.",
+          "effects": "+5H – 1(-40)"
+        },
+        "D": {
+          "text": "Strike to calf. Wound impairs foe's movements. You have the initiative.",
+          "effects": "+7H – (-25)"
+        },
+        "E": {
+          "text": "Hard glancing blow to foe's leg.",
+          "effects": "",
+          "variants": [
+            {
+              "condition": "with leg armor",
+              "effects": "+12H"
+            },
+            {
+              "condition": "w/o leg armor",
+              "effects": "+8H – 2∑"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "label": "46-50",
+      "rollMin": 46,
+      "rollMax": 50,
+      "results": {
+        "A": {
+          "text": "Attempt to spin foe around almost succeeds. Weak grip to side.",
+          "effects": "+5H – π(-10)"
+        },
+        "B": {
+          "text": "Your assault threatens to succeed. Your foe goes defensive to avoid your attack.",
+          "effects": "+5H – π(-20)"
+        },
+        "C": {
+          "text": "Boom! Foe is hit in the face. He reels back 5 feet trying to regain his footing. His guard is down.",
+          "effects": "+6H – ∑∏"
+        },
+        "D": {
+          "text": "Double strike to both arms breaks foe's defense. He is open to attack and is having trouble recovering.",
+          "effects": "+8H – ∑∏"
+        },
+        "E": {
+          "text": "Shot in back staggers foe for an instant. His guard drops and he is sadly unprotected.",
+          "effects": "+12H – ∑∏"
+        }
+      }
+    },
+    {
+      "label": "51-55",
+      "rollMin": 51,
+      "rollMax": 55,
+      "results": {
+        "A": {
+          "text": "Firm press to foe's chest. He gives ground happily. Watch his weapon.",
+          "effects": "+5H – π(-20)"
+        },
+        "B": {
+          "text": "Grab foe and bring knee up to cause damage. Foe blocks some of the force.",
+          "effects": "+5H – ∑"
+        },
+        "C": {
+          "text": "Push foe's knee backwards. Foe struggles to avoid the pain.",
+          "effects": "+6H – ∑∏"
+        },
+        "D": {
+          "text": "Strike to chest takes wind out of foe. Foe's guard goes down.",
+          "effects": "+10H – ∑∏"
+        },
+        "E": {
+          "text": "Knock foe over as if he was a sack of beans. He hits and starts to stand up.",
+          "effects": "+12H – ∑∏"
+        }
+      }
+    },
+    {
+      "label": "56-60",
+      "rollMin": 56,
+      "rollMax": 60,
+      "results": {
+        "A": {
+          "text": "Strike thigh. Foe is pushed back.",
+          "effects": "",
+          "variants": [
+            {
+              "condition": "with thigh armor",
+              "effects": "+7H"
+            },
+            {
+              "condition": "w/o thigh armor",
+              "effects": "+5H – ∑"
+            }
+          ]
+        },
+        "B": {
+          "text": "Foe bumps his thigh while blocking your attack. He steps back.",
+          "effects": "+6H – π(-30)"
+        },
+        "C": {
+          "text": "Skipping calf strike. Foe does not give ground.",
+          "effects": "",
+          "variants": [
+            {
+              "condition": "with leg armor",
+              "effects": "+9H"
+            },
+            {
+              "condition": "w/o leg armor",
+              "effects": "+7H – 2∑ – (-10)"
+            }
+          ]
+        },
+        "D": {
+          "text": "Miss foe's side and strike his thigh. You have initiative for 3 rounds.",
+          "effects": "+12H – 2∑"
+        },
+        "E": {
+          "text": "Strike causes foe to fumble his stride. He almost falls down. Foe is recovering.",
+          "effects": "+14H – 3∑"
+        }
+      }
+    },
+    {
+      "label": "61-65",
+      "rollMin": 61,
+      "rollMax": 65,
+      "results": {
+        "A": {
+          "text": "Foe's arm is pinned for a moment. He recovers by twisting you off.",
+          "effects": "+6H – ∑"
+        },
+        "B": {
+          "text": "Bend weapon arm in the wrong direction. Foe drops his weapon.",
+          "effects": "+6H"
+        },
+        "C": {
+          "text": "Excellent placement. Strike to weapon arm disarms foe. Foe is in great peril.",
+          "effects": "+6H – 2∑"
+        },
+        "D": {
+          "text": "You catch foe's counter thrust and disarm him with a bash to the arm.",
+          "effects": "+7H – 2∑ – (+20)"
+        },
+        "E": {
+          "text": "Bash foe in shoulder making him spin. You push him for good measure.",
+          "effects": "+13H – 2∑∏"
+        }
+      }
+    },
+    {
+      "label": "66",
+      "rollMin": 66,
+      "rollMax": 66,
+      "results": {
+        "A": {
+          "text": "Shoulder strike sends foe spinning. He comes all the way around before stopping. Well placed shot.",
+          "effects": "+7H – 2∑∏"
+        },
+        "B": {
+          "text": "Strike to foe's elbow numbs it. He drops his weapon and grips his elbow. He forgets you are still attacking him.",
+          "effects": "+8H – 2∑∏"
+        },
+        "C": {
+          "text": "Strike to foe's leg sends him down. Foe's knee is broken and his doom is at hand. He falls to the ground helpless.",
+          "effects": "+9H – 3∑∏ – (-90)"
+        },
+        "D": {
+          "text": "Hard strike to head. If foe has no helm, he is knocked out for 24 hours. If he has a helm, he is knocked back 10 feet.",
+          "effects": "6∑"
+        },
+        "E": {
+          "text": "Knock foe back with a blow to the jaw. Foe loses balance and falls. He hits his head and goes unconscious.",
+          "effects": "+30H"
+        }
+      }
+    },
+    {
+      "label": "67-70",
+      "rollMin": 67,
+      "rollMax": 70,
+      "results": {
+        "A": {
+          "text": "Hasty press upon foe's chest produces excellent results. Foe is unbalanced.",
+          "effects": "+6H – 2(-50)"
+        },
+        "B": {
+          "text": "Grab loose piece of foe's garments and use it to throw him around. Foe is confused.",
+          "effects": "+7H – ∏"
+        },
+        "C": {
+          "text": "Strike to foe's ribs. Foe's ribs crack and foe shows the pain. His war effort is impaired.",
+          "effects": "+8H – 2∑ – (-20)"
+        },
+        "D": {
+          "text": "Break foe's collar bone. Spin foe around. He is disoriented and out of position.",
+          "effects": "+10H – ∑∏ – (-25)"
+        },
+        "E": {
+          "text": "Shoulder strike blasts foe down. He lands on his stomach and tries to roll over. Minor fracture.",
+          "effects": "2∑∏ – (-10)"
+        }
+      }
+    },
+    {
+      "label": "71-75",
+      "rollMin": 71,
+      "rollMax": 75,
+      "results": {
+        "A": {
+          "text": "Hammer foe's lower leg. He has trouble standing, but manages.",
+          "effects": "+7H – 2∑"
+        },
+        "B": {
+          "text": "Solid damage to foe's calf. His attempts to avoid the pain make him an easier target.",
+          "effects": "+9H – (-10)"
+        },
+        "C": {
+          "text": "Bruise foe's leg. Muscles suffer damage and foe limps back from your reach.",
+          "effects": "+10H – ∑∏ – (-20)"
+        },
+        "D": {
+          "text": "Lift foe up into the air. You send him sprawling on the ground. He drops his weapon.",
+          "effects": "+12H – ∑∏ – (-75)"
+        },
+        "E": {
+          "text": "Knock foe down with a blow to the thigh. He lands on his weapon and takes some time to get off it.",
+          "effects": "+15H – 3∑∏"
+        }
+      }
+    },
+    {
+      "label": "76-80",
+      "rollMin": 76,
+      "rollMax": 80,
+      "results": {
+        "A": {
+          "text": "Blow to foe's shield side. If foe has a shield, it is torn away.",
+          "effects": "+12H – 2∑"
+        },
+        "B": {
+          "text": "Grab foe's shield arm for leverage. You treat it badly, trying to unbalance foe.",
+          "effects": "+10H – 2∑ – (-10)"
+        },
+        "C": {
+          "text": "Heavy blow to foe's weapon arm. Mild fracture. Foe is knocked back 5 feet.",
+          "effects": "+11H – 3∑ – (-25)"
+        },
+        "D": {
+          "text": "Sweep foe to the side and knock him over. He breaks his ankle.",
+          "effects": "+11H – (-50)"
+        },
+        "E": {
+          "text": "Strike to foe's shield arm. Foe stumbles 3 feet and falls down. Foe is disarmed.",
+          "effects": "+15H – 4∑∏"
+        }
+      }
+    },
+    {
+      "label": "81-85",
+      "rollMin": 81,
+      "rollMax": 85,
+      "results": {
+        "A": {
+          "text": "Side strike. Disoriented foe strikes out for you in the wrong direction. You move to take advantage.",
+          "effects": "+12H – ∑∏ – (+10)"
+        },
+        "B": {
+          "text": "Good shot to foe's side sends him stumbling to the right 3 feet. It must have really hurt.",
+          "effects": "+15H – 3∑"
+        },
+        "C": {
+          "text": "Strike to foe's side. He almost goes down, but recovers by dropping everything in his shield arm.",
+          "effects": "6∑"
+        },
+        "D": {
+          "text": "Brutal strike sends foe down. You step on his weapon arm and hold it down. Foe should surrender.",
+          "effects": "+12H – 6∑∏"
+        },
+        "E": {
+          "text": "Awesome side shot sends foe tripping sideways. He goes down rolling and breaks a leg.",
+          "effects": "6∑∏ – (-50)"
+        }
+      }
+    },
+    {
+      "label": "86-90",
+      "rollMin": 86,
+      "rollMax": 90,
+      "results": {
+        "A": {
+          "text": "Elbow to the back. Foe stumbles 5 feet sideways. Foe cannot seem to get his head clear.",
+          "effects": "+13H – 3∑ – (+20)"
+        },
+        "B": {
+          "text": "You really hammer foe. He reels back 10 feet. He almost went down. You move in to finish him.",
+          "effects": "+12H – 2∑∏"
+        },
+        "C": {
+          "text": "Precise blow sends foe down. Foe is face down and disarmed.",
+          "effects": "+14H – 6∑ – (+20)"
+        },
+        "D": {
+          "text": "Strike foe's shield arm. If foe has a shield it is broken. If not the arm is broken.",
+          "effects": "+10H – 9∑"
+        },
+        "E": {
+          "text": "Cruel blow to foe's head.... Foe sees stars. Foe is knocked back 10 feet, but remains standing.",
+          "effects": "+20H – 12∑∏"
+        }
+      }
+    },
+    {
+      "label": "91-95",
+      "rollMin": 91,
+      "rollMax": 95,
+      "results": {
+        "A": {
+          "text": "Head strike. If foe has no helm, he is knocked out for 2 hours. If foe has a helm, he is better off.",
+          "effects": "3∑"
+        },
+        "B": {
+          "text": "Blow to side of foe's head. Strike damages his ear and balance. Foe is impaired for 3 weeks.",
+          "effects": "+9H – 6∑ – (-50)"
+        },
+        "C": {
+          "text": "Spin foe around. He ends up 10 feet from you and facing the wrong direction. Foe fumbles his weapon.",
+          "effects": "+10H – 8∑∏ – (-30)"
+        },
+        "D": {
+          "text": "Foe stumbles back from you 10 feet and takes a full round to fall. He hits hard and fractures an arm. He is down.",
+          "effects": "—"
+        },
+        "E": {
+          "text": "Blow to foe's shield shoulder. If foe has no shield, he is knocked down, has a useless arm, and passes out.",
+          "effects": "6∑"
+        }
+      }
+    },
+    {
+      "label": "96-99",
+      "rollMin": 96,
+      "rollMax": 99,
+      "results": {
+        "A": {
+          "text": "Strike to foe's stomach. He bends down in pain and you send him sprawling on his face. He hits harder than you could have hoped.",
+          "effects": "+10H – 3∏"
+        },
+        "B": {
+          "text": "Bash foe in his side. His legs forget to follow as he steps back. He falls in an embarrassing prone position. He has no clue to what happened.",
+          "effects": "6∑∏"
+        },
+        "C": {
+          "text": "Smooth and snazzy strike sends foe down on his knees. His weapon goes flying. Foe has blacked out. He stares straight ahead without blinking.",
+          "effects": "—"
+        },
+        "D": {
+          "text": "Strike head and shatter foe's helm. Pieces fly in all directions. If foe has no helm he is in a coma for 4 weeks.",
+          "effects": "+9H – 6∑"
+        },
+        "E": {
+          "text": "Solid strike snaps foe's neck. He falls back 5 feet, spins, and tumbles to the ground. He dies of shock and suffocation in 3 rounds.",
+          "effects": "—"
+        }
+      }
+    },
+    {
+      "label": "100",
+      "rollMin": 100,
+      "rollMax": 100,
+      "results": {
+        "A": {
+          "text": "Brutal hip strike knocks foe down. Fall tears tendons, and fractures bone in leg. The pain is great. Foe is incoherent for 9 hours.",
+          "effects": "(-90)"
+        },
+        "B": {
+          "text": "Send foe flying 10 feet. He lands on his face. The twisting of his neck causes nerve damage. He is paralyzed from the waist down.",
+          "effects": "—"
+        },
+        "C": {
+          "text": "Powerful strike flips foe into the air before smashing him to the ground. Foe breaks both arms and hits his head. Foe is in a coma for 2 months.",
+          "effects": "—"
+        },
+        "D": {
+          "text": "Savage blow to foe's head. Foe is knocked down. He falls into a coma and dies in 12 rounds due to a severed vein.",
+          "effects": "(+20)"
+        },
+        "E": {
+          "text": "Frightening strike to foe's head. Temple crushed, neck broken. Foe lands 20 feet away. He dies instantly.",
+          "effects": "3(+20)"
+        }
+      }
+    }
+  ],
+  "slug": "critical-unbalance",
+  "fromBook": "basic"
+}

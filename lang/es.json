@@ -476,7 +476,32 @@
       "OpenEnded": "abierta",
       "ChatTitle": "{name} vs TA {at}",
       "ChatNeedsCrit": "Tira un crítico {severity} en la tabla de {critType}.",
-      "NoResult": "—"
+      "NoResult": "—",
+      "AttackTypeData": "Datos del tipo de ataque",
+      "AttackType": "Tipo de ataque",
+      "Abbreviation": "Abreviatura",
+      "OBMod": "Mod. OB",
+      "MaxResult": "Resultado máx.",
+      "MaxCritical": "Crítico máx.",
+      "TargetColumn": "Protección del objetivo",
+      "SpellFails": "El hechizo falla — tira en la tabla A-10.11.2",
+      "RRModifier": "Modificador a la tirada de resistencia: {modifier}",
+      "RangeModifiers": "Modificadores por alcance",
+      "Range": "Alcance",
+      "Modifier": "Modificador"
+    },
+    "CriticalTableSheet": "Tabla de Críticos RMF",
+    "CriticalTable": {
+      "NamePlaceholder": "Nombre de la tabla de críticos",
+      "Severity": "Severidad",
+      "ResolveButton": "Tirar crítico",
+      "ChatTitle": "{name} — severidad {column}",
+      "Stunned": "aturdido {n}r",
+      "StunNoParry": "aturdido sin parada {n}r",
+      "NoParry": "sin parada {n}r",
+      "MustParry": "debe parar {n}r",
+      "Bleed": "sangra {n}/asalto",
+      "Attacker": "atacante el próximo asalto"
     }
   },
   "TYPES": {
@@ -492,7 +517,8 @@
       "profession": "Profesión",
       "trainingPackage": "Paquete de Entrenamiento",
       "spellList": "Lista de Hechizos",
-      "attackTable": "Tabla de Ataque"
+      "attackTable": "Tabla de Ataque",
+      "criticalTable": "Tabla de Críticos"
     }
   }
 }

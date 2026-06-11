@@ -27,7 +27,7 @@ import {
   wireTabs
 } from "./utils/sheet-helpers.mjs";
 import { RMFActions } from "./actions.mjs";
-import { parseCell } from "./tables/index.mjs";
+import { parseCell, parseModifierCell } from "./tables/index.mjs";
 
 export class RMFAttackTableSheet extends HandlebarsApplicationMixin(foundry.applications.sheets.ItemSheetV2) {
   static DEFAULT_OPTIONS = {
@@ -82,50 +82,115 @@ export class RMFAttackTableSheet extends HandlebarsApplicationMixin(foundry.appl
     context.isEditable = this.isEditable;
     context.editable   = this.isEditable;
 
-    // Column order is driven by the armor-type groups so the header and
-    // the body always line up. Fall back to the derived (descending) AT
-    // list when the table has no explicit groups.
-    const groups = Array.isArray(sys.armorTypes) && sys.armorTypes.length
-      ? sys.armorTypes
-      : [{ name: "", ats: Array.isArray(sys.columns) ? sys.columns : [] }];
-    const columnOrder = groups.flatMap(g => (Array.isArray(g.ats) ? g.ats : []));
+    // Table kind drives both the column model and how cells are parsed:
+    //  - "attack" (default): AT 1-20 columns grouped under armor names,
+    //    cells are hits + optional critical.
+    //  - "resistanceMod": categorical columns from `columnDefs`, cells are
+    //    signed Resistance-Roll modifiers (or "F" = spell fails).
+    const isResistance = sys.tableKind === "resistanceMod";
+    context.isResistanceTable = isResistance;
 
-    context.armorGroups = groups.map(g => ({
-      name: g.name ?? "",
-      span: Array.isArray(g.ats) ? g.ats.length : 0
-    }));
-    context.columns = columnOrder;
+    let columnOrder, headers;
+    if (isResistance) {
+      const defs = Array.isArray(sys.columnDefs) ? sys.columnDefs : [];
+      columnOrder = defs.map(d => d.key);
+      headers = defs.map(d => d.label || d.key);
+      context.armorGroups = [];
+    } else {
+      // Column order is driven by the armor-type groups so the header and
+      // the body always line up. Fall back to the derived (descending) AT
+      // list when the table has no explicit groups.
+      const groups = Array.isArray(sys.armorTypes) && sys.armorTypes.length
+        ? sys.armorTypes
+        : [{ name: "", ats: Array.isArray(sys.columns) ? sys.columns : [] }];
+      columnOrder = groups.flatMap(g => (Array.isArray(g.ats) ? g.ats : []));
+      headers = columnOrder;
+      context.armorGroups = groups.map(g => ({
+        name: g.name ?? "",
+        span: Array.isArray(g.ats) ? g.ats.length : 0
+      }));
+    }
+    context.columns = headers;
+
+    // One cell shaper per kind, so both grids share the row pipeline below.
+    // Modifier cells reuse the fumble tint for "F" (spell fails) and the
+    // miss tint for "-" — no new CSS needed.
+    const shapeCell = isResistance
+      ? (key, raw) => {
+          const parsed = parseModifierCell(raw);
+          return {
+            at: key,
+            text: parsed.kind === "none" ? "" : (parsed.raw || ""),
+            kind: parsed.kind === "fail" ? "fumble" : (parsed.kind === "none" ? "miss" : parsed.kind),
+            hasCrit: false
+          };
+        }
+      : (key, raw) => {
+          const parsed = parseCell(raw);
+          return {
+            at: key,
+            text: (parsed.kind === "miss") ? "" : (parsed.raw || ""),
+            kind: parsed.kind,
+            hasCrit: !!parsed.critSeverity
+          };
+        };
+
+    const shapeRow = (label, results) => ({
+      label: label ?? "",
+      cells: columnOrder.map(key => shapeCell(key, results?.[String(key)]))
+    });
+
+    // High unmodified-die rows (UM 96-100), rendered above the roll bands
+    // like the printed page.
+    context.umHighRows = (Array.isArray(sys.umHigh) ? sys.umHigh : [])
+      .slice()
+      .sort((a, b) => Number(b?.naturalMax ?? 0) - Number(a?.naturalMax ?? 0))
+      .map(u => shapeRow(u?.label, u?.results));
 
     // Build the visible grid. Each cell carries its raw text and a CSS
     // modifier so the stylesheet can tint hits / crits / misses / fumbles.
     const rows = Array.isArray(sys.rows) ? sys.rows : [];
-    context.gridRows = rows.map(row => ({
-      label: row?.label ?? "",
-      cells: columnOrder.map(at => {
-        const raw = row?.results?.[String(at)];
-        const parsed = parseCell(raw);
-        return {
-          at,
-          text: (parsed.kind === "miss") ? "" : (parsed.raw || ""),
-          kind: parsed.kind,
-          hasCrit: !!parsed.critSeverity
-        };
-      })
-    }));
+    context.gridRows = rows.map(row => shapeRow(row?.label, row?.results));
 
     // Fumble row (rendered as a footer band).
     context.fumbleRow = {
       label: sys.fumble?.label ?? "",
-      cells: columnOrder.map(at => ({ at, text: sys.fumble?.results?.[String(at)] ?? "" }))
+      cells: columnOrder.map(key => ({ at: key, text: sys.fumble?.results?.[String(key)] ?? "" }))
     };
 
-    // Sticky resolve-form state + last result.
-    context.resolve = this._resolveState ?? { ob: 0, mods: 0, targetAT: 1, targetDB: 0 };
+    // ATTACK TYPE DATA / SPELL DATA box: per-attack-type criticals on
+    // creature tables, per-spell OB mod / max result / max critical on
+    // spell tables. `hasSpellData` switches the extra columns on.
+    const attackTypes = Array.isArray(sys.attackTypes) ? sys.attackTypes : [];
+    context.attackTypes = attackTypes;
+    context.hasAttackTypes = attackTypes.length > 0;
+    context.hasSpellData = attackTypes.some(a => a?.obMod || a?.maxResult !== null || a?.maxCritical);
+    context.attackTypeNotes = Array.isArray(sys.attackTypeNotes) ? sys.attackTypeNotes : [];
+
+    // Sticky resolve-form state + last result. Resistance tables pick a
+    // categorical column instead of a numeric AT.
+    const defaultColumn = isResistance ? (columnOrder[0] ?? "") : null;
+    context.resolve = this._resolveState
+      ?? { ob: 0, mods: 0, targetAT: 1, targetDB: 0, column: defaultColumn };
+    context.resolveColumns = isResistance
+      ? (Array.isArray(sys.columnDefs) ? sys.columnDefs : []).map(d => ({
+          key: d.key,
+          label: d.label || d.key,
+          selected: (this._resolveState?.column ?? defaultColumn) === d.key
+        }))
+      : [];
     context.lastResult = this._lastResult ? this.#viewResult(this._lastResult) : null;
 
-    // Legend entries (cell-notation key), if present in the source.
+    // Legend entries (cell-notation key), if present in the source. Only
+    // string values render in the <dl>; the structured `rangeModifiers`
+    // array (spell tables) gets its own small table.
     const legend = sys.legend && typeof sys.legend === "object" ? sys.legend : {};
-    context.legendRows = Object.entries(legend).map(([key, text]) => ({ key, text }));
+    context.legendRows = Object.entries(legend)
+      .filter(([, text]) => typeof text === "string")
+      .map(([key, text]) => ({ key, text }));
+    context.rangeModifiers = Array.isArray(legend.rangeModifiers)
+      ? legend.rangeModifiers.filter(r => r && typeof r === "object")
+      : [];
 
     return context;
   }
@@ -133,6 +198,31 @@ export class RMFAttackTableSheet extends HandlebarsApplicationMixin(foundry.appl
   /** Shape an engine result for display (localised, pre-formatted). */
   #viewResult(r) {
     const localize = k => game.i18n.localize(k);
+
+    // Resistance-spell result: a RR modifier or a spell failure.
+    if ("modifier" in r) {
+      let outcome;
+      if (r.fails) outcome = localize("RMF.AttackTable.SpellFails");
+      else if (r.modifier === null) outcome = localize("RMF.AttackTable.Miss");
+      else {
+        const sign = r.modifier > 0 ? `+${r.modifier}` : String(r.modifier);
+        outcome = game.i18n.format("RMF.AttackTable.RRModifier", { modifier: sign });
+      }
+      const colDef = (this.document.system.columnDefs ?? []).find(d => d.key === r.column);
+      return {
+        natural: r.natural,
+        rollTotal: r.rollTotal,
+        openHigh: r.openHigh,
+        attackTotal: r.attackTotal,
+        targetAT: colDef?.label ?? r.column,
+        outcome,
+        needsCritical: false,
+        critHint: "",
+        umHigh: !!r.umHigh,
+        umLabel: r.umLabel ?? ""
+      };
+    }
+
     let outcome;
     if (r.fumble) outcome = localize("RMF.AttackTable.Fumble");
     else if (r.cell?.kind === "miss") outcome = localize("RMF.AttackTable.Miss");
@@ -152,7 +242,9 @@ export class RMFAttackTableSheet extends HandlebarsApplicationMixin(foundry.appl
         ? game.i18n.format("RMF.AttackTable.ChatNeedsCrit", {
             severity: r.cell.critSeverity, critType: r.critType
           })
-        : ""
+        : "",
+      umHigh: !!r.umHigh,
+      umLabel: r.umLabel ?? ""
     };
   }
 
@@ -217,11 +309,14 @@ export class RMFAttackTableSheet extends HandlebarsApplicationMixin(foundry.appl
     if (!name) return;
 
     // Resolve form — keep the values on the instance so a re-render after
-    // rolling restores them; never written to the document.
+    // rolling restores them; never written to the document. `column` is the
+    // categorical key on resistance tables (string); the rest are numbers.
     if (name.startsWith("resolve.")) {
       const key = name.slice("resolve.".length);
       this._resolveState = { ...(this._resolveState ?? { ob: 0, mods: 0, targetAT: 1, targetDB: 0 }) };
-      this._resolveState[key] = Number(coerceInputValue(target)) || 0;
+      this._resolveState[key] = (key === "column")
+        ? String(coerceInputValue(target) ?? "")
+        : (Number(coerceInputValue(target)) || 0);
       return;
     }
 
@@ -254,17 +349,29 @@ export class RMFAttackTableSheet extends HandlebarsApplicationMixin(foundry.appl
       return Number.isFinite(n) ? n : def;
     };
 
-    const params = {
-      table: this.document.system,
-      ob: num("ob"),
-      mods: num("mods"),
-      targetAT: num("targetAT", 1),
-      targetDB: num("targetDB")
-    };
-    this._resolveState = { ob: params.ob, mods: params.mods, targetAT: params.targetAT, targetDB: params.targetDB };
+    const sys = this.document.system;
+    const isResistance = sys.tableKind === "resistanceMod";
 
     try {
-      const result = await game.rmf.tables.resolveAttack(params);
+      let result;
+      if (isResistance) {
+        const colEl = root?.querySelector?.(`[name="resolve.column"]`);
+        const column = String(colEl?.value || sys.columnDefs?.[0]?.key || "");
+        const params = {
+          table: sys, column,
+          ob: num("ob"), mods: num("mods"), targetDB: num("targetDB")
+        };
+        this._resolveState = { ob: params.ob, mods: params.mods, targetDB: params.targetDB, column };
+        result = await game.rmf.tables.resolveResistanceSpell(params);
+      } else {
+        const params = {
+          table: sys,
+          ob: num("ob"), mods: num("mods"),
+          targetAT: num("targetAT", 1), targetDB: num("targetDB")
+        };
+        this._resolveState = { ob: params.ob, mods: params.mods, targetAT: params.targetAT, targetDB: params.targetDB };
+        result = await game.rmf.tables.resolveAttack(params);
+      }
       this._lastResult = result;
       await this.#postChat(result);
       await this.render();
@@ -279,12 +386,13 @@ export class RMFAttackTableSheet extends HandlebarsApplicationMixin(foundry.appl
     const L = k => game.i18n.localize(k);
     const view = this.#viewResult(result);
     const title = game.i18n.format("RMF.AttackTable.ChatTitle", {
-      name: this.document.name, at: result.targetAT
+      name: this.document.name, at: view.targetAT
     });
 
-    const rollLine = result.openHigh
+    let rollLine = result.openHigh
       ? `${result.natural} → ${result.rollTotal} (${L("RMF.AttackTable.OpenEnded")})`
       : `${result.natural}`;
+    if (view.umHigh && view.umLabel) rollLine += ` [${view.umLabel}]`;
 
     const esc = s => Handlebars.escapeExpression(s);
     const content = `
@@ -292,7 +400,7 @@ export class RMFAttackTableSheet extends HandlebarsApplicationMixin(foundry.appl
         <h3>${esc(title)}</h3>
         <div class="line"><span>${L("RMF.AttackTable.NaturalRoll")}:</span> <b>${rollLine}</b></div>
         <div class="line"><span>${L("RMF.AttackTable.AttackTotal")}:</span> <b>${result.attackTotal}</b></div>
-        <div class="outcome ${result.fumble ? "is-fumble" : (result.needsCritical ? "is-crit" : "")}">${esc(view.outcome)}</div>
+        <div class="outcome ${(result.fumble || result.fails) ? "is-fumble" : (result.needsCritical ? "is-crit" : "")}">${esc(view.outcome)}</div>
         ${view.needsCritical ? `<div class="crit-hint">${esc(view.critHint)}</div>` : ""}
       </div>`;
 

@@ -1,0 +1,74 @@
+{{!--
+  RMF Critical Table Sheet — Table (matrix) Partial
+  Editable bridge fields on top; below, the read-only matrix:
+  severity columns by roll band. Each cell shows the effects notation
+  (bold) over the narrative text; conditional cells list their variants.
+--}}
+
+<div class="tab criticaltable-table" data-group="primary-tabs" data-tab="table" style="display: block;">
+
+  {{!-- Bridge fields (editable) --}}
+  <div class="summary-wrapper">
+    <h3>{{localize "RMF.AttackTable.Meta"}}</h3>
+    <div class="two-col-tables">
+      <table class="summary-table">
+        <tbody>
+          <tr><th scope="row">{{localize "RMF.AttackTable.TableId"}}</th>
+            <td><input type="text" name="system.tableId" value="{{system.tableId}}" {{#unless editable}}readonly{{/unless}}/></td></tr>
+          <tr><th scope="row">{{localize "RMF.AttackTable.CritType"}}</th>
+            <td><input type="text" name="system.critType" value="{{system.critType}}" {{#unless editable}}readonly{{/unless}}/></td></tr>
+        </tbody>
+      </table>
+      <table class="summary-table">
+        <tbody>
+          <tr><th scope="row">{{localize "RMF.AttackTable.Source"}}</th>
+            <td><input type="text" name="system.fromBook" value="{{system.fromBook}}" {{#unless editable}}readonly{{/unless}}/></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  {{!-- The matrix --}}
+  <div class="summary-wrapper attacktable-grid-wrapper">
+    <table class="rmf-attack-grid rmf-critical-grid">
+      <thead>
+        <tr class="armor-ats">
+          <th class="roll-col">{{localize "RMF.AttackTable.RollBand"}}</th>
+          {{#each columns as |label|}}<th class="at-col col-label">{{label}}</th>{{/each}}
+        </tr>
+      </thead>
+      <tbody>
+        {{#each gridRows as |row|}}
+        <tr>
+          <th scope="row" class="roll-col">{{row.label}}</th>
+          {{#each row.cells as |c|}}
+          <td class="cell crit-cell">
+            <div class="crit-text">{{c.text}}</div>
+            {{#if c.variants.length}}
+              <ul class="crit-variants">
+                {{#each c.variants as |v|}}
+                <li title="{{v.summary}}"><b>{{v.condition}}:</b> {{#if v.effects}}{{v.effects}}{{else}}—{{/if}}</li>
+                {{/each}}
+              </ul>
+            {{else}}
+              <div class="crit-effects" title="{{c.summary}}">{{#if c.effects}}{{c.effects}}{{else}}—{{/if}}</div>
+            {{/if}}
+          </td>
+          {{/each}}
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+
+  {{!-- Effects-notation legend --}}
+  {{#if legendRows.length}}
+  <div class="summary-wrapper">
+    <h3>{{localize "RMF.AttackTable.Legend"}}</h3>
+    <dl class="rmf-attack-legend">
+      {{#each legendRows as |row|}}<dt>{{row.key}}</dt><dd>{{row.text}}</dd>{{/each}}
+    </dl>
+  </div>
+  {{/if}}
+
+</div>

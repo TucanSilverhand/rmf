@@ -2,6 +2,7 @@
   "lists": [
     {
       "name": "Blood Law",
+      "slug": "blood-law",
       "realm": "Channeling",
       "type": "Closed",
       "reference": "A-9.6.1",
@@ -107,6 +108,7 @@
     },
     {
       "name": "Bone Law",
+      "slug": "bone-law",
       "realm": "Channeling",
       "type": "Closed",
       "reference": "A-9.6.2",
@@ -125,7 +127,7 @@
         },
         {
           "level": 2,
-          "name": null
+          "name": ""
         },
         {
           "level": 3,
@@ -169,7 +171,7 @@
         },
         {
           "level": 7,
-          "name": null
+          "name": ""
         },
         {
           "level": 8,
@@ -182,7 +184,7 @@
         },
         {
           "level": 9,
-          "name": null
+          "name": ""
         },
         {
           "level": 10,
@@ -197,6 +199,7 @@
     },
     {
       "name": "Calm Spirits",
+      "slug": "calm-spirits",
       "realm": "Channeling",
       "type": "Closed",
       "reference": "A-9.6.3",
@@ -298,6 +301,7 @@
     },
     {
       "name": "Creations",
+      "slug": "creations",
       "realm": "Channeling",
       "type": "Closed",
       "reference": "A-9.6.4",
@@ -308,7 +312,7 @@
       "spells": [
         {
           "level": 1,
-          "name": null
+          "name": ""
         },
         {
           "level": 2,
@@ -395,6 +399,7 @@
     },
     {
       "name": "Locating Ways",
+      "slug": "locating-ways",
       "realm": "Channeling",
       "type": "Closed",
       "reference": "A-9.6.5",
@@ -407,7 +412,7 @@
       "spells": [
         {
           "level": 1,
-          "name": null
+          "name": ""
         },
         {
           "level": 2,
@@ -456,7 +461,7 @@
         },
         {
           "level": 7,
-          "name": null
+          "name": ""
         },
         {
           "level": 8,
@@ -489,6 +494,7 @@
     },
     {
       "name": "Lore",
+      "slug": "lore",
       "realm": "Channeling",
       "type": "Closed",
       "reference": "A-9.6.6",
@@ -552,7 +558,7 @@
         },
         {
           "level": 7,
-          "name": null
+          "name": ""
         },
         {
           "level": 8,
@@ -565,7 +571,7 @@
         },
         {
           "level": 9,
-          "name": null
+          "name": ""
         },
         {
           "level": 10,
@@ -580,6 +586,7 @@
     },
     {
       "name": "Muscle Law",
+      "slug": "muscle-law",
       "realm": "Channeling",
       "type": "Closed",
       "reference": "A-9.6.7",
@@ -647,11 +654,11 @@
         },
         {
           "level": 7,
-          "name": null
+          "name": ""
         },
         {
           "level": 8,
-          "name": null
+          "name": ""
         },
         {
           "level": 9,
@@ -675,6 +682,7 @@
     },
     {
       "name": "Nerve Law",
+      "slug": "nerve-law",
       "realm": "Channeling",
       "type": "Closed",
       "reference": "A-9.6.8",
@@ -693,11 +701,11 @@
         },
         {
           "level": 2,
-          "name": null
+          "name": ""
         },
         {
           "level": 3,
-          "name": null
+          "name": ""
         },
         {
           "level": 4,
@@ -723,15 +731,15 @@
         },
         {
           "level": 6,
-          "name": null
+          "name": ""
         },
         {
           "level": 7,
-          "name": null
+          "name": ""
         },
         {
           "level": 8,
-          "name": null
+          "name": ""
         },
         {
           "level": 9,
@@ -755,6 +763,7 @@
     },
     {
       "name": "Organ Law",
+      "slug": "organ-law",
       "realm": "Channeling",
       "type": "Closed",
       "reference": "A-9.6.9",
@@ -773,7 +782,7 @@
         },
         {
           "level": 2,
-          "name": null
+          "name": ""
         },
         {
           "level": 3,
@@ -786,7 +795,7 @@
         },
         {
           "level": 4,
-          "name": null
+          "name": ""
         },
         {
           "level": 5,
@@ -808,11 +817,11 @@
         },
         {
           "level": 7,
-          "name": null
+          "name": ""
         },
         {
           "level": 8,
-          "name": null
+          "name": ""
         },
         {
           "level": 9,
@@ -825,12 +834,13 @@
         },
         {
           "level": 10,
-          "name": null
+          "name": ""
         }
       ]
     },
     {
       "name": "Symbolic Ways",
+      "slug": "symbolic-ways",
       "realm": "Channeling",
       "type": "Closed",
       "reference": "A-9.6.10",
@@ -869,7 +879,7 @@
         },
         {
           "level": 4,
-          "name": null
+          "name": ""
         },
         {
           "level": 5,
@@ -882,7 +892,7 @@
         },
         {
           "level": 6,
-          "name": null
+          "name": ""
         },
         {
           "level": 7,

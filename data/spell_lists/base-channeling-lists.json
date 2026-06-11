@@ -2,6 +2,7 @@
   "lists": [
     {
       "name": "Channels",
+      "slug": "channels",
       "realm": "Channeling",
       "type": "Base",
       "profession": "Cleric",
@@ -45,7 +46,7 @@
         },
         {
           "level": 4,
-          "name": null
+          "name": ""
         },
         {
           "level": 5,
@@ -73,7 +74,7 @@
         },
         {
           "level": 7,
-          "name": null
+          "name": ""
         },
         {
           "level": 8,
@@ -89,7 +90,7 @@
         },
         {
           "level": 9,
-          "name": null
+          "name": ""
         },
         {
           "level": 10,
@@ -107,6 +108,7 @@
     },
     {
       "name": "Communal Ways",
+      "slug": "communal-ways",
       "realm": "Channeling",
       "type": "Base",
       "profession": "Cleric",
@@ -126,7 +128,7 @@
         },
         {
           "level": 2,
-          "name": null
+          "name": ""
         },
         {
           "level": 3,
@@ -184,7 +186,7 @@
         },
         {
           "level": 9,
-          "name": null
+          "name": ""
         },
         {
           "level": 10,
@@ -199,6 +201,7 @@
     },
     {
       "name": "Life Mastery",
+      "slug": "life-mastery",
       "realm": "Channeling",
       "type": "Base",
       "profession": "Cleric",
@@ -272,7 +275,7 @@
         },
         {
           "level": 8,
-          "name": null
+          "name": ""
         },
         {
           "level": 9,
@@ -296,6 +299,7 @@
     },
     {
       "name": "Protections",
+      "slug": "protections",
       "realm": "Channeling",
       "type": "Base",
       "profession": "Cleric",
@@ -357,11 +361,11 @@
         },
         {
           "level": 6,
-          "name": null
+          "name": ""
         },
         {
           "level": 7,
-          "name": null
+          "name": ""
         },
         {
           "level": 8,
@@ -374,7 +378,7 @@
         },
         {
           "level": 9,
-          "name": null
+          "name": ""
         },
         {
           "level": 10,
@@ -389,6 +393,7 @@
     },
     {
       "name": "Repulsions",
+      "slug": "repulsions",
       "realm": "Channeling",
       "type": "Base",
       "profession": "Cleric",
@@ -493,6 +498,7 @@
     },
     {
       "name": "Summons",
+      "slug": "summons",
       "realm": "Channeling",
       "type": "Base",
       "profession": "Cleric",
@@ -596,6 +602,7 @@
     },
     {
       "name": "Inner Walls",
+      "slug": "inner-walls",
       "realm": "Channeling",
       "type": "Base",
       "profession": "Ranger",
@@ -657,7 +664,7 @@
         },
         {
           "level": 6,
-          "name": null
+          "name": ""
         },
         {
           "level": 7,
@@ -699,6 +706,7 @@
     },
     {
       "name": "Moving Ways",
+      "slug": "moving-ways",
       "realm": "Channeling",
       "type": "Base",
       "profession": "Ranger",
@@ -801,6 +809,7 @@
     },
     {
       "name": "Nature's Guises",
+      "slug": "nature-s-guises",
       "realm": "Channeling",
       "type": "Base",
       "profession": "Ranger",
@@ -904,6 +913,7 @@
     },
     {
       "name": "Nature's Summons",
+      "slug": "nature-s-summons",
       "realm": "Channeling",
       "type": "Base",
       "profession": "Ranger",
@@ -981,7 +991,7 @@
         },
         {
           "level": 8,
-          "name": null
+          "name": ""
         },
         {
           "level": 9,
@@ -1005,6 +1015,7 @@
     },
     {
       "name": "Nature's Way",
+      "slug": "nature-s-way",
       "realm": "Channeling",
       "type": "Base",
       "profession": "Ranger",
@@ -1042,7 +1053,7 @@
         },
         {
           "level": 4,
-          "name": null
+          "name": ""
         },
         {
           "level": 5,
@@ -1102,6 +1113,7 @@
     },
     {
       "name": "Path Mastery",
+      "slug": "path-mastery",
       "realm": "Channeling",
       "type": "Base",
       "profession": "Ranger",

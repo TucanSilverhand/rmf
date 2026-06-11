@@ -26,6 +26,7 @@ import { RMFProfessionSheet } from "./module/profession-sheet.js";
 import { RMFTrainingPackageSheet } from "./module/training-package-sheet.js";
 import { RMFSpellListSheet } from "./module/spell-list-sheet.js";
 import { RMFAttackTableSheet } from "./module/attack-table-sheet.js";
+import { RMFCriticalTableSheet } from "./module/critical-table-sheet.js";
 import { RMFActor, RMFItem } from "./module/data-models.mjs";
 import { RMFHooks } from "./module/hooks.mjs";
 import { SKILL_CLASSIFICATIONS } from "./module/utils/rank-bonus.mjs";
@@ -42,7 +43,8 @@ import {
   ProfessionData,
   TrainingPackageData,
   SpellListData,
-  AttackTableData
+  AttackTableData,
+  CriticalTableData
 } from "./module/data-models/index.mjs";
 
 /**
@@ -87,7 +89,8 @@ Hooks.once('init', async function() {
     profession:       ProfessionData,
     trainingPackage:  TrainingPackageData,
     spellList:        SpellListData,
-    attackTable:      AttackTableData
+    attackTable:      AttackTableData,
+    criticalTable:    CriticalTableData
   };
 
   // Register system settings before other initialization
@@ -155,6 +158,12 @@ Hooks.once('init', async function() {
     makeDefault: true,
     label: "RMF.AttackTableSheet"
   });
+
+  foundry.applications.apps.DocumentSheetConfig.registerSheet(Item, "rmf-criticalTable", RMFCriticalTableSheet, {
+    types: ["criticalTable"],
+    makeDefault: true,
+    label: "RMF.CriticalTableSheet"
+  });
   // Initialize RMF system configuration namespace.
   // The version is read from system.json at runtime (game.system.version),
   // so we never duplicate the source of truth.
@@ -177,7 +186,7 @@ Hooks.once('init', async function() {
     // not need to import the module directly.
     statShortToFull: STAT_SHORT_TO_FULL,
 
-    itemTypes: ["equipment", "race", "skill", "category", "realm", "profession", "trainingPackage", "spellList", "attackTable"],
+    itemTypes: ["equipment", "race", "skill", "category", "realm", "profession", "trainingPackage", "spellList", "attackTable", "criticalTable"],
     actorTypes: ["character"],
 
     // Canonical skill classifications. Same set used by data-models and importers
@@ -478,6 +487,12 @@ async function _preloadHandlebarsTemplates() {
     "parts/item-attacktable-header": "systems/rmf/templates/parts/item-attacktable-header.hbs",
     "parts/item-attacktable-table": "systems/rmf/templates/parts/item-attacktable-table.hbs",
     "parts/item-attacktable-resolve": "systems/rmf/templates/parts/item-attacktable-resolve.hbs",
+
+    // Critical table sheet partials
+    "parts/item-criticaltable-navigation": "systems/rmf/templates/parts/item-criticaltable-navigation.hbs",
+    "parts/item-criticaltable-header": "systems/rmf/templates/parts/item-criticaltable-header.hbs",
+    "parts/item-criticaltable-table": "systems/rmf/templates/parts/item-criticaltable-table.hbs",
+    "parts/item-criticaltable-resolve": "systems/rmf/templates/parts/item-criticaltable-resolve.hbs",
 
     // Chat templates
     "rmf/chat/stat-roll": "systems/rmf/templates/chat/stat-roll.hbs",

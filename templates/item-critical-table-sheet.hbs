@@ -1,0 +1,21 @@
+{{!--
+  RMF Critical Table Item Sheet Template - FoundryVTT v13 Compatible
+  ApplicationV2 with HandlebarsApplicationMixin.
+  Two-tab layout: read-only "table" (the matrix) + "resolve" (roll a critical).
+  NOTE: Do NOT wrap with <form>; ApplicationV2 provides the root form.
+--}}
+
+<div class="{{cssClass}} rmf-item-sheet critical-table-sheet-root">
+  <div class="sheet-main-container critical-table-sheet">
+    {{> "parts/item-criticaltable-navigation"}}
+    <div class="sheet-content">
+      {{> "parts/item-criticaltable-header"}}
+      <section class="sheet-body">
+        <div class="sheet-body-inner">
+          {{> "parts/item-criticaltable-table"}}
+          {{> "parts/item-criticaltable-resolve"}}
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

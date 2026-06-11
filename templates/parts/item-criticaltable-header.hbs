@@ -1,0 +1,35 @@
+{{!--
+  RMF Critical Table Sheet Header Partial
+  Table name + image + a subtitle with the bridge fields (book id,
+  critical type, size).
+--}}
+
+<header class="sheet-header">
+  <div class="header-row">
+    <img class="profile-img"
+         src="{{item.img}}"
+         alt="{{item.name}}"
+         data-edit="img"
+         data-action="pickImage"
+         title="{{item.name}}"
+         height="64"
+         width="64"/>
+
+    <div class="header-fields">
+      <h1 class="item-name">
+        <label class="sr-only" for="criticaltable_name">{{localize "RMF.CriticalTable.NamePlaceholder"}}:</label>
+        <input id="criticaltable_name"
+               name="name"
+               type="text"
+               value="{{item.name}}"
+               placeholder="{{localize 'RMF.CriticalTable.NamePlaceholder'}}"
+               autocomplete="off"/>
+      </h1>
+      <div class="attacktable-subtitle">
+        {{#if system.tableId}}<span class="ref">{{system.tableId}}</span>{{/if}}
+        {{#if system.critType}}<span class="badge">{{localize 'RMF.AttackTable.CritType'}}: {{system.critType}}</span>{{/if}}
+        <span class="badge">{{system.rowCount}} {{localize 'RMF.AttackTable.Rows'}} × {{system.columns.length}} {{localize 'RMF.AttackTable.Columns'}}</span>
+      </div>
+    </div>
+  </div>
+</header>

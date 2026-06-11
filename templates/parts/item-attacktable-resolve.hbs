@@ -15,8 +15,17 @@
         <input type="number" name="resolve.ob" value="{{resolve.ob}}" data-dtype="Number"/></label>
       <label>{{localize "RMF.AttackTable.Mods"}}
         <input type="number" name="resolve.mods" value="{{resolve.mods}}" data-dtype="Number"/></label>
+      {{#if isResistanceTable}}
+      <label>{{localize "RMF.AttackTable.TargetColumn"}}
+        <select name="resolve.column">
+          {{#each resolveColumns as |c|}}
+          <option value="{{c.key}}" {{#if c.selected}}selected{{/if}}>{{c.label}}</option>
+          {{/each}}
+        </select></label>
+      {{else}}
       <label>{{localize "RMF.AttackTable.TargetAT"}}
         <input type="number" name="resolve.targetAT" value="{{resolve.targetAT}}" min="1" max="20" data-dtype="Number"/></label>
+      {{/if}}
       <label>{{localize "RMF.AttackTable.TargetDB"}}
         <input type="number" name="resolve.targetDB" value="{{resolve.targetDB}}" data-dtype="Number"/></label>
       <button type="button" class="resolve-button" data-action="resolveAttack">
@@ -31,8 +40,8 @@
     <table class="summary-table">
       <tbody>
         <tr><th scope="row">{{localize "RMF.AttackTable.NaturalRoll"}}</th>
-          <td>{{lastResult.natural}}{{#if lastResult.openHigh}} → {{lastResult.rollTotal}} ({{localize "RMF.AttackTable.OpenEnded"}}){{/if}}</td></tr>
-        <tr><th scope="row">{{localize "RMF.AttackTable.TargetAT"}}</th><td>{{lastResult.targetAT}}</td></tr>
+          <td>{{lastResult.natural}}{{#if lastResult.openHigh}} → {{lastResult.rollTotal}} ({{localize "RMF.AttackTable.OpenEnded"}}){{/if}}{{#if lastResult.umHigh}} <b>[{{lastResult.umLabel}}]</b>{{/if}}</td></tr>
+        <tr><th scope="row">{{#if isResistanceTable}}{{localize "RMF.AttackTable.TargetColumn"}}{{else}}{{localize "RMF.AttackTable.TargetAT"}}{{/if}}</th><td>{{lastResult.targetAT}}</td></tr>
         <tr><th scope="row">{{localize "RMF.AttackTable.AttackTotal"}}</th><td>{{lastResult.attackTotal}}</td></tr>
         <tr><th scope="row">{{localize "RMF.AttackTable.Result"}}</th>
           <td class="outcome{{#if lastResult.needsCritical}} is-crit{{/if}}">{{lastResult.outcome}}</td></tr>

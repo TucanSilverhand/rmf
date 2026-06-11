@@ -2,6 +2,7 @@
   "lists": [
     {
       "name": "Delving Ways",
+      "slug": "delving-ways",
       "realm": "Essence",
       "type": "Open",
       "reference": "A-9.9.1",
@@ -11,7 +12,7 @@
       "spells": [
         {
           "level": 1,
-          "name": null
+          "name": ""
         },
         {
           "level": 2,
@@ -51,7 +52,7 @@
         },
         {
           "level": 6,
-          "name": null
+          "name": ""
         },
         {
           "level": 7,
@@ -73,7 +74,7 @@
         },
         {
           "level": 9,
-          "name": null
+          "name": ""
         },
         {
           "level": 10,
@@ -88,6 +89,7 @@
     },
     {
       "name": "Detecting Ways",
+      "slug": "detecting-ways",
       "realm": "Essence",
       "type": "Open",
       "reference": "A-9.9.2",
@@ -125,7 +127,7 @@
         },
         {
           "level": 4,
-          "name": null
+          "name": ""
         },
         {
           "level": 5,
@@ -165,7 +167,7 @@
         },
         {
           "level": 9,
-          "name": null
+          "name": ""
         },
         {
           "level": 10,
@@ -180,6 +182,7 @@
     },
     {
       "name": "Elemental Shields",
+      "slug": "elemental-shields",
       "realm": "Essence",
       "type": "Open",
       "reference": "A-9.9.3",
@@ -243,7 +246,7 @@
         },
         {
           "level": 7,
-          "name": null
+          "name": ""
         },
         {
           "level": 8,
@@ -276,6 +279,7 @@
     },
     {
       "name": "Essence Hand",
+      "slug": "essence-hand",
       "realm": "Essence",
       "type": "Open",
       "reference": "A-9.9.4",
@@ -375,6 +379,7 @@
     },
     {
       "name": "Essence's Perceptions",
+      "slug": "essence-s-perceptions",
       "realm": "Essence",
       "type": "Open",
       "reference": "A-9.9.5",
@@ -382,7 +387,7 @@
       "spells": [
         {
           "level": 1,
-          "name": null
+          "name": ""
         },
         {
           "level": 2,
@@ -407,7 +412,7 @@
         },
         {
           "level": 4,
-          "name": null
+          "name": ""
         },
         {
           "level": 5,
@@ -447,7 +452,7 @@
         },
         {
           "level": 9,
-          "name": null
+          "name": ""
         },
         {
           "level": 10,
@@ -462,6 +467,7 @@
     },
     {
       "name": "Lesser Illusions",
+      "slug": "lesser-illusions",
       "realm": "Essence",
       "type": "Open",
       "reference": "A-9.9.6",
@@ -565,6 +571,7 @@
     },
     {
       "name": "Physical Enhancement",
+      "slug": "physical-enhancement",
       "realm": "Essence",
       "type": "Open",
       "reference": "A-9.9.7",
@@ -670,6 +677,7 @@
     },
     {
       "name": "Rune Mastery",
+      "slug": "rune-mastery",
       "realm": "Essence",
       "type": "Open",
       "reference": "A-9.9.8",
@@ -680,7 +688,7 @@
       "spells": [
         {
           "level": 1,
-          "name": null
+          "name": ""
         },
         {
           "level": 2,
@@ -702,11 +710,11 @@
         },
         {
           "level": 4,
-          "name": null
+          "name": ""
         },
         {
           "level": 5,
-          "name": null
+          "name": ""
         },
         {
           "level": 6,
@@ -719,7 +727,7 @@
         },
         {
           "level": 7,
-          "name": null
+          "name": ""
         },
         {
           "level": 8,
@@ -732,7 +740,7 @@
         },
         {
           "level": 9,
-          "name": null
+          "name": ""
         },
         {
           "level": 10,
@@ -747,6 +755,7 @@
     },
     {
       "name": "Spell Wall",
+      "slug": "spell-wall",
       "realm": "Essence",
       "type": "Open",
       "reference": "A-9.9.9",
@@ -846,6 +855,7 @@
     },
     {
       "name": "Unbarring Ways",
+      "slug": "unbarring-ways",
       "realm": "Essence",
       "type": "Open",
       "reference": "A-9.9.10",

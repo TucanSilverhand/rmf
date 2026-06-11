@@ -2,6 +2,7 @@
   "lists": [
     {
       "name": "Gas Manipulation",
+      "slug": "gas-manipulation",
       "realm": "Mentalism",
       "type": "Closed",
       "reference": "A-9.14.1",
@@ -104,6 +105,7 @@
     },
     {
       "name": "Liquid Manipulation",
+      "slug": "liquid-manipulation",
       "realm": "Mentalism",
       "type": "Closed",
       "reference": "A-9.14.2",
@@ -141,7 +143,7 @@
         },
         {
           "level": 4,
-          "name": null
+          "name": ""
         },
         {
           "level": 5,
@@ -201,6 +203,7 @@
     },
     {
       "name": "Mind Mastery",
+      "slug": "mind-mastery",
       "realm": "Mentalism",
       "type": "Closed",
       "reference": "A-9.14.3",
@@ -239,7 +242,7 @@
         },
         {
           "level": 4,
-          "name": null
+          "name": ""
         },
         {
           "level": 5,
@@ -305,6 +308,7 @@
     },
     {
       "name": "Mind's Door",
+      "slug": "mind-s-door",
       "realm": "Mentalism",
       "type": "Closed",
       "reference": "A-9.14.4",
@@ -314,7 +318,7 @@
       "spells": [
         {
           "level": 1,
-          "name": null
+          "name": ""
         },
         {
           "level": 2,
@@ -327,7 +331,7 @@
         },
         {
           "level": 3,
-          "name": null
+          "name": ""
         },
         {
           "level": 4,
@@ -396,6 +400,7 @@
     },
     {
       "name": "Movement",
+      "slug": "movement",
       "realm": "Mentalism",
       "type": "Closed",
       "reference": "A-9.14.5",
@@ -486,7 +491,7 @@
         },
         {
           "level": 9,
-          "name": null
+          "name": ""
         },
         {
           "level": 10,
@@ -501,6 +506,7 @@
     },
     {
       "name": "Sense Mastery",
+      "slug": "sense-mastery",
       "realm": "Mentalism",
       "type": "Closed",
       "reference": "A-9.14.6",
@@ -600,6 +606,7 @@
     },
     {
       "name": "Shifting",
+      "slug": "shifting",
       "realm": "Mentalism",
       "type": "Closed",
       "reference": "A-9.14.7",
@@ -637,7 +644,7 @@
         },
         {
           "level": 4,
-          "name": null
+          "name": ""
         },
         {
           "level": 5,
@@ -650,7 +657,7 @@
         },
         {
           "level": 6,
-          "name": null
+          "name": ""
         },
         {
           "level": 7,
@@ -672,7 +679,7 @@
         },
         {
           "level": 9,
-          "name": null
+          "name": ""
         },
         {
           "level": 10,
@@ -687,6 +694,7 @@
     },
     {
       "name": "Solid Manipulation",
+      "slug": "solid-manipulation",
       "realm": "Mentalism",
       "type": "Closed",
       "reference": "A-9.14.8",
@@ -757,7 +765,7 @@
         },
         {
           "level": 8,
-          "name": null
+          "name": ""
         },
         {
           "level": 9,
@@ -781,6 +789,7 @@
     },
     {
       "name": "Speed",
+      "slug": "speed",
       "realm": "Mentalism",
       "type": "Closed",
       "reference": "A-9.14.9",
@@ -823,7 +832,7 @@
         },
         {
           "level": 4,
-          "name": null
+          "name": ""
         },
         {
           "level": 5,
@@ -901,6 +910,7 @@
     },
     {
       "name": "Telekinesis",
+      "slug": "telekinesis",
       "realm": "Mentalism",
       "type": "Closed",
       "reference": "A-9.14.10",

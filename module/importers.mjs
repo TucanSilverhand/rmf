@@ -12,6 +12,7 @@ import { STAT_SHORT_TO_FULL, SPELL_SPECIAL_CODES } from "./utils/constants.mjs";
 import { normalizeCategoryGroup } from "./data-models/category.mjs";
 import { SPECIAL_ROLES } from "./data-models/_identity.mjs";
 import { formatDPCost } from "./utils/dp-cost.mjs";
+import { slugify } from "./utils/slug.mjs";
 
 /**
  * Pass an authored `slug` straight through from the JSON source (the
@@ -26,6 +27,33 @@ import { formatDPCost } from "./utils/dp-cost.mjs";
  */
 function authoredSlug(src) {
   return typeof src?.slug === "string" ? src.slug : "";
+}
+
+/**
+ * Build a slug-first upsert resolver over a compendium pack index.
+ *
+ * Identity rule (refactor Fase 0): the slug is authoritative, the name is
+ * display-only. Re-syncs must therefore match existing docs by slug — a
+ * renamed item would otherwise duplicate under a name key. Legacy docs whose
+ * stored slug predates an authored one (hook-stamped `slugify(name)`) still
+ * match through the name fallback, and the update then heals their slug.
+ *
+ * Call AFTER `pack.getIndex({fields: [..., "system.slug"]})`.
+ *
+ * @param {CompendiumCollection} pack
+ * @returns {(type: string, slug: string, name: string) => object|undefined}
+ */
+function packUpsertResolver(pack) {
+  const bySlug = new Map();
+  const byName = new Map();
+  for (const e of pack.index) {
+    const slug = String(e.system?.slug ?? "");
+    if (slug) bySlug.set(`${e.type}::${slug}`, e);
+    byName.set(`${e.type}::${String(e.name).toLowerCase()}`, e);
+  }
+  return (type, slug, name) =>
+    (slug ? bySlug.get(`${type}::${slug}`) : undefined)
+      ?? byName.get(`${type}::${String(name).toLowerCase()}`);
 }
 
 /**
@@ -242,6 +270,7 @@ export async function syncRacesToCompendium(source, options = {}) {
           racialRanks: normalizeRacialRanks(sysSource.racialRanks),
           specialSkills: normalizeSpecialSkills(sysSource.specialSkills),
           standardHobbySkills: normalizeStandardHobbySkills(sysSource.standardHobbySkills),
+          slug: authoredSlug(sysSource) || authoredSlug(race),
           fromBook: String(sysSource.fromBook ?? race.fromBook ?? "basic")
         },
         { inplace: false, insertKeys: true, insertValues: true, overwrite: true }
@@ -1114,6 +1143,7 @@ export async function syncRealmsToCompendium(source, options = {}) {
           description: String(sysSource.description ?? ""),
           powerPointsType: normalizePowerPointsType(sysSource.powerPointsType),
           statBonus: normalizeStatBonus(sysSource.statBonus, tmplStatBonus),
+          slug: authoredSlug(sysSource) || authoredSlug(realm),
           fromBook: String(sysSource.fromBook ?? realm.fromBook ?? "basic")
         },
         { inplace: false, insertKeys: true, insertValues: true, overwrite: true }
@@ -1224,6 +1254,7 @@ function buildProfessionSystemData(sysSource, template) {
       spellPrice: normalizeDpCostList(src.spellPrice),
       // Tolerate the historical typo "trainningPackages" as a fallback.
       trainingPackages: normalizeTrainingPackages(src.trainingPackages ?? src.trainningPackages),
+      slug: authoredSlug(src),
       fromBook: typeof src.fromBook === "string" && src.fromBook.length ? src.fromBook : "basic"
     },
     { inplace: false, insertKeys: true, insertValues: true, overwrite: true }
@@ -1562,6 +1593,7 @@ function buildTrainingPackageSystemData(sysSource, template) {
           }))
         : [],
       categoryRanks:  normalizeTrainingPackageCategoryRanks(sysSource?.categoryRanks),
+      slug:           authoredSlug(sysSource),
       fromBook:       String(sysSource?.fromBook ?? "basic")
     },
     { inplace: false, insertKeys: true, insertValues: true, overwrite: true }
@@ -1877,6 +1909,7 @@ function buildSpellListSystemData(sysSource, template) {
         ? sysSource.specialNotes.map(n => (typeof n === "string" ? n : String(n ?? "")))
         : [],
       spells:       normalizeSpellEntries(sysSource?.spells),
+      slug:         authoredSlug(sysSource),
       fromBook:     String(sysSource?.fromBook ?? "basic")
     },
     { inplace: false, insertKeys: true, insertValues: true, overwrite: true }
@@ -1991,10 +2024,8 @@ export async function syncSpellListsToCompendium(source, options = {}) {
     if (!lists?.length) return result;
 
     const template = await getSpellListTemplate();
-    await pack.getIndex({ fields: ["name", "type", "folder"] });
-    const existingByKey = new Map(
-      pack.index.map(e => [`${e.type}::${String(e.name).toLowerCase()}`, e])
-    );
+    await pack.getIndex({ fields: ["name", "type", "folder", "system.slug"] });
+    const resolveExisting = packUpsertResolver(pack);
 
     const folderCache = new Map();
     const createPayload = [];
@@ -2002,10 +2033,9 @@ export async function syncSpellListsToCompendium(source, options = {}) {
     for (let i = 0; i < lists.length; i++) {
       const entry = lists[i];
       const name = entry.name ?? `Spell List ${i + 1}`;
-      const key = `spellList::${String(name).toLowerCase()}`;
-      const existing = existingByKey.get(key);
       const sysSource = entry.system ?? entry;
       const system = buildSpellListSystemData(sysSource, template);
+      const existing = resolveExisting("spellList", system.slug || slugify(name), name);
       const img = pickImageFromEntry(entry, sysSource, "icons/svg/book.svg");
       const base = { name, type: "spellList", img, system };
 
@@ -2095,22 +2125,62 @@ function normalizeAttackArmorTypes(raw) {
   }));
 }
 
+/** Normalize a column→cell results object (string keys, string cells). */
+function normalizeAttackResults(raw) {
+  const results = {};
+  if (raw && typeof raw === "object") {
+    for (const [k, v] of Object.entries(raw)) {
+      results[String(k)] = (v === null || v === undefined) ? "" : String(v);
+    }
+  }
+  return results;
+}
+
+/** Normalize the per-attack-type critical map (ATTACK TYPE DATA / SPELL DATA box). */
+function normalizeAttackTypes(raw) {
+  if (!Array.isArray(raw)) return [];
+  return raw.map(a => ({
+    attackType:   String(a?.attackType ?? ""),
+    abbreviation: String(a?.abbreviation ?? ""),
+    criticalType: String(a?.criticalType ?? ""),
+    ref:          String(a?.ref ?? ""),
+    note:         String(a?.note ?? ""),
+    obMod:        String(a?.obMod ?? ""),
+    maxResult:    (a?.maxResult === null || a?.maxResult === undefined) ? null : _atNum(a.maxResult, 0),
+    maxCritical:  String(a?.maxCritical ?? "")
+  }));
+}
+
+/** Normalize the high unmodified-die rows (UM 96-100). */
+function normalizeUmHigh(raw) {
+  if (!Array.isArray(raw)) return [];
+  return raw.map(u => ({
+    label:       String(u?.label ?? ""),
+    naturalMin:  _atNum(u?.naturalMin, 100),
+    naturalMax:  _atNum(u?.naturalMax, 100),
+    description: String(u?.description ?? ""),
+    results:     normalizeAttackResults(u?.results)
+  }));
+}
+
 /** Build the attackTable `system` payload from a raw source entry. */
 function buildAttackTableSystemData(sysSource, template) {
   const src = sysSource && typeof sysSource === "object" ? sysSource : {};
   const fr = src.fumbleRange && typeof src.fumbleRange === "object" ? src.fumbleRange : {};
   const fumbleSrc = src.fumble && typeof src.fumble === "object" ? src.fumble : {};
-  const fumbleResults = {};
-  if (fumbleSrc.results && typeof fumbleSrc.results === "object") {
-    for (const [k, v] of Object.entries(fumbleSrc.results)) {
-      fumbleResults[String(k)] = String(v ?? "");
-    }
-  }
   return foundry.utils.mergeObject(
     foundry.utils.duplicate(template),
     {
       tableId:    String(src.tableId ?? ""),
+      tableKind:  src.tableKind === "resistanceMod" ? "resistanceMod" : "attack",
       critType:   String(src.critType ?? ""),
+      attackTypes:     normalizeAttackTypes(src.attackTypes),
+      attackTypeNotes: Array.isArray(src.attackTypeNotes)
+        ? src.attackTypeNotes.map(n => String(n ?? ""))
+        : [],
+      columnDefs: Array.isArray(src.columnDefs)
+        ? src.columnDefs.map(c => ({ key: String(c?.key ?? ""), label: String(c?.label ?? "") }))
+        : [],
       fumbleRange: { min: _atNum(fr.min, 1), max: _atNum(fr.max, 2) },
       armorTypes: normalizeAttackArmorTypes(src.armorTypes),
       legend:     (src.legend && typeof src.legend === "object") ? src.legend : null,
@@ -2119,8 +2189,10 @@ function buildAttackTableSystemData(sysSource, template) {
       fumble: {
         label:       String(fumbleSrc.label ?? ""),
         description: String(fumbleSrc.description ?? ""),
-        results:     fumbleResults
+        results:     normalizeAttackResults(fumbleSrc.results)
       },
+      umHigh:     normalizeUmHigh(src.umHigh),
+      slug:       authoredSlug(src),
       fromBook:   String(src.fromBook ?? "basic")
     },
     { inplace: false, insertKeys: true, insertValues: true, overwrite: true }
@@ -2206,10 +2278,8 @@ export async function syncAttackTablesToCompendium(source, options = {}) {
     if (!tables?.length) return result;
 
     const template = await getAttackTableTemplate();
-    await pack.getIndex({ fields: ["name", "type", "folder"] });
-    const existingByKey = new Map(
-      pack.index.map(e => [`${e.type}::${String(e.name).toLowerCase()}`, e])
-    );
+    await pack.getIndex({ fields: ["name", "type", "folder", "system.slug"] });
+    const resolveExisting = packUpsertResolver(pack);
 
     const folderCache = new Map();
     const createPayload = [];
@@ -2217,10 +2287,9 @@ export async function syncAttackTablesToCompendium(source, options = {}) {
     for (let i = 0; i < tables.length; i++) {
       const entry = tables[i];
       const name = entry.name ?? `Attack Table ${i + 1}`;
-      const key = `attackTable::${String(name).toLowerCase()}`;
-      const existing = existingByKey.get(key);
       const sysSource = entry.system ?? entry;
       const system = buildAttackTableSystemData(sysSource, template);
+      const existing = resolveExisting("attackTable", system.slug || slugify(name), name);
       const img = pickImageFromEntry(entry, sysSource, "icons/svg/sword.svg");
       const base = { name, type: "attackTable", img, system };
 
@@ -2247,6 +2316,195 @@ export async function syncAttackTablesToCompendium(source, options = {}) {
     return result;
   } catch (err) {
     console.error("RMF | syncAttackTablesToCompendium error", err);
+    result.errors.push(err);
+    return result;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Critical Tables                                                           */
+/* -------------------------------------------------------------------------- */
+
+/** Pull the system template for `criticalTable` items (empty when absent). */
+async function getCriticalTableTemplate() {
+  const fromDocTypes = foundry.utils.getProperty(game.system, "documentTypes.Item.criticalTable.template");
+  if (fromDocTypes && typeof fromDocTypes === "object") return fromDocTypes;
+  return {};
+}
+
+/** Normalize one critical cell: { text, effects, variants? }. */
+function normalizeCriticalCell(raw) {
+  const src = raw && typeof raw === "object" ? raw : {};
+  const cell = {
+    text:    typeof src.text === "string" ? src.text : "",
+    effects: typeof src.effects === "string" ? src.effects : ""
+  };
+  if (Array.isArray(src.variants) && src.variants.length) {
+    cell.variants = src.variants.map(v => ({
+      condition: typeof v?.condition === "string" ? v.condition : "",
+      effects:   typeof v?.effects === "string" ? v.effects : ""
+    }));
+  }
+  return cell;
+}
+
+/** Normalize the critical roll-band rows (rollMin: null = low catch-all). */
+function normalizeCriticalRows(raw) {
+  if (!Array.isArray(raw)) return [];
+  return raw.map(r => {
+    const src = (r?.results && typeof r.results === "object") ? r.results : {};
+    const results = {};
+    for (const [k, v] of Object.entries(src)) results[String(k)] = normalizeCriticalCell(v);
+    const hasMin = !(r?.rollMin === null || r?.rollMin === undefined);
+    return {
+      label:   typeof r?.label === "string" ? r.label : "",
+      rollMin: hasMin ? _atNum(r.rollMin, 0) : null,
+      rollMax: _atNum(r?.rollMax, 0),
+      results
+    };
+  });
+}
+
+/** Build the criticalTable `system` payload from a raw source entry. */
+function buildCriticalTableSystemData(sysSource, template) {
+  const src = sysSource && typeof sysSource === "object" ? sysSource : {};
+  return foundry.utils.mergeObject(
+    foundry.utils.duplicate(template),
+    {
+      tableId:  String(src.tableId ?? ""),
+      critType: String(src.critType ?? ""),
+      columnDefs: Array.isArray(src.columnDefs)
+        ? src.columnDefs.map(c => ({ key: String(c?.key ?? ""), label: String(c?.label ?? "") }))
+        : [],
+      legend:   (src.legend && typeof src.legend === "object") ? src.legend : null,
+      rollMatchPolicy: String(src.rollMatchPolicy ?? ""),
+      rows:     normalizeCriticalRows(src.rows),
+      slug:     authoredSlug(src),
+      fromBook: String(src.fromBook ?? "basic")
+    },
+    { inplace: false, insertKeys: true, insertValues: true, overwrite: true }
+  );
+}
+
+/**
+ * Import critical-table items from a JSON source. Accepts a single table
+ * object, an array of tables, or `{ tables: [...] }`.
+ *
+ * @param {string|Array|Object} source - URL, JSON string, or parsed data
+ * @param {Object} [options]
+ * @param {string} [options.folderName="Critical Tables"]
+ * @param {boolean} [options.dedupeByName=false]
+ * @returns {Promise<{created: Item[], skipped: string[], errors: any[]}>}
+ */
+export async function importCriticalTables(source, options = {}) {
+  _assertGM("importCriticalTables");
+  const folderName = options.folderName ?? "Critical Tables";
+  const dedupeByName = options.dedupeByName ?? false;
+  const result = { created: [], skipped: [], errors: [] };
+
+  try {
+    const input = await resolveSource(source);
+    const tables = Array.isArray(input) ? input : (input?.tables ?? [input]).filter(Boolean);
+    if (!tables?.length) return result;
+
+    const template = await getCriticalTableTemplate();
+    const folderCache = new Map();
+    const existingByName = dedupeByName
+      ? game.items.reduce((acc, it) => { if (it.type === "criticalTable") acc[it.name] = true; return acc; }, {})
+      : {};
+
+    const docs = [];
+    for (let i = 0; i < tables.length; i++) {
+      const entry = tables[i];
+      const name = entry.name ?? `Critical Table ${i + 1}`;
+      if (dedupeByName && existingByName[name]) { result.skipped.push(name); continue; }
+      const sysSource = entry.system ?? entry;
+      const system = buildCriticalTableSystemData(sysSource, template);
+      const img = pickImageFromEntry(entry, sysSource, "icons/svg/blood.svg");
+      const folderId = await _ensureItemFolder(folderName, folderCache);
+      docs.push({ name, type: "criticalTable", img, system, folder: folderId });
+    }
+
+    if (!docs.length) return result;
+    result.created = await Item.createDocuments(docs);
+    return result;
+  } catch (err) {
+    console.error("RMF | importCriticalTables error", err);
+    result.errors.push(err);
+    return result;
+  }
+}
+
+/**
+ * Synchronize critical-table items into a compendium pack. Slug-first
+ * upsert (name fallback), same policy as the attack tables. Lands them in
+ * a "Critical Tables" folder, nested under options.parentFolderName.
+ *
+ * @param {string|Array|Object} source
+ * @param {Object} [options]
+ * @param {string} [options.pack="world.basic-core"]
+ * @param {string} [options.folderName="Critical Tables"]
+ * @param {string} [options.parentFolderName]
+ * @param {boolean} [options.createMissing=true]
+ * @param {boolean} [options.updateExisting=true]
+ * @returns {Promise<{created:number, updated:number, skipped:number, errors:any[]}>}
+ */
+export async function syncCriticalTablesToCompendium(source, options = {}) {
+  _assertGM("syncCriticalTablesToCompendium");
+  const packCollection = options.pack ?? "world.basic-core";
+  const folderName = options.folderName ?? "Critical Tables";
+  const createMissing = options.createMissing ?? true;
+  const updateExisting = options.updateExisting ?? true;
+  const result = { created: 0, updated: 0, skipped: 0, errors: [] };
+
+  try {
+    const pack = game.packs.get(packCollection);
+    if (!pack) throw new Error(`Compendium pack not found: ${packCollection}`);
+    if (pack.documentName !== "Item") throw new Error(`Pack ${packCollection} is not an Item compendium`);
+
+    const input = await resolveSource(source);
+    const tables = Array.isArray(input) ? input : (input?.tables ?? [input]).filter(Boolean);
+    if (!tables?.length) return result;
+
+    const template = await getCriticalTableTemplate();
+    await pack.getIndex({ fields: ["name", "type", "folder", "system.slug"] });
+    const resolveExisting = packUpsertResolver(pack);
+
+    const folderCache = new Map();
+    const createPayload = [];
+    const updatePayload = [];
+    for (let i = 0; i < tables.length; i++) {
+      const entry = tables[i];
+      const name = entry.name ?? `Critical Table ${i + 1}`;
+      const sysSource = entry.system ?? entry;
+      const system = buildCriticalTableSystemData(sysSource, template);
+      const existing = resolveExisting("criticalTable", system.slug || slugify(name), name);
+      const img = pickImageFromEntry(entry, sysSource, "icons/svg/blood.svg");
+      const base = { name, type: "criticalTable", img, system };
+
+      const folderId = await ensurePackFolderPath(
+        pack, [options.parentFolderName, folderName].filter(Boolean), folderCache
+      );
+      if (existing) {
+        if (!updateExisting) { result.skipped += 1; continue; }
+        updatePayload.push({ _id: existing._id, folder: folderId, ...base });
+      } else {
+        if (!createMissing) { result.skipped += 1; continue; }
+        createPayload.push({ ...base, folder: folderId });
+      }
+    }
+
+    if (createPayload.length) {
+      const created = await Item.createDocuments(createPayload, { pack: packCollection });
+      result.created = created.length;
+    }
+    if (updatePayload.length) {
+      const updated = await Item.updateDocuments(updatePayload, { pack: packCollection, diff: false });
+      result.updated = updated.length;
+    }
+    return result;
+  } catch (err) {
+    console.error("RMF | syncCriticalTablesToCompendium error", err);
     result.errors.push(err);
     return result;
   }

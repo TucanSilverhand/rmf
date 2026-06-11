@@ -2,6 +2,7 @@
   "lists": [
     {
       "name": "Earth Law",
+      "slug": "earth-law",
       "realm": "Essence",
       "type": "Base",
       "profession": "Magician",
@@ -30,7 +31,7 @@
         },
         {
           "level": 3,
-          "name": null
+          "name": ""
         },
         {
           "level": 4,
@@ -99,6 +100,7 @@
     },
     {
       "name": "Fire Law",
+      "slug": "fire-law",
       "realm": "Essence",
       "type": "Base",
       "profession": "Magician",
@@ -199,6 +201,7 @@
     },
     {
       "name": "Ice Law",
+      "slug": "ice-law",
       "realm": "Essence",
       "type": "Base",
       "profession": "Magician",
@@ -236,7 +239,7 @@
         },
         {
           "level": 4,
-          "name": null
+          "name": ""
         },
         {
           "level": 5,
@@ -296,6 +299,7 @@
     },
     {
       "name": "Light Law",
+      "slug": "light-law",
       "realm": "Essence",
       "type": "Base",
       "profession": "Magician",
@@ -396,6 +400,7 @@
     },
     {
       "name": "Water Law",
+      "slug": "water-law",
       "realm": "Essence",
       "type": "Base",
       "profession": "Magician",
@@ -451,11 +456,11 @@
         },
         {
           "level": 6,
-          "name": null
+          "name": ""
         },
         {
           "level": 7,
-          "name": null
+          "name": ""
         },
         {
           "level": 8,
@@ -468,7 +473,7 @@
         },
         {
           "level": 9,
-          "name": null
+          "name": ""
         },
         {
           "level": 10,
@@ -483,6 +488,7 @@
     },
     {
       "name": "Wind Law",
+      "slug": "wind-law",
       "realm": "Essence",
       "type": "Base",
       "profession": "Magician",
@@ -587,6 +593,7 @@
     },
     {
       "name": "Concealment Mastery",
+      "slug": "concealment-mastery",
       "realm": "Essence",
       "type": "Base",
       "profession": "Dabbler",
@@ -689,6 +696,7 @@
     },
     {
       "name": "Influences",
+      "slug": "influences",
       "realm": "Essence",
       "type": "Base",
       "profession": "Dabbler",
@@ -789,6 +797,7 @@
     },
     {
       "name": "Mechanisms",
+      "slug": "mechanisms",
       "realm": "Essence",
       "type": "Base",
       "profession": "Dabbler",
@@ -892,6 +901,7 @@
     },
     {
       "name": "Movement Mastery",
+      "slug": "movement-mastery",
       "realm": "Essence",
       "type": "Base",
       "profession": "Dabbler",
@@ -1012,6 +1022,7 @@
     },
     {
       "name": "Senses",
+      "slug": "senses",
       "realm": "Essence",
       "type": "Base",
       "profession": "Dabbler",
@@ -1112,6 +1123,7 @@
     },
     {
       "name": "Thieving Law",
+      "slug": "thieving-law",
       "realm": "Essence",
       "type": "Base",
       "profession": "Dabbler",

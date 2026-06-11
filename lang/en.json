@@ -476,7 +476,32 @@
       "OpenEnded": "open-ended",
       "ChatTitle": "{name} vs AT {at}",
       "ChatNeedsCrit": "Roll a {severity} critical on the {critType} table.",
-      "NoResult": "—"
+      "NoResult": "—",
+      "AttackTypeData": "Attack Type Data",
+      "AttackType": "Attack Type",
+      "Abbreviation": "Abbreviation",
+      "OBMod": "OB Mod",
+      "MaxResult": "Max Result",
+      "MaxCritical": "Max Critical",
+      "TargetColumn": "Target Protection",
+      "SpellFails": "Spell fails — roll on Table A-10.11.2",
+      "RRModifier": "Resistance Roll modifier: {modifier}",
+      "RangeModifiers": "Range Modifiers",
+      "Range": "Range",
+      "Modifier": "Modifier"
+    },
+    "CriticalTableSheet": "RMF Critical Table",
+    "CriticalTable": {
+      "NamePlaceholder": "Critical Table Name",
+      "Severity": "Severity",
+      "ResolveButton": "Roll Critical",
+      "ChatTitle": "{name} — severity {column}",
+      "Stunned": "stunned {n}r",
+      "StunNoParry": "stunned no-parry {n}r",
+      "NoParry": "no parry {n}r",
+      "MustParry": "must parry {n}r",
+      "Bleed": "bleed {n}/round",
+      "Attacker": "attacker next round"
     }
   },
   "TYPES": {
@@ -492,7 +517,8 @@
       "profession": "Profession",
       "trainingPackage": "Training Package",
       "spellList": "Spell List",
-      "attackTable": "Attack Table"
+      "attackTable": "Attack Table",
+      "criticalTable": "Critical Table"
     }
   }
 }

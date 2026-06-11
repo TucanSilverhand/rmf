@@ -1168,5 +1168,7 @@
       "19": "F",
       "20": "F"
     }
-  }
+  },
+  "slug": "two-handed",
+  "fromBook": "basic"
 }

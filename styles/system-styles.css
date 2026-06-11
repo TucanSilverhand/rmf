@@ -1983,10 +1983,46 @@ table.rmf-attack-grid tr.fumble-row .roll-col {
   color: #f3e0e0;
   font-weight: bold;
 }
+table.rmf-attack-grid td.cell.is-fumble { color: #7a1414; font-weight: bold; background: rgba(160, 20, 20, 0.16); }
+/* High unmodified-die bands (UM 96-100 on spell tables) */
+table.rmf-attack-grid tr.um-high-row td.cell,
+table.rmf-attack-grid tr.um-high-row .roll-col {
+  background: rgba(40, 60, 110, 0.12);
+  font-weight: bold;
+}
+/* Categorical column headers (resistance-modifier tables) */
+table.rmf-attack-grid th.col-label { width: auto; padding: 4px 12px; }
+
+/* ATTACK TYPE DATA / SPELL DATA box + notes */
+.rmf-attack-types td, .rmf-attack-types th { text-align: left; padding: 3px 10px; }
+.rmf-attack-type-notes { margin: 6px 0 0; padding-left: 18px; font-size: 0.85em; font-style: italic; }
+.rmf-range-mods { width: auto; }
+.rmf-range-mods td, .rmf-range-mods th { text-align: left; padding: 3px 14px; }
 
 .rmf-attack-legend { display: grid; grid-template-columns: max-content 1fr; gap: 2px 10px; }
 .rmf-attack-legend dt { font-family: monospace; font-weight: bold; }
 .rmf-attack-legend dd { margin: 0; }
+
+/* Critical table grid — wide narrative cells instead of tiny AT cells */
+table.rmf-critical-grid td.crit-cell {
+  text-align: left;
+  vertical-align: top;
+  min-width: 11em;
+  max-width: 18em;
+  padding: 4px 6px;
+}
+table.rmf-critical-grid .crit-text { font-size: 0.78em; line-height: 1.25; }
+table.rmf-critical-grid .crit-effects {
+  margin-top: 3px;
+  font-weight: bold;
+  color: #7a1414;
+  font-size: 0.82em;
+}
+.crit-variants { margin: 3px 0 0; padding-left: 14px; font-size: 0.78em; }
+.crit-variants li b { color: #444; }
+.crit-result-text { font-style: italic; }
+.rmf-critical-card .crit-text { font-style: italic; margin: 4px 0; }
+.rmf-critical-card .band { color: #666; font-size: 0.85em; }
 
 /* Resolve tab -------------------------------------------------------- */
 .attack-table-sheet-root .resolve-form {

@@ -1,0 +1,602 @@
+{
+  "name": "Krush Critical Strike Table",
+  "tableId": "A-10.10.3",
+  "critType": "Krush",
+  "columnDefs": [
+    {
+      "key": "A",
+      "label": "A"
+    },
+    {
+      "key": "B",
+      "label": "B"
+    },
+    {
+      "key": "C",
+      "label": "C"
+    },
+    {
+      "key": "D",
+      "label": "D"
+    },
+    {
+      "key": "E",
+      "label": "E"
+    }
+  ],
+  "legend": {
+    "key": "ßπ = must parry ß rounds; ß∏ = no parry for ß rounds; ß∑ = stunned for ß rounds; ß∫ = bleed ß hits per round; (-ß) = foe has -ß penalty; (+ß) = attacker gets +ß next round.",
+    "hits": "+ßH = ß concussion hits.",
+    "rounds": "M(-ß) / M(+ß) = the penalty/bonus lasts M rounds. A bare symbol = 1 round.",
+    "none": "\"—\" = no mechanical effect beyond the text (often death).",
+    "variants": "Conditional cells (e.g. \"with helmet / w/o helmet\") apply the matching variant."
+  },
+  "rollMatchPolicy": "rollMin / rollMax are inclusive on an UNMODIFIED d100. The first band (rollMin=null) is the low catch-all; rolls above 100 (modified criticals) clamp to the top band.",
+  "rows": [
+    {
+      "label": "01-05",
+      "rollMin": null,
+      "rollMax": 5,
+      "results": {
+        "A": {
+          "text": "Not very impressive.",
+          "effects": "+0H"
+        },
+        "B": {
+          "text": "Your grip fails you.",
+          "effects": "+0H"
+        },
+        "C": {
+          "text": "Practice this one.",
+          "effects": "+1H"
+        },
+        "D": {
+          "text": "Strike blunted by clothing.",
+          "effects": "+2H"
+        },
+        "E": {
+          "text": "Destroy one of foe's silly decorations.",
+          "effects": "+3H"
+        }
+      }
+    },
+    {
+      "label": "06-10",
+      "rollMin": 6,
+      "rollMax": 10,
+      "results": {
+        "A": {
+          "text": "The strike lost something in the translation.",
+          "effects": "+0H"
+        },
+        "B": {
+          "text": "Thud.",
+          "effects": "+2H"
+        },
+        "C": {
+          "text": "You should have swung much harder.",
+          "effects": "+3H"
+        },
+        "D": {
+          "text": "Foe steps right, then left, and almost evades your blow.",
+          "effects": "+4H"
+        },
+        "E": {
+          "text": "Blow is forceful, not hard. Foe is unbalanced. You have initiative.",
+          "effects": "+6H"
+        }
+      }
+    },
+    {
+      "label": "11-15",
+      "rollMin": 11,
+      "rollMax": 15,
+      "results": {
+        "A": {
+          "text": "Foe evades much of your swing. You have initiative.",
+          "effects": "+3H"
+        },
+        "B": {
+          "text": "Foe evades frantically. You have the initiative next round.",
+          "effects": "+3H"
+        },
+        "C": {
+          "text": "Really solid strike to foe's shield side. You have initiative.",
+          "effects": "+7H"
+        },
+        "D": {
+          "text": "Shot close to foe's throat. He seeks to avoid your next strike.",
+          "effects": "+5H – (π-10)"
+        },
+        "E": {
+          "text": "Foe raises an arm to block your strike. He does himself harm. You profit.",
+          "effects": "+6H – ∑ – (+5)"
+        }
+      }
+    },
+    {
+      "label": "16-20",
+      "rollMin": 16,
+      "rollMax": 20,
+      "results": {
+        "A": {
+          "text": "Foe steps back 5 feet. He is out of position.",
+          "effects": "+2H – π"
+        },
+        "B": {
+          "text": "Foe is concerned with his own preservation. He steps back 5 feet.",
+          "effects": "+4H – (π-10)"
+        },
+        "C": {
+          "text": "Blow to foe's waist. He spins sideways.",
+          "effects": "+6H – (π-20)"
+        },
+        "D": {
+          "text": "Glancing blow takes skin with it. You have initiative next round.",
+          "effects": "+5H – (-5)"
+        },
+        "E": {
+          "text": "Strong blow breaks foe's guard. He is unbalanced.",
+          "effects": "∑∏ – (+10)"
+        }
+      }
+    },
+    {
+      "label": "21-35",
+      "rollMin": 21,
+      "rollMax": 35,
+      "results": {
+        "A": {
+          "text": "Foe tries to duck under your strike. You knock him back.",
+          "effects": "+3H – π – (+5)"
+        },
+        "B": {
+          "text": "Foe loses some resolve from your solid strike.",
+          "effects": "+4H – (π-20)"
+        },
+        "C": {
+          "text": "Disorient foe with a tricky shot. He is at a loss for words.",
+          "effects": "+5H – ∑"
+        },
+        "D": {
+          "text": "Foe goes airborne to evade your strike. He is stumbling back.",
+          "effects": "+4H – ∑∏"
+        },
+        "E": {
+          "text": "Solid shot breaks foe's ribs. You have initiative next round.",
+          "effects": "+6H – (-10)"
+        }
+      }
+    },
+    {
+      "label": "36-45",
+      "rollMin": 36,
+      "rollMax": 45,
+      "results": {
+        "A": {
+          "text": "Bust foe's shin. You have initiative.",
+          "effects": "",
+          "variants": [
+            {
+              "condition": "with leg greaves",
+              "effects": "+9H"
+            },
+            {
+              "condition": "w/o leg greaves",
+              "effects": "+6H – (-5)"
+            }
+          ]
+        },
+        "B": {
+          "text": "Blow to foe's left calf. You gain initiative.",
+          "effects": "",
+          "variants": [
+            {
+              "condition": "with leg greaves",
+              "effects": "+9H – 2π"
+            },
+            {
+              "condition": "w/o leg greaves",
+              "effects": "+6H – 2(-20)"
+            }
+          ]
+        },
+        "C": {
+          "text": "Catch foe in lower leg. You gain initiative, while foe regains footing.",
+          "effects": "+9H – 2(-25)"
+        },
+        "D": {
+          "text": "Light swing to foe's leg. Foe's calf is bruised. You have the initiative.",
+          "effects": "+10H – (-10)"
+        },
+        "E": {
+          "text": "Blow to upper leg. Minor fracture. You have initiative.",
+          "effects": "+12H – (-10)"
+        }
+      }
+    },
+    {
+      "label": "46-50",
+      "rollMin": 46,
+      "rollMax": 50,
+      "results": {
+        "A": {
+          "text": "Foe steps under your blow. You catch him in the back.",
+          "effects": "+4H – (π-25)"
+        },
+        "B": {
+          "text": "Solid blow to back. Foe seeks to avoid this attack again. He has lost his way.",
+          "effects": "+6H – (π-25)"
+        },
+        "C": {
+          "text": "He leans to your shield side and you hit him in the back. You have the initiative for 2 rounds.",
+          "effects": "+5H – ∑∏"
+        },
+        "D": {
+          "text": "Catch foe in shoulder blade. Foe drops his guard and reels from your blow.",
+          "effects": "+10H – ∑∏"
+        },
+        "E": {
+          "text": "Glancing strike to lower back. Foe turns away to avoid the damage. Foe uses his weapon for balance.",
+          "effects": "+15H – ∑∏"
+        }
+      }
+    },
+    {
+      "label": "51-55",
+      "rollMin": 51,
+      "rollMax": 55,
+      "results": {
+        "A": {
+          "text": "Blow to foe's chest. Foe leans sideways in pain.",
+          "effects": "+5H – (π-25)"
+        },
+        "B": {
+          "text": "Foe recoils before your blow impacts. He steps back 5 feet to defend himself.",
+          "effects": "+6H – 2π"
+        },
+        "C": {
+          "text": "Hard strike to chest, armor does not help.",
+          "effects": "+5H – ∑ – (-10)"
+        },
+        "D": {
+          "text": "Blow to foe's ribs. It hurts him to raise his arms. Foe cannot lean over.",
+          "effects": "+10H – (-15)"
+        },
+        "E": {
+          "text": "Blow to chest. He seeks to regain his wind and survive your onslaught.",
+          "effects": "+15H – 2∑ – (-15)"
+        }
+      }
+    },
+    {
+      "label": "56-60",
+      "rollMin": 56,
+      "rollMax": 60,
+      "results": {
+        "A": {
+          "text": "Blow to foe's waist sends a piece of equipment flying. Foe recoils.",
+          "effects": "+5H – (π-25)"
+        },
+        "B": {
+          "text": "Strike passes under shield arm and lands on foe's thigh. Big bruise.",
+          "effects": "+6H – π – (-5)"
+        },
+        "C": {
+          "text": "Strike grazes across left thigh and lands on right. It lands solid.",
+          "effects": "+6H – π – (-5) – (+10)"
+        },
+        "D": {
+          "text": "Miss foe's arm and strike his thigh. He stumbles and drops something.",
+          "effects": "+6H – ∑ – (-10)"
+        },
+        "E": {
+          "text": "Blow to foe's thigh causes his right leg to falter for a moment.",
+          "effects": "+10H – ∑∏ – (-10)"
+        }
+      }
+    },
+    {
+      "label": "61-65",
+      "rollMin": 61,
+      "rollMax": 65,
+      "results": {
+        "A": {
+          "text": "Strike to weapon forearm.",
+          "effects": "",
+          "variants": [
+            {
+              "condition": "with arm greaves",
+              "effects": "+8H – π"
+            },
+            {
+              "condition": "w/o arm greaves",
+              "effects": "+5H – ∑"
+            }
+          ]
+        },
+        "B": {
+          "text": "Blow to foe's forearm. The strike is solid. The pain is certain.",
+          "effects": "+9H – ∑ – (-10)"
+        },
+        "C": {
+          "text": "Catch foe in mid-swing and disarm him. His weapon tumbles behind you.",
+          "effects": "+8H – ∑"
+        },
+        "D": {
+          "text": "Blow to forearm. Blow tears clothing, but not skin. Arm is bruised.",
+          "effects": "+10H – ∑∏ – (-10)"
+        },
+        "E": {
+          "text": "Strike foe's weapon arm with a titanic blow. Foe drops his weapon and reels.",
+          "effects": "+10H – ∑ – (-15)"
+        }
+      }
+    },
+    {
+      "label": "66",
+      "rollMin": 66,
+      "rollMax": 66,
+      "results": {
+        "A": {
+          "text": "Shatter shoulder in foe's shield arm. Arm is quite useless. Foe drops shield, if he has one.",
+          "effects": "+8H – 2∑∏"
+        },
+        "B": {
+          "text": "Drive elbow backwards and break it. Arm is useless. Foe drops weapon, leans way over, and yells out.",
+          "effects": "3∑∏"
+        },
+        "C": {
+          "text": "That does it for him. Your strike lands on foe's knee. The knee buckles and foe goes down hard.",
+          "effects": "+9H – 3∑∏ – (-90)"
+        },
+        "D": {
+          "text": "Masterful strike to foe's head. If he has no helm, he is dead. If he has a helm, he is knocked out for 4 hours.",
+          "effects": "+20H"
+        },
+        "E": {
+          "text": "Crush what was once foe's head; he dies instantly. If foe has a helm, it is destroyed also. You are speckled with blood.",
+          "effects": "+15H – (+10)"
+        }
+      }
+    },
+    {
+      "label": "67-70",
+      "rollMin": 67,
+      "rollMax": 70,
+      "results": {
+        "A": {
+          "text": "Solid strike to foe's chest. Knocks the breath out of foe.",
+          "effects": "+8H – 3∑ – ∏"
+        },
+        "B": {
+          "text": "Boom! Shot strikes foe's upper chest. Foe stumbles.",
+          "effects": "+10H – 2∑∏ – (-10)"
+        },
+        "C": {
+          "text": "Strike to chest causes a host of trouble.",
+          "effects": "+10H – 3∑ – 2∏ – (-10)"
+        },
+        "D": {
+          "text": "Blow to shoulder.",
+          "effects": "",
+          "variants": [
+            {
+              "condition": "with shoulder armor",
+              "effects": "+6H – ∑∏"
+            },
+            {
+              "condition": "w/o shoulder armor",
+              "effects": "2∑∏ – (-20)"
+            }
+          ]
+        },
+        "E": {
+          "text": "Blow to foe's shield arm. If foe has a shield, it is broken. If not, arm is broken.",
+          "effects": ""
+        }
+      }
+    },
+    {
+      "label": "71-75",
+      "rollMin": 71,
+      "rollMax": 75,
+      "results": {
+        "A": {
+          "text": "Shot takes foe in lower leg. He fails to jump over it.",
+          "effects": "+5H – 2∑∏ – (-20)"
+        },
+        "B": {
+          "text": "Strike to foe's right achilles tendon. Oh that hurts ya know!",
+          "effects": "+10H – 2∑ – ∏ – (-35)"
+        },
+        "C": {
+          "text": "Strike twists foe's knee.",
+          "effects": "+10H – 2∑∏ – (-40)"
+        },
+        "D": {
+          "text": "Blow lands with a crack. Leg bone is broken. Major cartilage damage.",
+          "effects": "+12H – 2∑∏ – (-50)"
+        },
+        "E": {
+          "text": "Blow to foe's hip bone breaks it. Help! Foe has fallen and cannot get up.",
+          "effects": "+15H – 3∑ – (-75)"
+        }
+      }
+    },
+    {
+      "label": "76-80",
+      "rollMin": 76,
+      "rollMax": 80,
+      "results": {
+        "A": {
+          "text": "Blow to foe's shield arm destroys shield. If no shield, arm is broken.",
+          "effects": ""
+        },
+        "B": {
+          "text": "Blow to foe's shield arm breaks wrist. Hand is useless. Foe drops shield.",
+          "effects": "+6H – ∑"
+        },
+        "C": {
+          "text": "Blow to foe's weapon arm. A metal armguard is bent and the arm is useless until the armor is removed.",
+          "effects": "+9H – ∑∏ – (-50)"
+        },
+        "D": {
+          "text": "Blow breaks foe's weapon arm. Sling foe's weapon to the right 5 feet. Foe's arm is useless. Tendon damage.",
+          "effects": "+8H – ∑∏"
+        },
+        "E": {
+          "text": "Slap foe's arm and elbow around like string. Joint is shattered. Arm is useless. Foe should have stayed in bed.",
+          "effects": "+9H – 2∑∏"
+        }
+      }
+    },
+    {
+      "label": "81-85",
+      "rollMin": 81,
+      "rollMax": 85,
+      "results": {
+        "A": {
+          "text": "Blow to foe's side sends him stumbling 5 feet to your right.",
+          "effects": "+10H – 2∑∏ – (-20)"
+        },
+        "B": {
+          "text": "Blow thunders as it connects. Foe's ribs crackle in response. It hurts.",
+          "effects": "+12H – 2∑∏ – (-25)"
+        },
+        "C": {
+          "text": "Foe yells out before the impact and is silenced by the blow. Ribs crack.",
+          "effects": "+12H – 3∑∏ – (-40)"
+        },
+        "D": {
+          "text": "Blow lands on foe's side. He goes down hard. Victory is close.",
+          "effects": "+15H – 3∑∏ – (+10)"
+        },
+        "E": {
+          "text": "Blow to foe's armpit. Crush ribs and destroy organs. Foe dies in 3 rounds.",
+          "effects": "+30H"
+        }
+      }
+    },
+    {
+      "label": "86-90",
+      "rollMin": 86,
+      "rollMax": 90,
+      "results": {
+        "A": {
+          "text": "Strike foe in lower back. Muscles and cartilage are damaged.",
+          "effects": "+12H – 3∑∏ – (-25)"
+        },
+        "B": {
+          "text": "Foe makes a mistake and pays. You send him prone with a fell strike. Tendons are smashed.",
+          "effects": "4∑∏ – (-30)"
+        },
+        "C": {
+          "text": "Powerful blow sweeps foe onto his back. Bones break and muscles tear.",
+          "effects": "+20H – 6∑ – (-50)"
+        },
+        "D": {
+          "text": "Blow to foe's neck. If foe has a throat protector, he is paralyzed from the neck down. If not, he dies in two rounds.",
+          "effects": "+25H"
+        },
+        "E": {
+          "text": "Neck strike shatters bone and severs an artery. Foe cannot breathe. Foe is inactive and suffocates in 12 rounds.",
+          "effects": "—"
+        }
+      }
+    },
+    {
+      "label": "91-95",
+      "rollMin": 91,
+      "rollMax": 95,
+      "results": {
+        "A": {
+          "text": "Break foe's nose.",
+          "effects": "",
+          "variants": [
+            {
+              "condition": "with nose guard",
+              "effects": "+10H – 2∑∏"
+            },
+            {
+              "condition": "w/o nose guard",
+              "effects": "+15H – 3∑∏"
+            }
+          ]
+        },
+        "B": {
+          "text": "Strike to foe's head. If he has no helm, he falls into a coma for 3 weeks.",
+          "effects": "+20H – 12∑"
+        },
+        "C": {
+          "text": "Blow to thigh. Compound fracture severs an artery. Foe goes down hard and dies in 12 rounds.",
+          "effects": "+9H"
+        },
+        "D": {
+          "text": "Strike comes down on the shield shoulder of foe. Arm shatters. Foe dies from shock and blood loss in 9 rounds.",
+          "effects": "—"
+        },
+        "E": {
+          "text": "Blast to foe's back. A bone is driven into vital organs. Foe is down and dies in six rounds.",
+          "effects": "+25H"
+        }
+      }
+    },
+    {
+      "label": "96-99",
+      "rollMin": 96,
+      "rollMax": 99,
+      "results": {
+        "A": {
+          "text": "Blow to foe's head. If foe has no helm, he is dead. If foe has a helm, he is knocked down.",
+          "effects": "+20H – 6∑"
+        },
+        "B": {
+          "text": "Blast foe's chest. Send ribcage into heart. Foe drops and dies in 6 rounds.",
+          "effects": "(+20)"
+        },
+        "C": {
+          "text": "Blow to foe's abdomen. Strike destroys a variety of organs. Poor fool expires after 6 rounds of inactivity.",
+          "effects": "—"
+        },
+        "D": {
+          "text": "Crush foe's chest cavity. He grips your arm, looks into your eyes, then drops and dies in 3 rounds.",
+          "effects": "(+25)"
+        },
+        "E": {
+          "text": "Blow to foe's face. If visored, the visor is driven into his face and foe dies in 10 rounds. Without a visor, he dies instantly. You have half the round left.",
+          "effects": "+30H – (+20)"
+        }
+      }
+    },
+    {
+      "label": "100",
+      "rollMin": 100,
+      "rollMax": 100,
+      "results": {
+        "A": {
+          "text": "Crush foe's jaw. Drive bone through brain. Foe dies instantly.",
+          "effects": "+50H – (+20)"
+        },
+        "B": {
+          "text": "Blow snaps neck. Foe is paralyzed from the shoulders down.",
+          "effects": "+25H – 15∑"
+        },
+        "C": {
+          "text": "Strike to forehead. Destroy foe's eyes. Send his helm flying. Foe is spun about.",
+          "effects": "+30H – 24∑∏"
+        },
+        "D": {
+          "text": "Blast to foe's heart. It stops. He dies. You consider yourself to be deadly. Fine work. You are ready to slay.",
+          "effects": "+25H"
+        },
+        "E": {
+          "text": "Blow turns hip to dust. Foe falls down. Attempts to stand. Falls again and dies in 6 rounds.",
+          "effects": "+35H – 2∑ – 6(-30)"
+        }
+      }
+    }
+  ],
+  "slug": "critical-krush",
+  "fromBook": "basic"
+}

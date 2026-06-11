@@ -2,6 +2,7 @@
   "lists": [
     {
       "name": "Mind Attack",
+      "slug": "mind-attack",
       "realm": "Mentalism",
       "type": "Base",
       "profession": "Mentalist",
@@ -55,7 +56,7 @@
         },
         {
           "level": 6,
-          "name": null
+          "name": ""
         },
         {
           "level": 7,
@@ -100,6 +101,7 @@
     },
     {
       "name": "Mind Control",
+      "slug": "mind-control",
       "realm": "Mentalism",
       "type": "Base",
       "profession": "Mentalist",
@@ -200,6 +202,7 @@
     },
     {
       "name": "Mind Merge",
+      "slug": "mind-merge",
       "realm": "Mentalism",
       "type": "Base",
       "profession": "Mentalist",
@@ -280,7 +283,7 @@
         },
         {
           "level": 9,
-          "name": null
+          "name": ""
         },
         {
           "level": 10,
@@ -295,6 +298,7 @@
     },
     {
       "name": "Mind Speech",
+      "slug": "mind-speech",
       "realm": "Mentalism",
       "type": "Base",
       "profession": "Mentalist",
@@ -368,7 +372,7 @@
         },
         {
           "level": 7,
-          "name": null
+          "name": ""
         },
         {
           "level": 8,
@@ -407,6 +411,7 @@
     },
     {
       "name": "Presence",
+      "slug": "presence",
       "realm": "Mentalism",
       "type": "Base",
       "profession": "Mentalist",
@@ -529,6 +534,7 @@
     },
     {
       "name": "Sense Control",
+      "slug": "sense-control",
       "realm": "Mentalism",
       "type": "Base",
       "profession": "Mentalist",
@@ -631,6 +637,7 @@
     },
     {
       "name": "Controlling Songs",
+      "slug": "controlling-songs",
       "realm": "Mentalism",
       "type": "Base",
       "profession": "Bard",
@@ -668,7 +675,7 @@
         },
         {
           "level": 4,
-          "name": null
+          "name": ""
         },
         {
           "level": 5,
@@ -728,6 +735,7 @@
     },
     {
       "name": "Entertaining Ways",
+      "slug": "entertaining-ways",
       "realm": "Mentalism",
       "type": "Base",
       "profession": "Bard",
@@ -828,6 +836,7 @@
     },
     {
       "name": "Item Lore",
+      "slug": "item-lore",
       "realm": "Mentalism",
       "type": "Base",
       "profession": "Bard",
@@ -930,6 +939,7 @@
     },
     {
       "name": "Lores",
+      "slug": "lores",
       "realm": "Mentalism",
       "type": "Base",
       "profession": "Bard",
@@ -983,7 +993,7 @@
         },
         {
           "level": 6,
-          "name": null
+          "name": ""
         },
         {
           "level": 7,
@@ -1005,7 +1015,7 @@
         },
         {
           "level": 9,
-          "name": null
+          "name": ""
         },
         {
           "level": 10,
@@ -1020,6 +1030,7 @@
     },
     {
       "name": "Sound Control",
+      "slug": "sound-control",
       "realm": "Mentalism",
       "type": "Base",
       "profession": "Bard",
@@ -1046,7 +1057,7 @@
         },
         {
           "level": 3,
-          "name": null
+          "name": ""
         },
         {
           "level": 4,
@@ -1095,7 +1106,7 @@
         },
         {
           "level": 9,
-          "name": null
+          "name": ""
         },
         {
           "level": 10,
@@ -1110,6 +1121,7 @@
     },
     {
       "name": "Sound Projection",
+      "slug": "sound-projection",
       "realm": "Mentalism",
       "type": "Base",
       "profession": "Bard",

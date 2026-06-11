@@ -39,7 +39,7 @@ const SETTING_IN_PROGRESS = "migrationInProgress";
  */
 const SLUG_CONTENT_TYPES = new Set([
   "skill", "category", "profession", "race", "realm",
-  "spellList", "trainingPackage", "attackTable"
+  "spellList", "trainingPackage", "attackTable", "criticalTable"
 ]);
 
 /**

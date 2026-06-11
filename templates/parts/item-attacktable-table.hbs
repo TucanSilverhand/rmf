@@ -38,6 +38,13 @@
   <div class="summary-wrapper attacktable-grid-wrapper">
     <table class="rmf-attack-grid">
       <thead>
+        {{#if isResistanceTable}}
+        {{!-- Categorical columns (resistanceMod): one labelled column each --}}
+        <tr class="armor-ats">
+          <th class="roll-col">{{localize "RMF.AttackTable.RollBand"}}</th>
+          {{#each columns as |label|}}<th class="at-col col-label">{{label}}</th>{{/each}}
+        </tr>
+        {{else}}
         <tr class="armor-groups">
           <th class="roll-col" rowspan="2">{{localize "RMF.AttackTable.RollBand"}}</th>
           {{#each armorGroups as |g|}}<th class="armor-group" colspan="{{g.span}}">{{g.name}}</th>{{/each}}
@@ -45,13 +52,23 @@
         <tr class="armor-ats">
           {{#each columns as |at|}}<th class="at-col">{{at}}</th>{{/each}}
         </tr>
+        {{/if}}
       </thead>
       <tbody>
+        {{!-- High unmodified-die bands (UM 96-100), like the printed page --}}
+        {{#each umHighRows as |row|}}
+        <tr class="um-high-row">
+          <th scope="row" class="roll-col">{{row.label}}</th>
+          {{#each row.cells as |c|}}
+          <td class="cell{{#if c.hasCrit}} has-crit{{/if}}{{#if (rmfEq c.kind 'miss')}} is-miss{{/if}}{{#if (rmfEq c.kind 'fumble')}} is-fumble{{/if}}">{{c.text}}</td>
+          {{/each}}
+        </tr>
+        {{/each}}
         {{#each gridRows as |row|}}
         <tr>
           <th scope="row" class="roll-col">{{row.label}}</th>
           {{#each row.cells as |c|}}
-          <td class="cell{{#if c.hasCrit}} has-crit{{/if}}{{#if (rmfEq c.kind 'miss')}} is-miss{{/if}}">{{c.text}}</td>
+          <td class="cell{{#if c.hasCrit}} has-crit{{/if}}{{#if (rmfEq c.kind 'miss')}} is-miss{{/if}}{{#if (rmfEq c.kind 'fumble')}} is-fumble{{/if}}">{{c.text}}</td>
           {{/each}}
         </tr>
         {{/each}}
@@ -64,6 +81,59 @@
       </tbody>
     </table>
   </div>
+
+  {{!-- ATTACK TYPE DATA / SPELL DATA box --}}
+  {{#if hasAttackTypes}}
+  <div class="summary-wrapper">
+    <h3>{{localize "RMF.AttackTable.AttackTypeData"}}</h3>
+    <table class="summary-table rmf-attack-types">
+      <thead>
+        <tr>
+          <th>{{localize "RMF.AttackTable.AttackType"}}</th>
+          {{#unless hasSpellData}}<th>{{localize "RMF.AttackTable.Abbreviation"}}</th>{{/unless}}
+          <th>{{localize "RMF.AttackTable.CritType"}}</th>
+          {{#if hasSpellData}}
+          <th>{{localize "RMF.AttackTable.OBMod"}}</th>
+          <th>{{localize "RMF.AttackTable.MaxResult"}}</th>
+          <th>{{localize "RMF.AttackTable.MaxCritical"}}</th>
+          {{/if}}
+        </tr>
+      </thead>
+      <tbody>
+        {{#each attackTypes as |a|}}
+        <tr>
+          <td>{{a.attackType}}{{#if a.note}} <i class="fas fa-circle-info" data-tooltip="{{a.note}}"></i>{{/if}}</td>
+          {{#unless ../hasSpellData}}<td>{{a.abbreviation}}</td>{{/unless}}
+          <td>{{#if a.criticalType}}{{a.criticalType}}{{#if a.ref}} ({{a.ref}}){{/if}}{{else}}—{{/if}}</td>
+          {{#if ../hasSpellData}}
+          <td>{{a.obMod}}</td>
+          <td>{{a.maxResult}}</td>
+          <td>{{a.maxCritical}}</td>
+          {{/if}}
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+    {{#if attackTypeNotes.length}}
+    <ul class="rmf-attack-type-notes">
+      {{#each attackTypeNotes as |note|}}<li>{{note}}</li>{{/each}}
+    </ul>
+    {{/if}}
+  </div>
+  {{/if}}
+
+  {{!-- Range modifiers (spell tables) --}}
+  {{#if rangeModifiers.length}}
+  <div class="summary-wrapper">
+    <h3>{{localize "RMF.AttackTable.RangeModifiers"}}</h3>
+    <table class="summary-table rmf-range-mods">
+      <thead><tr><th>{{localize "RMF.AttackTable.Range"}}</th><th>{{localize "RMF.AttackTable.Modifier"}}</th></tr></thead>
+      <tbody>
+        {{#each rangeModifiers as |r|}}<tr><td>{{r.range}}</td><td>{{r.modifier}}</td></tr>{{/each}}
+      </tbody>
+    </table>
+  </div>
+  {{/if}}
 
   {{!-- Cell-notation legend --}}
   {{#if legendRows.length}}

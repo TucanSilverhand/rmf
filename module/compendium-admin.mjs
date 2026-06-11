@@ -25,6 +25,7 @@ import {
   syncTrainingPackagesToCompendium,
   syncSpellListsToCompendium,
   syncAttackTablesToCompendium,
+  syncCriticalTablesToCompendium,
   ensurePackFolderPath
 } from "./importers.mjs";
 
@@ -102,6 +103,20 @@ const ATTACK_TABLE_FILES = [
   "system_tables/attack_tables/basic-spell-essence.json",
   "system_tables/attack_tables/basic-spell-channeling.json",
   "system_tables/attack_tables/basic-spell-mentalism.json"
+];
+
+/**
+ * Critical-table data files (A-10.10.x critical strike tables). Each file
+ * is one criticalTable item: rows = unmodified-d100 bands, columns =
+ * severity A-E, cells = narrative text + effects notation.
+ */
+const CRITICAL_TABLE_FILES = [
+  "system_tables/critical_tables/cold.json",
+  "system_tables/critical_tables/heat.json",
+  "system_tables/critical_tables/krush.json",
+  "system_tables/critical_tables/puncture.json",
+  "system_tables/critical_tables/slash.json",
+  "system_tables/critical_tables/unbalance.json"
 ];
 
 /** Absolute (Foundry-served) path to the system data directory. */
@@ -284,6 +299,10 @@ export async function regenerateBasicCore({ confirm = true } = {}) {
     ...ATTACK_TABLE_FILES.map(file => [
       `Attack Tables: ${file}`,
       () => syncAttackTablesToCompendium(`${dir}/${file}`, { pack: packId, parentFolderName: SYSTEM_TABLES_FOLDER })
+    ]),
+    ...CRITICAL_TABLE_FILES.map(file => [
+      `Critical Tables: ${file}`,
+      () => syncCriticalTablesToCompendium(`${dir}/${file}`, { pack: packId, parentFolderName: SYSTEM_TABLES_FOLDER })
     ])
   ];
 

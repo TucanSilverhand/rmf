@@ -1,0 +1,50 @@
+{{!--
+  RMF Critical Table Sheet — Resolve Partial
+  Severity select + roll modifier + a "Roll Critical" button (data-action)
+  that runs the critical engine and posts a chat card. Inputs use
+  name="resolve.*" so the sheet caches them on the instance.
+--}}
+
+<div class="tab criticaltable-resolve" data-group="primary-tabs" data-tab="resolve" style="display: none;">
+
+  <div class="summary-wrapper">
+    <h3>{{localize "RMF.AttackTable.ResolveTab"}}</h3>
+    <div class="resolve-form">
+      <label>{{localize "RMF.CriticalTable.Severity"}}
+        <select name="resolve.column">
+          {{#each resolveColumns as |c|}}
+          <option value="{{c.key}}" {{#if c.selected}}selected{{/if}}>{{c.label}}</option>
+          {{/each}}
+        </select></label>
+      <label>{{localize "RMF.AttackTable.Mods"}}
+        <input type="number" name="resolve.mod" value="{{resolve.mod}}" data-dtype="Number"/></label>
+      <button type="button" class="resolve-button" data-action="resolveCritical">
+        <i class="fas fa-dice-d20"></i> {{localize "RMF.CriticalTable.ResolveButton"}}
+      </button>
+    </div>
+  </div>
+
+  {{#if lastResult}}
+  <div class="summary-wrapper resolve-result">
+    <h3>{{localize "RMF.AttackTable.Result"}}</h3>
+    <table class="summary-table">
+      <tbody>
+        <tr><th scope="row">{{localize "RMF.AttackTable.NaturalRoll"}}</th>
+          <td>{{lastResult.natural}}{{#unless (rmfEq lastResult.natural lastResult.total)}} → {{lastResult.total}}{{/unless}} [{{lastResult.band}}]</td></tr>
+        <tr><th scope="row">{{localize "RMF.CriticalTable.Severity"}}</th><td>{{lastResult.column}}</td></tr>
+      </tbody>
+    </table>
+    <p class="crit-result-text">{{lastResult.text}}</p>
+    {{#if lastResult.effects}}<div class="outcome is-crit">{{lastResult.effects}}</div>{{/if}}
+    {{#if lastResult.summary}}<p class="crit-hint">{{lastResult.summary}}</p>{{/if}}
+    {{#if lastResult.variants.length}}
+    <ul class="crit-variants">
+      {{#each lastResult.variants as |v|}}
+      <li><b>{{v.condition}}:</b> {{#if v.effects}}{{v.effects}}{{else}}—{{/if}}{{#if v.summary}} <i>({{v.summary}})</i>{{/if}}</li>
+      {{/each}}
+    </ul>
+    {{/if}}
+  </div>
+  {{/if}}
+
+</div>

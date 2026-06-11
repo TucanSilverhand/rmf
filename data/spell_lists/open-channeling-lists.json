@@ -2,6 +2,7 @@
   "lists": [
     {
       "name": "Barrier Law",
+      "slug": "barrier-law",
       "realm": "Channeling",
       "type": "Open",
       "reference": "A-9.5.1",
@@ -59,7 +60,7 @@
         },
         {
           "level": 6,
-          "name": null
+          "name": ""
         },
         {
           "level": 7,
@@ -81,7 +82,7 @@
         },
         {
           "level": 9,
-          "name": null
+          "name": ""
         },
         {
           "level": 10,
@@ -96,6 +97,7 @@
     },
     {
       "name": "Concussion's Ways",
+      "slug": "concussion-s-ways",
       "realm": "Channeling",
       "type": "Open",
       "reference": "A-9.5.2",
@@ -203,6 +205,7 @@
     },
     {
       "name": "Detection Mastery",
+      "slug": "detection-mastery",
       "realm": "Channeling",
       "type": "Open",
       "reference": "A-9.5.3",
@@ -305,6 +308,7 @@
     },
     {
       "name": "Light's Way",
+      "slug": "light-s-way",
       "realm": "Channeling",
       "type": "Open",
       "reference": "A-9.5.4",
@@ -406,6 +410,7 @@
     },
     {
       "name": "Lofty Movements",
+      "slug": "lofty-movements",
       "realm": "Channeling",
       "type": "Open",
       "reference": "A-9.5.5",
@@ -415,7 +420,7 @@
       "spells": [
         {
           "level": 1,
-          "name": null
+          "name": ""
         },
         {
           "level": 2,
@@ -428,7 +433,7 @@
         },
         {
           "level": 3,
-          "name": null
+          "name": ""
         },
         {
           "level": 4,
@@ -497,6 +502,7 @@
     },
     {
       "name": "Nature's Law",
+      "slug": "nature-s-law",
       "realm": "Channeling",
       "type": "Open",
       "reference": "A-9.5.6",
@@ -507,7 +513,7 @@
       "spells": [
         {
           "level": 1,
-          "name": null
+          "name": ""
         },
         {
           "level": 2,
@@ -529,7 +535,7 @@
         },
         {
           "level": 4,
-          "name": null
+          "name": ""
         },
         {
           "level": 5,
@@ -560,7 +566,7 @@
         },
         {
           "level": 8,
-          "name": null
+          "name": ""
         },
         {
           "level": 9,
@@ -584,6 +590,7 @@
     },
     {
       "name": "Purifications",
+      "slug": "purifications",
       "realm": "Channeling",
       "type": "Open",
       "reference": "A-9.5.7",
@@ -645,7 +652,7 @@
         },
         {
           "level": 7,
-          "name": null
+          "name": ""
         },
         {
           "level": 8,
@@ -678,6 +685,7 @@
     },
     {
       "name": "Sound's Way",
+      "slug": "sound-s-way",
       "realm": "Channeling",
       "type": "Open",
       "reference": "A-9.5.8",
@@ -694,7 +702,7 @@
         },
         {
           "level": 2,
-          "name": null
+          "name": ""
         },
         {
           "level": 3,
@@ -707,7 +715,7 @@
         },
         {
           "level": 4,
-          "name": null
+          "name": ""
         },
         {
           "level": 5,
@@ -747,7 +755,7 @@
         },
         {
           "level": 9,
-          "name": null
+          "name": ""
         },
         {
           "level": 10,
@@ -762,6 +770,7 @@
     },
     {
       "name": "Spell Defense",
+      "slug": "spell-defense",
       "realm": "Channeling",
       "type": "Open",
       "reference": "A-9.5.9",
@@ -861,6 +870,7 @@
     },
     {
       "name": "Weather Ways",
+      "slug": "weather-ways",
       "realm": "Channeling",
       "type": "Open",
       "reference": "A-9.5.10",
@@ -889,7 +899,7 @@
         },
         {
           "level": 3,
-          "name": null
+          "name": ""
         },
         {
           "level": 4,
@@ -911,7 +921,7 @@
         },
         {
           "level": 6,
-          "name": null
+          "name": ""
         },
         {
           "level": 7,
@@ -933,7 +943,7 @@
         },
         {
           "level": 9,
-          "name": null
+          "name": ""
         },
         {
           "level": 10,
