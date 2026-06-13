@@ -1,0 +1,94 @@
+{{!--
+  RMF Attack Table Sheet — editable matrix (Editar tab). Owner edits bridge
+  fields, every band (roll range + per-column string cell, e.g. "12E"), the
+  fumble row and the legend. Columns (AT / categorical keys) are structural
+  and edited via JSON import, so only labels show here. Array-backed fields
+  are rewritten whole by _onFieldChange (Foundry mangles deep array paths).
+--}}
+<div class="tab attacktable-edit" data-group="primary-tabs" data-tab="edit" style="display: none;">
+  {{#if editable}}
+
+  {{!-- Bridge fields --}}
+  <div class="summary-wrapper">
+    <h3>{{localize "RMF.AttackTable.Meta"}}</h3>
+    <div class="two-col-tables">
+      <table class="summary-table">
+        <tbody>
+          <tr><th scope="row">{{localize "RMF.AttackTable.TableId"}}</th>
+            <td><input type="text" name="system.tableId" value="{{system.tableId}}"/></td></tr>
+        </tbody>
+      </table>
+      <table class="summary-table">
+        <tbody>
+          <tr><th scope="row">{{localize "RMF.AttackTable.FumbleRange"}}</th>
+            <td><input type="number" name="system.fumbleRange.min" value="{{system.fumbleRange.min}}"/>
+                <input type="number" name="system.fumbleRange.max" value="{{system.fumbleRange.max}}"/></td></tr>
+          <tr><th scope="row">{{localize "RMF.AttackTable.Source"}}</th>
+            <td><input type="text" name="system.fromBook" value="{{system.fromBook}}"/></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  {{!-- Editable matrix --}}
+  <p class="rmf-edit-hint">{{localize "RMF.TableMatrix.EditHint"}}</p>
+  <div class="summary-wrapper attacktable-grid-wrapper">
+    <table class="rmf-attack-grid rmf-edit-grid">
+      <thead>
+        <tr class="armor-ats">
+          <th class="roll-col">{{localize "RMF.TableMatrix.Band"}}</th>
+          <th>{{localize "RMF.TableMatrix.Min"}}</th>
+          <th>{{localize "RMF.TableMatrix.Max"}}</th>
+          {{#each editColumns as |c|}}<th class="at-col col-label">{{c.label}}</th>{{/each}}
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each editRows as |row|}}
+        <tr>
+          <td class="roll-col"><input type="text" name="system.rows.{{row.index}}.label" value="{{row.label}}"/></td>
+          <td><input type="number" name="system.rows.{{row.index}}.rollMin" value="{{row.rollMin}}" placeholder="—"/></td>
+          <td><input type="number" name="system.rows.{{row.index}}.rollMax" value="{{row.rollMax}}"/></td>
+          {{#each row.cells as |cell|}}
+          <td class="cell edit-cell">
+            <input type="text" name="system.rows.{{row.index}}.results.{{cell.key}}" value="{{cell.value}}"/>
+          </td>
+          {{/each}}
+          <td><button type="button" class="rmf-icon-btn" data-action="removeRow" data-index="{{row.index}}" title="{{localize 'RMF.TableMatrix.RemoveRow'}}"><i class="fas fa-trash"></i></button></td>
+        </tr>
+        {{/each}}
+        {{!-- Fumble band (results object; edited in place) --}}
+        <tr class="fumble-row">
+          <td class="roll-col"><b>{{#if editFumble.label}}{{editFumble.label}}{{else}}F{{/if}}</b></td>
+          <td colspan="2">{{localize "RMF.AttackTable.Fumble"}}</td>
+          {{#each editFumble.cells as |cell|}}
+          <td class="cell edit-cell">
+            <input type="text" name="system.fumble.results.{{cell.key}}" value="{{cell.value}}"/>
+          </td>
+          {{/each}}
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+    <button type="button" class="rmf-add-btn" data-action="addRow"><i class="fas fa-plus"></i> {{localize "RMF.TableMatrix.AddRow"}}</button>
+  </div>
+
+  {{!-- Legend --}}
+  {{#if legendRows.length}}
+  <div class="summary-wrapper">
+    <h3>{{localize "RMF.TableMatrix.Legend"}}</h3>
+    <table class="summary-table">
+      <tbody>
+        {{#each legendRows as |row|}}
+        <tr><th scope="row"><code>{{row.key}}</code></th>
+          <td><input type="text" name="system.legend.{{row.key}}" value="{{row.text}}"/></td></tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+  {{/if}}
+
+  {{else}}
+  <div class="summary-wrapper"><p>{{localize "RMF.TableMatrix.EditOwnerOnly"}}</p></div>
+  {{/if}}
+</div>

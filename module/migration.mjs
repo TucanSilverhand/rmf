@@ -39,7 +39,8 @@ const SETTING_IN_PROGRESS = "migrationInProgress";
  */
 const SLUG_CONTENT_TYPES = new Set([
   "skill", "category", "profession", "race", "realm",
-  "spellList", "trainingPackage", "attackTable", "criticalTable"
+  "spellList", "trainingPackage", "attackTable", "criticalTable",
+  "creatureCriticalTable", "weaponFumbleTable", "spellFailureTable"
 ]);
 
 /**
@@ -290,6 +291,69 @@ export const MIGRATIONS = [
       }
 
       log(`Token bar repair: ${protos} prototype token(s) + ${placed} placed token(s) fixed (HP/PP attribute and/or default 'owner hover' visibility).`);
+    }
+  },
+  {
+    to: "0.6.1",
+    description: "Critical/creature/fumble/spell-failure tables: drop the persisted `system.legend` (the universal effects Key now lives in CONFIG.RMF.*EffectsKey); keep any genuine per-table note (creature columns) under `system.notes`. Attack tables are untouched (their `legend` carries load-bearing rangeModifiers).",
+    async run({ actors, items, log }) {
+      const LEGEND_TYPES = new Set([
+        "criticalTable", "creatureCriticalTable", "weaponFumbleTable", "spellFailureTable"
+      ]);
+      // Build the cleanup update from the RAW source (the schema no longer has
+      // a `legend` field, so item.system.legend is already gone — read _source).
+      const cleanup = (item) => {
+        if (!item || !LEGEND_TYPES.has(item.type)) return null;
+        const src = item._source?.system ?? {};
+        if (src.legend === undefined) return null;            // already clean
+        const update = { "system.-=legend": null };
+        const cols = (src.legend && typeof src.legend === "object") ? src.legend.columns : null;
+        if (cols && !src.notes?.columns) update["system.notes"] = { ...(src.notes ?? {}), columns: cols };
+        return update;
+      };
+
+      let n = 0;
+      for (const it of items) {
+        const u = cleanup(it);
+        if (u) { try { await it.update(u); n++; } catch (err) { log(`Item ${it.name}: legend cleanup skipped (${err.message}).`); } }
+      }
+      for (const actor of actors) {
+        for (const it of actor.items) {
+          const u = cleanup(it);
+          if (u) { try { await it.update(u); n++; } catch (err) { log(`Actor ${actor.name}/${it.name}: legend cleanup skipped (${err.message}).`); } }
+        }
+      }
+      await migrateWorldItemPacks(cleanup, log);
+      log(`Legend centralization: removed stale system.legend from ${n} sidebar/embedded table item(s) (+ world packs); the Key now comes from CONFIG.RMF.`);
+    }
+  },
+  {
+    to: "0.6.2",
+    description: "Attack tables become a pure resolution matrix: drop `critType`, `attackTypes`, `attackTypeNotes` — the crit type / OB mod / max result per attack form is per-weapon and lives on the weapon item. `fumbleRange` is left as-is (weapon tables default to UM 01 with the weapon supplying the real range; creature/spell tables keep their fixed range).",
+    async run({ actors, items, log }) {
+      const cleanup = (item) => {
+        if (!item || item.type !== "attackTable") return null;
+        const src = item._source?.system ?? {};
+        const update = {};
+        if (src.critType !== undefined)        update["system.-=critType"] = null;
+        if (src.attackTypes !== undefined)     update["system.-=attackTypes"] = null;
+        if (src.attackTypeNotes !== undefined) update["system.-=attackTypeNotes"] = null;
+        return Object.keys(update).length ? update : null;
+      };
+
+      let n = 0;
+      for (const it of items) {
+        const u = cleanup(it);
+        if (u) { try { await it.update(u); n++; } catch (err) { log(`Item ${it.name}: attack cleanup skipped (${err.message}).`); } }
+      }
+      for (const actor of actors) {
+        for (const it of actor.items) {
+          const u = cleanup(it);
+          if (u) { try { await it.update(u); n++; } catch (err) { log(`Actor ${actor.name}/${it.name}: attack cleanup skipped (${err.message}).`); } }
+        }
+      }
+      await migrateWorldItemPacks(cleanup, log);
+      log(`Attack-table slimming: cleaned ${n} sidebar/embedded attackTable item(s) (+ world packs); crit routing now lives on the weapon item.`);
     }
   }
 ];

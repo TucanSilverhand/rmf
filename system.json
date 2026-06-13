@@ -2,7 +2,7 @@
   "id": "rmf",
   "title": "RMF - RoleMaster de Fantasía",
   "description": "Sistema no-oficial de RoleMaster de Fantasía para FoundryVTT v13.341. Implementa las mecánicas básicas del sistema de juego RoleMaster con ApplicationV2 y las mejores prácticas de FoundryVTT.",
-  "version": "0.5.0",
+  "version": "0.6.2",
   "compatibility": {
     "minimum": "13.330",
     "verified": "13.341",

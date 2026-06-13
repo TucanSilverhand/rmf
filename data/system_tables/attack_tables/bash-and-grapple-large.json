@@ -1,41 +1,6 @@
 {
   "name": "Bash & Grapple Attack Table (Large)",
   "tableId": "A-10.9.8",
-  "critType": "Unbalance",
-  "attackTypes": [
-    {
-      "attackType": "Bash / Knockdown",
-      "abbreviation": "Ba",
-      "criticalType": "Unbalance",
-      "ref": "p. 236",
-      "note": ""
-    },
-    {
-      "attackType": "Grapple / Grasp / Envelop / Swallow",
-      "abbreviation": "Gr",
-      "criticalType": "Unbalance",
-      "ref": "p. 236",
-      "note": ""
-    },
-    {
-      "attackType": "Ram / Butt",
-      "abbreviation": "Ra",
-      "criticalType": "Unbalance",
-      "ref": "p. 236",
-      "note": ""
-    },
-    {
-      "attackType": "Wrestling / Tackles",
-      "abbreviation": "Wr",
-      "criticalType": "Unbalance",
-      "ref": "p. 236",
-      "note": "Treat all criticals as 'A' severity."
-    }
-  ],
-  "attackTypeNotes": [
-    "‡ (Wrestling / Tackles): treat all criticals as 'A' severity criticals.",
-    "The attack size for human-sized creatures is \"Small\"."
-  ],
   "fumbleRange": {
     "min": 1,
     "max": 2

@@ -14,3 +14,6 @@ export { TrainingPackageData } from "./training-package.mjs";
 export { SpellListData }       from "./spell-list.mjs";
 export { AttackTableData }     from "./attack-table.mjs";
 export { CriticalTableData }   from "./critical-table.mjs";
+export { CreatureCriticalTableData } from "./creature-critical-table.mjs";
+export { WeaponFumbleTableData }     from "./weapon-fumble-table.mjs";
+export { SpellFailureTableData }     from "./spell-failure-table.mjs";

@@ -1,0 +1,290 @@
+{
+  "name": "Spell Failure Table — Attack Spells",
+  "tableId": "A-10.11.2",
+  "spellMode": "attack",
+  "slug": "spell-failure-attack",
+  "fromBook": "basic",
+  "columnDefs": [
+    {
+      "key": "elemental",
+      "label": "Elemental"
+    },
+    {
+      "key": "force",
+      "label": "Force"
+    }
+  ],
+  "rollMatchPolicy": "rollMin / rollMax inclusive on a plain (non-open-ended) d100 + modifiers. Bands run to 301+; rolls above the top band clamp to it.",
+  "rows": [
+    {
+      "label": "01-20",
+      "rollMin": null,
+      "rollMax": 20,
+      "results": {
+        "elemental": {
+          "text": "That gnat just landed in your ear. You must begin casting the spell again (but do not lose the power points).",
+          "effects": "recast"
+        },
+        "force": {
+          "text": "Your target's grace distracts you. You lose the spell (and one power point).",
+          "effects": "losespell, losepp:1"
+        }
+      }
+    },
+    {
+      "label": "21-30",
+      "rollMin": 21,
+      "rollMax": 30,
+      "results": {
+        "elemental": {
+          "text": "Your fingertips spark and surprise you. You lose the spell (and one power point). You operate at a -50 modification next round.",
+          "effects": "losespell, losepp:1, (-50):1"
+        },
+        "force": {
+          "text": "You remember a childhood incident that was traumatizing. You lose the spell (but not the power points). Operate at -10 for five rounds.",
+          "effects": "losespell, (-10):5"
+        }
+      }
+    },
+    {
+      "label": "31-40",
+      "rollMin": 31,
+      "rollMax": 40,
+      "results": {
+        "elemental": {
+          "text": "Minor power backlash. You lose the spell (and half the number of power points — rounded down). Stunned for 1 round.",
+          "effects": "losespell, losepp:half, 1st"
+        },
+        "force": {
+          "text": "The magic blurs your vision. You lose the spell (and half the number of power points — rounded down). Stunned for 1 round.",
+          "effects": "losespell, losepp:half, 1st"
+        }
+      }
+    },
+    {
+      "label": "41-60",
+      "rollMin": 41,
+      "rollMax": 60,
+      "results": {
+        "elemental": {
+          "text": "You realize you are casting the wrong spell. You must start over. Lose the power points.",
+          "effects": "recast, losepp:all"
+        },
+        "force": {
+          "text": "The planets are not aligned correctly! Your spell has absolutely no effect (and you lose the power points).",
+          "effects": "noeffect, losepp:all"
+        }
+      }
+    },
+    {
+      "label": "61-75",
+      "rollMin": 61,
+      "rollMax": 75,
+      "results": {
+        "elemental": {
+          "text": "You feel a spider crawling up your back! You lose the spell and the power points.",
+          "effects": "losespell, losepp:all"
+        },
+        "force": {
+          "text": "Your target must be blessed! Your spell has no effect and you lose double the normal number of power points.",
+          "effects": "noeffect, losepp:double"
+        }
+      }
+    },
+    {
+      "label": "76-90",
+      "rollMin": 76,
+      "rollMax": 90,
+      "results": {
+        "elemental": {
+          "text": "The spell fails! Flames roll down your arm. You take 5 hits and are stunned for 3 rounds.",
+          "effects": "losespell, 5H, 3st"
+        },
+        "force": {
+          "text": "Power backlash! The spell fails entirely. You are stunned for 8 rounds.",
+          "effects": "losespell, 8st"
+        }
+      }
+    },
+    {
+      "label": "91-95",
+      "rollMin": 91,
+      "rollMax": 95,
+      "results": {
+        "elemental": {
+          "text": "The elements refuse your call! You are knocked back 3 feet (taking 2d10 hits), and are stunned for six rounds.",
+          "effects": "2d10H, 6st"
+        },
+        "force": {
+          "text": "The target's will is stronger than yours! You collapse on the ground (taking d10 hits) and are stunned for 9 rounds.",
+          "effects": "1d10H, 9st"
+        }
+      }
+    },
+    {
+      "label": "96-100",
+      "rollMin": 96,
+      "rollMax": 100,
+      "results": {
+        "elemental": {
+          "text": "Instead of launching, the elements engulf you. Take 20 hits and a 'B' critical strike.",
+          "effects": "20H, crit::B"
+        },
+        "force": {
+          "text": "The spell internalizes. You take 4d10 hits and are knocked unconscious for 12 hours.",
+          "effects": "4d10H, ko:12h"
+        }
+      }
+    },
+    {
+      "label": "101-125",
+      "rollMin": 101,
+      "rollMax": 125,
+      "results": {
+        "elemental": {
+          "text": "The elemental attack strays to the right of the intended target. You are stunned for three rounds.",
+          "effects": "3st"
+        },
+        "force": {
+          "text": "The spell affects a random target to the right of the intended target. You are stunned for one round and take d10 hits (from the mental strain).",
+          "effects": "1st, 1d10H"
+        }
+      }
+    },
+    {
+      "label": "126-150",
+      "rollMin": 126,
+      "rollMax": 150,
+      "results": {
+        "elemental": {
+          "text": "An unforeseen cosmic shift causes the spell to veer to the left of the target (striking the nearest target). This sudden change causes mental strain; take 5 hits and you are stunned for one round.",
+          "effects": "5H, 1st"
+        },
+        "force": {
+          "text": "You lose control and the spell hits a target to the left of the intended target. Make another attack against a random target within range. You are stunned for one round and take d10 hits from the wild attack.",
+          "effects": "1st, 1d10H"
+        }
+      }
+    },
+    {
+      "label": "151-175",
+      "rollMin": 151,
+      "rollMax": 175,
+      "results": {
+        "elemental": {
+          "text": "You get the polarity backwards! The elements travel 180° from the intended direction (hitting any available target). In the wake, you take 5d10 hits and a 'C' critical strike.",
+          "effects": "5d10H, crit::C"
+        },
+        "force": {
+          "text": "The spell targets a random victim that can be anywhere within 500'. The power backlash short circuits your brain. Take 25 hits and are unable to function for d10 hours.",
+          "effects": "25H, ko:d10h"
+        }
+      }
+    },
+    {
+      "label": "176-185",
+      "rollMin": 176,
+      "rollMax": 185,
+      "results": {
+        "elemental": {
+          "text": "The elements cannot be controlled! Your brain is fried (lose all spell casting ability for 1 week). You operate at -50 for 3 months (or until brain is repaired).",
+          "effects": "nocast:1w, (-50):3mo"
+        },
+        "force": {
+          "text": "The spell lodges in your head. You suffer brain damage; you operate at a -75 modification for d10 months (or until brain is repaired). You lose all spell casting ability for 1 week.",
+          "effects": "(-75):d10mo, nocast:1w"
+        }
+      }
+    },
+    {
+      "label": "186-191",
+      "rollMin": 186,
+      "rollMax": 191,
+      "results": {
+        "elemental": {
+          "text": "The spell explodes immediately as you cast it! Make a point blank attack on yourself. You are in a coma for 1 week (and lose spell casting ability for 2 weeks).",
+          "effects": "selfattack, coma:1w, nocast:2w"
+        },
+        "force": {
+          "text": "The spell misfires and internalizes inside your head. Take 35 hits. You lose spell casting ability for d10 weeks. There is a 40% chance of falling into a d10 day coma.",
+          "effects": "35H, nocast:d10w"
+        }
+      }
+    },
+    {
+      "label": "192-195",
+      "rollMin": 192,
+      "rollMax": 195,
+      "results": {
+        "elemental": {
+          "text": "The elements attack you. Take 10d10 hits and d10 'C' critical strikes. After the assault, you will fall into a coma for 5 weeks. After the coma, you will seem fine; but will die 6 hours later.",
+          "effects": "10d10H, crit::C, coma:5w"
+        },
+        "force": {
+          "text": "You suffer a massive stroke! Take 10d10 hits and fall into a month-long coma. At the end of the coma, you will seem fine; but will die d10 hours later.",
+          "effects": "10d10H, coma:1mo"
+        }
+      }
+    },
+    {
+      "label": "196-200",
+      "rollMin": 196,
+      "rollMax": 200,
+      "results": {
+        "elemental": {
+          "text": "The power is too much to control. The elements refuse to rise to your command. The spell internalizes and paralyzes your torso.",
+          "effects": "paralyze:torso"
+        },
+        "force": {
+          "text": "The spell completely short circuits your nervous system. You are paralyzed from the waist down.",
+          "effects": "paralyze:waist"
+        }
+      }
+    },
+    {
+      "label": "201-250",
+      "rollMin": 201,
+      "rollMax": 250,
+      "results": {
+        "elemental": {
+          "text": "The elements control you! Take 8d10 concussion hits and d10 'E' critical strikes. After displaying your failure, you will fall into a coma for 3 weeks (and lose spell casting ability for d10 weeks).",
+          "effects": "8d10H, crit::E, coma:3w, nocast:d10w"
+        },
+        "force": {
+          "text": "The spell completely internalizes. You lose all spell casting ability for d10 weeks and will be in a coma for d10 weeks. Take 8d10 hits.",
+          "effects": "nocast:d10w, coma:d10w, 8d10H"
+        }
+      }
+    },
+    {
+      "label": "251-300",
+      "rollMin": 251,
+      "rollMax": 300,
+      "results": {
+        "elemental": {
+          "text": "You slip into the elemental planes for d10 rounds. When you return, you realize that you have lost all your spell casting ability for d10 months.",
+          "effects": "nocast:d10mo"
+        },
+        "force": {
+          "text": "Severe nervous disorder causes you to lose all your spell casting ability for d10 months.",
+          "effects": "nocast:d10mo"
+        }
+      }
+    },
+    {
+      "label": "301+",
+      "rollMin": 301,
+      "rollMax": 9999,
+      "results": {
+        "elemental": {
+          "text": "All of the elements visit you at once. All that is left is a charred mass of flesh.",
+          "effects": "-"
+        },
+        "force": {
+          "text": "Massive internalization of spell. Instant brain death.",
+          "effects": "-"
+        }
+      }
+    }
+  ]
+}

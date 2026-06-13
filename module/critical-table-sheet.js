@@ -62,7 +62,11 @@ export class RMFCriticalTableSheet extends HandlebarsApplicationMixin(foundry.ap
     position: { width: 1080, height: 780 },
     actions: {
       pickImage: RMFActions.handlers.pickImage,
-      resolveCritical: RMFCriticalTableSheet.#onResolveCritical
+      resolveCritical: RMFCriticalTableSheet.#onResolveCritical,
+      addRow: RMFCriticalTableSheet.#onAddRow,
+      removeRow: RMFCriticalTableSheet.#onRemoveRow,
+      addColumn: RMFCriticalTableSheet.#onAddColumn,
+      removeColumn: RMFCriticalTableSheet.#onRemoveColumn
     }
   };
 
@@ -77,7 +81,8 @@ export class RMFCriticalTableSheet extends HandlebarsApplicationMixin(foundry.ap
   static TABS = {
     primary: {
       tabs: [
-        { id: "table",   icon: "fas fa-table-cells", label: "RMF.AttackTable.TableTab" },
+        { id: "table",   icon: "fas fa-table-cells", label: "RMF.Tabs.View" },
+        { id: "edit",    icon: "fas fa-pen",         label: "RMF.Tabs.Edit" },
         { id: "resolve", icon: "fas fa-dice-d20",    label: "RMF.AttackTable.ResolveTab" }
       ]
     }
@@ -124,11 +129,29 @@ export class RMFCriticalTableSheet extends HandlebarsApplicationMixin(foundry.ap
       })
     }));
 
-    // Legend (only string values).
-    const legend = sys.legend && typeof sys.legend === "object" ? sys.legend : {};
-    context.legendRows = Object.entries(legend)
+    // Legend: the universal Key comes from CONFIG.RMF (single source of truth,
+    // not persisted per item) + any per-table notes (system.notes).
+    const effectsKey = CONFIG.RMF?.criticalEffectsKey ?? {};
+    const notes = sys.notes && typeof sys.notes === "object" ? sys.notes : {};
+    context.legendRows = [...Object.entries(effectsKey), ...Object.entries(notes)]
       .filter(([, text]) => typeof text === "string")
       .map(([key, text]) => ({ key, text }));
+
+    // Editable-grid context (Editar tab): raw cell values, no parsing.
+    context.columnLabel = L("RMF.CriticalTable.Severity");
+    context.namePlaceholder = L("RMF.CriticalTable.NamePlaceholder");
+    context.editColumns = defs.map((d, index) => ({ index, key: d.key, label: d.label ?? "" }));
+    context.editRows = rows.map((row, index) => ({
+      index,
+      label: row?.label ?? "",
+      rollMin: (row?.rollMin === null || row?.rollMin === undefined) ? "" : row.rollMin,
+      rollMax: row?.rollMax ?? 0,
+      cells: defs.map(d => ({
+        key: d.key,
+        text: row?.results?.[d.key]?.text ?? "",
+        effects: row?.results?.[d.key]?.effects ?? ""
+      }))
+    }));
 
     // Resolve-form state + last result.
     const defaultColumn = defs[0]?.key ?? "";
@@ -226,6 +249,37 @@ export class RMFCriticalTableSheet extends HandlebarsApplicationMixin(foundry.ap
     }
 
     try {
+      // Array-backed fields (Editar tab) are rewritten whole — Foundry turns
+      // deep array-path updates into objects.
+      const dup = (arr) => foundry.utils.duplicate(Array.isArray(arr) ? arr : []);
+      let m;
+      if ((m = name.match(/^system\.rows\.(\d+)\.(label|rollMin|rollMax)$/))) {
+        const i = Number(m[1]), field = m[2];
+        const rows = dup(this.document.system.rows);
+        if (!rows[i]) return;
+        if (field === "rollMin") {
+          const raw = String(target.value ?? "").trim();
+          rows[i].rollMin = raw === "" ? null : (Number.parseInt(raw, 10) || 0);
+        } else if (field === "rollMax") rows[i].rollMax = Number.parseInt(target.value, 10) || 0;
+        else rows[i].label = String(target.value ?? "");
+        return void await this.document.update({ "system.rows": rows });
+      }
+      if ((m = name.match(/^system\.rows\.(\d+)\.results\.([^.]+)\.(text|effects)$/))) {
+        const i = Number(m[1]), col = m[2], field = m[3];
+        const rows = dup(this.document.system.rows);
+        if (!rows[i]) return;
+        rows[i].results ??= {};
+        rows[i].results[col] = { text: "", effects: "", ...(rows[i].results[col] ?? {}) };
+        rows[i].results[col][field] = String(target.value ?? "");
+        return void await this.document.update({ "system.rows": rows });
+      }
+      if ((m = name.match(/^system\.columnDefs\.(\d+)\.(key|label)$/))) {
+        const j = Number(m[1]), field = m[2];
+        const defs = dup(this.document.system.columnDefs);
+        if (!defs[j]) return;
+        defs[j][field] = String(target.value ?? "");
+        return void await this.document.update({ "system.columnDefs": defs });
+      }
       const value = coerceInputValue(target);
       await this.document.update({ [name]: value });
     } catch (err) {
@@ -235,6 +289,39 @@ export class RMFCriticalTableSheet extends HandlebarsApplicationMixin(foundry.ap
   }
 
   /* ───────────────────────── Actions ───────────────────────── */
+
+  static #dupRows(doc) { return foundry.utils.duplicate(Array.isArray(doc.system.rows) ? doc.system.rows : []); }
+  static #dupDefs(doc) { return foundry.utils.duplicate(Array.isArray(doc.system.columnDefs) ? doc.system.columnDefs : []); }
+
+  static async #onAddRow() {
+    const rows = RMFCriticalTableSheet.#dupRows(this.document);
+    const last = rows[rows.length - 1];
+    const nextMin = last && Number.isFinite(last.rollMax) ? last.rollMax + 1 : 1;
+    rows.push({ label: "", rollMin: rows.length ? nextMin : null, rollMax: nextMin, results: {} });
+    await this.document.update({ "system.rows": rows });
+  }
+  static async #onRemoveRow(event, target) {
+    const i = Number(target?.dataset?.index);
+    const rows = RMFCriticalTableSheet.#dupRows(this.document);
+    if (Number.isInteger(i) && i >= 0 && i < rows.length) { rows.splice(i, 1); await this.document.update({ "system.rows": rows }); }
+  }
+  static async #onAddColumn() {
+    const defs = RMFCriticalTableSheet.#dupDefs(this.document);
+    let n = defs.length + 1, key = `col${n}`;
+    while (defs.some(d => d.key === key)) key = `col${++n}`;
+    defs.push({ key, label: "" });
+    const rows = RMFCriticalTableSheet.#dupRows(this.document);
+    for (const r of rows) { r.results ??= {}; r.results[key] = { text: "", effects: "" }; }
+    await this.document.update({ "system.columnDefs": defs, "system.rows": rows });
+  }
+  static async #onRemoveColumn(event, target) {
+    const key = String(target?.dataset?.key ?? "");
+    if (!key) return;
+    const defs = RMFCriticalTableSheet.#dupDefs(this.document).filter(d => d.key !== key);
+    const rows = RMFCriticalTableSheet.#dupRows(this.document);
+    for (const r of rows) { if (r.results) delete r.results[key]; }
+    await this.document.update({ "system.columnDefs": defs, "system.rows": rows });
+  }
 
   static async #onResolveCritical(event, target) {
     event?.preventDefault?.();

@@ -24,13 +24,6 @@
       "label": "E"
     }
   ],
-  "legend": {
-    "key": "Np = must parry N rounds; Nnp = no parry for N rounds; Nst = stunned for N rounds; Nstnp = stunned and unable to parry for N rounds; Nbl = bleed N hits per round; (-N) = foe has -N penalty; (+N) = attacker gets +N next round.",
-    "hits": "+NH = N concussion hits.",
-    "rounds": "M(-N) / M(+N) = the penalty/bonus lasts M rounds. A bare token (p, st, bl, ...) = 1 round. Np(-M) = must parry N rounds at a -M penalty.",
-    "none": "\"-\" = no mechanical effect beyond the text (often death).",
-    "variants": "Conditional cells (e.g. \"with helmet / w/o helmet\") apply the matching variant."
-  },
   "rollMatchPolicy": "rollMin / rollMax are inclusive on an UNMODIFIED d100. The first band (rollMin=null) is the low catch-all; rolls above 100 (modified criticals) clamp to the top band.",
   "rows": [
     {

@@ -2080,3 +2080,96 @@ table.rmf-critical-grid .crit-effects {
 .rmf-tp-apply .rmf-tp-btn { flex: 0 0 auto; cursor: pointer; }
 .rmf-tp-apply .rmf-tp-btn[disabled] { opacity: 0.5; cursor: not-allowed; }
 .rmf-tp-apply .rmf-tp-apply-hint { margin: 6px 0 0; font-size: 0.85em; font-style: italic; color: #666; }
+
+/* ── Table editable grids (Editar tab) + read-only view tabs ───────────── */
+.rmf-edit-hint { margin: 6px 0; font-size: 0.85em; font-style: italic; color: #666; }
+.rmf-edit-grid td.edit-cell { padding: 2px; vertical-align: top; }
+.rmf-edit-grid td.edit-cell textarea {
+  width: 100%; min-width: 9em; resize: vertical; font-size: 0.82em; line-height: 1.2;
+}
+.rmf-edit-grid td.edit-cell input[type="text"] {
+  width: 100%; min-width: 6em; font-size: 0.8em; font-family: monospace;
+}
+.rmf-edit-grid td.roll-col input,
+.rmf-edit-grid th input { width: 100%; min-width: 4em; }
+.rmf-edit-grid td input[type="number"] { width: 4.5em; }
+.rmf-add-btn {
+  margin-top: 6px; cursor: pointer; padding: 3px 10px; border-radius: 4px;
+}
+.rmf-icon-btn {
+  cursor: pointer; border: none; background: transparent; color: #a33; padding: 2px 5px;
+}
+.rmf-icon-btn:hover { color: #d00; }
+.rmf-readonly-description {
+  padding: 4px 2px; line-height: 1.4;
+}
+
+/* ════════════════════════════════════════════════════════════════════
+ * Table sheets — same vertical-scroll strategy as the actor sheet.
+ * The critical / matrix (creature·fumble·spell) / attack roots were not in
+ * the scroll selector lists (lines ~791-895), so their .sheet-body never
+ * got the absolute-positioned, header-offset scroll area and content
+ * overflowed the window. Replicate the full flex-chain + absolute-body
+ * mechanism here for those three roots. Supersedes the older incomplete
+ * .attack-table-sheet-root .sheet-body flex rules.
+ * ════════════════════════════════════════════════════════════════════ */
+.critical-table-sheet-root,
+.matrix-table-sheet-root,
+.attack-table-sheet-root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.critical-table-sheet-root .sheet-main-container,
+.matrix-table-sheet-root .sheet-main-container,
+.attack-table-sheet-root .sheet-main-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.critical-table-sheet-root .sheet-content,
+.matrix-table-sheet-root .sheet-content,
+.attack-table-sheet-root .sheet-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+.window-app .window-content > form.standard-form > .critical-table-sheet-root,
+.window-app .window-content > form.standard-form > .matrix-table-sheet-root,
+.window-app .window-content > form.standard-form > .attack-table-sheet-root,
+.application .window-content > form.standard-form > .critical-table-sheet-root,
+.application .window-content > form.standard-form > .matrix-table-sheet-root,
+.application .window-content > form.standard-form > .attack-table-sheet-root {
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 0 !important;
+}
+.window-app .window-content > form.standard-form > .critical-table-sheet-root .sheet-content,
+.window-app .window-content > form.standard-form > .matrix-table-sheet-root .sheet-content,
+.window-app .window-content > form.standard-form > .attack-table-sheet-root .sheet-content,
+.application .window-content > form.standard-form > .critical-table-sheet-root .sheet-content,
+.application .window-content > form.standard-form > .matrix-table-sheet-root .sheet-content,
+.application .window-content > form.standard-form > .attack-table-sheet-root .sheet-content {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  position: relative;
+}
+.window-app .window-content > form.standard-form > .critical-table-sheet-root .sheet-body,
+.window-app .window-content > form.standard-form > .matrix-table-sheet-root .sheet-body,
+.window-app .window-content > form.standard-form > .attack-table-sheet-root .sheet-body,
+.application .window-content > form.standard-form > .critical-table-sheet-root .sheet-body,
+.application .window-content > form.standard-form > .matrix-table-sheet-root .sheet-body,
+.application .window-content > form.standard-form > .attack-table-sheet-root .sheet-body {
+  /* Absolutely position the scroll area under the auto-measured header */
+  position: absolute;
+  top: var(--rmf-header-height, 140px);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto !important;
+  overflow-x: hidden;
+}

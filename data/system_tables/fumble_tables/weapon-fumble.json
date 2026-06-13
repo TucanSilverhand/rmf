@@ -1,0 +1,469 @@
+{
+  "name": "Weapon Fumble Table",
+  "tableId": "A-10.11.1",
+  "slug": "weapon-fumble",
+  "fromBook": "basic",
+  "columnDefs": [
+    {
+      "key": "one-handed",
+      "label": "One-Handed"
+    },
+    {
+      "key": "two-handed",
+      "label": "Two-Handed"
+    },
+    {
+      "key": "polearms",
+      "label": "Polearms & Spears"
+    },
+    {
+      "key": "mounted",
+      "label": "Mounted"
+    },
+    {
+      "key": "thrown",
+      "label": "Thrown"
+    },
+    {
+      "key": "missile",
+      "label": "Missile"
+    }
+  ],
+  "rollMatchPolicy": "rollMin / rollMax inclusive on a plain (non-open-ended) d100. First band (rollMin=null) is the low catch-all.",
+  "rows": [
+    {
+      "label": "01-25",
+      "rollMin": null,
+      "rollMax": 25,
+      "results": {
+        "one-handed": {
+          "text": "Your palm is sweaty. Maybe you will improve.",
+          "effects": "-"
+        },
+        "two-handed": {
+          "text": "My, that weapon is heavy! You lose the opportunity to take a swing.",
+          "effects": "noatk"
+        },
+        "polearms": {
+          "text": "You snag your own clothes and lose the opportunity to take a swing.",
+          "effects": "noatk"
+        },
+        "mounted": {
+          "text": "Your mount's tack tangles your weapon. You lose the opportunity to take a strike.",
+          "effects": "noatk"
+        },
+        "thrown": {
+          "text": "Your grip is weak. You elect not to attack because of control.",
+          "effects": "noatk"
+        },
+        "missile": {
+          "text": "Sweat trickles into your eye. You elect not to attack. Good choice.",
+          "effects": "noatk"
+        }
+      }
+    },
+    {
+      "label": "26-30",
+      "rollMin": 26,
+      "rollMax": 30,
+      "results": {
+        "one-handed": {
+          "text": "Klutzy. Drop your weapon. Spend two rounds recovering it; or draw a new one next round.",
+          "effects": "drop:2"
+        },
+        "two-handed": {
+          "text": "Your weapon flies. Take four rounds to recover it; or draw a new one next round.",
+          "effects": "drop:4"
+        },
+        "polearms": {
+          "text": "Fumble your delivery and your weapon is out of position. You lose the option to attack.",
+          "effects": "noatk"
+        },
+        "mounted": {
+          "text": "Can't find the right angle. You lose 2 rounds of attack (but can still parry).",
+          "effects": "loseatk:2"
+        },
+        "thrown": {
+          "text": "You fumble your delivery but hang onto your weapon. You have -10 to your next attack.",
+          "effects": "(-10):1"
+        },
+        "missile": {
+          "text": "Your ten thumbs just cannot handle loading. You must reload your weapon.",
+          "effects": "reload"
+        }
+      }
+    },
+    {
+      "label": "31-40",
+      "rollMin": 31,
+      "rollMax": 40,
+      "results": {
+        "one-handed": {
+          "text": "Your feet get tangled. You miss the opportunity to get in that vital blow.",
+          "effects": "noatk"
+        },
+        "two-handed": {
+          "text": "Your mind is wandering. Spend the rest of the round clearing your head.",
+          "effects": "noatk"
+        },
+        "polearms": {
+          "text": "You just look clumsy. Your feet are sliding. You are stunned for one round.",
+          "effects": "1st"
+        },
+        "mounted": {
+          "text": "You slip in the saddle. You lose 2 rounds of attack (but can still parry).",
+          "effects": "loseatk:2"
+        },
+        "thrown": {
+          "text": "Your feet are really tangled up. You lose 2 rounds of attack, but can still parry.",
+          "effects": "loseatk:2"
+        },
+        "missile": {
+          "text": "Your ammunition slips away. You must reload.",
+          "effects": "reload"
+        }
+      }
+    },
+    {
+      "label": "41-50",
+      "rollMin": 41,
+      "rollMax": 50,
+      "results": {
+        "one-handed": {
+          "text": "You are over-extended and strain a muscle. Take 1d5 hits.",
+          "effects": "1d5H"
+        },
+        "two-handed": {
+          "text": "Stumble over an imaginary dead turtle. You lose 2 rounds of attack, but you can still parry.",
+          "effects": "loseatk:2"
+        },
+        "polearms": {
+          "text": "Your weapon is spinning for two rounds. You can still parry at -10.",
+          "effects": "loseatk:2, (-10):2"
+        },
+        "mounted": {
+          "text": "Your mount dodges an unseen foe. You are stunned for 2 rounds.",
+          "effects": "2st"
+        },
+        "thrown": {
+          "text": "You begin juggling your weapon because of a bad grip. Your lack of control stuns you for 3 rounds.",
+          "effects": "3st"
+        },
+        "missile": {
+          "text": "You notice that your ammunition is faulty. After removing it you discover you were wrong. Reload it.",
+          "effects": "reload"
+        }
+      }
+    },
+    {
+      "label": "51-60",
+      "rollMin": 51,
+      "rollMax": 60,
+      "results": {
+        "one-handed": {
+          "text": "You try to impress your opponent with a spin manuever. Too bad. Lose two rounds while you recover.",
+          "effects": "loseatk:2"
+        },
+        "two-handed": {
+          "text": "Your combination of acrobatics and attacks is unimpressive. Lose two rounds of attacks, but you can still parry.",
+          "effects": "loseatk:2"
+        },
+        "polearms": {
+          "text": "You stagger into a nearby fixed object. You are stunned and unable to parry for two rounds.",
+          "effects": "2stnp"
+        },
+        "mounted": {
+          "text": "You lose your grip on your weapon. Luckily, it is tangled in your mount's tack. Your lack of grace stuns you for three rounds.",
+          "effects": "3st"
+        },
+        "thrown": {
+          "text": "Poor release. Weapon travels 2d10 feet to the left of the target.",
+          "effects": "-"
+        },
+        "missile": {
+          "text": "Your ammunition keeps jumping off of your weapon! Try melee next time.",
+          "effects": "noatk"
+        }
+      }
+    },
+    {
+      "label": "61-65",
+      "rollMin": 61,
+      "rollMax": 65,
+      "results": {
+        "one-handed": {
+          "text": "You snag your clothes with your weapon, causing it to slip from your hand. Spend two rounds juggling it.",
+          "effects": "loseatk:2"
+        },
+        "two-handed": {
+          "text": "Your weapon flies from your hands, but you are able to catch it before it flies totally away. Lose two rounds of attack.",
+          "effects": "loseatk:2"
+        },
+        "polearms": {
+          "text": "Your shaft tangles in your legs. You almost fall down in an impressive feat of entangling. Your next attack is at -20.",
+          "effects": "(-20):1"
+        },
+        "mounted": {
+          "text": "Your poor mount stumbles. You are stunned for two rounds.",
+          "effects": "2st"
+        },
+        "thrown": {
+          "text": "Very poor release sends your weapon straight up! You duck for cover while your weapon checks for breakage.",
+          "effects": "breakage"
+        },
+        "missile": {
+          "text": "Your weapon slips from your hands. Spend two rounds recovering it; or draw a new weapon.",
+          "effects": "drop:2"
+        }
+      }
+    },
+    {
+      "label": "66",
+      "rollMin": 66,
+      "rollMax": 66,
+      "results": {
+        "one-handed": {
+          "text": "You execute a perfect attack—against the closest ally (yourself if no one else is around). The ally takes 1d10 hits and a 'B' critical.",
+          "effects": "ally, 1d10H, crit::B"
+        },
+        "two-handed": {
+          "text": "Acrobatic manuever leaves you flat on your back. Take 2d10 hits and an 'E' Krush critical.",
+          "effects": "2d10H, crit:krush:E"
+        },
+        "polearms": {
+          "text": "Your weapon must check for breakage as you slam it into the ground! You are stunned for six rounds because of the impact.",
+          "effects": "breakage, 6st"
+        },
+        "mounted": {
+          "text": "Your swing slices the tack of your mount. You and your saddle take your leave of the poor beast. Take an 'A' Krush critical.",
+          "effects": "crit:krush:A"
+        },
+        "thrown": {
+          "text": "Your ferocious scream is followed by silence as you hit yourself. Take a 'D' Krush critical.",
+          "effects": "self, crit:krush:D"
+        },
+        "missile": {
+          "text": "Take an 'A' Krush critical from the sudden release. Your weapon snaps cleanly into two pieces.",
+          "effects": "crit:krush:A, break"
+        }
+      }
+    },
+    {
+      "label": "67-70",
+      "rollMin": 67,
+      "rollMax": 70,
+      "results": {
+        "one-handed": {
+          "text": "You trip over that uneven surface. Spend two rounds staggering. You can still parry.",
+          "effects": "loseatk:2"
+        },
+        "two-handed": {
+          "text": "You gracefully drop your weapon to the ground. You are able to kick it back into your hand, but you lose two rounds while doing it.",
+          "effects": "loseatk:2"
+        },
+        "polearms": {
+          "text": "Your weapon seems to have a mind of its own! Your next attack is at -50 as you try and get it under control.",
+          "effects": "(-50):1"
+        },
+        "mounted": {
+          "text": "Your tack has loosened! You suddenly slip sideways. You are stunned for two rounds.",
+          "effects": "2st"
+        },
+        "thrown": {
+          "text": "You cannot control your aim—your weapon flies 2d10 feet to the right of the intended target.",
+          "effects": "-"
+        },
+        "missile": {
+          "text": "Your grip fails you and your weapon flies from your hands. Spend two rounds recovering it; or draw a new weapon.",
+          "effects": "drop:2"
+        }
+      }
+    },
+    {
+      "label": "71-80",
+      "rollMin": 71,
+      "rollMax": 80,
+      "results": {
+        "one-handed": {
+          "text": "You are distracted by that pixie in the corner. You lose 2 rounds of attacks.",
+          "effects": "loseatk:2"
+        },
+        "two-handed": {
+          "text": "You strain your shoulders in a mighty swing (that misses). You are stunned for two rounds.",
+          "effects": "2st"
+        },
+        "polearms": {
+          "text": "Your ineptitude is obvious to all. You lose 3 rounds of attacks and are stunned for 2 rounds.",
+          "effects": "loseatk:3, 2st"
+        },
+        "mounted": {
+          "text": "Your weapon goes straight into the ground (check for breakage).",
+          "effects": "breakage"
+        },
+        "thrown": {
+          "text": "Just as you are about to release, you step into an imaginary hole in the ground. Lose 3 rounds getting up from the ground.",
+          "effects": "loseatk:3"
+        },
+        "missile": {
+          "text": "Your bowstring breaks! Draw a new weapon or put a new string on this one.",
+          "effects": "bowbreak"
+        }
+      }
+    },
+    {
+      "label": "81-85",
+      "rollMin": 81,
+      "rollMax": 85,
+      "results": {
+        "one-handed": {
+          "text": "You are suddenly very winded. Take two rounds to relax.",
+          "effects": "loseatk:2"
+        },
+        "two-handed": {
+          "text": "You lose your grip as you begin your swing. Your weapon is trying to slip away. Spend three rounds gaining control. You can still parry.",
+          "effects": "loseatk:3"
+        },
+        "polearms": {
+          "text": "Clumsy move narrowly misses your own head. You are stunned and unable to parry for three rounds (try a bow next time).",
+          "effects": "3stnp"
+        },
+        "mounted": {
+          "text": "Your weapon flies out of your hand! Draw a new one.",
+          "effects": "drop"
+        },
+        "thrown": {
+          "text": "Your weapon drops to the ground as you begin to aim. Take four rounds to recover this one; or draw a new one.",
+          "effects": "drop:4"
+        },
+        "missile": {
+          "text": "Your weapon bites back when you fire. Your shot misses everything, but you are stunned and unable to parry for three rounds.",
+          "effects": "3stnp"
+        }
+      }
+    },
+    {
+      "label": "86-90",
+      "rollMin": 86,
+      "rollMax": 90,
+      "results": {
+        "one-handed": {
+          "text": "Hopefully, you will learn that dancing is not appropriate in combat. You are stunned for two rounds by your lack of ability.",
+          "effects": "2st"
+        },
+        "two-handed": {
+          "text": "You pulled something on that last swing and now it begins to hurt! You are stunned for three rounds while you recover.",
+          "effects": "3st"
+        },
+        "polearms": {
+          "text": "There it goes! Your weapon skitters away. Take six rounds to recover it; or draw a new one.",
+          "effects": "drop:6"
+        },
+        "mounted": {
+          "text": "Your weapon must check for breakage as it hits the hardest part of your foe. You take 2d10 hits from the blast.",
+          "effects": "breakage, 2d10H"
+        },
+        "thrown": {
+          "text": "Your poor and weak release sends the weapon up two feet. It immediately comes down and hits you. You take no damage, but are stunned for six rounds.",
+          "effects": "6st"
+        },
+        "missile": {
+          "text": "You release too soon! Your arrow falls 3d10 feet short of the target. In addition, you spend two rounds trying to find more ammunition.",
+          "effects": "loseatk:2"
+        }
+      }
+    },
+    {
+      "label": "91-95",
+      "rollMin": 91,
+      "rollMax": 95,
+      "results": {
+        "one-handed": {
+          "text": "You fall down as your swing goes wide. You are stunned for three rounds.",
+          "effects": "3st"
+        },
+        "two-handed": {
+          "text": "You fall and narrowly miss gutting yourself! You are stunned for four rounds.",
+          "effects": "4st"
+        },
+        "polearms": {
+          "text": "You fall and smack your head on the ground. You are down for four rounds and stunned for three.",
+          "effects": "down:4, 3st"
+        },
+        "mounted": {
+          "text": "Your mount bucks unexpectedly just as you were about to swing. You find yourself stunned and unable to parry for three rounds.",
+          "effects": "3stnp"
+        },
+        "thrown": {
+          "text": "Your weapon flies behind you 4d10 feet!",
+          "effects": "-"
+        },
+        "missile": {
+          "text": "Your shot goes astray as you slip and fall during your release. You are stunned for six rounds and unable to parry for two rounds.",
+          "effects": "6st, 2np"
+        }
+      }
+    },
+    {
+      "label": "96-99",
+      "rollMin": 96,
+      "rollMax": 99,
+      "results": {
+        "one-handed": {
+          "text": "The excitement is just too much! Your momentary frenzy leaves you stunned and unable to parry for three rounds.",
+          "effects": "3stnp"
+        },
+        "two-handed": {
+          "text": "You trip and fall. You are down for four rounds and unable to parry for three.",
+          "effects": "down:4, 3np"
+        },
+        "polearms": {
+          "text": "Your shoulder doesn't bend that way! You are stunned and unable to parry for three rounds. You now fight at -25.",
+          "effects": "3stnp, (-25):*"
+        },
+        "mounted": {
+          "text": "Your mount jumps wildly. You take 4d10 hits from the impact and are stunned and unable to parry for six rounds.",
+          "effects": "4d10H, 6stnp"
+        },
+        "thrown": {
+          "text": "You trip as you release. Your shot goes off wildly and you are stunned for twelve rounds.",
+          "effects": "12st"
+        },
+        "missile": {
+          "text": "Your weapon shatters (as you don't realize your own strength)! You are stunned for 4 rounds.",
+          "effects": "break, 4st"
+        }
+      }
+    },
+    {
+      "label": "100",
+      "rollMin": 100,
+      "rollMax": 100,
+      "results": {
+        "one-handed": {
+          "text": "You attempt to maim yourself. Take a 'D' critical.",
+          "effects": "self, crit::D"
+        },
+        "two-handed": {
+          "text": "Worst move seen in ages! You are out for 2 days with a groin injury. There is a 50% chance your foes will be out for 3 rounds, laughing.",
+          "effects": "out:2d"
+        },
+        "polearms": {
+          "text": "Your weapon breaks and one end hits you in the head. You are stunned and unable to parry for six rounds.",
+          "effects": "break, 6stnp"
+        },
+        "mounted": {
+          "text": "You can't stay on your mount! You fall and take a 'D' Krush critical.",
+          "effects": "self, crit:krush:D"
+        },
+        "thrown": {
+          "text": "You accidentally hit yourself in the delivery. Take a 'D' Krush critical.",
+          "effects": "self, crit:krush:D"
+        },
+        "missile": {
+          "text": "Poor execution. You take 5 hits as the weapon hits you. You are permanently maimed and are bleeding 2 hits per round.",
+          "effects": "5H, maim, 2bl"
+        }
+      }
+    }
+  ]
+}

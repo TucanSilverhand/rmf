@@ -8,12 +8,12 @@
  *   2. fumble check on the UNMODIFIED natural die
  *   3. attackTotal = roll + OB + mods − target DB
  *   4. look up [attackTotal][targetAT] in the weapon's attack table
- *   5. surface hits + (critType, severity) so the caller can chain into
- *      the matching critical table
+ *   5. surface hits + a critical SEVERITY so the caller can chain into a crit
  *
- * Critical resolution itself is deliberately NOT done here yet — the
- * critical tables are a separate data set (a follow-up). The result
- * carries `critType` + `cell.critSeverity` so the next step is unambiguous.
+ * The critical TYPE (Slash/Krush/…) is NOT a property of the table — it comes
+ * from the ATTACKER (the weapon item's "WEAPON DATA": critical type, OB mod,
+ * max result, real fumble range). The resolver returns the severity; the caller
+ * pairs it with the weapon's criticalType to roll the right critical table.
  *
  * @module tables/attack-resolver
  */
@@ -55,8 +55,9 @@ export function findUmHighRow(table, natural) {
  * @property {number}  targetDB
  * @property {number}  attackTotal    rollTotal + ob + mods − targetDB.
  * @property {import("./cell-parser.mjs").ParsedCell} cell
- * @property {string}  critType       Critical table to chain into (e.g. "Krush").
- * @property {boolean} needsCritical  True when the cell yielded a severity.
+ * @property {boolean} needsCritical  True when the cell yielded a severity. The
+ *   critical TYPE (Slash/Krush/…) is supplied by the ATTACKER (weapon item),
+ *   not by the table — pair this severity with the weapon's criticalType.
  */
 
 /**
@@ -100,7 +101,6 @@ export async function resolveAttack({
     targetAT: Number(targetAT),
     targetDB: Number(targetDB || 0),
     attackTotal,
-    critType: table.critType ?? "",
     rolls: rolled.rolls ?? []
   };
 

@@ -28,7 +28,6 @@
       </h1>
       <div class="attacktable-subtitle">
         {{#if system.tableId}}<span class="ref">{{system.tableId}}</span>{{/if}}
-        {{#if system.critType}}<span class="badge">{{localize 'RMF.AttackTable.CritType'}}: {{system.critType}}</span>{{/if}}
         <span class="badge">{{localize 'RMF.AttackTable.FumbleRange'}}: {{system.fumbleRange.min}}-{{system.fumbleRange.max}}</span>
         <span class="badge">{{system.rowCount}} {{localize 'RMF.AttackTable.Rows'}} × {{system.columns.length}} {{localize 'RMF.AttackTable.Columns'}}</span>
       </div>

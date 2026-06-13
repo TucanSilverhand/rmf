@@ -1,0 +1,308 @@
+{
+  "name": "Spells vs Large Creatures Critical Strike Table",
+  "tableId": "A-10.10.9",
+  "critType": "Large Creature (Spells)",
+  "slug": "spells-vs-large-creature",
+  "fromBook": "basic",
+  "columnDefs": [
+    {
+      "key": "normal",
+      "label": "Normal"
+    },
+    {
+      "key": "slaying",
+      "label": "Slaying"
+    }
+  ],
+  "notes": {
+    "columns": "Spells against Large Creatures: Normal attack spell vs Slaying attack spell."
+  },
+  "rollMatchPolicy": "rollMin / rollMax inclusive. Spell attacks vs large creatures can exceed 100; bands run to 251+ and rolls above the top band clamp to it.",
+  "rows": [
+    {
+      "label": "01-05",
+      "rollMin": null,
+      "rollMax": 5,
+      "results": {
+        "normal": {
+          "text": "Your karma is not strong enough to damage such a beast.",
+          "effects": "+0H"
+        },
+        "slaying": {
+          "text": "Sparks fly. The enchantment fails. You had hoped for more damage.",
+          "effects": "+5H"
+        }
+      }
+    },
+    {
+      "label": "06-10",
+      "rollMin": 6,
+      "rollMax": 10,
+      "results": {
+        "normal": {
+          "text": "It looked powerful but your foe did not even stumble.",
+          "effects": "+1H"
+        },
+        "slaying": {
+          "text": "Foe throws off the magic that threatens his very existence.",
+          "effects": "+9H"
+        }
+      }
+    },
+    {
+      "label": "11-20",
+      "rollMin": 11,
+      "rollMax": 20,
+      "results": {
+        "normal": {
+          "text": "You are daunted by the beast's gaze and your aim fails.",
+          "effects": "+3H"
+        },
+        "slaying": {
+          "text": "Strike lands solid. Foe howls out in pain and anger!",
+          "effects": "+12H"
+        }
+      }
+    },
+    {
+      "label": "21-30",
+      "rollMin": 21,
+      "rollMax": 30,
+      "results": {
+        "normal": {
+          "text": "The strike is powerful, but poorly placed. Remember, focus.",
+          "effects": "+5H"
+        },
+        "slaying": {
+          "text": "Chest strike leaves visible damage. Foe makes a futile attempt to brush it off.",
+          "effects": "+15H"
+        }
+      }
+    },
+    {
+      "label": "31-40",
+      "rollMin": 31,
+      "rollMax": 40,
+      "results": {
+        "normal": {
+          "text": "The attack lands well but seems only to scuff your foe's skin.",
+          "effects": "+7H"
+        },
+        "slaying": {
+          "text": "Firm strike to foe's lower abdomen. Measurable damage has been done.",
+          "effects": "+18H"
+        }
+      }
+    },
+    {
+      "label": "41-50",
+      "rollMin": 41,
+      "rollMax": 50,
+      "results": {
+        "normal": {
+          "text": "Solid attack yields predictable damage.",
+          "effects": "+10H"
+        },
+        "slaying": {
+          "text": "Your assault entangles foe's arm for an instant. Arm is bruised.",
+          "effects": "+20H"
+        }
+      }
+    },
+    {
+      "label": "51-65",
+      "rollMin": 51,
+      "rollMax": 65,
+      "results": {
+        "normal": {
+          "text": "Weak attack to a vulnerable spot. Foe is enraged by the close call.",
+          "effects": "+13H"
+        },
+        "slaying": {
+          "text": "Blow to foe's back. Foe's hide is tough, but much damage is done.",
+          "effects": "+25H"
+        }
+      }
+    },
+    {
+      "label": "66",
+      "rollMin": 66,
+      "rollMax": 66,
+      "results": {
+        "normal": {
+          "text": "Blast drives into foe's mouth. The concussion knocks him down and puts him into a coma for a month.",
+          "effects": "+30H"
+        },
+        "slaying": {
+          "text": "Assaulting foe's very living essence, your strike lands upon his head. His life is stripped from him. He dies instantly.",
+          "effects": "(+10)"
+        }
+      }
+    },
+    {
+      "label": "67-70",
+      "rollMin": 67,
+      "rollMax": 70,
+      "results": {
+        "normal": {
+          "text": "Solid strike on foe's leg. Foe feels the assault.",
+          "effects": "+15H"
+        },
+        "slaying": {
+          "text": "Attack hammers foe in his shield side. He is in much pain.",
+          "effects": "+30H"
+        }
+      }
+    },
+    {
+      "label": "71-80",
+      "rollMin": 71,
+      "rollMax": 80,
+      "results": {
+        "normal": {
+          "text": "Solid strike to foe's head hurts him, but he is still coming. If foe has head gear it is knocked off.",
+          "effects": "+20H"
+        },
+        "slaying": {
+          "text": "Etch a nasty wound in foe's chest over his vitals. He is upset greatly. You have initiative for 6 rounds.",
+          "effects": "+12H, 3st"
+        }
+      }
+    },
+    {
+      "label": "81-90",
+      "rollMin": 81,
+      "rollMax": 90,
+      "results": {
+        "normal": {
+          "text": "Strong blast staggers your terrible foe. He is as surprised as you are at this success. He loses 6 rounds of initiative.",
+          "effects": "+15H, 3st"
+        },
+        "slaying": {
+          "text": "Blow to foe's arm joint lands poorly. Foe will have a bruise. You think you know what went wrong.",
+          "effects": "+25H, 3st"
+        }
+      }
+    },
+    {
+      "label": "91-95",
+      "rollMin": 91,
+      "rollMax": 95,
+      "results": {
+        "normal": {
+          "text": "Hard and effective, your strike almost brings foe down. He stumbles, but does not fall.",
+          "effects": "+20H, 2stnp"
+        },
+        "slaying": {
+          "text": "You concentrate the energy of the strike and fracture foe's leg bone.",
+          "effects": "2stp, (-30)"
+        }
+      }
+    },
+    {
+      "label": "96-98",
+      "rollMin": 96,
+      "rollMax": 98,
+      "results": {
+        "normal": {
+          "text": "Strike lands and tears down into foe's neck. This vicious blast crushes foe's neck and shatters his spine. He falls unmoving and dies in 3 rounds.",
+          "effects": "-"
+        },
+        "slaying": {
+          "text": "You are a mighty enchanter. Your strike hits foe's chest and neck. His neck is broken. Foe drops and dies.",
+          "effects": "(+15)"
+        }
+      }
+    },
+    {
+      "label": "99-100",
+      "rollMin": 99,
+      "rollMax": 100,
+      "results": {
+        "normal": {
+          "text": "You step into the right spot and rip open foe's side. Your blow shatters some ribs. Foe dies in 6 painful rounds.",
+          "effects": "-"
+        },
+        "slaying": {
+          "text": "Perfect aim. Foe's carotid artery and jugular vein are torn open. Foe drops and dies in 3 rounds.",
+          "effects": "-"
+        }
+      }
+    },
+    {
+      "label": "101-150",
+      "rollMin": 101,
+      "rollMax": 150,
+      "results": {
+        "normal": {
+          "text": "Glancing strike to foe's abdomen loses much of the impact on foe's hide.",
+          "effects": "+30H, 3stnp"
+        },
+        "slaying": {
+          "text": "Side strike. Attack careens down foe's chest and leg. Skin is torn away. Foe roars his defiance.",
+          "effects": "+35H, 5stnp"
+        }
+      }
+    },
+    {
+      "label": "151-175",
+      "rollMin": 151,
+      "rollMax": 175,
+      "results": {
+        "normal": {
+          "text": "Your weapon wounds deep and cuts muscles and tendons.",
+          "effects": "5stnp, (-20)"
+        },
+        "slaying": {
+          "text": "Fracture a bone in foe's forearm. It twists in a painful direction. His guard is down.",
+          "effects": "+40H, 6stnp, (-25)"
+        }
+      }
+    },
+    {
+      "label": "176-200",
+      "rollMin": 176,
+      "rollMax": 200,
+      "results": {
+        "normal": {
+          "text": "Foe presents a weak spot and you strike. Blow lands at the base of the neck. Tendons are damaged.",
+          "effects": "+35H, (-35), 10bl"
+        },
+        "slaying": {
+          "text": "He is knocked down and out. Ribs are shattered. The concussion causes internal bleeding.",
+          "effects": "10bl, (-50)"
+        }
+      }
+    },
+    {
+      "label": "201-250",
+      "rollMin": 201,
+      "rollMax": 250,
+      "results": {
+        "normal": {
+          "text": "When your strike lands on foe's back, bones crackle and pop. Foe is paralyzed and in a 3 month coma.",
+          "effects": "+50H"
+        },
+        "slaying": {
+          "text": "Assault causes mortal damage. Foe's organs fail. He is inactive and dies after 3 rounds.",
+          "effects": "+50H"
+        }
+      }
+    },
+    {
+      "label": "251+",
+      "rollMin": 251,
+      "rollMax": 9999,
+      "results": {
+        "normal": {
+          "text": "Foe lowers his eyes within your reach and you strike with great skill and fury. Foe dies instantly.",
+          "effects": "+20H"
+        },
+        "slaying": {
+          "text": "Impact of blast drives content of skull in all directions. Foe falls and flails around violently. He dies instantly.",
+          "effects": "-"
+        }
+      }
+    }
+  ]
+}

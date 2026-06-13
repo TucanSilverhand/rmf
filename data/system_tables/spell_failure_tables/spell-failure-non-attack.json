@@ -1,0 +1,290 @@
+{
+  "name": "Spell Failure Table — Non-Attack Spells",
+  "tableId": "A-10.11.2",
+  "spellMode": "nonAttack",
+  "slug": "spell-failure-non-attack",
+  "fromBook": "basic",
+  "columnDefs": [
+    {
+      "key": "informational",
+      "label": "Informational"
+    },
+    {
+      "key": "other",
+      "label": "Other"
+    }
+  ],
+  "rollMatchPolicy": "rollMin / rollMax inclusive on a plain (non-open-ended) d100 + modifiers. Bands run to 301+; rolls above the top band clamp to it.",
+  "rows": [
+    {
+      "label": "01-20",
+      "rollMin": null,
+      "rollMax": 20,
+      "results": {
+        "informational": {
+          "text": "Momentary lapse in concentration delays the casting of the spell for one round.",
+          "effects": "delay:1"
+        },
+        "other": {
+          "text": "You stumble across the incantation and delay the casting of the spell for one round.",
+          "effects": "delay:1"
+        }
+      }
+    },
+    {
+      "label": "21-30",
+      "rollMin": 21,
+      "rollMax": 30,
+      "results": {
+        "informational": {
+          "text": "You only gain one small bit of information. Unfortunately, that information is outdated (or incorrect).",
+          "effects": "-"
+        },
+        "other": {
+          "text": "You cannot remember the final words for the spell. Lose the spell (but not the power points).",
+          "effects": "losespell"
+        }
+      }
+    },
+    {
+      "label": "31-40",
+      "rollMin": 31,
+      "rollMax": 40,
+      "results": {
+        "informational": {
+          "text": "You gain half of the desired information; but it is incorrect.",
+          "effects": "-"
+        },
+        "other": {
+          "text": "Your head pounds. You have to stop casting (lose the spell, but not the power points).",
+          "effects": "losespell"
+        }
+      }
+    },
+    {
+      "label": "41-60",
+      "rollMin": 41,
+      "rollMax": 60,
+      "results": {
+        "informational": {
+          "text": "The information you gain is correct, but you have no idea what the topic was!",
+          "effects": "-"
+        },
+        "other": {
+          "text": "A momentary mental lapse causes you to forget your place in the spell (lose the spell, but not the power points).",
+          "effects": "losespell"
+        }
+      }
+    },
+    {
+      "label": "61-75",
+      "rollMin": 61,
+      "rollMax": 75,
+      "results": {
+        "informational": {
+          "text": "You gain correct information about a similar topic to that which you were seeking. You are so surprised, you are stunned 1 round.",
+          "effects": "1st"
+        },
+        "other": {
+          "text": "While casting, you notice that shadows are beginning to move. You immediately stop casting (lose the spell and 1 power point).",
+          "effects": "losespell, losepp:1"
+        }
+      }
+    },
+    {
+      "label": "76-90",
+      "rollMin": 76,
+      "rollMax": 90,
+      "results": {
+        "informational": {
+          "text": "You cannot make out the information due to extraneous feedback.",
+          "effects": "-"
+        },
+        "other": {
+          "text": "A muscle cramp in your jaw causes your spell to fail. Lose the spell, and half the normal points (rounded down). You are stunned for two rounds.",
+          "effects": "losespell, losepp:half, 2st"
+        }
+      }
+    },
+    {
+      "label": "91-95",
+      "rollMin": 91,
+      "rollMax": 95,
+      "results": {
+        "informational": {
+          "text": "You gain a bit of ominous information about your own death! You are stunned for one round.",
+          "effects": "1st"
+        },
+        "other": {
+          "text": "You are seeing stars. You must cancel the spell. Lose the spell, and half the normal power points (rounded down). You are stunned for one round.",
+          "effects": "losespell, losepp:half, 1st"
+        }
+      }
+    },
+    {
+      "label": "96-100",
+      "rollMin": 96,
+      "rollMax": 100,
+      "results": {
+        "informational": {
+          "text": "You gain one piece of very specific, incorrect information. However, you experience power feedback (take d10 hits).",
+          "effects": "1d10H"
+        },
+        "other": {
+          "text": "You internalize the spell. You take 2d10 hits and are stunned for 2d10 rounds.",
+          "effects": "2d10H"
+        }
+      }
+    },
+    {
+      "label": "101-125",
+      "rollMin": 101,
+      "rollMax": 125,
+      "results": {
+        "informational": {
+          "text": "Power feedback causes the information to be garbled. You are stunned for two rounds.",
+          "effects": "2st"
+        },
+        "other": {
+          "text": "The spell strays to points unknown. You are stunned for three rounds.",
+          "effects": "3st"
+        }
+      }
+    },
+    {
+      "label": "126-150",
+      "rollMin": 126,
+      "rollMax": 150,
+      "results": {
+        "informational": {
+          "text": "You gain useless information about an unknown target. In addition, there is so much information, that you are stunned for three rounds.",
+          "effects": "3st"
+        },
+        "other": {
+          "text": "For some reason, the spell does not work! You are stunned for four rounds while you try and figure it out.",
+          "effects": "noeffect, 4st"
+        }
+      }
+    },
+    {
+      "label": "151-175",
+      "rollMin": 151,
+      "rollMax": 175,
+      "results": {
+        "informational": {
+          "text": "You strain too hard to get the information. Your spell fails utterly and you take 3 hits (and are stunned for 5 rounds).",
+          "effects": "losespell, 3H, 5st"
+        },
+        "other": {
+          "text": "You have been working too hard. The spell misfires badly. You take d10 hits and are stunned for d10 rounds.",
+          "effects": "1d10H"
+        }
+      }
+    },
+    {
+      "label": "176-185",
+      "rollMin": 176,
+      "rollMax": 185,
+      "results": {
+        "informational": {
+          "text": "Something just is not right here. The massive overload in your head knocks you down (take five hits). Spend 5d10 minutes recovering (no other actions allowed).",
+          "effects": "5H, ko:5d10min"
+        },
+        "other": {
+          "text": "The spell misfires in your head. Take 2d10 hits while you are knocked down. You are unable to function for one hour.",
+          "effects": "2d10H, ko:1h"
+        }
+      }
+    },
+    {
+      "label": "186-191",
+      "rollMin": 186,
+      "rollMax": 191,
+      "results": {
+        "informational": {
+          "text": "The utter nothingness that you discern takes you close to death. Take 2d10 hits and an 'A' Impact critical as you recover. You must spend one hour doing nothing.",
+          "effects": "2d10H, crit:impact:A, ko:1h"
+        },
+        "other": {
+          "text": "Severe power feedback knocks you down. Take 1d10 hits and an 'A' Impact critical. You are unable to function for d10 hours.",
+          "effects": "1d10H, crit:impact:A, ko:d10h"
+        }
+      }
+    },
+    {
+      "label": "192-195",
+      "rollMin": 192,
+      "rollMax": 195,
+      "results": {
+        "informational": {
+          "text": "You have seen your own death! You collapse to the ground (take 3d10 hits and you are unconscious for d10 hours). You now suffer from Paranoia.",
+          "effects": "3d10H, ko:d10h"
+        },
+        "other": {
+          "text": "You have just acquired a nervous disorder (GM's discretion). You lose all spell casting ability for d10 weeks. You slam yourself into the nearest solid object (take 5d10 hits) and knock yourself out (for 12 hours).",
+          "effects": "nocast:d10w, 5d10H, ko:12h"
+        }
+      }
+    },
+    {
+      "label": "196-200",
+      "rollMin": 196,
+      "rollMax": 200,
+      "results": {
+        "informational": {
+          "text": "You are the victim of a mild stroke. Take 4d10 hits and lose all spell casting ability for one week. In addition, you will have a -40 penalty for d10 days.",
+          "effects": "4d10H, nocast:1w, (-40):d10d"
+        },
+        "other": {
+          "text": "You suffer a mild stroke. Take 20 hits and lose all spell casting ability for two weeks. In addition, you will have a -50 penalty for d10 days.",
+          "effects": "20H, nocast:2w, (-50):d10d"
+        }
+      }
+    },
+    {
+      "label": "201-250",
+      "rollMin": 201,
+      "rollMax": 250,
+      "results": {
+        "informational": {
+          "text": "The spell short circuits. Take 20 hits and knock yourself out for 9 hours. You lose all spell casting ability for 4 weeks.",
+          "effects": "20H, ko:9h, nocast:4w"
+        },
+        "other": {
+          "text": "You internalize the spell. Take 4d10 hits and you are knocked out for 2d10 hours. You have lost all spell casting ability for d10 weeks.",
+          "effects": "4d10H, ko:2d10h, nocast:d10w"
+        }
+      }
+    },
+    {
+      "label": "251-300",
+      "rollMin": 251,
+      "rollMax": 300,
+      "results": {
+        "informational": {
+          "text": "You now have a nervous tick. You are stunned for d10 rounds. Any time you attempt to cast this spell in the future will result in deterioration of the nervous tick (eventually, you will become a quivering blob).",
+          "effects": "-"
+        },
+        "other": {
+          "text": "You now suffer from a nervous disorder (GM's discretion). You are stunned for 2d10 rounds and can no longer cast this spell.",
+          "effects": "-"
+        }
+      }
+    },
+    {
+      "label": "301+",
+      "rollMin": 301,
+      "rollMax": 9999,
+      "results": {
+        "informational": {
+          "text": "You have seen Armageddon. This results in brain shut-down. You are in a coma for 3 months.",
+          "effects": "coma:3mo"
+        },
+        "other": {
+          "text": "You suffer a severe stroke. You drop into a coma for d10 months.",
+          "effects": "coma:d10mo"
+        }
+      }
+    }
+  ]
+}

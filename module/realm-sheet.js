@@ -9,7 +9,7 @@
  * @extends {HandlebarsApplicationMixin(foundry.applications.sheets.ItemSheetV2)}
  */
 const { HandlebarsApplicationMixin } = foundry.applications.api;
-import { bindChangeListeners, coerceInputValue, buildEntityTag } from "./utils/sheet-helpers.mjs";
+import { bindChangeListeners, coerceInputValue, buildEntityTag, wireTabs, setActiveTab as utilSetActiveTab, initHeaderAutoHeight } from "./utils/sheet-helpers.mjs";
 import { RMFActions } from "./actions.mjs";
 
 const POWER_POINTS_TYPES = ["Essence", "Channeling", "Mentalism"];
@@ -38,6 +38,15 @@ export class RMFRealmSheet extends HandlebarsApplicationMixin(foundry.applicatio
     form: {
       template: "systems/rmf/templates/item-realm-sheet.hbs",
       scrollable: [".sheet-body"]
+    }
+  };
+
+  static TABS = {
+    primary: {
+      tabs: [
+        { id: "view", icon: "fas fa-eye", label: "RMF.Tabs.View" },
+        { id: "edit", icon: "fas fa-pen", label: "RMF.Tabs.Edit" }
+      ]
     }
   };
 
@@ -94,17 +103,50 @@ export class RMFRealmSheet extends HandlebarsApplicationMixin(foundry.applicatio
     context.selectedStat2 = system.statBonus?.stat2 ?? "";
     context.selectedStat3 = system.statBonus?.stat3 ?? "";
 
+    // Display labels for the read-only "Ver" tab.
+    const statLabelOf = (v) => context.statOptions.find((o) => o.value === v)?.label ?? "—";
+    context.stat1Label = statLabelOf(context.selectedStat1);
+    context.stat2Label = statLabelOf(context.selectedStat2);
+    context.stat3Label = statLabelOf(context.selectedStat3);
+    context.powerPointsTypeLabel =
+      context.powerPointsTypeOptions.find((o) => o.value === context.selectedPowerPointsType)?.label
+      ?? context.selectedPowerPointsType;
+
     return context;
   }
 
   _onFirstRender(context, options) {
     super._onFirstRender?.(context, options);
+    this._setupTabs(this.element);
+    this._initHeaderAutoHeight(this.element);
     this._bindChangeListeners(this.element);
   }
 
   _onRender(context, options) {
     super._onRender?.(context, options);
+    this._setupTabs(this.element);
+    if (!this.element?._rmfHeaderResizeObserver) this._initHeaderAutoHeight(this.element);
     this._bindChangeListeners(this.element);
+    const fallback = this.constructor.TABS?.primary?.tabs?.[0]?.id ?? null;
+    const existing = this.element?.querySelector?.(".sheet-tabs .item.active")?.dataset?.tab;
+    const active = this._activeTab || existing || fallback;
+    if (active) this._setActiveTab(active, this.element);
+  }
+
+  _setupTabs(html) {
+    const element = html?.querySelector ? html : this.element;
+    if (element) wireTabs(element, (tab, el) => this._setActiveTab(tab, el));
+  }
+
+  _setActiveTab(tab, html) {
+    this._activeTab = tab;
+    const element = html?.querySelector ? html : this.element;
+    if (element) utilSetActiveTab(tab, element);
+  }
+
+  _initHeaderAutoHeight(root) {
+    const element = root?.querySelector ? root : this.element;
+    if (element) initHeaderAutoHeight(element);
   }
 
   _bindChangeListeners(root) {

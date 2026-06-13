@@ -17,12 +17,20 @@ export { findAttackRow, lookupAttack, lookupResistanceMod, tableColumns } from "
 export { rollOpenEndedD100 } from "./open-ended.mjs";
 export { resolveAttack, resolveResistanceSpell, findUmHighRow } from "./attack-resolver.mjs";
 export { parseCriticalEffects, lookupCritical, resolveCritical } from "./critical.mjs";
+export { parseDice, parseDuration, parseChain } from "./effects-common.mjs";
+export { parseFumbleEffects, lookupFumble, resolveFumble } from "./fumble.mjs";
+export { parseSpellFailureEffects, lookupSpellFailure, resolveSpellFailure } from "./spell-failure.mjs";
+export { findCriticalTableByType, resolveChainedCritical } from "./chain.mjs";
 
 import { parseCell, parseModifierCell, describeCell } from "./cell-parser.mjs";
 import { findAttackRow, lookupAttack, lookupResistanceMod, tableColumns } from "./lookup.mjs";
 import { rollOpenEndedD100 } from "./open-ended.mjs";
 import { resolveAttack, resolveResistanceSpell, findUmHighRow } from "./attack-resolver.mjs";
 import { parseCriticalEffects, lookupCritical, resolveCritical } from "./critical.mjs";
+import { parseDice, parseDuration, parseChain } from "./effects-common.mjs";
+import { parseFumbleEffects, lookupFumble, resolveFumble } from "./fumble.mjs";
+import { parseSpellFailureEffects, lookupSpellFailure, resolveSpellFailure } from "./spell-failure.mjs";
+import { findCriticalTableByType, resolveChainedCritical } from "./chain.mjs";
 
 /**
  * Bundled namespace exposed on `game.rmf.tables`.
@@ -54,5 +62,16 @@ export const TablesAPI = {
   findUmHighRow,
   parseCriticalEffects,
   lookupCritical,
-  resolveCritical
+  resolveCritical,
+  parseDice,
+  parseDuration,
+  parseChain,
+  parseFumbleEffects,
+  lookupFumble,
+  resolveFumble,
+  parseSpellFailureEffects,
+  lookupSpellFailure,
+  resolveSpellFailure,
+  findCriticalTableByType,
+  resolveChainedCritical
 };

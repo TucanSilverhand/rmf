@@ -10,8 +10,10 @@
  * @extends {HandlebarsApplicationMixin(foundry.applications.sheets.ItemSheetV2)}
  */
 const { HandlebarsApplicationMixin } = foundry.applications.api;
-import { coerceInputValue, buildEntityTag, initHeaderAutoHeight, bindChangeListeners } from "./utils/sheet-helpers.mjs";
+import { coerceInputValue, buildEntityTag, initHeaderAutoHeight, bindChangeListeners, wireTabs, setActiveTab as utilSetActiveTab } from "./utils/sheet-helpers.mjs";
 import { RMFActions } from "./actions.mjs";
+
+const RARITY_CHOICES = ["common", "uncommon", "rare", "very rare", "legendary"];
 
 export class RMFItemSheet extends HandlebarsApplicationMixin(foundry.applications.sheets.ItemSheetV2) {
 
@@ -48,6 +50,16 @@ export class RMFItemSheet extends HandlebarsApplicationMixin(foundry.application
     form: { template: 'systems/rmf/templates/item-sheet.hbs', scrollable: [".sheet-body"] }
   };
 
+  // Tabs apply to the equipment template only; race routes to its own sheet.
+  static TABS = {
+    primary: {
+      tabs: [
+        { id: "view", icon: "fas fa-eye", label: "RMF.Tabs.View" },
+        { id: "edit", icon: "fas fa-pen", label: "RMF.Tabs.Edit" }
+      ]
+    }
+  };
+
   get parts() {
     const base = this.constructor.PARTS || {};
     const parts = { ...base };
@@ -82,6 +94,8 @@ export class RMFItemSheet extends HandlebarsApplicationMixin(foundry.application
     context.isEditable = this.isEditable;
     context.isRace = this.document.type === 'race';
 
+    context.editable = this.isEditable;
+
     // Enriquecido solo para vistas (no afecta a guardado granular)
     try {
       context.enrichedDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(
@@ -90,19 +104,44 @@ export class RMFItemSheet extends HandlebarsApplicationMixin(foundry.application
       );
     } catch {}
 
+    // Equipment: rarity select options + read-only display label.
+    const sys = this.document.system ?? {};
+    const localize = (k) => game.i18n.has(k) ? game.i18n.localize(k) : null;
+    context.rarityOptions = RARITY_CHOICES.map((value) => ({
+      value, label: localize(`RMF.Items.Rarities.${value}`) ?? value, selected: (sys.rarity ?? "common") === value
+    }));
+    context.rarityLabel = (localize(`RMF.Items.Rarities.${sys.rarity}`) ?? sys.rarity ?? "");
+
     return context;
   }
 
   _onFirstRender(context, options) {
     super._onFirstRender?.(context, options);
+    this._setupTabs(this.element);
     this._bindChangeListeners(this.element);
     this._initHeaderAutoHeight(this.element);
   }
 
   _onRender(context, options) {
     super._onRender?.(context, options);
+    this._setupTabs(this.element);
     this._bindChangeListeners(this.element);
     if (!this._headerResizeObserver) this._initHeaderAutoHeight(this.element);
+    const fallback = this.constructor.TABS?.primary?.tabs?.[0]?.id ?? null;
+    const existing = this.element?.querySelector?.(".sheet-tabs .item.active")?.dataset?.tab;
+    const active = this._activeTab || existing || fallback;
+    if (active) this._setActiveTab(active, this.element);
+  }
+
+  _setupTabs(html) {
+    const element = html?.querySelector ? html : this.element;
+    if (element) wireTabs(element, (tab, el) => this._setActiveTab(tab, el));
+  }
+
+  _setActiveTab(tab, html) {
+    this._activeTab = tab;
+    const element = html?.querySelector ? html : this.element;
+    if (element) utilSetActiveTab(tab, element);
   }
 
   /**

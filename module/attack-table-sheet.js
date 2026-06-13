@@ -46,7 +46,9 @@ export class RMFAttackTableSheet extends HandlebarsApplicationMixin(foundry.appl
     position: { width: 980, height: 760 },
     actions: {
       pickImage: RMFActions.handlers.pickImage,
-      resolveAttack: RMFAttackTableSheet.#onResolveAttack
+      resolveAttack: RMFAttackTableSheet.#onResolveAttack,
+      addRow: RMFAttackTableSheet.#onAddRow,
+      removeRow: RMFAttackTableSheet.#onRemoveRow
     }
   };
 
@@ -61,7 +63,8 @@ export class RMFAttackTableSheet extends HandlebarsApplicationMixin(foundry.appl
   static TABS = {
     primary: {
       tabs: [
-        { id: "table",   icon: "fas fa-table-cells", label: "RMF.AttackTable.TableTab" },
+        { id: "table",   icon: "fas fa-table-cells", label: "RMF.Tabs.View" },
+        { id: "edit",    icon: "fas fa-pen",         label: "RMF.Tabs.Edit" },
         { id: "resolve", icon: "fas fa-dice-d20",    label: "RMF.AttackTable.ResolveTab" }
       ]
     }
@@ -158,14 +161,10 @@ export class RMFAttackTableSheet extends HandlebarsApplicationMixin(foundry.appl
       cells: columnOrder.map(key => ({ at: key, text: sys.fumble?.results?.[String(key)] ?? "" }))
     };
 
-    // ATTACK TYPE DATA / SPELL DATA box: per-attack-type criticals on
-    // creature tables, per-spell OB mod / max result / max critical on
-    // spell tables. `hasSpellData` switches the extra columns on.
-    const attackTypes = Array.isArray(sys.attackTypes) ? sys.attackTypes : [];
-    context.attackTypes = attackTypes;
-    context.hasAttackTypes = attackTypes.length > 0;
-    context.hasSpellData = attackTypes.some(a => a?.obMod || a?.maxResult !== null || a?.maxCritical);
-    context.attackTypeNotes = Array.isArray(sys.attackTypeNotes) ? sys.attackTypeNotes : [];
+    // The crit type / OB mod / max result per attack form (the book's "ATTACK
+    // TYPE DATA / SPELL DATA" box) is per-attacker data (weapon item), no longer
+    // carried on the shared attack table.
+    context.hasAttackTypes = false;
 
     // Sticky resolve-form state + last result. Resistance tables pick a
     // categorical column instead of a numeric AT.
@@ -191,6 +190,23 @@ export class RMFAttackTableSheet extends HandlebarsApplicationMixin(foundry.appl
     context.rangeModifiers = Array.isArray(legend.rangeModifiers)
       ? legend.rangeModifiers.filter(r => r && typeof r === "object")
       : [];
+
+    // Editable-grid context (Editar tab): string cells keyed by the same
+    // columnOrder as the read-only grid; columns are structural (AT / column
+    // keys) so only labels/cells/bands are edited, not the column set.
+    context.editColumns = columnOrder.map((key, index) => ({ index, key: String(key), label: String(headers[index] ?? key) }));
+    context.editRows = rows.map((row, index) => ({
+      index,
+      label: row?.label ?? "",
+      rollMin: (row?.rollMin === null || row?.rollMin === undefined) ? "" : row.rollMin,
+      rollMax: row?.rollMax ?? 0,
+      cells: columnOrder.map(key => ({ key: String(key), value: String(row?.results?.[String(key)] ?? "") }))
+    }));
+    context.editFumble = {
+      label: sys.fumble?.label ?? "",
+      cells: columnOrder.map(key => ({ key: String(key), value: String(sys.fumble?.results?.[String(key)] ?? "") }))
+    };
+    context.columnLabel = game.i18n.localize(isResistance ? "RMF.AttackTable.Column" : "RMF.AttackTable.ArmorType");
 
     return context;
   }
@@ -228,7 +244,7 @@ export class RMFAttackTableSheet extends HandlebarsApplicationMixin(foundry.appl
     else if (r.cell?.kind === "miss") outcome = localize("RMF.AttackTable.Miss");
     else {
       outcome = `${r.cell?.hits ?? 0} ${localize("RMF.AttackTable.Hits")}`;
-      if (r.cell?.critSeverity) outcome += ` + ${r.cell.critSeverity} ${r.critType}`.trimEnd();
+      if (r.cell?.critSeverity) outcome += ` + ${r.cell.critSeverity}`;
     }
     return {
       natural: r.natural,
@@ -238,10 +254,9 @@ export class RMFAttackTableSheet extends HandlebarsApplicationMixin(foundry.appl
       targetAT: r.targetAT,
       outcome,
       needsCritical: r.needsCritical,
+      // The critical TYPE comes from the attacking weapon, not the table.
       critHint: r.needsCritical
-        ? game.i18n.format("RMF.AttackTable.ChatNeedsCrit", {
-            severity: r.cell.critSeverity, critType: r.critType
-          })
+        ? game.i18n.format("RMF.AttackTable.ChatNeedsCrit", { severity: r.cell.critSeverity })
         : "",
       umHigh: !!r.umHigh,
       umLabel: r.umLabel ?? ""
@@ -321,6 +336,37 @@ export class RMFAttackTableSheet extends HandlebarsApplicationMixin(foundry.appl
     }
 
     try {
+      // Editar tab: rows is an array (Foundry mangles deep array-path updates),
+      // so rewrite it whole. Attack cells are plain strings ("12E").
+      const dup = (arr) => foundry.utils.duplicate(Array.isArray(arr) ? arr : []);
+      let m;
+      if ((m = name.match(/^system\.rows\.(\d+)\.(label|rollMin|rollMax)$/))) {
+        const i = Number(m[1]), field = m[2];
+        const rows = dup(this.document.system.rows);
+        if (!rows[i]) return;
+        if (field === "rollMin") {
+          const raw = String(target.value ?? "").trim();
+          rows[i].rollMin = raw === "" ? null : (Number.parseInt(raw, 10) || 0);
+        } else if (field === "rollMax") rows[i].rollMax = Number.parseInt(target.value, 10) || 0;
+        else rows[i].label = String(target.value ?? "");
+        return void await this.document.update({ "system.rows": rows });
+      }
+      if ((m = name.match(/^system\.rows\.(\d+)\.results\.(.+)$/))) {
+        const i = Number(m[1]), key = m[2];
+        const rows = dup(this.document.system.rows);
+        if (!rows[i]) return;
+        rows[i].results ??= {};
+        rows[i].results[key] = String(target.value ?? "");
+        return void await this.document.update({ "system.rows": rows });
+      }
+      if ((m = name.match(/^system\.columnDefs\.(\d+)\.(key|label)$/))) {
+        const j = Number(m[1]), field = m[2];
+        const defs = dup(this.document.system.columnDefs);
+        if (!defs[j]) return;
+        defs[j][field] = String(target.value ?? "");
+        return void await this.document.update({ "system.columnDefs": defs });
+      }
+      // Fumble results (object) + scalars write through directly.
       const value = coerceInputValue(target);
       await this.document.update({ [name]: value });
     } catch (err) {
@@ -330,6 +376,19 @@ export class RMFAttackTableSheet extends HandlebarsApplicationMixin(foundry.appl
   }
 
   /* ───────────────────────── Actions ───────────────────────── */
+
+  static async #onAddRow() {
+    const rows = foundry.utils.duplicate(Array.isArray(this.document.system.rows) ? this.document.system.rows : []);
+    const last = rows[rows.length - 1];
+    const nextMin = last && Number.isFinite(last.rollMax) ? last.rollMax + 1 : 1;
+    rows.push({ label: "", rollMin: rows.length ? nextMin : null, rollMax: nextMin, results: {} });
+    await this.document.update({ "system.rows": rows });
+  }
+  static async #onRemoveRow(event, target) {
+    const i = Number(target?.dataset?.index);
+    const rows = foundry.utils.duplicate(Array.isArray(this.document.system.rows) ? this.document.system.rows : []);
+    if (Number.isInteger(i) && i >= 0 && i < rows.length) { rows.splice(i, 1); await this.document.update({ "system.rows": rows }); }
+  }
 
   /**
    * "Roll Attack" handler. Reads the resolve form, runs the engine,

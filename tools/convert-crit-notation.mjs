@@ -170,7 +170,10 @@ for (const file of fs.readdirSync(DIR).filter(f => f.endsWith(".json")).sort()) 
       for (const v of cell.variants ?? []) apply(v);
     }
   }
-  json.legend = { ...LEGEND };
+  // NOTE: the universal effects Key was centralized into
+  // CONFIG.RMF.criticalEffectsKey (module/utils/constants.mjs) as of v0.6.1 —
+  // this one-off converter no longer writes a per-table `legend`. (LEGEND const
+  // kept for reference only.) void LEGEND;
   if (!DRY) fs.writeFileSync(fp, JSON.stringify(json, null, 2) + "\n");
   console.log(`${DRY ? "[dry] " : ""}${file}: ok`);
 }

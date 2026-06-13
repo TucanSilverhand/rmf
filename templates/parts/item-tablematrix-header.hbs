@@ -1,0 +1,34 @@
+{{!--
+  RMF Matrix Table Sheet — header (name + image + bridge badges). Generic over
+  creature-critical (critType), fumble (none) and spell-failure (spellMode).
+--}}
+<header class="sheet-header">
+  <div class="header-row">
+    <img class="profile-img"
+         src="{{item.img}}"
+         alt="{{item.name}}"
+         data-edit="img"
+         data-action="pickImage"
+         title="{{item.name}}"
+         height="64"
+         width="64"/>
+
+    <div class="header-fields">
+      <h1 class="item-name">
+        <label class="sr-only" for="matrixtable_name">{{namePlaceholder}}:</label>
+        <input id="matrixtable_name"
+               name="name"
+               type="text"
+               value="{{item.name}}"
+               placeholder="{{namePlaceholder}}"
+               autocomplete="off"/>
+      </h1>
+      <div class="attacktable-subtitle">
+        {{#if system.tableId}}<span class="ref">{{system.tableId}}</span>{{/if}}
+        {{#if system.critType}}<span class="badge">{{system.critType}}</span>{{/if}}
+        {{#if system.spellMode}}<span class="badge">{{system.spellMode}}</span>{{/if}}
+        <span class="badge">{{system.rowCount}} {{localize 'RMF.AttackTable.Rows'}} × {{system.columns.length}} {{localize 'RMF.AttackTable.Columns'}}</span>
+      </div>
+    </div>
+  </div>
+</header>

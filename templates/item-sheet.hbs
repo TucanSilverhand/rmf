@@ -1,45 +1,94 @@
-{{!-- RMF Item Sheet Template for FoundryVTT v13.341 --}}
-{{!-- NOTE: Do NOT wrap with <form>; ApplicationV2 provides the root form. The part must return a single root element. --}}
+{{!-- RMF Equipment Item Sheet — FoundryVTT v13.341 --}}
+{{!-- Two tabs: "view" (read-only) + "edit" (editable). Do NOT wrap with <form>. --}}
 <div class="{{cssClass}} rmf-item-sheet-root">
-    <header class="sheet-header">
-        <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}" width="64" height="64"/>
-        <div class="header-fields">
-            <h1 class="item-name">
-                <input name="name" type="text" value="{{item.name}}" placeholder="{{localize 'RMF.Items.NamePlaceholder'}}"/>
-            </h1>
-            <div class="basic-props">
-                <div class="resource">
-                    <label>{{localize "RMF.Items.Quantity"}}:</label>
-                    <input type="number" name="system.quantity" value="{{system.quantity}}" min="0"/>
-                </div>
-                <div class="resource">
-                    <label>{{localize "RMF.Items.Weight"}}:</label>
-                    <input type="number" name="system.weight" value="{{system.weight}}" step="0.1" min="0"/>
-                </div>
-                <div class="resource">
-                    <label>{{localize "RMF.Items.Cost"}}:</label>
-                    <input type="number" name="system.cost" value="{{system.cost}}" step="0.01" min="0"/>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    {{!-- Sheet Tab Navigation --}}
-    <nav class="sheet-tabs tabs" data-group="primary">
-        <a class="item" data-tab="description">{{localize "RMF.Description"}}</a>
+  <div class="sheet-main-container">
+    <nav class="sheet-tabs tabs vertical-tabs" data-group="primary-tabs">
+      <a class="item nav-item active" data-tab="view" data-group="primary-tabs" title="{{localize 'RMF.Tabs.View'}}"><span class="tab-icon">👁️</span></a>
+      <a class="item nav-item" data-tab="edit" data-group="primary-tabs" title="{{localize 'RMF.Tabs.Edit'}}"><span class="tab-icon">✏️</span></a>
     </nav>
 
-    <section class="sheet-body">
-        {{!-- Description Tab --}}
-        <div class="tab description" data-group="primary" data-tab="description">
-            <div class="form-group">
-                <label>{{localize "RMF.Description"}}</label>
-                {{#if isEditable}}
-                    <prose-mirror name="system.description" value="{{system.description}}" toggled="true"></prose-mirror>
-                {{else}}
-                    <div class="description-preview ProseMirror">{{{enrichedDescription}}}</div>
-                {{/if}}
-            </div>
+    <div class="sheet-content">
+      <header class="sheet-header">
+        <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}" width="64" height="64"/>
+        <div class="header-fields">
+          <h1 class="item-name">
+            <input name="name" type="text" value="{{item.name}}" placeholder="{{localize 'RMF.Items.NamePlaceholder'}}"/>
+          </h1>
         </div>
-    </section>
+      </header>
+
+      <section class="sheet-body">
+        <div class="sheet-body-inner">
+
+          {{!-- Ver (read-only) --}}
+          <div class="tab equipment-view" data-group="primary-tabs" data-tab="view" style="display: block;">
+            <div class="summary-wrapper">
+              <table class="summary-table">
+                <tbody>
+                  <tr><th scope="row">{{localize "RMF.Items.Quantity"}}</th><td>{{system.quantity}}</td></tr>
+                  <tr><th scope="row">{{localize "RMF.Items.Weight"}}</th><td>{{system.weight}}</td></tr>
+                  <tr><th scope="row">{{localize "RMF.Items.Cost"}}</th><td>{{system.cost}}</td></tr>
+                  <tr><th scope="row">{{localize "RMF.Items.Encumbrance"}}</th><td>{{system.encumbrance}}</td></tr>
+                  <tr><th scope="row">{{localize "RMF.Items.Rarity"}}</th><td>{{rarityLabel}}</td></tr>
+                  <tr><th scope="row">{{localize "RMF.Items.Equipped"}}</th><td>{{#if system.equipped}}✓{{else}}—{{/if}}</td></tr>
+                </tbody>
+              </table>
+            </div>
+            {{#if enrichedDescription}}
+            <div class="summary-wrapper">
+              <h3>{{localize "RMF.Description"}}</h3>
+              <div class="rmf-readonly-description description-preview ProseMirror">{{{enrichedDescription}}}</div>
+            </div>
+            {{/if}}
+          </div>
+
+          {{!-- Editar (editable) --}}
+          <div class="tab equipment-edit" data-group="primary-tabs" data-tab="edit" style="display: none;">
+            <div class="summary-wrapper">
+              <div class="basic-props flexrow">
+                <div class="resource">
+                  <label>{{localize "RMF.Items.Quantity"}}</label>
+                  <input type="number" name="system.quantity" value="{{system.quantity}}" min="0" step="1"/>
+                </div>
+                <div class="resource">
+                  <label>{{localize "RMF.Items.Weight"}}</label>
+                  <input type="number" name="system.weight" value="{{system.weight}}" step="0.1" min="0"/>
+                </div>
+                <div class="resource">
+                  <label>{{localize "RMF.Items.Cost"}}</label>
+                  <input type="number" name="system.cost" value="{{system.cost}}" step="0.01" min="0"/>
+                </div>
+              </div>
+              <div class="flexrow">
+                <div class="resource">
+                  <label>{{localize "RMF.Items.Rarity"}}</label>
+                  <select name="system.rarity">
+                    {{#each rarityOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}
+                  </select>
+                </div>
+                <div class="resource">
+                  <label>{{localize "RMF.Items.Equipped"}}</label>
+                  <input type="checkbox" name="system.equipped" {{#if system.equipped}}checked{{/if}}/>
+                </div>
+                <div class="resource">
+                  <label>{{localize "RMF.Items.Encumbrance"}}</label>
+                  <input type="number" value="{{system.encumbrance}}" readonly/>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group ProseMirror">
+              <label>{{localize "RMF.Description"}}</label>
+              {{#if isEditable}}
+                <prose-mirror name="system.description" value="{{system.description}}" toggled="true"></prose-mirror>
+              {{else}}
+                <div class="description-preview ProseMirror">{{{enrichedDescription}}}</div>
+              {{/if}}
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </div>
+  </div>
 </div>

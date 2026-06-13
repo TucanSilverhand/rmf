@@ -218,3 +218,44 @@ export const SPELL_SUBTYPE_CODES = Object.freeze(
 export const SPELL_SPECIAL_CODES = Object.freeze(
   Object.keys(SPELL_DESCRIPTION_KEY.specialCodes).filter(k => k !== "rrMod")
 );
+
+/**
+ * Effects-notation legends (the printed "Key" on every table page).
+ *
+ * These are RULES reference data — identical across every table of a family,
+ * so they live here (deep-frozen, exposed on CONFIG.RMF) instead of being
+ * duplicated on each `criticalTable` / `creatureCriticalTable` /
+ * `weaponFumbleTable` / `spellFailureTable` item. Same rationale as
+ * SPELL_DESCRIPTION_KEY above (~no per-document copies, no migration to fix a
+ * wording). Genuinely per-table commentary (e.g. a creature table's column
+ * description) stays on the item under `system.notes`.
+ *
+ * IMPORTANT: each key is the human-readable MIRROR of one parser's token set.
+ * Keep it in sync with the parser if a token is ever added/changed:
+ *   - CRITICAL_EFFECTS_KEY      ↔ module/tables/critical.mjs (parseCriticalEffects)
+ *   - WEAPON_FUMBLE_EFFECTS_KEY ↔ module/tables/fumble.mjs (parseFumbleEffects)
+ *   - SPELL_FAILURE_EFFECTS_KEY ↔ module/tables/spell-failure.mjs (parseSpellFailureEffects)
+ *
+ * Attack tables intentionally do NOT use these — their `legend` carries
+ * load-bearing structured data (rangeModifiers, modifier, …), not a Key.
+ */
+export const CRITICAL_EFFECTS_KEY = _deepFreeze({
+  key: "Np = must parry N rounds; Nnp = no parry for N rounds; Nst = stunned for N rounds; Nstnp = stunned and unable to parry for N rounds; Nstp = stunned and must parry for N rounds; Nbl = bleed N hits per round; (-N) = foe has -N penalty; (+N) = attacker gets +N next round.",
+  hits: "+NH = N concussion hits.",
+  rounds: "M(-N) / M(+N) = the penalty/bonus lasts M rounds. A bare token (p, st, bl, ...) = 1 round. Np(-M) = must parry N rounds at a -M penalty.",
+  none: "\"-\" = no mechanical effect beyond the text (often death).",
+  variants: "Conditional cells (e.g. \"with helmet / w/o helmet\") apply the matching variant."
+});
+
+export const WEAPON_FUMBLE_EFFECTS_KEY = _deepFreeze({
+  key: "noatk = lose this attack; loseatk:N = lose N attack rounds (may parry); drop / drop:N = drop weapon (recover in N rounds); reload = must reload; breakage = breakage check; break = weapon breaks; bowbreak = bowstring breaks.",
+  states: "Nst = stunned N rounds; Nstnp = stunned and unable to parry N rounds; Nnp = no parry N rounds; down:N = knocked down N rounds; out:<dur> = incapacitated; maim = permanently maimed.",
+  damage: "+NH = N hits; NdMH = roll NdM hits; Nbl = bleed N/round; (-N) / (-N):* = penalty (ongoing); crit:<type>:<sev> = roll on that critical table; self = applies to you; ally = blow hits closest ally."
+});
+
+export const SPELL_FAILURE_EFFECTS_KEY = _deepFreeze({
+  key: "recast = begin casting again; losespell = lose the spell; losepp:N|half|all|double = power-point loss; noeffect = spell has no effect; delay:N = casting delayed N rounds.",
+  states: "Nst = stunned N rounds; +NH = N hits; NdMH = roll NdM hits; ko:<dur> = unconscious/unable to act; coma:<dur> = coma; nocast:<dur> = lose all spell casting; paralyze:<part> = paralyzed; crit:<type>:<sev> = roll on that critical table.",
+  durations: "Durations: bare N = rounds, else N<unit> (h/d/w/mo/min) or dice (d10mo). (-N):<dur> = penalty for that duration. Dice-valued stuns (e.g. 'stunned 2d10 rounds') are kept in the narrative text.",
+  none: "\"-\" = no mechanical effect beyond the text (often death)."
+});

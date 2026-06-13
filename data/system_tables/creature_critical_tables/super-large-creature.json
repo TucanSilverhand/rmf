@@ -1,0 +1,548 @@
+{
+  "name": "Super Large Creature Critical Strike Table",
+  "tableId": "A-10.10.8",
+  "critType": "Super Large Creature",
+  "slug": "super-large-creature",
+  "fromBook": "basic",
+  "columnDefs": [
+    {
+      "key": "normal",
+      "label": "Normal"
+    },
+    {
+      "key": "magic",
+      "label": "Magic"
+    },
+    {
+      "key": "mithril",
+      "label": "Mithril"
+    },
+    {
+      "key": "holy",
+      "label": "Holy Arms"
+    },
+    {
+      "key": "slaying",
+      "label": "Slaying"
+    }
+  ],
+  "notes": {
+    "columns": "Columns are the attacking weapon's enchantment class (Normal / Magic / Mithril / Holy Arms / Slaying)."
+  },
+  "rollMatchPolicy": "rollMin / rollMax inclusive. Attacks vs super large creatures can exceed 100; bands run to 251+ and rolls above the top band clamp to it.",
+  "rows": [
+    {
+      "label": "01-05",
+      "rollMin": null,
+      "rollMax": 5,
+      "results": {
+        "normal": {
+          "text": "You strike the terrible beast hard. Your weapon breaks in half.",
+          "effects": "+10H"
+        },
+        "magic": {
+          "text": "Your weapon is knocked from your hand. It will take 2 rounds to recover.",
+          "effects": "+10H"
+        },
+        "mithril": {
+          "text": "Your strike is powerful. You fumble the rest of the round.",
+          "effects": "+10H"
+        },
+        "holy": {
+          "text": "Your strike is powerful, but your grip was terrible. Roll a fumble for yourself.",
+          "effects": "+10H"
+        },
+        "slaying": {
+          "text": "The numbing recoil of your strike to foe's chest sends you stumbling back.",
+          "effects": "+10H"
+        }
+      }
+    },
+    {
+      "label": "06-10",
+      "rollMin": 6,
+      "rollMax": 10,
+      "results": {
+        "normal": {
+          "text": "A decoration pops off your weapon with impact to foe's side.",
+          "effects": "+2H"
+        },
+        "magic": {
+          "text": "Your weapon hits at a bad angle. Take a weapon strength check. Bum luck.",
+          "effects": "+3H"
+        },
+        "mithril": {
+          "text": "Your weapon lands uneven across foe's shoulder. Make a breakage check.",
+          "effects": "+4H"
+        },
+        "holy": {
+          "text": "Blow foe's arm. Ready for a better strike. You gain the initiative next round.",
+          "effects": "+6H"
+        },
+        "slaying": {
+          "text": "Strike lands at a bad angle. You check for weapon breakage.",
+          "effects": "+8H"
+        }
+      }
+    },
+    {
+      "label": "11-20",
+      "rollMin": 11,
+      "rollMax": 20,
+      "results": {
+        "normal": {
+          "text": "You are daunted by the beast's gaze and swing weakly.",
+          "effects": "+3H"
+        },
+        "magic": {
+          "text": "Your blow was deflected, but you gain the initiative next round.",
+          "effects": "+4H"
+        },
+        "mithril": {
+          "text": "Acceptable strike to foe's leg. You gain the initiative next round.",
+          "effects": "+5H"
+        },
+        "holy": {
+          "text": "Back strike. Weapon seems to damage by touch only.",
+          "effects": "+8H"
+        },
+        "slaying": {
+          "text": "Blow to back. You gain the initiative next round.",
+          "effects": "+10H"
+        }
+      }
+    },
+    {
+      "label": "21-30",
+      "rollMin": 21,
+      "rollMax": 30,
+      "results": {
+        "normal": {
+          "text": "This terrible creature's hide deflects the strongest blows.",
+          "effects": "+4H"
+        },
+        "magic": {
+          "text": "Glancing side blow. A spark of light reminds you your weapon is magical.",
+          "effects": "+5H"
+        },
+        "mithril": {
+          "text": "Glancing blow smears mithril like chalk across beast's hide.",
+          "effects": "+6H"
+        },
+        "holy": {
+          "text": "Your strike is solid and flat, but foe is not slowed at all.",
+          "effects": "+10H"
+        },
+        "slaying": {
+          "text": "Sparks fly from your weapon as it embraces your foe.",
+          "effects": "+12H"
+        }
+      }
+    },
+    {
+      "label": "31-40",
+      "rollMin": 31,
+      "rollMax": 40,
+      "results": {
+        "normal": {
+          "text": "Solid strike to foe's side with your common weapon fails to penetrate.",
+          "effects": "+5H"
+        },
+        "magic": {
+          "text": "Foe is unbalanced. You gain the initiative next round.",
+          "effects": "+6H"
+        },
+        "mithril": {
+          "text": "Solid, but nowhere near a vital spot. Bruise foe's calf muscle.",
+          "effects": "+7H"
+        },
+        "holy": {
+          "text": "You strike the fell titan in the chest. He yells back at you.",
+          "effects": "+12H"
+        },
+        "slaying": {
+          "text": "Boom! Solid without question. Try a vital spot next time.",
+          "effects": "+15H"
+        }
+      }
+    },
+    {
+      "label": "41-50",
+      "rollMin": 41,
+      "rollMax": 50,
+      "results": {
+        "normal": {
+          "text": "Your strike was more of a last minute parry to avoid the beast's.",
+          "effects": "+6H"
+        },
+        "magic": {
+          "text": "You deal out a sharp and hard leg strike. Foe steps back to look at his leg.",
+          "effects": "+7H"
+        },
+        "mithril": {
+          "text": "Strike lands on foe's horn. The vibration has some effect.",
+          "effects": "+8H"
+        },
+        "holy": {
+          "text": "You step under his assault and strike him hard in the abdomen.",
+          "effects": "+15H"
+        },
+        "slaying": {
+          "text": "Rip sinew, hair, horn and scale with a glancing blow to side.",
+          "effects": "+18H"
+        }
+      }
+    },
+    {
+      "label": "51-65",
+      "rollMin": 51,
+      "rollMax": 65,
+      "results": {
+        "normal": {
+          "text": "Two light and quick shots to foe's forearm provide a modest result.",
+          "effects": "+7H"
+        },
+        "magic": {
+          "text": "Blow to foe's back. Foe's hide is tough there. You need more strength.",
+          "effects": "+8H"
+        },
+        "mithril": {
+          "text": "Your strike thumps foe on his nose. He is insulted, but not wounded badly.",
+          "effects": "+9H"
+        },
+        "holy": {
+          "text": "The vile beast leans forward. You strike at his snout in frantic response.",
+          "effects": "+18H"
+        },
+        "slaying": {
+          "text": "Unexpected weak spot found with your strike to foe's side.",
+          "effects": "+20H"
+        }
+      }
+    },
+    {
+      "label": "66",
+      "rollMin": 66,
+      "rollMax": 66,
+      "results": {
+        "normal": {
+          "text": "Strike foe's neck with the flat of your weapon during a moment of opportunity.",
+          "effects": "+20H"
+        },
+        "magic": {
+          "text": "You step under foe's lunge and use the force against him. Strike to under belly. He feels the pain instantly.",
+          "effects": "+12H, 3bl, (-10)"
+        },
+        "mithril": {
+          "text": "Shin strike. Skin is torn open and bone is bruised. This one hurts. You have initiative.",
+          "effects": "+15H, 5bl, (-10)"
+        },
+        "holy": {
+          "text": "Your blow lands against foe's shoulder. You are pleased with the effect. Blood pours from the wound.",
+          "effects": "stnp, 10bl, (-15)"
+        },
+        "slaying": {
+          "text": "Your weapon seems to dig into foe's chest and devour his heart. Foe dies instantly. You are covered with blood.",
+          "effects": "+50H, (+20)"
+        }
+      }
+    },
+    {
+      "label": "67-70",
+      "rollMin": 67,
+      "rollMax": 70,
+      "results": {
+        "normal": {
+          "text": "Solid strike on foe's leg. You move quickly away to avoid the retaliation.",
+          "effects": "+8H"
+        },
+        "magic": {
+          "text": "Blow to thigh leaves a bad bruise. Your weapon cracks and bends. It will break after one more strike.",
+          "effects": "+9H"
+        },
+        "mithril": {
+          "text": "Hammering foe's thigh gets you some respect. You have the initiative.",
+          "effects": "+10H"
+        },
+        "holy": {
+          "text": "Hard blow to foe's thigh. He stumbles, but does not fall. You have the initiative next round.",
+          "effects": "+20H"
+        },
+        "slaying": {
+          "text": "Flat strike to foe's upper body. Heavy blow breaks some bones. Foe's guard is down.",
+          "effects": "+30H, 2stnp"
+        }
+      }
+    },
+    {
+      "label": "71-80",
+      "rollMin": 71,
+      "rollMax": 80,
+      "results": {
+        "normal": {
+          "text": "Solid strike to foe's head just bounces off.",
+          "effects": "+9H"
+        },
+        "magic": {
+          "text": "Minor forearm wound. The beast used its forearm for defense. Foe soaks up the damage.",
+          "effects": "+10H"
+        },
+        "mithril": {
+          "text": "Blow to foe's upper arm. This strike had few vices, but it was weak. Get it together.",
+          "effects": "+15H"
+        },
+        "holy": {
+          "text": "Catch foe in his exposed leg. You come down hard on it. He will have a bruise. It slows him. You have the initiative.",
+          "effects": "+13H, 5bl, (-10), (+10)"
+        },
+        "slaying": {
+          "text": "Hard glancing strike crosses foe's shoulder and chest. Shoulder is slashed and chest is bruised.",
+          "effects": "+24H, 3stnp, 5bl, (-20)"
+        }
+      }
+    },
+    {
+      "label": "81-90",
+      "rollMin": 81,
+      "rollMax": 90,
+      "results": {
+        "normal": {
+          "text": "Violent strike to foe's forearm. Foe is bruised. Your weapon must make a breakage check.",
+          "effects": "+10H"
+        },
+        "magic": {
+          "text": "Blow to foe's arm joint lands poorly. Foe will have a bruise. You think that you know what went wrong.",
+          "effects": "+15H"
+        },
+        "mithril": {
+          "text": "Your strike hit no vitals, but you can hear the ribs in foe's side crackle. Foe fights on in some pain.",
+          "effects": "+20H"
+        },
+        "holy": {
+          "text": "To make this strike land well, you almost climb onto foe. You deal out a brutal strike to his neck and leap back.",
+          "effects": "+12H, p, 4bl, (+20)"
+        },
+        "slaying": {
+          "text": "Just when your swing looked to be failing your weapon took control and crashed into foe's thigh.",
+          "effects": "+25H, 3stnp, 20bl, (-25)"
+        }
+      }
+    },
+    {
+      "label": "91-95",
+      "rollMin": 91,
+      "rollMax": 95,
+      "results": {
+        "normal": {
+          "text": "Well placed and hard. Try a vital spot next time.",
+          "effects": "+15H"
+        },
+        "magic": {
+          "text": "Blow is placed solidly against foe's side. The thick hide there protects him well.",
+          "effects": "+20H"
+        },
+        "mithril": {
+          "text": "Slash at foe's neck fails to land very hard. You have the initiative for 2 rounds.",
+          "effects": "+12H, 4bl, (+20)"
+        },
+        "holy": {
+          "text": "You have an uncomfortable opportunity to strike foe in his mouth. If foe has a breath weapon, he may not use it.",
+          "effects": "+25H, 2stnp, 3bl"
+        },
+        "slaying": {
+          "text": "Your master strike lands against foe's neck. Doom is in his face. He drops and dies in 3 rounds.",
+          "effects": "+35H"
+        }
+      }
+    },
+    {
+      "label": "96-98",
+      "rollMin": 96,
+      "rollMax": 98,
+      "results": {
+        "normal": {
+          "text": "Blow severs vein and artery in foe's upper leg. He drops and dies after 12 inactive rounds. Awesome!",
+          "effects": "-"
+        },
+        "magic": {
+          "text": "You are a mighty warrior. Your strike hits foe's neck and breaks it. Bones are crushed and the spine is broken. Foe drops in 1 round and dies.",
+          "effects": "(+25)"
+        },
+        "mithril": {
+          "text": "Blow to lower skull area. Foe dies instantly. He stumbles on for 1 round, until he realizes this.",
+          "effects": "(+20)"
+        },
+        "holy": {
+          "text": "Weapon bites into foe's skull. He just comes apart. He dies in 6 rounds. Your weapon is stuck. Foe rolls over and takes your weapon out of reach.",
+          "effects": "all allies get (+10)"
+        },
+        "slaying": {
+          "text": "Your weapon plunges into foe's chest making the nature of its forging certain. He dies a terrible and swift death. Take 12 rounds to reclaim your weapon.",
+          "effects": "+40H"
+        }
+      }
+    },
+    {
+      "label": "99-100",
+      "rollMin": 99,
+      "rollMax": 100,
+      "results": {
+        "normal": {
+          "text": "You step into the right spot and rip open foe's side. Your blow shatters some ribs.",
+          "effects": "+30H, 10bl, (-25)"
+        },
+        "magic": {
+          "text": "A little bird shows you the flaw in foe's armor. Your strike plunges into this vulnerable spot killing foe instantly.",
+          "effects": "-"
+        },
+        "mithril": {
+          "text": "Crush the bones in foe's neck with a mighty blow. Foe drops and dies in 1 round.",
+          "effects": "+5H"
+        },
+        "holy": {
+          "text": "Strike through foe's heart kills him instantly. You are too close. He pins you under him as he dies.",
+          "effects": "+20H"
+        },
+        "slaying": {
+          "text": "Foe's eye is in reach and you ram your weapon home. Foe dies after 3 rounds of inactivity. You have half the round left.",
+          "effects": "(+25)"
+        }
+      }
+    },
+    {
+      "label": "101-150",
+      "rollMin": 101,
+      "rollMax": 150,
+      "results": {
+        "normal": {
+          "text": "Glancing strike to foe's abdomen loses much of the impact on foe's hide.",
+          "effects": "+12H, 1bl, (+10)"
+        },
+        "magic": {
+          "text": "Wound foe along his side with an excellent strike. Foe leaps back away from your weapon.",
+          "effects": "+13H, 2bl, (+20)"
+        },
+        "mithril": {
+          "text": "Graceful assault knocks down foe's defenses. He just cannot get his guard up.",
+          "effects": "+30H, 3stnp, (+10)"
+        },
+        "holy": {
+          "text": "Brutal strike to foe's forearm. He reels from your presence. You are his bane.",
+          "effects": "+30H, 2stnp"
+        },
+        "slaying": {
+          "text": "Strike to foe's leg severs a vein and tears muscles. Foe flails around for 6 rounds before he dies.",
+          "effects": "+20H, 6stnp"
+        }
+      }
+    },
+    {
+      "label": "151-175",
+      "rollMin": 151,
+      "rollMax": 175,
+      "results": {
+        "normal": {
+          "text": "Your weapon wounds deep and cuts muscles and tendons. Foe's wound bleeds heavily.",
+          "effects": "+20H, 5bl, (-20)"
+        },
+        "magic": {
+          "text": "You pop foe on his head with some useful results. Foe is confused just long enough for a blow.",
+          "effects": "+25H, stnp, (-20)"
+        },
+        "mithril": {
+          "text": "Incredible strike across foe's calf trips him to the ground. The bigger they are….",
+          "effects": "+25H, 2stnp, (+10)"
+        },
+        "holy": {
+          "text": "Vicious blow to forehead sends foe to the ground. If he falls on stone, he is in a coma.",
+          "effects": "+40H, 6stnp"
+        },
+        "slaying": {
+          "text": "Awesome blow to foe's neck. His neck and back are broken. Foe drops and suffocates in 12 rounds.",
+          "effects": "+25H, (+20)"
+        }
+      }
+    },
+    {
+      "label": "176-200",
+      "rollMin": 176,
+      "rollMax": 200,
+      "results": {
+        "normal": {
+          "text": "Foe presents a weak spot and you strike. Blow lands at the base of the neck. Tendons are damaged.",
+          "effects": "+15H, (-25), (+20)"
+        },
+        "magic": {
+          "text": "Solid shot to foe's chest. Foe is down. You take an 'A' Unbalancing Critical result, because you are so close.",
+          "effects": "+20H, 2np, (+25)"
+        },
+        "mithril": {
+          "text": "Brutal strike to foe's side. You rip him open and he is hating life. His blood gets all over you.",
+          "effects": "+28H, 3stnp, 10bl, (-40)"
+        },
+        "holy": {
+          "text": "Strike to foe's abdomen. Foe has the biggest bruise you have ever seen.",
+          "effects": "+25H, 9stnp, (-25)"
+        },
+        "slaying": {
+          "text": "Clean strike to foe's eye kills him in one round. He fights on for 1 round before he realizes he is dead.",
+          "effects": "+24H, (-20)"
+        }
+      }
+    },
+    {
+      "label": "201-250",
+      "rollMin": 201,
+      "rollMax": 250,
+      "results": {
+        "normal": {
+          "text": "When your strike lands on foe's back, bones crackle and pop. Internal damage is certain.",
+          "effects": "+35H, 2st, 10bl, (-30)"
+        },
+        "magic": {
+          "text": "Rip open foe's abdomen. Blood covers you. This cruel wound will not be healed easily.",
+          "effects": "+35H, 3stnp, 10bl, (-40)"
+        },
+        "mithril": {
+          "text": "Vicious blow to foe's leg. You can hear the mithril in your weapon talking, as you rip foe open.",
+          "effects": "+30H, 6stnp, 12bl, (-50)"
+        },
+        "holy": {
+          "text": "You duck around foe's side and catch him in the ear. Blow collapses skull. Foe dies of massive brain damage in 3 rounds.",
+          "effects": "+15H, (+20)"
+        },
+        "slaying": {
+          "text": "Foe steps right into your swing. You tear open foe's abdomen and drop him in a heap. You are entangled in his fall. Foe dies in 4 rounds from shock.",
+          "effects": "+35H"
+        }
+      }
+    },
+    {
+      "label": "251+",
+      "rollMin": 251,
+      "rollMax": 9999,
+      "results": {
+        "normal": {
+          "text": "Foe lowers his eyes within your reach and you strike with great skill and fury. He is blinded.",
+          "effects": "+20H, 6stnp, (-100)"
+        },
+        "magic": {
+          "text": "You leap up and slam foe in the eye. He does not realize he is dead yet. Next round he will. Your weapon is stuck for a round.",
+          "effects": "(+20)"
+        },
+        "mithril": {
+          "text": "Awe inspiring strike drives bone through both lungs. Foe realizes his doom before falling into a coma. He dies in 18 rounds.",
+          "effects": "-"
+        },
+        "holy": {
+          "text": "Your mighty blow is the stuff epics are made of. Foe's spine is broken. He dies in 2 rounds.",
+          "effects": "+50H"
+        },
+        "slaying": {
+          "text": "Strike to side kills foe after a chain reaction of bones shatter. You are covered with blood.",
+          "effects": "+100H"
+        }
+      }
+    }
+  ]
+}

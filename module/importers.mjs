@@ -2136,20 +2136,6 @@ function normalizeAttackResults(raw) {
   return results;
 }
 
-/** Normalize the per-attack-type critical map (ATTACK TYPE DATA / SPELL DATA box). */
-function normalizeAttackTypes(raw) {
-  if (!Array.isArray(raw)) return [];
-  return raw.map(a => ({
-    attackType:   String(a?.attackType ?? ""),
-    abbreviation: String(a?.abbreviation ?? ""),
-    criticalType: String(a?.criticalType ?? ""),
-    ref:          String(a?.ref ?? ""),
-    note:         String(a?.note ?? ""),
-    obMod:        String(a?.obMod ?? ""),
-    maxResult:    (a?.maxResult === null || a?.maxResult === undefined) ? null : _atNum(a.maxResult, 0),
-    maxCritical:  String(a?.maxCritical ?? "")
-  }));
-}
 
 /** Normalize the high unmodified-die rows (UM 96-100). */
 function normalizeUmHigh(raw) {
@@ -2166,22 +2152,20 @@ function normalizeUmHigh(raw) {
 /** Build the attackTable `system` payload from a raw source entry. */
 function buildAttackTableSystemData(sysSource, template) {
   const src = sysSource && typeof sysSource === "object" ? sysSource : {};
-  const fr = src.fumbleRange && typeof src.fumbleRange === "object" ? src.fumbleRange : {};
   const fumbleSrc = src.fumble && typeof src.fumble === "object" ? src.fumble : {};
   return foundry.utils.mergeObject(
     foundry.utils.duplicate(template),
     {
       tableId:    String(src.tableId ?? ""),
       tableKind:  src.tableKind === "resistanceMod" ? "resistanceMod" : "attack",
-      critType:   String(src.critType ?? ""),
-      attackTypes:     normalizeAttackTypes(src.attackTypes),
-      attackTypeNotes: Array.isArray(src.attackTypeNotes)
-        ? src.attackTypeNotes.map(n => String(n ?? ""))
-        : [],
       columnDefs: Array.isArray(src.columnDefs)
         ? src.columnDefs.map(c => ({ key: String(c?.key ?? ""), label: String(c?.label ?? "") }))
         : [],
-      fumbleRange: { min: _atNum(fr.min, 1), max: _atNum(fr.max, 2) },
+      // Crit type / OB mod / max result are per-weapon (weapon item), not on the
+      // table. Weapon tables keep a UM 01 default (the weapon supplies its real
+      // range, the "xx" in "UM 01-xx"); creature/spell tables carry their own
+      // fixed range (e.g. ball UM 01-04) since they have no weapon.
+      fumbleRange: { min: _atNum(src.fumbleRange?.min, 1), max: _atNum(src.fumbleRange?.max, 1) },
       armorTypes: normalizeAttackArmorTypes(src.armorTypes),
       legend:     (src.legend && typeof src.legend === "object") ? src.legend : null,
       rollMatchPolicy: String(src.rollMatchPolicy ?? ""),
@@ -2376,7 +2360,8 @@ function buildCriticalTableSystemData(sysSource, template) {
       columnDefs: Array.isArray(src.columnDefs)
         ? src.columnDefs.map(c => ({ key: String(c?.key ?? ""), label: String(c?.label ?? "") }))
         : [],
-      legend:   (src.legend && typeof src.legend === "object") ? src.legend : null,
+      // Per-table notes only; the universal Key lives in CONFIG.RMF.criticalEffectsKey.
+      notes:    (src.notes && typeof src.notes === "object") ? src.notes : null,
       rollMatchPolicy: String(src.rollMatchPolicy ?? ""),
       rows:     normalizeCriticalRows(src.rows),
       slug:     authoredSlug(src),
@@ -2509,3 +2494,159 @@ export async function syncCriticalTablesToCompendium(source, options = {}) {
     return result;
   }
 }
+
+/* -------------------------------------------------------------------------- */
+/*  Creature Criticals / Weapon Fumbles / Spell Failures (matrix tables)      */
+/* -------------------------------------------------------------------------- */
+
+/*
+ * These three item types share the critical-table cell shape
+ * ({text, effects, variants?}) and only differ by a couple of header fields,
+ * so they reuse `normalizeCriticalRows` and a single generic import/sync pair
+ * parameterised by `_MATRIX_CFG`. Effects parsing happens at runtime in the
+ * per-type engine; the importer keeps the notation verbatim.
+ */
+
+/** System template for an arbitrary Item sub-type (empty when absent). */
+async function getItemTypeTemplate(type) {
+  const t = foundry.utils.getProperty(game.system, `documentTypes.Item.${type}.template`);
+  return (t && typeof t === "object") ? t : {};
+}
+
+/** Build the `system` payload for a matrix table (creature crit / fumble / failure). */
+function buildMatrixSystemData(sysSource, template, type) {
+  const src = sysSource && typeof sysSource === "object" ? sysSource : {};
+  const base = {
+    tableId: String(src.tableId ?? ""),
+    columnDefs: Array.isArray(src.columnDefs)
+      ? src.columnDefs.map(c => ({ key: String(c?.key ?? ""), label: String(c?.label ?? "") }))
+      : [],
+    // Per-table notes only; the universal Key lives in CONFIG.RMF.*EffectsKey.
+    notes: (src.notes && typeof src.notes === "object") ? src.notes : null,
+    rollMatchPolicy: String(src.rollMatchPolicy ?? ""),
+    rows: normalizeCriticalRows(src.rows),
+    slug: authoredSlug(src),
+    fromBook: String(src.fromBook ?? "basic")
+  };
+  if (type === "creatureCriticalTable") base.critType = String(src.critType ?? "");
+  if (type === "spellFailureTable") base.spellMode = src.spellMode === "nonAttack" ? "nonAttack" : "attack";
+  return foundry.utils.mergeObject(
+    foundry.utils.duplicate(template), base,
+    { inplace: false, insertKeys: true, insertValues: true, overwrite: true }
+  );
+}
+
+/** Import matrix-table items into the world sidebar. */
+async function _importMatrixTables(source, options, cfg) {
+  _assertGM(`import:${cfg.type}`);
+  const folderName = options.folderName ?? cfg.folderName;
+  const result = { created: [], skipped: [], errors: [] };
+  try {
+    const input = await resolveSource(source);
+    const tables = Array.isArray(input) ? input : (input?.tables ?? [input]).filter(Boolean);
+    if (!tables?.length) return result;
+
+    const template = await getItemTypeTemplate(cfg.type);
+    const folderCache = new Map();
+    const docs = [];
+    for (let i = 0; i < tables.length; i++) {
+      const entry = tables[i];
+      const name = entry.name ?? `${cfg.folderName} ${i + 1}`;
+      const sysSource = entry.system ?? entry;
+      const system = buildMatrixSystemData(sysSource, template, cfg.type);
+      const img = pickImageFromEntry(entry, sysSource, cfg.img);
+      const folderId = await _ensureItemFolder(folderName, folderCache);
+      docs.push({ name, type: cfg.type, img, system, folder: folderId });
+    }
+    if (!docs.length) return result;
+    result.created = await Item.createDocuments(docs);
+    return result;
+  } catch (err) {
+    console.error(`RMF | import ${cfg.type} error`, err);
+    result.errors.push(err);
+    return result;
+  }
+}
+
+/** Slug-first upsert of matrix-table items into a compendium pack. */
+async function _syncMatrixTables(source, options, cfg) {
+  _assertGM(`sync:${cfg.type}`);
+  const packCollection = options.pack ?? "world.basic-core";
+  const folderName = options.folderName ?? cfg.folderName;
+  const createMissing = options.createMissing ?? true;
+  const updateExisting = options.updateExisting ?? true;
+  const result = { created: 0, updated: 0, skipped: 0, errors: [] };
+
+  try {
+    const pack = game.packs.get(packCollection);
+    if (!pack) throw new Error(`Compendium pack not found: ${packCollection}`);
+    if (pack.documentName !== "Item") throw new Error(`Pack ${packCollection} is not an Item compendium`);
+
+    const input = await resolveSource(source);
+    const tables = Array.isArray(input) ? input : (input?.tables ?? [input]).filter(Boolean);
+    if (!tables?.length) return result;
+
+    const template = await getItemTypeTemplate(cfg.type);
+    await pack.getIndex({ fields: ["name", "type", "folder", "system.slug"] });
+    const resolveExisting = packUpsertResolver(pack);
+
+    const folderCache = new Map();
+    const createPayload = [];
+    const updatePayload = [];
+    for (let i = 0; i < tables.length; i++) {
+      const entry = tables[i];
+      const name = entry.name ?? `${cfg.folderName} ${i + 1}`;
+      const sysSource = entry.system ?? entry;
+      const system = buildMatrixSystemData(sysSource, template, cfg.type);
+      const existing = resolveExisting(cfg.type, system.slug || slugify(name), name);
+      const img = pickImageFromEntry(entry, sysSource, cfg.img);
+      const base = { name, type: cfg.type, img, system };
+
+      const folderId = await ensurePackFolderPath(
+        pack, [options.parentFolderName, folderName].filter(Boolean), folderCache
+      );
+      if (existing) {
+        if (!updateExisting) { result.skipped += 1; continue; }
+        updatePayload.push({ _id: existing._id, folder: folderId, ...base });
+      } else {
+        if (!createMissing) { result.skipped += 1; continue; }
+        createPayload.push({ ...base, folder: folderId });
+      }
+    }
+
+    if (createPayload.length) {
+      const created = await Item.createDocuments(createPayload, { pack: packCollection });
+      result.created = created.length;
+    }
+    if (updatePayload.length) {
+      const updated = await Item.updateDocuments(updatePayload, { pack: packCollection, diff: false });
+      result.updated = updated.length;
+    }
+    return result;
+  } catch (err) {
+    console.error(`RMF | sync ${cfg.type} error`, err);
+    result.errors.push(err);
+    return result;
+  }
+}
+
+const _MATRIX_CFG = {
+  creatureCriticalTable: { type: "creatureCriticalTable", folderName: "Creature Critical Tables", img: "icons/svg/blood.svg" },
+  weaponFumbleTable:     { type: "weaponFumbleTable",     folderName: "Fumble Tables",            img: "icons/svg/downgrade.svg" },
+  spellFailureTable:     { type: "spellFailureTable",     folderName: "Spell Failure Tables",     img: "icons/svg/daze.svg" }
+};
+
+export const importCreatureCriticalTables = (source, options = {}) =>
+  _importMatrixTables(source, options, _MATRIX_CFG.creatureCriticalTable);
+export const syncCreatureCriticalTablesToCompendium = (source, options = {}) =>
+  _syncMatrixTables(source, options, _MATRIX_CFG.creatureCriticalTable);
+
+export const importWeaponFumbleTables = (source, options = {}) =>
+  _importMatrixTables(source, options, _MATRIX_CFG.weaponFumbleTable);
+export const syncWeaponFumbleTablesToCompendium = (source, options = {}) =>
+  _syncMatrixTables(source, options, _MATRIX_CFG.weaponFumbleTable);
+
+export const importSpellFailureTables = (source, options = {}) =>
+  _importMatrixTables(source, options, _MATRIX_CFG.spellFailureTable);
+export const syncSpellFailureTablesToCompendium = (source, options = {}) =>
+  _syncMatrixTables(source, options, _MATRIX_CFG.spellFailureTable);

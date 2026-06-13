@@ -27,10 +27,15 @@ import { RMFTrainingPackageSheet } from "./module/training-package-sheet.js";
 import { RMFSpellListSheet } from "./module/spell-list-sheet.js";
 import { RMFAttackTableSheet } from "./module/attack-table-sheet.js";
 import { RMFCriticalTableSheet } from "./module/critical-table-sheet.js";
+import {
+  RMFCreatureCriticalTableSheet,
+  RMFWeaponFumbleTableSheet,
+  RMFSpellFailureTableSheet
+} from "./module/matrix-table-sheets.js";
 import { RMFActor, RMFItem } from "./module/data-models.mjs";
 import { RMFHooks } from "./module/hooks.mjs";
 import { SKILL_CLASSIFICATIONS } from "./module/utils/rank-bonus.mjs";
-import { STAT_SHORT_TO_FULL, RMF_CONSTANTS, SPELL_DESCRIPTION_KEY } from "./module/utils/constants.mjs";
+import { STAT_SHORT_TO_FULL, RMF_CONSTANTS, SPELL_DESCRIPTION_KEY, CRITICAL_EFFECTS_KEY, WEAPON_FUMBLE_EFFECTS_KEY, SPELL_FAILURE_EFFECTS_KEY } from "./module/utils/constants.mjs";
 import { registerMigrationSettings, runWorldMigration } from "./module/migration.mjs";
 import { RegenerateBasicCoreMenu, WipeBasicCoreMenu } from "./module/compendium-admin.mjs";
 import {
@@ -44,7 +49,10 @@ import {
   TrainingPackageData,
   SpellListData,
   AttackTableData,
-  CriticalTableData
+  CriticalTableData,
+  CreatureCriticalTableData,
+  WeaponFumbleTableData,
+  SpellFailureTableData
 } from "./module/data-models/index.mjs";
 
 /**
@@ -90,7 +98,10 @@ Hooks.once('init', async function() {
     trainingPackage:  TrainingPackageData,
     spellList:        SpellListData,
     attackTable:      AttackTableData,
-    criticalTable:    CriticalTableData
+    criticalTable:    CriticalTableData,
+    creatureCriticalTable: CreatureCriticalTableData,
+    weaponFumbleTable:     WeaponFumbleTableData,
+    spellFailureTable:     SpellFailureTableData
   };
 
   // Register system settings before other initialization
@@ -164,6 +175,24 @@ Hooks.once('init', async function() {
     makeDefault: true,
     label: "RMF.CriticalTableSheet"
   });
+
+  foundry.applications.apps.DocumentSheetConfig.registerSheet(Item, "rmf-creatureCriticalTable", RMFCreatureCriticalTableSheet, {
+    types: ["creatureCriticalTable"],
+    makeDefault: true,
+    label: "RMF.CreatureCritical.SheetTitle"
+  });
+
+  foundry.applications.apps.DocumentSheetConfig.registerSheet(Item, "rmf-weaponFumbleTable", RMFWeaponFumbleTableSheet, {
+    types: ["weaponFumbleTable"],
+    makeDefault: true,
+    label: "RMF.Fumble.SheetTitle"
+  });
+
+  foundry.applications.apps.DocumentSheetConfig.registerSheet(Item, "rmf-spellFailureTable", RMFSpellFailureTableSheet, {
+    types: ["spellFailureTable"],
+    makeDefault: true,
+    label: "RMF.SpellFailure.SheetTitle"
+  });
   // Initialize RMF system configuration namespace.
   // The version is read from system.json at runtime (game.system.version),
   // so we never duplicate the source of truth.
@@ -186,7 +215,7 @@ Hooks.once('init', async function() {
     // not need to import the module directly.
     statShortToFull: STAT_SHORT_TO_FULL,
 
-    itemTypes: ["equipment", "race", "skill", "category", "realm", "profession", "trainingPackage", "spellList", "attackTable", "criticalTable"],
+    itemTypes: ["equipment", "race", "skill", "category", "realm", "profession", "trainingPackage", "spellList", "attackTable", "criticalTable", "creatureCriticalTable", "weaponFumbleTable", "spellFailureTable"],
     actorTypes: ["character"],
 
     // Canonical skill classifications. Same set used by data-models and importers
@@ -203,7 +232,15 @@ Hooks.once('init', async function() {
     // glossary). Shared by every spellList item; consulted by the
     // spell-list sheet/tooltips. Source of truth in constants.mjs — it is
     // intentionally NOT persisted on each item.
-    spellDescriptionKey: SPELL_DESCRIPTION_KEY
+    spellDescriptionKey: SPELL_DESCRIPTION_KEY,
+
+    // Effects-notation legends (the printed "Key" on each table page). Shared
+    // by every table of a family, consulted by the table sheets — source of
+    // truth in constants.mjs, NOT persisted on each item. Attack tables keep
+    // their own structured `legend` (rangeModifiers/modifier) and do not use these.
+    criticalEffectsKey: CRITICAL_EFFECTS_KEY,
+    weaponFumbleEffectsKey: WEAPON_FUMBLE_EFFECTS_KEY,
+    spellFailureEffectsKey: SPELL_FAILURE_EFFECTS_KEY
   };
   
   // Initialize Handlebars integration. `loadTemplates` with the object-form
@@ -455,6 +492,7 @@ async function _preloadHandlebarsTemplates() {
     "parts/item-category-details": "systems/rmf/templates/parts/item-category-details.hbs",
 
     // Realm sheet partials
+    "parts/item-realm-navigation": "systems/rmf/templates/parts/item-realm-navigation.hbs",
     "parts/item-realm-header": "systems/rmf/templates/parts/item-realm-header.hbs",
     "parts/item-realm-body": "systems/rmf/templates/parts/item-realm-body.hbs",
 
@@ -486,6 +524,7 @@ async function _preloadHandlebarsTemplates() {
     "parts/item-attacktable-navigation": "systems/rmf/templates/parts/item-attacktable-navigation.hbs",
     "parts/item-attacktable-header": "systems/rmf/templates/parts/item-attacktable-header.hbs",
     "parts/item-attacktable-table": "systems/rmf/templates/parts/item-attacktable-table.hbs",
+    "parts/item-attacktable-edit": "systems/rmf/templates/parts/item-attacktable-edit.hbs",
     "parts/item-attacktable-resolve": "systems/rmf/templates/parts/item-attacktable-resolve.hbs",
 
     // Critical table sheet partials
@@ -493,6 +532,13 @@ async function _preloadHandlebarsTemplates() {
     "parts/item-criticaltable-header": "systems/rmf/templates/parts/item-criticaltable-header.hbs",
     "parts/item-criticaltable-table": "systems/rmf/templates/parts/item-criticaltable-table.hbs",
     "parts/item-criticaltable-resolve": "systems/rmf/templates/parts/item-criticaltable-resolve.hbs",
+
+    // Matrix table sheet partials (creature critical / weapon fumble / spell failure)
+    "parts/item-tablematrix-navigation": "systems/rmf/templates/parts/item-tablematrix-navigation.hbs",
+    "parts/item-tablematrix-header": "systems/rmf/templates/parts/item-tablematrix-header.hbs",
+    "parts/item-tablematrix-grid": "systems/rmf/templates/parts/item-tablematrix-grid.hbs",
+    "parts/item-tablematrix-edit": "systems/rmf/templates/parts/item-tablematrix-edit.hbs",
+    "parts/item-tablematrix-resolve": "systems/rmf/templates/parts/item-tablematrix-resolve.hbs",
 
     // Chat templates
     "rmf/chat/stat-roll": "systems/rmf/templates/chat/stat-roll.hbs",

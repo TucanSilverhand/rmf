@@ -26,6 +26,9 @@ import {
   syncSpellListsToCompendium,
   syncAttackTablesToCompendium,
   syncCriticalTablesToCompendium,
+  syncCreatureCriticalTablesToCompendium,
+  syncWeaponFumbleTablesToCompendium,
+  syncSpellFailureTablesToCompendium,
   ensurePackFolderPath
 } from "./importers.mjs";
 
@@ -117,6 +120,25 @@ const CRITICAL_TABLE_FILES = [
   "system_tables/critical_tables/puncture.json",
   "system_tables/critical_tables/slash.json",
   "system_tables/critical_tables/unbalance.json"
+];
+
+/** Creature critical tables (A-10.10.7/8/9): weapon-class columns, bands to 251+. */
+const CREATURE_CRITICAL_TABLE_FILES = [
+  "system_tables/creature_critical_tables/large-creature.json",
+  "system_tables/creature_critical_tables/super-large-creature.json",
+  "system_tables/creature_critical_tables/spells-vs-large-creature.json",
+  "system_tables/creature_critical_tables/spells-vs-super-large-creature.json"
+];
+
+/** Weapon fumble table (A-10.11.1): one item, weapon-category columns. */
+const FUMBLE_TABLE_FILES = [
+  "system_tables/fumble_tables/weapon-fumble.json"
+];
+
+/** Spell failure tables (A-10.11.2): split into attack + non-attack spells. */
+const SPELL_FAILURE_TABLE_FILES = [
+  "system_tables/spell_failure_tables/spell-failure-attack.json",
+  "system_tables/spell_failure_tables/spell-failure-non-attack.json"
 ];
 
 /** Absolute (Foundry-served) path to the system data directory. */
@@ -303,6 +325,18 @@ export async function regenerateBasicCore({ confirm = true } = {}) {
     ...CRITICAL_TABLE_FILES.map(file => [
       `Critical Tables: ${file}`,
       () => syncCriticalTablesToCompendium(`${dir}/${file}`, { pack: packId, parentFolderName: SYSTEM_TABLES_FOLDER })
+    ]),
+    ...CREATURE_CRITICAL_TABLE_FILES.map(file => [
+      `Creature Critical Tables: ${file}`,
+      () => syncCreatureCriticalTablesToCompendium(`${dir}/${file}`, { pack: packId, parentFolderName: SYSTEM_TABLES_FOLDER })
+    ]),
+    ...FUMBLE_TABLE_FILES.map(file => [
+      `Fumble Tables: ${file}`,
+      () => syncWeaponFumbleTablesToCompendium(`${dir}/${file}`, { pack: packId, parentFolderName: SYSTEM_TABLES_FOLDER })
+    ]),
+    ...SPELL_FAILURE_TABLE_FILES.map(file => [
+      `Spell Failure Tables: ${file}`,
+      () => syncSpellFailureTablesToCompendium(`${dir}/${file}`, { pack: packId, parentFolderName: SYSTEM_TABLES_FOLDER })
     ])
   ];
 

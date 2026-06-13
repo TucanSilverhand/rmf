@@ -1,24 +1,6 @@
 {
   "name": "Bolt Spell Attack Table (Shock)",
   "tableId": "A-10.9.9",
-  "critType": "Heat",
-  "attackTypes": [
-    {
-      "attackType": "Shock Bolt",
-      "abbreviation": "",
-      "criticalType": "Heat",
-      "ref": "p. 232",
-      "note": "",
-      "obMod": "-40",
-      "maxResult": 90,
-      "maxCritical": "C"
-    }
-  ],
-  "attackTypeNotes": [
-    "Result bands are the Maximum MODIFIED Result per spell (Fire/Ice/Lightning 150, Water 120, Shock 90).",
-    "UM 100 (natural die 100) applies the fixed high result with no modifications, in all three tables.",
-    "F = spell fails; roll on Table A-10.11.2 (p. 241)."
-  ],
   "fumbleRange": {
     "min": 1,
     "max": 2

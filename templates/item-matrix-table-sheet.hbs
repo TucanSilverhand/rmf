@@ -1,0 +1,21 @@
+{{!--
+  RMF Matrix Table Item Sheet — shared by creatureCriticalTable,
+  weaponFumbleTable and spellFailureTable. Two-tab layout: read-only matrix +
+  resolve form. NOTE: Do NOT wrap with <form>; ApplicationV2 provides the root.
+--}}
+
+<div class="{{cssClass}} rmf-item-sheet matrix-table-sheet-root">
+  <div class="sheet-main-container critical-table-sheet">
+    {{> "parts/item-tablematrix-navigation"}}
+    <div class="sheet-content">
+      {{> "parts/item-tablematrix-header"}}
+      <section class="sheet-body">
+        <div class="sheet-body-inner">
+          {{> "parts/item-tablematrix-grid"}}
+          {{> "parts/item-tablematrix-edit"}}
+          {{> "parts/item-tablematrix-resolve"}}
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

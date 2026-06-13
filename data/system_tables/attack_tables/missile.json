@@ -1,10 +1,9 @@
 {
   "name": "Missile Weapon Attack Table",
   "tableId": "A-10.9.4",
-  "critType": "Puncture",
   "fumbleRange": {
     "min": 1,
-    "max": 2
+    "max": 1
   },
   "armorTypes": [
     {

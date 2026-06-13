@@ -30,7 +30,13 @@ import {
   importAttackTables,
   syncAttackTablesToCompendium,
   importCriticalTables,
-  syncCriticalTablesToCompendium
+  syncCriticalTablesToCompendium,
+  importCreatureCriticalTables,
+  syncCreatureCriticalTablesToCompendium,
+  importWeaponFumbleTables,
+  syncWeaponFumbleTablesToCompendium,
+  importSpellFailureTables,
+  syncSpellFailureTablesToCompendium
 } from "./importers.mjs";
 import { TablesAPI } from "./tables/index.mjs";
 import { regenerateBasicCore, wipeBasicCore } from "./compendium-admin.mjs";
@@ -120,6 +126,12 @@ export class RMFHooks {
     game.rmf.syncAttackTablesToCompendium = syncAttackTablesToCompendium;
     game.rmf.importCriticalTables = importCriticalTables;
     game.rmf.syncCriticalTablesToCompendium = syncCriticalTablesToCompendium;
+    game.rmf.importCreatureCriticalTables = importCreatureCriticalTables;
+    game.rmf.syncCreatureCriticalTablesToCompendium = syncCreatureCriticalTablesToCompendium;
+    game.rmf.importWeaponFumbleTables = importWeaponFumbleTables;
+    game.rmf.syncWeaponFumbleTablesToCompendium = syncWeaponFumbleTablesToCompendium;
+    game.rmf.importSpellFailureTables = importSpellFailureTables;
+    game.rmf.syncSpellFailureTablesToCompendium = syncSpellFailureTablesToCompendium;
 
     // One-shot basic-core compendium management (same actions as the two
     // settings-menu buttons). `confirm: false` skips the dialog for macros.

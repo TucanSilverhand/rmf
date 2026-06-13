@@ -62,8 +62,9 @@ export class CriticalTableData extends foundry.abstract.TypeDataModel {
         new fields.SchemaField({ key: str(""), label: str("") }),
         { required: true, nullable: false, initial: [] }
       ),
-      // Free-form legend (the book's Key) carried verbatim for the sheet.
-      legend: new fields.ObjectField({ required: false, nullable: true, initial: null }),
+      // Per-table commentary (e.g. a creature table's column description).
+      // The universal effects "Key" lives in CONFIG.RMF.*EffectsKey, not here.
+      notes: new fields.ObjectField({ required: false, nullable: true, initial: null }),
       // Informational note about how rollMin/rollMax match.
       rollMatchPolicy: str(""),
       // The matrix.

@@ -1,0 +1,49 @@
+{{!--
+  RMF Matrix Table Sheet — resolve form. Column select + roll modifier + a
+  "Resolve" button (data-action="resolveTable"). Inputs use name="resolve.*"
+  so the sheet caches them on the instance. Shows any chained critical rolls.
+--}}
+<div class="tab criticaltable-resolve" data-group="primary-tabs" data-tab="resolve" style="display: none;">
+
+  <div class="summary-wrapper">
+    <h3>{{localize "RMF.AttackTable.ResolveTab"}}</h3>
+    <div class="resolve-form">
+      <label>{{columnLabel}}
+        <select name="resolve.column">
+          {{#each resolveColumns as |c|}}
+          <option value="{{c.key}}" {{#if c.selected}}selected{{/if}}>{{c.label}}</option>
+          {{/each}}
+        </select></label>
+      <label>{{localize "RMF.AttackTable.Mods"}}
+        <input type="number" name="resolve.mod" value="{{resolve.mod}}" data-dtype="Number"/></label>
+      <button type="button" class="resolve-button" data-action="resolveTable">
+        <i class="fas fa-dice-d20"></i> {{localize "RMF.TableMatrix.ResolveButton"}}
+      </button>
+    </div>
+  </div>
+
+  {{#if lastResult}}
+  <div class="summary-wrapper resolve-result">
+    <h3>{{localize "RMF.AttackTable.Result"}}</h3>
+    <table class="summary-table">
+      <tbody>
+        <tr><th scope="row">{{localize "RMF.AttackTable.NaturalRoll"}}</th>
+          <td>{{lastResult.natural}}{{#unless (rmfEq lastResult.natural lastResult.total)}} → {{lastResult.total}}{{/unless}} [{{lastResult.band}}]</td></tr>
+        <tr><th scope="row">{{columnLabel}}</th><td>{{lastResult.column}}</td></tr>
+      </tbody>
+    </table>
+    <p class="crit-result-text">{{lastResult.text}}</p>
+    {{#if lastResult.effects}}<div class="outcome is-crit">{{lastResult.effects}}</div>{{/if}}
+    {{#if lastResult.summary}}<p class="crit-hint">{{lastResult.summary}}{{#if lastResult.rolledHits}} — {{lastResult.rolledHits}} {{localize "RMF.AttackTable.Hits"}}{{/if}}</p>{{/if}}
+    {{#each lastResult.chained as |c|}}
+    <div class="chained-result {{#unless c.found}}muted{{/unless}}">
+      <b>{{localize "RMF.TableMatrix.ChainedResult"}}:</b> {{c.label}}
+      {{#if c.found}} — [{{c.band}}] ({{c.natural}}{{#unless (rmfEq c.natural c.total)}} → {{c.total}}{{/unless}})<br>
+        {{c.text}} {{#if c.effects}}<span class="outcome is-crit">{{c.effects}}</span>{{/if}}
+      {{else}} — {{localize "RMF.TableMatrix.ChainMissing"}}{{/if}}
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+
+</div>

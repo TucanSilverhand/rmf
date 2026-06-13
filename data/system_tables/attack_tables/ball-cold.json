@@ -1,24 +1,6 @@
 {
   "name": "Ball Spell Attack Table (Cold)",
   "tableId": "A-10.9.10",
-  "critType": "Cold",
-  "attackTypes": [
-    {
-      "attackType": "Cold Ball",
-      "abbreviation": "",
-      "criticalType": "Cold",
-      "ref": "p. 231",
-      "note": "",
-      "obMod": "-10",
-      "maxResult": 80,
-      "maxCritical": "C"
-    }
-  ],
-  "attackTypeNotes": [
-    "Result bands are the Maximum MODIFIED Result per spell (Fire Ball 95, Cold Ball 80).",
-    "UM 96-97 / 98-99 / 100 (natural die) apply fixed results with no modifications, in both tables.",
-    "F (UM 01-04) = spell fails; roll on Table A-10.11.2 (p. 241)."
-  ],
   "fumbleRange": {
     "min": 1,
     "max": 4

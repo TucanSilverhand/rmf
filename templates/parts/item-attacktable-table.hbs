@@ -15,8 +15,6 @@
         <tbody>
           <tr><th scope="row">{{localize "RMF.AttackTable.TableId"}}</th>
             <td><input type="text" name="system.tableId" value="{{system.tableId}}" {{#unless editable}}readonly{{/unless}}/></td></tr>
-          <tr><th scope="row">{{localize "RMF.AttackTable.CritType"}}</th>
-            <td><input type="text" name="system.critType" value="{{system.critType}}" {{#unless editable}}readonly{{/unless}}/></td></tr>
         </tbody>
       </table>
       <table class="summary-table">
@@ -82,45 +80,8 @@
     </table>
   </div>
 
-  {{!-- ATTACK TYPE DATA / SPELL DATA box --}}
-  {{#if hasAttackTypes}}
-  <div class="summary-wrapper">
-    <h3>{{localize "RMF.AttackTable.AttackTypeData"}}</h3>
-    <table class="summary-table rmf-attack-types">
-      <thead>
-        <tr>
-          <th>{{localize "RMF.AttackTable.AttackType"}}</th>
-          {{#unless hasSpellData}}<th>{{localize "RMF.AttackTable.Abbreviation"}}</th>{{/unless}}
-          <th>{{localize "RMF.AttackTable.CritType"}}</th>
-          {{#if hasSpellData}}
-          <th>{{localize "RMF.AttackTable.OBMod"}}</th>
-          <th>{{localize "RMF.AttackTable.MaxResult"}}</th>
-          <th>{{localize "RMF.AttackTable.MaxCritical"}}</th>
-          {{/if}}
-        </tr>
-      </thead>
-      <tbody>
-        {{#each attackTypes as |a|}}
-        <tr>
-          <td>{{a.attackType}}{{#if a.note}} <i class="fas fa-circle-info" data-tooltip="{{a.note}}"></i>{{/if}}</td>
-          {{#unless ../hasSpellData}}<td>{{a.abbreviation}}</td>{{/unless}}
-          <td>{{#if a.criticalType}}{{a.criticalType}}{{#if a.ref}} ({{a.ref}}){{/if}}{{else}}—{{/if}}</td>
-          {{#if ../hasSpellData}}
-          <td>{{a.obMod}}</td>
-          <td>{{a.maxResult}}</td>
-          <td>{{a.maxCritical}}</td>
-          {{/if}}
-        </tr>
-        {{/each}}
-      </tbody>
-    </table>
-    {{#if attackTypeNotes.length}}
-    <ul class="rmf-attack-type-notes">
-      {{#each attackTypeNotes as |note|}}<li>{{note}}</li>{{/each}}
-    </ul>
-    {{/if}}
-  </div>
-  {{/if}}
+  {{!-- ATTACK TYPE DATA / SPELL DATA box removed: crit type / OB mod / max
+       result per attack form is per-attacker (weapon item), not on the table. --}}
 
   {{!-- Range modifiers (spell tables) --}}
   {{#if rangeModifiers.length}}

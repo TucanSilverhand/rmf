@@ -9,12 +9,14 @@
  * as the spell lists) and resolve lookups with the pure engine in
  * `module/tables/`.
  *
- * Mirrors the shape of `data/system_tables/attack_tables/*.json`. Two "bridge" fields
- * connect a table to the rest of combat:
- *   - `critType`    which critical table a severity result rolls on
- *                   (e.g. "Krush" for concussion weapons).
- *   - `fumbleRange` the unmodified-die band that triggers a fumble
- *                   (per-weapon; the table carries a sensible default).
+ * Mirrors the shape of `data/system_tables/attack_tables/*.json`. The table is
+ * a PURE resolution matrix: it yields hits + an optional critical SEVERITY, but
+ * it does NOT decide which critical TYPE (Slash/Krush/…) that severity rolls on.
+ * That is per-attacker data (the book's "WEAPON DATA" box) and lives on the
+ * weapon item (and, for creatures/spells, on their future attack definitions),
+ * NOT on the shared table — a dagger and a broadsword roll the same one-handed
+ * table but crit Puncture vs Slash. `fumbleRange` defaults to UM 01 here; the
+ * weapon supplies its real range.
  *
  * `results` (per row) and `fumble.results` are stored as ObjectFields
  * keyed by AT — that gives O(1) `results[String(at)]` lookups and keeps
@@ -61,35 +63,12 @@ export class AttackTableData extends foundry.abstract.TypeDataModel {
         new fields.SchemaField({ key: str(""), label: str("") }),
         { required: false, nullable: false, initial: [] }
       ),
-      // Default critical table a severity result chains into (e.g. "Krush").
-      // For single-crit weapon tables this is the one crit. For multi-attack
-      // creature tables (Tooth & Claw) it is blank — the crit is chosen per
-      // attack type from `attackTypes` below.
-      critType: str(""),
-      // Per-attack-type critical map (the book's "ATTACK TYPE DATA" box).
-      // Creature attack tables list several attacks (Bite, Claw, …), each with
-      // its own critical table. The resolver picks the row matching the
-      // creature's attack; `criticalType: ""` means that attack deals no crit.
-      attackTypes: new fields.ArrayField(
-        new fields.SchemaField({
-          attackType:   str(""),          // e.g. "Bite" / "Fire Bolt"
-          abbreviation: str(""),          // e.g. "Bi" (creature tables)
-          criticalType: str(""),          // e.g. "Puncture"; "" = no critical
-          ref:          str(""),          // book page, e.g. "p. 234"
-          note:         str(""),          // optional caveat (e.g. severity cap)
-          // Spell-bolt tables (SPELL DATA box) add these; blank/null otherwise.
-          obMod:        str(""),          // OB modifier, e.g. "+10" / "-40"
-          maxResult:    new fields.NumberField({ required: false, nullable: true, integer: true, initial: null }),
-          maxCritical:  str("")           // severity cap, e.g. "E" / "C"
-        }),
-        { required: false, nullable: false, initial: [] }
-      ),
-      // Free-form notes attached to the attack-type box (severity caps, etc.).
-      attackTypeNotes: new fields.ArrayField(str(""), { required: false, nullable: false, initial: [] }),
-      // Unmodified-die band that forces a fumble. Per-weapon; default UM 01-02.
+      // Unmodified-die band that forces a fumble. The crit type, OB mod, max
+      // result and real fumble range are per-WEAPON (the "WEAPON DATA" box) and
+      // live on the weapon item — the table keeps only a UM 01 default here.
       fumbleRange: new fields.SchemaField({
         min: new fields.NumberField({ required: true, nullable: false, integer: true, min: 1, initial: 1 }),
-        max: new fields.NumberField({ required: true, nullable: false, integer: true, min: 1, initial: 2 })
+        max: new fields.NumberField({ required: true, nullable: false, integer: true, min: 1, initial: 1 })
       }),
       // Presentation only: groups the 20 AT columns under armor names.
       // Does NOT affect the lookup (which is per-AT).
