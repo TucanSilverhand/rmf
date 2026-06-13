@@ -25,10 +25,10 @@
     }
   ],
   "legend": {
-    "key": "ßπ = must parry ß rounds; ß∏ = no parry for ß rounds; ß∑ = stunned for ß rounds; ß∫ = bleed ß hits per round; (-ß) = foe has -ß penalty; (+ß) = attacker gets +ß next round.",
-    "hits": "+ßH = ß concussion hits.",
-    "rounds": "M(-ß) / M(+ß) = the penalty/bonus lasts M rounds. A bare symbol = 1 round.",
-    "none": "\"—\" = no mechanical effect beyond the text (often death).",
+    "key": "Np = must parry N rounds; Nnp = no parry for N rounds; Nst = stunned for N rounds; Nstnp = stunned and unable to parry for N rounds; Nbl = bleed N hits per round; (-N) = foe has -N penalty; (+N) = attacker gets +N next round.",
+    "hits": "+NH = N concussion hits.",
+    "rounds": "M(-N) / M(+N) = the penalty/bonus lasts M rounds. A bare token (p, st, bl, ...) = 1 round. Np(-M) = must parry N rounds at a -M penalty.",
+    "none": "\"-\" = no mechanical effect beyond the text (often death).",
     "variants": "Conditional cells (e.g. \"with helmet / w/o helmet\") apply the matching variant."
   },
   "rollMatchPolicy": "rollMin / rollMax are inclusive on an UNMODIFIED d100. The first band (rollMin=null) is the low catch-all; rolls above 100 (modified criticals) clamp to the top band.",
@@ -110,7 +110,7 @@
         },
         "E": {
           "text": "Flash unbalances foe and sends him on the defensive. You have initiative.",
-          "effects": "+6H – ∑"
+          "effects": "+6H, st"
         }
       }
     },
@@ -125,7 +125,7 @@
         },
         "B": {
           "text": "Assault blinds foe for a moment. You have 2 rounds of initiative.",
-          "effects": "—"
+          "effects": "-"
         },
         "C": {
           "text": "Hair and bowstrings are singed. You have 2 rounds of initiative.",
@@ -133,11 +133,11 @@
         },
         "D": {
           "text": "Foe strikes out at the flames to protect himself. It seems to work well enough.",
-          "effects": "+6H – π"
+          "effects": "+6H, p"
         },
         "E": {
           "text": "Foe fails to avoid some of the attack and almost falls down.",
-          "effects": "+7H – π"
+          "effects": "+7H, p"
         }
       }
     },
@@ -148,7 +148,7 @@
       "results": {
         "A": {
           "text": "Foe's chest and side heat up and garments smolder from assault. He will be easily kindled if you strike again.",
-          "effects": "+4H – ∑"
+          "effects": "+4H, st"
         },
         "B": {
           "text": "Fire laden blast forces foe back. Any containers of water boil and burst open. You have 2 rounds of initiative.",
@@ -156,15 +156,15 @@
         },
         "C": {
           "text": "Disorient foe with a tricky shot. Garments smolder suspiciously. He checks them carefully; guard is still up.",
-          "effects": "+7H – π – ∫"
+          "effects": "+7H, p, bl"
         },
         "D": {
           "text": "With a burst of flame, you cover foe with heated air. Foe jumps back to avoid any additional wounds.",
-          "effects": "+8H – 2π – ∫"
+          "effects": "+8H, 2p, bl"
         },
         "E": {
           "text": "Blister foe's weapon arm. He gives ground to escape the heat. His footing is better than you had hoped.",
-          "effects": "+9H – 2π – 2∫"
+          "effects": "+9H, 2p, 2bl"
         }
       }
     },
@@ -175,7 +175,7 @@
       "results": {
         "A": {
           "text": "Hot winds dance around foe parching his exposed skin. He puts up a desperate defence.",
-          "effects": "+6H – π"
+          "effects": "+6H, p"
         },
         "B": {
           "text": "Foe's shield side is swathed in fire. He may use a shield to avoid the attack, but it combusts. Shield hand is burned.",
@@ -183,17 +183,17 @@
           "variants": [
             {
               "condition": "with shield",
-              "effects": "+3H – 3π"
+              "effects": "+3H, 3p"
             },
             {
               "condition": "w/o shield",
-              "effects": "+7H – π – ∫"
+              "effects": "+7H, p, bl"
             }
           ]
         },
         "C": {
           "text": "Heat catches foe in lower leg. You gain initiative while foe regains his balance. The pain stays with him.",
-          "effects": "+8H – 2π – ∫"
+          "effects": "+8H, 2p, bl"
         },
         "D": {
           "text": "Cover foe with a flash fire. Exposed skin burns. The flames bite deep and the pain is great.",
@@ -201,11 +201,11 @@
           "variants": [
             {
               "condition": "if not wet",
-              "effects": "+9H – 2∫"
+              "effects": "+9H, 2bl"
             },
             {
               "condition": "if wet",
-              "effects": "+6H – 2π"
+              "effects": "+6H, 2p"
             }
           ]
         },
@@ -215,11 +215,11 @@
           "variants": [
             {
               "condition": "with backpack",
-              "effects": "+8H – ∫"
+              "effects": "+8H, bl"
             },
             {
               "condition": "w/o backpack",
-              "effects": "+10H – 3∫"
+              "effects": "+10H, 3bl"
             }
           ]
         }
@@ -232,23 +232,23 @@
       "results": {
         "A": {
           "text": "Clothes smoke, then burn. Foe flails his arms trying to put them out. The pain endures longer than the flames.",
-          "effects": "+7H – π – ∫"
+          "effects": "+7H, p, bl"
         },
         "B": {
           "text": "Foe evades most of the damage with some grace. The remainder scorches his side lightly.",
-          "effects": "+8H – 2π – ∫"
+          "effects": "+8H, 2p, bl"
         },
         "C": {
           "text": "Flame spreads up foe's side and snaps at his arm and face. Exposed areas are lightly burned.",
-          "effects": "+9H – ∑ – 2∫"
+          "effects": "+9H, st, 2bl"
         },
         "D": {
           "text": "Assault lands on foe's weapon arm. He makes a supreme effort to pull his arm away. Foe is unable to protect himself.",
-          "effects": "+10H – ∑ – 3∫"
+          "effects": "+10H, st, 3bl"
         },
         "E": {
           "text": "Foe blocks flames with his weapon. A wooden weapon is destroyed. A metal weapon becomes too hot to hold.",
-          "effects": "+12H – 2∑ – 3∫"
+          "effects": "+12H, 2st, 3bl"
         }
       }
     },
@@ -259,23 +259,23 @@
       "results": {
         "A": {
           "text": "Spark sets a piece of foe's equipment on fire. Foe must remove the item.",
-          "effects": "+8H – 2π – ∫"
+          "effects": "+8H, 2p, bl"
         },
         "B": {
           "text": "Foe ducks; attack torches back and the ground behind him. He is shaken.",
-          "effects": "+8H – ∑ – 2∫"
+          "effects": "+8H, st, 2bl"
         },
         "C": {
           "text": "Hard strike to side, armor does not help. Blow leaves a blistering mark.",
-          "effects": "+9H – 2∑ – 3∫"
+          "effects": "+9H, 2st, 3bl"
         },
         "D": {
           "text": "Foe is aflame and takes damage for 3 rounds while he burns.",
-          "effects": "+10H – 2∑ – 3∫"
+          "effects": "+10H, 2st, 3bl"
         },
         "E": {
           "text": "Your flames reach out. Foe frantically leaps back. His chest is burned.",
-          "effects": "+13H – ∑∏ – 3∫"
+          "effects": "+13H, stnp, 3bl"
         }
       }
     },
@@ -286,11 +286,11 @@
       "results": {
         "A": {
           "text": "Assault ignites foe's back. Equipment crackles as it burns and falls clear.",
-          "effects": "+9H – ∑ – 2∫"
+          "effects": "+9H, st, 2bl"
         },
         "B": {
           "text": "Engulf foe in flame and smoke. The flames die down; foe escapes death.",
-          "effects": "+10H – 2∑ – 2∫"
+          "effects": "+10H, 2st, 2bl"
         },
         "C": {
           "text": "Strong blast hits foe in legs; they nearly give with pain. He recoils 5 ft.",
@@ -298,11 +298,11 @@
           "variants": [
             {
               "condition": "with leg armor",
-              "effects": "+8H – 2π"
+              "effects": "+8H, 2p"
             },
             {
               "condition": "w/o leg armor",
-              "effects": "+10H – 2∑ – 2∫"
+              "effects": "+10H, 2st, 2bl"
             }
           ]
         },
@@ -312,11 +312,11 @@
           "variants": [
             {
               "condition": "with helmet",
-              "effects": "+3H – 2∑ – 2(-10)"
+              "effects": "+3H, 2st, 2(-10)"
             },
             {
               "condition": "w/o helmet",
-              "effects": "+12H – 2∫"
+              "effects": "+12H, 2bl"
             }
           ]
         },
@@ -326,11 +326,11 @@
           "variants": [
             {
               "condition": "with helm",
-              "effects": "+8H – ∑∏ – ∫ – (-5)"
+              "effects": "+8H, stnp, bl, (-5)"
             },
             {
               "condition": "w/o helm",
-              "effects": "+15H – 2∑∏ – (-10) – 3∫"
+              "effects": "+15H, 2stnp, (-10), 3bl"
             }
           ]
         }
@@ -347,21 +347,21 @@
           "variants": [
             {
               "condition": "with arm greaves",
-              "effects": "+7H – ∫"
+              "effects": "+7H, bl"
             },
             {
               "condition": "w/o arm greaves",
-              "effects": "+10H – 3∫"
+              "effects": "+10H, 3bl"
             }
           ]
         },
         "B": {
           "text": "Concentrated strike burns through foe's leg. The flames do not last but foe's skin is exposed. Skin blisters.",
-          "effects": "+9H – ∑∏ – (-5) – 2∫"
+          "effects": "+9H, stnp, (-5), 2bl"
         },
         "C": {
           "text": "Flames burst against foe's side. He stumbles but does not fall. He tries to smother the fire with his garments.",
-          "effects": "+10H – ∑∏ – (-10) – 3∫"
+          "effects": "+10H, stnp, (-10), 3bl"
         },
         "D": {
           "text": "Foe's shield arm and shield are on fire. Dropping the shield only helps a little. The flames cling to his garments.",
@@ -369,17 +369,17 @@
           "variants": [
             {
               "condition": "with shield",
-              "effects": "+10H – 2∑ – ∏ – 4∫"
+              "effects": "+10H, 2st, np, 4bl"
             },
             {
               "condition": "w/o shield",
-              "effects": "+13H – 2∑ – ∏ – 6∫"
+              "effects": "+13H, 2st, np, 6bl"
             }
           ]
         },
         "E": {
           "text": "Searing strike to foe's legs. Exposed skin and muscle is burned. Infection will follow. Foe struggles to stay up.",
-          "effects": "+15H – 2∑∏ – 4∫ – (-10)"
+          "effects": "+15H, 2stnp, 4bl, (-10)"
         }
       }
     },
@@ -390,19 +390,19 @@
       "results": {
         "A": {
           "text": "Flame grapples foe's shield and chest. The wound is grave and infection will follow.",
-          "effects": "+9H – 2∑∏ – (-15)"
+          "effects": "+9H, 2stnp, (-15)"
         },
         "B": {
           "text": "Fire lands along side foe's face. His hair, cheek, and ear are engulfed. Foe throws himself to the ground.",
-          "effects": "+10H – 2∑ – 4∫"
+          "effects": "+10H, 2st, 4bl"
         },
         "C": {
           "text": "Blaze consumes garments on weapon arm. Any metal covering heats up. Foe falls from the blast.",
-          "effects": "+12H – 3∫"
+          "effects": "+12H, 3bl"
         },
         "D": {
           "text": "Foe's face and weapon hand are scalded. Foe is having trouble opening his eyes.",
-          "effects": "10∑ – (-10) – 6∫"
+          "effects": "10st, (-10), 6bl"
         },
         "E": {
           "text": "Foe's combustible garments turn him into a torch. He runs a short distance, drops and dies in 6 rounds.",
@@ -417,23 +417,23 @@
       "results": {
         "A": {
           "text": "Toast foe's side and send him stumbling back 5 feet away from you. He blocks his face against any renewed assault.",
-          "effects": "+8H – 2∑ – 2∫ – (-5)"
+          "effects": "+8H, 2st, 2bl, (-5)"
         },
         "B": {
           "text": "Flames seek out foe with a predator's lust. He throws garments and equipment off frantically to satisfy the blaze. Foe is busy staying alive.",
-          "effects": "+7H – 2∑ – ∏ – (-10) – 2∫"
+          "effects": "+7H, 2st, np, (-10), 2bl"
         },
         "C": {
           "text": "Back blast. Foe drops to one knee and then rises again with some difficulty. Some of his garments still smoke from the assault. Skin is blistered badly.",
-          "effects": "2∑ – ∏ – (-15) – 2∫"
+          "effects": "2st, np, (-15), 2bl"
         },
         "D": {
           "text": "Foe leaps back from your deadly inferno. He escapes death but falls on his back. He is prone for 1 round. Minor arm burns.",
-          "effects": "+15H – ∑ – 3∫"
+          "effects": "+15H, st, 3bl"
         },
         "E": {
           "text": "Blast leaps onto foe's shield arm. Any shield foe has and his arm are on fire. The heat penetrates deep and foe's face shows it.",
-          "effects": "5∫ – (-15)"
+          "effects": "5bl, (-15)"
         }
       }
     },
@@ -444,23 +444,23 @@
       "results": {
         "A": {
           "text": "Fire consumes garments and hair. Blinding smoke keeps foe's defenses poorly aligned.",
-          "effects": "+12H – ∑∏"
+          "effects": "+12H, stnp"
         },
         "B": {
           "text": "Chest and arm blast damages organic armor and engulfs any wood on foe. Metal armor heats up painfully.",
-          "effects": "+9H – 2∑ – ∏ – (-15) – (+10)"
+          "effects": "+9H, 2st, np, (-15), (+10)"
         },
         "C": {
           "text": "Chest blast. Organic armor is destroyed. Metal armor should be removed quickly.",
-          "effects": "3∑ – (-15) – 6∫"
+          "effects": "3st, (-15), 6bl"
         },
         "D": {
           "text": "Foe's weapon arm is a conflagration. Hand and arm are useless. Muscles and nerves are damaged.",
-          "effects": "6∑ – (-50)"
+          "effects": "6st, (-50)"
         },
         "E": {
           "text": "Strike center of foe's chest. Flame spills in all directions. Foe is knocked down. Chest armor is destroyed.",
-          "effects": "+15H – 6∫ – (-60)"
+          "effects": "+15H, 6bl, (-60)"
         }
       }
     },
@@ -471,23 +471,23 @@
       "results": {
         "A": {
           "text": "Foe's shield side is engulfed in flame. Foe's shield is kindled if wooden.",
-          "effects": "+10H – 2∑ – ∏ – 2∫"
+          "effects": "+10H, 2st, np, 2bl"
         },
         "B": {
           "text": "Abdomen entangled in flames. The flames will spread upward next turn if not extinguished. Foe sees the danger.",
-          "effects": "+20H – 2∫"
+          "effects": "+20H, 2bl"
         },
         "C": {
           "text": "Strike engulfs foe's most exposed hand and burns it without mercy. Hand is useless. Arm clothing is destroyed.",
-          "effects": "6∑ – (-40)"
+          "effects": "6st, (-40)"
         },
         "D": {
           "text": "Foe's side is ignited by your strike and the wounds are deep. He smothers the fire but the damage is done.",
-          "effects": "3∑∏ – 5∫"
+          "effects": "3stnp, 5bl"
         },
         "E": {
           "text": "Blast lands on foe's side but spreads to arms and legs. A shield prevents arm damage but his hands are burned off.",
-          "effects": "+20H – 12∑"
+          "effects": "+20H, 12st"
         }
       }
     },
@@ -498,19 +498,19 @@
       "results": {
         "A": {
           "text": "Foe exposes his back while evading the strike. Blast scorches a small wound in his shoulder blade.",
-          "effects": "+8H – 2∑ – 2∫ – (-20)"
+          "effects": "+8H, 2st, 2bl, (-20)"
         },
         "B": {
           "text": "Strike knocks foe down on his back. The flames do not endure but much equipment is burned or crushed.",
-          "effects": "∑ – 2∫"
+          "effects": "st, 2bl"
         },
         "C": {
           "text": "Violent inferno destroys organic armor and ruins metal armor on leg. Much of the blast tumbles clear after impact.",
-          "effects": "(-20) – 2∫"
+          "effects": "(-20), 2bl"
         },
         "D": {
           "text": "Foe's arms and chest embrace your infernal strike. Arms are useless and foe's skin is open to the air.",
-          "effects": "+15H – 9∑"
+          "effects": "+15H, 9st"
         },
         "E": {
           "text": "Foe inhales flames scalding lungs and throat. Foe is active for 12 rounds (while he burns), then dies.",
@@ -525,15 +525,15 @@
       "results": {
         "A": {
           "text": "Assault to foe's lower leg consumes covering. Foe falls down. One leg is on fire.",
-          "effects": "+10H – 2(-10)"
+          "effects": "+10H, 2(-10)"
         },
         "B": {
           "text": "Leg covering is set on fire by blast. It spreads quickly and foe is in trouble. The flames will grow if not put out.",
-          "effects": "+16H – 3∑"
+          "effects": "+16H, 3st"
         },
         "C": {
           "text": "Foe's shield side is devoured by flames. Head, arm, side, and leg have critical burns. If foe has a shield, it is destroyed in place of his arm.",
-          "effects": "+15H – 6∑∏ – (-85) – 3∫"
+          "effects": "+15H, 6stnp, (-85), 3bl"
         },
         "D": {
           "text": "Blast engulfs lower half of foe's body. If foe has abdominal armor, he is knocked out. If not, he dies in 12 inactive rounds from organ damage.",
@@ -541,7 +541,7 @@
           "variants": [
             {
               "condition": "with abdominal armor",
-              "effects": "2∫"
+              "effects": "2bl"
             },
             {
               "condition": "w/o abdominal armor",
@@ -566,11 +566,11 @@
           "variants": [
             {
               "condition": "with helmet",
-              "effects": "+15H – 3∑ – (-10)"
+              "effects": "+15H, 3st, (-10)"
             },
             {
               "condition": "w/o helmet",
-              "effects": "+12H – 2∑∏ – (-30)"
+              "effects": "+12H, 2stnp, (-30)"
             }
           ]
         },
@@ -580,21 +580,21 @@
           "variants": [
             {
               "condition": "with helmet",
-              "effects": "+10H – 3π – 2∫"
+              "effects": "+10H, 3p, 2bl"
             },
             {
               "condition": "w/o helmet",
-              "effects": "8∫"
+              "effects": "8bl"
             }
           ]
         },
         "C": {
           "text": "Trapped in the furnace of your blast, foe is overcome and falls down. He is unconscious and still burning.",
-          "effects": "+18H – 6∑∏ – (-90) – 4∫"
+          "effects": "+18H, 6stnp, (-90), 4bl"
         },
         "D": {
           "text": "Flames assault upper body. If foe has a full helm, he is blinded and in a coma for 2 days. If not, he dies in 6 rounds due to shock and brain damage.",
-          "effects": "—"
+          "effects": "-"
         },
         "E": {
           "text": "Foe is cremated before your very eyes. He remains standing for 6 rounds and then drops and dies. A small fire lingers over the remains. A horrible end.",
@@ -609,15 +609,15 @@
       "results": {
         "A": {
           "text": "Blast lands on the weapon arm and climbs up to foe's neck. It burns all it touches. If foe has any organic neck covering it is destroyed.",
-          "effects": "4∑∏ – 8∫"
+          "effects": "4stnp, 8bl"
         },
         "B": {
           "text": "Flames burn into foe's throat. The damage is frightening. Foe's neck collapses in the flames. He drops and dies in 9 inactive rounds. He smells bad.",
-          "effects": "+20H – 12∫ – (+10)"
+          "effects": "+20H, 12bl, (+10)"
         },
         "C": {
           "text": "Intense heat fuses metal, cloth and skin. Foe is unrecognizable. If no chest armor he is dead instantly. Otherwise he dies after 9 rounds of burning.",
-          "effects": "—"
+          "effects": "-"
         },
         "D": {
           "text": "Foe is trapped in the furnace made by your attack. Organs are destroyed and foe's blood boils. He has no hope of survival and dies in 6 inactive rounds.",
@@ -636,7 +636,7 @@
       "results": {
         "A": {
           "text": "Brutally scar the side of foe's face. Foe is knocked out. He loses 50 from his Appearance and 25 from his Presence.",
-          "effects": "+20H – 5∫"
+          "effects": "+20H, 5bl"
         },
         "B": {
           "text": "Assault consumes clothing and tissue. Foe's arms and chest are without skin. Foe is paralyzed. Infection will follow.",

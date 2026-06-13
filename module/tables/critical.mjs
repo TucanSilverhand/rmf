@@ -1,19 +1,28 @@
 /**
  * RMF Tables — critical strike engine.
  *
- * Parses the book's critical effects notation and resolves lookups on
- * criticalTable data. The notation (the Key printed on every page):
+ * Parses the RMF critical effects notation and resolves lookups on
+ * criticalTable data. The canonical notation (ASCII tokens, comma
+ * separated — readable replacement for the book's symbol Key):
  *
- *   ßπ   must parry ß rounds            +ßH  ß concussion hits
- *   ß∏   no parry for ß rounds          ß∫   bleed ß hits per round
- *   ß∑   stunned for ß rounds           (-ß) foe has -ß penalty
- *   ß∑∏  stunned AND unable to parry    (+ß) attacker gets +ß next round
- *   M(-ß) / M(+ß)  the penalty/bonus lasts M rounds
+ *   Np     must parry N rounds           +NH  N concussion hits
+ *   Nnp    no parry for N rounds         Nbl  bleed N hits per round
+ *   Nst    stunned for N rounds          (-N) foe has -N penalty
+ *   Nstnp  stunned AND unable to parry   (+N) attacker gets +N next round
+ *   Np(-M) must parry N rounds at a -M penalty
+ *   M(-N) / M(+N)  the penalty/bonus lasts M rounds
  *
- * Cells separate tokens with an en dash ("–"). A bare symbol means 1
- * round. "—" / "" means no mechanical effect (the text says it all —
- * usually death). Anything the parser does not recognise is preserved
- * verbatim in `other[]` so no book content is ever silently dropped.
+ * A bare token (p, st, bl, ...) means 1 round. "-" / "" means no
+ * mechanical effect (the text says it all — usually death). Anything the
+ * parser does not recognise is preserved verbatim in `other[]` so no book
+ * content is ever silently dropped.
+ *
+ * The book's original symbols (ßπ must parry, ß∏ no parry, ß∑ stunned,
+ * ß∑∏, ß∫ bleed, (Mπ-N)/Mπ(-N), en-dash separators) are still accepted as
+ * a LEGACY grammar so criticalTable items imported before the notation
+ * change keep resolving. New data must use the ASCII tokens
+ * (data/system_tables/critical_tables/ is already converted — see
+ * tools/convert-crit-notation.mjs).
  *
  * Pure module (no Foundry deps at module level) — testable in node.
  *
@@ -32,9 +41,9 @@ import { findAttackRow } from "./lookup.mjs";
  * @property {number} bleed       Bleed hits per round.
  * @property {{value:number, rounds:number}|null} penalty  Foe penalty.
  * @property {{value:number, rounds:number}|null} bonus    Attacker bonus.
- * @property {{value:number, rounds:number}|null} parryPenalty  "(Mπ-N)" /
- *   "Mπ(-N)": the foe must parry M rounds AT a -N penalty (also adds to
- *   `mustParry`).
+ * @property {{value:number, rounds:number}|null} parryPenalty  "Mp(-N)"
+ *   (legacy "(Mπ-N)" / "Mπ(-N)"): the foe must parry M rounds AT a -N
+ *   penalty (also adds to `mustParry`).
  * @property {string[]} other     Unrecognised fragments, verbatim.
  * @property {string}  raw        The original notation string.
  * @property {boolean} empty      True when the cell has no notation.
@@ -56,20 +65,36 @@ export function parseCriticalEffects(raw) {
   };
   if (NONE_TOKENS.has(text)) { out.empty = true; return out; }
 
-  // Tokens are separated by en dashes (with the leading "+12H" unhyphenated).
-  const tokens = text.split(/\s*–\s*/).map(t => t.trim()).filter(Boolean);
+  // Canonical tokens are comma separated; legacy cells used en dashes.
+  // No token contains either character, so splitting on both is safe.
+  const tokens = text.split(/\s*[,–]\s*/).map(t => t.trim()).filter(Boolean);
   for (const tok of tokens) {
     let m;
     if ((m = tok.match(/^\+?(\d+)\s*H$/i)))            { out.hits        += Number(m[1]); continue; }
+    // ── Canonical RMF notation (order matters: stnp/stp before st/np/p) ──
+    if ((m = tok.match(/^(\d*)stnp$/i)))               { out.stunNoParry += Number(m[1] || 1); continue; }
+    if ((m = tok.match(/^(\d*)stp$/i)))                { out.stun        += Number(m[1] || 1); out.mustParry += Number(m[1] || 1); continue; }
+    if ((m = tok.match(/^(\d*)st$/i)))                 { out.stun        += Number(m[1] || 1); continue; }
+    if ((m = tok.match(/^(\d*)np$/i)))                 { out.noParry     += Number(m[1] || 1); continue; }
+    if ((m = tok.match(/^(\d*)bl$/i)))                 { out.bleed       += Number(m[1] || 1); continue; }
+    // "Np(-M)": must parry N rounds at a -M penalty (check before bare "Np").
+    if ((m = tok.match(/^(\d*)p\(\s*-\s*(\d+)\s*\)$/i))) {
+      const rounds = Number(m[1] || 1);
+      out.mustParry += rounds;
+      out.parryPenalty = { value: -Number(m[2]), rounds };
+      continue;
+    }
+    if ((m = tok.match(/^(\d*)p$/i)))                  { out.mustParry   += Number(m[1] || 1); continue; }
+    if ((m = tok.match(/^(\d*)\(\s*-\s*(\d+)\s*\)$/))) { out.penalty = { value: -Number(m[2]), rounds: Number(m[1] || 1) }; continue; }
+    if ((m = tok.match(/^(\d*)\(\s*\+\s*(\d+)\s*\)$/))) { out.bonus  = { value:  Number(m[2]), rounds: Number(m[1] || 1) }; continue; }
+    // ── Legacy book symbols (pre-conversion documents) ──
     if ((m = tok.match(/^(\d*)∑∏$/)))                  { out.stunNoParry += Number(m[1] || 1); continue; }
     if ((m = tok.match(/^(\d*)∑π$/)))                  { out.stun        += Number(m[1] || 1); out.mustParry += Number(m[1] || 1); continue; }
     if ((m = tok.match(/^(\d*)∑$/)))                   { out.stun        += Number(m[1] || 1); continue; }
     if ((m = tok.match(/^(\d*)∏$/)))                   { out.noParry     += Number(m[1] || 1); continue; }
     if ((m = tok.match(/^(\d*)π$/)))                   { out.mustParry   += Number(m[1] || 1); continue; }
     if ((m = tok.match(/^(\d*)∫$/)))                   { out.bleed       += Number(m[1] || 1); continue; }
-    if ((m = tok.match(/^(\d*)\(\s*-\s*(\d+)\s*\)$/))) { out.penalty = { value: -Number(m[2]), rounds: Number(m[1] || 1) }; continue; }
-    if ((m = tok.match(/^(\d*)\(\s*\+\s*(\d+)\s*\)$/))) { out.bonus  = { value:  Number(m[2]), rounds: Number(m[1] || 1) }; continue; }
-    // "(Mπ-N)" or "Mπ(-N)": must parry M rounds at a -N penalty.
+    // "(Mπ-N)" or "Mπ(-N)": legacy spellings of Mp(-N).
     if ((m = tok.match(/^\((\d*)π\s*-\s*(\d+)\)$/)) || (m = tok.match(/^(\d*)π\(\s*-\s*(\d+)\s*\)$/))) {
       const rounds = Number(m[1] || 1);
       out.mustParry += rounds;

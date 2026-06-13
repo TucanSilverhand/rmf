@@ -8,10 +8,13 @@
  * enchantment classes on the creature tables), and each cell carries the
  * narrative result text plus an effects notation string:
  *
- *   "+10H – 3∑∏ – (-15)"  → 10 hits, stunned-no-parry 3 rounds, -15 penalty
+ *   "+10H, 3stnp, (-15)"  → 10 hits, stunned-no-parry 3 rounds, -15 penalty
  *
- * Symbols (the book's Key): ßπ must parry; ß∏ no parry; ß∑ stunned;
- * ß∫ bleed per round; (-ß) foe penalty; (+ß) attacker bonus next round.
+ * Tokens (RMF ASCII notation, comma separated; bare token = 1 round):
+ * Np must parry; Nnp no parry; Nst stunned; Nstnp stunned & no parry;
+ * Nbl bleed per round; (-N) foe penalty; (+N) attacker bonus next round;
+ * Np(-M) must parry at -M. The book's original symbol Key (ßπ/ß∏/ß∑/ß∫,
+ * en-dash separators) is still parsed as a legacy grammar.
  * Some cells are conditional ("with helmet / w/o helmet") — those carry a
  * `variants` array instead of a flat `effects` string.
  *

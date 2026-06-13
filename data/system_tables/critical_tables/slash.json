@@ -25,10 +25,10 @@
     }
   ],
   "legend": {
-    "key": "ßπ = must parry ß rounds; ß∏ = no parry for ß rounds; ß∑ = stunned for ß rounds; ß∫ = bleed ß hits per round; (-ß) = foe has -ß penalty; (+ß) = attacker gets +ß next round.",
-    "hits": "+ßH = ß concussion hits.",
-    "rounds": "M(-ß) / M(+ß) = the penalty/bonus lasts M rounds. A bare symbol = 1 round.",
-    "none": "\"—\" = no mechanical effect beyond the text (often death).",
+    "key": "Np = must parry N rounds; Nnp = no parry for N rounds; Nst = stunned for N rounds; Nstnp = stunned and unable to parry for N rounds; Nbl = bleed N hits per round; (-N) = foe has -N penalty; (+N) = attacker gets +N next round.",
+    "hits": "+NH = N concussion hits.",
+    "rounds": "M(-N) / M(+N) = the penalty/bonus lasts M rounds. A bare token (p, st, bl, ...) = 1 round. Np(-M) = must parry N rounds at a -M penalty.",
+    "none": "\"-\" = no mechanical effect beyond the text (often death).",
     "variants": "Conditional cells (e.g. \"with helmet / w/o helmet\") apply the matching variant."
   },
   "rollMatchPolicy": "rollMin / rollMax are inclusive on an UNMODIFIED d100. The first band (rollMin=null) is the low catch-all; rolls above 100 (modified criticals) clamp to the top band.",
@@ -106,11 +106,11 @@
         },
         "D": {
           "text": "You force your opponent back. He keeps you at bay with wild swings.",
-          "effects": "+3H – π"
+          "effects": "+3H, p"
         },
         "E": {
           "text": "You push aside foe's weapon and force him back.",
-          "effects": "+4H – π"
+          "effects": "+4H, p"
         }
       }
     },
@@ -121,23 +121,23 @@
       "results": {
         "A": {
           "text": "Strike passes under foe's arm. It fails to bite deep. He recoils.",
-          "effects": "+1H – π"
+          "effects": "+1H, p"
         },
         "B": {
           "text": "Blow to foe's side. Foe defends energetically.",
-          "effects": "+2H – (π-10)"
+          "effects": "+2H, p(-10)"
         },
         "C": {
           "text": "Your assault catches foe in side and forces him back 5 feet.",
-          "effects": "+4H – (π-20)"
+          "effects": "+4H, p(-20)"
         },
         "D": {
           "text": "You lean in and slash foe's side. You receive initiative next round.",
-          "effects": "+2H – (-10)"
+          "effects": "+2H, (-10)"
         },
         "E": {
           "text": "Strong blow to foe's ribs. Foe drops his guard and almost his weapon.",
-          "effects": "∑∏ – (+10)"
+          "effects": "stnp, (+10)"
         }
       }
     },
@@ -148,23 +148,23 @@
       "results": {
         "A": {
           "text": "Foe's evasion puts him out of an aggressive posture.",
-          "effects": "+2H – π – (+10)"
+          "effects": "+2H, p, (+10)"
         },
         "B": {
           "text": "Foe is shaken by your blow to his side. His defensive measures look clumsy.",
-          "effects": "+2H – (π-20)"
+          "effects": "+2H, p(-20)"
         },
         "C": {
           "text": "You break foe's rib with a lightning strike to his chest. He recovers quickly. His shield side still faces you.",
-          "effects": "+3H – ∑"
+          "effects": "+3H, st"
         },
         "D": {
           "text": "Arm and chest strike. Foe cannot defend himself for a moment. You step around his shielded side.",
-          "effects": "+3H – ∑∏"
+          "effects": "+3H, stnp"
         },
         "E": {
           "text": "Foe avoids your main effort, but you nick him on your recovery. Foe receives minor side wound and stumbles back 10 feet.",
-          "effects": "+3H – ∫ – (-10)"
+          "effects": "+3H, bl, (-10)"
         }
       }
     },
@@ -175,7 +175,7 @@
       "results": {
         "A": {
           "text": "Minor thigh wound. Cut foe with the smallest of slashes.",
-          "effects": "∫"
+          "effects": "bl"
         },
         "B": {
           "text": "Strike foe in shin. If he doesn't have greaves, you slash open foe's shin.",
@@ -183,21 +183,21 @@
           "variants": [
             {
               "condition": "with leg greaves",
-              "effects": "+2H – π"
+              "effects": "+2H, p"
             },
             {
               "condition": "w/o leg greaves",
-              "effects": "+2H – ∫"
+              "effects": "+2H, bl"
             }
           ]
         },
         "C": {
           "text": "The blow does nothing more than open a wide cut in foe.",
-          "effects": "+2H – 2∫"
+          "effects": "+2H, 2bl"
         },
         "D": {
           "text": "Foe blocks your attack on his chest. You slash foe's upper area.",
-          "effects": "+3H – 2∫"
+          "effects": "+3H, 2bl"
         },
         "E": {
           "text": "Blow to foe's upper leg. Leg armor helps block the blow.",
@@ -209,7 +209,7 @@
             },
             {
               "condition": "w/o leg greaves",
-              "effects": "+3H – 3∫"
+              "effects": "+3H, 3bl"
             }
           ]
         }
@@ -222,23 +222,23 @@
       "results": {
         "A": {
           "text": "Blow to foe's back. Foe attempts to ward you off with a wild swing.",
-          "effects": "+2H – (π-30)"
+          "effects": "+2H, p(-30)"
         },
         "B": {
           "text": "Foe twists oddly to avoid your attack. Blow strikes foe's back.",
-          "effects": "+4H – (π-30)"
+          "effects": "+4H, p(-30)"
         },
         "C": {
           "text": "Blow to foe's back. Foe twists out of it and you turn your weapon to magnify the wound. Foe yells out.",
-          "effects": "+3H – ∑∏ – ∫"
+          "effects": "+3H, stnp, bl"
         },
         "D": {
           "text": "Reach long and catch foe in his lower back. He twists out of it, but is unbalanced.",
-          "effects": "+3H – ∑∏ – 2∫"
+          "effects": "+3H, stnp, 2bl"
         },
         "E": {
           "text": "Strike to foe's stomach. He doubles over in pain and you pull your sword clean with one more sweep.",
-          "effects": "+4H – ∑∏ – 3∫"
+          "effects": "+4H, stnp, 3bl"
         }
       }
     },
@@ -249,7 +249,7 @@
       "results": {
         "A": {
           "text": "Blow to foe's chest. Foe stumbles back and puts up a feeble guard.",
-          "effects": "+2H – (π-25) – ∫"
+          "effects": "+2H, p(-25), bl"
         },
         "B": {
           "text": "Quality strike. Minor chest wound. If foe has armor, he only staggers. If not, the wound is effective.",
@@ -257,25 +257,25 @@
           "variants": [
             {
               "condition": "with chest armor",
-              "effects": "+4H – π"
+              "effects": "+4H, p"
             },
             {
               "condition": "w/o chest armor",
-              "effects": "+3H – 2π – ∫ – (-5)"
+              "effects": "+3H, 2p, bl, (-5)"
             }
           ]
         },
         "C": {
           "text": "Blow lands solidly upon foe's chest. You get some slashing action, but not a mortal wound.",
-          "effects": "+4H – π – 2∫ – (-10)"
+          "effects": "+4H, p, 2bl, (-10)"
         },
         "D": {
           "text": "Heavy blow to upper torso. Wound falls open and foe is in pain. His guard is still up, amazingly enough.",
-          "effects": "+5H – π – 3∫ – (-15)"
+          "effects": "+5H, p, 3bl, (-15)"
         },
         "E": {
           "text": "Cut foe open with little grace. You are unsure of your success until you see all the blood coming out of his chest.",
-          "effects": "+6H – 2∑ – 4∫ – (-10)"
+          "effects": "+6H, 2st, 4bl, (-10)"
         }
       }
     },
@@ -286,23 +286,23 @@
       "results": {
         "A": {
           "text": "You recover from your initial swing and bring edge across foe's thigh.",
-          "effects": "+3H – π – 2∫"
+          "effects": "+3H, p, 2bl"
         },
         "B": {
           "text": "Edge makes contact well enough. Minor thigh wound.",
-          "effects": "+4H – 2π – 2∫"
+          "effects": "+4H, 2p, 2bl"
         },
         "C": {
           "text": "Strike to side slips down onto foe's thigh. The wound is effective.",
-          "effects": "+5H – ∑ – 2∫"
+          "effects": "+5H, st, 2bl"
         },
         "D": {
           "text": "Tip of your blade gets a hit on foe's thigh. You twist your weapon.",
-          "effects": "+6H – 2∑ – 2∫"
+          "effects": "+6H, 2st, 2bl"
         },
         "E": {
           "text": "Thigh wound. Your blow cuts deep and severs an important vein.",
-          "effects": "+8H – 2∑ – 5∫"
+          "effects": "+8H, 2st, 5bl"
         }
       }
     },
@@ -313,23 +313,23 @@
       "results": {
         "A": {
           "text": "You feign high and strike low. Slash foe in back of upper leg.",
-          "effects": "+3H – 2∫ – (-10)"
+          "effects": "+3H, 2bl, (-10)"
         },
         "B": {
           "text": "Nick foe in his forearm. Wound bleeds surprisingly strongly.",
-          "effects": "+4H – ∑ – 2∫ – (-10)"
+          "effects": "+4H, st, 2bl, (-10)"
         },
         "C": {
           "text": "Catch part of foe's forearm. You make a long slice in foe's arm.",
-          "effects": "+4H – ∑ – 3∫ – (-10)"
+          "effects": "+4H, st, 3bl, (-10)"
         },
         "D": {
           "text": "You are lucky to strike foe's forearm while recovering from a lunge.",
-          "effects": "+4H – 2∑ – 3∫ – (-10)"
+          "effects": "+4H, 2st, 3bl, (-10)"
         },
         "E": {
           "text": "Foe tries to disarm you and pays with a nasty cut to his forearm.",
-          "effects": "+6H – 2∑ – 3∫ – (-15)"
+          "effects": "+6H, 2st, 3bl, (-15)"
         }
       }
     },
@@ -340,15 +340,15 @@
       "results": {
         "A": {
           "text": "Foe blocks your attack with his shield arm. Shoulder is broken and arm is useless. You have initiative.",
-          "effects": "+9H – 3∑ – (+10)"
+          "effects": "+9H, 3st, (+10)"
         },
         "B": {
           "text": "Your strike misses torso and breaks foe's elbow. Foe drops his weapon and his weapon arm is useless.",
-          "effects": "+8H – 4∑ – 2∏"
+          "effects": "+8H, 4st, 2np"
         },
         "C": {
           "text": "Your swing falls short when foe leaps back. You shatter foe's knee. Foe is knocked down.",
-          "effects": "+6H – 3∏ – (-90)"
+          "effects": "+6H, 3np, (-90)"
         },
         "D": {
           "text": "You knock foe out for 6 hours with a strike to side of head. If foe has no helm, you kill him instantly.",
@@ -356,7 +356,7 @@
         },
         "E": {
           "text": "Block foe's weapon arm away and then sever it. Foe drops immediately and expires in 12 rounds. Good shot!",
-          "effects": "+12H – (+10)"
+          "effects": "+12H, (+10)"
         }
       }
     },
@@ -367,23 +367,23 @@
       "results": {
         "A": {
           "text": "Strike lands close against foe's neck. Foe is horrified.",
-          "effects": "+6H – 3∑ – ∏"
+          "effects": "+6H, 3st, np"
         },
         "B": {
           "text": "Your attempt to behead foe almost works. Neck strike. Foe is not happy.",
-          "effects": "+7H – 2∑ – 3∫ – (-5)"
+          "effects": "+7H, 2st, 3bl, (-5)"
         },
         "C": {
           "text": "Slash foe's neck. Your weapon cuts neck garments (and armor) free.",
-          "effects": "+8H – 4∑ – 2∏ – (+10)"
+          "effects": "+8H, 4st, 2np, (+10)"
         },
         "D": {
           "text": "You strike foe's shoulder and slash muscles.",
-          "effects": "+5H – 3∑ – (-20) – (+10)"
+          "effects": "+5H, 3st, (-20), (+10)"
         },
         "E": {
           "text": "Slash tendons and crush the bones in foe's shield arm shoulder. Arm is useless.",
-          "effects": "4∑ – 2∫"
+          "effects": "4st, 2bl"
         }
       }
     },
@@ -394,23 +394,23 @@
       "results": {
         "A": {
           "text": "Blow falls on lower leg. Slash tendons. Poor sucker.",
-          "effects": "+4H – 2∑ – 2∫ – (-30)"
+          "effects": "+4H, 2st, 2bl, (-30)"
         },
         "B": {
           "text": "Slash muscle in foe's calf. Foe is in too much pain to regain footing quickly.",
-          "effects": "+6H – 3∑ – ∏ – (-40)"
+          "effects": "+6H, 3st, np, (-40)"
         },
         "C": {
           "text": "Slash muscle and tendons in foe's lower leg. Foe stumbles forward into you with his guard down.",
-          "effects": "+7H – 2∑∏ – (-45)"
+          "effects": "+7H, 2stnp, (-45)"
         },
         "D": {
           "text": "Slash muscle and sever tendons in foe's lower leg. He can't stand much longer. His guard is feeble.",
-          "effects": "3∑ – 2∏ – (-50)"
+          "effects": "3st, 2np, (-50)"
         },
         "E": {
           "text": "Slash foe's lower leg and sever muscle and tendons. Foe will fall without something to lean against.",
-          "effects": "+8H – 6∑ – (-70)"
+          "effects": "+8H, 6st, (-70)"
         }
       }
     },
@@ -421,23 +421,23 @@
       "results": {
         "A": {
           "text": "Foe goes low, but you still catch his upper arm. It's a bleeder.",
-          "effects": "+5H – 2∑∏ – 3∫ – (-25)"
+          "effects": "+5H, 2stnp, 3bl, (-25)"
         },
         "B": {
           "text": "Foe moves his shield arm too slowly. You gladly slash his arm.",
-          "effects": "+6H – 2∑∏ – 3∫ – (-30)"
+          "effects": "+6H, 2stnp, 3bl, (-30)"
         },
         "C": {
           "text": "You come in high and fast. Slash muscle and tendons in foe's shield arm. Foe's arm is useless.",
-          "effects": "+9H – 6∑ – 4∫"
+          "effects": "+9H, 6st, 4bl"
         },
         "D": {
           "text": "Foe mistakenly brings his weapon arm across your blade. Sever tendons. Foe's arm is limp and useless.",
-          "effects": "+10H – 4∑ – 2∏"
+          "effects": "+10H, 4st, 2np"
         },
         "E": {
           "text": "Foe reaches out to block your blow. You sever two fingers and break his shield arm making it useless.",
-          "effects": "+12H – 3∑∏"
+          "effects": "+12H, 3stnp"
         }
       }
     },
@@ -448,23 +448,23 @@
       "results": {
         "A": {
           "text": "Foe steps right into your swing. You make a large wound.",
-          "effects": "+6H – 5∑ – 6∫ – (+20)"
+          "effects": "+6H, 5st, 6bl, (+20)"
         },
         "B": {
           "text": "Your edge bites half its width into foe. Open up a terrible wound. Blood goes everywhere.",
-          "effects": "+7H – 2∑∏ – 6∫"
+          "effects": "+7H, 2stnp, 6bl"
         },
         "C": {
           "text": "You follow your training well. You extend on your slashing arc. Strike lands against foe's side.",
-          "effects": "+8H – 2∑∏ – 4∫ – (-20)"
+          "effects": "+8H, 2stnp, 4bl, (-20)"
         },
         "D": {
           "text": "You plunge your weapon into foe's stomach. Major abdominal wound. Foe is instantly pale from blood loss.",
-          "effects": "+10H – 4∑ – 2∏ – 8∫ – (-10)"
+          "effects": "+10H, 4st, 2np, 8bl, (-10)"
         },
         "E": {
           "text": "Sever opponent's hand. Sad. Foe is down and in shock for 12 rounds, then dies.",
-          "effects": "+5H – 12∑∏"
+          "effects": "+5H, 12stnp"
         }
       }
     },
@@ -475,23 +475,23 @@
       "results": {
         "A": {
           "text": "Foe turns out and away from your swing. You still catch his side.",
-          "effects": "+8H – 2∑∏ – 2∫ – (-10)"
+          "effects": "+8H, 2stnp, 2bl, (-10)"
         },
         "B": {
           "text": "Strike to back. Foe goes prone trying to avoid your strike. He gets up facing the wrong direction.",
-          "effects": "+10H – 3∑∏ – 3∫"
+          "effects": "+10H, 3stnp, 3bl"
         },
         "C": {
           "text": "Blast to back breaks bone. Foe stumbles forward before falling down. He is having trouble standing.",
-          "effects": "+9H – 4∑∏ – (-10)"
+          "effects": "+9H, 4stnp, (-10)"
         },
         "D": {
           "text": "Your attempt to disarm foe is even more effective. Sever opponent's hand. Foe is in shock for 6 rounds and then dies.",
-          "effects": "+6H – 6∑∏"
+          "effects": "+6H, 6stnp"
         },
         "E": {
           "text": "Meat chopping strike severs foe's leg. Foe drops and lapses into unconsciousness. Foe dies in 9 rounds.",
-          "effects": "+15H – (+10)"
+          "effects": "+15H, (+10)"
         }
       }
     },
@@ -506,17 +506,17 @@
           "variants": [
             {
               "condition": "with helmet",
-              "effects": "+3H – 2∑∏"
+              "effects": "+3H, 2stnp"
             },
             {
               "condition": "w/o helmet",
-              "effects": "+3H – 3∑ – ∏ – 3∫"
+              "effects": "+3H, 3st, np, 3bl"
             }
           ]
         },
         "B": {
           "text": "Strike to foe's hip. The blow has little edge, but much impact. Your blow staggers foe. His recovery is slow.",
-          "effects": "+7H – 3∑ – ∏ – (-20) – (+10)"
+          "effects": "+7H, 3st, np, (-20), (+10)"
         },
         "C": {
           "text": "Chop the top of foe's thigh. Sever foe's leg. Foe drops immediately and dies in 6 rounds due to shock and blood loss.",
@@ -524,7 +524,7 @@
         },
         "D": {
           "text": "Sever foe's weapon arm and bury your sword into foe's side. Foe falls prone. Foe is in shock for 12 rounds, then dies.",
-          "effects": "+15H – 9∑∏"
+          "effects": "+15H, 9stnp"
         },
         "E": {
           "text": "Sever foe's spine. Foe collapses, paralyzed from the neck down permanently.",
@@ -539,7 +539,7 @@
       "results": {
         "A": {
           "text": "The tip of your weapon slashes foe's nose. Minor wound and a permanent scar.",
-          "effects": "+2H – 6∑ – 2∫ – (-30)"
+          "effects": "+2H, 6st, 2bl, (-30)"
         },
         "B": {
           "text": "Strike to foe's head breaks skull and causes massive brain damage. Foe drops and dies in 6 rounds.",
@@ -547,7 +547,7 @@
         },
         "C": {
           "text": "You cleave shield and arm in half. Foe attempts to catch his falling arm. Foe is in shock for 12 rounds then dies.",
-          "effects": "+18H – 12∑∏"
+          "effects": "+18H, 12stnp"
         },
         "D": {
           "text": "Slash foe's side. Foe dies in 3 rounds due to internal organ damage. Foe is down and unconscious immediately.",
@@ -555,7 +555,7 @@
         },
         "E": {
           "text": "Strike to foe's head destroys brain and makes life difficult for the poor fool. Foe expires in a heap—immediately.",
-          "effects": "—"
+          "effects": "-"
         }
       }
     },
@@ -566,15 +566,15 @@
       "results": {
         "A": {
           "text": "Strike severs carotid artery and jugular vein, breaking foe's neck. Foe dies in 6 rounds of agony.",
-          "effects": "—"
+          "effects": "-"
         },
         "B": {
           "text": "Disembowel foe, killing him instantly. 25% chance your weapon is stuck in opponent for 1 round.",
-          "effects": "—"
+          "effects": "-"
         },
         "C": {
           "text": "Strike up, in, and across foe's forehead. Destroy foe's eyes. Foe flips onto his back in pain.",
-          "effects": "+5H – 30∑∏"
+          "effects": "+5H, 30stnp"
         },
         "D": {
           "text": "Impale foe in heart. Foe dies instantly. Heart is destroyed. 25% chance your weapon is stuck in for 2 rounds.",
@@ -582,7 +582,7 @@
         },
         "E": {
           "text": "Very close! Strike to foe's groin area. All vital organs are destroyed immediately. Foe dies after 24 rounds of agony.",
-          "effects": "+10H – 12∑∏"
+          "effects": "+10H, 12stnp"
         }
       }
     }
