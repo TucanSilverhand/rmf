@@ -378,7 +378,8 @@ export class RMFCreatureCriticalTableSheet extends RMFMatrixTableSheet {
   static PARTS = { ...super.PARTS, form: { template: "systems/rmf/templates/item-matrix-table-sheet.hbs", scrollable: [".sheet-body"] } };
   _parseEffects(s) { return parseCriticalEffects(s); }
   _describeEffects(p) { return describeCritical(p); }
-  async _resolveEngine({ table, column, mod }) { return resolveCritical({ table, column, mod }); }
+  // Creature criticals (large / super-large) roll high open-ended — PDF p.209.
+  async _resolveEngine({ table, column, mod }) { return resolveCritical({ table, column, mod, openEnded: true }); }
   _columnLabel() { return L("RMF.CreatureCritical.ColumnLabel"); }
   get _chatTitleKey() { return "RMF.CreatureCritical.ChatTitle"; }
   get _namePlaceholderKey() { return "RMF.CreatureCritical.NamePlaceholder"; }

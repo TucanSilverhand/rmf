@@ -451,7 +451,7 @@
     "classification": "staticManeuver",
     "dpCost": "",
     "boughtByLevel": {},
-    "skillRankBonusProgression": "standard",
+    "skillRankBonusProgression": "limited",
     "commonlyUsed": false
   },
   {
@@ -464,7 +464,7 @@
     "classification": "staticManeuver",
     "dpCost": "",
     "boughtByLevel": {},
-    "skillRankBonusProgression": "standard",
+    "skillRankBonusProgression": "limited",
     "commonlyUsed": false
   },
   {
@@ -647,7 +647,7 @@
     "classification": "specialPurpose",
     "dpCost": "",
     "boughtByLevel": {},
-    "skillRankBonusProgression": "standard",
+    "skillRankBonusProgression": "combined",
     "commonlyUsed": false
   },
   {
@@ -660,7 +660,7 @@
     "classification": "staticManeuver",
     "dpCost": "",
     "boughtByLevel": {},
-    "skillRankBonusProgression": "standard",
+    "skillRankBonusProgression": "combined",
     "commonlyUsed": false
   },
   {
@@ -673,7 +673,7 @@
     "classification": "staticManeuver",
     "dpCost": "",
     "boughtByLevel": {},
-    "skillRankBonusProgression": "standard",
+    "skillRankBonusProgression": "combined",
     "commonlyUsed": false
   },
   {
@@ -686,7 +686,7 @@
     "classification": "offensiveBonus",
     "dpCost": "",
     "boughtByLevel": {},
-    "skillRankBonusProgression": "standard",
+    "skillRankBonusProgression": "combined",
     "commonlyUsed": false
   },
   {
@@ -751,7 +751,7 @@
     "classification": "staticManeuver",
     "dpCost": "",
     "boughtByLevel": {},
-    "skillRankBonusProgression": "standard",
+    "skillRankBonusProgression": "combined",
     "commonlyUsed": false
   },
   {
@@ -764,7 +764,7 @@
     "classification": "staticManeuver",
     "dpCost": "",
     "boughtByLevel": {},
-    "skillRankBonusProgression": "standard",
+    "skillRankBonusProgression": "combined",
     "commonlyUsed": false
   },
   {
@@ -777,7 +777,7 @@
     "classification": "staticManeuver",
     "dpCost": "",
     "boughtByLevel": {},
-    "skillRankBonusProgression": "standard",
+    "skillRankBonusProgression": "combined",
     "commonlyUsed": false
   },
   {
@@ -790,7 +790,7 @@
     "classification": "staticManeuver",
     "dpCost": "",
     "boughtByLevel": {},
-    "skillRankBonusProgression": "standard",
+    "skillRankBonusProgression": "combined",
     "commonlyUsed": false
   },
   {
@@ -803,7 +803,7 @@
     "classification": "staticManeuver",
     "dpCost": "",
     "boughtByLevel": {},
-    "skillRankBonusProgression": "standard",
+    "skillRankBonusProgression": "combined",
     "commonlyUsed": false
   },
   {
@@ -816,7 +816,7 @@
     "classification": "staticManeuver",
     "dpCost": "",
     "boughtByLevel": {},
-    "skillRankBonusProgression": "standard",
+    "skillRankBonusProgression": "combined",
     "commonlyUsed": false
   },
   {
@@ -1844,7 +1844,7 @@
     "classification": "staticManeuver",
     "dpCost": "",
     "boughtByLevel": {},
-    "skillRankBonusProgression": "standard",
+    "skillRankBonusProgression": "combined",
     "commonlyUsed": false
   },
   {
@@ -1857,7 +1857,7 @@
     "classification": "staticManeuver",
     "dpCost": "",
     "boughtByLevel": {},
-    "skillRankBonusProgression": "standard",
+    "skillRankBonusProgression": "combined",
     "commonlyUsed": false
   },
   {
@@ -1870,7 +1870,7 @@
     "classification": "staticManeuver",
     "dpCost": "",
     "boughtByLevel": {},
-    "skillRankBonusProgression": "standard",
+    "skillRankBonusProgression": "combined",
     "commonlyUsed": false
   },
   {
@@ -1883,7 +1883,7 @@
     "classification": "staticManeuver",
     "dpCost": "",
     "boughtByLevel": {},
-    "skillRankBonusProgression": "standard",
+    "skillRankBonusProgression": "combined",
     "commonlyUsed": false
   },
   {
@@ -1896,7 +1896,7 @@
     "classification": "staticManeuver",
     "dpCost": "",
     "boughtByLevel": {},
-    "skillRankBonusProgression": "standard",
+    "skillRankBonusProgression": "combined",
     "commonlyUsed": false
   },
   {
@@ -1909,7 +1909,7 @@
     "classification": "staticManeuver",
     "dpCost": "",
     "boughtByLevel": {},
-    "skillRankBonusProgression": "standard",
+    "skillRankBonusProgression": "combined",
     "commonlyUsed": false
   },
   {
@@ -1922,7 +1922,7 @@
     "classification": "staticManeuver",
     "dpCost": "",
     "boughtByLevel": {},
-    "skillRankBonusProgression": "standard",
+    "skillRankBonusProgression": "combined",
     "commonlyUsed": false
   },
   {
@@ -1935,7 +1935,7 @@
     "classification": "staticManeuver",
     "dpCost": "",
     "boughtByLevel": {},
-    "skillRankBonusProgression": "standard",
+    "skillRankBonusProgression": "combined",
     "commonlyUsed": false
   },
   {
@@ -1948,7 +1948,7 @@
     "classification": "staticManeuver",
     "dpCost": "",
     "boughtByLevel": {},
-    "skillRankBonusProgression": "standard",
+    "skillRankBonusProgression": "combined",
     "commonlyUsed": false
   },
   {
@@ -1961,7 +1961,7 @@
     "classification": "staticManeuver",
     "dpCost": "",
     "boughtByLevel": {},
-    "skillRankBonusProgression": "standard",
+    "skillRankBonusProgression": "combined",
     "commonlyUsed": false
   },
   {
@@ -1974,7 +1974,7 @@
     "classification": "staticManeuver",
     "dpCost": "",
     "boughtByLevel": {},
-    "skillRankBonusProgression": "standard",
+    "skillRankBonusProgression": "combined",
     "commonlyUsed": false
   },
   {
@@ -1987,7 +1987,7 @@
     "classification": "staticManeuver",
     "dpCost": "",
     "boughtByLevel": {},
-    "skillRankBonusProgression": "standard",
+    "skillRankBonusProgression": "combined",
     "commonlyUsed": false
   },
   {
@@ -2000,7 +2000,7 @@
     "classification": "staticManeuver",
     "dpCost": "",
     "boughtByLevel": {},
-    "skillRankBonusProgression": "standard",
+    "skillRankBonusProgression": "combined",
     "commonlyUsed": false
   },
   {
@@ -2013,7 +2013,7 @@
     "classification": "staticManeuver",
     "dpCost": "",
     "boughtByLevel": {},
-    "skillRankBonusProgression": "standard",
+    "skillRankBonusProgression": "combined",
     "commonlyUsed": false
   },
   {

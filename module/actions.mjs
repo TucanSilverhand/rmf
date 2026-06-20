@@ -15,6 +15,7 @@
  */
 
 import { RMF_CONSTANTS } from "./utils/constants.mjs";
+import { rollOpenEndedD100 } from "./tables/open-ended.mjs";
 
 /**
  * Centralized action management system for RMF
@@ -221,9 +222,17 @@ export class RMFActions {
     return { formula: `1d100${bonus >= 0 ? '+' : ''}${bonus}`, bonus };
   }
 
-  static async #postStyledRollMessage({ actor, roll, bonus = 0, flavor, label = "" }) {
-    const baseRoll = Number(roll.dice?.[0]?.total ?? roll.total ?? 0);
+  static async #postStyledRollMessage({ actor, roll, bonus = 0, flavor, label = "", openEnded = null }) {
     const bonusValue = Number(bonus) || 0;
+    // `openEnded` (an OpenEndedResult from rollOpenEndedD100) drives RM's
+    // exploding rolls; otherwise display the plain Foundry Roll.
+    const baseRoll = openEnded
+      ? Number(openEnded.total)
+      : Number(roll.dice?.[0]?.total ?? roll.total ?? 0);
+    const totalResult = openEnded ? baseRoll + bonusValue : Number(roll.total);
+    const formula = openEnded
+      ? `1d100${bonusValue >= 0 ? "+" : ""}${bonusValue} (open-ended)`
+      : roll.formula;
     const bonusAbs = Math.abs(bonusValue);
     const bonusOperator = bonusValue < 0 ? "-" : "+";
     const hasBonus = bonusAbs !== 0;
@@ -233,9 +242,9 @@ export class RMFActions {
       {
         actor,
         statName: label || flavor,
-        roll,
+        roll: openEnded ? { total: totalResult } : roll,
         bonus: bonusValue,
-        formula: roll.formula,
+        formula,
         baseRoll,
         bonusOperator,
         bonusAbs,
@@ -243,12 +252,19 @@ export class RMFActions {
       }
     );
 
-    await roll.toMessage({
-      speaker: ChatMessage.implementation.getSpeaker({ actor }),
-      flavor,
-      content,
-      rollMode: game.settings.get("core", "rollMode")
-    });
+    const speaker = ChatMessage.implementation.getSpeaker({ actor });
+    const rollMode = game.settings.get("core", "rollMode");
+    if (openEnded) {
+      await ChatMessage.implementation.create({
+        speaker,
+        flavor,
+        content,
+        rolls: Array.isArray(openEnded.rolls) ? openEnded.rolls : [],
+        rollMode
+      });
+    } else {
+      await roll.toMessage({ speaker, flavor, content, rollMode });
+    }
   }
 
   /**
@@ -382,24 +398,25 @@ export class RMFActions {
     
     const resistType = target.dataset.resistance;
     const actor = this.document;
-    
-    // Get resistance bonus from derived stats (NaN-safe).
-    const { formula, bonus: resistance } = RMFActions.#buildD100Formula(actor.system.derivedStats?.resistances?.[resistType]);
 
-    const roll = await new Roll(formula).evaluate();
-    
+    // Resistance Rolls are open-ended (high + low) — PDF p.53. NaN-safe bonus.
+    const rawBonus = Number(actor.system.derivedStats?.resistances?.[resistType]);
+    const resistance = Number.isFinite(rawBonus) ? Math.trunc(rawBonus) : 0;
+
+    const openEnded = await rollOpenEndedD100({ high: true, low: true });
+
     const resistLabel = game.i18n.localize(`RMF.Resistances.${resistType}`) || resistType;
-    
+
     await RMFActions.#postStyledRollMessage({
       actor,
-      roll,
+      openEnded,
       bonus: resistance,
       flavor: `${resistLabel} Resistance Roll`,
       label: resistLabel
     });
 
     if (CONFIG.RMF?.debug) {
-      console.log(`RMF DEBUG | Resistance Roll: ${resistType} = ${roll.total}`);
+      console.log(`RMF DEBUG | Resistance Roll: ${resistType} = ${openEnded.total + resistance}`);
     }
   }
 
@@ -691,8 +708,12 @@ export class RMFActions {
     const bought = this.document.system.boughtByLevel || {};
     const currentBought = Number(bought[level] || 0);
 
-    // Maximum 3 ranks per level
-    if (currentBought >= 3) {
+    // Max ranks/level from the slash-notation cost (1/2/3/* → 1/2/3/∞).
+    // When the skill carries no own cost (cost lives in the profession),
+    // fall back to the classic 3-per-level cap.
+    const rpl = Number(this.document.system.dpCostParsed?.ranksPerLevel);
+    const maxRanks = rpl === Infinity ? Infinity : (rpl > 0 ? rpl : 3);
+    if (currentBought >= maxRanks) {
       ui.notifications.warn(game.i18n.localize("RMF.Skill.MaxRanksPerLevel"));
       return;
     }

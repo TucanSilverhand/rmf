@@ -81,7 +81,8 @@ export async function resolveAttack({
     throw new Error("RMF | resolveAttack: missing targetAT");
   }
 
-  const rolled = roll ?? await rollOpenEndedD100({ high: true, low: false });
+  // Attack rolls are FULL open-ended (high + low) — PDF p.9 / p.43.
+  const rolled = roll ?? await rollOpenEndedD100({ high: true, low: true });
   const natural = Number(rolled.natural);
   const rollTotal = Number(rolled.total);
 
@@ -170,7 +171,9 @@ export async function resolveResistanceSpell({
   if (!table) throw new Error("RMF | resolveResistanceSpell: missing table");
   if (!column) throw new Error("RMF | resolveResistanceSpell: missing column");
 
-  const rolled = roll ?? await rollOpenEndedD100({ high: true, low: false });
+  // Basic Spell attacks are NOT open-ended — PDF p.44 ("not open-ended for
+  // Basic Spell attacks"): a flat 1d100 (96-100 still hits the UM-high band).
+  const rolled = roll ?? await rollOpenEndedD100({ high: false, low: false });
   const natural = Number(rolled.natural);
   const rollTotal = Number(rolled.total);
 

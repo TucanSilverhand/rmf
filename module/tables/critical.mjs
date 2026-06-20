@@ -30,6 +30,7 @@
  */
 
 import { findAttackRow } from "./lookup.mjs";
+import { rollOpenEndedD100 } from "./open-ended.mjs";
 
 /**
  * @typedef {Object} ParsedEffects
@@ -145,24 +146,31 @@ export function lookupCritical(table, roll, column) {
 }
 
 /**
- * Roll-and-resolve a critical strike. Critical rolls are a plain d100
- * (NOT open-ended); severity shifts/modifiers are applied by the caller
- * before passing `mod`.
+ * Roll-and-resolve a critical strike. Normal critical rolls are a plain
+ * d100 (NOT open-ended); severity shifts/modifiers are applied by the caller
+ * before passing `mod`. Criticals against large / super-large creatures ARE
+ * high open-ended (PDF p.209) — pass `openEnded: true` for those tables.
  *
  * @param {Object} params
  * @param {Object} params.table   criticalTable data (DataModel or plain object).
  * @param {string} params.column  Severity / column key (e.g. "C").
  * @param {number} [params.mod=0] Modifier added to the roll (clamped to the table).
+ * @param {boolean} [params.openEnded=false] Roll high open-ended (creature criticals).
  * @param {{total:number}} [params.roll]  Precomputed roll (tests).
  * @returns {Promise<CriticalLookup & {natural:number, total:number, rolls:Roll[]}>}
  */
-export async function resolveCritical({ table, column, mod = 0, roll } = {}) {
+export async function resolveCritical({ table, column, mod = 0, roll, openEnded = false } = {}) {
   if (!table) throw new Error("RMF | resolveCritical: missing critical table");
   if (!column) throw new Error("RMF | resolveCritical: missing column");
 
   let natural, rolls = [];
   if (roll) {
     natural = Number(roll.total);
+  } else if (openEnded) {
+    // High open-ended so the roll can reach the 101-250 / 251+ creature bands.
+    const oe = await rollOpenEndedD100({ high: true, low: false });
+    natural = oe.total;
+    rolls = oe.rolls ?? [];
   } else {
     const r = new Roll("1d100");
     await r.evaluate();

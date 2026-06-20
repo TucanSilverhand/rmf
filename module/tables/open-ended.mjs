@@ -66,10 +66,18 @@ export async function rollOpenEndedD100({
       i++;
     }
   } else if (low && natural <= lowAt) {
-    // Low open-ended: single re-roll subtracted (RMFR attack convention).
+    // Low open-ended: re-roll & subtract, then keep subtracting while the
+    // subtracted die is itself high (>= highAt), per PDF p.9 — e.g. the
+    // book example 04 − 97 − 03 = −96.
     openLow = true;
-    const sub = await rollOne();
-    total -= sub;
+    let last = await rollOne();
+    total -= last;
+    let i = 0;
+    while (last >= highAt && i < cap) {
+      last = await rollOne();
+      total -= last;
+      i++;
+    }
   }
 
   return { natural, total, dice, openHigh, openLow, rolls };

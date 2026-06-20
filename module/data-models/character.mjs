@@ -11,7 +11,7 @@
  * Reference: Documentation/system-ars/02_Data_Models_y_Schema.md
  */
 
-import { STAT_KEYS_FULL, RMF_CONSTANTS } from "../utils/constants.mjs";
+import { STAT_KEYS_FULL, STAT_FULL_TO_SHORT, RMF_CONSTANTS } from "../utils/constants.mjs";
 import { resolveSpecialRole } from "./_identity.mjs";
 
 const fields = foundry.data.fields;
@@ -126,9 +126,18 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
    * @private
    */
   #calculateStatBonuses() {
+    // Racial stat modifiers (T-1.1) come from the embedded race item using
+    // short keys (ag/co/…) and add to the stat BONUS. Mirrors the race
+    // resistance application in #calculateSecondaryAttributes so a race
+    // actually shifts the character's stats. When no race is present, the
+    // stored `stat.race` value is kept untouched.
+    const raceStats = this.parent?.itemTypes?.race?.[0]?.system?.stats || null;
     for (const key of STAT_KEYS_FULL) {
       const stat = this.chStats[key];
       if (!stat) continue;
+      if (raceStats) {
+        stat.race = Number(raceStats[STAT_FULL_TO_SHORT[key]] ?? 0) || 0;
+      }
       stat.basic = CharacterData.#bonusFromStatValue(Number(stat.temp) || 0);
       stat.total = stat.basic + (stat.race || 0) + (stat.spec || 0);
       stat.bonus = stat.total;

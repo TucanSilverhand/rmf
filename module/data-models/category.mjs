@@ -164,11 +164,13 @@ export class CategoryData extends foundry.abstract.TypeDataModel {
 
     const item = this.parent;
 
-    // Inherit stat bonus slots from the realm for the PP-Dev category.
-    // Match by the internal specialRole tag (locale-independent), with a
-    // name fallback so un-migrated docs still resolve. See _identity.mjs.
+    // Inherit stat bonus slots from the realm for categories whose applicable
+    // stat IS the realm stat: Power Point Development and the Spells categories
+    // (A-4.18 — a spell-list skill uses the caster's realm stat: Em/In/Pr).
+    // PP-Dev is matched by its locale-independent specialRole tag (name fallback);
+    // the Spells categories are matched by their group. See _identity.mjs.
     const role = resolveSpecialRole(this.specialRole, item?.name);
-    if (role === "powerPointDevelopment") {
+    if (role === "powerPointDevelopment" || this.group === "Spells") {
       const actor = item.parent;
       const realmItem = actor?.documentName === "Actor"
         ? actor.itemTypes?.realm?.[0]

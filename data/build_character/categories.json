@@ -166,7 +166,7 @@
     "description": "This category includes those skills which involve unconscious awareness of one’s environment. These skills are passive skills, and may only be trained to a limited extent. Any active observation of the environment falls instead into one of the other Awareness categories. For example, a “danger sense” would fall into this category; a skill in locating traps in a room would not.",
     "dpCost": "",
     "group": "Awareness",
-    "categoryRankBonusProgression": "standard",
+    "categoryRankBonusProgression": "nonstandard",
     "freeRanks": 0,
     "statBonus": {
       "stat1": "chIntuition",
@@ -247,7 +247,7 @@
     "description": "This category deals with the use of specialized maneuvers used in combat to achieve specific results. This may include fighting styles, special strokes, or defensive maneuvers used in conjunction with a particular mode of combat.",
     "dpCost": "",
     "group": "none",
-    "categoryRankBonusProgression": "standard",
+    "categoryRankBonusProgression": "nonstandard",
     "freeRanks": 0,
     "statBonus": {
       "stat1": "chAgility",
@@ -287,7 +287,7 @@
     "description": "This category encompasses the use of particular craftsman skills, such as making jewelry, copper etching, cloth work, etc. Note that these skills are all physical applications of skill to produce a desired object or product. Skills dealing with the abstract analysis or theory of these objects should fall instead under the Technical/ Trade group.",
     "dpCost": "",
     "group": "Craft",
-    "categoryRankBonusProgression": "standard",
+    "categoryRankBonusProgression": "nonstandard",
     "freeRanks": 0,
     "statBonus": {
       "stat1": "chAgility",
@@ -528,12 +528,12 @@
     "description": "This category encompasses the acquisition and use of spells from the closed lists of the spell user’s own realm.",
     "dpCost": "",
     "group": "Spells",
-    "categoryRankBonusProgression": "standard",
+    "categoryRankBonusProgression": "nonstandard",
     "freeRanks": 0,
     "statBonus": {
-      "stat1": "chEmpathy",
-      "stat2": "chEmpathy",
-      "stat3": "chEmpathy"
+      "stat1": "",
+      "stat2": "",
+      "stat3": ""
     },
     "profBonus": 0,
     "spec1Bonus": 0,
@@ -548,12 +548,12 @@
     "description": "This category encompasses the acquisition and use of spells from the open lists of the spell user’s own realm.",
     "dpCost": "",
     "group": "Spells",
-    "categoryRankBonusProgression": "standard",
+    "categoryRankBonusProgression": "nonstandard",
     "freeRanks": 0,
     "statBonus": {
-      "stat1": "chEmpathy",
-      "stat2": "chEmpathy",
-      "stat3": "chEmpathy"
+      "stat1": "",
+      "stat2": "",
+      "stat3": ""
     },
     "profBonus": 0,
     "spec1Bonus": 0,
@@ -568,12 +568,12 @@
     "description": "This category encompasses the acquisition and use of spells from the spell user’s own base lists.",
     "dpCost": "",
     "group": "Spells",
-    "categoryRankBonusProgression": "standard",
+    "categoryRankBonusProgression": "nonstandard",
     "freeRanks": 0,
     "statBonus": {
-      "stat1": "chEmpathy",
-      "stat2": "chEmpathy",
-      "stat3": "chEmpathy"
+      "stat1": "",
+      "stat2": "",
+      "stat3": ""
     },
     "profBonus": 0,
     "spec1Bonus": 0,
@@ -608,7 +608,7 @@
     "description": "This category encompasses the use of scientific and analytical skills dealing with unusual or obscure topics (in a fantasy adventuring setting). Note that the availability of these skills should be limited to those with unusual academic resources. Additional skills in this category might include: astronomy, biochemistry, psychology, etc.",
     "dpCost": "",
     "group": "Science",
-    "categoryRankBonusProgression": "standard",
+    "categoryRankBonusProgression": "nonstandard",
     "freeRanks": 0,
     "statBonus": {
       "stat1": "chReasoning",
@@ -728,7 +728,7 @@
     "description": "This category encompasses the use of skills which are typically available only to specific professions, and require specialized training. The GM should limit the availability of these skills to those that would logically be available to the character according to his resources and heritage. Additional skills in this category might include: advertising, architecture,  dowsing, military organization, and surgery.",
     "dpCost": "",
     "group": "Technical",
-    "categoryRankBonusProgression": "standard",
+    "categoryRankBonusProgression": "nonstandard",
     "freeRanks": 0,
     "statBonus": {
       "stat1": "chReasoning",
@@ -748,7 +748,7 @@
     "description": "This category encompasses the use of trade and technical skills which may be acquired through observation and understudy. They do not require extensive or specialized training; skill may be developed even without instruction. Additional skills in this category might include: cartography, gimmickry, hypnosis, midwifery, prepare herbs, prepare poisons, and siege engineering.",
     "dpCost": "",
     "group": "Technical",
-    "categoryRankBonusProgression": "standard",
+    "categoryRankBonusProgression": "nonstandard",
     "freeRanks": 0,
     "statBonus": {
       "stat1": "chMemory",

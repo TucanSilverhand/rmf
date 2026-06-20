@@ -185,9 +185,6 @@ export class RMFActorSheet extends HandlebarsApplicationMixin(foundry.applicatio
     });
     context.uncategorizedSkills = uncategorized.sort(sortByName);
 
-    // Add derived stats
-    context.derivedStats = this._calculateDerivedStats();
-    
     // Add effects
     context.effects = this._prepareEffects();
     
@@ -834,7 +831,20 @@ export class RMFActorSheet extends HandlebarsApplicationMixin(foundry.applicatio
       if (active) this._activeTab = active;
       if (body) this._pendingScrollTop = body.scrollTop;
     } catch {}
-    const value = coerceInputValue(input);
+    let value = coerceInputValue(input);
+
+    // Enforce the temp ≤ pot invariant (PDF p.102): a stat's Temporary value
+    // can't exceed its Potential, and Potential can't drop below Temporary.
+    const statMatch = name.match(/^system\.chStats\.([A-Za-z]+)\.(temp|pot)$/);
+    if (statMatch) {
+      const [, statKey, field] = statMatch;
+      const stat = this.document.system.chStats?.[statKey];
+      const n = Number(value);
+      if (stat && Number.isFinite(n)) {
+        if (field === "temp") value = Math.min(n, Number(stat.pot) || 0);
+        else if (field === "pot") value = Math.max(n, Number(stat.temp) || 0);
+      }
+    }
 
     const tag = buildEntityTag(this.document);
     if (CONFIG?.RMF?.debug) {
@@ -846,31 +856,6 @@ export class RMFActorSheet extends HandlebarsApplicationMixin(foundry.applicatio
     // Update the actor (granular)
     const updateData = { [name]: value };
     await this.document.update(updateData);
-  }
-
-  /**
-   * Calculate derived statistics from base stats
-   * 
-   * Computes RoleMaster-style stat bonuses using the official
-   * formula: (stat - 50) / 10, rounded down.
-   * 
-   * @returns {Object} Calculated derived stats and bonuses
-   * @private
-   */
-  _calculateDerivedStats() {
-    const system = this.document.system;
-    const derivedStats = {};
-
-    // Calculate stat bonuses (RoleMaster style)
-    if (system.chStats) {
-      for (let [key, stat] of Object.entries(system.chStats)) {
-        const value = stat.total || stat.temp || 0;
-        // RoleMaster bonus calculation: (stat - 50) / 10, rounded down
-        derivedStats[key + "Bonus"] = Math.floor((value - 50) / 10);
-      }
-    }
-
-    return derivedStats;
   }
 
   /**
