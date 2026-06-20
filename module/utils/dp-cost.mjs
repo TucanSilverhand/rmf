@@ -117,6 +117,62 @@ export function costOfRank(parsed, n) {
 }
 
 /**
+ * Total DP spent (and ranks bought) for a `boughtByLevel` map under a parsed
+ * cost. The per-rank cost RESETS each level, so the cost of buying `count`
+ * ranks at one level is costOfRank(parsed,1)+…+costOfRank(parsed,count).
+ * Ranks bought at level 0 are FREE (adolescence / background / training
+ * packages) and excluded from the DP total.
+ *
+ * @param {Record<string,number>} boughtByLevel  { level: ranksBought }
+ * @param {ParsedDPCost} parsed
+ * @returns {{ranks:number, dp:number}}  ranks bought at level >= 1, and their DP cost
+ */
+export function dpConsumption(boughtByLevel, parsed) {
+  let ranks = 0;
+  let dp = 0;
+  if (boughtByLevel && typeof boughtByLevel === "object" && parsed) {
+    for (const [levelStr, countRaw] of Object.entries(boughtByLevel)) {
+      if (Number(levelStr) < 1) continue; // level 0 ranks are free
+      const count = Number(countRaw) || 0;
+      for (let i = 1; i <= count; i++) {
+        const c = costOfRank(parsed, i);
+        if (typeof c === "number") dp += c;
+      }
+      ranks += count;
+    }
+  }
+  return { ranks, dp };
+}
+
+/**
+ * Per-level breakdown of DP consumption. Returns one entry per level >= 1 that
+ * has ranks bought, with the ranks and DP spent AT THAT LEVEL (the per-rank
+ * cost resets each level). Level 0 (free ranks) is excluded.
+ *
+ * @param {Record<string,number>} boughtByLevel  { level: ranksBought }
+ * @param {ParsedDPCost} parsed
+ * @returns {Array<{level:number, ranks:number, dp:number}>}
+ */
+export function dpConsumptionByLevel(boughtByLevel, parsed) {
+  const out = [];
+  if (boughtByLevel && typeof boughtByLevel === "object" && parsed) {
+    for (const [levelStr, countRaw] of Object.entries(boughtByLevel)) {
+      const level = Number(levelStr);
+      if (level < 1) continue; // level 0 ranks are free
+      const count = Number(countRaw) || 0;
+      if (count <= 0) continue;
+      let dp = 0;
+      for (let i = 1; i <= count; i++) {
+        const c = costOfRank(parsed, i);
+        if (typeof c === "number") dp += c;
+      }
+      out.push({ level, ranks: count, dp });
+    }
+  }
+  return out;
+}
+
+/**
  * Canonicalise any cost representation into the slash-string form.
  * Accepts: a string (trim + collapse whitespace), the legacy triple
  * `{ price1, price2, price3 }`, or a number[] / mixed array. For triples and

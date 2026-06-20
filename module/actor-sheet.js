@@ -16,10 +16,13 @@ import {
   wireTabs,
   setActiveTab as utilSetActiveTab,
   initHeaderAutoHeight,
-  ACTOR_HEADER_BREAKPOINTS
+  ACTOR_HEADER_BREAKPOINTS,
+  splitInHalf
 } from "./utils/sheet-helpers.mjs";
 import { RMFActions } from "./actions.mjs";
 import { RMF_CONSTANTS } from "./utils/constants.mjs";
+import { dpConsumptionByLevel } from "./utils/dp-cost.mjs";
+import { resolveTrainingPackageCost } from "./profession-cost.mjs";
 import { matchesIdentity, buildSlugIndex, resolveFromIndex, identityKey } from "./utils/slug.mjs";
 
 export class RMFActorSheet extends HandlebarsApplicationMixin(foundry.applications.sheets.ActorSheetV2) {
@@ -64,6 +67,9 @@ export class RMFActorSheet extends HandlebarsApplicationMixin(foundry.applicatio
       deleteItem: RMFActions.handlers.deleteItem,
       createItem: RMFActions.handlers.createItem,
       pickImage: RMFActions.handlers.pickImage,
+      // Stat-gain log row management (thin wrappers so `this` = the sheet).
+      addStatGain(event, target) { return this._onAddStatGain(event, target); },
+      deleteStatGain(event, target) { return this._onDeleteStatGain(event, target); },
     },
     
     // Drag and drop
@@ -184,6 +190,72 @@ export class RMFActorSheet extends HandlebarsApplicationMixin(foundry.applicatio
       };
     });
     context.uncategorizedSkills = uncategorized.sort(sortByName);
+
+    // Stat-gain log rows enriched with a localized stat <select> option list
+    // (the template avoids relying on an `eq` helper).
+    const statKeys = Object.keys(this.document.system.chStats ?? {});
+    context.statGainRows = (this.document.system.statGainLog ?? []).map((row, index) => ({
+      index,
+      level: row.level,
+      stat: row.stat,
+      previous: row.previous,
+      final: row.final,
+      options: statKeys.map(k => ({
+        key: k,
+        label: game.i18n.localize(`RMF.Stats.${k}`),
+        selected: k === row.stat
+      }))
+    }));
+
+    // Stat-modifications table (manual temp/pot edit), split into two columns.
+    const statAdjustRows = statKeys.map(k => {
+      const s = this.document.system.chStats[k] || {};
+      return { key: k, label: game.i18n.localize(`RMF.Stats.${k}`), temp: s.temp, pot: s.pot };
+    });
+    const statAdjustSplit = splitInHalf(statAdjustRows);
+    context.statAdjustLeft = statAdjustSplit.left;
+    context.statAdjustRight = statAdjustSplit.right;
+
+    // DP consumption grouped by character level (ranks bought at level >= 1).
+    // The per-rank cost resets each level; cost comes from each item's
+    // dpCostParsed (assigned from the profession's categoryPrice).
+    const dpLang = game.i18n.lang;
+    const dpKindLabel = {
+      category: game.i18n.localize("RMF.DPConsumption.KindCategory"),
+      skill: game.i18n.localize("RMF.DPConsumption.KindSkill"),
+      trainingPackage: game.i18n.localize("RMF.DPConsumption.KindTrainingPackage")
+    };
+    const dpLevelMap = new Map();
+    const dpBucket = (level) => {
+      if (!dpLevelMap.has(level)) dpLevelMap.set(level, { level, total: 0, rows: [] });
+      return dpLevelMap.get(level);
+    };
+    const addDpItem = (item, kind) => {
+      for (const { level, ranks, dp } of dpConsumptionByLevel(item.system?.boughtByLevel, item.system?.dpCostParsed)) {
+        const bucket = dpBucket(level);
+        bucket.rows.push({ kind, kindLabel: dpKindLabel[kind], name: item.name, ranks, dp });
+        bucket.total += dp;
+      }
+    };
+    for (const item of this.document.itemTypes.category ?? []) addDpItem(item, "category");
+    for (const item of this.document.itemTypes.skill ?? []) addDpItem(item, "skill");
+    // Training packages: each shows at its takenAtLevel with the DP cost from
+    // the actor's profession (profession.trainingPackages, matched by slug).
+    for (const tp of this.document.itemTypes.trainingPackage ?? []) {
+      const level = Math.max(0, Math.floor(Number(tp.system?.takenAtLevel) || 0));
+      const dp = Number(resolveTrainingPackageCost(tp, this.document)) || 0;
+      const bucket = dpBucket(level);
+      bucket.rows.push({ kind: "trainingPackage", kindLabel: dpKindLabel.trainingPackage, name: tp.name, ranks: "—", dp });
+      bucket.total += dp;
+    }
+    const dpKindOrder = { category: 0, skill: 1, trainingPackage: 2 };
+    const dpLevels = [...dpLevelMap.values()].sort((a, b) => a.level - b.level);
+    for (const lvl of dpLevels) {
+      lvl.rows.sort((a, b) => (dpKindOrder[a.kind] - dpKindOrder[b.kind])
+        || String(a.name).localeCompare(String(b.name), dpLang));
+    }
+    context.dpLevels = dpLevels;
+    context.dpGrandTotal = dpLevels.reduce((s, l) => s + l.total, 0);
 
     // Add effects
     context.effects = this._prepareEffects();
@@ -796,6 +868,21 @@ export class RMFActorSheet extends HandlebarsApplicationMixin(foundry.applicatio
           return;
         }
 
+        // Indexed stat-gain log rows: rebuild the whole array (dotted
+        // array-index updates don't merge reliably in Foundry).
+        const gainMatch = name.match(/^system\.statGainLog\.(\d+)\.(level|stat|previous|final)$/);
+        if (gainMatch) {
+          const idx = Number(gainMatch[1]);
+          const field = gainMatch[2];
+          const current = foundry.utils.duplicate(this.document.system?.statGainLog ?? []);
+          if (!current[idx] || typeof current[idx] !== "object") current[idx] = { level: 0, stat: "", previous: 0, final: 0 };
+          current[idx] = { ...current[idx] };
+          current[idx][field] = field === "stat" ? String(value ?? "") : (Number(value) || 0);
+          console.log(`RMF | ${tag} Update statGainLog[${idx}].${field} => ${value}`);
+          await this.document.update({ "system.statGainLog": current });
+          return;
+        }
+
         // Update directo al actor para el resto de campos
         console.log(`RMF | ${tag} Update ${name} => ${value}`);
         await this.document.update({ [name]: value });
@@ -856,6 +943,31 @@ export class RMFActorSheet extends HandlebarsApplicationMixin(foundry.applicatio
     // Update the actor (granular)
     const updateData = { [name]: value };
     await this.document.update(updateData);
+  }
+
+  /**
+   * Append a blank row to the stat-gain log (manual level 0+ tracking table).
+   * @private
+   */
+  async _onAddStatGain(event, target) {
+    event?.preventDefault?.();
+    const current = foundry.utils.duplicate(this.document.system?.statGainLog ?? []);
+    current.push({ level: 0, stat: "", previous: 0, final: 0 });
+    await this.document.update({ "system.statGainLog": current });
+  }
+
+  /**
+   * Delete the stat-gain log row identified by the control's data-index.
+   * @private
+   */
+  async _onDeleteStatGain(event, target) {
+    event?.preventDefault?.();
+    const index = Number(target?.dataset?.index);
+    if (!Number.isInteger(index)) return;
+    const current = foundry.utils.duplicate(this.document.system?.statGainLog ?? []);
+    if (index < 0 || index >= current.length) return;
+    current.splice(index, 1);
+    await this.document.update({ "system.statGainLog": current });
   }
 
   /**

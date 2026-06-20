@@ -9,6 +9,136 @@
       <h2>{{localize 'RMF.Tabs.ManagePlayer'}}</h2>
     </header>
 
+    {{!-- DP consumption grouped by character level (ranks bought at level 1+) --}}
+    <div class="items-section dp-consumption">
+      <div class="items-header">
+        <h3>{{localize "RMF.DPConsumption.Title"}}</h3>
+      </div>
+
+      {{#if dpLevels.length}}
+      <div class="dp-levels-grid">
+        {{#each dpLevels as |lvl|}}
+        <div class="dp-level-block">
+          <h4 class="dp-level-header">
+            {{localize "RMF.DPConsumption.Level"}} {{lvl.level}}
+            <span class="dp-level-total">({{localize "RMF.DPConsumption.Total"}}: {{lvl.total}})</span>
+          </h4>
+          <table class="stats-table dp-consumption-table">
+            <thead>
+              <tr>
+                <th>{{localize "RMF.DPConsumption.Name"}}</th>
+                <th>{{localize "RMF.DPConsumption.Ranks"}}</th>
+                <th>{{localize "RMF.DPConsumption.DPCost"}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each lvl.rows as |row|}}
+              <tr>
+                <td>{{row.kindLabel}}: {{row.name}}</td>
+                <td>{{row.ranks}}</td>
+                <td>{{row.dp}}</td>
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+        {{/each}}
+      </div>
+      <div class="dp-grand-total">{{localize "RMF.DPConsumption.GrandTotal"}}: {{dpGrandTotal}}</div>
+      {{else}}
+      <p class="no-items">{{localize "RMF.DPConsumption.Empty"}}</p>
+      {{/if}}
+    </div>
+
+    {{!-- Stat modifications: manual temp/pot adjustments + stat-gain log --}}
+    <div class="items-section stat-management">
+      <div class="items-header">
+        <h3>{{localize "RMF.StatLabels.AdjustTitle"}}</h3>
+      </div>
+      <div class="two-col-tables">
+        <table class="stats-table stat-adjust-table">
+          <thead>
+            <tr>
+              <th>{{localize "RMF.StatLabels.Attribute"}}</th>
+              <th>{{localize "RMF.StatLabels.Temp"}}</th>
+              <th>{{localize "RMF.StatLabels.Pot"}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each statAdjustLeft as |row|}}
+            <tr data-stat="{{row.key}}">
+              <td>{{row.label}}</td>
+              <td><input type="number" name="system.chStats.{{row.key}}.temp" value="{{row.temp}}" min="1" max="120" autocomplete="off" /></td>
+              <td><input type="number" name="system.chStats.{{row.key}}.pot" value="{{row.pot}}" min="1" max="120" autocomplete="off" /></td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+        <table class="stats-table stat-adjust-table">
+          <thead>
+            <tr>
+              <th>{{localize "RMF.StatLabels.Attribute"}}</th>
+              <th>{{localize "RMF.StatLabels.Temp"}}</th>
+              <th>{{localize "RMF.StatLabels.Pot"}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each statAdjustRight as |row|}}
+            <tr data-stat="{{row.key}}">
+              <td>{{row.label}}</td>
+              <td><input type="number" name="system.chStats.{{row.key}}.temp" value="{{row.temp}}" min="1" max="120" autocomplete="off" /></td>
+              <td><input type="number" name="system.chStats.{{row.key}}.pot" value="{{row.pot}}" min="1" max="120" autocomplete="off" /></td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="items-section stat-gain-log">
+      <div class="items-header">
+        <h3>{{localize "RMF.StatLabels.GainLogTitle"}}</h3>
+        <a class="item-control" data-action="addStatGain" title="{{localize 'RMF.StatLabels.GainAddRow'}}">
+          <i class="fas fa-plus"></i>
+        </a>
+      </div>
+      <table class="stats-table stat-gain-table">
+        <thead>
+          <tr>
+            <th>{{localize "RMF.StatLabels.GainLevel"}}</th>
+            <th>{{localize "RMF.StatLabels.Attribute"}}</th>
+            <th>{{localize "RMF.StatLabels.GainPrevious"}}</th>
+            <th>{{localize "RMF.StatLabels.GainFinal"}}</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each statGainRows as |row|}}
+          <tr>
+            <td><input type="number" name="system.statGainLog.{{row.index}}.level" value="{{row.level}}" min="0" autocomplete="off" /></td>
+            <td>
+              <select name="system.statGainLog.{{row.index}}.stat">
+                <option value="" {{#unless row.stat}}selected{{/unless}}>—</option>
+                {{#each row.options as |opt|}}
+                <option value="{{opt.key}}" {{#if opt.selected}}selected{{/if}}>{{opt.label}}</option>
+                {{/each}}
+              </select>
+            </td>
+            <td><input type="number" name="system.statGainLog.{{row.index}}.previous" value="{{row.previous}}" autocomplete="off" /></td>
+            <td><input type="number" name="system.statGainLog.{{row.index}}.final" value="{{row.final}}" autocomplete="off" /></td>
+            <td>
+              <a class="item-control" data-action="deleteStatGain" data-index="{{row.index}}" title="{{localize 'RMF.StatLabels.GainDeleteRow'}}">
+                <i class="fas fa-trash"></i>
+              </a>
+            </td>
+          </tr>
+          {{else}}
+          <tr class="no-items"><td colspan="5">{{localize "RMF.StatLabels.GainLogEmpty"}}</td></tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+
     {{#if items}}
       {{#each items}}
         <div class="items-section">

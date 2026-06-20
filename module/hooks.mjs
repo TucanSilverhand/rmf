@@ -48,6 +48,7 @@ import {
   unapplyProfessionFromActor,
   invalidateProfessionApplyCache
 } from "./profession-apply.mjs";
+import { syncDpCostsFromProfession, resolveDpCostForActorItem } from "./profession-cost.mjs";
 import { resolveSpecialRole } from "./data-models/_identity.mjs";
 
 /**
@@ -334,6 +335,18 @@ export class RMFHooks {
     // update paths). Expand them to a nested object so updateSource writes
     // into system.slug / system.specialRole rather than literal dotted keys.
     if (update) item.updateSource(foundry.utils.expandObject(update));
+
+    // A skill/category added to an actor that already has a profession gets
+    // its DP cost (= per-level rank cadence) assigned from the profession's
+    // categoryPrice. If there's no profession yet, the cost is filled later
+    // when one is added (see #onCreateItem → syncDpCostsFromProfession).
+    if ((item.type === "skill" || item.type === "category")
+        && item.parent?.documentName === "Actor") {
+      const cost = resolveDpCostForActorItem(item, item.parent);
+      if (cost !== undefined && cost !== item.system?.dpCost) {
+        item.updateSource({ "system.dpCost": cost });
+      }
+    }
   }
 
   static async #onCreateItem(item, options, userId) {
@@ -364,6 +377,9 @@ export class RMFHooks {
     if (item.type === "profession") {
       try {
         await applyProfessionToActor(item);
+        // Profession added → (re)assign DP costs to every existing skill and
+        // category on the actor from the profession's categoryPrice table.
+        await syncDpCostsFromProfession(actor);
       } catch (err) {
         console.error("RMF | Failed to apply profession:", err);
         ui.notifications?.error(game.i18n.localize("RMF.Profession.ApplyError"));

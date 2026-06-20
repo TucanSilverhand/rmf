@@ -86,6 +86,19 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
       })
     });
 
+    // Manual log of stat-gain rolls / package boosts (level 0+): each row
+    // records the characteristic and its value before/after the gain. Purely
+    // a record — it does not auto-mutate the stat (adjust temp/pot manually).
+    const statGainLog = new fields.ArrayField(
+      new fields.SchemaField({
+        level:    num(0, { min: 0 }),
+        stat:     str(),
+        previous: num(0),
+        final:    num(0)
+      }),
+      { required: true, nullable: false, initial: [] }
+    );
+
     return {
       chLevel:      num(1, { min: 0, max: 99 }),
       chProfession: str(),
@@ -94,7 +107,8 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
       chExperience: num(0, { min: 0 }),
       chBackground,
       chStats,
-      derivedStats
+      derivedStats,
+      statGainLog
     };
   }
 

@@ -2173,3 +2173,41 @@ table.rmf-critical-grid .crit-effects {
   overflow-y: auto !important;
   overflow-x: hidden;
 }
+
+/* =============================================================================
+   DP Consumption (Manage Player) — level blocks laid out in two columns,
+   with a clearly readable per-level header (Foundry's default h4 is faded).
+   ============================================================================= */
+.rmf .dp-levels-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  align-items: start;
+}
+@media (max-width: 720px) {
+  .rmf .dp-levels-grid { grid-template-columns: 1fr; }
+}
+.rmf .dp-level-block { min-width: 0; }
+.rmf .dp-level-block > table { width: 100%; margin: 4px 0 0; }
+
+.rmf .dp-level-header {
+  font-family: var(--rmf-font-family-heading);
+  color: #3c2a16;
+  font-weight: 700;
+  font-size: var(--rmf-font-size-lg);
+  text-transform: none;
+  margin: 0;
+  padding-bottom: 3px;
+  border-bottom: 2px solid var(--rmf-color-accent);
+}
+.rmf .dp-level-header .dp-level-total {
+  color: var(--rmf-color-secondary);
+  font-weight: 600;
+  font-size: var(--rmf-font-size-sm);
+}
+.rmf .dp-grand-total {
+  margin-top: 10px;
+  font-weight: 700;
+  color: #3c2a16;
+  font-size: var(--rmf-font-size-lg);
+}

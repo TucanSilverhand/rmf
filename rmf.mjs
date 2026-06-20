@@ -510,6 +510,7 @@ async function _preloadHandlebarsTemplates() {
     "parts/item-trainingpackage-header": "systems/rmf/templates/parts/item-trainingpackage-header.hbs",
     "parts/item-trainingpackage-navigation": "systems/rmf/templates/parts/item-trainingpackage-navigation.hbs",
     "parts/item-trainingpackage-details": "systems/rmf/templates/parts/item-trainingpackage-details.hbs",
+    "parts/item-trainingpackage-managed": "systems/rmf/templates/parts/item-trainingpackage-managed.hbs",
     "parts/item-trainingpackage-advanced": "systems/rmf/templates/parts/item-trainingpackage-advanced.hbs",
     "parts/trainingpackage-cat-block": "systems/rmf/templates/parts/trainingpackage-cat-block.hbs",
 

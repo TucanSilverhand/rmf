@@ -123,6 +123,7 @@ export class RMFTrainingPackageSheet extends HandlebarsApplicationMixin(foundry.
     primary: {
       tabs: [
         { id: "details",  icon: "fas fa-info-circle", label: "RMF.Tabs.Details" },
+        { id: "managed",  icon: "fas fa-sliders",     label: "RMF.Tabs.Managed" },
         { id: "advanced", icon: "fas fa-cog",         label: "RMF.Tabs.Advanced" }
       ]
     }
