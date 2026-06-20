@@ -554,6 +554,7 @@
       "AddColumn": "Add column",
       "RemoveColumn": "Remove column",
       "Legend": "Legend (key)",
+      "Notes": "Table notes",
       "EditHint": "Edit the matrix directly. Each band is a roll range; leave Min empty for the low catch-all band. Effects use the table's notation.",
       "EditOwnerOnly": "Only the owner can edit this table."
     },

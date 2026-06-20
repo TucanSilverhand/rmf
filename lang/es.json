@@ -554,6 +554,7 @@
       "AddColumn": "Añadir columna",
       "RemoveColumn": "Quitar columna",
       "Legend": "Leyenda (clave)",
+      "Notes": "Notas de la tabla",
       "EditHint": "Edita la matriz directamente. Cada banda es un rango de tirada; deja Mín vacío para la banda catch-all baja. Los efectos usan la notación de la tabla.",
       "EditOwnerOnly": "Solo el propietario puede editar esta tabla."
     },

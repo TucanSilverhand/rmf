@@ -202,12 +202,12 @@
       "rollMax": 191,
       "results": {
         "informational": {
-          "text": "The utter nothingness that you discern takes you close to death. Take 2d10 hits and an 'A' Impact critical as you recover. You must spend one hour doing nothing.",
-          "effects": "2d10H, crit:impact:A, ko:1h"
+          "text": "The utter nothingness that you discern takes you close to death. Take 2d10 hits and an 'A' Krush critical as you recover. You must spend one hour doing nothing.",
+          "effects": "2d10H, crit:krush:A, ko:1h"
         },
         "other": {
-          "text": "Severe power feedback knocks you down. Take 1d10 hits and an 'A' Impact critical. You are unable to function for d10 hours.",
-          "effects": "1d10H, crit:impact:A, ko:d10h"
+          "text": "Severe power feedback knocks you down. Take 1d10 hits and an 'A' Krush critical. You are unable to function for d10 hours.",
+          "effects": "1d10H, crit:krush:A, ko:d10h"
         }
       }
     },

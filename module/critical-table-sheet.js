@@ -136,6 +136,10 @@ export class RMFCriticalTableSheet extends HandlebarsApplicationMixin(foundry.ap
     context.legendRows = [...Object.entries(effectsKey), ...Object.entries(notes)]
       .filter(([, text]) => typeof text === "string")
       .map(([key, text]) => ({ key, text }));
+    // Editable per-table notes only (the universal Key is read-only CONFIG data).
+    context.notesRows = Object.entries(notes)
+      .filter(([, text]) => typeof text === "string")
+      .map(([key, text]) => ({ key, text }));
 
     // Editable-grid context (Editar tab): raw cell values, no parsing.
     context.columnLabel = L("RMF.CriticalTable.Severity");

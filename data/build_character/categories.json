@@ -63,15 +63,15 @@
     "name": "Artistic · Active",
     "slug": "artistic-active",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "Training that improves the use of protective gear, reducing penalties while using shields.",
+    "description": "Spontaneous, interactive performing arts (acting, dancing, mimicry, improvisation, duets) that imply some form of interaction with the audience or other artists.",
     "dpCost": "",
     "group": "Artistic",
     "categoryRankBonusProgression": "standard",
     "freeRanks": 0,
     "statBonus": {
-      "stat1": "chStrength",
-      "stat2": "chConstitution",
-      "stat3": ""
+      "stat1": "chPresence",
+      "stat2": "chEmpathy",
+      "stat3": "chAgility"
     },
     "profBonus": 0,
     "spec1Bonus": 0,
@@ -83,15 +83,15 @@
     "name": "Artistic · Passive",
     "slug": "artistic-passive",
     "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
-    "description": "Specialized training in the use of tactical armor, enhancing mobility and protection in combat scenarios.",
+    "description": "Non-interactive artistic skills (writing, composing, painting, recognizing or performing set works) created or appreciated apart from a live audience.",
     "dpCost": "",
     "group": "Artistic",
     "categoryRankBonusProgression": "standard",
     "freeRanks": 0,
     "statBonus": {
-      "stat1": "chStrength",
-      "stat2": "chConstitution",
-      "stat3": ""
+      "stat1": "chEmpathy",
+      "stat2": "chIntuition",
+      "stat3": "chPresence"
     },
     "profBonus": 0,
     "spec1Bonus": 0,

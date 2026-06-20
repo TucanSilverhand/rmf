@@ -2079,7 +2079,9 @@ export async function syncSpellListsToCompendium(source, options = {}) {
  *
  * One Item (type "attackTable") per weapon attack table. Sources are the
  * `data/system_tables/attack_tables/*.json` files, each a single table object shaped
- * { name, tableId, critType, fumbleRange, armorTypes, legend, rows, fumble }.
+ * { name, tableId, fumbleRange, armorTypes, legend, rows, fumble }.
+ * The critical TYPE is per-weapon (future weapon item / WEAPON DATA box),
+ * not table-owned — the attack table is a pure AT×roll matrix (v0.6.2).
  * The matrix looks two-dimensional on paper but resolves to a 1-D lookup
  * at query time (see module/tables/). Stored as Item system data because
  * FoundryVTT has no native 2-D table document.

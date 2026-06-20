@@ -146,6 +146,9 @@ export class RMFMatrixTableSheet extends HandlebarsApplicationMixin(foundry.appl
     const notes = sys.notes && typeof sys.notes === "object" ? sys.notes : {};
     context.legendRows = [...Object.entries(effectsKey), ...Object.entries(notes)]
       .filter(([, t]) => typeof t === "string").map(([key, text]) => ({ key, text }));
+    // Editable per-table notes only (the universal Key is read-only CONFIG data).
+    context.notesRows = Object.entries(notes)
+      .filter(([, t]) => typeof t === "string").map(([key, text]) => ({ key, text }));
 
     // Editable-grid context (Editar tab): raw cell values, no parsing.
     context.editColumns = defs.map((d, index) => ({ index, key: d.key, label: d.label ?? "" }));

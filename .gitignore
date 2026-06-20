@@ -47,6 +47,7 @@ yarn.lock
 /tmp/
 /*.carlos.txt
 rmf.code-workspace
+/rmfdoc
 
 # Notas/datos WIP en /data/ (no distribuir en futuros commits)
 /data/*_test.json
@@ -57,3 +58,5 @@ rmf.code-workspace
 /.github/copilot-instructions.md
 /CLAUDE.md
 /AGENTS.md
+
+GCP-RM-1003 \[ICE5800] RMFRP Rolemaster Fantasy Role Playing \[Revised 2011].pdf

@@ -30,7 +30,7 @@ const RANK_BONUS_TABLES = Object.freeze({
   }),
   skill: Object.freeze({
     standard: Object.freeze({ zero: -15, tier1: 3, tier2: 2, tier3: 1,   tier4: 0.5 }),
-    combined: Object.freeze({ zero: -30, tier1: 5, tier2: 3, tier3: 1.5, tier4: 0.5 }),
+    combined: Object.freeze({ zero: -15, tier1: 5, tier2: 3, tier3: 1.5, tier4: 0.5 }),
     limited:  Object.freeze({ zero: 0,   tier1: 1, tier2: 1, tier3: 0.5, tier4: 0 }),
     // Default fallback for "special" — callers may pass an override table
     // (e.g. race progressions) to computeSkillRankBonus / formatSkillRankBonusBreakdown.

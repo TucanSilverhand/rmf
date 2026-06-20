@@ -88,15 +88,17 @@
     <button type="button" class="rmf-add-btn" data-action="addRow"><i class="fas fa-plus"></i> {{localize "RMF.TableMatrix.AddRow"}}</button>
   </div>
 
-  {{!-- Legend --}}
-  {{#if legendRows.length}}
+  {{!-- Per-table notes. The universal effects "Key" is system-wide
+       (CONFIG.RMF, read-only) — see the View tab; only per-table notes
+       (e.g. a creature table's column description) are editable here. --}}
+  {{#if notesRows.length}}
   <div class="summary-wrapper">
-    <h3>{{localize "RMF.TableMatrix.Legend"}}</h3>
+    <h3>{{localize "RMF.TableMatrix.Notes"}}</h3>
     <table class="summary-table">
       <tbody>
-        {{#each legendRows as |row|}}
+        {{#each notesRows as |row|}}
         <tr><th scope="row"><code>{{row.key}}</code></th>
-          <td><input type="text" name="system.legend.{{row.key}}" value="{{row.text}}"/></td></tr>
+          <td><input type="text" name="system.notes.{{row.key}}" value="{{row.text}}"/></td></tr>
         {{/each}}
       </tbody>
     </table>
