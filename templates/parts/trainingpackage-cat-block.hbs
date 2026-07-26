@@ -59,7 +59,7 @@
 
       {{#if sk.isChoice}}
         {{#if sk.skillOptions.length}}
-          <select name="system.categoryRanks.{{cat.catIndex}}.skills.{{sk.skillIndex}}.name"
+          <select name="system.categoryRanks.{{sk.catIndex}}.skills.{{sk.skillIndex}}.name"
                   class="rmf-tp-choice-select"
                   title="{{localize 'RMF.TrainingPackage.IsChoiceHint'}}">
             {{#each sk.skillOptions as |opt|}}
@@ -68,28 +68,28 @@
           </select>
         {{else}}
           <input type="text"
-                 name="system.categoryRanks.{{cat.catIndex}}.skills.{{sk.skillIndex}}.name"
+                 name="system.categoryRanks.{{sk.catIndex}}.skills.{{sk.skillIndex}}.name"
                  value="{{sk.name}}"
                  placeholder="{{localize 'RMF.Skills.Skill'}}"
                  autocomplete="off" />
         {{/if}}
       {{else}}
         <input type="text"
-               name="system.categoryRanks.{{cat.catIndex}}.skills.{{sk.skillIndex}}.name"
+               name="system.categoryRanks.{{sk.catIndex}}.skills.{{sk.skillIndex}}.name"
                value="{{sk.name}}"
                placeholder="{{localize 'RMF.Skills.Skill'}}"
                autocomplete="off" />
       {{/if}}
 
       <input type="number"
-             name="system.categoryRanks.{{cat.catIndex}}.skills.{{sk.skillIndex}}.ranks"
+             name="system.categoryRanks.{{sk.catIndex}}.skills.{{sk.skillIndex}}.ranks"
              value="{{sk.ranks}}"
              data-dtype="Number" inputmode="numeric"
              title="{{localize 'RMF.TrainingPackage.Ranks'}}" />
 
       <label class="rmf-tp-choice-toggle" title="{{localize 'RMF.TrainingPackage.IsChoiceHint'}}">
         <input type="checkbox"
-               name="system.categoryRanks.{{cat.catIndex}}.skills.{{sk.skillIndex}}.isChoice"
+               name="system.categoryRanks.{{sk.catIndex}}.skills.{{sk.skillIndex}}.isChoice"
                {{#if sk.isChoice}}checked{{/if}} />
         {{localize "RMF.TrainingPackage.IsChoice"}}
       </label>

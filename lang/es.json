@@ -263,7 +263,12 @@
       "Dice": "Dado",
       "TotalResult": "Resultado Total",
       "Formula": "Fórmula",
-      "Applied": "Aplicado"
+      "Applied": "Aplicado",
+      "OpenEnded": "Abierta",
+      "Unmodified": "Sin modificar",
+      "UnmodifiedRoll": "UM {value}",
+      "UnusualEvent": "Evento Inusual (UM 66)",
+      "UnusualSuccess": "Éxito Inusual (UM 100)"
     },
     "Messages": {
       "DamageApplied": "{name} recibe {damage} de daño ({remaining} PV restantes)",

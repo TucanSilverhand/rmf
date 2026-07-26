@@ -203,6 +203,10 @@ export class RMFTrainingPackageSheet extends HandlebarsApplicationMixin(foundry.
             ? sk.placeholderName
             : (skIsChoice ? name : "");
           return {
+            // catIndex is stamped on the skill row too: inside the nested
+            // {{#each}} the partial's `cat` is out of scope, so the template
+            // has no other way to build the system.categoryRanks.N.skills.M path.
+            catIndex,
             skillIndex,
             name,
             ranks:           Number(sk?.ranks) || 0,

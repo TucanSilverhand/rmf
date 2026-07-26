@@ -294,37 +294,41 @@ async function _createSkillsFromBasicCore(actor, canonRows) {
  * @private
  */
 async function _postProfessionApplyMessage(actor, profItem, log) {
+  // Document names are player-editable and land in raw chat HTML, so every
+  // interpolated value is escaped. `game.i18n.format` substitutes {tokens}
+  // verbatim without escaping, hence the values are escaped before the call.
+  const esc = (s) => Handlebars.escapeExpression(String(s ?? ""));
   const t = (key, data) => game.i18n.format(key, data ?? {});
   const lines = [
-    `<h3>${t("RMF.Profession.AppliedHeader", { name: profItem.name, actor: actor.name })}</h3>`
+    `<h3>${t("RMF.Profession.AppliedHeader", { name: esc(profItem.name), actor: esc(actor.name) })}</h3>`
   ];
 
   if (log.appliedCategories.length || log.appliedSkills.length) {
     lines.push(`<p><strong>${game.i18n.localize("RMF.Profession.AppliedSection")}</strong></p><ul>`);
-    for (const c of log.appliedCategories) lines.push(`<li>${t("RMF.Profession.AppliedCategory", { name: c.name, bonus: c.delta })}</li>`);
-    for (const s of log.appliedSkills)     lines.push(`<li>${t("RMF.Profession.AppliedSkill",    { name: s.name, bonus: s.delta })}</li>`);
+    for (const c of log.appliedCategories) lines.push(`<li>${t("RMF.Profession.AppliedCategory", { name: esc(c.name), bonus: esc(c.delta) })}</li>`);
+    for (const s of log.appliedSkills)     lines.push(`<li>${t("RMF.Profession.AppliedSkill",    { name: esc(s.name), bonus: esc(s.delta) })}</li>`);
     lines.push("</ul>");
   }
 
   if (log.createdSkills.length) {
     lines.push(`<p><strong>${game.i18n.localize("RMF.Profession.CreatedSection")}</strong></p><ul>`);
-    for (const n of log.createdSkills) lines.push(`<li>${n}</li>`);
+    for (const n of log.createdSkills) lines.push(`<li>${esc(n)}</li>`);
     lines.push("</ul>");
   }
 
   if (log.missingCategories.length) {
     lines.push(`<p><strong>${game.i18n.localize("RMF.Profession.MissingSection")}</strong></p><ul>`);
-    for (const n of log.missingCategories) lines.push(`<li>${n}</li>`);
+    for (const n of log.missingCategories) lines.push(`<li>${esc(n)}</li>`);
     lines.push("</ul>");
   }
 
   if (log.unrecognised.length) {
     lines.push(`<p><strong>${game.i18n.localize("RMF.Profession.UnrecognisedSection")}</strong></p><ul>`);
-    for (const u of log.unrecognised) lines.push(`<li>${u.name} (+${u.bonus}) — ${u.reason}</li>`);
+    for (const u of log.unrecognised) lines.push(`<li>${esc(u.name)} (+${esc(u.bonus)}) — ${esc(u.reason)}</li>`);
     lines.push("</ul>");
   }
 
-  ChatMessage.implementation.create({
+  await ChatMessage.implementation.create({
     speaker: ChatMessage.implementation.getSpeaker({ actor }),
     content: lines.join("\n")
   });

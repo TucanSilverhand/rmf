@@ -21,6 +21,9 @@
  * @property {number[]} dice    Every die rolled, in order.
  * @property {boolean} openHigh Whether the roll exploded upward.
  * @property {boolean} openLow  Whether the roll exploded downward.
+ * @property {number|null} um   The unmodified natural value when it landed in
+ *   the caller's `unmodified` set, else null. A UM result neither explodes nor
+ *   accepts modifiers — the caller must apply `natural` verbatim.
  * @property {Roll[]} rolls     The underlying Roll objects (for chat).
  */
 
@@ -33,10 +36,14 @@
  * @param {number}  [options.highAt=96]   Explode upward when die >= this.
  * @param {number}  [options.lowAt=5]     Explode downward when die <= this.
  * @param {number}  [options.cap=25]      Safety cap on explosion iterations.
+ * @param {number[]} [options.unmodified=[]] Natural values that suppress the
+ *   explosion entirely (RM "unmodified roll" bands, e.g. the 66/100 of a static
+ *   maneuver). Attack-table UM bands are handled by the resolver instead,
+ *   because there the band is table data rather than a fixed value.
  * @returns {Promise<OpenEndedResult>}
  */
 export async function rollOpenEndedD100({
-  high = true, low = false, highAt = 96, lowAt = 5, cap = 25
+  high = true, low = false, highAt = 96, lowAt = 5, cap = 25, unmodified = []
 } = {}) {
   const rolls = [];
   const dice = [];
@@ -51,6 +58,13 @@ export async function rollOpenEndedD100({
   };
 
   const natural = await rollOne();
+
+  // An unmodified result is applied verbatim: no explosion (a natural 100 on a
+  // maneuver is NOT re-rolled) and no modifiers — PDF p.44.
+  if (Array.isArray(unmodified) && unmodified.includes(natural)) {
+    return { natural, total: natural, dice, openHigh: false, openLow: false, um: natural, rolls };
+  }
+
   let total = natural;
   let openHigh = false;
   let openLow = false;
@@ -80,5 +94,5 @@ export async function rollOpenEndedD100({
     }
   }
 
-  return { natural, total, dice, openHigh, openLow, rolls };
+  return { natural, total, dice, openHigh, openLow, um: null, rolls };
 }

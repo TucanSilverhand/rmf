@@ -6,6 +6,18 @@
         <span class="label">{{localize "RMF.Chat.Dice"}}</span>
         <span class="value">{{baseRoll}}</span>
       </div>
+      {{#if exploded}}
+        <div class="overview-row open-ended">
+          <span class="label">{{localize "RMF.Chat.OpenEnded"}}</span>
+          <span class="value monospace">{{diceChain}}</span>
+        </div>
+      {{/if}}
+      {{#if umLabel}}
+        <div class="overview-row unmodified">
+          <span class="label">{{localize "RMF.Chat.Unmodified"}}</span>
+          <span class="value">{{umLabel}}</span>
+        </div>
+      {{/if}}
     </div>
 
     <details class="total-breakdown-up">

@@ -16,6 +16,7 @@
 
 import { RMF_CONSTANTS } from "./utils/constants.mjs";
 import { rollOpenEndedD100 } from "./tables/open-ended.mjs";
+import { rollManeuver, postRollMessage, safeBonus } from "./utils/maneuver-roll.mjs";
 
 /**
  * Centralized action management system for RMF
@@ -192,80 +193,6 @@ export class RMFActions {
   // ACTOR ROLLING ACTIONS
   // =====================
 
-  /**
-   * Post a roll using the RMF custom chat card template.
-   *
-   * @private
-   * @static
-   * @async
-   * @param {object} params
-   * @param {Actor} params.actor
-   * @param {Roll} params.roll
-   * @param {number} [params.bonus=0]
-   * @param {string} params.flavor
-   * @param {string} [params.label]
-   */
-  /**
-   * Build a "1d100±N" formula from a possibly-corrupted bonus value.
-   * Coerces to a finite integer, falling back to 0 when the input is
-   * undefined / NaN / non-numeric. Prevents Roll-parsing exceptions
-   * caused by partially-initialized stat blocks.
-   *
-   * @private
-   * @static
-   * @param {*} rawBonus
-   * @returns {{ formula: string, bonus: number }}
-   */
-  static #buildD100Formula(rawBonus) {
-    const n = Number(rawBonus);
-    const bonus = Number.isFinite(n) ? Math.trunc(n) : 0;
-    return { formula: `1d100${bonus >= 0 ? '+' : ''}${bonus}`, bonus };
-  }
-
-  static async #postStyledRollMessage({ actor, roll, bonus = 0, flavor, label = "", openEnded = null }) {
-    const bonusValue = Number(bonus) || 0;
-    // `openEnded` (an OpenEndedResult from rollOpenEndedD100) drives RM's
-    // exploding rolls; otherwise display the plain Foundry Roll.
-    const baseRoll = openEnded
-      ? Number(openEnded.total)
-      : Number(roll.dice?.[0]?.total ?? roll.total ?? 0);
-    const totalResult = openEnded ? baseRoll + bonusValue : Number(roll.total);
-    const formula = openEnded
-      ? `1d100${bonusValue >= 0 ? "+" : ""}${bonusValue} (open-ended)`
-      : roll.formula;
-    const bonusAbs = Math.abs(bonusValue);
-    const bonusOperator = bonusValue < 0 ? "-" : "+";
-    const hasBonus = bonusAbs !== 0;
-
-    const content = await foundry.applications.handlebars.renderTemplate(
-      "systems/rmf/templates/chat/stat-roll.hbs",
-      {
-        actor,
-        statName: label || flavor,
-        roll: openEnded ? { total: totalResult } : roll,
-        bonus: bonusValue,
-        formula,
-        baseRoll,
-        bonusOperator,
-        bonusAbs,
-        hasBonus
-      }
-    );
-
-    const speaker = ChatMessage.implementation.getSpeaker({ actor });
-    const rollMode = game.settings.get("core", "rollMode");
-    if (openEnded) {
-      await ChatMessage.implementation.create({
-        speaker,
-        flavor,
-        content,
-        rolls: Array.isArray(openEnded.rolls) ? openEnded.rolls : [],
-        rollMode
-      });
-    } else {
-      await roll.toMessage({ speaker, flavor, content, rollMode });
-    }
-  }
 
   /**
    * Roll a character statistic
@@ -287,25 +214,21 @@ export class RMFActions {
       return;
     }
 
-    // Build d100 formula with NaN-safe bonus coercion.
-    const { formula, bonus } = RMFActions.#buildD100Formula(stat.total);
-
-    // Execute roll
-    const roll = await new Roll(formula).evaluate();
-    
     // Get stat label for display
     const statLabel = game.i18n.localize(`RMF.Stats.${statKey}`) || statKey;
 
-    await RMFActions.#postStyledRollMessage({
+    // A bare stat check stands in for the book's "no applicable skill" static
+    // maneuver (T-4.3), so it carries the UM 66/100 band.
+    const openEnded = await rollManeuver({
       actor: this.document,
-      roll,
-      bonus,
+      bonus: stat.total,
       flavor: `${statLabel} Roll`,
-      label: statLabel
+      label: statLabel,
+      staticManeuver: true
     });
 
     if (CONFIG.RMF?.debug) {
-      console.log(`RMF DEBUG | Stat Roll: ${statKey} = ${roll.total}`);
+      console.log(`RMF DEBUG | Stat Roll: ${statKey} = ${openEnded.total} (natural ${openEnded.natural})`);
     }
   }
 
@@ -333,22 +256,19 @@ export class RMFActions {
       return;
     }
 
-    // Get skill bonus (from category + stats + special) with NaN-safe coercion.
-    const { formula, bonus: skillBonus } = RMFActions.#buildD100Formula(skill.system.bonus);
-
-    // Execute roll
-    const roll = await new Roll(formula).evaluate();
-
-    await RMFActions.#postStyledRollMessage({
+    // Skill bonus already folds in category + stats + special bonuses.
+    // Only a static-maneuver skill carries the T-4.3 UM 66/100 band; moving
+    // maneuvers (T-4.1) have none, so their 100 still explodes.
+    const openEnded = await rollManeuver({
       actor: this.document,
-      roll,
-      bonus: skillBonus,
+      bonus: skill.system.bonus,
       flavor: `${skill.name} Roll`,
-      label: skill.name
+      label: skill.name,
+      staticManeuver: skill.system.classification === "staticManeuver"
     });
 
     if (CONFIG.RMF?.debug) {
-      console.log(`RMF DEBUG | Skill Roll: ${skill.name} = ${roll.total}`);
+      console.log(`RMF DEBUG | Skill Roll: ${skill.name} = ${openEnded.total} (natural ${openEnded.natural})`);
     }
   }
 
@@ -365,22 +285,22 @@ export class RMFActions {
     event.preventDefault();
     
     const actor = this.document;
-    
-    // Use defensive bonus value directly from derived stats (NaN-safe).
-    const { formula, bonus } = RMFActions.#buildD100Formula(actor.system.derivedStats?.defensiveBonus);
 
-    const roll = await new Roll(formula).evaluate();
-    
-    await RMFActions.#postStyledRollMessage({
+    // The book never rolls the DB (it is subtracted from the attacker's roll),
+    // so there is no canonical UM band here: this convenience roll is plain
+    // open-ended in both directions like any other d100 action roll.
+    const openEnded = await rollOpenEndedD100({ high: true, low: true });
+
+    await postRollMessage({
       actor,
-      roll,
-      bonus,
+      openEnded,
+      bonus: safeBonus(actor.system.derivedStats?.defensiveBonus),
       flavor: "Defense Roll",
       label: game.i18n.localize("RMF.DerivedStats.DefensiveBonus")
     });
 
     if (CONFIG.RMF?.debug) {
-      console.log(`RMF DEBUG | Defense Roll = ${roll.total}`);
+      console.log(`RMF DEBUG | Defense Roll = ${openEnded.total} (natural ${openEnded.natural})`);
     }
   }
 
@@ -407,7 +327,7 @@ export class RMFActions {
 
     const resistLabel = game.i18n.localize(`RMF.Resistances.${resistType}`) || resistType;
 
-    await RMFActions.#postStyledRollMessage({
+    await postRollMessage({
       actor,
       openEnded,
       bonus: resistance,
@@ -444,22 +364,19 @@ export class RMFActions {
       return;
     }
 
-    // Get category total bonus (NaN-safe).
-    const { formula, bonus } = RMFActions.#buildD100Formula(category.system.totalBonus);
-
-    // Execute roll
-    const roll = await new Roll(formula).evaluate();
-    
-    await RMFActions.#postStyledRollMessage({
+    // A category has no classification of its own, so a bare category check is
+    // treated as a static maneuver (T-4.3, the untrained-skill case the book
+    // describes). Flip this flag if your table rules it a moving maneuver.
+    const openEnded = await rollManeuver({
       actor: this.document,
-      roll,
-      bonus,
+      bonus: category.system.totalBonus,
       flavor: `${category.name} Roll`,
-      label: category.name
+      label: category.name,
+      staticManeuver: true
     });
 
     if (CONFIG.RMF?.debug) {
-      console.log(`RMF DEBUG | Category Roll: ${category.name} = ${roll.total}`);
+      console.log(`RMF DEBUG | Category Roll: ${category.name} = ${openEnded.total} (natural ${openEnded.natural})`);
     }
   }
 
@@ -488,26 +405,23 @@ export class RMFActions {
       return;
     }
 
-    const rawBase = Number(category.system.totalBonus);
-    const baseBonus = Number.isFinite(rawBase) ? Math.trunc(rawBase) : 0;
-    const { formula, bonus } = RMFActions.#buildD100Formula(baseBonus + RMF_CONSTANTS.NO_SKILL_PENALTY);
-
-    const roll = await new Roll(formula).evaluate();
+    const baseBonus = safeBonus(category.system.totalBonus);
     const noSkillLabel = game.i18n.has("RMF.NoSkill")
       ? game.i18n.localize("RMF.NoSkill")
       : "No skill";
     const label = `${category.name} (${noSkillLabel})`;
 
-    await RMFActions.#postStyledRollMessage({
+    // Same assumption as #rollCategory: an untrained check is a static maneuver.
+    const openEnded = await rollManeuver({
       actor: this.document,
-      roll,
-      bonus,
+      bonus: baseBonus + RMF_CONSTANTS.NO_SKILL_PENALTY,
       flavor: `${label} Roll`,
-      label
+      label,
+      staticManeuver: true
     });
 
     if (CONFIG.RMF?.debug) {
-      console.log(`RMF DEBUG | Category-no-skill Roll: ${category.name} = ${roll.total}`);
+      console.log(`RMF DEBUG | Category-no-skill Roll: ${category.name} = ${openEnded.total} (natural ${openEnded.natural})`);
     }
   }
 

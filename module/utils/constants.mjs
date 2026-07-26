@@ -92,6 +92,16 @@ export const RMF_CONSTANTS = Object.freeze({
    */
   NO_SKILL_PENALTY: -15,
 
+  /**
+   * Unmodified maneuver results (PDF p.44). A natural 66 is an Unusual Event
+   * and a natural 100 an Unusual Success: neither takes modifications, and the
+   * 100 is explicitly NOT open-ended (it is not re-rolled).
+   */
+  MANEUVER_UM: Object.freeze({
+    UNUSUAL_EVENT: 66,
+    UNUSUAL_SUCCESS: 100
+  }),
+
   /** Multiplier used when converting a primary-stat bonus into a resistance. */
   RESISTANCE_MULTIPLIER: 3,
 

@@ -238,10 +238,8 @@ export async function syncRacesToCompendium(source, options = {}) {
     if (!races?.length) return result;
 
     const template = await getRaceTemplate();
-    await pack.getIndex({ fields: ["name", "type", "folder"] });
-    const existingByKey = new Map(
-      pack.index.map(entry => [`${entry.type}::${String(entry.name).toLowerCase()}`, entry])
-    );
+    await pack.getIndex({ fields: ["name", "type", "folder", "system.slug"] });
+    const resolveExisting = packUpsertResolver(pack);
 
     const raceFolderIds = getPackFolderIdsByName(pack, folderName);
     const createPayload = [];
@@ -250,8 +248,6 @@ export async function syncRacesToCompendium(source, options = {}) {
     for (let i = 0; i < races.length; i++) {
       const race = races[i];
       const name = race.name ?? `Race ${i + 1}`;
-      const key = `race::${String(name).toLowerCase()}`;
-      const existing = existingByKey.get(key);
       const sysSource = race.system ?? race;
 
       const system = foundry.utils.mergeObject(
@@ -282,6 +278,7 @@ export async function syncRacesToCompendium(source, options = {}) {
       ];
       const img = (imgCandidates.find(v => typeof v === "string" && v.length) || "icons/svg/mystery-man.svg");
 
+      const existing = resolveExisting("race", system.slug || slugify(name), name);
       const base = { name, type: "race", img, system };
 
       if (existing) {
@@ -577,10 +574,8 @@ export async function syncCategoriesToCompendium(source, options = {}) {
     if (!categories?.length) return result;
 
     const template = await getCategoryTemplate();
-    await pack.getIndex({ fields: ["name", "type", "folder"] });
-    const existingByKey = new Map(
-      pack.index.map(entry => [`${entry.type}::${String(entry.name).toLowerCase()}`, entry])
-    );
+    await pack.getIndex({ fields: ["name", "type", "folder", "system.slug"] });
+    const resolveExisting = packUpsertResolver(pack);
 
     const categoryFolderIds = getPackFolderIdsByName(pack, folderName);
 
@@ -612,8 +607,6 @@ export async function syncCategoriesToCompendium(source, options = {}) {
       const entry = categories[i];
       const name = entry.name ?? `Category ${i + 1}`;
       const sysSource = entry.system ?? entry;
-      const key = `category::${String(name).toLowerCase()}`;
-      const existing = existingByKey.get(key);
 
       const system = foundry.utils.mergeObject(
         foundry.utils.duplicate(template),
@@ -647,6 +640,7 @@ export async function syncCategoriesToCompendium(source, options = {}) {
       ];
       const img = (imgCandidates.find(v => typeof v === "string" && v.length) || "icons/svg/book.svg");
 
+      const existing = resolveExisting("category", system.slug || slugify(name), name);
       const base = { name, type: "category", img, system };
 
       if (existing) {
@@ -715,10 +709,8 @@ export async function syncSkillsToCompendium(source, options = {}) {
     if (!skills?.length) return result;
 
     const template = await getSkillTemplate();
-    await pack.getIndex({ fields: ["name", "type", "folder"] });
-    const existingByKey = new Map(
-      pack.index.map(entry => [`${entry.type}::${String(entry.name).toLowerCase()}`, entry])
-    );
+    await pack.getIndex({ fields: ["name", "type", "folder", "system.slug"] });
+    const resolveExisting = packUpsertResolver(pack);
 
     const folderIds = getPackFolderIdsByName(pack, folderName);
     const createPayload = [];
@@ -727,12 +719,11 @@ export async function syncSkillsToCompendium(source, options = {}) {
     for (let i = 0; i < skills.length; i++) {
       const entry = skills[i];
       const name = entry.name ?? `Skill ${i + 1}`;
-      const key = `skill::${String(name).toLowerCase()}`;
-      const existing = existingByKey.get(key);
       const sysSource = entry.system ?? entry;
 
       const system = buildSkillSystemData(sysSource, template);
       const img = pickImageFromEntry(entry, sysSource, "icons/svg/book.svg");
+      const existing = resolveExisting("skill", system.slug || slugify(name), name);
       const base = { name, type: "skill", img, system };
 
       if (existing) {
@@ -1097,10 +1088,8 @@ export async function syncRealmsToCompendium(source, options = {}) {
     if (!realms?.length) return result;
 
     const template = await getRealmTemplate();
-    await pack.getIndex({ fields: ["name", "type", "folder"] });
-    const existingByKey = new Map(
-      pack.index.map(entry => [`${entry.type}::${String(entry.name).toLowerCase()}`, entry])
-    );
+    await pack.getIndex({ fields: ["name", "type", "folder", "system.slug"] });
+    const resolveExisting = packUpsertResolver(pack);
 
     const folderIds = getPackFolderIdsByName(pack, folderName);
     const allowedTypes = ["Essence", "Channeling", "Mentalism"];
@@ -1131,8 +1120,6 @@ export async function syncRealmsToCompendium(source, options = {}) {
     for (let i = 0; i < realms.length; i++) {
       const realm = realms[i];
       const name = realm.name ?? `Realm ${i + 1}`;
-      const key = `realm::${String(name).toLowerCase()}`;
-      const existing = existingByKey.get(key);
       const sysSource = realm.system ?? realm;
 
       const tmplStatBonus = template?.statBonus ?? { stat1: "chPresence", stat2: "chEmpathy", stat3: "chIntuition" };
@@ -1155,6 +1142,7 @@ export async function syncRealmsToCompendium(source, options = {}) {
       ];
       const img = (imgCandidates.find(v => typeof v === "string" && v.length) || "icons/svg/mystery-man.svg");
 
+      const existing = resolveExisting("realm", system.slug || slugify(name), name);
       const base = { name, type: "realm", img, system };
 
       if (existing) {
@@ -1466,10 +1454,8 @@ export async function syncProfessionsToCompendium(source, options = {}) {
     if (!professions?.length) return result;
 
     const template = await getProfessionTemplate();
-    await pack.getIndex({ fields: ["name", "type", "folder"] });
-    const existingByKey = new Map(
-      pack.index.map(entry => [`${entry.type}::${String(entry.name).toLowerCase()}`, entry])
-    );
+    await pack.getIndex({ fields: ["name", "type", "folder", "system.slug"] });
+    const resolveExisting = packUpsertResolver(pack);
 
     const folderIds = getPackFolderIdsByName(pack, folderName);
     const createPayload = [];
@@ -1478,12 +1464,11 @@ export async function syncProfessionsToCompendium(source, options = {}) {
     for (let i = 0; i < professions.length; i++) {
       const entry = professions[i];
       const name = entry.name ?? `Profession ${i + 1}`;
-      const key = `profession::${String(name).toLowerCase()}`;
-      const existing = existingByKey.get(key);
       const sysSource = entry.system ?? entry;
 
       const system = buildProfessionSystemData(sysSource, template);
       const img = pickImageFromEntry(entry, sysSource, "icons/svg/mystery-man.svg");
+      const existing = resolveExisting("profession", system.slug || slugify(name), name);
       const base = { name, type: "profession", img, system };
 
       if (existing) {
@@ -1695,10 +1680,8 @@ export async function syncTrainingPackagesToCompendium(source, options = {}) {
     if (!packages?.length) return result;
 
     const template = await getTrainingPackageTemplate();
-    await pack.getIndex({ fields: ["name", "type", "folder"] });
-    const existingByKey = new Map(
-      pack.index.map(entry => [`${entry.type}::${String(entry.name).toLowerCase()}`, entry])
-    );
+    await pack.getIndex({ fields: ["name", "type", "folder", "system.slug"] });
+    const resolveExisting = packUpsertResolver(pack);
 
     const folderIds = getPackFolderIdsByName(pack, folderName);
     const createPayload = [];
@@ -1707,12 +1690,11 @@ export async function syncTrainingPackagesToCompendium(source, options = {}) {
     for (let i = 0; i < packages.length; i++) {
       const entry = packages[i];
       const name = entry.name ?? `Training Package ${i + 1}`;
-      const key = `trainingPackage::${String(name).toLowerCase()}`;
-      const existing = existingByKey.get(key);
       const sysSource = entry.system ?? entry;
 
       const system = buildTrainingPackageSystemData(sysSource, template);
       const img = pickImageFromEntry(entry, sysSource, "icons/svg/book.svg");
+      const existing = resolveExisting("trainingPackage", system.slug || slugify(name), name);
       const base = { name, type: "trainingPackage", img, system };
 
       if (existing) {

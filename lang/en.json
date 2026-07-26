@@ -263,7 +263,12 @@
       "Dice": "Dice",
       "TotalResult": "Total Result",
       "Formula": "Formula",
-      "Applied": "Applied"
+      "Applied": "Applied",
+      "OpenEnded": "Open-ended",
+      "Unmodified": "Unmodified",
+      "UnmodifiedRoll": "UM {value}",
+      "UnusualEvent": "Unusual Event (UM 66)",
+      "UnusualSuccess": "Unusual Success (UM 100)"
     },
     "Messages": {
       "DamageApplied": "{name} takes {damage} damage ({remaining} HP remaining)",

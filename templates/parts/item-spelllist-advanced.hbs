@@ -68,7 +68,7 @@
         {{#each row.codeFlags as |c|}}
         <label class="rmf-code-toggle" title="{{c.label}}">
           <input type="checkbox"
-                 name="system.spells.{{../row.index}}.codes.{{c.key}}"
+                 name="system.spells.{{row.index}}.codes.{{c.key}}"
                  {{#if c.checked}}checked{{/if}} />
           <span>{{c.sym}} {{c.key}}</span>
         </label>

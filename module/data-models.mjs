@@ -15,6 +15,8 @@
  * @since FoundryVTT v13.341
  */
 
+import { rollManeuver } from "./utils/maneuver-roll.mjs";
+
 /**
  * Extended Actor for RoleMaster Fantasy characters.
  *
@@ -120,12 +122,17 @@ export class RMFActor extends Actor {
   /**
    * Roll a specific stat. Posts a styled chat card unless suppressed.
    *
+   * By default this is a canonical maneuver roll: open-ended both ways, with
+   * the unmodified 66 / 100 applied verbatim (PDF p.44) — the same engine the
+   * sheet uses, so a macro and a click cannot disagree. Passing an explicit
+   * `options.formula` opts out into a plain Foundry Roll for custom macros.
+   *
    * @async
    * @param {string} statKey - canonical stat key (e.g. "chAgility")
    * @param {Object} [options]
-   * @param {string} [options.formula="1d100 + @bonus"]
+   * @param {string} [options.formula] Custom formula; disables the open-ended roll.
    * @param {boolean} [options.chatMessage=true]
-   * @returns {Promise<Roll|null>}
+   * @returns {Promise<Roll|import("./tables/open-ended.mjs").OpenEndedResult|null>}
    */
   async rollStat(statKey, options = {}) {
     const stat = this.system?.chStats?.[statKey];
@@ -134,16 +141,29 @@ export class RMFActor extends Actor {
       return null;
     }
 
-    const rollData = this.getRollData();
     const bonus = Number(stat.total) || 0;
-    const formula = options.formula || "1d100 + @bonus";
-    const roll = new Roll(formula, { ...rollData, bonus, stat: bonus });
+    const statName = game.i18n.localize(`RMF.Stats.${statKey}`) || statKey;
+
+    if (!options.formula) {
+      return rollManeuver({
+        actor: this,
+        bonus,
+        flavor: `${statName} Roll`,
+        label: statName,
+        // Same as the sheet: a bare stat check is the static-maneuver branch.
+        staticManeuver: true,
+        chatMessage: options.chatMessage !== false
+      });
+    }
+
+    // Explicit formula: the caller owns the dice, so no open-ending is applied.
+    const roll = new Roll(options.formula, { ...this.getRollData(), bonus, stat: bonus });
     await roll.evaluate();
 
     if (options.chatMessage !== false) {
-      const statName = game.i18n.localize(`RMF.Stats.${statKey}`) || statKey;
-      ChatMessage.implementation.create({
+      const messageData = {
         speaker: ChatMessage.implementation.getSpeaker({ actor: this }),
+        flavor: `${statName} Roll`,
         content: await foundry.applications.handlebars.renderTemplate(
           "systems/rmf/templates/chat/stat-roll.hbs", {
             actor: this,
@@ -158,7 +178,9 @@ export class RMFActor extends Actor {
           }
         ),
         rolls: [roll]
-      });
+      };
+      ChatMessage.implementation.applyRollMode(messageData, game.settings.get("core", "rollMode"));
+      await ChatMessage.implementation.create(messageData);
     }
     return roll;
   }
